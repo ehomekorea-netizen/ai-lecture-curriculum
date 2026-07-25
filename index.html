@@ -909,21 +909,28 @@
                 </div>
 
                 <div class="two-column-layout">
-                    <div class="left-col">
-                        <div class="instruction-box">
-                            <h4><i class="fa-solid fa-eye"></i> "AI 답을 검증하는 눈" 훈련</h4>
-                            <div class="signal-box pre">
-                                <h4><i class="fa-solid fa-bell"></i> 사전 위험 신호 (Pre-Signal)</h4>
-                                <p>수온 상승(28.2℃), 용존산소 저하(4.1mg/L) ➔ <strong>어류 고사 전 미리 알려주는 경고 신호!</strong></p>
+                    <!-- 좌측: 사전 위험 신호 -->
+                    <div class="left-col" style="flex: 1;">
+                        <div class="instruction-box" style="height:100%;">
+                            <h4 style="color:#0369a1;"><i class="fa-solid fa-bell" style="color:#0284c7;"></i> 1. 사전 위험 신호 (Pre-Signal)</h4>
+                            <div class="signal-box pre" style="margin-top:10px;">
+                                <strong style="font-size:16px; color:#0369a1; display:block; margin-bottom:6px;">🌊 수온 상승(28.2℃) &amp; 용존산소 저하(4.1mg/L)</strong>
+                                <p style="margin:0; font-size:14.5px; color:#334155; line-height:1.5;">
+                                    ➔ <strong>어류 고사 전 물이 미리 알려주는 골든타임 경고 신호!</strong>
+                                </p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="right-col">
-                        <div class="instruction-box">
-                            <div class="signal-box post">
-                                <h4><i class="fa-solid fa-skull-crossbones"></i> 결과 신호 (Post-Signal)</h4>
-                                <p>신규 폐사 수 급증(12마리) ➔ <strong>이미 터진 결과이며, 폐사 수 자체가 원인이 아님!</strong></p>
+                    <!-- 우측: 결과 신호 -->
+                    <div class="right-col" style="flex: 1;">
+                        <div class="instruction-box" style="height:100%;">
+                            <h4 style="color:#9f1239;"><i class="fa-solid fa-skull-crossbones" style="color:#e11d48;"></i> 2. 결과 신호 (Post-Signal)</h4>
+                            <div class="signal-box post" style="margin-top:10px;">
+                                <strong style="font-size:16px; color:#9f1239; display:block; margin-bottom:6px;">🐟 신규 폐사 수 급증 (12마리 발생)</strong>
+                                <p style="margin:0; font-size:14.5px; color:#334155; line-height:1.5;">
+                                    ➔ <strong>이미 터진 결과일 뿐이며, 폐사 수 자체가 원인이 아님!</strong>
+                                </p>
                             </div>
                         </div>
                     </div>
