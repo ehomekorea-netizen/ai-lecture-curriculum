@@ -131,32 +131,46 @@ body {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 10px;
+    gap: 16px;
 }
 
 .brand-logo i {
-    font-size: 24px;
+    font-size: 42px;
     color: var(--cyan-accent);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+body.large-font-mode .brand-logo i {
+    font-size: 48px;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .agency {
-    font-size: 16px;
-    letter-spacing: 1px;
+    font-size: 15px;
+    letter-spacing: 0.5px;
     color: #94a3b8;
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .course-name {
-    font-size: 32px;
+    font-size: 28px;
     font-weight: 900;
     color: #ffffff;
     line-height: 1.2;
     letter-spacing: -0.5px;
-    margin-top: 2px;
+    margin-top: 3px;
 }
 
 body.large-font-mode .course-name {
-    font-size: 38px;
+    font-size: 34px;
 }
 
 /* 깔끔한 현재시각 시계 박스 (레이아웃 흔들림 완벽 고정) */
