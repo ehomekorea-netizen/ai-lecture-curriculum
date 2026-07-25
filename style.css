@@ -1462,13 +1462,57 @@ body.large-font-mode .hero-sub-title {
     transform: translateY(0);
 }
 
-/* Print Optimization */
+/* High-Quality PDF / Print Optimization */
 @media print {
-    .global-header, .hero-banner, .copy-btn, .global-footer, .gen-btn {
+    /* 배경 그래픽 및 색상/테두리 100% 유지 */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    body {
+        background: #ffffff !important;
+        color: #0f172a !important;
+    }
+
+    /* 화면 조작용 요소만 인쇄 시 숨김 */
+    .global-header, .hero-banner, .copy-btn, .global-footer, .gen-btn, .toast {
         display: none !important;
     }
-    .main-container { margin: 0; padding: 0; max-width: 100%; }
-    .tab-content { display: block !important; }
-    .page-block { page-break-after: always; border: 1px solid #cbd5e1; }
+
+    .main-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* 1~3차시 모든 탭의 블록이 순서대로 연속 인쇄 */
+    .tab-content {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    /* 가로형 1페이지 1개념 2컬럼 레이아웃 페이징 보존 */
+    .page-block {
+        page-break-after: always;
+        break-inside: avoid;
+        margin-bottom: 0 !important;
+        border: 1.5px solid #cbd5e1 !important;
+        box-shadow: none !important;
+    }
+
+    .two-column-layout {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 16px !important;
+    }
+
+    /* 이미지 해상도 및 캡처 크기 완전 보존 */
+    img {
+        max-width: 100% !important;
+        page-break-inside: avoid;
+    }
 }
 
