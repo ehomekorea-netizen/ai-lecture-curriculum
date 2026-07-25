@@ -16,7 +16,7 @@
     <!-- Top Global Header: 상단 메인 제목 & 깔끔한 현재시각 시계 박스 및 우측 탭 네비게이션 -->
     <header class="global-header">
         <div class="header-container">
-            <!-- 1. 상단 라인: 좌측 브랜드 로고/제목 + 깔끔한 현재시각 박스 -->
+            <!-- 1. 상단 라인: 좌측 브랜드 로고/제목만 -->
             <div class="header-top-row">
                 <div class="brand-logo">
                     <i class="fa-solid fa-water"></i>
@@ -25,16 +25,16 @@
                         <h1 class="course-name">수산업 종사자를 위한 생성형 AI 데이터 활용 실습</h1>
                     </div>
                 </div>
-
-                <!-- 깔끔한 현재시각 시계 박스 (09:50/10:50 시 붉은색 휴식 알림 발동) -->
+            </div>
+            
+            <!-- 2. 하단 라인: 시계 + 탭 네비게이션 + 텍스트 확대 버튼 (한 줄) -->
+            <div class="header-nav-row">
+                <!-- 현재시각 시계 박스 (1차시 탭 왼쪽에 배치) -->
                 <div id="kst-clock-widget" class="kst-clock-widget">
                     <span class="clock-label"><i class="fa-regular fa-clock"></i> 현재시각</span>
                     <span id="kst-time-display" class="kst-time-display">--:--:--</span>
                 </div>
-            </div>
-            
-            <!-- 2. 하단 라인: 우측 정렬 대화형 탭 네비게이션 & 텍스트 확대 버튼 -->
-            <div class="header-nav-row">
+
                 <nav class="curriculum-tabs">
                     <button class="tab-btn active" data-tab="session1-tab">
                         <span class="tab-num">1차시</span> 09:00~09:50 | AI 리터러시
@@ -50,7 +50,7 @@
                     </button>
                 </nav>
 
-                <!-- 우측에 잘 보이게 배치된 '텍스트 확대' 버튼 -->
+                <!-- 텍스트 확대 버튼 (AI 비서 지침 생성기 오른쪽, 한 줄) -->
                 <button id="font-toggle-btn" class="font-toggle-btn" title="어민 텍스트 1.3배 확대(130%) 모드 토글">
                     <i class="fa-solid fa-magnifying-glass-plus"></i> 텍스트 확대 <span class="badge-status">ON</span>
                 </button>
@@ -1007,75 +1007,73 @@
                 </div>
             </div>
 
-            <!-- 순서 3 -->
+            <!-- [Step 1] 구글 Gemini Gems 메뉴 진입하기 (단독 독립 블록) -->
             <div class="page-block">
                 <div class="page-block-header">
-                    <h3>★ 맞춤형 지침(Custom Instructions) 템플릿으로 AI 비서 만들기</h3>
+                    <h3>Step 1 : 구글 Gemini Gems 메뉴 진입하기</h3>
                 </div>
 
                 <div class="two-column-layout">
-                    <div class="left-col">
+                    <!-- 좌측: 상세 조작 순서 안내 -->
+                    <div class="left-col" style="flex: 1;">
                         <div class="instruction-box">
-                            <h4><i class="fa-solid fa-code"></i> 어민용 지침 템플릿 복사</h4>
-                            <p class="big-text">
-                                코딩 없이 제공된 지침 템플릿을 복사하여 ChatGPT 맞춤 설정에 붙여넣으시면 내 AI 비서가 완공됩니다!
-                            </p>
-
-                            <div class="prompt-copy-widget">
-                                <div class="widget-head">
-                                    <span class="w-label"><i class="fa-solid fa-robot"></i> 어민 전담 AI 비서 지침 템플릿</span>
-                                    <button class="copy-btn" data-copy="[역할] 너는 전남 완도 넙치 육상양식장 전담 '일지 정리 및 수질 안전 비서'야.
-[목적] 어민이 거칠게 입력한 수온, 사료량, 수수 기록을 읽고 한글 표 보고서로 정리한다.
-[행동 규칙]
-1. 입력받은 수치를 일자별/시간별 표(Table) 형태로 정리한다.
-2. 수온 28도 이상, 용존산소 4.5 이하 시 [고수온 경보]와 사료 절식 및 액성산소 가동 체크리스트 3가지를 제시한다.
-3. 질병이나 기계 고장을 단정짓지 말고 어민의 확인 항목으로 설명한다.
-4. 어민 어르신께 친근하고 정중하게 존댓말로 답변한다.">
-                                        <i class="fa-regular fa-copy"></i> 지침 템플릿 복사
-                                    </button>
+                            <h4><i class="fa-solid fa-gear" style="color:#0284c7;"></i> Gems 관리창 진입 3단계</h4>
+                            
+                            <div class="setting-step-sim" style="gap:14px; margin-top:12px;">
+                                <div class="s-step" style="padding:14px; background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:12px;">
+                                    <span class="badge-circle" style="background:#0284c7;">1</span>
+                                    <div>
+                                        <strong style="font-size:16px; color:#0f172a;">구글 크롬 브라우저 접속</strong>
+                                        <p style="font-size:14.5px; color:#334155; margin:4px 0 0 0;">
+                                            인터넷 주소창에 <code style="background:#e0f2fe; color:#0369a1; padding:2px 6px; border-radius:4px; font-weight:800;">gemini.google.com</code> 에 접속합니다.
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="widget-body">
-[역할] 너는 전남 완도 넙치 육상양식장 전담 '일지 정리 및 수질 안전 비서'야.<br>
-[목적] 어민이 거칠게 입력한 수온, 사료량, 수수 기록을 읽고 한글 표 보고서로 정리한다.<br>
-[행동 규칙]<br>
-1. 입력받은 수치를 일자별/시간별 표(Table) 형태로 정리한다.<br>
-2. 수온 28도 이상, 용존산소 4.5 이하 시 [고수온 경보]와 사료 절식 및 액성산소 가동 체크리스트 3가지를 제시한다.<br>
-3. 질병이나 기계 고장을 단정짓지 말고 어민의 확인 항목으로 설명한다.<br>
-4. 어민 어르신께 친근하고 정중하게 존댓말로 답변한다.
+
+                                <div class="s-step" style="padding:14px; background:#fff1f2; border:2px solid #fecdd3; border-radius:12px;">
+                                    <span class="badge-circle" style="background:#e11d48;">2</span>
+                                    <div>
+                                        <strong style="font-size:16px; color:#be123c;">[설정 ⚙️] (톱니바퀴) 아이콘 클릭</strong>
+                                        <p style="font-size:14.5px; color:#334155; margin:4px 0 0 0;">
+                                            좌측 사이드바 맨 하단의 <strong class="red-target">[설정] (톱니바퀴)</strong> 아이콘을 눌러 메뉴 목록을 활성화합니다.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="s-step" style="padding:14px; background:#f0fdf4; border:2px solid #86efac; border-radius:12px;">
+                                    <span class="badge-circle" style="background:#15803d;">3</span>
+                                    <div>
+                                        <strong style="font-size:16px; color:#14532d;">[Gems 💎] 단추 클릭 진입</strong>
+                                        <p style="font-size:14.5px; color:#334155; margin:4px 0 0 0;">
+                                            펼쳐진 메뉴 드롭다운 영역에서 다이아몬드 아이콘 모양의 <strong class="red-target">[Gems]</strong> 단추를 클릭해 관리창으로 진입합니다.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="right-col">
-                        <div class="ui-sim-card">
-                            <div class="sim-header">
-                                <span class="sim-title">ChatGPT 맞춤 설정 위치 붉은 상자 시뮬레이션</span>
+                    <!-- 우측: 전달받은 2개 캡처 이미지 가로 나란히 -->
+                    <div class="right-col" style="flex: 1.3;">
+                        <div class="ui-sim-card" style="box-shadow:0 6px 20px rgba(0,0,0,0.1);">
+                            <div class="sim-header" style="background:#0f172a; padding:12px 16px;">
+                                <span class="sim-title" style="font-size:15px; font-weight:800;"><i class="fa-solid fa-image" style="color:#38bdf8;"></i> Step 1 실제 화면 클릭 위치 붉은 상자 캡처 가이드</span>
                             </div>
-                            <div class="sim-body">
-                                <div class="setting-step-sim">
-                                    <div class="s-step">
-                                        <span class="badge-circle">①</span>
-                                        <span>좌측 하단 <strong class="red-target">[내 계정 프로필]</strong> 클릭</span>
+                            <div class="sim-body" style="padding:12px; display:grid; grid-template-columns: 1fr 1fr; gap:10px; background:#ffffff;">
+                                <div style="border:1.5px solid #cbd5e1; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
+                                    <div style="background:#f1f5f9; padding:6px 10px; font-size:13px; font-weight:800; color:#334155; border-bottom:1px solid #cbd5e1; text-align:center;">
+                                        📷 1. [설정 ⚙️] 클릭
                                     </div>
-                                    <div class="s-step">
-                                        <span class="badge-circle">②</span>
-                                        <span><strong class="red-target">[ChatGPT 맞춤 설정 (Custom Instructions)]</strong> 클릭</span>
-                                    </div>
-                                    <div class="s-step">
-                                        <span class="badge-circle">③</span>
-                                        <span>위 템플릿을 복사해서 상단 입력 상자에 붙여넣고 [저장] 클릭!</span>
+                                    <div style="padding:4px; flex:1; display:flex; align-items:center; justify-content:center; background:#0f172a;">
+                                        <img src="images/step1_gems_setting.png" alt="Gemini 좌측 하단 설정 톱니바퀴 위치 붉은 상자" class="expand-fill-img" style="max-height:360px; object-fit:contain; border-radius:4px;">
                                     </div>
                                 </div>
-
-                                <div class="sim-profile-box">
-                                    <div class="p-menu">
-                                        <div><i class="fa-solid fa-user"></i> 내 계정 (어민)</div>
-                                        <div class="p-item target-item">
-                                            <span class="red-highlight-box" style="top:-4px; left:0; right:0; bottom:-4px;">
-                                                <i class="fa-solid fa-sliders red-target"></i> <strong class="red-target">ChatGPT 맞춤 설정</strong>
-                                            </span>
-                                        </div>
+                                <div style="border:1.5px solid #cbd5e1; border-radius:8px; overflow:hidden; display:flex; flex-direction:column;">
+                                    <div style="background:#f1f5f9; padding:6px 10px; font-size:13px; font-weight:800; color:#334155; border-bottom:1px solid #cbd5e1; text-align:center;">
+                                        📷 2. [Gems 💎] 메뉴 클릭
+                                    </div>
+                                    <div style="padding:4px; flex:1; display:flex; align-items:center; justify-content:center; background:#0f172a;">
+                                        <img src="images/step1_gems_menu.png" alt="Gemini 드롭다운 메뉴 Gems 위치 붉은 상자" class="expand-fill-img" style="max-height:360px; object-fit:contain; border-radius:4px;">
                                     </div>
                                 </div>
                             </div>
@@ -1088,45 +1086,290 @@
                 </div>
             </div>
 
-            <!-- 순서 4, 5, 6 -->
+            <!-- [Step 2] 새로운 전용 비서(Gem) 생성하기 (단독 독립 블록) -->
             <div class="page-block">
                 <div class="page-block-header">
-                    <h3>비서 테스트, 갤러리 워크(자랑하기) 및 내일 현장 활용 안내</h3>
+                    <h3>Step 2 : 새로운 전용 비서(Gem) 생성하기</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col" style="flex: 1;">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-plus-circle" style="color:#0284c7;"></i> 대시보드에서 [+ 새 Gem] 클릭하기</h4>
+                            <p class="big-text">
+                                내 커스텀 비서 목록과 구글이 미리 제공하는 사전 제작 목록이 있는 <strong class="red-target">[Gem 관리자] 대시보드</strong>가 열립니다.
+                            </p>
+
+                            <div style="background:#f0f9ff; border:2px solid #38bdf8; border-radius:12px; padding:16px; margin-top:14px;">
+                                <h4 style="color:#0369a1; font-size:17px; font-weight:800; margin-bottom:6px;">
+                                    <i class="fa-solid fa-hand-pointer" style="color:#0284c7;"></i> [+ 새 Gem] 버튼 클릭 순서
+                                </h4>
+                                <p style="font-size:15px; color:#0f172a; margin:0; line-height:1.5;">
+                                    1. 대시보드 중앙 또는 '내 Gems' 영역 우측에 위치한 파란색 <strong class="red-target">[+ 새 Gem]</strong> 버튼을 확인합니다.<br>
+                                    2. 마우스로 정확히 클릭하여 나만의 AI 비서 지침을 입력하는 <strong>통합 편집기 화면으로 진입</strong>합니다.
+                                </p>
+                            </div>
+
+                            <div style="margin-top:14px; padding:12px 16px; background:#fff1f2; border:1.5px solid #fecdd3; border-radius:10px; color:#be123c; font-weight:800; font-size:15px; display:flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-square-check" style="color:#e11d48;"></i> ★ 우측 캡처 화면의 붉은색 테두리 박스 파란 버튼을 클릭하세요!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col" style="flex: 1.2;">
+                        <div class="ui-sim-card" style="box-shadow:0 6px 20px rgba(0,0,0,0.1);">
+                            <div class="sim-header" style="background:#0f172a; padding:12px 16px;">
+                                <span class="sim-title" style="font-size:15px; font-weight:800;"><i class="fa-solid fa-image" style="color:#38bdf8;"></i> Gem 관리자 대시보드 & [+ 새 Gem] 파란 버튼 위치</span>
+                            </div>
+                            <div class="sim-body center-img-body" style="padding:8px; background:#ffffff;">
+                                <img src="images/step2_new_gem.png" alt="Gem 관리자 대시보드 + 새 Gem 붉은 박스 위치" class="expand-fill-img" style="border-radius:8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [3차시] 나만의 AI 비서 만들기 - 만들고, 자랑하기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- [Step 3] 새 Gem의 이름 및 기본 설명 설정하기 (단독 독립 블록) -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>Step 3 : 새 Gem의 이름 및 기본 설명 설정하기</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col" style="flex: 1;">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-pen-to-square" style="color:#0284c7;"></i> 비서의 역할과 정체성 규정하기</h4>
+                            <p class="big-text">
+                                새로 시작한 통합 편집기 상단의 <strong class="red-target">[이름]</strong>과 <strong class="red-target">[설명]</strong> 필드에 어민 현장에 맞게 규정합니다.
+                            </p>
+
+                            <div style="background:#f8fafc; border:1.5px solid #cbd5e1; border-radius:12px; padding:16px; margin-top:14px;">
+                                <div style="margin-bottom:12px;">
+                                    <strong style="color:#0284c7; font-size:16px;">📌 1. 권장 기본 이름 (Name) 예시:</strong>
+                                    <div style="background:#ffffff; border:1.5px solid #0284c7; border-radius:8px; padding:10px 14px; margin-top:4px; font-size:16px; font-weight:800; color:#0f172a;">
+                                        완도 넙치양식 수질·일지 관제 비서
+                                    </div>
+                                </div>
+                                <div>
+                                    <strong style="color:#0284c7; font-size:16px;">💡 2. 권장 기본 설명 (Description) 예시:</strong>
+                                    <div style="background:#ffffff; border:1.5px solid #0284c7; border-radius:8px; padding:10px 14px; margin-top:4px; font-size:14.5px; color:#334155; line-height:1.45;">
+                                        어민이 거칠게 말하거나 입력한 수온·용존산소·사료량·폐사 수치를 스마트양식 한글 관제 표와 현장 응급 조치 체크리스트로 즉시 변환해 주는 전용 AI 비서
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="margin-top:14px; padding:12px 16px; background:#fff1f2; border:1.5px solid #fecdd3; border-radius:10px; color:#be123c; font-weight:800; font-size:15px; display:flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-square-check" style="color:#e11d48;"></i> ★ 우측 캡처 화면 상단의 붉은색 테두리 박스 입력 상자 2곳에 각각 입력하세요!
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col" style="flex: 1.2;">
+                        <div class="ui-sim-card" style="box-shadow:0 6px 20px rgba(0,0,0,0.1);">
+                            <div class="sim-header" style="background:#0f172a; padding:12px 16px;">
+                                <span class="sim-title" style="font-size:15px; font-weight:800;"><i class="fa-solid fa-image" style="color:#38bdf8;"></i> 새 Gem 이름 및 설명 입력란 위치 붉은 상자 가이드</span>
+                            </div>
+                            <div class="sim-body center-img-body" style="padding:8px; background:#ffffff;">
+                                <img src="images/step3_name_desc.png" alt="새 Gem 이름 및 설명 입력란 붉은 박스 위치" class="expand-fill-img" style="border-radius:8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [3차시] 나만의 AI 비서 만들기 - 만들고, 자랑하기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- [Step 4] 시스템 지침(Instructions) 설계 4대 축 & 완성형 템플릿 입력 (단독 독립 블록) -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>Step 4 : ★ 시스템 지침(System Instructions) 설계 4대 축 & 템플릿 입력하기</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col" style="flex: 1.1;">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-cubes" style="color:#0284c7;"></i> 지시사항(Instructions) 잘 작성하기 4대 핵심 축</h4>
+                            <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:8px;">
+                                <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:10px;">
+                                    <strong style="color:#0369a1; font-size:15px;">1. 페르소나 (Persona)</strong>
+                                    <p style="font-size:13px; color:#334155; margin:2px 0 0 0;">30년 경력 스마트양식 수질 전문가 및 일지 관리자 지위 부여</p>
+                                </div>
+                                <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:10px;">
+                                    <strong style="color:#0369a1; font-size:15px;">2. 작업 (Task)</strong>
+                                    <p style="font-size:13px; color:#334155; margin:2px 0 0 0;">수치 입력 시 관제 표 정리 및 고수온 응급 조치 처방 수행</p>
+                                </div>
+                                <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:10px;">
+                                    <strong style="color:#0369a1; font-size:15px;">3. 관련 정보 (Context)</strong>
+                                    <p style="font-size:13px; color:#334155; margin:2px 0 0 0;">고수온 특보(28.2℃↑), DO(4.1mg/L↓) 시 사료 절식/산소 가동 수칙</p>
+                                </div>
+                                <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:10px;">
+                                    <strong style="color:#0369a1; font-size:15px;">4. 형식 (Format)</strong>
+                                    <p style="font-size:13px; color:#334155; margin:2px 0 0 0;">엑셀형 한글 표 + 현장 실행 3대 체크리스트 고정 출력</p>
+                                </div>
+                            </div>
+
+                            <div class="prompt-copy-widget" style="margin-top:14px;">
+                                <div class="widget-head">
+                                    <span class="w-label"><i class="fa-solid fa-scroll"></i> 어민 전담 Gems 지시사항 완성형 템플릿</span>
+                                    <button class="copy-btn" data-copy="[Gems 수산 관제 비서 시스템 지침서]
+- 역할: 너는 30년 경력 전남 완도 넙치 육상양식장 전담 '일지 정리 및 수질 안전 비서 Gems'야.
+- 임무: 어민이 거칠게 입력한 수온, 용존산소, 사료량, 폐사 수 키워드를 읽고 스마트양식 한글 관제 표 보고서를 즉시 작성해 줘.
+- 현장 응급 조치 처방: 수온 28도 이상 또는 용존산소 4.5 이하 감지 시 어민이 당장 실행할 3단계 활동 수칙(사료 전면 절식, 액성산소 100% 가동, 취수량 150% 증대)을 처방해 줘.
+- 작성 스타일: 어조는 어민 어르신께 친근하고 정중하며 객관적인 문체(~하심. ~을 필요로 함)로 서술해 줘.
+- 출력 고정: 답변의 맨 마지막 줄에는 현장 점검용 [어민 현장 조치 3줄 요약] 단락을 반드시 고정 출력해 줘.">
+                                        <i class="fa-regular fa-copy"></i> 지침 템플릿 복사
+                                    </button>
+                                </div>
+                                <div class="widget-body" style="font-size:14.5px; line-height:1.5;">
+[Gems 수산 관제 비서 시스템 지침서]<br>
+- 역할: 너는 30년 경력 전남 완도 넙치 육상양식장 전담 '일지 정리 및 수질 안전 비서 Gems'야.<br>
+- 임무: 어민이 거칠게 입력한 수온, 용존산소, 사료량, 폐사 수 키워드를 읽고 스마트양식 한글 관제 표 보고서를 즉시 작성해 줘.<br>
+- 현장 응급 조치 처방: 수온 28도 이상 또는 용존산소 4.5 이하 감지 시 어민이 당장 실행할 3단계 활동 수칙(사료 전면 절식, 액성산소 100% 가동, 취수량 150% 증대)을 처방해 줘.<br>
+- 작성 스타일: 어조는 어민 어르신께 친근하고 정중하며 객관적인 문체(~하심. ~을 필요로 함)로 서술해 줘.<br>
+- 출력 고정: 답변의 맨 마지막 줄에는 현장 점검용 [어민 현장 조치 3줄 요약] 단락을 반드시 고정 출력해 줘.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col" style="flex: 1.1;">
+                        <div class="ui-sim-card" style="box-shadow:0 6px 20px rgba(0,0,0,0.1);">
+                            <div class="sim-header" style="background:#0f172a; padding:12px 16px;">
+                                <span class="sim-title" style="font-size:15px; font-weight:800;"><i class="fa-solid fa-image" style="color:#38bdf8;"></i> Step 4: [요청 사항 (Instructions)] 입력 상자 파란 박스 가이드</span>
+                            </div>
+                            <div class="sim-body center-img-body" style="padding:8px; background:#ffffff;">
+                                <img src="images/step4_instructions.png" alt="요청 사항 입력 상자 캡처 이미지" class="expand-fill-img" style="border-radius:8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [3차시] 나만의 AI 비서 만들기 - 만들고, 자랑하기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- [Step 5] Gems에 현장 양식 매뉴얼 지식(Knowledge) 파일 탑재 (단독 독립 블록) -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>Step 5 : ★ Gems에 현장 양식 매뉴얼 지식(Knowledge) 파일 탑재하기</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col" style="flex: 1;">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-file-pdf" style="color:#f43f5e;"></i> 국립수산과학원 표준 매뉴얼 지식 이식하기</h4>
+                            <p class="big-text">
+                                AI 비서가 단순 작문기가 아닌, <strong>국립수산과학원 표준 매뉴얼에 입각해 전문 조치</strong>를 내리도록 근거 자료를 이식합니다.
+                            </p>
+
+                            <div style="background:#fff1f2; border:2px solid #fda4af; border-radius:12px; padding:14px; margin-top:10px; box-shadow:0 3px 10px rgba(225,29,72,0.08);">
+                                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+                                    <span style="color:#9f1239; font-size:15px; font-weight:800; display:flex; align-items:center; gap:6px;">
+                                        <i class="fa-solid fa-file-pdf" style="color:#e11d48; font-size:18px;"></i> 실습용 표준 지식 문서 준비
+                                    </span>
+                                    <button class="copy-btn download-pdf-btn" style="background:#e11d48; font-size:13.5px; padding:6px 14px; font-weight:800;">
+                                        <i class="fa-solid fa-file-pdf"></i> 📄 NIFS 표준 수질관리 매뉴얼(.pdf) 다운로드
+                                    </button>
+                                </div>
+                                <p class="big-text" style="color:#881337; font-size:13.5px; margin:0; line-height:1.4; font-weight:700;">
+                                    <i class="fa-solid fa-paperclip red-target"></i> 버튼을 눌러 저장한 문서를 Gems 지식<strong class="red-target">[+]</strong> 버튼으로 업로드해 보세요!
+                                </p>
+                            </div>
+
+                            <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:12px; margin-top:12px;">
+                                <strong>1. 지식 영역 [+] 클릭:</strong><br>
+                                빌더 화면 좌측 하단의 <strong class="red-target">[지식 (Knowledge)]</strong> 영역의 <strong>[+]</strong> 버튼 클릭
+                            </div>
+                            <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:12px; margin-top:8px;">
+                                <strong>2. 수질/양식 매뉴얼 문서 선택:</strong><br>
+                                내 컴퓨터에 다운로드된 <strong class="red-target">[NIFS_넙치_스마트양식_수질관리_매뉴얼.pdf]</strong> 파일 선택 업로드
+                            </div>
+
+                            <div style="background:#fff1f2; border:1.5px solid #fecdd3; border-radius:8px; padding:10px; margin-top:12px; color:#be123c; font-size:13px; font-weight:700;">
+                                🔒 <strong>지식 파일 업로드 보안 수칙:</strong><br>
+                                올리려는 파일 내에 실제 어민 성함, 어선/양식장 고유 인정번호나 비밀번호가 적혀 있다면 반드시 사전에 해당 글자를 삭제하고 가명화한 후 탑재하십시오.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col" style="flex: 1.1;">
+                        <div class="ui-sim-card" style="box-shadow:0 6px 20px rgba(0,0,0,0.1);">
+                            <div class="sim-header" style="background:#0f172a; padding:12px 16px;">
+                                <span class="sim-title" style="font-size:15px; font-weight:800;"><i class="fa-solid fa-image" style="color:#38bdf8;"></i> Step 5: Gems 지식 (Knowledge) 업로드 완료 실물 캡처</span>
+                            </div>
+                            <div class="sim-body center-img-body" style="padding:8px; background:#ffffff;">
+                                <img src="images/step5_knowledge.png" alt="Gems 지식 업로드 완료 캡처 이미지" class="expand-fill-img" style="border-radius:8px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [3차시] 나만의 AI 비서 만들기 - 만들고, 자랑하기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- [Step 6 & Step 7] 실시간 미리보기 테스트, 튜닝 및 동료 공유하기 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>Step 6 & 7 : 실시간 미리보기 테스트, 지시사항 튜닝 및 동료 공유하기</h3>
                 </div>
 
                 <div class="two-column-layout">
                     <div class="left-col">
                         <div class="instruction-box">
-                            <h4><i class="fa-solid fa-vial-circle-check"></i> 순서 4: 비서 테스트 대화</h4>
+                            <h4><i class="fa-solid fa-vial-circle-check" style="color:#059669;"></i> Step 6: 실시간 테스트 창에서 수조 데이터 검증</h4>
                             <div class="test-chat-box">
                                 <div class="user-msg">
-                                    <i class="fa-solid fa-comment-dots"></i> 어민 테스트 입력:<br>
-                                    "오늘 7월 26일 16시30분 수온 28.2도, 산소 4.1, 사료 절식했어"
+                                    <i class="fa-solid fa-comment-dots"></i> 어민 미리보기 테스트 입력:<br>
+                                    "수급자 완도 A-03 수조, 7월 26일 16:30 수온 28.2도, 산소 4.1, 사료 절식했음, 폐사 12마리 발생"
                                 </div>
                                 <div class="ai-msg">
-                                    <i class="fa-solid fa-robot red-target"></i> AI 비서 자동 응답:<br>
-                                    <strong>[7월 26일 양식 관제 일지]</strong><br>
-                                    • 수온: 28.2℃ (고수온 특보) | DO: 4.1 mg/L (경보) | 사료: 0kg (절식)<br>
-                                    ➔ <em>"사장님! 수온 28도 초과 고수온 경보입니다. 액성 산소를 100% 가동하시고 사료는 전면 중단하세요!"</em>
+                                    <i class="fa-solid fa-robot red-target"></i> Gems 비서 실시간 자동 응답:<br>
+                                    <strong>[7월 26일 A-03 수조 관제 보고서]</strong><br>
+                                    • 수온: 28.2℃ (고수온 경보) | DO: 4.1 mg/L (저산소 특보) | 사료: 0kg (절식) | 폐사: 12마리<br>
+                                    ➔ <em>[현장 조치 3줄 요약] 사장님! 수온 28도 초과 고수온 경보입니다. 액성산소 100% 가동 및 취수 150% 증대하시고 사료는 전면 절식 유지하세요!</em>
                                 </div>
+                            </div>
+
+                            <div style="margin-top:12px; background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:12px; font-size:14px;">
+                                <strong>Step 6-1: 결과물 보완에 따른 실시간 튜닝:</strong><br>
+                                답변 포맷이 불충분하다면 좌측 <strong class="red-target">[요청 사항(Instructions)]</strong> 입력창에서 즉시 텍스트를 수정 후 화살표 버튼을 누르면 실시간 업데이트됩니다.
                             </div>
                         </div>
                     </div>
 
                     <div class="right-col">
                         <div class="ui-sim-card">
-                            <div class="sim-header">
-                                <span class="sim-title">순서 5 & 6: 갤러리 워크 및 마무리가</span>
+                            <div class="sim-header" style="background:#059669;">
+                                <span class="sim-title"><i class="fa-solid fa-share-nodes"></i> Step 7: Gems 비서 저장 및 양식장/수협 동료들과 공유하기</span>
                             </div>
-                            <div class="sim-body">
-                                <div class="gallery-info-box">
-                                    <h4><i class="fa-solid fa-champagne-glasses"></i> 순서 5: 갤러리 워크 (8분)</h4>
-                                    <p>각자 화면에 완성된 AI 비서를 띄워두고 서로 구경하며 시연합니다. "오늘의 한 방" 어민 비서 2~3개를 함께 감상합니다!</p>
+                            <div class="sim-body" style="padding:16px;">
+                                <div class="setting-step-sim" style="gap:10px;">
+                                    <div class="s-step">
+                                        <span class="badge-circle">1</span>
+                                        <span>우측 상단의 파란색 <strong class="red-target">[저장]</strong> 버튼을 눌러 비서 최종 등록</span>
+                                    </div>
+                                    <div class="s-step">
+                                        <span class="badge-circle">2</span>
+                                        <span>Gem이 생성되었다는 완료 모달창 하단의 <strong class="red-target">[공유]</strong> 버튼 클릭</span>
+                                    </div>
+                                    <div class="s-step">
+                                        <span class="badge-circle">3</span>
+                                        <span>일반 액세스 권한을 '제한됨' ➔ <strong class="red-target">[링크가 있는 모든 사용자]</strong>로 교체 후 링크 복사 배포</span>
+                                    </div>
                                 </div>
 
-                                <div class="summary-card-box" style="margin-top:12px;">
-                                    <h4><i class="fa-solid fa-house-laptop"></i> 순서 6: 내일부터 현장에서 쓰는 법 (4분)</h4>
-                                    <p>스마트폰 ChatGPT 앱에서도 방금 만든 AI 비서가 그대로 연동되어 매일 일지와 수질 관리를 도와줍니다!</p>
+                                <div style="background:#f0fdf4; border:1.5px solid #86efac; border-radius:10px; padding:14px; margin-top:10px; color:#14532d; font-size:14px; line-height:1.5;">
+                                    💡 <strong>공동 작업의 시너지 효과:</strong><br>
+                                    양식장/어촌계 내 한 명이 대표로 고품질 Gems를 빌딩하여 링크 공유 권한을 열어 배포하면, 동료 어민들도 즉시 원클릭으로 휴대폰/PC에서 사용 가능합니다!
                                 </div>
                             </div>
                         </div>

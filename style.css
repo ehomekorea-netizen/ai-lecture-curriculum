@@ -119,46 +119,47 @@ body {
     border: 1.5px solid #fca5a5;
 }
 
-/* 1. 상단 라인: 독립 제목 영역 & 깔끔한 현재시각 시계 박스 */
+/* 1. 상단 라인: 브랜드 로고/제목만 */
 .header-top-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
+    gap: 4px;
+    padding-bottom: 8px;
 }
 
 .brand-logo {
     display: flex;
     align-items: center;
-    gap: 14px;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
 .brand-logo i {
-    font-size: 34px;
+    font-size: 24px;
     color: var(--cyan-accent);
 }
 
-.brand-text {
-    display: flex;
-    flex-direction: column;
-}
-
-.brand-text .agency {
-    font-size: 14px;
+.agency {
+    font-size: 16px;
     letter-spacing: 1px;
     color: #94a3b8;
-    font-weight: 600;
+    font-weight: 700;
 }
 
-.brand-text .course-name {
-    font-size: 22px;
+.course-name {
+    font-size: 32px;
     font-weight: 900;
     color: #ffffff;
     line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-top: 2px;
 }
 
-/* 깔끔한 현재시각 시계 박스 */
+body.large-font-mode .course-name {
+    font-size: 38px;
+}
+
+/* 깔끔한 현재시각 시계 박스 (레이아웃 흔들림 완벽 고정) */
 .kst-clock-widget {
     background: rgba(15, 23, 42, 0.6);
     border: 1px solid rgba(6, 182, 212, 0.4);
@@ -166,10 +167,14 @@ body {
     padding: 6px 16px;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     backdrop-filter: blur(8px);
-    transition: all 0.3s ease;
+    transition: background 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    min-width: 180px;
+    white-space: nowrap;
 }
 
 .kst-clock-widget .clock-label {
@@ -180,6 +185,7 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
+    flex-shrink: 0;
 }
 
 .kst-clock-widget .clock-label i {
@@ -192,6 +198,10 @@ body {
     font-weight: 800;
     color: #38bdf8;
     letter-spacing: 1px;
+    font-variant-numeric: tabular-nums;
+    display: inline-block;
+    min-width: 85px;
+    text-align: center;
 }
 
 /* 붉은색 휴식 알림 모드 (09:50, 10:50, 11:50) */
@@ -218,15 +228,34 @@ body {
     to { box-shadow: 0 0 24px rgba(225, 29, 72, 0.95); }
 }
 
-/* 2. 하단 라인: 우측 정렬 대화형 탭 네비게이션 & 텍스트 확대 버튼 */
+/* 2. 하단 라인: 시계 + 탭 네비게이션 + 텍스트 확대 버튼 (모두 한 줄 flex) */
 .header-nav-row {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding-top: 10px;
-    flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+
+.header-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.header-container {
+    max-width: 1550px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .curriculum-tabs {

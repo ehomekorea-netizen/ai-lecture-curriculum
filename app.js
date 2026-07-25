@@ -86,6 +86,20 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('📊 실습 데이터(.csv)가 다운로드되었습니다!');
     }
 
+    // 4-1. NIFS 표준 수질관리 매뉴얼 PDF 다운로드 기능
+    const downloadPdfBtns = document.querySelectorAll('.download-pdf-btn');
+    downloadPdfBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const a = document.createElement('a');
+            a.href = 'data/NIFS_넙치_스마트양식_수질관리_매뉴얼.pdf';
+            a.setAttribute('download', 'NIFS_넙치_스마트양식_수질관리_매뉴얼.pdf');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            showToast('📄 NIFS 국립수산과학원 표준 수질관리 매뉴얼(.pdf)이 다운로드되었습니다!');
+        });
+    });
+
     // 5. Utility AI Assistant Instructions Generator logic
     const generateBtn = document.getElementById('generate-prompt-btn');
     const outputBox = document.getElementById('generated-output-box');
