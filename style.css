@@ -331,34 +331,76 @@ body.large-font-mode .course-name {
     color: #ffffff;
 }
 
-/* 텍스트 확대 버튼 */
-.font-toggle-btn {
-    background: var(--cyan-accent);
-    color: #0f172a;
-    border: none;
-    padding: 10px 20px;
+/* 📁 당근 카페 자료 다운로드 바로가기 뱃지 버튼 */
+.cafe-link-btn {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color: #ffffff;
+    border: 1.5px solid #ffedd5;
+    padding: 6px 16px 6px 10px;
     border-radius: 20px;
-    font-size: 15px;
-    font-weight: 900;
+    text-decoration: none;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
-    gap: 6px;
-    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+    gap: 10px;
+    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+    white-space: nowrap;
+    margin-left: auto;
 }
 
-.font-toggle-btn:hover {
-    background: #22d3ee;
-    transform: translateY(-1px);
+.cafe-link-btn:hover {
+    background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(234, 88, 12, 0.5);
+    border-color: #ffffff;
 }
 
-.font-toggle-btn .badge-status {
-    background-color: var(--primary-navy);
-    color: #ffffff;
-    padding: 2px 8px;
-    border-radius: 10px;
+.cafe-btn-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    background: #ffffff;
+}
+
+.cafe-btn-text {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+}
+
+.cafe-sub {
     font-size: 11px;
+    color: #ffedd5;
+    font-weight: 800;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cafe-sub i {
+    font-size: 10px;
+    color: #fef08a;
+}
+
+.cafe-main {
+    font-size: 14px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.25;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cafe-main i {
+    font-size: 11px;
+    opacity: 0.9;
 }
 
 /* Clickable Hyperlinks */
@@ -1493,64 +1535,11 @@ body.large-font-mode .hero-sub-title {
 
 /* Print Optimization */
 @media print {
-    .global-header, .hero-banner, .font-toggle-btn, .copy-btn, .global-footer, .gen-btn {
+    .global-header, .hero-banner, .copy-btn, .global-footer, .gen-btn {
         display: none !important;
     }
     .main-container { margin: 0; padding: 0; max-width: 100%; }
     .tab-content { display: block !important; }
     .page-block { page-break-after: always; border: 1px solid #cbd5e1; }
-}
-
-/* ==========================================================================
-   어민 전용 1.1배(110%) 텍스트 확대 모드 전역 본문 내용물 파워 규칙
-   ========================================================================== */
-body.large-font-mode p,
-body.large-font-mode .page-block p,
-body.large-font-mode .big-text,
-body.large-font-mode .instruction-box p,
-body.large-font-mode .instruction-box div,
-body.large-font-mode .instruction-box span,
-body.large-font-mode .instruction-box li,
-body.large-font-mode .widget-body,
-body.large-font-mode .sim-body,
-body.large-font-mode .sim-body div,
-body.large-font-mode .sim-body span,
-body.large-font-mode .sim-body td,
-body.large-font-mode .sim-body th,
-body.large-font-mode .test-chat-box .user-msg,
-body.large-font-mode .test-chat-box .ai-msg,
-body.large-font-mode .summary-card-box p,
-body.large-font-mode .summary-card-box span,
-body.large-font-mode .signal-box p,
-body.large-font-mode .signal-box strong,
-body.large-font-mode .d-card p,
-body.large-font-mode .d-details li,
-body.large-font-mode .s-step span,
-body.large-font-mode .s-step strong,
-body.large-font-mode .bot-card p,
-body.large-font-mode .bot-card strong,
-body.large-font-mode .generator-form label,
-body.large-font-mode .generator-form select,
-body.large-font-mode .generator-form button {
-    font-size: 1.1em !important;
-    line-height: 1.55 !important;
-}
-
-/* 1.1배 확대 모드 시 h4/h3/제목 및 아이콘 크기 비례 조절 */
-body.large-font-mode .page-block-header h3 {
-    font-size: 24px !important;
-}
-
-body.large-font-mode .instruction-box h4 {
-    font-size: 19px !important;
-}
-
-body.large-font-mode .sim-header .sim-title {
-    font-size: 17px !important;
-}
-
-body.large-font-mode .copy-btn {
-    font-size: 15px !important;
-    padding: 7px 16px !important;
 }
 

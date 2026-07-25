@@ -22,19 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. 1.1배 확대 모드 토글
-    const fontToggleBtn = document.getElementById('font-toggle-btn');
-    if (fontToggleBtn) {
-        fontToggleBtn.addEventListener('click', () => {
-            document.body.classList.toggle('large-font-mode');
-            const isLarge = document.body.classList.contains('large-font-mode');
-            const badgeStatus = fontToggleBtn.querySelector('.badge-status');
-            if (badgeStatus) {
-                badgeStatus.textContent = isLarge ? 'ON' : 'OFF';
-            }
-            showToast(isLarge ? '🔍 어민 1.1배 확대 모드가 적용되었습니다.' : '🔍 기본 폰트 모드로 변경되었습니다.');
-        });
-    }
+
 
     // 3. Prompt Copy to Clipboard functionality
     const copyBtns = document.querySelectorAll('.copy-btn');
