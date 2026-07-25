@@ -242,16 +242,15 @@ body.large-font-mode .course-name {
     to { box-shadow: 0 0 24px rgba(225, 29, 72, 0.95); }
 }
 
-/* 2. 하단 라인: 시계 + 탭 네비게이션 + 텍스트 확대 버튼 (모두 한 줄 flex) */
+/* 2. 하단 라인: 시계 + 탭 네비게이션 (깔끔한 수평 정렬) */
 .header-nav-row {
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding-top: 10px;
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 10px;
-    flex-wrap: nowrap;
-    overflow-x: auto;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .header-nav-inner {
@@ -331,77 +330,7 @@ body.large-font-mode .course-name {
     color: #ffffff;
 }
 
-/* 📁 당근 카페 자료 다운로드 바로가기 뱃지 버튼 */
-.cafe-link-btn {
-    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-    color: #ffffff;
-    border: 1.5px solid #ffedd5;
-    padding: 6px 16px 6px 10px;
-    border-radius: 20px;
-    text-decoration: none;
-    cursor: pointer;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
-    white-space: nowrap;
-    margin-left: auto;
-}
 
-.cafe-link-btn:hover {
-    background: linear-gradient(135deg, #fb923c 0%, #c2410c 100%);
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(234, 88, 12, 0.5);
-    border-color: #ffffff;
-}
-
-.cafe-btn-logo {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    object-fit: cover;
-    border: 1.5px solid rgba(255, 255, 255, 0.85);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    background: #ffffff;
-}
-
-.cafe-btn-text {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    justify-content: center;
-}
-
-.cafe-sub {
-    font-size: 11px;
-    color: #ffedd5;
-    font-weight: 800;
-    line-height: 1.2;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.cafe-sub i {
-    font-size: 10px;
-    color: #fef08a;
-}
-
-.cafe-main {
-    font-size: 14px;
-    font-weight: 900;
-    color: #ffffff;
-    line-height: 1.25;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.cafe-main i {
-    font-size: 11px;
-    opacity: 0.9;
-}
 
 /* Clickable Hyperlinks */
 .link-target {
