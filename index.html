@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전남해양수산과학원 | 수산업 종사자를 위한 생성형 AI 데이터 활용 실습 교안</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="large-font-mode">
+    <!-- Top Global Header: 상단 메인 제목 & 깔끔한 현재시각 시계 박스 및 우측 탭 네비게이션 -->
+    <header class="global-header">
+        <div class="header-container">
+            <!-- 1. 상단 라인: 좌측 브랜드 로고/제목 + 깔끔한 현재시각 박스 -->
+            <div class="header-top-row">
+                <div class="brand-logo">
+                    <i class="fa-solid fa-water"></i>
+                    <div class="brand-text">
+                        <span class="agency">전남해양수산과학원 역량강화 교육</span>
+                        <h1 class="course-name">수산업 종사자를 위한 생성형 AI 데이터 활용 실습</h1>
+                    </div>
+                </div>
+
+                <!-- 깔끔한 현재시각 시계 박스 (09:50/10:50 시 붉은색 휴식 알림 발동) -->
+                <div id="kst-clock-widget" class="kst-clock-widget">
+                    <span class="clock-label"><i class="fa-regular fa-clock"></i> 현재시각</span>
+                    <span id="kst-time-display" class="kst-time-display">--:--:--</span>
+                </div>
+            </div>
+            
+            <!-- 2. 하단 라인: 우측 정렬 대화형 탭 네비게이션 & 텍스트 확대 버튼 -->
+            <div class="header-nav-row">
+                <nav class="curriculum-tabs">
+                    <button class="tab-btn active" data-tab="session1-tab">
+                        <span class="tab-num">1차시</span> 09:00~09:50 | AI 리터러시
+                    </button>
+                    <button class="tab-btn" data-tab="session2-tab">
+                        <span class="tab-num">2차시</span> 10:00~10:50 | 데이터 깊이 읽기
+                    </button>
+                    <button class="tab-btn" data-tab="session3-tab">
+                        <span class="tab-num">3차시</span> 11:00~11:50 | AI 비서 만들기 ★
+                    </button>
+                    <button class="tab-btn generator-tab-btn" data-tab="generator-tab">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> AI 비서 지침 생성기
+                    </button>
+                </nav>
+
+                <!-- 우측에 잘 보이게 배치된 '텍스트 확대' 버튼 -->
+                <button id="font-toggle-btn" class="font-toggle-btn" title="어민 텍스트 1.3배 확대(130%) 모드 토글">
+                    <i class="fa-solid fa-magnifying-glass-plus"></i> 텍스트 확대 <span class="badge-status">ON</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner: 제목 1줄, 설명글 정확히 2줄 구성 -->
+    <section class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="hero-sub-title">"내 양식장·조업 데이터, 생성형 AI로 읽고 해석하고 활용하기"</h2>
+            <p class="hero-sub">
+                어민의 수십 년 현장 감각과 직관에 <strong>똑똑한 생성형 AI 조수</strong>를 더합니다.<br>
+                반복되는 일지 정리부터 수질 경고까지, 내 업무를 전담할 <strong>나만의 AI 비서를 직접 제작!</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="main-container">
+
+        <!-- ========================================== -->
+        <!-- TAB 1: 1차시 교안 -->
+        <!-- ========================================== -->
+        <section id="session1-tab" class="tab-content active">
+            
+            <div class="page-title-header">
+                <span class="session-label">1차시 · 09:00 ~ 09:50 (50분)</span>
+                <h2>AI 리터러시 - 골라 쓰고, 제대로 묻기</h2>
+                <p class="title-sub">대표 생성형 AI를 써보며 차이를 체감하고, 3원칙과 후속 질문으로 제대로 묻는 감을 익힙니다.</p>
+            </div>
+
+            <!-- 순서 1 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>생성형 AI란 무엇이고 무엇을 잘하는가 (GPT 어원 & 검색 vs 생성)</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-chalkboard-user"></i> 핵심 개념 설명</h4>
+                            <p class="big-text">
+                                포털 검색(네이버/구글)은 원본 링크를 나열해 어민이 직접 찾아야 하지만, 
+                                <strong class="red-target">생성형 AI</strong>는 어민의 <strong class="red-target">[현장 맥락]</strong>에 맞게 즉시 관제 표나 가이드 보고서로 완성하여 제공합니다.
+                            </p>
+
+                            <!-- GPT etymology list -->
+                            <div class="etymology-list">
+                                <div class="e-item">
+                                    <span class="e-letter red-target">G</span>
+                                    <div class="e-desc">
+                                        <strong>Generative (생성):</strong>
+                                        <p>단순 복사가 아닌, 확률 분포에 맞춰 새로운 문장과 관제 보고서를 새로 생성합니다.</p>
+                                    </div>
+                                </div>
+                                <div class="e-item">
+                                    <span class="e-letter red-target">P</span>
+                                    <div class="e-desc">
+                                        <strong>Pre-trained (사전학습):</strong>
+                                        <p>수십억 개의 문서 규칙을 미리 학습해 수산/해양 서식 양식을 터득한 상태입니다.</p>
+                                    </div>
+                                </div>
+                                <div class="e-item">
+                                    <span class="e-letter red-target">T</span>
+                                    <div class="e-desc">
+                                        <strong>Transformer (맥락이해):</strong>
+                                        <p>단어를 쪼개지 않고 문맥 전체 흐름을 이해하는 지능형 신경망 구조입니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Search vs Generation Dual Card -->
+                            <div class="compare-dual-box" style="margin-top:12px;">
+                                <div class="c-box search-side">
+                                    <h5><i class="fa-solid fa-magnifying-glass"></i> 🔍 검색 (Search)</h5>
+                                    <p>도서관 사서처럼 원본 문서를 그대로 찾아냄 (Fact 중심, 문서 목록 나열)</p>
+                                </div>
+                                <div class="c-box gen-side">
+                                    <h5><i class="fa-solid fa-pen-nib"></i> ✍️ 생성 (Generation)</h5>
+                                    <p>통계적 확률 분포를 통해 맞춤형 보고서와 관제 표를 직접 조립 (Fluency/스마트 조수)</p>
+                                </div>
+                            </div>
+
+                            <!-- 어민 현장 비유 & 실전 차이 팁 박스 -->
+                            <div class="example-tip-box" style="margin-top:14px;">
+                                <h4><i class="fa-solid fa-lightbulb"></i> 💡 어민 현장 3초 이해 팁</h4>
+                                <div class="tip-content">
+                                    <p><strong>"포털 검색은 낚싯바늘이고, 생성형 AI는 알아서 고기를 건져 표로 정리하는 자동 그물망입니다."</strong></p>
+                                    <div class="tip-list">
+                                        <div class="tip-item"><strong>네이버 검색:</strong> '수온 상승 조치법' 검색 시 블로그 링크 10개 나열 ➔ 어민이 일일이 클릭해서 읽어야 함</div>
+                                        <div class="tip-item"><strong>ChatGPT/Gemini 생성:</strong> "완도 넙치양식장 27.5℃ 수온 대응표" ➔ 3초 만에 어민 행동 관제표로 직접 조립!</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header">
+                                <span class="sim-title">GPT 개념 & 검색 vs 생성 인포그래픽</span>
+                            </div>
+                            <div class="sim-body center-img-body">
+                                <img src="images/gpt_concept.png" alt="GPT 개념" class="seamless-img" style="margin-bottom:10px;">
+                                <img src="images/essence_comparison.png" alt="검색과 생성의 차이" class="seamless-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [1차시] AI 리터러시 - 골라 쓰고, 제대로 묻기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 순서 2 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>주요 AI 직접 써보기 (ChatGPT vs Gemini 강점 체감)</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-laptop"></i> 실습 지침 및 강점 비교</h4>
+                            <p class="big-text">
+                                브라우저를 열고 <strong class="red-target">https://chatgpt.com</strong> 과 <strong class="red-target">https://gemini.google.com</strong> 에 접속하여 동일한 질문을 넣어보고 답변 스타일과 차이를 체감합니다.
+                            </p>
+
+                            <div class="prompt-copy-widget">
+                                <div class="widget-head">
+                                    <span class="w-label"><i class="fa-solid fa-terminal"></i> 1차시 실습 질문</span>
+                                    <button class="copy-btn" data-copy="너는 수산양식 전문가야. 여름철 수온이 27도 이상으로 상승할 때 어민이 현장에서 주의해야 할 수질 관리 3가지를 알려줘.">
+                                        <i class="fa-regular fa-copy"></i> 질문 복사하기
+                                    </button>
+                                </div>
+                                <div class="widget-body">
+"너는 수산양식 전문가야. 여름철 수온이 27도 이상으로 상승할 때 어민이 현장에서 주의해야 할 수질 관리 3가지를 알려줘."
+                                </div>
+                            </div>
+
+                            <div class="feature-compare-list" style="margin-top:16px;">
+                                <div class="f-item" style="margin-bottom:12px;">
+                                    <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="f-badge chatgpt">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> ChatGPT 바로가기 (chatgpt.com)
+                                    </a>
+                                    <p style="margin-top:4px;">대화형 자료 정리, 일지 작성, 서류 문장 작성 능력이 탁월함 (자료 정리 강점)</p>
+                                </div>
+                                <div class="f-item">
+                                    <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="f-badge gemini">
+                                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Gemini 바로가기 (gemini.google.com)
+                                    </a>
+                                    <p style="margin-top:4px;">구글 실시간 검색 연동, 최신 수온 뉴스 및 현장 사진 분석 능력이 뛰어남 (최신/이미지 강점)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 우측 시뮬레이션 카드: ChatGPT & Gemini 각각 라벨과 함께 이식 -->
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header">
+                                <span class="sim-title"><i class="fa-solid fa-laptop-code"></i> ChatGPT vs Gemini 조작 화면 비교</span>
+                            </div>
+                            <div class="sim-body center-img-body" style="gap:16px;">
+                                <!-- 1. ChatGPT 섹션 -->
+                                <div class="ai-sim-item">
+                                    <div class="ai-sim-label chatgpt">
+                                        <i class="fa-solid fa-robot"></i> 🟢 ChatGPT 조작 화면 (chatgpt.com)
+                                    </div>
+                                    <img src="images/gpt조작.png" alt="ChatGPT 조작 화면" class="seamless-img">
+                                </div>
+
+                                <!-- 2. Gemini 섹션 -->
+                                <div class="ai-sim-item">
+                                    <div class="ai-sim-label gemini">
+                                        <i class="fa-solid fa-wand-magic-sparkles"></i> 🔵 Gemini 조작 화면 (gemini.google.com)
+                                    </div>
+                                    <img src="images/gemini조작.png" alt="Gemini 조작 화면" class="seamless-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [1차시] AI 리터러시 - 골라 쓰고, 제대로 묻기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 순서 3 : 제대로 묻는 법 - 맥락 주기·역할 지정·형식 지정 3원칙 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>제대로 묻는 법 - 맥락 주기·역할 지정·형식 지정 3원칙</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-wand-magic-sparkles"></i> 제대로 묻는 3원칙</h4>
+                            <p class="big-text">
+                                AI에게 일반적인 질문만 주면 교과서적인 흔한 답변만 나옵니다. 
+                                반면 <strong class="red-target">3원칙([맥락] + [역할] + [형식])</strong>을 선언하면 당장 현장에서 쓸 수 있는 명확한 관제표를 얻습니 다.
+                            </p>
+
+                            <div class="rule-cards">
+                                <div class="rule-card">
+                                    <span class="r-num">원칙 1</span>
+                                    <div class="r-info">
+                                        <strong class="red-target">맥락 주기 (Context)</strong>
+                                        <p>내 업종(넙치/전복/조업), 수조 크기, 현재 수온 상황을 입력합니다.</p>
+                                    </div>
+                                </div>
+                                <div class="rule-card">
+                                    <span class="r-num">원칙 2</span>
+                                    <div class="r-info">
+                                        <strong class="red-target">역할 지정 (Role)</strong>
+                                        <p>"너는 30년 경력의 스마트양식 수질 전문가야"라고 지위를 부여합니다.</p>
+                                    </div>
+                                </div>
+                                <div class="rule-card">
+                                    <span class="r-num">원칙 3</span>
+                                    <div class="r-info">
+                                        <strong class="red-target">형식 지정 (Format)</strong>
+                                        <p>"어민이 바로 행동할 표 형태로 정리해 줘"라고 출력 형태를 지정합니다.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header">
+                                <span class="sim-title">3원칙 적용 전 vs 후 시각적 비교</span>
+                            </div>
+                            <div class="sim-body">
+                                <div class="compare-box bad">
+                                    <div class="c-tag bad">❌ 일반적 질문 ("여름철 양식장 수온 상승 시 수질 관리 방법 알려줘.")</div>
+                                    <p class="c-txt">"수온이 상승하면 환수를 늘리고 산소를 투입하세요. 급이량을 조절하고 주간 모니터링이 필요합니다..." ➔ <em>(어종/수조 형태 맥락이 없어 일반론 10줄만 나옴)</em></p>
+                                </div>
+
+                                <div class="compare-box good">
+                                    <span class="red-highlight-box" style="top:-6px; left:-4px; right:-4px; bottom:-4px;">
+                                        <span class="badge-circle">★ 3원칙 적용 완벽 답변</span>
+                                    </span>
+                                    <div class="c-tag good">⭕ 3원칙([역할]+[맥락]+[형식]) 적용 시</div>
+                                    <p class="c-txt"><strong>[넙치 육상양식 수온 27.5℃ 긴급 대응 관제표]</strong></p>
+                                    <table class="mini-sim-table">
+                                        <tr><th>우선순위</th><th>현장 조치 행동</th><th>확인 항목</th></tr>
+                                        <tr><td>1순위</td><td>액성 산소 가동 (DO 7.0 유지)</td><td>산소 펌프 전원 점검</td></tr>
+                                        <tr><td>2순위</td><td>사료 공급 50% 감량</td><td>바닥 잔여물 확인</td></tr>
+                                        <tr><td>3순위</td><td>취수량 증대</td><td>취수 밸브 동작 확인</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [1차시] AI 리터러시 - 골라 쓰고, 제대로 묻기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 순서 4 : 좋은 프롬프트를 만드는 6가지 요소 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>좋은 프롬프트를 만드는 6가지 핵심 요소</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-list-check"></i> 완벽한 프롬프트를 구성하는 6가지 세부 요소</h4>
+                            <p class="big-text">
+                                기본 3원칙(맥락·역할·형식)에 <strong class="red-target">작업 내용, 제약 조건, 추가 지침</strong>을 더하면 AI가 단 한 번에 전문가 수준의 완벽한 결과물을 만들어냅니다.
+                            </p>
+
+                            <div class="six-elements-list" style="display:flex; flex-direction:column; gap:10px; margin-top:12px;">
+                                <div class="element-item" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px 16px; display:flex; gap:14px; align-items:center;">
+                                    <span style="background:#0284c7; color:#fff; font-weight:800; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;">1</span>
+                                    <div>
+                                        <strong class="red-target">역할 (Role)</strong>: AI가 수행해야 하는 캐릭터 및 전문가 지위를 설정합니다.
+                                    </div>
+                                </div>
+                                <div class="element-item" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px 16px; display:flex; gap:14px; align-items:center;">
+                                    <span style="background:#0284c7; color:#fff; font-weight:800; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;">2</span>
+                                    <div>
+                                        <strong class="red-target">맥락 (Context)</strong>: 프롬프트의 배경이나 현장 상황, 목표를 구체적으로 작성합니다.
+                                    </div>
+                                </div>
+                                <div class="element-item" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px 16px; display:flex; gap:14px; align-items:center;">
+                                    <span style="background:#0284c7; color:#fff; font-weight:800; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;">3</span>
+                                    <div>
+                                        <strong class="red-target">작업 내용 (Task)</strong>: AI가 수행할 상세 작업 지시 및 예시를 포함합니다.
+                                    </div>
+                                </div>
+                                <div class="element-item" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px 16px; display:flex; gap:14px; align-items:center;">
+                                    <span style="background:#0284c7; color:#fff; font-weight:800; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;">4</span>
+                                    <div>
+                                        <strong class="red-target">제약 조건 (Constraint)</strong>: 작업을 수행할 때 꼭 지켜야 하는 조건 및 금지사항을 설정합니다.
+                                    </div>
+                                </div>
+                                <div class="element-item" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px 16px; display:flex; gap:14px; align-items:center;">
+                                    <span style="background:#0284c7; color:#fff; font-weight:800; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;">5</span>
+                                    <div>
+                                        <strong class="red-target">출력 형식 (Format)</strong>: 결과물이 어떤 형식(표, 체크리스트 등)으로 나올지 설정합니다.
+                                    </div>
+                                </div>
+                                <div class="element-item" style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:12px 16px; display:flex; gap:14px; align-items:center;">
+                                    <span style="background:#0284c7; color:#fff; font-weight:800; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; flex-shrink:0;">6</span>
+                                    <div>
+                                        <strong class="red-target">추가 지침 (Additional Instructions)</strong>: AI가 유의해야 할 점이나 기타 요구 사항을 설정합니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header">
+                                <span class="sim-title"><i class="fa-solid fa-file-image"></i> 좋은 프롬프트를 만드는 6가지 요소 인포그래픽</span>
+                            </div>
+                            <div class="sim-body center-img-body">
+                                <img src="images/good_prompt_6elements.png" alt="좋은 프롬프트를 만드는 6가지 요소 인포그래픽" class="seamless-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [1차시] AI 리터러시 - 골라 쓰고, 제대로 묻기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 순서 5 : 내 업무 질문 '대충' vs '3원칙 적용' 직접 비교 실습 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>내 업무 질문 '대충' vs '3원칙 적용' 직접 비교 실습</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-vial"></i> 실습 가이드</h4>
+                            <p class="big-text">
+                                아래 복사 버튼을 눌러 3원칙이 완벽히 적용된 실전 프롬프트를 복사한 후, ChatGPT에 넣고 답변 차이를 직접 체감해 봅니다.
+                            </p>
+
+                            <div class="prompt-copy-widget">
+                                <div class="widget-head">
+                                    <span class="w-label"><i class="fa-solid fa-terminal"></i> 넙치/전복 수온 이상 대응 실전 프롬프트</span>
+                                    <button class="copy-btn" data-copy="[역할] 너는 30년 경력의 스마트양식 수질 관리 전문가야.
+[맥락] 나는 전남 완도에서 넙치 육상양식장을 운영하고 있어. 현재 수온이 27.5도까지 급상승하고 용존산소가 떨어지고 있어.
+[요청] 어민이 현장에서 즉시 실행해야 할 조치 행동 3가지를 우선순위대로 알려줘.
+[제한] 질병이나 장비 고장을 단정짓지 말고, 어민이 직접 점검해야 할 항목도 포함해줘.
+[형식] 어민이 읽기 쉽게 표 형태로 정리해줘.">
+                                        <i class="fa-regular fa-copy"></i> 프롬프트 전체 복사
+                                    </button>
+                                </div>
+                                <div class="widget-body">
+[역할] 너는 30년 경력의 스마트양식 수질 관리 전문가야.<br>
+[맥락] 나는 전남 완도에서 넙치 육상양식장을 운영하고 있어. 현재 수온이 27.5도까지 급상승하고 용존산소가 떨어지고 있어.<br>
+[요청] 어민이 현장에서 즉시 실행해야 할 조치 행동 3가지를 우선순위대로 알려줘.<br>
+[제한] 질병이나 장비 고장을 단정짓지 말고, 어민이 직접 점검해야 할 항목도 포함해줘.<br>
+[형식] 어민이 읽기 쉽게 표 형태로 정리해줘.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header">
+                                <span class="sim-title"><i class="fa-solid fa-square-poll-vertical"></i> 실습 체감 팩트체크 & 실제 출력 결과</span>
+                            </div>
+                            <div class="sim-body" style="padding:14px; gap:10px;">
+                                
+                                <div class="factcheck-container">
+                                    <div class="fc-card bad">
+                                        <div class="fc-title">❌ 1. 일반 질문 결과</div>
+                                        <div class="fc-desc">어종/현장 맥락이 없어 교과서적인 흔한 글 10줄만 나옴</div>
+                                    </div>
+                                    <div class="fc-card good">
+                                        <div class="fc-title">⭕ 2. 3원칙 입력 결과</div>
+                                        <div class="fc-desc">내 양식장에 딱 맞는 3초 현장 조치표 및 체크리스트 완성!</div>
+                                    </div>
+                                </div>
+
+                                <!-- 3원칙 입력 결과 실제 화면 캡처 이미지 수록 -->
+                                <div class="ai-sim-item" style="margin-top:4px;">
+                                    <div class="ai-sim-label chatgpt">
+                                        <i class="fa-solid fa-circle-check"></i> 🟢 3원칙 입력 시 ChatGPT 실제 출력 결과 예시
+                                    </div>
+                                    <img src="images/3원칙결과.png" alt="3원칙 입력 시 ChatGPT 실제 출력 결과 예시" class="seamless-img" style="border:1px solid #cbd5e1; border-radius:8px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [1차시] AI 리터러시 - 골라 쓰고, 제대로 묻기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 순서 6 : AI 한계(할루시네이션) 유의사항 & 수산업 맞춤 개인정보/기밀 보호 수칙 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>AI 한계(할루시네이션) 유의사항 & 수산업 보안 수칙</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <div class="alert-box warning">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                <strong>AI 한계 주의사항 (그럴듯한 오답):</strong><br>
+                                AI는 무조건 맞히는 신이 아닙니다. 정밀 계산이나 질병 확정 진단은 불가능하며 그럴듯한 오답(할루시네이션)을 할 수 있으므로 <strong>최종 결정은 어민의 현장 확인이 필수</strong>입니다.
+                            </div>
+
+                            <div class="security-box">
+                                <h4 class="sec-title"><i class="fa-solid fa-user-shield"></i> 수산업 개인정보 & 조업기밀 보호 수칙</h4>
+                                <div class="security-list">
+                                    <div class="sec-item">
+                                        <i class="fa-solid fa-shield-cat sec-icon"></i>
+                                        <div class="sec-text"><strong>어선원 주민등록번호, 선원 등록번호, 위판장 출하 통장 계좌번호 절대 입력 금지</strong></div>
+                                    </div>
+                                    <div class="sec-item">
+                                        <i class="fa-solid fa-location-crosshairs sec-icon"></i>
+                                        <div class="sec-text"><strong>나만의 독점 조업 위치(위도/경도 좌표), 수협 중도매인 개인 연락처 입력 금지</strong></div>
+                                    </div>
+                                    <div class="sec-item">
+                                        <i class="fa-solid fa-user-lock sec-icon"></i>
+                                        <div class="sec-text"><strong>"어선 A", "양식장 B", "위판 거래처 C"로 비식별화(가명 처리)하여 입력</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 우측: 할루시네이션 이미지를 섹션 카드에 꽉 차도록 초대형 확대 -->
+                    <div class="right-col" style="flex: 1.3;">
+                        <div class="ui-sim-card" style="box-shadow: 0 6px 20px rgba(0,0,0,0.12);">
+                            <div class="sim-header" style="background:#0f172a; padding: 14px 18px;">
+                                <span class="sim-title" style="font-size:16px; font-weight:800;"><i class="fa-solid fa-brain red-target"></i> 할루시네이션 개념 및 세종대왕 맥북 던짐 사례</span>
+                            </div>
+                            <div class="sim-body center-img-body" style="padding: 4px; background:#ffffff;">
+                                <img src="images/hallucination_concept.png" alt="할루시네이션 개념 및 세종대왕 맥북프로 던짐 사건" class="expand-fill-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [1차시] AI 리터러시 - 골라 쓰고, 제대로 묻기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 1차시 맨 하단 관통 핵심 한 줄 정리 블록 -->
+            <div class="page-block summary-block">
+                <div class="page-block-header">
+                    <h3><i class="fa-solid fa-quote-left"></i> 1차시 핵심 한 줄 정리</h3>
+                </div>
+                <div class="summary-card-box" style="padding:24px; background:#f0fdf4; border:2.5px solid #bbf7d0; border-radius:14px; box-shadow:0 4px 14px rgba(22, 101, 52, 0.1);">
+                    <p class="big-text" style="color:#166534; font-size:25px; text-align:center; font-weight:900; margin:0; line-height:1.5;">
+                        "포털 검색에 시간 빼앗기지 말고! AI에게 <strong class="red-target">3원칙([역할]+[맥락]+[형식])</strong>으로 제대로 물어 내 양식장에 딱 맞는 <strong class="red-target">3초 현장 관제표</strong>를 완성한다!"
+                    </p>
+                </div>
+                <div class="brand-footer-line">
+                    [1차시] AI 리터러시 - 골라 쓰고, 제대로 묻기 | 오진실 강사
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- TAB 2: 2차시 교안 (6시 20분대 완성 버전 100% 복원) -->
+        <!-- ========================================== -->
+        <section id="session2-tab" class="tab-content">
+            
+            <div class="page-title-header">
+                <span class="session-label">2차시 · 10:00 ~ 10:50 (50분)</span>
+                <h2>데이터 깊이 읽기 - 한 번 묻고 끝내지 않는다 (멀티턴)</h2>
+                <p class="title-sub">수온·용존산소·사료·폐사 데이터에서 위험 신호를 찾고, 후속 질문과 어민 지참 데이터로 깊이 파고듭니다.</p>
+            </div>
+
+            <!-- 2차시 1 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>수산업 4대 데이터 구조 이해 및 실습 데이터(완도 넙치양식장) 안내</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-layer-group"></i> 스마트양식 4대 데이터 묶음 해설</h4>
+                            <p class="big-text">
+                                수산업 현장의 문제(폐사·질병·수온)를 파악하려면 한 가지만 봐선 안 되며, <strong class="red-target">4가지 데이터 묶음</strong>을 연결해서 종합적으로 해석해야 합니다.
+                            </p>
+
+                            <!-- 4대 데이터 심층 카드 -->
+                            <div class="data-4-grid-enhanced">
+                                <!-- 1. 환경 데이터 -->
+                                <div class="d-card env">
+                                    <div class="d-card-header">
+                                        <span class="d-num">1</span>
+                                        <strong>🌊 수질·기상 환경 데이터</strong>
+                                    </div>
+                                    <p class="d-sub">어류가 숨 쉬고 생존하는 수조 물의 건강 상태</p>
+                                    <ul class="d-details">
+                                        <li><strong>측정 항목:</strong> 수온(℃), 용존산소(DO), pH, 염분</li>
+                                        <li><strong>👉 표 연결:</strong> [수온 28.2℃] & [DO 4.1mg/L] ➔ <em>사전 경보</em></li>
+                                    </ul>
+                                </div>
+
+                                <!-- 2. 생물 데이터 -->
+                                <div class="d-card bio">
+                                    <div class="d-card-header">
+                                        <span class="d-num">2</span>
+                                        <strong>🐟 어체·생물 반응 데이터</strong>
+                                    </div>
+                                    <p class="d-sub">어류가 스트레스나 질병 시 보내는 생체 반응 신호</p>
+                                    <ul class="d-details">
+                                        <li><strong>측정 항목:</strong> 섭이 행동, 이상 유영, 신규 폐사 수</li>
+                                        <li><strong>👉 표 연결:</strong> [폐사 12마리] ➔ <em>어체 피해 결과 신호</em></li>
+                                    </ul>
+                                </div>
+
+                                <!-- 3. 운영 데이터 -->
+                                <div class="d-card ops">
+                                    <div class="d-card-header">
+                                        <span class="d-num">3</span>
+                                        <strong>⚙️ 양식·운영 기록 데이터</strong>
+                                    </div>
+                                    <p class="d-sub">어민이 양식장에 직접 시행한 인위적 관리 이력</p>
+                                    <ul class="d-details">
+                                        <li><strong>측정 항목:</strong> 사료 투입량/시간, 환수율, 약품 투여</li>
+                                        <li><strong>👉 표 연결:</strong> [사료 0.0kg 절식] ➔ <em>어민의 인위적 조치</em></li>
+                                    </ul>
+                                </div>
+
+                                <!-- 4. 장비 데이터 -->
+                                <div class="d-card eqp">
+                                    <div class="d-card-header">
+                                        <span class="d-num">4</span>
+                                        <strong>🔌 시설·장비 안전 데이터</strong>
+                                    </div>
+                                    <p class="d-sub">양식장 생명 유지 장치의 기계적 안전 상태</p>
+                                    <ul class="d-details">
+                                        <li><strong>측정 항목:</strong> 취수 펌프, 액성 산소 가동률, RAS 통신</li>
+                                        <li><strong>👉 표 연결:</strong> [액성산소 가동 & 취수 150%] ➔ <em>장비 조치</em></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 우측: 완도 넙치양식장 수조 관제 표 -->
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header" style="background:#334155; padding:14px 18px;">
+                                <span class="sim-title" style="font-size:16px; font-weight:800;"><i class="fa-solid fa-file-excel" style="color:#22c55e;"></i> 실습 예시 데이터: 완도 넙치양식장 수조 기록 (4대 데이터 통합)</span>
+                            </div>
+                            <div class="sim-body" style="padding:16px; gap:12px;">
+                                
+                                <!-- 표 위쪽에 자연스럽게 녹아든 4대 데이터 1:1 매핑 안내 바 -->
+                                <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:12px 14px; font-size:14.5px; color:#0369a1; font-weight:700; line-height:1.5;">
+                                    <i class="fa-solid fa-link red-target"></i> <strong>4대 데이터 ➔ 표 1:1 매핑:</strong> 
+                                    [수온/산소 = <span class="col-badge env">🌊 환경</span>] + [폐사수 = <span class="col-badge bio">🐟 생물</span>] + [사료량 = <span class="col-badge ops">⚙️ 운영</span>] + [조치사항 = <span class="col-badge eqp">🔌 장비</span>] 열(Column)이 하나로 통합된 수조 관제 표입니다.
+                                </div>
+
+                                <!-- 수조 기록 표 -->
+                                <table class="sim-data-table" style="font-size:13.5px;">
+                                    <thead>
+                                        <tr>
+                                            <th style="white-space:nowrap;">시각</th>
+                                            <th style="white-space:nowrap;"><span class="col-badge env">🌊 환경</span> 수온(℃)</th>
+                                            <th style="white-space:nowrap;"><span class="col-badge env">🌊 환경</span> DO(mg/L)</th>
+                                            <th style="white-space:nowrap;"><span class="col-badge ops">⚙️ 운영</span> 사료량(kg)</th>
+                                            <th style="white-space:nowrap;"><span class="col-badge bio">🐟 생물</span> 폐사수(마리)</th>
+                                            <th style="white-space:nowrap;"><span class="col-badge eqp">🔌 장비</span> 현장 조치사항</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>06:00</td><td>22.8℃</td><td>8.2</td><td>15.0 kg</td><td>0 마리</td><td>정상 환수 & 아침 1차 급이</td></tr>
+                                        <tr><td>10:00</td><td>24.3℃</td><td>7.1</td><td>15.0 kg</td><td>1 마리</td><td>연안 수온 상승 (모니터링)</td></tr>
+                                        <tr><td>14:00</td><td>26.5℃</td><td>5.4</td><td>7.5 kg</td><td>2 마리</td><td>수온 26℃↑ (사료 50% 감량)</td></tr>
+                                        <tr class="danger-highlight" style="background:#ffe4e6;">
+                                            <td>16:30 ★</td>
+                                            <td><strong class="red-target">28.2℃</strong></td>
+                                            <td><strong class="red-target">4.1</strong></td>
+                                            <td><strong class="red-target">0.0 kg</strong></td>
+                                            <td><strong class="red-target">12 마리</strong></td>
+                                            <td><strong class="red-target">고수온 특보 & 사료 절식/산소 가동</strong></td>
+                                        </tr>
+                                        <tr><td>20:00</td><td>26.8℃</td><td>6.8</td><td>0.0 kg</td><td>3 마리</td><td>액성산소 가동 후 DO 회복세</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [2차시] 데이터 깊이 읽기 - 한 번 묻고 끝내지 않는다 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 2차시 블록 2 : 실습 1 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3><span style="background:#dcfce7; color:#15803d; border:1px solid #86efac; padding:4px 12px; border-radius:6px; font-size:16px; font-weight:800; margin-right:8px;">실습 ①</span> 기본 질문으로 위험 신호 찾기</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-magnifying-glass-chart"></i> 실습 ① 미션: 가장 위험한 수온·DO 구간 찾기</h4>
+                            <p class="big-text">
+                                배포된 수질/폐사 데이터(.csv)를 AI에 넣고, 수온 급상승과 용존산소 급락이 동시 발생한 <strong class="red-target">가장 위험한 타임라인 구간</strong>을 기본 질문 한 문장으로 찾아냅니다.
+                            </p>
+
+                            <div class="prompt-copy-widget" style="margin-top:12px;">
+                                <div class="widget-head">
+                                    <span class="w-label"><i class="fa-solid fa-terminal"></i> 기본 질문 프롬프트</span>
+                                    <button class="copy-btn" data-copy="제공한 완도 넙치양식장 수조 데이터에서 수온이 가장 높고 용존산소가 급락하여 어류 폐사 위험이 가장 높은 시간대와 수치를 찾아서 알려줘.">
+                                        <i class="fa-regular fa-copy"></i> 복사
+                                    </button>
+                                </div>
+                                <div class="widget-body">
+"제공한 완도 넙치양식장 수조 데이터에서 수온이 가장 높고 용존산소가 급락하여 어류 폐사 위험이 가장 높은 시간대와 수치를 찾아서 알려줘."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header" style="background:#334155; padding:12px 16px;">
+                                <span class="sim-title" style="font-size:15px; font-weight:800;"><i class="fa-solid fa-file-csv" style="color:#22c55e;"></i> 실습 1 CSV 다운로드 & AI 탐색 결과 예시</span>
+                            </div>
+                            <div class="sim-body" style="padding:14px; gap:10px;">
+                                <!-- CSV 다운로드 & 가이드 박스 -->
+                                <div style="background:#f0fdf4; border:2px solid #86efac; border-radius:12px; padding:12px 14px; box-shadow:0 3px 10px rgba(22,101,52,0.08);">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+                                        <span style="color:#166534; font-size:15px; font-weight:800; display:flex; align-items:center; gap:6px;">
+                                            <i class="fa-solid fa-file-csv" style="color:#15803d; font-size:18px;"></i> 실습용 엑셀 데이터 준비
+                                        </span>
+                                        <button class="copy-btn download-csv-btn" style="background:#16a34a; font-size:13.5px; padding:6px 14px; font-weight:800;">
+                                            <i class="fa-solid fa-file-csv"></i> 📊 엑셀 실습 데이터(.csv) 다운로드
+                                        </button>
+                                    </div>
+                                    <p class="big-text" style="color:#14532d; font-size:14px; margin:0; line-height:1.45; font-weight:700;">
+                                        <i class="fa-solid fa-paperclip red-target"></i> 다운로드 후 ChatGPT 첨부창<strong class="red-target">[+ 파일]</strong>에 올리고 좌측 기본 질문을 던져보세요!
+                                    </p>
+                                </div>
+
+                                <div class="compare-box good" style="margin:0;">
+                                    <div class="c-tag good">⭕ 기본 질문 탐색 결과</div>
+                                    <p class="c-txt" style="font-size:15px; line-height:1.5;">
+                                        "분석 결과 가장 위험한 구간은 <strong>16:30</strong>입니다.<br>
+                                        • <strong>수온:</strong> <span class="red-target">28.2℃</span> (고수온 특보 기준 초과)<br>
+                                        • <strong>용존산소(DO):</strong> <span class="red-target">4.1 mg/L</span> (안전선 5.0 미달)<br>
+                                        • <strong>폐사:</strong> 12마리 발생 (즉시 취수량 확대 및 액성산소 가동 필요)"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [2차시] 데이터 깊이 읽기 - 한 번 묻고 끝내지 않는다 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 2차시 블록 3 : 실습 2 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3><span style="background:#dcfce7; color:#15803d; border:1px solid #86efac; padding:4px 12px; border-radius:6px; font-size:16px; font-weight:800; margin-right:8px;">실습 ②</span> 후속 질문(멀티턴)으로 깊이 파고들기</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4 style="color:#0284c7; font-size:20px; font-weight:800; margin-bottom:10px; display:flex; align-items:center; gap:8px;">
+                                <i class="fa-solid fa-vial" style="color:#0284c7;"></i> 멀티턴 4단계 실습
+                            </h4>
+                            <p class="big-text">
+                                아래 <strong class="red-target">[📊 엑셀 실습 데이터(.csv) 다운로드]</strong> 버튼을 클릭하여 받은 CSV 파일을 ChatGPT에 첨부하고, 좌측 <strong class="red-target">4단계 질문을 순서대로 복사해서 넣어보세요.</strong>
+                            </p>
+
+                            <div class="multiturn-steps">
+                                <div class="m-step">
+                                    <span class="m-badge">1단계: 시간대별 추세</span>
+                                    <div class="m-step-row">
+                                        <div class="m-txt">"위 표 데이터에서 시간대별 수온과 용존산소 추세를 말해줘."</div>
+                                        <button class="copy-btn sm" data-copy="위 표 데이터에서 시간대별 수온과 용존산소 추세를 말해줘."><i class="fa-regular fa-copy"></i> 복사</button>
+                                    </div>
+                                </div>
+                                <div class="m-step">
+                                    <span class="m-badge">2단계: 수온·산소 관계</span>
+                                    <div class="m-step-row">
+                                        <div class="m-txt">"16:30 수온 급상승(28.2℃)과 용존산소 급락(4.1mg/L)의 상호 연관성을 분석해줘."</div>
+                                        <button class="copy-btn sm" data-copy="16:30 수온 급상승(28.2℃)과 용존산소 급락(4.1mg/L)의 상호 연관성을 분석해줘."><i class="fa-regular fa-copy"></i> 복사</button>
+                                    </div>
+                                </div>
+                                <div class="m-step">
+                                    <span class="m-badge">3단계: 원인 가설</span>
+                                    <div class="m-step-row">
+                                        <div class="m-txt">"폐사 12마리가 일어난 원인 가설 2가지(고수온 저산소 및 호흡 곤란)를 제시해줘."</div>
+                                        <button class="copy-btn sm" data-copy="폐사 12마리가 일어난 원인 가설 2가지(고수온 저산소 및 호흡 곤란)를 제시해줘."><i class="fa-regular fa-copy"></i> 복사</button>
+                                    </div>
+                                </div>
+                                <div class="m-step">
+                                    <span class="m-badge">4단계: 조치 우선순위</span>
+                                    <div class="m-step-row">
+                                        <div class="m-txt">"어민이 당장 현장에서 실행할 조치 우선순위(절식, 액성산소 가동, 취수 증대)를 표로 작성해줘."</div>
+                                        <button class="copy-btn sm" data-copy="어민이 당장 현장에서 실행할 조치 우선순위(절식, 액성산소 가동, 취수 증대)를 표로 작성해줘."><i class="fa-regular fa-copy"></i> 복사</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 우측: CSV 다운로드 & ChatGPT 업로드 가이드 및 AI 분석 결과 예시 -->
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header" style="background:#334155; padding:14px 18px;">
+                                <span class="sim-title" style="font-size:16px; font-weight:800;"><i class="fa-solid fa-file-csv" style="color:#22c55e;"></i> 실습 1 CSV 다운로드 & AI 4단계 분석 표 출력 예시</span>
+                            </div>
+                            <div class="sim-body">
+                                
+                                <!-- CSV 다운로드 & ChatGPT 첨부 가이드 박스 -->
+                                <div style="background:#f0fdf4; border:2px solid #86efac; border-radius:12px; padding:16px; margin-bottom:12px; box-shadow:0 4px 12px rgba(22,101,52,0.08);">
+                                    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+                                        <h4 style="color:#166534; font-size:17px; font-weight:800; margin:0; display:flex; align-items:center; gap:8px;">
+                                            <i class="fa-solid fa-file-csv" style="color:#15803d; font-size:22px;"></i> 실습 엑셀 파일 다운로드 & ChatGPT 업로드
+                                        </h4>
+                                        <button id="download-csv-btn" class="copy-btn" style="background:#16a34a; font-size:15px; padding:8px 18px; font-weight:800;">
+                                            <i class="fa-solid fa-file-csv"></i> 📊 엑셀 실습 데이터(.csv) 다운로드
+                                        </button>
+                                    </div>
+                                    <p class="big-text" style="color:#14532d; font-size:15px; margin:0; line-height:1.5; font-weight:700;">
+                                        <i class="fa-solid fa-paperclip red-target"></i> 위 <strong>[엑셀 실습 데이터(.csv) 다운로드]</strong> 버튼을 클릭하여 저장한 뒤, ChatGPT 대화창의 <strong class="red-target">[+ 파일 첨부]</strong> 버튼으로 업로드하고 좌측 4단계 질의를 순서대로 진행해 보세요!
+                                    </p>
+                                </div>
+
+                                <div class="ai-table-result">
+                                    <div class="res-tag ai">AI 4단계 조치 우선순위 표</div>
+                                    <table class="mini-sim-table">
+                                        <tr><th>우선순위</th><th>현장 조치 행동</th><th>점검 항목</th></tr>
+                                        <tr><td>1순위</td><td>액성 산소 100% 가동 (DO 7.0 이상 회복)</td><td>산소 펌프 전원 및 압력 점검</td></tr>
+                                        <tr><td>2순위</td><td>사료 전면 절식 (수온 28℃ 초과시)</td><td>바닥 잔여 사료 부패 차단</td></tr>
+                                        <tr><td>3순위</td><td>취수량 150% 증대</td><td>취수 밸브 동작 확인</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [2차시] 데이터 깊이 읽기 - 한 번 묻고 끝내지 않는다 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 2차시 블록 4 : 실습 3 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3><span style="background:#dcfce7; color:#15803d; border:1px solid #86efac; padding:4px 12px; border-radius:6px; font-size:16px; font-weight:800; margin-right:8px;">실습 ③</span> ★ 지참한 내 실제 기록으로 데이터 분석하기</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-file-pen"></i> 내 지참 자료 분석 실습 가이드</h4>
+                            <p class="big-text">
+                                가져오신 <strong class="red-target">수기 노트를 촬영</strong>하여 이미지로 올리시거나 보유하신 <strong class="red-target">엑셀 데이터</strong>를 입력하여 AI 표로 정리하고 수온 이상 구간을 자동 추출합니다.
+                            </p>
+
+                            <div class="prompt-copy-widget">
+                                <div class="widget-head">
+                                    <span class="w-label"><i class="fa-solid fa-terminal"></i> 내 일지/기록 입력용 프롬프트</span>
+                                    <button class="copy-btn" data-copy="아래 첨부한 내 양식장/조업 수기 기록을 읽고:
+1. 날짜별/수조별 수온, 용존산소, 사료량, 폐사 수 데이터를 한글 표로 정리해줘.
+2. 수온이 높아지거나 이상이 발생한 구간을 붉은색 글씨로 강조해줘.
+3. 어민이 현장에서 주의해야 할 조치 사항 2가지를 덧붙여줘.">
+                                        <i class="fa-regular fa-copy"></i> 프롬프트 복사
+                                    </button>
+                                </div>
+                                <div class="widget-body">
+아래 첨부한 내 양식장/조업 수기 기록을 읽고:<br>
+1. 날짜별/수조별 수온, 용존산소, 사료량, 폐사 수 데이터를 한글 표로 정리해줘.<br>
+2. 수온이 높아지거나 이상이 발생한 구간을 붉은색 글씨로 강조해줘.<br>
+3. 어민이 현장에서 주의해야 할 조치 사항 2가지를 덧붙여줘.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header">
+                                <span class="sim-title">어민 수기 노트 ➔ AI 표 변환 시각화</span>
+                            </div>
+                            <div class="sim-body">
+                                <div class="handwriting-sim">
+                                    <div class="hw-title"><i class="fa-solid fa-camera"></i> 지참한 어민 수기 일지 (Before)</div>
+                                    <p class="hw-txt">"7월 26일 아침 수온 22.8도, 산소 8.2 사료 15kg. 오후 16시30분 수온 28.2도 산소 4.1로 급락, 사료 절식, 폐사 12마리 발생..."</p>
+                                </div>
+
+                                <div class="arrow-down"><i class="fa-solid fa-arrow-down-long"></i> AI가 3초 만에 정리한 결과 (After)</div>
+
+                                <div class="ai-table-result">
+                                    <table class="mini-sim-table">
+                                        <tr><th>일시</th><th>수온</th><th>DO</th><th>사료</th><th>비고</th></tr>
+                                        <tr><td>07/26 06:00</td><td>22.8℃</td><td>8.2</td><td>15kg</td><td>정상</td></tr>
+                                        <tr style="background:#ffe4e6;"><td>07/26 16:30</td><td><strong class="red-target">28.2℃</strong></td><td><strong class="red-target">4.1</strong></td><td><strong class="red-target">0kg</strong></td><td><strong class="red-target">고수온 특보 (폐사12)</strong></td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [2차시] 데이터 깊이 읽기 - 한 번 묻고 끝내지 않는다 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 2차시 5 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>AI 답변 검증 (팩트체크) - 사전 위험 신호 vs 결과 신호 분리</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-eye"></i> "AI 답을 검증하는 눈" 훈련</h4>
+                            <div class="signal-box pre">
+                                <h4><i class="fa-solid fa-bell"></i> 사전 위험 신호 (Pre-Signal)</h4>
+                                <p>수온 상승(28.2℃), 용존산소 저하(4.1mg/L) ➔ <strong>어류 고사 전 미리 알려주는 경고 신호!</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="instruction-box">
+                            <div class="signal-box post">
+                                <h4><i class="fa-solid fa-skull-crossbones"></i> 결과 신호 (Post-Signal)</h4>
+                                <p>신규 폐사 수 급증(12마리) ➔ <strong>이미 터진 결과이며, 폐사 수 자체가 원인이 아님!</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [2차시] 데이터 깊이 읽기 - 한 번 묻고 끝내지 않는다 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 2차시 블록 6 : 마무리 -->
+            <div class="page-block summary-block">
+                <div class="page-block-header">
+                    <h3>멀티턴 질문법 핵심 정리 & 2차시 성과 점검</h3>
+                </div>
+                <div class="summary-card-box" style="padding:20px; background:#f0fdf4; border:2px solid #bbf7d0; border-radius:12px;">
+                    <p class="big-text" style="color:#166534; font-size:24px; text-align:center; font-weight:900; margin:0;">
+                        "폐사는 결과 신호다! 수온과 용존산소 같은 <strong class="red-target">사전 위험 신호</strong>를 캐묻고, AI 답은 <strong class="red-target">어민의 현장 경험으로 검증</strong>한다!"
+                    </p>
+                </div>
+                <div class="brand-footer-line">
+                    [2차시] 데이터 깊이 읽기 - 한 번 묻고 끝내지 않는다 | 오진실 강사
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- TAB 3: 3차시 교안 -->
+        <!-- ========================================== -->
+        <section id="session3-tab" class="tab-content">
+            
+            <div class="page-title-header">
+                <span class="session-label highlight-label">3차시 · 11:00 ~ 11:50 (50분) ★ 핵심 산출물</span>
+                <h2>나만의 AI 비서 만들기 - 만들고, 자랑하기</h2>
+                <p class="title-sub">매일 반복하는 어민 업무 1가지를 전담할 맞춤형 AI 비서(Custom GPTs)를 직접 구축하고 현장에 적용합니다.</p>
+            </div>
+
+            <!-- 순서 1 & 2 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>'AI 비서'란 무엇인가 & 내 비서 업무 1가지 정하기</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-robot"></i> 어민 전담 맞춤형 AI 비서 3종</h4>
+                            <p class="big-text">
+                                매번 질문할 필요 없이, <strong class="red-target">"너는 내 넙치 양식장 일지 비서야"</strong>라고 미리 역할을 정해둔 나만의 맞춤 챗봇입니다.
+                            </p>
+
+                            <div class="bot-examples">
+                                <div class="bot-card">
+                                    <i class="fa-solid fa-book-journal-whills"></i>
+                                    <div>
+                                        <strong class="red-target">1. 양식일지 자동정리 비서</strong>
+                                        <p>어민이 거칠게 적거나 말한 기록을 한글 표 관제 일지로 변환</p>
+                                    </div>
+                                </div>
+                                <div class="bot-card">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                    <div>
+                                        <strong class="red-target">2. 수질이상 긴급대응 비서</strong>
+                                        <p>수온/산소 입력 시 당장 실행할 현장 조치 체크리스트 제공</p>
+                                    </div>
+                                </div>
+                                <div class="bot-card">
+                                    <i class="fa-solid fa-file-contract"></i>
+                                    <div>
+                                        <strong class="red-target">3. 수산 지원사업 서류 도우미</strong>
+                                        <p>지자체/수협 지원금 신청서 문장을 어민 현황에 맞춰 작성</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header">
+                                <span class="sim-title">내 비서 한 줄 기획지 (기획 6분)</span>
+                            </div>
+                            <div class="sim-body">
+                                <div class="generator-form" style="padding:16px;">
+                                    <label class="font-bold" style="color:#92400e;">[내 AI 비서 한 줄 선언] :</label>
+                                    <p class="big-text" style="margin-top:8px;">
+                                        "내 AI 비서 이름은 <strong class="red-target">[완도 넙치 일지 도우미]</strong>이며, 매일 귀찮은 <strong class="red-target">[수기 기록을 관제 표로 정리하는 일]</strong>을 전담한다!"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [3차시] 나만의 AI 비서 만들기 - 만들고, 자랑하기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 순서 3 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>★ 맞춤형 지침(Custom Instructions) 템플릿으로 AI 비서 만들기</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-code"></i> 어민용 지침 템플릿 복사</h4>
+                            <p class="big-text">
+                                코딩 없이 제공된 지침 템플릿을 복사하여 ChatGPT 맞춤 설정에 붙여넣으시면 내 AI 비서가 완공됩니다!
+                            </p>
+
+                            <div class="prompt-copy-widget">
+                                <div class="widget-head">
+                                    <span class="w-label"><i class="fa-solid fa-robot"></i> 어민 전담 AI 비서 지침 템플릿</span>
+                                    <button class="copy-btn" data-copy="[역할] 너는 전남 완도 넙치 육상양식장 전담 '일지 정리 및 수질 안전 비서'야.
+[목적] 어민이 거칠게 입력한 수온, 사료량, 수수 기록을 읽고 한글 표 보고서로 정리한다.
+[행동 규칙]
+1. 입력받은 수치를 일자별/시간별 표(Table) 형태로 정리한다.
+2. 수온 28도 이상, 용존산소 4.5 이하 시 [고수온 경보]와 사료 절식 및 액성산소 가동 체크리스트 3가지를 제시한다.
+3. 질병이나 기계 고장을 단정짓지 말고 어민의 확인 항목으로 설명한다.
+4. 어민 어르신께 친근하고 정중하게 존댓말로 답변한다.">
+                                        <i class="fa-regular fa-copy"></i> 지침 템플릿 복사
+                                    </button>
+                                </div>
+                                <div class="widget-body">
+[역할] 너는 전남 완도 넙치 육상양식장 전담 '일지 정리 및 수질 안전 비서'야.<br>
+[목적] 어민이 거칠게 입력한 수온, 사료량, 수수 기록을 읽고 한글 표 보고서로 정리한다.<br>
+[행동 규칙]<br>
+1. 입력받은 수치를 일자별/시간별 표(Table) 형태로 정리한다.<br>
+2. 수온 28도 이상, 용존산소 4.5 이하 시 [고수온 경보]와 사료 절식 및 액성산소 가동 체크리스트 3가지를 제시한다.<br>
+3. 질병이나 기계 고장을 단정짓지 말고 어민의 확인 항목으로 설명한다.<br>
+4. 어민 어르신께 친근하고 정중하게 존댓말로 답변한다.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header">
+                                <span class="sim-title">ChatGPT 맞춤 설정 위치 붉은 상자 시뮬레이션</span>
+                            </div>
+                            <div class="sim-body">
+                                <div class="setting-step-sim">
+                                    <div class="s-step">
+                                        <span class="badge-circle">①</span>
+                                        <span>좌측 하단 <strong class="red-target">[내 계정 프로필]</strong> 클릭</span>
+                                    </div>
+                                    <div class="s-step">
+                                        <span class="badge-circle">②</span>
+                                        <span><strong class="red-target">[ChatGPT 맞춤 설정 (Custom Instructions)]</strong> 클릭</span>
+                                    </div>
+                                    <div class="s-step">
+                                        <span class="badge-circle">③</span>
+                                        <span>위 템플릿을 복사해서 상단 입력 상자에 붙여넣고 [저장] 클릭!</span>
+                                    </div>
+                                </div>
+
+                                <div class="sim-profile-box">
+                                    <div class="p-menu">
+                                        <div><i class="fa-solid fa-user"></i> 내 계정 (어민)</div>
+                                        <div class="p-item target-item">
+                                            <span class="red-highlight-box" style="top:-4px; left:0; right:0; bottom:-4px;">
+                                                <i class="fa-solid fa-sliders red-target"></i> <strong class="red-target">ChatGPT 맞춤 설정</strong>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [3차시] 나만의 AI 비서 만들기 - 만들고, 자랑하기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 순서 4, 5, 6 -->
+            <div class="page-block">
+                <div class="page-block-header">
+                    <h3>비서 테스트, 갤러리 워크(자랑하기) 및 내일 현장 활용 안내</h3>
+                </div>
+
+                <div class="two-column-layout">
+                    <div class="left-col">
+                        <div class="instruction-box">
+                            <h4><i class="fa-solid fa-vial-circle-check"></i> 순서 4: 비서 테스트 대화</h4>
+                            <div class="test-chat-box">
+                                <div class="user-msg">
+                                    <i class="fa-solid fa-comment-dots"></i> 어민 테스트 입력:<br>
+                                    "오늘 7월 26일 16시30분 수온 28.2도, 산소 4.1, 사료 절식했어"
+                                </div>
+                                <div class="ai-msg">
+                                    <i class="fa-solid fa-robot red-target"></i> AI 비서 자동 응답:<br>
+                                    <strong>[7월 26일 양식 관제 일지]</strong><br>
+                                    • 수온: 28.2℃ (고수온 특보) | DO: 4.1 mg/L (경보) | 사료: 0kg (절식)<br>
+                                    ➔ <em>"사장님! 수온 28도 초과 고수온 경보입니다. 액성 산소를 100% 가동하시고 사료는 전면 중단하세요!"</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-col">
+                        <div class="ui-sim-card">
+                            <div class="sim-header">
+                                <span class="sim-title">순서 5 & 6: 갤러리 워크 및 마무리가</span>
+                            </div>
+                            <div class="sim-body">
+                                <div class="gallery-info-box">
+                                    <h4><i class="fa-solid fa-champagne-glasses"></i> 순서 5: 갤러리 워크 (8분)</h4>
+                                    <p>각자 화면에 완성된 AI 비서를 띄워두고 서로 구경하며 시연합니다. "오늘의 한 방" 어민 비서 2~3개를 함께 감상합니다!</p>
+                                </div>
+
+                                <div class="summary-card-box" style="margin-top:12px;">
+                                    <h4><i class="fa-solid fa-house-laptop"></i> 순서 6: 내일부터 현장에서 쓰는 법 (4분)</h4>
+                                    <p>스마트폰 ChatGPT 앱에서도 방금 만든 AI 비서가 그대로 연동되어 매일 일지와 수질 관리를 도와줍니다!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-footer-line">
+                    [3차시] 나만의 AI 비서 만들기 - 만들고, 자랑하기 | 오진실 강사
+                </div>
+            </div>
+
+            <!-- 3차시 맨 하단 독립 핵심 한 줄 정리 블록 -->
+            <div class="page-block summary-block">
+                <div class="page-block-header">
+                    <h3><i class="fa-solid fa-quote-left"></i> 3차시 핵심 한 줄 정리</h3>
+                </div>
+                <div class="summary-card-box" style="padding:20px; background:#f0fdf4; border:2px solid #bbf7d0; border-radius:12px;">
+                    <p class="big-text" style="color:#166534; font-size:24px; text-align:center; font-weight:900; margin:0;">
+                        "귀찮은 일지 정리부터 수질 경고까지, <strong class="red-target">어민 전담 AI 비서</strong>에게 맡기고 현장 조업에 집중한다!"
+                    </p>
+                </div>
+                <div class="brand-footer-line">
+                    [3차시] 나만의 AI 비서 만들기 - 만들고, 자랑하기 | 오진실 강사
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ========================================== -->
+        <!-- TAB 4: AI 비서 지침 생성기 (Utility Generator) -->
+        <!-- ========================================== -->
+        <section id="generator-tab" class="tab-content">
+            <div class="section-card">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-wand-magic-sparkles"></i> 어민 맞춤형 AI 비서 지침 자동 생성기</h2>
+                    <p class="section-desc">아래에서 본인의 업종과 담당 업무를 선택하시면, ChatGPT 맞춤 지침에 바로 넣을 수 있는 완성형 지침 코드가 생성됩니다.</p>
+                </div>
+
+                <div class="generator-form">
+                    <div class="form-group">
+                        <label for="fishery-type"><i class="fa-solid fa-fish"></i> 1. 업종 선택</label>
+                        <select id="fishery-type" class="form-select">
+                            <option value="넙치 육상양식장">넙치 육상양식장</option>
+                            <option value="전복 가두리 양식장">전복 해상 가두리 양식장</option>
+                            <option value="조피볼락(우럭) 가두리">조피볼락(우럭) 가두리 양식장</option>
+                            <option value="김·미역 해조류 양식장">김·미역 해조류 양식장</option>
+                            <option value="연안 어선 조업">연안 어선 조업</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="task-type"><i class="fa-solid fa-clipboard-list"></i> 2. AI 비서에게 시킬 주요 업무</label>
+                        <select id="task-type" class="form-select">
+                            <option value="daily-log">매일 수기 일지 ➔ 한글 깔끔한 관제 보고서 변환</option>
+                            <option value="water-warning">수온/용존산소 측정값 ➔ 이상 위험 진단 및 현장 체크리스트</option>
+                            <option value="document-helper">수산 지원사업 신청서 및 수협/관공서 제출 서류 작성 도우미</option>
+                        </select>
+                    </div>
+
+                    <button id="generate-prompt-btn" class="gen-btn">
+                        <i class="fa-solid fa-gears"></i> 나만의 AI 비서 지침 생성하기
+                    </button>
+                </div>
+
+                <!-- Generated Prompt Output Area -->
+                <div id="generated-output-box" class="generated-output-box hidden">
+                    <div class="output-header">
+                        <h4><i class="fa-solid fa-robot"></i> 생성된 맞춤형 AI 비서 지침 (Custom Instructions)</h4>
+                        <button id="copy-gen-btn" class="copy-btn">
+                            <i class="fa-regular fa-copy"></i> 지침 전체 복사
+                        </button>
+                    </div>
+                    <pre id="generated-prompt-code" class="code-box"></pre>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer class="global-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                전남해양수산과학원 역량강화 교육 | <span class="highlight-author">오진실 강사</span>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 전남해양수산과학원 생성형 AI 데이터 활용 실습 교육. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <i class="fa-solid fa-circle-check"></i> <span id="toast-msg">복사되었습니다!</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
