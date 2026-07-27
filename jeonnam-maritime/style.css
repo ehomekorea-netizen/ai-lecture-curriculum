@@ -656,7 +656,7 @@ body.large-font-mode .sec-text {
 .expand-fill-img {
     width: 100% !important;
     height: auto !important;
-    max-height: 850px !important;
+    max-height: 520px !important;
     object-fit: contain !important;
     border-radius: 8px;
     display: block;
