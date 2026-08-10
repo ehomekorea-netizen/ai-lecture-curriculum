@@ -976,60 +976,73 @@
       </div>
     </div>
 
-    <!-- SLIDE 09: WORKSPACE STRUCTURE WITH USER SCREENSHOT & PIGTAIL HIGHLIGHT POINTERS -->
-    <div class="slide">
+    <!-- SLIDE 09: WORKSPACE STRUCTURE WITH CLICKABLE INTERACTIVE MODAL REGIONS -->
+    <div class="slide" id="slide09Workspace">
       <div class="slide-header">
         <div class="slide-title-group">
-          <div class="slide-meta"><span class="slide-meta-tag">01 · WORKSPACE</span></div>
+          <div class="slide-meta"><span class="slide-meta-tag">01 · WORKSPACE INTERACTIVE</span></div>
           <h2>노션 작업 공간(Workspace) 둘러보기</h2>
-          <p>사이드바, 내 페이지 영역, 작업 화면의 3대 기본 구조를 한눈에 파악합니다.</p>
+          <p>각 영역(사이드바, 캔버스, 옵션 메뉴)을 마우스로 <b>클릭</b>하면 세부 기능 가이드가 팝업됩니다!</p>
         </div>
         <div class="slide-number-badge">9</div>
       </div>
-      <div class="content-body" style="display: flex; flex-direction: column; justify-content: flex-start; gap: 10px; height: 100%;">
+      
+      <div class="content-body" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; height: 100%; position: relative;">
         
-        <!-- LARGE WORKSPACE SCREENSHOT CONTAINER WITH EXACT 3-REGION HIGHLIGHT BOXES & PIGTAIL POINTERS -->
-        <div style="position: relative; width: 100%; max-width: 900px; margin: 0 auto; aspect-ratio: 16 / 8.5; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--purple-light); box-shadow: 0 12px 35px rgba(0,0,0,0.6); background: #0b0b10;">
-          <!-- MAIN USER LATEST SCREENSHOT (MEDIA 1786358716733) -->
-          <img src="./images/notion_user_workspace.png" style="width: 100%; height: 100%; object-fit: cover;" alt="노션 작업공간 실제 스크린샷">
+        <!-- MAIN WORKSPACE SCREENSHOT (FULL ASPECT RATIO PRESERVED, NO CROP, COMPACT FIT ABOVE FOOTER) -->
+        <div style="position: relative; width: 100%; max-width: 860px; max-height: 400px; border-radius: 12px; overflow: hidden; border: 1px solid #333345; box-shadow: 0 10px 30px rgba(0,0,0,0.6); background: #000; display: flex; justify-content: center; align-items: center;">
+          
+          <!-- UNTOUCHED FULL ORIGINAL SCREENSHOT -->
+          <img src="./images/notion_user_workspace.png" style="width: 100%; height: auto; max-height: 400px; object-fit: contain;" alt="노션 작업공간 원본 스크린샷">
 
-          <!-- REGION 1: SIDEBAR HIGHLIGHT BOX & PIGTAIL BADGE (LEFT 0%~15.5%) -->
-          <div style="position: absolute; top: 0%; left: 0%; width: 15.5%; height: 100%; border: 2px dashed #a78bfa; background: rgba(167,139,250,0.15); box-shadow: inset 0 0 15px rgba(167,139,250,0.4); pointer-events: none;">
-            <div style="position: absolute; top: 10px; left: 6px; background: #8b5cf6; color: #fff; font-size: 11px; font-weight: 900; padding: 3px 8px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 4px; z-index: 10;">
+          <!-- CLICKABLE REGION 1: SIDEBAR (ONLY BORDER, NO BG COLOR) -->
+          <div onclick="openWorkspaceModal(1)" title="클릭하여 사이드바 가이드 보기" style="position: absolute; top: 0; left: 0; width: 15.5%; height: 100%; border: 2px dashed #a78bfa; background: transparent; cursor: pointer; transition: all 0.2s ease; z-index: 5;" onmouseover="this.style.borderColor='#c4b5fd'; this.style.boxShadow='inset 0 0 15px rgba(167,139,250,0.4)';" onmouseout="this.style.borderColor='#a78bfa'; this.style.boxShadow='none';">
+            <div style="position: absolute; top: 8px; left: 6px; background: #8b5cf6; color: #fff; font-size: 11px; font-weight: 900; padding: 3px 8px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.6); display: flex; align-items: center; gap: 4px; pointer-events: none;">
               <span>① 사이드바</span>
-              <span style="font-size: 10px;">🍥</span>
+              <span style="font-size: 10px;">🔍</span>
             </div>
           </div>
 
-          <!-- REGION 2: CANVAS HIGHLIGHT BOX & PIGTAIL BADGE (CENTER 16%~70.5%) -->
-          <div style="position: absolute; top: 0%; left: 16%; width: 54.5%; height: 100%; border: 2px dashed #34d399; background: rgba(52,211,153,0.06); box-shadow: inset 0 0 15px rgba(52,211,153,0.2); pointer-events: none;">
-            <div style="position: absolute; top: 16px; left: 50%; transform: translateX(-50%); background: #057a5f; color: #34d399; border: 1px solid #34d399; font-size: 12px; font-weight: 900; padding: 4px 14px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); display: flex; align-items: center; gap: 6px; z-index: 10;">
-              <span>🌀 ② 캔버스 (메인 도화지)</span>
+          <!-- CLICKABLE REGION 2: CANVAS (ONLY BORDER, NO BG COLOR) -->
+          <div onclick="openWorkspaceModal(2)" title="클릭하여 캔버스 가이드 보기" style="position: absolute; top: 0; left: 16%; width: 54.5%; height: 100%; border: 2px dashed #34d399; background: transparent; cursor: pointer; transition: all 0.2s ease; z-index: 5;" onmouseover="this.style.borderColor='#6ee7b7'; this.style.boxShadow='inset 0 0 15px rgba(52,211,153,0.3)';" onmouseout="this.style.borderColor='#34d399'; this.style.boxShadow='none';">
+            <div style="position: absolute; top: 12px; left: 50%; transform: translateX(-50%); background: #057a5f; color: #34d399; border: 1px solid #34d399; font-size: 11.5px; font-weight: 900; padding: 3px 12px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); display: flex; align-items: center; gap: 4px; pointer-events: none;">
+              <span>🌀 ② 캔버스 (도화지)</span>
+              <span style="font-size: 10px;">🔍</span>
             </div>
           </div>
 
-          <!-- REGION 3: PAGE OPTIONS MENU HIGHLIGHT BOX & PIGTAIL BADGE (RIGHT 71%~100%) -->
-          <div style="position: absolute; top: 0%; left: 71%; width: 29%; height: 100%; border: 2px dashed #f472b6; background: rgba(244,114,182,0.18); box-shadow: inset 0 0 15px rgba(244,114,182,0.4); pointer-events: none;">
-            <div style="position: absolute; top: 10px; right: 8px; background: #db2777; color: #fff; font-size: 11px; font-weight: 900; padding: 3px 8px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 4px; z-index: 10;">
-              <span>🍥 ③ 옵션 메뉴(...)</span>
+          <!-- CLICKABLE REGION 3: PAGE OPTIONS (ONLY BORDER, NO BG COLOR) -->
+          <div onclick="openWorkspaceModal(3)" title="클릭하여 페이지 옵션 메뉴 가이드 보기" style="position: absolute; top: 0; left: 71%; width: 29%; height: 100%; border: 2px dashed #f472b6; background: transparent; cursor: pointer; transition: all 0.2s ease; z-index: 5;" onmouseover="this.style.borderColor='#f472b6'; this.style.boxShadow='inset 0 0 15px rgba(244,114,182,0.4)';" onmouseout="this.style.borderColor='#f472b6'; this.style.boxShadow='none';">
+            <div style="position: absolute; top: 8px; right: 6px; background: #db2777; color: #fff; font-size: 11px; font-weight: 900; padding: 3px 8px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.6); display: flex; align-items: center; gap: 4px; pointer-events: none;">
+              <span>③ 옵션 메뉴(...)</span>
+              <span style="font-size: 10px;">🔍</span>
             </div>
           </div>
+
+          <!-- FADE-IN MODAL POPUP OVERLAY FOR SLIDE 09 -->
+          <div id="wsModalOverlay" onclick="closeWorkspaceModal()" style="position: absolute; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 50; animation: fadeInModal 0.25s ease-out forwards; padding: 20px;">
+            <div onclick="event.stopPropagation()" id="wsModalContent" style="background: #181824; border: 2px solid #8b5cf6; border-radius: 16px; width: 90%; max-width: 540px; padding: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); position: relative; color: #fff;">
+              <button onclick="closeWorkspaceModal()" style="position: absolute; top: 14px; right: 16px; background: rgba(255,255,255,0.1); border: none; color: #fff; font-size: 16px; font-weight: 900; width: 28px; height: 28px; border-radius: 50%; cursor: pointer;">✕</button>
+              
+              <div id="wsModalBadge" style="display: inline-block; font-size: 12px; font-weight: 900; padding: 3px 10px; border-radius: 6px; margin-bottom: 8px;"></div>
+              <div id="wsModalTitle" style="font-size: 20px; font-weight: 900; margin-bottom: 10px; color: #fff;"></div>
+              <div id="wsModalDesc" style="font-size: 14px; color: var(--text-sub); line-height: 1.65; margin-bottom: 14px;"></div>
+              
+              <div id="wsModalBullets" style="background: rgba(255,255,255,0.05); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: #e2e8f0; line-height: 1.6;"></div>
+              
+              <div style="margin-top: 16px; text-align: right;">
+                <button onclick="closeWorkspaceModal()" style="background: var(--purple); color: #fff; border: none; font-size: 12.5px; font-weight: 800; padding: 6px 16px; border-radius: 8px; cursor: pointer;">닫기 (ESC / 바깥 클릭)</button>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- BOTTOM 3 CARDS -->
-        <div class="grid-3" style="gap: 12px; margin-top: 0px;">
-          <div class="card card-accent" style="padding: 12px 16px;">
-            <div class="card-title" style="font-size: 15px; color: #c4b5fd;">① 사이드바 (Sidebar)</div>
-            <div class="card-desc" style="font-size: 12.5px; margin-top: 2px;">페이지 서랍, 이력 DB, 새 페이지 생성 및 설정 메뉴 모음</div>
-          </div>
-          <div class="card card-cyan" style="padding: 12px 16px;">
-            <div class="card-title" style="font-size: 15px; color: #6ee7b7;">② 캔버스 (Canvas)</div>
-            <div class="card-desc" style="font-size: 12.5px; margin-top: 2px;">제목, 텍스트, 이력서 표, 레고 블록을 자유롭게 조립하는 무한 도화지</div>
-          </div>
-          <div class="card card-emerald" style="padding: 12px 16px;">
-            <div class="card-title" style="font-size: 15px; color: #f472b6;">③ 페이지 메뉴 (...)</div>
-            <div class="card-desc" style="font-size: 12.5px; margin-top: 2px;">글꼴 변경, 전체 너비 전폭 확장, 페이지 잠금 및 내보내기 팝업</div>
-          </div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px; display: flex; align-items: center; gap: 8px;">
+          <span>💡 각 구역에 마우스를 올리고 클릭해보세요!</span>
+          <span style="color: #a78bfa;">[① 사이드바]</span>
+          <span style="color: #34d399;">[② 캔버스]</span>
+          <span style="color: #f472b6;">[③ 옵션 메뉴]</span>
         </div>
 
       </div>
@@ -9817,14 +9830,65 @@ function scaleDeck() {
       } catch (err) { console.log(err); }
     }
 
-    // Slide 30 Initial 5-Second Pause on Main Overview, then start Step 1 loop!
-    setTimeout(() => {
-      // 5 Seconds Reading Time on Main Slide Overview before Step 1 starts
-      setTimeout(() => {
-        renderStepDisplay30(1);
-        startStepAutoLoop30();
-      }, 5000);
-    }, 800);
+    // Slide 09 Workspace Interactive Modal Handlers
+    const wsModalData = {
+      1: {
+        badge: '① 사이드바 (Sidebar)',
+        badgeBg: '#8b5cf6',
+        title: '📁 내 모든 페이지 & 탐색 메뉴 서랍',
+        desc: '사이드바는 노션의 모든 페이지 목록과 탐색 도구가 집약되어 있는 핵심 서랍입니다.',
+        bullets: `• <b>검색 & AI:</b> <code>Ctrl + K</code>로 노션 내 모든 기록 즉시 탐색<br>• <b>페이지 목록:</b> 계층별 페이지 트리 및 개인 이력 DB 한눈에 보기<br>• <b>[+ 페이지 추가]:</b> 클릭 한 번으로 무한 도화지 캔버스 즉시 생성`
+      },
+      2: {
+        badge: '② 캔버스 (Canvas)',
+        badgeBg: '#057a5f',
+        title: '🎨 레고 블록을 자유롭게 배치하는 무한 도화지',
+        desc: '캔버스는 아이디어, 텍스트, 표, 이미지 등을 레고 블록처럼 원하는 위치에 조립하는 메인 작업 공간입니다.',
+        bullets: `• <b>레고 블록 조립:</b> <code>/</code> 슬래시 키를 눌러 텍스트, 제목, 표 등 즉시 삽입<br>• <b>드래그 앤 드롭:</b> 6점 핸들을 잡고 원하는 2열/3열 컬럼 구조로 이동<br>• <b>경험 세부 기록:</b> STAR 기법 기반 경험 자산을 무제한 세부 기록`
+      },
+      3: {
+        badge: '③ 페이지 옵션 메뉴 (...)',
+        badgeBg: '#db2777',
+        title: '⚙️ 스타일 설정 & 내보내기/공유 팝업창',
+        desc: '우상단 점 3개(...) 아이콘을 누르면 페이지의 시각적 형태와 보관 옵션을 설정할 수 있습니다.',
+        bullets: `• <b>글꼴 스타일:</b> 기본, 세리프, 모노 3종 폰트 1초 변경<br>• <b>작은 텍스트 & 전체 너비:</b> 도화지 좌우 여백을 넓혀 시원한 화면 확보<br>• <b>페이지 잠금 & 내보내기:</b> 실수로 수정을 막거나 PDF/HTML 파일로 내보내기`
+      }
+    };
+
+    function openWorkspaceModal(id) {
+      try {
+        const overlay = document.getElementById('wsModalOverlay');
+        const badge = document.getElementById('wsModalBadge');
+        const title = document.getElementById('wsModalTitle');
+        const desc = document.getElementById('wsModalDesc');
+        const bullets = document.getElementById('wsModalBullets');
+        const data = wsModalData[id];
+
+        if (data && overlay) {
+          badge.innerText = data.badge;
+          badge.style.background = data.badgeBg;
+          badge.style.color = '#fff';
+          title.innerText = data.title;
+          desc.innerText = data.desc;
+          bullets.innerHTML = data.bullets;
+          overlay.style.display = 'flex';
+        }
+      } catch (err) { console.log(err); }
+    }
+
+    function closeWorkspaceModal() {
+      try {
+        const overlay = document.getElementById('wsModalOverlay');
+        if (overlay) overlay.style.display = 'none';
+      } catch (err) { console.log(err); }
+    }
+
+    // ESC Key listener to close modal
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeWorkspaceModal();
+      }
+    });
 </script>
 </body>
 </html>
