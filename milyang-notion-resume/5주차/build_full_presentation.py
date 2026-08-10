@@ -1,0 +1,2464 @@
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+
+html_content = r"""<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노션 사이트 기반 인터랙티브 웹 포트폴리오 제작 - 5주차 교안</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1a16;
+      --card-bg: #142b24;
+      --card-border: #057a5f;
+      --text-main: #ffffff;
+      --text-sub: #d1e7dd;
+      --text-muted: #88ab9e;
+      --purple: #00664f;
+      --purple-light: #ffe066;
+      --cyan: #34d399;
+      --emerald: #10b981;
+      --amber: #ffe066;
+      --rose: #f43f5e;
+      --gradient-purple: linear-gradient(135deg, #057a5f 0%, #00523f 100%);
+      --gradient-cyan: linear-gradient(135deg, #059669 0%, #00664f 100%);
+      --gradient-card: linear-gradient(180deg, rgba(5,122,95,0.25) 0%, rgba(20,43,36,0.95) 100%);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .deck-container {
+      width: 1280px;
+      height: 720px;
+      position: relative;
+      transform-origin: center center;
+      flex-shrink: 0;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0; left: 0;
+      width: 1280px;
+      height: 720px;
+      background: var(--card-bg);
+      border: none !important;
+      border-radius: 20px;
+      padding: 45px 65px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(50px) scale(0.98);
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    }
+
+    .slide.active {
+      opacity: 1 !important;
+      visibility: visible !important;
+      transform: translateX(0) scale(1) !important;
+    }
+
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .slide-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--purple-light);
+      text-transform: uppercase;
+    }
+
+    .slide-meta-tag {
+      background: rgba(0, 102, 79, 0.3);
+      border: 1px solid var(--card-border);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .slide-number-badge {
+      font-size: 26px;
+      font-weight: 800;
+      color: rgba(255,255,255,0.30);
+    }
+
+    .slide-title-group h2 {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.25;
+      color: #fff;
+      margin-top: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-title-group p {
+      font-size: 17px;
+      color: var(--text-sub);
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 14px;
+      margin-top: auto;
+    }
+    .slide-footer span:first-child {
+      display: none !important;
+    }
+
+    .content-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 10px 0;
+      gap: 16px;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+
+    .card {
+      background: var(--gradient-card);
+      background-color: rgba(20, 43, 36, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      border-color: #34d399;
+      transform: translateY(-2px);
+    }
+    .card-accent { border-left: 4px solid var(--purple); }
+    .card-cyan { border-left: 4px solid var(--cyan); }
+    .card-emerald { border-left: 4px solid var(--emerald); }
+    .card-amber { border-left: 4px solid var(--amber); }
+    .card-rose { border-left: 4px solid #f43f5e; }
+
+    .card-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--purple-light);
+    }
+    .card-title {
+      font-size: 19px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .card-desc {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.5;
+    }
+
+    .callout {
+      background: rgba(0, 102, 79, 0.2);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--text-main);
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .callout-icon { font-size: 22px; }
+
+    .ai-note {
+      background: rgba(255, 224, 102, 0.1);
+      border: 1px solid rgba(255, 224, 102, 0.3);
+      border-radius: 12px;
+      padding: 14px 18px;
+      color: #ffe066;
+      font-size: 14px;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .practice-box {
+      background: rgba(52, 211, 153, 0.08);
+      border: 1.5px dashed var(--cyan);
+      border-radius: 14px;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: rgba(0,0,0,0.2);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .summary-table th {
+      background: rgba(255,255,255,0.06);
+      color: var(--purple-light);
+      padding: 12px 16px;
+      text-align: left;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .summary-table td {
+      padding: 12px 16px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: var(--text-main);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    .summary-table tr:hover td {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .slide-title-hero {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 0 40px;
+    }
+    .hero-kicker {
+      background: var(--gradient-purple);
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+    .hero-tags {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .tag {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: var(--cyan);
+      font-weight: 600;
+    }
+
+    .slide-section-divider {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    /* 4TH WEEK ANIMATION KEYFRAMES & PULSE GLOW */
+    @keyframes pulseGlowPurple {
+      0%, 100% { box-shadow: 0 0 6px rgba(5,122,95,0.4); border-color: rgba(5,122,95,0.6); }
+      50% { box-shadow: 0 0 20px rgba(52,211,153,0.95), 0 0 8px #34d399; border-color: #34d399; }
+    }
+    @keyframes pulseGlowCyan {
+      0%, 100% { box-shadow: 0 0 6px rgba(6,182,212,0.4); border-color: rgba(6,182,212,0.6); }
+      50% { box-shadow: 0 0 20px rgba(6,182,212,0.95), 0 0 8px #6ee7b7; border-color: #6ee7b7; }
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .pulse-glow-active {
+      animation: pulseGlowCyan 2s infinite !important;
+    }
+
+    .progress-bar {
+      position: absolute;
+      bottom: -15px; left: 0;
+      width: 100%;
+      height: 4px;
+      background: var(--gradient-purple);
+      transition: width 0.3s ease;
+      z-index: 100;
+      border-radius: 2px;
+    }
+    .page-indicator {
+      position: absolute;
+      bottom: -42px; right: 0;
+      background: rgba(18, 21, 34, 0.85);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(10px);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-sub);
+      z-index: 100;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .nav-zone {
+      position: fixed; top: 0; bottom: 0; width: 42px;
+      z-index: 5; cursor: pointer;
+    }
+    .nav-zone.left { left: 0; }
+    .nav-zone.right { right: 0; }
+    .help-btn {
+      position: absolute; bottom: -42px; right: 90px;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.08); border: 1px solid var(--card-border);
+      color: white; font-weight: 700; cursor: pointer;
+      z-index: 100; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s ease;
+    }
+    :fullscreen .page-indicator, :fullscreen .help-btn,
+    :-webkit-full-screen .page-indicator, :-webkit-full-screen .help-btn {
+      display: none !important; opacity: 0 !important; visibility: hidden !important;
+    }
+    body.is-fullscreen .page-indicator, body.is-fullscreen .help-btn {
+      display: none !important; opacity: 0 !important; visibility: hidden !important;
+    }
+    .help-btn:hover { background: rgba(0, 102, 79, 0.4); transform: scale(1.05); }
+
+    .help-modal {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+      z-index: 200; justify-content: center; align-items: center;
+    }
+    .help-modal.active { display: flex; }
+    .help-content {
+      background: var(--card-bg); padding: 32px 40px; border-radius: 16px;
+      max-width: 500px; width: 90%; border: 1px solid var(--card-border);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    }
+    .help-content h3 { font-size: 20px; margin-bottom: 16px; color: #fff; border-bottom: 1px solid var(--card-border); padding-bottom: 8px; }
+    .help-list { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 14.5px; color: var(--text-sub); }
+    .help-list b { color: var(--purple-light); display: inline-block; width: 150px; }
+
+    /* SPLIT LAYOUT & INTERACTIVES */
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 20px;
+      align-items: stretch;
+      margin-top: 6px;
+    }
+    .view-left-canvas {
+      background: #11131f;
+      border: 1px solid var(--purple-light);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+    .canvas-toolbar {
+      background: rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 9px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .canvas-toolbar-title { font-size: 13px; font-weight: 700; color: var(--purple-light); }
+    .canvas-screen-area {
+      padding: 16px 20px; flex: 1; position: relative; min-height: 220px;
+    }
+    .guide-right-steps {
+      display: flex; flex-direction: column; gap: 10px; justify-content: center;
+    }
+    .step-btn-group { display: flex; gap: 6px; }
+    .btn-step {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; padding: 5px 12px; border-radius: 6px;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-step:hover { background: rgba(0,102,79,0.3); border-color: var(--purple-light); }
+    .btn-step-next { background: var(--gradient-purple); border: none; }
+
+    /* NOTION PERFECT 100% HIGH-FIDELITY STYLING */
+    .notion-block-card {
+      background: rgba(255,255,255,0.06);
+      border: 1.5px solid var(--card-border);
+      padding: 14px 18px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: #fff;
+      cursor: grab;
+      user-select: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+    }
+    .notion-block-card:active {
+      cursor: grabbing;
+      opacity: 0.85;
+      transform: scale(0.98);
+    }
+    .notion-block-card.cyan-border {
+      border-color: var(--cyan);
+      background: rgba(52, 211, 153, 0.12);
+    }
+
+    /* REAL NOTION BLUE VERTICAL LINE ON DRAG OVER RIGHT EDGE */
+    .notion-blue-guide-line {
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 5px;
+      background: #38bdf8;
+      box-shadow: 0 0 14px #38bdf8, 0 0 4px #38bdf8;
+      border-radius: 3px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .notion-blue-guide-line.active {
+      opacity: 1 !important;
+    }
+
+    /* THURSDAY BUTTON BLOCK STYLING */
+    .notion-btn-block {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      user-select: none;
+    }
+    .notion-btn-block:hover {
+      background: var(--purple);
+      border-color: var(--cyan);
+      color: var(--purple-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(52,211,153,0.3);
+    }
+
+    /* PAR-R VERTICAL INTERACTIVE CARDS & FADE-IN CANVAS */
+    .parr-interactive-card {
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 15px 18px;
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .parr-interactive-card:hover {
+      background: rgba(0,102,79,0.2);
+      border-color: var(--card-border);
+      transform: translateX(4px);
+    }
+    .parr-interactive-card.active {
+      background: rgba(0,102,79,0.35);
+      border-color: var(--cyan);
+      box-shadow: 0 8px 24px rgba(52,211,153,0.25);
+      transform: translateX(6px);
+    }
+    .parr-badge-letter {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--purple-light);
+      min-width: 34px;
+      text-align: center;
+    }
+    .parr-interactive-card.active .parr-badge-letter {
+      color: var(--cyan);
+    }
+
+    .parr-fade-canvas {
+      background: #11131f;
+      border: 1.5px solid var(--cyan);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    }
+    .fade-content-area {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .fade-content-area.fade-out {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .qa-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      border-radius: 9px;
+      border: 1px solid var(--card-border);
+      background: rgba(0,0,0,0.15);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .qa-row:hover { background: rgba(0,102,79,0.12); }
+    .qa-row.checked { background: rgba(52,211,153,0.08); border-color: var(--cyan); }
+    .qa-check {
+      width: 22px; height: 22px; border-radius: 5px;
+      border: 2px solid var(--card-border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 900; flex-shrink: 0;
+      transition: all 0.2s ease;
+    }
+    .qa-row.checked .qa-check {
+      background: var(--cyan); border-color: var(--cyan); color: #0b1a16;
+    }
+    .qa-num { font-size: 13px; font-weight: 800; color: var(--text-muted); min-width: 24px; }
+    .qa-row.checked .qa-num { color: var(--cyan); }
+    .qa-text { font-size: 14px; color: var(--text-main); font-weight: 500; flex: 1; }
+    .qa-badge { font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 10px; background: rgba(255,255,255,0.08); color: var(--text-muted); }
+    .qa-row.checked .qa-badge { background: rgba(52,211,153,0.15); color: var(--cyan); }
+
+    .embed-box {
+      background: #11131f;
+      border: 1px dashed rgba(255,255,255,0.2);
+      border-radius: 9px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-sub);
+      transition: all 0.4s ease;
+      min-height: 58px;
+    }
+    .embed-box.active {
+      background: rgba(0,102,79,0.15);
+      border-color: var(--cyan);
+      border-style: solid;
+      color: #fff;
+    }
+    .embed-icon { font-size: 24px; flex-shrink: 0; }
+    .embed-label { font-size: 13px; font-weight: 700; color: var(--purple-light); margin-bottom: 2px; }
+    .embed-box.active .embed-label { color: var(--cyan); }
+
+    @media print {
+      body { overflow: visible; background: #fff !important; color: #000 !important; }
+      .deck-container { transform: none !important; width: 100% !important; height: auto !important; }
+      .slide { position: relative !important; opacity: 1 !important; visibility: visible !important; transform: none !important; page-break-after: always; margin-bottom: 30px; box-shadow: none !important; border: 1px solid #ddd !important; background: #fff !important; color: #000 !important; }
+      .slide * { color: #111 !important; border-color: #ddd !important; background: transparent !important; }
+      .progress-bar, .page-indicator, .nav-zone, .help-btn, .help-modal { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="deck-container" id="deckContainer">
+
+    <!-- PART 1: INTRO & OVERVIEW (SLIDE 01~06) -->
+
+    <!-- SLIDE 01: HERO TITLE -->
+    <div class="slide active" id="slide01HeroContainer">
+      <div class="slide-title-hero">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span class="hero-kicker" style="background:#00664f;color:#ffe066;border:1.5px solid #34d399;">C&middot;Campus 밀양소통협력센터 &middot; 청년 디지털 실무</span>
+          <span style="background:rgba(255,224,102,0.12);border:1px solid rgba(255,224,102,0.3);padding:5px 14px;border-radius:16px;font-size:13.5px;font-weight:700;color:#ffe066;">5주차 종합 교안</span>
+        </div>
+        <h1 style="font-size:50px;font-weight:900;line-height:1.2;color:#ffffff;letter-spacing:-0.02em;">
+          나의 경험을 빛내는<br>
+          <span style="color:#ffe066;text-shadow:0 0 15px rgba(255,224,102,0.4);">노션 웹 포트폴리오 만들기</span>
+        </h1>
+        <p style="font-size:20px;color:var(--text-sub);max-width:860px;line-height:1.6;">
+          4주차에 차곡차곡 모아둔 <b>나의 경험 이력 DB</b>를 활용해서 나만의 포트폴리오를 쉽고 재미있게 기획합니다.<br>
+          마음에 드는 템플릿 선택 &rarr; <b>텍스트·이미지·링크를 결합한 동적 페이지 구성</b>으로 <b>나만의 노션 웹 포트폴리오 초안</b> 완성!
+        </p>
+        <div class="hero-tags">
+          <span class="tag">📚 4주차 경험DB 활용</span>
+          <span class="tag">✍️ 쉬운 PAR-R 스토리</span>
+          <span class="tag">🎨 템플릿 내 마음대로 바꾸기</span>
+          <span class="tag">🎬 텍스트·이미지·링크 결합</span>
+          <span class="tag">🏆 나만의 포트폴리오 초안</span>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 5주차 (8.19 수 / 8.20 목 6시간) · 디지털 실무</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 02: 4주차 복습 & 5주차 연결 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">01 · RECAP &amp; LINK</span></div>
+          <h2>4주차에 만든 '내 경험 DB'를 포트폴리오로 가져오기</h2>
+          <p>어렵게 생각할 필요 없어요! 4주차에 정돈해둔 나의 경험 모음집이 포트폴리오의 가장 좋은 재료가 됩니다.</p>
+        </div>
+        <div class="slide-number-badge">1</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-2">
+          <div class="card card-accent" style="padding:24px;">
+            <div class="card-num">4주차에 만든 성과</div>
+            <div class="card-title">📁 나의 개인 이력 DB</div>
+            <div class="card-desc">아르바이트, 동아리, 대외활동, 수업 팀과제, 자격증까지! 내가 해온 경험들을 <b>노션 표에 차곡차곡 정리</b>해두었죠?</div>
+          </div>
+          <div class="card card-cyan" style="padding:24px;">
+            <div class="card-num">5주차에 도전할 목표</div>
+            <div class="card-title">🌐 나만의 웹 포트폴리오 초안 제작</div>
+            <div class="card-desc">그중에서 <b>내가 가장 자랑하고 싶은 대표 경험 3가지</b>를 골라 텍스트·이미지·링크가 결합된 예쁜 웹 포트폴리오 초안으로 변신시킵니다!</div>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:6px;">
+          <span class="callout-icon">💡</span>
+          <span><b>용기 만점 인사이트:</b> "화려한 경력이 없는데 어쩌죠?" 걱정 마세요! <b>수업 팀과제나 서포터즈 활동</b>도 보여주는 방식만 잘 바꾸면 충분히 멋집니다.</span>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 4주차 복습 &amp; 5주차 연계</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 03: FULL 6-WEEK ROADMAP LOCATION -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">01 · ROADMAP</span></div>
+          <h2>전체 6주차 과정 속 5주차의 위치</h2>
+          <p>기초를 다진 4주차에 이어, 5주차는 나만의 포트폴리오 뼈대와 내용을 만드는 가장 재미있는 주차입니다!</p>
+        </div>
+        <div class="slide-number-badge">2</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card" style="padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);">
+            <div style="font-size:13px;color:var(--text-muted);font-weight:700;">[노션 기초] 4주차 완료</div>
+            <div style="font-size:18px;font-weight:800;color:#fff;margin-top:4px;">4주차 (8.12 ~ 8.13)</div>
+            <div style="font-size:13.5px;color:var(--text-sub);margin-top:6px;">노션 기본 조립 &amp; 내 경험 데이터베이스 만들기</div>
+            <div style="margin-top:10px;background:rgba(255,255,255,0.08);padding:5px 10px;border-radius:6px;font-size:12px;color:var(--text-muted);">산출물: 개인 이력 DB 완료 ✓</div>
+          </div>
+          <div class="card card-cyan" style="padding:20px;background:rgba(6,182,212,0.12);border:2px solid var(--cyan);">
+            <div style="font-size:13px;color:var(--cyan);font-weight:900;">[웹 포트폴리오] ★ 이번 5주차!</div>
+            <div style="font-size:18px;font-weight:800;color:#fff;margin-top:4px;">5주차 (8.19 ~ 8.20)</div>
+            <div style="font-size:13.5px;color:var(--text-sub);margin-top:6px;">템플릿 구성 + 텍스트·이미지·링크 결합 동적 페이지</div>
+            <div style="margin-top:10px;background:var(--cyan);color:#0b1a16;padding:5px 10px;border-radius:6px;font-size:12px;font-weight:800;">🎯 산출물: 나만의 웹 포트폴리오 초안</div>
+          </div>
+          <div class="card" style="padding:20px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);">
+            <div style="font-size:13px;color:var(--text-muted);font-weight:700;">[디자인&amp;완성] 6주차 예정</div>
+            <div style="font-size:18px;font-weight:800;color:#fff;margin-top:4px;">6주차 (8.26 ~ 8.27)</div>
+            <div style="font-size:13.5px;color:var(--text-sub);margin-top:6px;">디자인 예쁘게 다듬기, 서로 자랑하기 &amp; 진짜 인터넷 배포</div>
+            <div style="margin-top:10px;background:rgba(255,255,255,0.08);padding:5px 10px;border-radius:6px;font-size:12px;color:var(--text-muted);">산출물: 웹 포트폴리오 최종 주소</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 커리큘럼 로드맵</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 04: 5주차 2일 세션 목표 & 산출물 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">01 · GOALS</span></div>
+          <h2>5주차 2일 세션(수/목 6시간) 목표 &amp; 만드는 것</h2>
+          <p>차근차근 설명을 듣고 나만의 실습 시간을 가진 뒤 완성작을 만들어갑니다.</p>
+        </div>
+        <div class="slide-number-badge">3</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-2" style="gap:20px;">
+          <div class="card card-accent" style="padding:22px;background:rgba(26,26,36,0.95);border:2px solid #00664f;border-radius:16px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid #1a2a22;padding-bottom:10px;">
+              <span style="font-size:13.5px;font-weight:900;background:var(--gradient-purple);color:#fff;padding:4px 12px;border-radius:6px;">8.19 (수) 14:00~17:00</span>
+              <span style="font-size:13px;color:var(--cyan);font-weight:800;">기획 &amp; 템플릿 복제</span>
+            </div>
+            <ul style="margin-left:18px;color:var(--text-sub);font-size:13.5px;line-height:1.75;">
+              <li>이해: 포트폴리오에 꼭 들어가야 할 5가지 세션</li>
+              <li><b>[수강생 실습 1] 내 경험 3가지 고르고 기획하기 (30분)</b></li>
+              <li>이해: 노션 포트폴리오 템플릿 공식 사이트 구경 및 레이아웃 구조 분석</li>
+              <li><b>[수강생 실습 2] 템플릿 복제해서 내 메인 틀 만들기 (40분)</b></li>
+              <li><b>[수강생 실습 3] 1차 웹 주소 만들어보고 접속하기 (20분)</b></li>
+            </ul>
+          </div>
+
+          <div class="card card-cyan" style="padding:22px;background:rgba(18,30,42,0.95);border:2px solid #06b6d4;border-radius:16px;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;border-bottom:1px solid #1e3a47;padding-bottom:10px;">
+              <span style="font-size:13.5px;font-weight:900;background:linear-gradient(135deg,#06b6d4,#10b981);color:#fff;padding:4px 12px;border-radius:6px;">8.20 (목) 14:00~17:00</span>
+              <span style="font-size:13px;color:#22d3ee;font-weight:800;">동적 페이지 구성 &amp; 초안 완결</span>
+            </div>
+            <ul style="margin-left:18px;color:var(--text-sub);font-size:13.5px;line-height:1.75;">
+              <li><b>[수강생 실습 4] 경험 이야기 PAR-R 형태로 적기 (25분)</b></li>
+              <li><b>📝 [동적 구성 1] 텍스트 2단 가로배치 드래그 앤 드롭</b></li>
+              <li><b>🖼️ [동적 구성 2] 이미지 &amp; 과제 PDF/유튜브 임베드</b></li>
+              <li><b>🔗 [동적 구성 3] 클릭 링크 버튼(Button Block) 조작</b></li>
+              <li><b>🏆 [산출물] 나만의 노션 웹 포트폴리오 초안 제작 완결!</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 5주차 목표 및 산출물</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 05: WHY WEB PORTFOLIO (EASY SCANNING) -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">01 · ESSENCE</span></div>
+          <h2>읽는 사람의 마음을 사로잡는 포트폴리오 비밀</h2>
+          <p>담당자가 한눈에 "오, 이 친구 궁금한데?" 느낄 수 있도록 만드는 방법입니다.</p>
+        </div>
+        <div class="slide-number-badge">4</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-2">
+          <div class="card card-accent" style="padding:24px;">
+            <div class="card-num">01. 첫 화면의 비밀</div>
+            <div class="card-title">내가 어떤 사람인지 한눈에!</div>
+            <div class="card-desc">긴 글 대신 <b>나를 나타내는 한 줄 소개</b>와 <b>대표 경험 카드 3개</b>를 맨 앞에 배치해서 첫인상을 강렬하게 전달합니다.</div>
+          </div>
+          <div class="card card-cyan" style="padding:24px;">
+            <div class="card-num">02. 깔끔한 정리의 비밀</div>
+            <div class="card-title">궁금한 사람만 눌러보게 나누기</div>
+            <div class="card-desc">메인 화면은 보기 좋게 <b>요약 상자</b>로 놔두고, 세부 내용이나 이미지 과제는 <b>클릭하면 나오는 안쪽 페이지</b>로 나옵니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 한눈에 보이는 포트폴리오</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 06: 5 KEY SECTIONS STRUCTURE -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">01 · STRUCTURE</span></div>
+          <h2>포트폴리오에 꼭 들어가는 5가지 칸</h2>
+          <p>이 5가지만 채워넣으면 나만의 멋진 이력 웹사이트 뼈대가 완성됩니다.</p>
+        </div>
+        <div class="slide-number-badge">5</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-5" style="gap:12px;">
+          <div class="card" style="padding:18px 16px;border-top:4px solid #00664f;border-left:none;"><div style="font-size:24px;margin-bottom:6px;">👋</div><div class="card-num" style="font-size:16px;">자기소개</div><div class="card-title" style="font-size:15px;">프로필</div><div class="card-desc" style="font-size:12.5px;margin-top:4px;">한 줄 한마디 · 내 사진 · 연락처</div></div>
+          <div class="card" style="padding:18px 16px;border-top:4px solid var(--cyan);border-left:none;"><div style="font-size:24px;margin-bottom:6px;">🎒</div><div class="card-num" style="font-size:16px;">활동&amp;경험</div><div class="card-title" style="font-size:15px;">경력/활동</div><div class="card-desc" style="font-size:12.5px;margin-top:4px;">알바 · 동아리 · 봉사 · 교육수료</div></div>
+          <div class="card" style="padding:18px 16px;border-top:4px solid var(--emerald);border-left:none;"><div style="font-size:24px;margin-bottom:6px;">⭐</div><div class="card-num" style="font-size:16px;">대표작</div><div class="card-title" style="font-size:15px;">프로젝트</div><div class="card-desc" style="font-size:12.5px;margin-top:4px;">내가 잘한 과제/활동 3가지</div></div>
+          <div class="card" style="padding:18px 16px;border-top:4px solid var(--amber);border-left:none;"><div style="font-size:26px;margin-bottom:6px;">🛠️</div><div class="card-num" style="font-size:16px;">내가 잘하는 툴</div><div class="card-title" style="font-size:15px;">스킬</div><div class="card-desc" style="font-size:12.5px;margin-top:4px;">노션 · 캔바 · PPT · SNS관리 등</div></div>
+          <div class="card" style="padding:18px 16px;border-top:4px solid var(--rose);border-left:none;"><div style="font-size:24px;margin-bottom:6px;">✉️</div><div class="card-num" style="font-size:16px;">연락하는 곳</div><div class="card-title" style="font-size:15px;">연락처</div><div class="card-desc" style="font-size:12.5px;margin-top:4px;">이메일 · 블로그 · 인스타그램 링크</div></div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 5가지 필수 칸</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- PART 2: DAY 1 SESSIONS (8/19 수) - SLIDE 07~19 -->
+
+    <!-- SLIDE 07: DAY 1 BANNER -->
+    <div class="slide">
+      <div class="slide-section-divider" style="background:linear-gradient(135deg,rgba(0,102,79,0.18) 0%,rgba(6,182,212,0.12) 100%);border:2px solid #00664f;border-radius:24px;padding:50px;">
+        <div class="hero-kicker" style="font-size:15px;padding:6px 18px;background:var(--gradient-purple);color:#fff;font-weight:900;">8.19 (수) 14:00 ~ 17:00 세션</div>
+        <h1 style="font-size:46px;font-weight:900;color:#fff;margin-top:16px;line-height:1.35;">포트폴리오 기획 및<br><span style="color:#ffe066;text-shadow:0 0 20px rgba(255,224,102,0.4);">노션 공식 템플릿 복제하기</span></h1>
+        <p style="font-size:19px;color:#e2e8f0;margin-top:14px;max-width:820px;margin-left:auto;margin-right:auto;line-height:1.6;">4주차 경험 DB에서 재료를 쏙 쏙 골라 기획하고,<br>맘에 드는 예쁜 템플릿을 복제해 나만의 메인 틀을 완성합니다.</p>
+        <div style="margin-top:22px;display:inline-flex;gap:12px;align-items:center;background:rgba(0,0,0,0.4);padding:8px 20px;border-radius:30px;border:1px solid rgba(0,102,79,0.4);">
+          <span style="color:var(--purple-light);font-weight:800;font-size:14.5px;">🎯 수요일 실습목표:</span>
+          <span style="color:#fff;font-size:14.5px;">내 경험 3가지 고르기 &middot; 템플릿 가져오기 &middot; 1차 웹 주소 만들어보기</span>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 8.19 수요일 세션</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 08: 1단계 기획 - DB 연결 개요 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · 1단계: 기획</span></div>
+          <h2>[1단계: 기획] 4주차 경험 DB에서 재료 가져오기</h2>
+          <p>4주차에 모아둔 내 경험들 중에서 자신 있게 보여줄 3가지를 골라봅니다.</p>
+        </div>
+        <div class="slide-number-badge">6</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card card-accent"><div class="card-num">STEP 01</div><div class="card-title">내 경험 DB 열기</div><div class="card-desc">4주차에 만든 내 이력 DB 표를 열어서 구경해보기</div></div>
+          <div class="card card-cyan"><div class="card-num">STEP 02</div><div class="card-title">대표 3가지 고르기</div><div class="card-desc">가장 뿌듯했던 활동이나 과제물 3가지 쏙 고르기</div></div>
+          <div class="card card-emerald"><div class="card-num">STEP 03</div><div class="card-title">쉽게 정리하기</div><div class="card-desc">무슨 상황에서 무슨 일을 하고 뭘 배웠는지 적어보기</div></div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 1단계 기획 개요</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 09: EVALUATION CRITERIA (EASY) -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · 1단계: 기획</span></div>
+          <h2>내 포트폴리오가 더 돋보이는 3가지 팁</h2>
+          <p>어려운 전문 용어 대신, 읽는 사람 입장에서 솔직하고 보기 좋게 다듬어요!</p>
+        </div>
+        <div class="slide-number-badge">7</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card card-accent" style="padding:24px;">
+            <div class="card-num">01. 솔직한 역할</div>
+            <div class="card-title">내가 직접 한 일 솔직하게</div>
+            <div class="card-desc">"팀 과제 참여" 대신 "팀 과제에서 PPT 발표 자료를 담당함"처럼 내가 한 행동 솔직하게 적기</div>
+          </div>
+          <div class="card card-cyan" style="padding:24px;">
+            <div class="card-num">02. 결과 수치 넣기</div>
+            <div class="card-title">숫자로 말해보아요</div>
+            <div class="card-desc">"사람들이 많이 옴" 대신 "참여 청년 25명 반응", "카드뉴스 5장 직접 만듦"처럼 숫자 적기</div>
+          </div>
+          <div class="card card-emerald" style="padding:24px;">
+            <div class="card-num">03. 눈에 보이는 사진</div>
+            <div class="card-title">사진과 결과물 첨부</div>
+            <div class="card-desc">글만 길게 쓰기보다, 내가 만든 카드뉴스 이미지나 활동 사진을 꼭 같이 올려주기</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 포트폴리오 다듬기 팁</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 10: SCREENING MATRIX FOR 4TH WEEK DB -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · 1단계: 기획</span></div>
+          <h2>4주차 경험 DB에서 재료 고르는 3단계</h2>
+          <p>복잡하게 고를 필요 없이, 가장 재미있었거나 성취감이 컸던 순서대로 골라보세요!</p>
+        </div>
+        <div class="slide-number-badge">8</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card" style="background:rgba(0,102,79,0.15);border:1px solid var(--card-border);">
+            <div style="font-size:28px;margin-bottom:6px;">📋</div>
+            <div class="card-title" style="color:var(--cyan);">1단계: 내 경험 DB 펴기</div>
+            <div class="card-desc">4주차에 만들어 둔 내 경험 표를 열어서 죽 훑어봅니다.</div>
+          </div>
+          <div class="card" style="background:rgba(0,102,79,0.15);border:1px solid var(--card-border);">
+            <div style="font-size:28px;margin-bottom:6px;">🎯</div>
+            <div class="card-title" style="color:var(--cyan);">2단계: 자랑하고픈 3가지 선택</div>
+            <div class="card-desc">아르바이트에서 칭찬받은 일, 수업 과제, 동아리 활동 중 3가지 선택!</div>
+          </div>
+          <div class="card" style="background:rgba(0,102,79,0.15);border:1px solid var(--card-border);">
+            <div style="font-size:28px;margin-bottom:6px;">✍️</div>
+            <div class="card-title" style="color:var(--cyan);">3단계: 깔끔한 문장 다듬기</div>
+            <div class="card-desc">"~했음", "~완료", "~제작"처럼 문장 끝을 보기 좋게 딱 맞춰줍니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 경험 재료 고르기</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 11: PRACTICE 1 - PORTFOLIO PLANNING SHEET -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · PRACTICE 1</span></div>
+          <h2>[수강생 실습 1] 내 경험 3가지 고르고 기획하기 (30분)</h2>
+          <p>4주차 내 경험 DB를 열고, 나만의 기획 시트에 한 줄 슬로건과 3가지 경험 이야기를 적어봅시다.</p>
+        </div>
+        <div class="slide-number-badge">9</div>
+      </div>
+      <div class="content-body">
+        <div class="practice-box">
+          <div style="font-size:17px;font-weight:800;color:var(--cyan);display:flex;align-items:center;gap:8px;">
+            <span>✍️ 실습 활동 (소요시간: 30분)</span>
+          </div>
+          <ol style="margin-left:20px;color:var(--text-main);font-size:14.5px;line-height:1.75;">
+            <li>4주차에 만든 <b>`개인 이력 DB 페이지`</b>를 새 탭으로 엽니다.</li>
+            <li>내가 관심 있는 분야(예: 서비스기획, 마케팅, 디자인, 일반행정, 개발)를 1가지 떠올립니다.</li>
+            <li>내 경험 중에서 가장 자랑하고 싶은 <b>대표 경험 3가지</b>를 쏙 고릅니다.</li>
+            <li>나를 나타내는 <b>한 줄 자기소개</b>와 프로젝트별 요약을 적어봅니다.</li>
+          </ol>
+          <div class="ai-note" style="margin-top:6px;">
+            <span>💡 <b>강사 꿀팁:</b> 거창한 경력이 아니어도 됩니다! 알바에서 사장님께 칭찬받은 팁, 수업 팀과제 소통 경험도 멋진 재료가 됩니다.</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · [실습 1] 내 경험 기획하기</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- DAY 1 BREAK TIME 1 -->
+    <div class="slide">
+      <div class="slide-section-divider">
+        <div class="hero-kicker" style="font-size:16px;padding:8px 20px;background:var(--amber);color:#0b1a16;font-weight:800;">☕ BREAK TIME 1</div>
+        <h1 style="font-size:52px;font-weight:900;color:#fff;margin-top:15px;">☕ 10분 휴식</h1>
+        <p style="font-size:19px;color:var(--text-sub);margin-top:10px;">잠시 휴식 후 [2단계: 노션 포트폴리오 가져오기 &amp; 틀 잡기]로 이어집니다</p>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 10분 휴식 (수요일 1차시 마침)</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 12: 2단계 템플릿 개요 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · 2단계: 템플릿</span></div>
+          <h2>[2단계: 템플릿] 맘에 드는 노션 템플릿 가져오기</h2>
+          <p>디자이너가 만들어둔 예쁜 템플릿을 구경하고 내 노션으로 가져와 봅니다.</p>
+        </div>
+        <div class="slide-number-badge">10</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card card-accent"><div class="card-num">01</div><div class="card-title">템플릿 구경하기</div><div class="card-desc">개인형, 디자이너형, 깔끔 기본형 중 내 스타일에 맞는 것 선택</div></div>
+          <div class="card card-cyan"><div class="card-num">02</div><div class="card-title">내 노션으로 복제</div><div class="card-desc">우측 상단 [복제] 버튼 눌러서 내 워크스페이스로 가져오기</div></div>
+          <div class="card card-emerald"><div class="card-num">03</div><div class="card-title">샘플 내용 비우기</div><div class="card-desc">템플릿에 들어있는 남의 예시 글을 지우고 내 글로 채울 준비하기</div></div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 2단계 템플릿 개요</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 13: NOTION TEMPLATE 3 TYPES & OFFICIAL DIRECT LINK -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · 2단계: 템플릿</span></div>
+          <h2>노션 공식 포트폴리오 템플릿 원본 주소 &amp; 3가지 스타일</h2>
+          <p>공식 노션 템플릿 사이트(`notion.com/ko/templates/category/portfolio`)에서 나에게 맞는 스타일을 골라보세요!</p>
+        </div>
+        <div class="slide-number-badge">11</div>
+      </div>
+      <div class="content-body">
+        <!-- OFFICIAL LINK CALLOUT BANNER -->
+        <div class="callout" style="background:rgba(0,102,79,0.3);border:1.5px solid var(--cyan);padding:14px 20px;justify-content:space-between;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <span style="font-size:24px;">🌐</span>
+            <div>
+              <div style="font-size:15px;font-weight:800;color:#fff;">노션 공식 포트폴리오 템플릿 원본 주소</div>
+              <div style="font-size:13px;color:var(--cyan);font-family:monospace;margin-top:2px;">https://www.notion.com/ko/templates/category/portfolio</div>
+            </div>
+          </div>
+          <a href="https://www.notion.com/ko/templates/category/portfolio" target="_blank" class="btn-step btn-step-next" style="text-decoration:none;padding:8px 16px;font-size:13.5px;">🔗 템플릿 사이트 접속하기 ↗</a>
+        </div>
+
+        <div class="grid-3" style="gap:16px;margin-top:10px;">
+          <div class="card" style="border-top:4px solid #00664f;border-left:none;">
+            <div style="font-size:26px;margin-bottom:6px;">🧑‍💼</div>
+            <div class="card-title">01. 개인형 이력서</div>
+            <div class="card-desc">다크 테마 + 좌측 프로필 사진 + 🟧 주황색 역량 한 줄 요약 콜아웃 상자 강조형</div>
+          </div>
+          <div class="card" style="border-top:4px solid var(--cyan);border-left:none;">
+            <div style="font-size:26px;margin-bottom:6px;">🎨</div>
+            <div class="card-title">02. 취준 2단 경력형</div>
+            <div class="card-desc">라이트 테마 + 좌측 하단 연락처 카드 + 우측 경력 수치 Bullet Point 정석형</div>
+          </div>
+          <div class="card" style="border-top:4px solid var(--amber);border-left:none;">
+            <div style="font-size:26px;margin-bottom:6px;">✨</div>
+            <div class="card-title">03. PDF &amp; 목차형</div>
+            <div class="card-desc">심플 다크 + A4 규격 PDF 내보내기 상자 + 우측 📌 플로팅 목차 메뉴형</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 노션 템플릿 원본 주소 &amp; 3가지 대표 스타일</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 14: TEMPLATE BLOCK & LAYOUT STRUCTURE ANALYSIS -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · 템플릿 구조 분석</span></div>
+          <h2>노션 템플릿의 레이아웃 &amp; 블록 종류 분석 (실습 2 직전 체크!)</h2>
+          <p>각 템플릿이 어떤 블록으로 배치되어 있는지 미리 알고 복제하면 수월하게 꾸밀 수 있습니다.</p>
+        </div>
+        <div class="slide-number-badge">12</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-2">
+          <!-- LEFT: BLOCK TYPES SUMMARY -->
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="card card-accent" style="padding:16px;">
+              <div style="font-size:15px;font-weight:800;color:var(--purple-light);">🟧 콜아웃 블록 (Callout Block)</div>
+              <div style="font-size:13px;color:var(--text-sub);margin-top:4px;">상단 한 줄 자기소개 및 역량 키워드를 이모지와 배경색으로 눈에 띄게 강조해주는 블록</div>
+            </div>
+            <div class="card card-cyan" style="padding:16px;">
+              <div style="font-size:15px;font-weight:800;color:var(--cyan);">📊 갤러리 DB 블록 (Gallery Block)</div>
+              <div style="font-size:13px;color:var(--text-sub);margin-top:4px;">대표 경험 3가지를 카드 겉면 이미지(커버)와 함께 예쁘게 보여주는 데이터베이스 블록</div>
+            </div>
+            <div class="card card-emerald" style="padding:16px;">
+              <div style="font-size:15px;font-weight:800;color:var(--emerald);">📰 2단 가로배치 영역 (Multi-column)</div>
+              <div style="font-size:13px;color:var(--text-sub);margin-top:4px;">프로필/연락처 카드와 경력 수치를 좌우 2단으로 나란히 배치한 노션 특유의 레이아웃</div>
+            </div>
+          </div>
+
+          <!-- RIGHT: NOTION TEMPLATE LAYOUT CANVAS SCHEMATIC -->
+          <div style="background:#11131f;border:1.5px solid var(--card-border);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:10px;justify-content:center;">
+            <div style="font-size:13px;font-weight:800;color:var(--purple-light);border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:6px;">📐 캔버스 템플릿 실제 블록 배치 구조</div>
+            
+            <!-- HEADER COVER -->
+            <div style="background:rgba(0,102,79,0.3);border:1px dashed var(--card-border);border-radius:6px;padding:8px 12px;font-size:12px;color:var(--text-sub);text-align:center;">
+              🖼️ [이미지 블록/커버] 헤더 상단 이미지 영역
+            </div>
+
+            <!-- CALLOUT PROFILE -->
+            <div style="background:rgba(255,224,102,0.1);border:1px solid rgba(255,224,102,0.3);border-radius:6px;padding:8px 12px;font-size:12px;color:#ffe066;">
+              💡 <b>[콜아웃 블록]</b> 한 줄 자기소개: "경험을 가치로 바꾸는 청년 김민수"
+            </div>
+
+            <!-- GALLERY DB CARDS -->
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
+              <div style="background:rgba(52,211,153,0.15);border:1px solid var(--cyan);border-radius:6px;padding:10px;font-size:11.5px;color:#fff;text-align:center;">📊 카드 1<br>서포터즈</div>
+              <div style="background:rgba(52,211,153,0.15);border:1px solid var(--cyan);border-radius:6px;padding:10px;font-size:11.5px;color:#fff;text-align:center;">📊 카드 2<br>팀 과제</div>
+              <div style="background:rgba(52,211,153,0.15);border:1px solid var(--cyan);border-radius:6px;padding:10px;font-size:11.5px;color:#fff;text-align:center;">📊 카드 3<br>동아리</div>
+            </div>
+
+            <!-- 2-COLUMN LAYOUT -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+              <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;font-size:11.5px;color:var(--text-sub);">📰 좌측: 연락처 &amp; 스킬</div>
+              <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:8px;font-size:11.5px;color:var(--text-sub);">📰 우측: 경력 수치 글</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 노션 템플릿 레이아웃 &amp; 블록 분석</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 15: PRACTICE 2 - TEMPLATE CUSTOMIZING -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · PRACTICE 2</span></div>
+          <h2>[수강생 실습 2] 템플릿 복제해서 내 메인 화면 만들기 (40분)</h2>
+          <p>마음에 드는 노션 템플릿을 내 노션으로 가져와서 메인 화면을 내 이야기로 바꿔봅시다.</p>
+        </div>
+        <div class="slide-number-badge">13</div>
+      </div>
+      <div class="content-body">
+        <div class="practice-box">
+          <div style="font-size:17px;font-weight:800;color:var(--cyan);display:flex;align-items:center;gap:8px;">
+            <span>💻 실습 활동 (소요시간: 40분)</span>
+          </div>
+          <ol style="margin-left:20px;color:var(--text-main);font-size:14.5px;line-height:1.75;">
+            <li>강사님이 공유해 준 템플릿 링크로 들어간 뒤 우상단 <b>[복제]</b>를 누릅니다.</li>
+            <li>맨 위 프로필 영역에 [실습 1]에서 만든 <b>한 줄 자기소개</b>를 적습니다.</li>
+            <li>중앙 <b>경험 갤러리 카드</b> 3개를 만들고 내 활동 이름과 태그, 한줄 성과를 채웁니다.</li>
+            <li>하단 경력/활동 목록과 스킬 상자를 깔끔하게 틀을 잡습니다.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · [실습 2] 내 메인 화면 만들기</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- DAY 1 BREAK TIME 2 -->
+    <div class="slide">
+      <div class="slide-section-divider">
+        <div class="hero-kicker" style="font-size:16px;padding:8px 20px;background:var(--amber);color:#0b1a16;font-weight:800;">☕ BREAK TIME 2</div>
+        <h1 style="font-size:52px;font-weight:900;color:#fff;margin-top:15px;">☕ 10분 휴식</h1>
+        <p style="font-size:19px;color:var(--text-sub);margin-top:10px;">잠시 휴식 후 [4단계: 내 포트폴리오 첫 웹 주소 만들기]로 이어집니다</p>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 10분 휴식 (수요일 2차시 마침)</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 16: 4단계 웹주소 개요 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · 4단계: 웹주소</span></div>
+          <h2>[4단계: 웹주소] 내 포트폴리오 첫 웹 주소 만들기</h2>
+          <p>클릭 한 번으로 내 노션 페이지를 진짜 인터넷 웹사이트 주소로 전환해봅니다.</p>
+        </div>
+        <div class="slide-number-badge">14</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card card-accent"><div class="card-num">STEP 01</div><div class="card-title">웹 게시 버튼 클릭</div><div class="card-desc">우측 상단 [공유] &amp; [웹 게시] 탭 누르기</div></div>
+          <div class="card card-cyan"><div class="card-num">STEP 02</div><div class="card-title">내 이름 웹주소 설정</div><div class="card-desc">`.notion.site/my-name` 형태로 주소 만들기</div></div>
+          <div class="card card-emerald"><div class="card-num">STEP 03</div><div class="card-title">접속해보기</div><div class="card-desc">새 탭을 열어 내 웹 포트폴리오 접속 확인하기</div></div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 4단계 웹주소 개요</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 17: WEB PUBLISHING & SLUG SETUP (WITH LIVE TYPING ANIMATION CANVAS) -->
+    <div class="slide" id="slide21TypingContainer">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · LIVE TYPING SIMULATOR</span></div>
+          <h2>웹 게시 방법 &amp; 내 이름 웹 주소(Slug) 실시간 타이핑</h2>
+          <p>복잡한 주소 대신 내 영문 이름이 타이핑되듯 깔끔한 인터넷 주소가 생성되는 라이브 연출입니다.</p>
+        </div>
+        <div class="slide-number-badge">15</div>
+      </div>
+      <div class="content-body">
+        <div class="split-layout">
+          <div>
+            <div class="view-left-canvas" style="height:100%;">
+              <div class="canvas-toolbar">
+                <span class="canvas-toolbar-title">🌐 노션 웹 게시 설정 라이브 창</span>
+                <button class="btn-step btn-step-next" onclick="startTypingSim21()">▶ 타이핑 시뮬레이션</button>
+              </div>
+              <div class="canvas-screen-area" style="display:flex;flex-direction:column;gap:14px;padding:22px;justify-content:center;">
+                <div style="background:rgba(255,255,255,0.05);border:1px solid var(--card-border);border-radius:12px;padding:16px;">
+                  <div style="font-size:12.5px;color:var(--purple-light);font-weight:700;margin-bottom:6px;">웹 게시 도메인 주소 설정</div>
+                  <div style="background:#090a10;border:1.5px solid var(--cyan);border-radius:8px;padding:10px 14px;display:flex;align-items:center;gap:6px;font-family:monospace;font-size:15px;">
+                    <span style="color:var(--text-muted);">https://</span>
+                    <span id="typingTarget21" style="color:var(--cyan);font-weight:800;"></span>
+                    <span id="typingCursor21" style="color:#ffe066;animation:cursorBlink 0.8s infinite;">|</span>
+                    <span style="color:var(--text-muted);margin-left:auto;font-size:12px;">.notion.site</span>
+                  </div>
+                </div>
+                <div id="typingStatus21" style="background:rgba(0,102,79,0.2);border-radius:8px;padding:8px 12px;font-size:12.5px;color:var(--cyan);font-weight:700;text-align:center;">
+                  [▶ 타이핑 시뮬레이션] 버튼을 클릭해 실시간 타이핑을 확인하세요!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="guide-right-steps">
+            <div class="card card-accent" style="padding:22px;">
+              <div class="card-title">🌐 나만의 웹 주소 (Custom Slug)</div>
+              <div class="card-desc" style="margin-top:6px;">
+                복잡한 주소 대신<br>
+                <b style="color:var(--purple-light);">`notion.site/kim-minsoo-portfolio`</b> 처럼 영문 내 이름이나 영어 직무명을 넣은 보기 쉬운 주소를 만듭니다.
+              </div>
+            </div>
+            <div class="card card-cyan" style="padding:22px;margin-top:10px;">
+              <div class="card-title">🎨 테마 모드 선택 (Theme)</div>
+              <div class="card-desc" style="margin-top:6px;">
+                <b>라이트 모드 (하얀 배경)</b> / <b>다크 모드 (검은 배경)</b>중 내 포트폴리오 분위기와 잘 어울리는 모드를 선택합니다.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 웹 주소 타이핑 시뮬레이터</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 18: PRACTICE 3 - 1ST WEB DEPLOYMENT -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · PRACTICE 3</span></div>
+          <h2>[수강생 실습 3] 1차 웹 주소 만들어보고 접속하기 (20분)</h2>
+          <p>직접 만든 메인 화면을 웹으로 배포하고 주소를 복사해 접속해봅시다!</p>
+        </div>
+        <div class="slide-number-badge">16</div>
+      </div>
+      <div class="content-body">
+        <div class="practice-box">
+          <div style="font-size:17px;font-weight:800;color:var(--cyan);display:flex;align-items:center;gap:8px;">
+            <span>🌐 실습 활동 (소요시간: 20분)</span>
+          </div>
+          <ol style="margin-left:20px;color:var(--text-main);font-size:14.5px;line-height:1.75;">
+            <li>노션 우상단 <b>[공유] &rarr; [웹 게시]</b> 버튼을 누릅니다.</li>
+            <li>원하는 영문 웹 주소(예: `kim-minsoo-portfolio`)를 적어줍니다.</li>
+            <li>생성된 웹 주소를 복사해서 웹 브라우저 새 탭에서 잘 열리는지 확인합니다.</li>
+            <li>강사님과 동료들에게 내 첫 포트폴리오 링크를 공유해 자랑해보세요!</li>
+          </ol>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · [실습 3] 첫 웹 주소 만들기</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 19: DAY 1 TIMETABLE & PREPARATION FOR DAY 2 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 1 · RECAP</span></div>
+          <h2>수요일(1일차) 수업 정리 &amp; 목요일(2일차) 준비물</h2>
+          <p>오늘 수요일 3차시 수업으로 내 첫 웹 포트폴리오 메인 뼈대가 완성되었습니다!</p>
+        </div>
+        <div class="slide-number-badge">17</div>
+      </div>
+      <div class="content-body" style="justify-content:flex-start;margin-top:6px;">
+        <table class="summary-table">
+          <thead><tr><th style="width:120px;">구분</th><th style="width:200px;">주제</th><th>오늘 한 주요 활동</th><th style="width:180px;">완성된 산출물</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--cyan);font-weight:800;">1차시</td><td>1단계: 기획</td><td>4주차 DB에서 재료 고르기 · [실습 1] 기획 작성</td><td>기획 시트 ✓</td></tr>
+            <tr style="background:rgba(255,255,255,0.03);"><td style="color:var(--text-muted);font-style:italic;">Break Time 1</td><td style="color:var(--text-muted);">중간 휴식</td><td style="color:var(--text-muted);">쉬는 시간 &amp; 개별 질문 답변</td><td style="color:var(--text-muted);">-</td></tr>
+            <tr><td style="color:var(--cyan);font-weight:800;">2차시</td><td>2~3단계: 메인꾸미기</td><td>공식 템플릿 주소 구경/블록 분석 &amp; [실습 2] 템플릿 복제해서 틀 잡기</td><td>메인 화면 틀 ✓</td></tr>
+            <tr style="background:rgba(255,255,255,0.03);"><td style="color:var(--text-muted);font-style:italic;">Break Time 2</td><td style="color:var(--text-muted);">중간 휴식</td><td style="color:var(--text-muted);">휴식 &amp; 화면 디바이스 점검</td><td style="color:var(--text-muted);">-</td></tr>
+            <tr><td style="color:var(--purple-light);font-weight:800;">3차시</td><td>4단계: 웹주소</td><td>[실습 3] 웹 게시 버튼 누르고 내 주소 접속해보기</td><td style="color:var(--purple-light);font-weight:700;">1차 웹 주소 ✓</td></tr>
+          </tbody>
+        </table>
+        <div class="callout" style="margin-top:12px;">
+          <span class="callout-icon">📌</span>
+          <span><b>목요일 준비물:</b> 프로젝트 안에 넣고 싶은 <b>사진 파일, 발표 영상 링크, 과제 PPT/PDF 파일</b> 챙겨오기 (💡 목요일: 텍스트·이미지·링크를 결합한 동적 페이지 구성!)</span>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 수요일 수업 정리</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- PART 3: DAY 2 SESSIONS (8/20 목) - SLIDE 20~37 (DYNAMIC CONFIGURATION 1, 2, 3 CONSECUTIVELY GROUPED TOGETHER!) -->
+
+    <!-- SLIDE 20: DAY 2 OFFICIAL BANNER -->
+    <div class="slide">
+      <div class="slide-section-divider" style="background:linear-gradient(135deg,rgba(6,182,212,0.15) 0%,rgba(16,185,129,0.12) 100%);border:2px solid #06b6d4;border-radius:24px;padding:45px 50px;">
+        <div class="hero-kicker" style="font-size:15px;padding:6px 18px;background:linear-gradient(135deg,#06b6d4,#10b981);color:#fff;font-weight:900;">8.20 (목) 14:00 ~ 17:00 세션</div>
+        <h1 style="font-size:44px;font-weight:900;color:#fff;margin-top:14px;line-height:1.3;">텍스트 · 이미지 · 링크를 결합한<br><span style="color:#67e8f9;text-shadow:0 0 20px rgba(103,232,249,0.4);">동적 페이지 구성</span></h1>
+        <p style="font-size:21px;color:#ffe066;margin-top:10px;font-weight:800;letter-spacing:-0.01em;">
+          🎯 5주차 최종 산출물: 나만의 노션 웹 포트폴리오 초안 제작
+        </p>
+        <p style="font-size:16.5px;color:#e2e8f0;margin-top:10px;max-width:840px;margin-left:auto;margin-right:auto;line-height:1.55;">
+          PAR-R <b>텍스트 스토리</b> + 활동/과제 <b>이미지 &amp; PDF</b> + 유튜브/이메일/상단 스크롤 <b>링크</b>를 하나로 결합하여<br>
+          어느 기기에서나 멋지게 동작하는 나만의 웹 포트폴리오 초안을 완성합니다!
+        </p>
+        <div style="margin-top:18px;display:inline-flex;gap:12px;align-items:center;background:rgba(0,0,0,0.4);padding:8px 20px;border-radius:30px;border:1px solid rgba(6,182,212,0.4);">
+          <span style="color:#67e8f9;font-weight:800;font-size:14.5px;">🏆 목요일 실습 과정:</span>
+          <span style="color:#fff;font-size:14.5px;">[동적 구성 1] 텍스트 &middot; [동적 구성 2] 이미지 &middot; [동적 구성 3] 링크 &middot; 초안 완결</span>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 8.20 목요일 세션</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 21: 5단계 스토리 개요 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · 5단계: 스토리</span></div>
+          <h2>[5단계: 스토리] 안쪽 상세 페이지 내용 채우기</h2>
+          <p>갤러리 카드를 누르면 열리는 안쪽 페이지에 내 이야기를 구체적으로 적어봅니다.</p>
+        </div>
+        <div class="slide-number-badge">19</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card card-accent"><div class="card-num">01</div><div class="card-title">PAR-R 내용 작성</div><div class="card-desc">상황, 내가 한 일, 결과, 배운 점 4단계로 글 적기</div></div>
+          <div class="card card-cyan"><div class="card-num">02</div><div class="card-title">긴 글은 토글로 접기</div><div class="card-desc">자세한 인터뷰 내용이나 조언은 접힘 블록으로 정리</div></div>
+          <div class="card card-emerald"><div class="card-num">03</div><div class="card-title">2단 가로배치 다듬기</div><div class="card-desc">프로필과 핵심 경력을 좌우 2단으로 보기 좋게 정렬</div></div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 5단계 스토리 개요</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 22: PAR-R 4-STEP DEMO -->
+    <div class="slide" id="slideParrContainer">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · 5단계: 스토리</span></div>
+          <h2>PAR-R 4단계 스토리 &amp; 실제 청년 작성 예시</h2>
+          <p>좌측의 [P], [A], [R], [R] 카드를 클릭해보세요! 우측에 실제 청년 서포터즈 작성 예시가 연출됩니다.</p>
+        </div>
+        <div class="slide-number-badge">20</div>
+      </div>
+      <div class="content-body">
+        <div class="split-layout">
+          <!-- LEFT: 4 VERTICAL CARDS -->
+          <div style="display:flex;flex-direction:column;gap:10px;justify-content:center;position:relative;">
+            <div class="parr-interactive-card active" id="parrCard0" onclick="selectParrCard(0)">
+              <div class="parr-badge-letter">P</div>
+              <div>
+                <div style="font-size:15px;font-weight:800;color:#fff;">Problem · 어떤 상황이었나요?</div>
+                <div style="font-size:13px;color:var(--text-sub);margin-top:2px;">활동 중 느꼈던 아쉬운 점이나 해결 과제</div>
+              </div>
+            </div>
+            <div class="parr-interactive-card" id="parrCard1" onclick="selectParrCard(1)">
+              <div class="parr-badge-letter">A</div>
+              <div>
+                <div style="font-size:15px;font-weight:800;color:#fff;">Action · 내가 무슨 일을 했나요?</div>
+                <div style="font-size:13px;color:var(--text-sub);margin-top:2px;">내가 낸 아이디어와 직접 집행한 일</div>
+              </div>
+            </div>
+            <div class="parr-interactive-card" id="parrCard2" onclick="selectParrCard(2)">
+              <div class="parr-badge-letter">R</div>
+              <div>
+                <div style="font-size:15px;font-weight:800;color:#fff;">Result · 어떤 결과가 나왔나요?</div>
+                <div style="font-size:13px;color:var(--text-sub);margin-top:2px;">칭찬받았거나 숫자로 달라진 예쁜 결과</div>
+              </div>
+            </div>
+            <div class="parr-interactive-card" id="parrCard3" onclick="selectParrCard(3)">
+              <div class="parr-badge-letter">R</div>
+              <div>
+                <div style="font-size:15px;font-weight:800;color:#fff;">Retrospective · 뭘 배웠나요?</div>
+                <div style="font-size:13px;color:var(--text-sub);margin-top:2px;">이 경험을 통해 솔직하게 배우고 성장한 점</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: FADE-IN CANVAS WITH AUTO-LOOP CONTROL -->
+          <div class="parr-fade-canvas">
+            <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:10px;">
+              <span style="font-size:13.5px;font-weight:800;color:var(--cyan);" id="fadeCanvasHeader">📝 청년 서포터즈 실제 작성 예시 [P]</span>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <button class="btn-step" id="parrLoopToggleBtn" onclick="toggleParrAutoLoop()" style="background:var(--gradient-purple);border:none;">⏸ 일시정지</button>
+                <span style="font-size:12px;color:var(--text-muted);background:rgba(255,255,255,0.06);padding:3px 9px;border-radius:4px;" id="fadeStepTag">Step 1 / 4</span>
+              </div>
+            </div>
+
+            <div class="fade-content-area" id="fadeContentBox" style="margin:16px 0;">
+              <div style="font-size:13.5px;color:var(--purple-light);font-weight:700;margin-bottom:6px;" id="fadeTitle">[ P · 상황 및 문제 ]</div>
+              <div style="font-size:13px;color:var(--text-sub);margin-bottom:8px;" id="fadeSubTitle">🌱 활동 주제: 지역 청년 서포터즈 홍보팀</div>
+              <div style="font-size:15px;color:#fff;line-height:1.7;" id="fadeBody">
+                청년센터 블로그 홍보글을 매주 정성스럽게 올렸으나, <b style="color:#ffe066;">조회수와 댓글 반응이 생각보다 적어서</b> 전달력이 떨어진다고 느껴짐.
+              </div>
+            </div>
+
+            <div style="background:rgba(0,102,79,0.25);border:1px solid var(--card-border);border-radius:10px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:13px;color:var(--text-sub);" id="fadeFooterText">👈 좌측 카드를 클릭하거나 [다음 예시 ▶] 버튼을 누르세요</span>
+              <button class="btn-step btn-step-next" onclick="nextParrFade()">다음 예시 ▶</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · PAR-R 통합 인터랙티브 카드</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 23: RELOCATED SLIDE - VISUAL CLARITY DESIGN PRINCIPLES -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · 내용 작성 체크</span></div>
+          <h2>더 예뻐 보이는 노션 디자인 3가지 원칙 (작성 전 점검!)</h2>
+          <p>내용을 채우기 전, 이 3 가지만 지키면 정말 깔끔하고 전문적인 느낌이 납니다!</p>
+        </div>
+        <div class="slide-number-badge">21</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card card-accent" style="padding:24px;">
+            <div class="card-title">🎨 색상은 2~3가지만!</div>
+            <div class="card-desc">너무 알록달록하면 읽기 힘들어요. 메인 색상 1개와 강조 색상 1개로 깔끔하게 통일해요.</div>
+          </div>
+          <div class="card card-cyan" style="padding:24px;">
+            <div class="card-title">📐 제목 글자 크기 순서 지키기</div>
+            <div class="card-desc">대제목(제목1) &rarr; 중제목(제목2) &rarr; 본문 순서로 글자 크기 위계를 딱 맞춰줍니다.</div>
+          </div>
+          <div class="card card-emerald" style="padding:24px;">
+            <div class="card-title">💬 콜아웃 강조 상자 활용</div>
+            <div class="card-desc">아이콘과 배경색이 있는 콜아웃 상자를 사용해 중요한 한마디를 예쁘게 강조합니다.</div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 내용 작성 전 디자인 3가지 원칙</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 24: PRACTICE 4 - DETAIL PAGE STRUCTURING -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · PRACTICE 4</span></div>
+          <h2>[수강생 실습 4] 경험 이야기 PAR-R 형태로 적어보기 (25분)</h2>
+          <p>갤러리 카드를 누르고 안쪽 페이지로 들어가서 4단계 스토리 글을 작성해봅시다.</p>
+        </div>
+        <div class="slide-number-badge">22</div>
+      </div>
+      <div class="content-body">
+        <div class="practice-box">
+          <div style="font-size:17px;font-weight:800;color:var(--cyan);display:flex;align-items:center;gap:8px;">
+            <span>📝 실습 활동 (소요시간: 25분)</span>
+          </div>
+          <ol style="margin-left:20px;color:var(--text-main);font-size:14.5px;line-height:1.75;">
+            <li>메인 화면에서 내가 만든 경험 카드를 클릭해 안쪽 페이지로 들어갑니다.</li>
+            <li>맨 위에 <b>💡 콜아웃 상자</b>를 만들어 핵심 결과를 적어줍니다.</li>
+            <li>본문에 <b>P(상황) &rarr; A(내가 한 일) &rarr; R(결과) &rarr; R(배운 점)</b> 제목을 달고 내 내용을 씁니다.</li>
+            <li>이어지는 동적 구성 3가지를 배워 페이지를 멋지게 완성해봅시다!</li>
+          </ol>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · [실습 4] 경험 스토리 작성하기</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- DAY 2 BREAK TIME 1 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · BREAK TIME</span></div>
+          <h2>☕ 중간 휴식 10분</h2>
+          <p>잠시 휴식 후 [동적 페이지 구성 1, 2, 3] 실습으로 이어집니다!</p>
+        </div>
+        <div class="slide-number-badge">23</div>
+      </div>
+      <div class="content-body">
+        <div class="slide-section-divider">
+          <div class="hero-kicker" style="font-size:16px;padding:8px 20px;background:var(--amber);color:#0b1a16;font-weight:800;">☕ BREAK TIME 1</div>
+          <h1 style="font-size:48px;font-weight:900;color:#fff;margin-top:15px;">☕ 10분 휴식</h1>
+          <p style="font-size:18px;color:var(--text-sub);margin-top:10px;">잠시 휴식 후 <b>[동적 구성 1: 텍스트] &rarr; [동적 구성 2: 이미지] &rarr; [동적 구성 3: 링크]</b> 3연속 실습으로 연결됩니다!</p>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 10분 휴식 (목요일 1차시 마침)</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 26: DYNAMIC CONFIG OVERVIEW -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · 동적 페이지 구성</span></div>
+          <h2>텍스트 &amp; 이미지 미디어 결합 동적 페이지 개요</h2>
+          <p>텍스트 가로 배치와 미디어 임베드가 결합되면 생동감 넘치는 노션 포트폴리오가 완성됩니다.</p>
+        </div>
+        <div class="slide-number-badge">24</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-2" style="gap:20px;">
+          <div class="card card-accent" style="padding:24px;"><div class="card-num">01. 텍스트</div><div class="card-title">2단 가로배치 정렬</div><div class="card-desc">긴 스크롤 없이 프로필과 경력 요약을 50:50 나란히 깔끔하게 텍스트 배치</div></div>
+          <div class="card card-cyan" style="padding:24px;"><div class="card-num">02. 이미지 &amp; 미디어</div><div class="card-title">`/임베드` 미디어 결합</div><div class="card-desc">페이지 이탈 없이 포트폴리오 내에서 유튜브 영상 재생 &amp; 과제 PDF 스크롤 뷰어 연동</div></div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 동적 페이지 구성 개요</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 27: DYNAMIC CONFIG 1 - 2-COLUMN SIDE-BY-SIDE DRAG & DROP CANVAS -->
+    <div class="slide" id="slide17DragContainer">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · [동적 구성 1] 텍스트</span></div>
+          <h2>[동적 구성 1] 텍스트 나란히 옆으로 붙이기 (2단 가로 배치)</h2>
+          <p>노션 실제 화면 고증 100%! <b>Block B</b>를 잡고 <b>Block A의 우측 끝</b>으로 가져가면 파란 세로선이 뜨면서 50:50 정렬됩니다!</p>
+        </div>
+        <div class="slide-number-badge">25</div>
+      </div>
+      <div class="content-body">
+        <div class="split-layout">
+          <div>
+            <div class="view-left-canvas" style="height:100%;">
+              <div class="canvas-toolbar">
+                <span class="canvas-toolbar-title">🖱️ 노션 100% 실시간 동일 크기 &amp; 50:50 연출 캔버스</span>
+                <button class="btn-step" onclick="resetUserDrag17()" style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);">↺ 초기화 (1단 세로)</button>
+              </div>
+              <div class="canvas-screen-area" id="userDragCanvasArea17" style="display:flex;flex-direction:column;gap:12px;padding:24px;justify-content:center;">
+                
+                <!-- FLEX CONTAINER FOR BLOCK A AND BLOCK B -->
+                <div id="notionRealLayoutBox17" style="display:flex;flex-direction:column;gap:14px;width:100%;transition:all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
+                  
+                  <!-- BLOCK A (100% WIDTH INITIALLY) -->
+                  <div class="notion-block-card" id="dragBlockA17" style="position:relative;flex:1;">
+                    <span style="color:var(--purple-light);font-weight:900;">⠿</span>
+                    <span><b>Block A:</b> 나를 나타내는 한 줄 자기소개</span>
+
+                    <!-- SENSITIVE TRIGGER ZONE FOR RIGHT BLUE LINE ON DRAG OVER -->
+                    <div id="notionRightTriggerZone17" ondragover="handleUserDragOver17(event)" ondragleave="handleUserDragLeave17(event)" ondrop="handleUserDrop17(event)" onclick="triggerUserSplit17()" style="position:absolute;top:0;right:0;bottom:0;width:60px;cursor:pointer;z-index:5;" title="Block B를 이 영역으로 끌고 오세요!"></div>
+
+                    <!-- REAL NOTION BLUE VERTICAL LINE -->
+                    <div class="notion-blue-guide-line" id="notionBlueGuideLine17"></div>
+                  </div>
+
+                  <!-- BLOCK B (100% WIDTH INITIALLY, SAME SIZE AS BLOCK A) -->
+                  <div class="notion-block-card cyan-border" id="dragBlockB17" draggable="true" ondragstart="handleUserDragStart17(event)" onclick="triggerUserSplit17()" style="flex:1;" title="마우스로 잡고 Block A의 우측 끝으로 끌고 가거나, 클릭해보세요!">
+                    <span style="color:var(--cyan);font-weight:900;">⠿</span>
+                    <span><b>Block B:</b> 내 대표 연락처 &amp; 인스타그램 <span style="font-size:11.5px;color:var(--cyan);font-weight:700;">(👈 끌어서 Block A 우측으로!)</span></span>
+                  </div>
+
+                </div>
+
+                <div id="userDragStatus17" style="background:rgba(0,102,79,0.2);border:1px solid var(--card-border);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--purple-light);font-weight:700;text-align:center;margin-top:10px;">
+                  👈 <b>Block B</b>를 마우스로 꼭 잡고 <b>Block A의 우측 끝</b>으로 가져가보세요! (파란선 등장!)
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="guide-right-steps">
+            <div style="background:rgba(0,0,0,0.25);border:1px solid var(--card-border);border-radius:14px;padding:22px 26px;">
+              <div style="font-size:16.5px;font-weight:800;color:var(--cyan);margin-bottom:12px;">💡 노션 2단 가로 배치가 주는 3가지 디자인 효과</div>
+              <ul style="margin-left:18px;color:var(--text-sub);font-size:13.5px;line-height:1.75;display:flex;flex-direction:column;gap:10px;">
+                <li>
+                  <b style="color:#fff;">1. 한눈에 보이는 가독성 극대화</b><br>
+                  긴 세로 스크롤 없이 <span style="color:var(--purple-light);">프로필 사진과 역량 한 줄 요약</span>을 한 화면에 나란히 보여주어 채용 담당자의 인상 가독성 2배 증가!
+                </li>
+                <li>
+                  <b style="color:#fff;">2. 시선 이동에 최적화된 레이아웃</b><br>
+                  좌측에 <span style="color:var(--cyan);">대표 이미지/사진</span>, 우측에 <span style="color:var(--cyan);">설명 글</span>을 배치하여 사람의 자연스러운 시선 흐름(왼쪽&rarr;오른쪽)과 완벽 일치!
+                </li>
+                <li>
+                  <b style="color:#fff;">3. 스마트한 반응형 자동 변환</b><br>
+                  컴퓨터에서는 모던한 <span style="color:var(--emerald);">2단 좌우 정렬</span>, 스마트폰에서는 <span style="color:var(--emerald);">위아래 1단</span>으로 자동 재정렬되는 완벽한 웹 구조!
+                </li>
+              </ul>
+              <div style="margin-top:14px;font-size:13px;color:var(--purple-light);border-top:1px solid rgba(255,255,255,0.1);padding-top:10px;">
+                📌 <b>핵심 팁:</b> 중요한 정보(프로필, 대표경험)는 가로 배치를 활용해 화면 공간을 알차게 구성해 보세요.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · [동적 구성 1] 텍스트 2단 정렬</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 28: DYNAMIC CONFIG 2 - /EMBED LIVE MEDIA RENDERER -->
+    <div class="slide" id="slideThuEmbedContainer">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · [동적 구성 2] 이미지</span></div>
+          <h2>[동적 구성 2] `/임베드` 미디어 결합 (유튜브 영상 &amp; 과제 PDF 쏙 넣기)</h2>
+          <p>영상 주소를 입력하거나 버튼을 눌러보세요! 포트폴리오 안에서 영상이 재생되고 PDF가 스크롤됩니다.</p>
+        </div>
+        <div class="slide-number-badge">26</div>
+      </div>
+      <div class="content-body">
+        <div class="split-layout">
+          <div>
+            <div class="view-left-canvas" style="height:100%;">
+              <div class="canvas-toolbar">
+                <span class="canvas-toolbar-title">🎬 내 포트폴리오 안쪽 라이브 화면</span>
+                <div class="step-btn-group">
+                  <button class="btn-step" onclick="triggerEmbedLiveThu(0)" style="background:rgba(255,255,255,0.1);">▶ 유튜브 연동</button>
+                  <button class="btn-step" onclick="triggerEmbedLiveThu(1)" style="background:rgba(255,255,255,0.1);">📄 PDF 연동</button>
+                  <button class="btn-step" onclick="resetEmbedLiveThu()">↺ 초기화</button>
+                </div>
+              </div>
+              <div class="canvas-screen-area" id="thuEmbedScreenArea" style="display:flex;flex-direction:column;gap:12px;padding:20px;justify-content:center;">
+                <!-- INITIAL INSTRUCTION -->
+                <div id="thuEmbedPlaceholder" style="border:2px dashed rgba(255,255,255,0.2);border-radius:12px;padding:30px;text-align:center;color:var(--text-sub);">
+                  <div style="font-size:32px;margin-bottom:8px;">🔗</div>
+                  <div style="font-size:14.5px;font-weight:700;color:#fff;">`/임베드` 치고 영상이나 PDF 링크를 넣어보세요!</div>
+                  <div style="font-size:12.5px;color:var(--text-muted);margin-top:6px;">상단 [▶ 유튜브 연동] 또는 [📄 PDF 연동] 버튼을 누르면 실시간 렌더링됩니다!</div>
+                </div>
+
+                <!-- LIVE EMBED CONTAINER (YOUTUBE / PDF) -->
+                <div id="thuEmbedLiveDisplay" style="display:none;background:#000;border:1.5px solid var(--cyan);border-radius:12px;padding:16px;flex-direction:column;gap:8px;">
+                  <div style="display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:6px;">
+                    <span id="thuEmbedDisplayTitle" style="font-size:13.5px;font-weight:800;color:var(--cyan);">▶️ 유튜브 영상 주소 임베딩 성공</span>
+                    <span style="font-size:11px;color:var(--purple-light);background:rgba(0,102,79,0.4);padding:2px 8px;border-radius:4px;">페이지 이탈 0%</span>
+                  </div>
+                  <div id="thuEmbedDisplayBody" style="font-size:14px;color:#fff;line-height:1.6;background:rgba(255,255,255,0.05);padding:14px;border-radius:8px;">
+                    <!-- DYNAMIC INJECTED CONTENT -->
+                  </div>
+                </div>
+
+                <div id="thuEmbedStatusBadge" style="background:rgba(0,102,79,0.2);border:1px solid var(--card-border);border-radius:8px;padding:8px 12px;font-size:12.5px;color:var(--purple-light);font-weight:700;text-align:center;">
+                  👈 상단 버튼을 클릭해 `/임베드`로 영상과 PDF가 포트폴리오에 쏙 들어오는 것을 확인해보세요!
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="guide-right-steps">
+            <div style="background:rgba(0,0,0,0.25);border:1px solid var(--card-border);border-radius:14px;padding:22px 26px;">
+              <div style="font-size:16.5px;font-weight:800;color:var(--cyan);margin-bottom:10px;">💡 `/임베드` 기능이 최고의 무기인 이유</div>
+              <ul style="margin-left:18px;color:var(--text-sub);font-size:14px;line-height:1.75;">
+                <li>채용 담당자가 외부 사이트로 이탈하지 않고 **내 포트폴리오 안에서 영상 감상 &amp; 기획서 PDF 스크롤** 가능</li>
+                <li>다운로드 없이 바로 뷰어로 확인되어 **검토 속도 3배 증가!**</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · [동적 구성 2] 미디어 임베드 결합</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+
+
+    <!-- SLIDE 30: PRACTICE 5 - MEDIA EMBED & SYNCED NAV -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · PRACTICE 5</span></div>
+          <h2>[수강생 실습 5] 미디어 쏙 넣고 상단 메뉴 연결하기 (45분)</h2>
+          <p>안쪽 페이지에 사진이나 과제를 쏙 넣고, 동기화 블록으로 메뉴 바를 연결해봅시다!</p>
+        </div>
+        <div class="slide-number-badge">28</div>
+      </div>
+      <div class="content-body">
+        <div class="practice-box">
+          <div style="font-size:17px;font-weight:800;color:var(--cyan);display:flex;align-items:center;gap:8px;">
+            <span>🎬 실습 활동 (소요시간: 45분)</span>
+          </div>
+          <ol style="margin-left:20px;color:var(--text-main);font-size:14.5px;line-height:1.75;">
+            <li>안쪽 페이지에 <b>`/임베드`</b>를 치고 사전 준비한 사진, 유튜브, PDF 파일 링크를 넣어봅니다.</li>
+            <li>메인 화면 맨 위에 <b>`/동기화 블록`</b>을 만들고 메뉴 바(홈 | 대표작 | 연락처)를 작성합니다.</li>
+            <li>이 동기화 메뉴를 복사해서 프로젝트 안쪽 페이지 맨 위에도 붙여넣어 줍니다.</li>
+            <li>맨 아래에 <b>`[이메일 보내기]`</b> 버튼을 달아보세요!</li>
+          </ol>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · [실습 5] 미디어 넣기 &amp; 메뉴 연결</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- DAY 2 BREAK TIME 2 -->
+    <div class="slide">
+      <div class="slide-section-divider">
+        <div class="hero-kicker" style="font-size:16px;padding:8px 20px;background:var(--amber);color:#0b1a16;font-weight:800;">☕ BREAK TIME 2</div>
+        <h1 style="font-size:52px;font-weight:900;color:#fff;margin-top:15px;">☕ 10분 휴식</h1>
+        <p style="font-size:19px;color:var(--text-sub);margin-top:10px;">잠시 휴식 후 [7단계: 카톡 썸네일 설정 &amp; 모바일 화면 점검]으로 이어집니다</p>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 10분 휴식 (목요일 2차시 마침)</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 31: 7단계 브랜딩 & 점검 개요 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · 7단계: 점검</span></div>
+          <h2>[7단계: 점검] 카톡 썸네일 설정 &amp; 모바일 화면 점검</h2>
+          <p>카톡으로 공유할 때 예쁜 카드로 뜨게 만들고 스마트폰 화면도 점검합니다.</p>
+        </div>
+        <div class="slide-number-badge">29</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card card-accent"><div class="card-num">01</div><div class="card-title">파비콘 &amp; 카톡 썸네일</div><div class="card-desc">링크 보낼 때 뜨는 작은 아이콘과 대표 사진 등록</div></div>
+          <div class="card card-cyan"><div class="card-num">02</div><div class="card-title">스마트폰 화면 점검</div><div class="card-desc">핸드폰으로 볼 때 글자나 이미지가 안 깨지는지 확인</div></div>
+          <div class="card card-emerald"><div class="card-num">03</div><div class="card-title">복제 방지 토글 끄기</div><div class="card-desc">남들이 내 포트폴리오를 함부로 가져가지 못하게 보안 끄기</div></div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 7단계 점검 개요</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 32: VISUAL BRANDING (FAVICON & OG THUMBNAIL) -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · 7단계: 점검</span></div>
+          <h2>카톡으로 링크 보낼 때 뜨는 예쁜 카드 만들기</h2>
+          <p>링크만 틱 보낼 때보다 썸네일 사진과 제목이 깔끔하게 뜨면 신뢰도가 팍 올라갑니다!</p>
+        </div>
+        <div class="slide-number-badge">30</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-2">
+          <div class="card card-accent" style="padding:24px;">
+            <div class="card-title">🔖 파비콘 (Favicon 아이콘)</div>
+            <div class="card-desc" style="margin-top:6px;">
+              - 인터넷 탭 맨 위에 뜨는 아주 작은 아이콘<br>
+              - 내 취향에 맞는 이모지나 로고 아이콘을 띄워 깔끔함 더하기
+            </div>
+          </div>
+          <div class="card card-cyan" style="padding:24px;">
+            <div class="card-title">🖼️ 카카오톡 공유 대표 사진 (OG 썸네일)</div>
+            <div class="card-desc" style="margin-top:6px;">
+              - 카카오톡이나 메시지로 링크 전송 시 아래에 뜨는 네모난 대표 사진<br>
+              - 내 프로필 사진이나 대표 이미지로 지정해 둡니다.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 카톡 공유 카드 설정</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 33: MOBILE RESPONSIVE OPTIMIZATION -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · 7단계: 점검</span></div>
+          <h2>스마트폰 핸드폰 화면 점검 팁</h2>
+          <p>컴퓨터에서 나란히 2단으로 놓은 글이 스마트폰에서는 위아래로 순서대로 정렬됩니다.</p>
+        </div>
+        <div class="slide-number-badge">31</div>
+      </div>
+      <div class="content-body">
+        <div style="background:rgba(0,0,0,0.25);border:1px solid var(--card-border);border-radius:14px;padding:22px 26px;">
+          <div class="grid-2" style="gap:20px;">
+            <div>
+              <div style="font-size:16px;font-weight:800;color:var(--rose);margin-bottom:8px;">📱 스마트폰으로 볼 때 주의할 점</div>
+              <ul style="margin-left:18px;color:var(--text-sub);font-size:13.5px;line-height:1.7;">
+                <li>컴퓨터에서 좌우 2단이 핸드폰에서는 위아래 1단으로 바뀜</li>
+                <li>너무 넓은 표는 핸드폰에서 잘려 보일 수 있음</li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:16px;font-weight:800;color:var(--cyan);margin-bottom:8px;">💡 쉬운 해결법</div>
+              <ul style="margin-left:18px;color:var(--text-sub);font-size:14px;line-height:1.7;">
+                <li>내가 직접 내 스마트폰으로 내 포트폴리오 주소에 접속해 보기!</li>
+                <li>위아래 순서가 잘 읽히는지 직접 스크롤하며 점검합니다.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 스마트폰 화면 점검</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 34: REPLICATION PREVENT OPTION -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · 7단계: 점검</span></div>
+          <h2>내 포트폴리오 훔쳐가지 못하게 방지하기 (복제 끄기)</h2>
+          <p>다른 사람이 내 노션 포트폴리오 내용을 그대로 가져가지 못하게 막는 옵션입니다.</p>
+        </div>
+        <div class="slide-number-badge">32</div>
+      </div>
+      <div class="content-body">
+        <div class="card card-rose" style="padding:24px;">
+          <div class="card-title">🔒 '템플릿으로 복제 허용' 토글 끄기(Off)</div>
+          <div class="card-desc" style="margin-top:8px;font-size:14.5px;line-height:1.75;">
+            - 게시 설정 &rarr; 헤더 옵션 &rarr; <b>'템플릿으로 복제' 스위치 끄기(Off)</b><br>
+            - 이렇게 꺼두면 손님이 내 주소에 들어와도 [복제] 버튼이 뜨지 않아 내 글과 양식을 안전하게 보호할 수 있습니다!
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 복제 방지 스위치 끄기</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 35: 8단계 최종완성 개요 -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · 8단계: 완결</span></div>
+          <h2>[8단계: 완결] 나만의 노션 웹 포트폴리오 초안 완성 &amp; 점검</h2>
+          <p>5주차의 목표인 '나만의 노션 웹 포트폴리오 초안' 작성을 완결하고 점검해봅니다.</p>
+        </div>
+        <div class="slide-number-badge">33</div>
+      </div>
+      <div class="content-body">
+        <div class="grid-3" style="gap:16px;">
+          <div class="card card-accent"><div class="card-num">01</div><div class="card-title">스스로 꼼꼼 점검</div><div class="card-desc">글자 오타는 없는지, 영상과 주소가 잘 눌리는지 체크</div></div>
+          <div class="card card-cyan"><div class="card-num">02</div><div class="card-title">포트폴리오 초안 완결!</div><div class="card-desc">내 경험과 동적 미디어가 들어간 멋진 첫 포트폴리오 초안 완결</div></div>
+          <div class="card card-emerald"><div class="card-num">03</div><div class="card-title">6주차 기대하기</div><div class="card-desc">다음 6주차에는 디자인 더 예쁘게 꾸미고 상호 리뷰하기</div></div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 8단계 완결 개요</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 36: QA CHECKLIST INTERACTIVE (WITH CELEBRATION PULSE GLOW & CONFETTI POPUP) -->
+    <div class="slide" id="slideQaContainer">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · QA CHECKLIST</span></div>
+          <h2>나만의 웹 포트폴리오 초안 셀프 꼼꼼 체크리스트</h2>
+          <p>항목을 순서대로 눌러보며 내 5주차 초안에 빠진 게 없는지 체크해보세요!</p>
+        </div>
+        <div class="slide-number-badge">34</div>
+      </div>
+      <div class="content-body" style="justify-content:flex-start;margin-top:4px;">
+        <div style="display:flex;flex-direction:column;gap:8px;" id="qaChecklistContainer">
+          <div class="qa-row" id="qa0" onclick="toggleQa(0)"><div class="qa-check" id="qaCheck0"></div><div class="qa-num">01</div><div class="qa-text">맨 위 프로필과 한 줄 자기소개가 잘 들어가 있나요?</div><div class="qa-badge" id="qaBadge0">자기소개</div></div>
+          <div class="qa-row" id="qa1" onclick="toggleQa(1)"><div class="qa-check" id="qaCheck1"></div><div class="qa-num">02</div><div class="qa-text">대표 경험 카드 3개가 잘 노출되고 클릭 시 안쪽 페이지가 열리나요?</div><div class="qa-badge" id="qaBadge1">경험 카드</div></div>
+          <div class="qa-row" id="qa2" onclick="toggleQa(2)"><div class="qa-check" id="qaCheck2"></div><div class="qa-num">03</div><div class="qa-text">안쪽 페이지에 P-A-R-R 4단계 내용이 2단 텍스트로 쉽게 적혀 있나요?</div><div class="qa-badge" id="qaBadge2">텍스트 결합</div></div>
+          <div class="qa-row" id="qa3" onclick="toggleQa(3)"><div class="qa-check" id="qaCheck3"></div><div class="qa-num">04</div><div class="qa-text">사진, 유튜브 영상, 과제 PDF가 페이지 안에서 잘 뜨나요?</div><div class="qa-badge" id="qaBadge4">미디어 결합</div></div>
+          <div class="qa-row" id="qa4" onclick="toggleQa(4)"><div class="qa-check" id="qaCheck4"></div><div class="qa-num">05</div><div class="qa-text">상단 메뉴 및 이메일/위로 이동 클릭 버튼이 잘 작동하나요?</div><div class="qa-badge" id="qaBadge4">링크 결합</div></div>
+          <div class="qa-row" id="qa5" onclick="toggleQa(5)"><div class="qa-check" id="qaCheck5"></div><div class="qa-num">06</div><div class="qa-text">남들이 내 글을 훔쳐가지 못하게 복제 방지 스위치를 껐나요?</div><div class="qa-badge" id="qaBadge5">보안 끄기</div></div>
+          <div class="qa-row" id="qa6" onclick="toggleQa(6)"><div class="qa-check" id="qaCheck6"></div><div class="qa-num">07</div><div class="qa-text">오타가 없고 문장 끝 어미가 깔끔하게 잘 다듬어졌나요?</div><div class="qa-badge" id="qaBadge6">글자 오타</div></div>
+        </div>
+        <div id="qaStatusBadge" style="background:rgba(0,102,79,0.15);border-radius:9px;padding:8px 14px;font-size:13px;color:var(--text-muted);font-weight:600;text-align:center;margin-top:6px;transition:all 0.3s ease;">📋 항목을 클릭하여 체크하세요 — 0 / 7 완료</div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 셀프 꼼꼼 체크리스트</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 37: DAY 2 TIMETABLE & 5TH WEEK DELIVERABLE -->
+    <div class="slide">
+      <div class="slide-header">
+        <div class="slide-title-group">
+          <div class="slide-meta"><span class="slide-meta-tag">DAY 2 · RECAP</span></div>
+          <h2>목요일(2일차) 수업 정리 &amp; 완결된 산출물</h2>
+          <p>5주차 목요일 3차시 수업으로 내 손으로 완결한 '나만의 노션 웹 포트폴리오 초안'입니다!</p>
+        </div>
+        <div class="slide-number-badge">35</div>
+      </div>
+      <div class="content-body" style="justify-content:flex-start;margin-top:6px;">
+        <table class="summary-table">
+          <thead><tr><th style="width:120px;">구분</th><th style="width:200px;">주제</th><th>목요일 한 주요 활동</th><th style="width:180px;">완성된 산출물</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--cyan);font-weight:800;">1차시</td><td>5단계: 스토리&amp;텍스트</td><td>[실습 4] PAR-R 스토리 작성 &amp; [동적 구성 1] 텍스트 2단 정렬</td><td>안쪽 페이지 스토리 ✓</td></tr>
+            <tr style="background:rgba(255,255,255,0.03);"><td style="color:var(--text-muted);font-style:italic;">Break Time 1</td><td style="color:var(--text-muted);">중간 휴식</td><td style="color:var(--text-muted);">휴식 &amp; 미디어 파일 준비 점검</td><td style="color:var(--text-muted);">-</td></tr>
+            <tr><td style="color:var(--cyan);font-weight:800;">2차시</td><td>6단계: 미디어&amp;링크</td><td>[동적 구성 2] 미디어 임베드 &amp; [동적 구성 3] 클릭 링크 &amp; [실습 5] 연동</td><td>동적 페이지 구성 ✓</td></tr>
+            <tr style="background:rgba(255,255,255,0.03);"><td style="color:var(--text-muted);font-style:italic;">Break Time 2</td><td style="color:var(--text-muted);">중간 휴식</td><td style="color:var(--text-muted);">휴식 &amp; 모바일 반응형 화면 점검</td><td style="color:var(--text-muted);">-</td></tr>
+            <tr><td style="color:var(--purple-light);font-weight:800;">3차시</td><td>7~8단계: 초안 완결</td><td>카톡 공유 썸네일/복제 끄기 &amp; 셀프 체크리스트 점검</td><td style="color:var(--purple-light);font-weight:700;">🏆 웹 포트폴리오 초안</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 5주차 산출물 완결</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- SLIDE 38: NEXT WEEK 6 PREVIEW & CLOSING -->
+    <div class="slide">
+      <div class="slide-title-hero" style="padding:0 20px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <span class="hero-kicker" style="background:linear-gradient(135deg,#06b6d4,#10b981);color:#fff;">5주차 완성 &amp; 6주차 예고</span>
+        </div>
+        <h1 style="font-size:48px;font-weight:900;line-height:1.25;color:#ffffff;letter-spacing:-0.02em;">
+          정말 수고 많으셨습니다!<br>
+          <span style="color:#ffe066;text-shadow:0 0 15px rgba(255,224,102,0.4);">나만의 웹 포트폴리오 초안 완성! 🎉</span>
+        </h1>
+        <p style="font-size:18px;color:var(--text-sub);margin-top:12px;font-weight:400;max-width:860px;line-height:1.6;">
+          4주차 경험 DB를 활용해 템플릿을 바꾸고, 텍스트·이미지·링크가 결합된 동적 포트폴리오 초안을 채우셨습니다.<br>
+          <b>다음 마지막 6주차(8.26~8.27)</b>에는 <b style="color:var(--cyan);">더 예쁜 디자인으로 다듬고, 서로 만든 것을 자랑하고 리뷰하며 진짜 최종 웹 주소</b>를 세상에 공개합니다!
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px;width:100%;">
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px;text-align:center;"><div style="font-size:26px;margin-bottom:4px;">📚</div><div style="font-size:14px;font-weight:700;color:#fff;">4주차 경험 DB</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">대표 경험 3개 고르기</div></div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px;text-align:center;"><div style="font-size:26px;margin-bottom:4px;">🎨</div><div style="font-size:14px;font-weight:700;color:#fff;">메인 틀 잡기</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">템플릿 복제&amp;틀 잡기</div></div>
+          <div style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px;text-align:center;"><div style="font-size:26px;margin-bottom:4px;">🎬</div><div style="font-size:14px;font-weight:700;color:#fff;">동적 페이지 구성</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">텍스트·이미지·링크 결합</div></div>
+          <div style="background:rgba(255,224,102,0.1);border:1px solid rgba(255,224,102,0.3);border-radius:12px;padding:16px;text-align:center;"><div style="font-size:26px;margin-bottom:4px;">🏆</div><div style="font-size:14px;font-weight:700;color:#ffe066;">5주차 산출물</div><div style="font-size:12px;color:var(--text-muted);margin-top:2px;">웹 포트폴리오 초안</div></div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>밀양청년 취업역량 강화교육 · 5주차 마무리 &amp; 6주차 예고 · 디지털 실무</span>
+        <span class="slide-dynamic-badge"></span>
+      </div>
+    </div>
+
+    <!-- FLOATING CONTROLS UI - PLACED INSIDE DECK CONTAINER (4TH WEEK EXACT DOM STRUCTURE) -->
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="page-indicator" id="pageIndicator">1 / 38</div>
+    <div class="nav-zone left" onclick="go(-1)"></div>
+    <div class="nav-zone right" onclick="go(1)"></div>
+    <button class="help-btn" onclick="toggleHelp()" title="단축키 도움말 (?)">?</button>
+
+    <!-- HELP MODAL -->
+    <div class="help-modal" id="helpModal" onclick="toggleHelp()">
+      <div class="help-content" onclick="event.stopPropagation()">
+        <h3>⌨️ 키보드 &amp; 우측 키패드 단축키</h3>
+        <ul class="help-list">
+          <li><b>&rarr; / PageDown / Space / Enter / Numpad6</b> 다음 슬라이드</li>
+          <li><b>&larr; / PageUp / Numpad4 / Numpad-</b> 이전 슬라이드</li>
+          <li><b>0~9 / Numpad 0~9</b> 슬라이드 번호 다이렉트 점프 (Enter)</li>
+          <li><b>Home / End</b> 첫번째 / 마지막 슬라이드</li>
+          <li><b>? 또는 H</b> 이 도움말 열기/닫기</li>
+          <li><b>Esc</b> 도움말 닫기</li>
+          <li><b>F</b> 전체 화면 토글</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    const total = slides.length;
+
+    function goTo(idx) {
+      if (idx < 0 || idx >= total) return;
+      slides[current].classList.remove('active');
+      current = idx;
+      slides[current].classList.add('active');
+      document.getElementById('progressBar').style.width = ((current+1)/total*100)+'%';
+      document.getElementById('pageIndicator').innerText = (current+1)+' / '+total;
+
+      // ID-based interactive animation checks
+      if (slides[current] && slides[current].id === 'slideParrContainer') initParrFade();
+      if (slides[current] && slides[current].id === 'slideQaContainer') resetQa();
+      if (slides[current] && slides[current].id === 'slide17DragContainer') resetUserDrag17();
+      if (slides[current] && slides[current].id === 'slide21TypingContainer') startTypingSim21();
+      if (slides[current] && slides[current].id === 'slideThuEmbedContainer') resetEmbedLiveThu();
+      if (slides[current] && slides[current].id === 'slideThuBtnContainer') resetThuBtnLive();
+    }
+    function go(dir) { goTo(current+dir); }
+
+    function syncDynamicSlideNumbers() {
+      const allSlides = document.querySelectorAll('.slide');
+      const realTotal = allSlides.length;
+      allSlides.forEach((slide, idx) => {
+        const badge = slide.querySelector('.slide-number-badge');
+        if (badge) badge.innerText = (idx+1);
+        const footerSpans = slide.querySelectorAll('.slide-footer span');
+        if (footerSpans && footerSpans.length > 1) footerSpans[footerSpans.length-1].innerText = 'Slide '+(idx+1)+' / '+realTotal;
+      });
+      const pInd = document.getElementById('pageIndicator');
+      if (pInd) pInd.innerText = '1 / '+realTotal;
+    }
+    window.addEventListener('load', syncDynamicSlideNumbers);
+
+    // 4th WEEK EXACT MATCH: SMART NUMBER JUMP (NUMPAD & TOP ROW 0-9) WITH DEBOUNCE & ENTER INSTANT JUMP
+    let numBuffer = '';
+    let numJumpTimer = null;
+
+    function handleNumberJump(digit) {
+      try {
+        numBuffer += digit;
+        let badge = document.getElementById('numJumpBadge');
+        
+        if (!badge) {
+          badge = document.createElement('div');
+          badge.id = 'numJumpBadge';
+          badge.style.cssText = 'position:fixed; top:25px; right:25px; background:#00664f; color:#fff; padding:12px 24px; border-radius:12px; font-size:20px; font-weight:800; z-index:99999; box-shadow:0 10px 30px rgba(0,0,0,0.8); border:2px solid #ffe066; font-family:\'Pretendard\', sans-serif;';
+          document.body.appendChild(badge);
+        }
+
+        badge.innerHTML = '🚀 슬라이드 이동: <span style="font-size:26px; font-weight:900; color:#ffe066;">' + numBuffer + '</span> 번';
+        badge.style.display = 'block';
+
+        if (numJumpTimer) clearTimeout(numJumpTimer);
+
+        // Wait 0.8s (800ms) to distinguish '2' vs '24' (4th week fast timing!)
+        numJumpTimer = setTimeout(() => {
+          executeNumberJump();
+        }, 800);
+      } catch (err) { console.log(err); }
+    }
+
+    function executeNumberJump() {
+      try {
+        if (numJumpTimer) clearTimeout(numJumpTimer);
+        if (numBuffer.length > 0) {
+          let targetSlide = parseInt(numBuffer, 10);
+          if (!isNaN(targetSlide) && targetSlide > 0 && targetSlide <= total) {
+            goTo(targetSlide - 1);
+          }
+        }
+        numBuffer = '';
+        let badge = document.getElementById('numJumpBadge');
+        if (badge) badge.style.display = 'none';
+      } catch (err) { console.log(err); }
+    }
+
+    // COMPREHENSIVE SAFE KEYBOARD EVENT LISTENER (4TH WEEK EXACT LOGIC)
+    document.addEventListener('keydown', e => {
+      if (e.target.isContentEditable || e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') {
+        return;
+      }
+
+      const key = e.key;
+      const code = e.code || '';
+
+      // Direct Number Detection (Top Row '0'-'9' and Numpad 'Numpad0'-'Numpad9')
+      if (/^[0-9]$/.test(key) || /^Numpad[0-9]$/.test(code)) {
+        let digit = key;
+        if (!digit || isNaN(parseInt(digit, 10))) {
+          digit = code.replace('Numpad', '');
+        }
+        if (digit && !isNaN(parseInt(digit, 10))) {
+          handleNumberJump(digit);
+          return;
+        }
+      }
+
+      // Instant Jump on Enter key if number buffer has digits
+      if ((key === 'Enter' || code === 'NumpadEnter') && numBuffer.length > 0) {
+        executeNumberJump();
+        return;
+      }
+
+      // Right Keypad / Presenter / Arrow Controls for Next Slide
+      if (key === 'ArrowRight' || key === 'PageDown' || key === ' ' || code === 'Space' || code === 'Numpad6' || code === 'NumpadAdd' || key === '+' || key === 'Enter' || code === 'NumpadEnter') {
+        e.preventDefault();
+        go(1);
+      }
+      // Left Controls for Previous Slide
+      else if (key === 'ArrowLeft' || key === 'PageUp' || code === 'Numpad4' || code === 'NumpadSubtract' || key === '-') {
+        e.preventDefault();
+        go(-1);
+      }
+      else if (key === 'Home') { e.preventDefault(); goTo(0); }
+      else if (key === 'End') { e.preventDefault(); goTo(total - 1); }
+      else if (key === '?' || key.toLowerCase() === 'h') toggleHelp();
+      else if (key === 'Escape') document.getElementById('helpModal').classList.remove('active');
+      else if (key.toLowerCase() === 'f') toggleFullscreen();
+    });
+
+    let touchStartX=0;
+    document.addEventListener('touchstart', e=>{touchStartX=e.touches[0].clientX;},{passive:true});
+    document.addEventListener('touchend', e=>{const diff=touchStartX-e.changedTouches[0].clientX;if(Math.abs(diff)>50) go(diff>0?1:-1);},{passive:true});
+
+    function scaleSlide(){const s=Math.min(window.innerWidth/1280,window.innerHeight/720);document.getElementById('deckContainer').style.transform='scale('+s+')';}
+    window.addEventListener('resize',scaleSlide);scaleSlide();
+
+    function toggleHelp(){document.getElementById('helpModal').classList.toggle('active');}
+
+    function toggleFullscreen(){
+      if(!document.fullscreenElement){document.documentElement.requestFullscreen().then(()=>document.body.classList.add('is-fullscreen')).catch(()=>{});}
+      else{document.exitFullscreen().then(()=>document.body.classList.remove('is-fullscreen')).catch(()=>{});}
+    }
+    document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)document.body.classList.remove('is-fullscreen');});
+
+    document.getElementById('progressBar').style.width=(1/total*100)+'%';
+
+    // PAR-R INTEGRATED FADE-IN INTERACTIVE DATA & LOGIC (WITH AUTO LOOP)
+    let currentParrIndex = 0;
+    let parrAutoLoopTimer = null;
+    let isParrLoopPaused = false;
+
+    const parrFadeData = [
+      {
+        header: '📝 청년 서포터즈 실제 작성 예시 [P]',
+        tag: 'Step 1 / 4',
+        title: '[ P · 상황 및 문제 ]',
+        sub: '🌱 활동 주제: 지역 청년 서포터즈 홍보팀',
+        body: '청년센터 블로그 홍보글을 매주 정성스럽게 올렸으나, <b style="color:#ffe066;">조회수와 댓글 반응이 생각보다 적어서</b> 전달력이 떨어진다고 느껴짐.',
+        footer: '👈 좌측 카드를 클릭하거나 [다음 예시 ▶] 버튼을 누르세요'
+      },
+      {
+        header: '📝 청년 서포터즈 실제 작성 예시 [A]',
+        tag: 'Step 2 / 4',
+        title: '[ A · 내가 한 일 ]',
+        sub: '🌱 활동 주제: 지역 청년 서포터즈 홍보팀',
+        body: '또래 청년들이 가장 필요로 하는 <b style="color:#ffe066;">\'청년지원금 신청 꿀팁\'</b>을 주제로 정하고, 캔바로 카드뉴스 5장을 밝은 색감으로 직접 제작하여 업로드함.',
+        footer: '👈 좌측 카드를 클릭하거나 [다음 예시 ▶] 버튼을 누르세요'
+      },
+      {
+        header: '📝 청년 서포터즈 실제 작성 예시 [R]',
+        tag: 'Step 3 / 4',
+        title: '[ R · 결과 ]',
+        sub: '🌱 활동 주제: 지역 청년 서포터즈 홍보팀',
+        body: '게시물 댓글이 평소 5개에서 <b style="color:var(--cyan);">42개로 대폭 증가!</b> 담긴 정보가 유용하다고 소문나 서포터즈 <b style="color:var(--cyan);">이달의 우수 팀</b>으로 선정됨.',
+        footer: '👈 좌측 카드를 클릭하거나 [다음 예시 ▶] 버튼을 누르세요'
+      },
+      {
+        header: '📝 청년 서포터즈 실제 작성 예시 [R]',
+        tag: 'Step 4 / 4',
+        title: '[ R · 솔직한 배운 점 ]',
+        sub: '🌱 활동 주제: 지역 청년 서포터즈 홍보팀',
+        body: '사람들이 진짜 좋아하는 주제를 파악하는 것과, 글보다 <b style="color:#ffe066;">눈에 띄는 카드뉴스 디자인</b>이 정보 전달에 얼마나 중요한지 깨달음.',
+        footer: '✅ PAR-R 4단계 완성! 4개 카드를 모두 클릭해보며 구조를 이해해보세요.'
+      }
+    ];
+
+    function initParrFade() {
+      currentParrIndex = 0;
+      renderParrFade();
+      startParrAutoLoop();
+    }
+
+    function selectParrCard(idx) {
+      currentParrIndex = idx;
+      renderParrFade();
+    }
+
+    function nextParrFade() {
+      currentParrIndex = (currentParrIndex + 1) % 4;
+      renderParrFade();
+    }
+
+    function renderParrFade() {
+      for (let i = 0; i < 4; i++) {
+        const card = document.getElementById('parrCard' + i);
+        if (card) {
+          if (i === currentParrIndex) card.classList.add('active');
+          else card.classList.remove('active');
+        }
+      }
+
+      const box = document.getElementById('fadeContentBox');
+      if (box) {
+        box.classList.add('fade-out');
+        setTimeout(() => {
+          const d = parrFadeData[currentParrIndex];
+          const h = document.getElementById('fadeCanvasHeader');
+          const t = document.getElementById('fadeStepTag');
+          const title = document.getElementById('fadeTitle');
+          const sub = document.getElementById('fadeSubTitle');
+          const body = document.getElementById('fadeBody');
+          const ft = document.getElementById('fadeFooterText');
+
+          if (h) h.innerText = d.header;
+          if (t) t.innerText = d.tag;
+          if (title) title.innerText = d.title;
+          if (sub) sub.innerText = d.sub;
+          if (body) body.innerHTML = d.body;
+          if (ft) ft.innerText = d.footer;
+
+          box.classList.remove('fade-out');
+        }, 180);
+      }
+    }
+
+    function startParrAutoLoop() {
+      if (parrAutoLoopTimer) clearInterval(parrAutoLoopTimer);
+      parrAutoLoopTimer = setInterval(() => {
+        if (!isParrLoopPaused) {
+          nextParrFade();
+        }
+      }, 5000);
+    }
+
+    function toggleParrAutoLoop() {
+      isParrLoopPaused = !isParrLoopPaused;
+      const btn = document.getElementById('parrLoopToggleBtn');
+      if (btn) {
+        if (isParrLoopPaused) {
+          btn.innerText = '▶ 루프 재개';
+          btn.style.background = 'rgba(255,255,255,0.1)';
+        } else {
+          btn.innerText = '⏸ 일시정지';
+          btn.style.background = 'var(--gradient-purple)';
+        }
+      }
+    }
+
+    // THURSDAY NOTION EDITING TIP 1: 2-COLUMN SIDE-BY-SIDE DRAG & DROP LOGIC
+    let isUserSplit17 = false;
+
+    function resetUserDrag17() {
+      isUserSplit17 = false;
+      const layoutBox = document.getElementById('notionRealLayoutBox17');
+      const blockA = document.getElementById('dragBlockA17');
+      const blockB = document.getElementById('dragBlockB17');
+      const blueLine = document.getElementById('notionBlueGuideLine17');
+      const statusBadge = document.getElementById('userDragStatus17');
+
+      if (blueLine) blueLine.classList.remove('active');
+
+      if (layoutBox) {
+        layoutBox.style.flexDirection = 'column'; // Return to 1-column vertical!
+      }
+      if (blockA) blockA.style.flex = 'none';
+      if (blockB) {
+        blockB.style.flex = 'none';
+        blockB.style.width = '100%';
+      }
+
+      if (statusBadge) {
+        statusBadge.innerHTML = '👈 <b>Block B</b>를 마우스로 꼭 잡고 <b>Block A의 우측 끝</b>으로 가져가보세요! (파란선 등장!)';
+        statusBadge.style.color = 'var(--purple-light)';
+        statusBadge.style.background = 'rgba(0,102,79,0.2)';
+      }
+    }
+
+    function handleUserDragStart17(e) {
+      e.dataTransfer.setData('text/plain', 'blockB');
+      e.dataTransfer.effectAllowed = 'move';
+    }
+
+    function handleUserDragOver17(e) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      const blueLine = document.getElementById('notionBlueGuideLine17');
+      if (blueLine) blueLine.classList.add('active'); // Turn on blue vertical line!
+    }
+
+    function handleUserDragLeave17(e) {
+      const blueLine = document.getElementById('notionBlueGuideLine17');
+      if (blueLine) blueLine.classList.remove('active');
+    }
+
+    function handleUserDrop17(e) {
+      e.preventDefault();
+      const blueLine = document.getElementById('notionBlueGuideLine17');
+      if (blueLine) blueLine.classList.remove('active');
+      triggerUserSplit17();
+    }
+
+    function triggerUserSplit17() {
+      if (isUserSplit17) return;
+      isUserSplit17 = true;
+
+      const layoutBox = document.getElementById('notionRealLayoutBox17');
+      const blockA = document.getElementById('dragBlockA17');
+      const blockB = document.getElementById('dragBlockB17');
+      const blueLine = document.getElementById('notionBlueGuideLine17');
+      const statusBadge = document.getElementById('userDragStatus17');
+
+      if (blueLine) blueLine.classList.remove('active');
+
+      if (layoutBox) {
+        layoutBox.style.flexDirection = 'row'; // Switch to 2-column side-by-side!
+      }
+      if (blockA && blockB) {
+        blockA.style.flex = '1'; // 50% width!
+        blockB.style.flex = '1'; // 50% width!
+        blockB.style.width = 'auto';
+      }
+
+      if (statusBadge) {
+        statusBadge.innerHTML = '🎉 <b>노션 고증 100%! 좌우 50:50 동일 비율 나란히 정렬 완성!</b> (상단 [↺ 초기화]로 재실습 가능)';
+        statusBadge.style.color = 'var(--cyan)';
+        statusBadge.style.background = 'rgba(52,211,153,0.25)';
+      }
+    }
+
+    // THURSDAY NOTION EDITING TIP 2: /EMBED LIVE MEDIA RENDERER
+    function resetEmbedLiveThu() {
+      const placeholder = document.getElementById('thuEmbedPlaceholder');
+      const display = document.getElementById('thuEmbedLiveDisplay');
+      const statusBadge = document.getElementById('thuEmbedStatusBadge');
+
+      if (placeholder) placeholder.style.display = 'block';
+      if (display) display.style.display = 'none';
+      if (statusBadge) {
+        statusBadge.innerHTML = '👈 상단 버튼을 클릭해 `/임베드`로 영상과 PDF가 포트폴리오에 쏙 들어오는 것을 확인해보세요!';
+        statusBadge.style.color = 'var(--purple-light)';
+        statusBadge.style.background = 'rgba(0,102,79,0.2)';
+      }
+    }
+
+    function triggerEmbedLiveThu(type) {
+      const placeholder = document.getElementById('thuEmbedPlaceholder');
+      const display = document.getElementById('thuEmbedLiveDisplay');
+      const title = document.getElementById('thuEmbedDisplayTitle');
+      const body = document.getElementById('thuEmbedDisplayBody');
+      const statusBadge = document.getElementById('thuEmbedStatusBadge');
+
+      if (placeholder) placeholder.style.display = 'none';
+      if (display) display.style.display = 'flex';
+
+      if (type === 0) {
+        if (title) title.innerHTML = '▶️ 유튜브 영상 주소 임베딩 성공';
+        if (body) body.innerHTML = '<div style="text-align:center;"><img src="images/youtube_embed_sample.png" style="max-width:100%;max-height:220px;border-radius:8px;box-shadow:0 8px 20px rgba(0,0,0,0.6);" alt="YouTube Embed"></div><div style="font-size:12.5px;color:var(--text-sub);margin-top:6px;text-align:center;">🎬 <b>[노션 실시간 유튜브 플레이어 뷰어]</b> - 외부 사이트 이동 없이 포트폴리오 내 직접 재생!</div>';
+        if (statusBadge) {
+          statusBadge.innerHTML = '🎉 <b>`/임베드` 유튜브 영상 연동 완료! 포트폴리오 안에서 바로 재생됩니다.</b>';
+          statusBadge.style.color = 'var(--cyan)';
+          statusBadge.style.background = 'rgba(52,211,153,0.25)';
+        }
+      } else {
+        if (title) title.innerHTML = '📄 PDF 문서 임베딩 성공 (예시: Speak Lesson Summary Book)';
+        if (body) body.innerHTML = '<div style="text-align:center;max-height:220px;overflow-y:auto;background:#222;padding:10px;border-radius:8px;"><img src="images/pdf_embed_sample.png" style="max-width:210px;border-radius:4px;box-shadow:0 6px 15px rgba(0,0,0,0.5);" alt="PDF Embed"></div><div style="font-size:12.5px;color:var(--text-sub);margin-top:6px;text-align:center;">📜 <b>[노션 실시간 PDF 문서 스크롤 뷰어]</b> - 다운로드 없이 실시간 마우스 스크롤 감상!</div>';
+        if (statusBadge) {
+          statusBadge.innerHTML = '🎉 <b>`/임베드` PDF 문서 연동 완료! 다운로드 없이 바로 읽을 수 있습니다.</b>';
+          statusBadge.style.color = 'var(--cyan)';
+          statusBadge.style.background = 'rgba(52,211,153,0.25)';
+        }
+      }
+    }
+
+    // THURSDAY NOTION EDITING TIP 3: NOTION BUTTON BLOCK LIVE CLICK (100% FREE ACTIONS)
+    function resetThuBtnLive() {
+      const scrollArea = document.getElementById('thuBtnScrollArea');
+      const statusBadge = document.getElementById('thuBtnStatusBadge');
+      const popDisplay = document.getElementById('thuBtnPopDisplay');
+      
+      if (scrollArea) scrollArea.scrollTop = 180; // Scroll down to show 'Go to Top' action!
+      if (popDisplay) popDisplay.style.display = 'none';
+      if (statusBadge) {
+        statusBadge.innerHTML = '👈 위 <b>[➕ 새 경험 양식 카드 추가]</b> 또는 <b>[⬆️ 맨 위로 이동]</b> 버튼을 누르면 작동합니다!';
+        statusBadge.style.color = 'var(--purple-light)';
+        statusBadge.style.background = 'rgba(0,102,79,0.2)';
+      }
+    }
+
+    function triggerThuAddPageBtn() {
+      const statusBadge = document.getElementById('thuBtnStatusBadge');
+      const popDisplay = document.getElementById('thuBtnPopDisplay');
+
+      if (popDisplay) {
+        popDisplay.style.display = 'block';
+        popDisplay.innerHTML = '✨ <b>[무료 노션 페이지 추가 생성 완료!]</b><br><span style="font-size:12.5px;color:var(--cyan);">[P-A-R-R 경험 작성 양식]이 담긴 새 갤러리 카드가 자동으로 만들어졌습니다!</span>';
+      }
+
+      if (statusBadge) {
+        statusBadge.innerHTML = '🎉 <b>[➕ 새 경험 양식 카드 추가] 버튼 성공! 무료 플랜 대표 기능!</b>';
+        statusBadge.style.color = 'var(--cyan)';
+        statusBadge.style.background = 'rgba(52,211,153,0.25)';
+      }
+    }
+
+    function triggerThuScrollTopBtn() {
+      const scrollArea = document.getElementById('thuBtnScrollArea');
+      const statusBadge = document.getElementById('thuBtnStatusBadge');
+      const topHeader = document.getElementById('thuBtnTopHeader');
+
+      if (scrollArea) {
+        scrollArea.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      if (topHeader) {
+        topHeader.style.borderColor = '#34d399';
+        topHeader.style.boxShadow = '0 0 20px rgba(52,211,153,0.6)';
+        setTimeout(() => {
+          topHeader.style.borderColor = 'var(--cyan)';
+          topHeader.style.boxShadow = 'none';
+        }, 1200);
+      }
+
+      if (statusBadge) {
+        statusBadge.innerHTML = '🎉 <b>[⬆️ 맨 위로 이동] 버튼 성공! 최상단 프로필(#top)로 슝 스크롤 이동 완료!</b>';
+        statusBadge.style.color = 'var(--cyan)';
+        statusBadge.style.background = 'rgba(52,211,153,0.25)';
+      }
+    }
+
+    function triggerThuSnsBtn() {
+      const statusBadge = document.getElementById('thuBtnStatusBadge');
+      const popDisplay = document.getElementById('thuBtnPopDisplay');
+
+      if (popDisplay) {
+        popDisplay.style.display = 'block';
+        popDisplay.innerHTML = '💬 <b>[카톡 오픈채팅 URL 바로가기 실행!]</b><br><span style="font-size:12.5px;color:#ffe066;">방문자가 1초 만에 나와 카톡 1:1 대화를 나눌 수 있는 링크가 열립니다.</span>';
+      }
+
+      if (statusBadge) {
+        statusBadge.innerHTML = '🎉 <b>[💬 카톡 오픈채팅 연결] 버튼 성공! 무료 URL 바로가기 기능!</b>';
+        statusBadge.style.color = 'var(--cyan)';
+        statusBadge.style.background = 'rgba(52,211,153,0.25)';
+      }
+    }
+
+    // SLIDE 17: REALTIME TYPING ANIMATION SIMULATOR
+    let isTypingSimRunning21 = false;
+
+    function startTypingSim21() {
+      if (isTypingSimRunning21) return;
+      isTypingSimRunning21 = true;
+
+      const elem = document.getElementById('typingTarget21');
+      const badge = document.getElementById('typingStatus21');
+      const fullText = 'kim-minsoo-portfolio';
+      let idx = 0;
+
+      if (!elem || !badge) return;
+
+      elem.innerText = '';
+      badge.innerText = '⌨️ 나만의 웹 주소(Slug) 실시간 타이핑 중...';
+      badge.style.color = 'var(--purple-light)';
+
+      const typingInterval = setInterval(() => {
+        if (idx < fullText.length) {
+          elem.innerText += fullText.charAt(idx);
+          idx++;
+        } else {
+          clearInterval(typingInterval);
+          badge.innerText = '🎉 나만의 웹 주소 생성 완료: https://kim-minsoo-portfolio.notion.site';
+          badge.style.color = 'var(--cyan)';
+          isTypingSimRunning21 = false;
+        }
+      }, 100);
+    }
+
+    // QA CHECKLIST (WITH CELEBRATION PULSE GLOW & CONFETTI)
+    const qaChecked=[false,false,false,false,false,false,false];
+    function resetQa(){for(let i=0;i<7;i++){qaChecked[i]=false;const r=document.getElementById('qa'+i);const c=document.getElementById('qaCheck'+i);if(r)r.classList.remove('checked');if(c)c.innerText='';} updateQaStatus();}
+    function toggleQa(idx){
+      qaChecked[idx]=!qaChecked[idx];
+      const r=document.getElementById('qa'+idx);const c=document.getElementById('qaCheck'+idx);
+      if(r){if(qaChecked[idx]){r.classList.add('checked');c.innerText='✓';}else{r.classList.remove('checked');c.innerText='';}}
+      updateQaStatus();
+    }
+    function updateQaStatus(){
+      const done=qaChecked.filter(Boolean).length;const b=document.getElementById('qaStatusBadge');
+      if(b){if(done===7){
+        b.style.background='rgba(52,211,153,0.25)';
+        b.style.color='#34d399';
+        b.classList.add('pulse-glow-active');
+        b.innerText='🎉 7/7 전수 검수 완료! 축하합니다! 5주차 나만의 웹 포트폴리오 초안 완결!';
+      }
+      else{
+        b.style.background='rgba(0,102,79,0.15)';
+        b.style.color='var(--text-muted)';
+        b.classList.remove('pulse-glow-active');
+        b.innerText='📋 항목을 클릭하여 체크하세요 — '+done+' / 7 완료';
+      }}
+    }
+  </script>
+</body>
+</html>
+"""
+
+with open('presentation.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print('Successfully reordered Thursday slides so Dynamic Config 1, 2, and 3 are 100% consecutively grouped!')
