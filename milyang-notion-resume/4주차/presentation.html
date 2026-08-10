@@ -976,31 +976,62 @@
       </div>
     </div>
 
-    <!-- SLIDE 09: WORKSPACE STRUCTURE (NOTION OFFICIAL GUIDE - CONCEPT VIDEO AFTER) -->
+    <!-- SLIDE 09: WORKSPACE STRUCTURE WITH USER SCREENSHOT & PIGTAIL HIGHLIGHT POINTERS -->
     <div class="slide">
       <div class="slide-header">
         <div class="slide-title-group">
           <div class="slide-meta"><span class="slide-meta-tag">01 · WORKSPACE</span></div>
           <h2>노션 작업 공간(Workspace) 둘러보기</h2>
-          <p>사이드바, 내 페이지 영역, 작업 화면의 기본 구조를 이해합니다.</p>
+          <p>사이드바, 내 페이지 영역, 작업 화면의 3대 기본 구조를 한눈에 파악합니다.</p>
         </div>
         <div class="slide-number-badge">9</div>
       </div>
-      <div class="content-body">
-        <div class="grid-3">
-          <div class="card card-accent">
-            <div class="card-title">01. 사이드바 (Sidebar)</div>
-            <div class="card-desc">내 모든 페이지 목록과 탐색 메뉴가 모여 있는 서랍</div>
+      <div class="content-body" style="display: flex; flex-direction: column; justify-content: flex-start; gap: 10px; height: 100%;">
+        
+        <!-- LARGE WORKSPACE SCREENSHOT CONTAINER WITH 3-REGION HIGHLIGHT BOXES & PIGTAIL POINTERS -->
+        <div style="position: relative; width: 100%; max-width: 900px; margin: 0 auto; aspect-ratio: 16 / 8.5; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--purple-light); box-shadow: 0 12px 35px rgba(0,0,0,0.6); background: #0b0b10;">
+          <!-- MAIN USER SCREENSHOT -->
+          <img src="./images/notion_user_workspace.png" style="width: 100%; height: 100%; object-fit: cover;" alt="노션 작업공간 실제 스크린샷">
+
+          <!-- REGION 1: SIDEBAR HIGHLIGHT BOX & PIGTAIL BADGE (LEFT) -->
+          <div style="position: absolute; top: 0%; left: 0%; width: 17%; height: 100%; border: 2px dashed #a78bfa; background: rgba(167,139,250,0.12); box-shadow: inset 0 0 15px rgba(167,139,250,0.3); pointer-events: none;">
+            <div style="position: absolute; top: 12px; left: 8px; background: #8b5cf6; color: #fff; font-size: 11px; font-weight: 900; padding: 3px 8px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 4px;">
+              <span>① 사이드바</span>
+              <span style="font-size: 10px;">🍥</span>
+            </div>
           </div>
-          <div class="card card-cyan">
-            <div class="card-title">02. 캔버스 (Canvas)</div>
-            <div class="card-desc">제목과 레고 블록을 자유롭게 배치하는 메인 도화지</div>
+
+          <!-- REGION 2: CANVAS HIGHLIGHT BOX & PIGTAIL BADGE (CENTER) -->
+          <div style="position: absolute; top: 0%; left: 17.5%; width: 68.5%; height: 100%; border: 2px dashed #34d399; background: rgba(52,211,153,0.06); box-shadow: inset 0 0 15px rgba(52,211,153,0.2); pointer-events: none;">
+            <div style="position: absolute; top: 22px; left: 50%; transform: translateX(-50%); background: #057a5f; color: #34d399; border: 1px solid #34d399; font-size: 12px; font-weight: 900; padding: 4px 14px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.6); display: flex; align-items: center; gap: 6px;">
+              <span>🌀 ② 캔버스 (메인 도화지)</span>
+            </div>
           </div>
-          <div class="card card-emerald">
-            <div class="card-title">03. 페이지 메뉴 (...)</div>
-            <div class="card-desc">공유, 템플릿, 내보내기 및 상단 스타일 설정 창</div>
+
+          <!-- REGION 3: PAGE OPTIONS MENU HIGHLIGHT BOX & PIGTAIL BADGE (RIGHT) -->
+          <div style="position: absolute; top: 0%; right: 0%; width: 13.5%; height: 100%; border: 2px dashed #f472b6; background: rgba(244,114,182,0.15); box-shadow: inset 0 0 15px rgba(244,114,182,0.3); pointer-events: none;">
+            <div style="position: absolute; top: 12px; right: 8px; background: #db2777; color: #fff; font-size: 11px; font-weight: 900; padding: 3px 8px; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.5); display: flex; align-items: center; gap: 4px;">
+              <span>🍥 ③ 옵션(...)</span>
+            </div>
           </div>
         </div>
+
+        <!-- BOTTOM 3 CARDS -->
+        <div class="grid-3" style="gap: 12px; margin-top: 0px;">
+          <div class="card card-accent" style="padding: 12px 16px;">
+            <div class="card-title" style="font-size: 15px; color: #c4b5fd;">① 사이드바 (Sidebar)</div>
+            <div class="card-desc" style="font-size: 12.5px; margin-top: 2px;">페이지 서랍, 이력 DB, 새 페이지 생성 및 설정 메뉴 모음</div>
+          </div>
+          <div class="card card-cyan" style="padding: 12px 16px;">
+            <div class="card-title" style="font-size: 15px; color: #6ee7b7;">② 캔버스 (Canvas)</div>
+            <div class="card-desc" style="font-size: 12.5px; margin-top: 2px;">제목, 텍스트, 이력서 표, 레고 블록을 자유롭게 조립하는 무한 도화지</div>
+          </div>
+          <div class="card card-emerald" style="padding: 12px 16px;">
+            <div class="card-title" style="font-size: 15px; color: #f472b6;">③ 페이지 메뉴 (...)</div>
+            <div class="card-desc" style="font-size: 12.5px; margin-top: 2px;">글꼴 변경, 전체 너비 전폭 확장, 페이지 잠금 및 내보내기 팝업</div>
+          </div>
+        </div>
+
       </div>
       <div class="slide-footer">
         <span>밀양청년 취업역량 강화교육 · 4주차</span>
