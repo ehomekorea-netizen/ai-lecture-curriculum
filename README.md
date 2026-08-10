@@ -11,6 +11,7 @@
 | **7/15(수) ~ 16(목)** | 전남대 앵커사업단 / 링크21 | [남부대학교](https://map.naver.com/p/search/%EB%82%A8%EB%B6%80%EB%8C%80%ED%95%99%EA%B5%90) | 🏫 지역아동센터 기관장·센터장 | AI 사업계획서 기획 및 실습 | [바로가기](https://ai-lecture-curriculum.vercel.app/nambu-univ/) |
 | **7/21(화), 23(목)** | 이음미래교육원 | [한울직업전문학교](https://map.naver.com/p/search/%ED%95%9C%EC%9A%B8%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90) | 👔 KIA 일반직 임직원 | 엑셀 활용 AI 업무 효율 향상 | [바로가기](https://ai-lecture-curriculum.vercel.app/kiamotors-excel/) |
 | **7/28(화)** | 퍼블릭AI | [전남해양수산과학원 고흥](https://map.naver.com/p/search/%EC%A0%84%EB%82%A8%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%EA%B3%BC%ED%95%99%EC%9B%90%20%EA%B3%A0%ED%9D%A5) | ⚓ 수산업 종사자 (어업인) | 수산업 종사자를 위한 생성형 AI | [바로가기](https://ai-lecture-curriculum.vercel.app/jeonnam-maritime/) |
+| **8/12(수) ~ 8/27(목)**<br>(총 6회 / 매주 수·목) | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청소년 | 나를 증명하는 노션(Notion) 포트폴리오 & 이력서 DB 구축 | [바로가기](https://ai-lecture-curriculum.vercel.app/milyang-notion-resume/4주차/presentation.html) |
 
 ---
 
