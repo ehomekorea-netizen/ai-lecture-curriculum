@@ -7814,7 +7814,7 @@ function scaleDeck() {
           if (typeof clearS40Timers === 'function') clearS40Timers();
         }
 
-        if (current === 29) {
+        if (slides[current] && (slides[current].querySelector('#virtualCursor30') || slides[current].querySelector('#loopBtn30') || slides[current].querySelector('#stepModalOverlay30') || slides[current].querySelector('[onclick*="Step30"]') || slides[current].querySelector('[onclick*="stepModalOverlay30"]'))) {
           if (typeof startStepAutoLoop30 === 'function') startStepAutoLoop30();
         } else {
           if (typeof closeStepModal30 === 'function') closeStepModal30();
