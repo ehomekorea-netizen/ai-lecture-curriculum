@@ -8214,15 +8214,15 @@ function scaleDeck() {
                         h123_restart = setTimeout(() => {
                           h123_restart = null;
                           if (h123RunId === myId && document.getElementById('simScreen11_All')) runH123Sequence();
-                        }, 1500);
+                        }, 2000);
                       }
-                    }, 30);
-                  }, 400);
+                    }, 50);
+                  }, 1000);
                 }
-              }, 30);
-            }, 400);
+              }, 50);
+            }, 1000);
           }
-        }, 30);
+        }, 50);
       } catch (e) { console.log(e); }
     }
 
