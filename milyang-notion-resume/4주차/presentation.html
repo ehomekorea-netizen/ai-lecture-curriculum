@@ -7776,15 +7776,31 @@ function scaleDeck() {
         window.location.hash = '#' + (current + 1);
         setTimeout(() => { isRestoringHash = false; }, 50);
 
-        // Trigger slide-specific safe simulators
-        if (current !== 10 && typeof clearLegoAllTimers === 'function') clearLegoAllTimers();
-        if (current !== 11 && typeof clearH123AllTimers === 'function') clearH123AllTimers();
-        if (current !== 12 && typeof clearSlide12Timers === 'function') clearSlide12Timers();
+        // Trigger slide-specific safe simulators (Robust Dynamic DOM Detection)
+        if (slides[current]) {
+          // Slide: '블록(Block)'이란 무엇인가요? (LEGO)
+          if (slides[current].querySelector('#legoBlock1') || slides[current].querySelector('#stepCardLego1')) {
+            startLegoLoop10Safe();
+          } else {
+            if (typeof clearLegoAllTimers === 'function') clearLegoAllTimers();
+          }
+
+          // Slide: 핵심 블록 1 & 2 : 제목(H1/H2/H3)과 텍스트 (H123 Simulator)
+          if (slides[current].querySelector('#simScreen11_All') || slides[current].querySelector('#stepCardH_1')) {
+            startH123LoopSafe();
+          } else {
+            if (typeof clearH123AllTimers === 'function') clearH123AllTimers();
+          }
+
+          // Slide: 핵심 블록 3 & 4 : 목록(List)과 체크박스 (List/Todo Editor)
+          if (slides[current].querySelector('#bulletInputText') || slides[current].querySelector('#todoInputText')) {
+            initSlide12Safe();
+          } else {
+            if (typeof clearSlide12Timers === 'function') clearSlide12Timers();
+          }
+        }
 
         if (current === 8) runStep09Safe(1);
-        if (current === 10) startLegoLoop10Safe(); // Slide #11 (array[10], current === 10) is '블록(Block)이란 무엇인가요?'
-        if (current === 11) startH123LoopSafe();    // Slide #12 (array[11], current === 11) is '핵심 블록 1 & 2 : 제목(H1/H2/H3)'
-        if (current === 12) initSlide12Safe();      // Slide #13 (array[12], current === 12) is '핵심 블록 3 & 4 : 목록과 체크박스'
         if (slides[current] && slides[current].id === 'slide38Container') runSlide38Animation();
         if (slides[current] && (slides[current].id === 'slide43Container' || slides[current].querySelector('#s43RecordRow'))) runSlide43Animation();
         if (slides[current] && slides[current].id === 'slide45Container') runSlide45Animation();
