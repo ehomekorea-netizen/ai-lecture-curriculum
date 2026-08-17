@@ -844,10 +844,10 @@ class: pt-3 px-8 text-center
 
 <div class="mb-1">
   <h1 class="text-xl font-extrabold text-slate-900 m-0 leading-tight">
-    "AI 시대 좁아진 취업문, '자격증'이 아닌 '달라진 역할'에 집중하라"
+    "단순 스펙보다 AI 도구로 프로젝트를 완수한 '판단력'을 봅니다"
   </h1>
   <p class="text-xs text-slate-500 mt-0.5 mb-0 font-medium">
-    단순 반복 업무는 AI가 대체하지만, <b>AI 도구를 지휘해 실제 프로젝트를 완결한 경험</b>이 합격을 결정합니다 [SBS 8뉴스]
+    기업이 신입에게 과거 경력자 수준의 문제해결력을 요구하는 시대, <b>AI를 조율해 실무를 완결하는 실행자의 역할</b> [SBS 8뉴스]
   </p>
 </div>
 
