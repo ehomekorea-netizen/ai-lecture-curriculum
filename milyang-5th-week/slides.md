@@ -844,10 +844,10 @@ class: pt-3 px-8 text-center
 
 <div class="mb-1">
   <h1 class="text-xl font-extrabold text-slate-900 m-0 leading-tight">
-    "AI 시대 더 좁아진 취업문? 달라진 역할에 집중하라"
+    "AI 시대 좁아진 취업문, '자격증'이 아닌 '달라진 역할'에 집중하라"
   </h1>
   <p class="text-xs text-slate-500 mt-0.5 mb-0 font-medium">
-    단순 지식 암기형 인재에서 <b>AI 에이전트를 조향하고 업무를 완결하는 실무 실행자</b>로의 전환 [SBS 8뉴스]
+    단순 반복 업무는 AI가 대체하지만, <b>AI 도구를 지휘해 실제 프로젝트를 완결한 경험</b>이 합격을 결정합니다 [SBS 8뉴스]
   </p>
 </div>
 
