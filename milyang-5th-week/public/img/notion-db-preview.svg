@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#FFFFFF"/>
+  <!-- Top Navigation / Title -->
+  <rect x="0" y="0" width="800" height="50" fill="#F7F6F3" border-bottom="1px solid #EBE9E4"/>
+  <text x="30" y="32" font-family="-apple-system, sans-serif" font-size="16" font-weight="bold" fill="#37352F">📁 2026 주니어 기획자/마케터 역량 포트폴리오 DB</text>
+  
+  <!-- Views tab bar -->
+  <rect x="30" y="65" width="90" height="28" rx="5" fill="#EBE9E4"/>
+  <text x="42" y="84" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" fill="#37352F">🖼️ 갤러리 뷰</text>
+  <rect x="130" y="65" width="80" height="28" rx="5" fill="#F7F6F3"/>
+  <text x="142" y="84" font-family="-apple-system, sans-serif" font-size="12" fill="#787774">📋 보드 뷰</text>
+  <rect x="220" y="65" width="80" height="28" rx="5" fill="#F7F6F3"/>
+  <text x="232" y="84" font-family="-apple-system, sans-serif" font-size="12" fill="#787774">📑 표 뷰</text>
+  
+  <rect x="670" y="65" width="100" height="28" rx="5" fill="#2383E2"/>
+  <text x="690" y="84" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">+ 새로 만들기</text>
+
+  <!-- Gallery Cards Grid -->
+  <!-- Card 1 -->
+  <g transform="translate(30, 110)">
+    <rect width="230" height="220" rx="8" fill="#FFFFFF" stroke="#E9E9E7" stroke-width="1.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))"/>
+    <rect width="230" height="100" rx="8 8 0 0" fill="#E8F0FE"/>
+    <text x="115" y="60" font-family="-apple-system, sans-serif" font-size="32" text-anchor="middle">🚀</text>
+    <text x="16" y="130" font-family="-apple-system, sans-serif" font-size="15" font-weight="bold" fill="#37352F">밀양 AI 청년 프로젝트</text>
+    <rect x="16" y="145" width="55" height="18" rx="4" fill="#D3E5EF"/>
+    <text x="22" y="158" font-family="-apple-system, sans-serif" font-size="10" fill="#183347" font-weight="600">기획/리드</text>
+    <rect x="76" y="145" width="60" height="18" rx="4" fill="#DBEDDB"/>
+    <text x="82" y="158" font-family="-apple-system, sans-serif" font-size="10" fill="#1C3829" font-weight="600">MAU 240%</text>
+    <text x="16" y="185" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">기간: 2026.01 ~ 2026.03</text>
+    <text x="16" y="202" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">핵심 기술: Notion, Prompt, Netlify</text>
+  </g>
+
+  <!-- Card 2 -->
+  <g transform="translate(285, 110)">
+    <rect width="230" height="220" rx="8" fill="#FFFFFF" stroke="#E9E9E7" stroke-width="1.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))"/>
+    <rect width="230" height="100" rx="8 8 0 0" fill="#FDECC8"/>
+    <text x="115" y="60" font-family="-apple-system, sans-serif" font-size="32" text-anchor="middle">📱</text>
+    <text x="16" y="130" font-family="-apple-system, sans-serif" font-size="15" font-weight="bold" fill="#37352F">마이크로 링크인바이오</text>
+    <rect x="16" y="145" width="65" height="18" rx="4" fill="#FBE4E4"/>
+    <text x="22" y="158" font-family="-apple-system, sans-serif" font-size="10" fill="#4C2323" font-weight="600">브랜딩 구축</text>
+    <rect x="86" y="145" width="60" height="18" rx="4" fill="#DBEDDB"/>
+    <text x="92" y="158" font-family="-apple-system, sans-serif" font-size="10" fill="#1C3829" font-weight="600">CTR 18.5%</text>
+    <text x="16" y="185" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">기간: 2026.02 (1주)</text>
+    <text x="16" y="202" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">핵심 기술: Littly, CTA Optimization</text>
+  </g>
+
+  <!-- Card 3 -->
+  <g transform="translate(540, 110)">
+    <rect width="230" height="220" rx="8" fill="#FFFFFF" stroke="#E9E9E7" stroke-width="1.5" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.04))"/>
+    <rect width="230" height="100" rx="8 8 0 0" fill="#E8DEEE"/>
+    <text x="115" y="60" font-family="-apple-system, sans-serif" font-size="32" text-anchor="middle">⚡</text>
+    <text x="16" y="130" font-family="-apple-system, sans-serif" font-size="15" font-weight="bold" fill="#37352F">바이브 코딩 웹 런칭</text>
+    <rect x="16" y="145" width="65" height="18" rx="4" fill="#E8DEEE"/>
+    <text x="22" y="158" font-family="-apple-system, sans-serif" font-size="10" fill="#371E42" font-weight="600">1-Page Web</text>
+    <rect x="86" y="145" width="55" height="18" rx="4" fill="#DBEDDB"/>
+    <text x="92" y="158" font-family="-apple-system, sans-serif" font-size="10" fill="#1C3829" font-weight="600">1분 배포</text>
+    <text x="16" y="185" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">기간: 2026.03 (단독)</text>
+    <text x="16" y="202" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">핵심 기술: Gemini Canvas, HTML5</text>
+  </g>
+
+  <!-- Bottom filter status bar -->
+  <rect x="30" y="350" width="740" height="40" rx="6" fill="#F7F6F3" stroke="#E9E9E7"/>
+  <text x="45" y="375" font-family="-apple-system, sans-serif" font-size="12" fill="#787774">🔍 [필터 조건]: 상태 = "완료" | 정렬 = "최신순" | 표시 속성: 성과지표, 역할, 기술스택</text>
+</svg>

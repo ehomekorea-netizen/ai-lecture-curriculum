@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#14141E"/>
+  
+  <!-- Manus Top Header -->
+  <rect x="0" y="0" width="800" height="50" fill="#0E0E17" border-bottom="1px solid #232332"/>
+  <text x="30" y="32" font-family="-apple-system, sans-serif" font-size="16" font-weight="bold" fill="#7C3AED">🤖 Manus.ai</text>
+  <text x="130" y="32" font-family="-apple-system, sans-serif" font-size="12" fill="#8E92BC">Autonomous General Agent · Multi-step Execution</text>
+
+  <!-- Left: Agent Execution Loop Steps (Sense -> Plan -> Act -> Feedback) -->
+  <g transform="translate(30, 75)">
+    <rect width="320" height="390" rx="12" fill="#1B1B2A" stroke="#2D2D44"/>
+    <text x="20" y="30" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold" fill="#72F3C0">⚡ Agent Task Decomposition</text>
+    
+    <!-- Step 1 Done -->
+    <g transform="translate(20, 50)">
+      <circle cx="12" cy="12" r="10" fill="#27C93F"/>
+      <text x="12" y="16" font-family="-apple-system, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">✓</text>
+      <text x="32" y="16" font-family="-apple-system, sans-serif" font-size="11" fill="#FFFFFF">1. 요구사항 분석 & 와이어프레임 설계</text>
+    </g>
+
+    <!-- Step 2 Done -->
+    <g transform="translate(20, 95)">
+      <circle cx="12" cy="12" r="10" fill="#27C93F"/>
+      <text x="12" y="16" font-family="-apple-system, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">✓</text>
+      <text x="32" y="16" font-family="-apple-system, sans-serif" font-size="11" fill="#FFFFFF">2. HTML5 마크업 및 모던 CSS 작성</text>
+    </g>
+
+    <!-- Step 3 Active -->
+    <g transform="translate(20, 140)">
+      <circle cx="12" cy="12" r="10" fill="#7C3AED"/>
+      <text x="12" y="16" font-family="-apple-system, sans-serif" font-size="10" fill="#FFFFFF" text-anchor="middle">⚙️</text>
+      <text x="32" y="16" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold" fill="#C4B5FD">3. 브라우저 도구 실행 & JS 인터랙션 디버깅</text>
+    </g>
+
+    <!-- Step 4 Pending -->
+    <g transform="translate(20, 185)">
+      <circle cx="12" cy="12" r="10" fill="#383852"/>
+      <text x="12" y="16" font-family="-apple-system, sans-serif" font-size="10" fill="#8E92BC" text-anchor="middle">4</text>
+      <text x="32" y="16" font-family="-apple-system, sans-serif" font-size="11" fill="#6A6F94">4. 최종 산출물 검증 및 배포 링크 생성</text>
+    </g>
+
+    <!-- Agent Inner Thought Box -->
+    <g transform="translate(20, 240)">
+      <rect width="280" height="120" rx="8" fill="#12121D" stroke="#252538"/>
+      <text x="14" y="24" font-family="monospace" font-size="10" fill="#8CA4FF">agent.think()</text>
+      <text x="14" y="44" font-family="monospace" font-size="9" fill="#A8ADC8">"타이핑 애니메이션 로직에서 속도 조절 파라미터를 추가하고 마우스 호버 리프트 효과를 CSS transform으로 최적화합니다."</text>
+      <text x="14" y="98" font-family="monospace" font-size="9" fill="#53DFA9">> Tool Call: browser.executeScript()</text>
+    </g>
+  </g>
+
+  <!-- Right: Agent Sandboxed Browser Execution Window -->
+  <g transform="translate(370, 75)">
+    <rect width="400" height="390" rx="12" fill="#0D0E15" stroke="#2D2D44"/>
+    <rect width="400" height="32" rx="12 12 0 0" fill="#181926"/>
+    <circle cx="16" cy="16" r="4" fill="#FF5F56"/>
+    <circle cx="28" cy="16" r="4" fill="#FFBD2E"/>
+    <circle cx="40" cy="16" r="4" fill="#27C93F"/>
+    <rect x="60" y="6" width="220" height="20" rx="4" fill="#0D0E15"/>
+    <text x="70" y="20" font-family="monospace" font-size="9" fill="#8E92BC">sandbox-agent://live-workspace</text>
+
+    <!-- Browser Sandbox content -->
+    <rect x="25" y="55" width="350" height="160" rx="8" fill="#181926" stroke="#476BFF" stroke-width="1"/>
+    <text x="45" y="95" font-family="-apple-system, sans-serif" font-size="16" font-weight="black" fill="#FFFFFF">Interactive Vibe Portfolio</text>
+    <text x="45" y="120" font-family="-apple-system, sans-serif" font-size="11" fill="#72F3C0">Autonomous coding in progress...</text>
+    <rect x="45" y="145" width="120" height="24" rx="6" fill="#7C3AED"/>
+    <text x="65" y="161" font-family="-apple-system, sans-serif" font-size="10" font-weight="bold" fill="#FFFFFF">Contact Me ➔</text>
+
+    <!-- Live Terminal / Shell Execution -->
+    <rect x="25" y="235" width="350" height="130" rx="8" fill="#090A0F" stroke="#232336"/>
+    <text x="38" y="260" font-family="monospace" font-size="9" fill="#27C93F">$ npm run build</text>
+    <text x="38" y="280" font-family="monospace" font-size="9" fill="#A8ADC8">> vite build --outDir dist</text>
+    <text x="38" y="300" font-family="monospace" font-size="9" fill="#A8ADC8">✓ built in 340ms: index.html (24.8 kB)</text>
+    <text x="38" y="325" font-family="monospace" font-size="9" fill="#53DFA9">> Agent: Build succeeded. Preparing live preview.</text>
+  </g>
+</svg>

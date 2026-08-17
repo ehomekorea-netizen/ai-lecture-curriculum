@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#0E1E25"/>
+  
+  <!-- Netlify Top Nav -->
+  <rect x="0" y="0" width="800" height="55" fill="#0B171D" border-bottom="1px solid #192E38"/>
+  <text x="30" y="35" font-family="-apple-system, sans-serif" font-size="18" font-weight="bold" fill="#00C7B7">🚀 Netlify Drop</text>
+  <text x="170" y="35" font-family="-apple-system, sans-serif" font-size="12" fill="#5F7D8C">Sites > New Site Deployment</text>
+
+  <!-- Main Drag and Drop Target Area -->
+  <g transform="translate(50, 85)">
+    <rect width="700" height="350" rx="16" fill="#132832" stroke="#00C7B7" stroke-width="2.5" stroke-dasharray="8 6"/>
+    
+    <circle cx="350" cy="140" r="45" fill="rgba(0, 199, 183, 0.15)"/>
+    <text x="350" y="152" font-family="-apple-system, sans-serif" font-size="34" text-anchor="middle">📂</text>
+    
+    <text x="350" y="215" font-family="-apple-system, sans-serif" font-size="18" font-weight="bold" fill="#FFFFFF" text-anchor="middle">여기에 index.html 파일을 드래그 앤 드롭하세요</text>
+    <text x="350" y="240" font-family="-apple-system, sans-serif" font-size="12" fill="#8DA6B4" text-anchor="middle">또는 index.html 파일이 들어있는 폴더 전체를 끌어다 놓으세요.</text>
+    
+    <!-- Instant Live URL box -->
+    <g transform="translate(150, 270)">
+      <rect width="400" height="50" rx="10" fill="#0B171D" stroke="#1D3E4E"/>
+      <text x="20" y="30" font-family="monospace" font-size="13" fill="#53DFA9">🌐 https://my-portfolio-2026.netlify.app</text>
+      <rect x="330" y="12" width="55" height="26" rx="5" fill="#00C7B7"/>
+      <text x="343" y="29" font-family="-apple-system, sans-serif" font-size="10" font-weight="bold" fill="#0B171D">Live</text>
+    </g>
+  </g>
+</svg>
