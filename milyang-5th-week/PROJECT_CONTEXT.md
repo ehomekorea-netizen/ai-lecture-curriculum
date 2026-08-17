@@ -17,7 +17,7 @@
 
 ---
 
-## 2. 🗺️ 전체 43개 슬라이드 커리큘럼 아키텍처
+## 2. 🗺️ 전체 44개 슬라이드 커리큘럼 아키텍처
 
 ```
 [Slide 01~03] 🚀 인트로: 5주차 타이틀 ➔ 6시간 여정 로드맵 ➔ 4주차 자산과의 연결고리
@@ -41,31 +41,32 @@
   - Slide 22: Netlify 무료 호스팅 및 고유 도메인 라이브 배포 원리
   - Slide 23: [실습 3] 웹 포트폴리오 전 세계 라이브 배포 실습 (LiveDemoTrigger)
 ----------------------------------------------------------------------------------
-[Slide 24~31] 🟣 DAY 2 · 1교시: AI 에이전트 패러다임 전환 (개념 & 원리)
+[Slide 24~32] 🟣 DAY 2 · 1교시: AI 에이전트 패러다임 전환 (개념 & 원리)
   - Slide 24: Day 2 · Session 1 커버 (SectionCard)
-  - Slide 25: 1. AI 패러다임 변화: 대화에서 '행동'으로 (AIEvolutionCards 3단계 진화)
-  - Slide 26: 2. 개념 비교: LLM vs AI Agent (AgentVsLLMCard)
-  - Slide 27: 3. 왜 AI Agent인가? (LLM 3대 한계 극복)
-  - Slide 28: [실습] AI 에이전트 360° 핸들 조작 자율주행 시뮬레이터 (AutonomousDriveSim)
-  - Slide 29: 4. AI Agent 작동 아키텍처 & ReAct 메커니즘 (AgentLoopFlow 자율 순환 루프)
-  - Slide 30: 5. 직무별 실무 적용 시나리오 Before & After (AgentJobScenarios 3D 플립카드)
-  - Slide 31: 6. 취업준비생의 3대 미래 에이전트 역량 (AgentCareerStrategy)
+  - Slide 25: "AI 시대 더 좁아진 취업문? 달라진 역할에 집중하라" [SBS 8뉴스] (NewsVideoEmbed)
+  - Slide 26: 1. AI 패러다임 변화: 대화에서 '행동'으로 (AIEvolutionCards 3단계 진화)
+  - Slide 27: 2. 개념 비교: LLM vs AI Agent (AgentVsLLMCard)
+  - Slide 28: 3. 왜 AI Agent인가? (LLM 3대 한계 극복)
+  - Slide 29: [실습] AI 에이전트 360° 핸들 조작 자율주행 시뮬레이터 (AutonomousDriveSim)
+  - Slide 30: 4. AI Agent 작동 아키텍처 & ReAct 메커니즘 (AgentLoopFlow 자율 순환 루프)
+  - Slide 31: 5. 직무별 실무 적용 시나리오 Before & After (AgentJobScenarios 3D 플립카드)
+  - Slide 32: 6. 취업준비생의 3대 미래 에이전트 역량 (AgentCareerStrategy)
 
-[Slide 32~36] 🟣 DAY 2 · 2교시: Meta AI 에이전트를 활용한 웹 포트폴리오 제작 (입문 실습)
-  - Slide 32: Day 2 · Session 2 커버 (SectionCard)
-  - Slide 33: Meta AI(Llama 3) 에이전트의 특성과 웹 포트폴리오 생성 원리 (무료/실시간 렌더링)
-  - Slide 34: 자연어 프롬프트로 웹 와이어프레임 & 3단 레이아웃 설계하기 (Hero-Projects-Skills)
-  - Slide 35: 4주차 나의 이력 DB ➔ Meta AI 프롬프트 주입 공식 & 튜닝 팁
-  - Slide 36: [실습 4] Meta AI 에이전트 기반 웹 포트폴리오 제작 실습 (LiveDemoTrigger)
+[Slide 33~37] 🟣 DAY 2 · 2교시: Meta AI 에이전트를 활용한 웹 포트폴리오 제작 (입문 실습)
+  - Slide 33: Day 2 · Session 2 커버 (SectionCard)
+  - Slide 34: Meta AI(Llama 3) 에이전트의 특성과 웹 포트폴리오 생성 원리 (무료/실시간 렌더링)
+  - Slide 35: 자연어 프롬프트로 웹 와이어프레임 & 3단 레이아웃 설계하기 (Hero-Projects-Skills)
+  - Slide 36: 4주차 나의 이력 DB ➔ Meta AI 프롬프트 주입 공식 & 튜닝 팁
+  - Slide 37: [실습 4] Meta AI 에이전트 기반 웹 포트폴리오 제작 실습 (LiveDemoTrigger)
 
-[Slide 37~43] 🟣 DAY 2 · 3교시: 바이브 코딩(Vibe Coding)의 정석 with Manus.ai (완제품 심화 빌딩)
-  - Slide 37: Day 2 · Session 3 커버 (SectionCard)
-  - Slide 38: "가장 핫한 새로운 개발 언어는 영어다" 안드레 카파시 선언 (InstagramEmbed)
-  - Slide 39: "웹페이지 제작에 몇 시간을 쓸 필요가 없습니다" (ManusShowcaseVideo 인트로 영상)
-  - Slide 40: Manus 에이전트 기반 실전 웹 포트폴리오 5단계 제작 로드맵 (ManusWorkflowGuide)
-  - Slide 41: 로컬 에셋 집결: 내 폴더에 모든 경험 자산 모아두기 (ManusAssetFolderViz 손그림)
-  - Slide 42: Manus Plan 모드 & 만능 포트폴리오 생성 프롬프트 (SimpleAgentPromptQuote 애플 타이핑)
-  - Slide 43: [실습 5] Manus.ai 자율 코딩 포트폴리오 완제품 빌딩 실습 (LiveDemoTrigger)
+[Slide 38~44] 🟣 DAY 2 · 3교시: 바이브 코딩(Vibe Coding)의 정석 with Manus.ai (완제품 심화 빌딩)
+  - Slide 38: Day 2 · Session 3 커버 (SectionCard)
+  - Slide 39: "가장 핫한 새로운 개발 언어는 영어다" 안드레 카파시 선언 (InstagramEmbed)
+  - Slide 40: "웹페이지 제작에 몇 시간을 쓸 필요가 없습니다" (ManusShowcaseVideo 인트로 영상)
+  - Slide 41: Manus 에이전트 기반 실전 웹 포트폴리오 5단계 제작 로드맵 (ManusWorkflowGuide)
+  - Slide 42: 로컬 에셋 집결: 내 폴더에 모든 경험 자산 모아두기 (ManusAssetFolderViz 손그림)
+  - Slide 43: Manus Plan 모드 & 만능 포트폴리오 생성 프롬프트 (SimpleAgentPromptQuote 애플 타이핑)
+  - Slide 44: [실습 5] Manus.ai 자율 코딩 포트폴리오 완제품 빌딩 실습 (LiveDemoTrigger)
 ```
 
 ---

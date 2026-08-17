@@ -839,6 +839,22 @@ layout: center
 
 ---
 layout: default
+class: pt-3 px-8 text-center
+---
+
+<div class="mb-1">
+  <h1 class="text-xl font-extrabold text-slate-900 m-0 leading-tight">
+    "AI 시대 더 좁아진 취업문? 달라진 역할에 집중하라"
+  </h1>
+  <p class="text-xs text-slate-500 mt-0.5 mb-0 font-medium">
+    단순 지식 암기형 인재에서 <b>AI 에이전트를 조향하고 업무를 완결하는 실무 실행자</b>로의 전환 [SBS 8뉴스]
+  </p>
+</div>
+
+<NewsVideoEmbed videoId="Mq_zBMB8tN0" />
+
+---
+layout: default
 clicks: 2
 ---
 
