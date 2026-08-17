@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#FFFFFF"/>
+  
+  <!-- Top Navigation Bar: notion.com/ko/templates -->
+  <rect x="0" y="0" width="800" height="54" fill="#F7F6F3" border-bottom="1px solid #EBE9E4"/>
+  <text x="24" y="34" font-family="-apple-system, sans-serif" font-size="16" font-weight="bold" fill="#37352F">📑 Notion 템플릿 갤러리 (notion.com/ko/templates)</text>
+  <rect x="630" y="12" width="145" height="30" rx="6" fill="#2383E2"/>
+  <text x="645" y="32" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">템플릿 복제(Duplicate)</text>
+
+  <!-- Categories Tab -->
+  <rect x="24" y="68" width="140" height="26" rx="13" fill="#37352F"/>
+  <text x="38" y="85" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">🏆 청년 이력서 &amp; 포폴</text>
+  
+  <rect x="172" y="68" width="85" height="26" rx="13" fill="#EBE9E4"/>
+  <text x="185" y="85" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">사무/행정직</text>
+
+  <rect x="265" y="68" width="85" height="26" rx="13" fill="#EBE9E4"/>
+  <text x="278" y="85" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">서비스/홍보</text>
+
+  <!-- Template Cards Grid -->
+  <!-- Template 1: Minimalist Resume & Portfolio -->
+  <g transform="translate(24, 110)">
+    <rect width="235" height="250" rx="10" fill="#FFFFFF" stroke="#E9E9E7" stroke-width="1.5" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.05))"/>
+    <rect width="235" height="110" rx="10 10 0 0" fill="#E8EEFF"/>
+    <text x="20" y="45" font-family="-apple-system, sans-serif" font-size="28">👨‍💼</text>
+    <text x="20" y="75" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold" fill="#1D2A54">신입·사회초년생 기본 이력서</text>
+    <text x="20" y="93" font-family="-apple-system, sans-serif" font-size="10" fill="#586A9E">추천: 사무행정, 일반기업, 공공기관</text>
+    
+    <text x="16" y="140" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" fill="#37352F">구조: 자기소개 + 기본이력 + 자격증</text>
+    <text x="16" y="160" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">• 성실함과 꼼꼼함을 보여주는 1열</text>
+    <text x="16" y="178" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">• 엑셀, 한글, 자격증 보유 현황 정리</text>
+    
+    <rect x="16" y="205" width="203" height="30" rx="6" fill="#EEF2FF" stroke="#C7D2FE"/>
+    <text x="68" y="224" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold" fill="#4338CA">⚡ 이 템플릿 사용하기</text>
+  </g>
+
+  <!-- Template 2: Project Gallery Portfolio -->
+  <g transform="translate(283, 110)">
+    <rect width="235" height="250" rx="10" fill="#FFFFFF" stroke="#E9E9E7" stroke-width="1.5" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.05))"/>
+    <rect width="235" height="110" rx="10 10 0 0" fill="#EEFFFA"/>
+    <text x="20" y="45" font-family="-apple-system, sans-serif" font-size="28">☕</text>
+    <text x="20" y="75" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold" fill="#0E4A35">알바·대외활동 경험 포트폴리오</text>
+    <text x="20" y="93" font-family="-apple-system, sans-serif" font-size="10" fill="#2E755B">추천: 서비스, 매장관리, 마케팅/홍보</text>
+    
+    <text x="16" y="140" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" fill="#37352F">구조: 카페/매장 알바 + 동아리 카드</text>
+    <text x="16" y="160" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">• "레시피 정리로 신입 교육 단축"</text>
+    <text x="16" y="178" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">• 사진과 함께 보여주는 실무 경험</text>
+
+    <rect x="16" y="205" width="203" height="30" rx="6" fill="#F0FDF4" stroke="#BBF7D0"/>
+    <text x="68" y="224" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold" fill="#15803D">⚡ 이 템플릿 사용하기</text>
+  </g>
+
+  <!-- Template 3: Interactive All-in-One Hub -->
+  <g transform="translate(542, 110)">
+    <rect width="235" height="250" rx="10" fill="#FFFFFF" stroke="#E9E9E7" stroke-width="1.5" filter="drop-shadow(0 4px 10px rgba(0,0,0,0.05))"/>
+    <rect width="235" height="110" rx="10 10 0 0" fill="#FFF5E0"/>
+    <text x="20" y="45" font-family="-apple-system, sans-serif" font-size="28">🚀</text>
+    <text x="20" y="75" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold" fill="#78470B">나만의 올인원 커리어 허브</text>
+    <text x="20" y="93" font-family="-apple-system, sans-serif" font-size="10" fill="#99601D">추천: 다재다능 20대 청년 구직자</text>
+    
+    <text x="16" y="140" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" fill="#37352F">구조: 한 줄 소개 + 활동 기록 + 연락처</text>
+    <text x="16" y="160" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">• 노션 링크 하나로 모바일 즉시 확인</text>
+    <text x="16" y="178" font-family="-apple-system, sans-serif" font-size="11" fill="#787774">• 인스타, 블로그, 이메일 원클릭 연결</text>
+
+    <rect x="16" y="205" width="203" height="30" rx="6" fill="#FFFBEB" stroke="#FDE68A"/>
+    <text x="68" y="224" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold" fill="#B45309">⚡ 이 템플릿 사용하기</text>
+  </g>
+
+  <!-- Bottom Tip Banner -->
+  <g transform="translate(24, 385)">
+    <rect width="753" height="85" rx="10" fill="#F7F6F3" stroke="#E9E9E7"/>
+    <text x="20" y="30" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold" fill="#2383E2">💡 청년 취업 눈높이 템플릿 활용 팁</text>
+    <text x="20" y="52" font-family="-apple-system, sans-serif" font-size="11" fill="#555555">1) 거창한 경력이 없어도大丈夫! 카페·매장 알바, 동아리, 봉사활동도 훌륭한 직무 역량입니다.</text>
+    <text x="20" y="70" font-family="-apple-system, sans-serif" font-size="11" fill="#555555">2) "손님 컴플레인 0건", "재고 정리로 시간 단축"처럼 내가 일하며 낸 작은 변화를 숫자로 적어보세요.</text>
+  </g>
+</svg>

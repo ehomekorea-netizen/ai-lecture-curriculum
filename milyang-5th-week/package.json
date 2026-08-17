@@ -1,0 +1,20 @@
+{
+  "name": "milyang-week5-slidev",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open --port 3050",
+    "build": "slidev build",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.19.0",
+    "@slidev/theme-apple-basic": "latest",
+    "@slidev/theme-default": "latest",
+    "lucide-vue-next": "^0.454.0",
+    "qrcode": "^1.5.4",
+    "qrcode-generator": "^1.4.4",
+    "roughjs": "^4.6.6",
+    "vue": "^3.5.0"
+  }
+}

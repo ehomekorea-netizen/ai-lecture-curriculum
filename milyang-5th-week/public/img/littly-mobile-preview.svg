@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 540" width="320" height="540">
+  <defs>
+    <linearGradient id="primaryGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#476BFF" />
+      <stop offset="100%" stop-color="#2242D8" />
+    </linearGradient>
+    <linearGradient id="avatarBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFBD2E" />
+      <stop offset="100%" stop-color="#F5512E" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="320" height="540" fill="#0C0D14"/>
+  
+  <!-- Profile Section (노치 간섭 없이 아래로 완벽히 여백 확보) -->
+  <circle cx="160" cy="74" r="32" fill="url(#avatarBorder)"/>
+  <circle cx="160" cy="74" r="29" fill="#181926"/>
+  <text x="160" y="82" font-family="-apple-system, sans-serif" font-size="22" text-anchor="middle" fill="#FFFFFF">👨‍💼</text>
+  
+  <text x="160" y="122" font-family="-apple-system, sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF" text-anchor="middle">김밀양 (Milyang Kim)</text>
+  <text x="160" y="139" font-family="-apple-system, sans-serif" font-size="10.5" fill="#9BA1C6" text-anchor="middle">성실함과 실행력으로 기여하는 인재</text>
+  
+  <!-- Sub Badge -->
+  <g transform="translate(68, 149)">
+    <rect width="184" height="18" rx="9" fill="#181A28" stroke="#2C3048" stroke-width="1"/>
+    <circle cx="10" cy="9" r="3" fill="#10B981"/>
+    <text x="20" y="12.5" font-family="-apple-system, sans-serif" font-size="8.5" font-weight="bold" fill="#A5F3FC">✨ 1분 만에 훑어보는 직무 역량 허브</text>
+  </g>
+
+  <!-- CTA Link Blocks -->
+  <!-- Block 1: High-Impact Hooking Main Portfolio (Primary CTA) -->
+  <g transform="translate(16, 178)">
+    <rect width="288" height="60" rx="14" fill="url(#primaryGlow)" filter="drop-shadow(0 4px 14px rgba(71,107,255,0.45))"/>
+    <text x="20" y="37" font-family="-apple-system, sans-serif" font-size="20">🚀</text>
+    <text x="52" y="27" font-family="-apple-system, sans-serif" font-size="12" font-weight="800" fill="#FFFFFF">1분 만에 보는 핵심 역량 &amp; 프로젝트</text>
+    <text x="52" y="45" font-family="-apple-system, sans-serif" font-size="9.5" fill="#DDE4FF">매장 관리 혁신 성과 · 자격증 총정리</text>
+    
+    <!-- Mini 추천 Badge -->
+    <rect x="238" y="11" width="36" height="15" rx="7.5" fill="#FF5F56"/>
+    <text x="256" y="22" font-family="-apple-system, sans-serif" font-size="8" font-weight="900" fill="#FFFFFF" text-anchor="middle">추천</text>
+    <text x="264" y="46" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">→</text>
+  </g>
+
+  <!-- Block 2: Activity & Photo Gallery -->
+  <g transform="translate(16, 246)">
+    <rect width="288" height="56" rx="14" fill="#151622" stroke="#282A3D" stroke-width="1.2"/>
+    <text x="20" y="35" font-family="-apple-system, sans-serif" font-size="18">📸</text>
+    <text x="52" y="26" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">실무 활동 &amp; 알바 현장 사진 갤러리</text>
+    <text x="52" y="43" font-family="-apple-system, sans-serif" font-size="9.5" fill="#8E92BC">음료 레시피 매뉴얼화 · 축제 기획 현장</text>
+    <text x="264" y="35" font-family="-apple-system, sans-serif" font-size="13" fill="#8E92BC">→</text>
+  </g>
+
+  <!-- Block 3: Interactive Vibe Web (Live Demo) -->
+  <g transform="translate(16, 310)">
+    <rect width="288" height="56" rx="14" fill="#151622" stroke="#282A3D" stroke-width="1.2"/>
+    <text x="20" y="35" font-family="-apple-system, sans-serif" font-size="18">🌐</text>
+    <text x="52" y="26" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">직접 만든 1페이지 인터랙티브 웹</text>
+    <text x="52" y="43" font-family="-apple-system, sans-serif" font-size="9.5" fill="#8E92BC">AI 바이브 코딩 &amp; Netlify 글로벌 배포</text>
+    <text x="264" y="35" font-family="-apple-system, sans-serif" font-size="13" fill="#8E92BC">→</text>
+  </g>
+
+  <!-- Block 4: Direct Kakao Inquiry (노란색 카카오톡 말풍선 단일 아이콘 깔끔 적용) -->
+  <g transform="translate(16, 374)">
+    <rect width="288" height="56" rx="14" fill="#151622" stroke="#3D3A20" stroke-width="1.4"/>
+    
+    <!-- Single Kakao Yellow Badge -->
+    <g transform="translate(16, 13)">
+      <rect width="30" height="30" rx="9" fill="#FEE500"/>
+      <text x="15" y="21" font-family="-apple-system, sans-serif" font-size="16" text-anchor="middle" fill="#3C1E1E">💬</text>
+    </g>
+    
+    <text x="56" y="26" font-family="-apple-system, sans-serif" font-size="12.5" font-weight="bold" fill="#FFFFFF">문의하기 (Contact)</text>
+    <text x="56" y="44" font-family="-apple-system, sans-serif" font-size="9.5" fill="#FEE500">카카오톡 1:1 오픈채팅 / 빠른 연결</text>
+    <text x="264" y="35" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold" fill="#FEE500">→</text>
+  </g>
+
+  <!-- Bottom QR Bar -->
+  <g transform="translate(60, 442)">
+    <rect width="200" height="26" rx="13" fill="#12131C" stroke="#222434"/>
+    <text x="100" y="17" font-family="-apple-system, sans-serif" font-size="9" font-weight="600" fill="#8E92BC" text-anchor="middle">📱 이력서 QR코드로 1초 스캔 접속</text>
+  </g>
+  
+  <text x="160" y="488" font-family="-apple-system, sans-serif" font-size="8.5" fill="#4B4E6B" text-anchor="middle">Powered by Littly ⚡</text>
+</svg>

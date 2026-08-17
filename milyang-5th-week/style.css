@@ -1,0 +1,261 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Geist+Mono:wght@400;600;700&family=Kalam:wght@400;700&display=swap');
+
+:root {
+  /* Clean Tech Surfaces */
+  --bg:            #F8FAFC;   /* Slate Ultra-Light Canvas (맑고 세련된 배경) */
+  --surface:       #FFFFFF;   /* Pure White Cards */
+  --cream:         #F1F5F9;   /* Slate 100 */
+  --ink:           #0F172A;   /* Slate 900 (깊이감 있는 모던 블랙) */
+  --ink-dim:       #475569;   /* Slate 600 */
+  --border:        #E2E8F0;   /* Slate 200 (선명하고 정돈된 경계) */
+
+  /* Tech Palette */
+  --sapphire:      #2563EB;   /* Modern Royal Blue (선명한 테크 블루) */
+  --sapphire-soft: #DBEAFE;
+  --mint:          #059669;   /* Modern Emerald */
+  --mint-soft:     #D1FAE5;
+  --amber:         #D97706;
+  --coral:         #EF4444;   /* Vivid Red (선명한 취소선) */
+
+  /* Semantic aliases */
+  --accent:        var(--sapphire);
+  --panel:         var(--surface);
+  --panel-border:  var(--border);
+  --claim:         var(--coral);
+}
+
+/* Page canvas - Global Fit & Anti-Overflow Guard */
+.slidev-layout {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+  --slidev-code-font-size: 0.85em;
+  box-sizing: border-box;
+  padding: 1.8rem 2.8rem 1.6rem !important;
+  word-break: keep-all;
+  letter-spacing: -0.015em;
+}
+
+/* Headings Proportions - Clean Modern Tech Sans */
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4,
+.font-serif {
+  font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif !important;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  opacity: 1 !important;
+  line-height: 1.2;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+
+.slidev-layout h1 {
+  font-size: 1.8rem !important;
+  margin-top: 0 !important;
+  margin-bottom: 0.35rem !important;
+  color: var(--ink) !important;
+  opacity: 1 !important;
+}
+
+.slidev-layout p {
+  line-height: 1.5;
+  color: #475569;
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.6rem;
+}
+
+.slidev-layout h3,
+.slidev-layout h3:not(.opacity-100),
+.slidev-layout h4 {
+  font-family: 'Pretendard', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple Color Emoji', 'Segoe UI Emoji', sans-serif !important;
+  font-weight: 700;
+  color: var(--ink) !important;
+  opacity: 1 !important;
+}
+
+/* Default Layout Auto-Centering (상하 균형 수직 중앙 정렬) */
+.slidev-layout.default {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+/* Two-cols-header Layout Auto-Fit & Balanced Spacing */
+.slidev-layout.two-cols-header {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  grid-template-rows: auto 1fr auto !important;
+  column-gap: 1.35rem !important; /* 과하지 않고 딱 보기 좋은 알맞은 중간 여백 */
+  row-gap: 0.5rem !important;
+  align-items: center;
+}
+
+.slidev-layout.two-cols-header .col-header {
+  grid-area: 1 / 1 / 2 / 3;
+  margin-bottom: 0.2rem;
+}
+
+.slidev-layout.two-cols-header .col-left {
+  grid-area: 2 / 1 / 3 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.slidev-layout.two-cols-header .col-right {
+  grid-area: 2 / 2 / 3 / 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* Cover / section / statement slides */
+.slidev-layout.cover,
+.slidev-layout.section,
+.slidev-layout.statement,
+.slidev-layout.center,
+.slidev-layout.full {
+  background: var(--bg);
+}
+
+.slidev-layout.cover {
+  padding: 0 !important;
+}
+
+/* Claim Rows (Before/After 취소선 대조) */
+.claims {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-top: 0.6rem;
+}
+
+.claim-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1.5px solid var(--border);
+  padding: 0.65rem 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.narrow {
+  color: var(--ink-dim);
+  font-size: 0.92rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+/* 기본 또는 클릭 활성화 시 빨간 취소선 */
+.narrow.struck,
+.claim-row.active .narrow {
+  text-decoration: line-through;
+  text-decoration-color: var(--claim);
+  text-decoration-thickness: 2.5px;
+  color: #8C827A;
+}
+
+.arrow {
+  color: var(--ink-dim);
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.claim-row.active .arrow {
+  opacity: 1;
+}
+
+.broad {
+  color: #94A3B8;
+  font-weight: 700;
+  font-size: 0.98rem;
+  transition: all 0.3s;
+}
+
+.claim-row.active .broad {
+  color: var(--sapphire);
+  transform: translateX(2px);
+}
+
+/* Section Card List */
+.sc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.sc-list span {
+  position: relative;
+  padding-left: 1.25rem;
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: #475569;
+  line-height: 1.45;
+}
+
+.sc-list span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #2563EB;
+  box-shadow: 0 0 0 3px #DBEAFE;
+}
+
+/* Chips & Badges */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-blue { background: #EFF6FF; color: #2563EB; border: 1px solid #DBEAFE; }
+.badge-green { background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0; }
+.badge-orange { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
+
+/* ── Global Card & Box Boundary Enforcer (전역 카드 경계 및 배경 강화) ── */
+.slidev-layout .bg-white {
+  background-color: #FFFFFF !important;
+  border: 1.5px solid #CBD5E1 !important; /* 슬레이트 300 - 한눈에 보이는 선명한 경계 */
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.03) !important;
+}
+
+/* 내부 중첩 카드 박스들은 은은한 베이지/소프트 슬레이트로 확실한 위계 구분 */
+.slidev-layout .bg-slate-50,
+.slidev-layout .bg-gray-50 {
+  background-color: #F8FAFC !important;
+  border: 1px solid #E2E8F0 !important;
+}
+
+/* 카드 호버 시 생동감 있는 마이크로 인터랙션 */
+.slidev-layout .bg-white:hover {
+  border-color: #93C5FD !important;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08), 0 2px 6px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Links */
+.slidev-layout a {
+  color: var(--sapphire);
+  text-decoration: none;
+  font-weight: 600;
+}
