@@ -177,7 +177,7 @@ class: pt-3 px-8
 
 <div class="mb-1">
   <h1 class="text-xl font-bold text-slate-900 m-0 leading-tight">화려한 템플릿보다 중요한 경험 DB 이식의 3대 원칙</h1>
-  <p class="text-xs text-slate-500 mt-0.5 mb-0">겉모습만 예쁜 템플릿을 무작정 따라 하기보다, <b>내 직무 역량과 경험 자산의 논리에 맞춰 이식하는 가이드</b>입니다.</p>
+  <p class="text-xs text-slate-500 mt-0.5 mb-0">단순 디자인 복제가 아닌, <b>4주차 경험 자산을 채용 담당자의 관점으로 재구성하는 핵심 가이드</b>입니다.</p>
 </div>
 
 ::left::
@@ -185,43 +185,46 @@ class: pt-3 px-8
   <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
     <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</span>
     <div>
-      <h4 class="text-xs font-bold text-slate-900">직무 적합도 기반 경험 선별</h4>
-      <p class="text-[11px] text-slate-600 mt-0.5 m-0">4주차 DB의 모든 경험을 다 넣지 않고, <b>지원 직무와 가장 직결된 핵심 프로젝트 2~3개</b>만 전략적 추출</p>
+      <h4 class="text-xs font-bold text-slate-900">직무 맞춤형 압축 선별</h4>
+      <p class="text-[11px] text-slate-600 mt-0.5 m-0">모든 이력을 넣지 않고, <b>지원 직무와 가장 직결된 핵심 프로젝트 2~3개</b>만 전략적 배치</p>
     </div>
   </div>
 
   <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
-    <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
+    <span class="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</span>
     <div>
-      <h4 class="text-xs font-bold text-slate-900">STAR 인과관계 구조적 매핑</h4>
-      <p class="text-[11px] text-slate-600 mt-0.5 m-0">템플릿 카드 구조에 맞춰 <b>[문제 정의 ➔ 내가 취한 행동 ➔ 정량적 수치 성과]</b>의 인과관계를 체계화</p>
+      <h4 class="text-xs font-bold text-slate-900">STAR 인과관계 논리 매핑</h4>
+      <p class="text-[11px] text-slate-600 mt-0.5 m-0"><b>[문제 정의 ➔ 해결 행동 ➔ 정량 수치 성과]</b>의 인과관계로 실무 문제해결력 입증</p>
     </div>
   </div>
 
   <div class="p-3 bg-white rounded-2xl border border-slate-200 shadow-sm flex items-start gap-3">
-    <span class="w-6 h-6 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</span>
+    <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</span>
     <div>
-      <h4 class="text-xs font-bold text-slate-900">웹 퍼블리싱 &amp; 권한 검증</h4>
-      <p class="text-[11px] text-slate-600 mt-0.5 m-0">우측 상단 <b>[공유] ➔ [웹에 게시]</b>를 켜고, 시크릿 창에서 정상 열람되는지 확인 후 링크 제출</p>
+      <h4 class="text-xs font-bold text-slate-900">즉시 배포 &amp; 권한 검증</h4>
+      <p class="text-[11px] text-slate-600 mt-0.5 m-0">우측 상단 <b>[공유 ➔ 웹 게시]</b> 활성화 후, 시크릿 창에서 정상 열람되는지 최종 확인</p>
     </div>
   </div>
 </div>
 
 ::right::
 <div class="p-4 bg-slate-900 text-slate-100 rounded-2xl border border-slate-800 shadow-xl mt-1">
-  <h4 class="text-xs font-bold text-emerald-400 mb-2 font-mono">💡 벤치마킹 시 반드시 검토할 3대 판단 기준</h4>
-  <div class="space-y-2 text-xs text-slate-300">
-    <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60">
-      <b class="text-white block text-[11px] mb-0.5">01. 외형(디자인)보다 직무 적합성</b>
-      <span class="text-[10.5px] text-slate-400">화려한 레이아웃에 현혹되지 않고 "내 직무 역량(기획/사무/운영)이 가장 직관적으로 읽히는 구조인가?" 확인</span>
+  <div class="flex items-center justify-between mb-2.5 pb-1.5 border-b border-slate-800">
+    <span class="text-xs font-bold text-emerald-400 font-mono tracking-wider">EVALUATION STANDARD</span>
+    <span class="text-[10px] text-slate-400 font-mono">채용 심사관 관점</span>
+  </div>
+  <div class="space-y-2.5 text-xs text-slate-300">
+    <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+      <b class="text-blue-300 block text-[11.5px] mb-0.5">01. 3초 가독성 (Readability)</b>
+      <span class="text-[10.5px] text-slate-400 leading-snug">화려한 그래픽보다 "무슨 일을 할 수 있는 사람인가"가 첫 화면에서 즉시 읽히는가</span>
     </div>
-    <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60">
-      <b class="text-white block text-[11px] mb-0.5">02. 경험 데이터의 인과관계 증명</b>
-      <span class="text-[10.5px] text-slate-400">단순 업무 나열이 아닌 "어떤 문제를 어떤 행동으로 해결하여 무슨 성과를 냈는가"의 논리적 완결성 확보</span>
+    <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+      <b class="text-emerald-300 block text-[11.5px] mb-0.5">02. 근거 있는 수치 (Proof)</b>
+      <span class="text-[10.5px] text-slate-400 leading-snug">추상적 미사여구 대신 "소요시간 30% 단축", "오류 0건" 등 구체적 팩트로 증명되었는가</span>
     </div>
-    <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60">
-      <b class="text-white block text-[11px] mb-0.5">03. 나만의 고유한 맥락 유지</b>
-      <span class="text-[10.5px] text-slate-400">남의 템플릿 예시 문구를 어설프게 흉내 내지 않고, 4주차 내 실제 현장 경험의 맥락과 전문 용어로 100% 치환</span>
+    <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+      <b class="text-purple-300 block text-[11.5px] mb-0.5">03. 진짜 내 언어 (Authenticity)</b>
+      <span class="text-[10.5px] text-slate-400 leading-snug">남의 템플릿 샘플 문구가 아닌, 4주차에 축적한 나의 실제 현장 경험 언어로 채워졌는가</span>
     </div>
   </div>
 </div>
@@ -281,7 +284,10 @@ clicks: 2
 
 ::right::
 <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm mt-1">
-  <h4 class="text-xs font-bold text-slate-900 mb-2">🎯 단계별 역할 분담 전략</h4>
+  <div class="flex items-center justify-between mb-2 pb-1 border-b border-slate-100">
+    <h4 class="text-xs font-bold text-slate-900 m-0">단계별 역할 분담 전략</h4>
+    <span class="text-[10px] text-blue-600 font-mono font-bold">FUNNEL STRATEGY</span>
+  </div>
   <div class="space-y-2.5 text-xs text-slate-600">
     <div class="p-2 rounded-xl bg-slate-50 border border-slate-100">
       <b class="text-blue-600 block mb-0.5">1. 첫인상 단계 (Entrance)</b>
@@ -367,7 +373,7 @@ layout: center
 <SectionCard
   kicker="Day 1 · Session 3"
   title="나의 노션 DB로 만드는 단일 파일 웹: Gemini Canvas 실전 바이브 코딩"
-  art="✨"
+  art="gemini-star-logo.png"
 >
   <div class="sc-list">
     <span>취업준비생을 위한 웹 포트폴리오 5대 핵심 기본 구조</span>
@@ -466,23 +472,7 @@ layout: two-cols-header
 Gemini Canvas에 **복사해서 붙여넣고 내 노션 텍스트만 채우면 즉시 작동하는 초안 생성 프롬프트**입니다.
 
 ::left::
-<div class="bg-slate-900 text-slate-100 p-3.5 rounded-2xl border border-slate-800 font-mono text-[10.5px] leading-relaxed shadow-lg">
-  <div class="text-emerald-400 font-bold mb-1.5 pb-1 border-b border-slate-800 flex items-center justify-between">
-    <span>📋 초안 생성 1-Shot 프롬프트</span>
-    <span class="text-[9.5px] text-slate-400">Gemini Canvas 입력용</span>
-  </div>
-  <div class="text-slate-300 space-y-1.5 overflow-y-auto max-h-[250px] pr-1">
-    <p class="text-blue-300"># 역할: 웹 퍼블리셔 및 UI 디자이너</p>
-    <p>아래 나의 경험 DB를 바탕으로 깔끔하고 반응형인 1페이지 웹 포트폴리오를 만들어줘.</p>
-    <p class="text-amber-300 mt-1">[포트폴리오 필수 구성]</p>
-    <p>1. 프로필: 이름, 희망 직무, 한 줄 슬로건, 연락처(이메일, 전화번호)</p>
-    <p>2. 핵심 강점: 나의 일하는 태도와 직무 강점 요약</p>
-    <p>3. 주요 프로젝트: 노션의 문제해결 과정과 성과를 담은 카드 레이아웃</p>
-    <p>4. 보유 스킬: 활용 가능한 툴 및 자격증 뱃지 목록</p>
-    <p class="text-emerald-300 mt-1">[나의 노션 경험 DB]</p>
-    <p class="text-slate-400">(여기에 1교시 노션 포트폴리오의 텍스트를 그대로 붙여넣기)</p>
-  </div>
-</div>
+<PromptCopyCard />
 
 ::right::
 <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm mt-0.5">
@@ -510,7 +500,7 @@ Gemini Canvas에 **복사해서 붙여넣고 내 노션 텍스트만 채우면 �
 layout: two-cols-header
 ---
 
-# [2단계: 커스터마이징] 🎨 디자인 톤앤매너 & 색상 튜닝 (Case 1)
+# [2단계: 커스터마이징] 디자인 톤앤매너 & 색상 튜닝 (Case 1)
 
 초안이 나온 후, **내 희망 직무와 취향에 맞춰 색상, 폰트, 여백을 바꾸는 대화형 프롬프트**입니다.
 
@@ -573,7 +563,7 @@ layout: two-cols-header
 layout: two-cols-header
 ---
 
-# [2단계: 커스터마이징] 📈 프로젝트 성과 & 수치 강조 튜닝 (Case 2)
+# [2단계: 커스터마이징] 프로젝트 성과 & 수치 강조 튜닝 (Case 2)
 
 노션의 긴 줄글 경험을 **인사담당자가 3초 만에 파악할 수 있도록 수치와 구조를 강조하는 프롬프트**입니다.
 
@@ -632,7 +622,7 @@ layout: two-cols-header
 layout: two-cols-header
 ---
 
-# [2단계: 커스터마이징] ⚡ 1초 편의 기능 & 인터랙션 추가 (Case 3)
+# [2단계: 커스터마이징] 1초 편의 기능 & 인터랙션 추가 (Case 3)
 
 방문자가 포트폴리오를 둘러볼 때 **몰입감을 높이고 연락 허들을 없애는 실전 인터랙션 프롬프트**입니다.
 
@@ -691,7 +681,7 @@ layout: two-cols-header
 layout: two-cols-header
 ---
 
-# [3단계: 검증 & 디버깅] 🛠️ AI 대화형 오류 해결법 (Case 4)
+# [3단계: 검증 & 디버깅] AI 대화형 오류 해결법 (Case 4)
 
 버튼이 안 눌리거나 스마트폰에서 깨질 때, **AI에게 바로잡아 달라고 요청하는 3대 실전 디버깅 패턴**입니다.
 
@@ -823,7 +813,7 @@ layout: center
 <SectionCard
   kicker="Day 2 · Session 1"
   title="ChatGPT를 넘어 '스스로 일하는 AI': AI 에이전트(Agent)의 이해와 실무 변화"
-  art="🤖"
+  art="ai-agent-trends.png"
 >
   <div class="sc-list">
     <span>질의응답(Think & Talk)에서 목표 자율 완수(Sense-Plan-Act)로 패러다임 전환</span>
@@ -935,7 +925,7 @@ layout: center
 <SectionCard
   kicker="Day 2 · Session 2"
   title="Meta AI 에이전트를 활용한 웹 포트폴리오 제작"
-  art="🤖"
+  art="meta-ai-spark.png"
 >
   <div class="sc-list">
     <span>Llama 기반 Meta AI의 무료 접근성과 대화형 코드 생성 특성</span>
@@ -979,18 +969,21 @@ class: pt-3 px-8
 
 ::right::
 <div class="p-4 bg-slate-900 text-slate-100 rounded-2xl border border-slate-800 shadow-xl mt-1">
-  <h4 class="text-xs font-bold text-emerald-400 mb-2 font-mono">💡 Meta AI 포트폴리오 3단계 생성 흐름</h4>
+  <div class="flex items-center justify-between mb-2.5 pb-1.5 border-b border-slate-800">
+    <span class="text-xs font-bold text-emerald-400 font-mono tracking-wider">PIPELINE FLOW</span>
+    <span class="text-[10px] text-slate-400 font-mono">Meta AI 생성 3단계</span>
+  </div>
   <div class="space-y-2 text-xs text-slate-300">
-    <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60">
-      <b class="text-white block text-[11px] mb-0.5">1. 역할 및 직무 정의 (Role Definition)</b>
+    <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+      <b class="text-blue-300 block text-[11px] mb-0.5">1. 역할 및 직무 정의 (Role Definition)</b>
       <span class="text-[10.5px] text-slate-400">"너는 전문 웹 개발 에이전트야. 신입 기획자를 위한 세련된 원페이지 포트폴리오를 작성해줘"</span>
     </div>
-    <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60">
-      <b class="text-white block text-[11px] mb-0.5">2. 4주차 경험 DB 데이터 주입 (Data Injection)</b>
+    <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+      <b class="text-emerald-300 block text-[11px] mb-0.5">2. 4주차 경험 DB 데이터 주입 (Data Injection)</b>
       <span class="text-[10.5px] text-slate-400">내 STAR 이력 데이터와 수치 성과를 프롬프트에 그대로 복사-붙여넣기</span>
     </div>
-    <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60">
-      <b class="text-white block text-[11px] mb-0.5">3. 브라우저 실시간 프리뷰 &amp; 대화 튜닝 (Tuning)</b>
+    <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+      <b class="text-purple-300 block text-[11px] mb-0.5">3. 브라우저 실시간 프리뷰 &amp; 대화 튜닝 (Tuning)</b>
       <span class="text-[10.5px] text-slate-400">대화로 "색상을 네이비 톤으로 바꿔줘", "호버 인터랙션을 추가해줘" 즉시 수정</span>
     </div>
   </div>
@@ -1024,7 +1017,10 @@ class: pt-3 px-8
 
 ::right::
 <div class="p-4 bg-white rounded-2xl border border-slate-200 shadow-sm mt-1">
-  <h4 class="text-xs font-bold text-slate-900 mb-2">💬 Meta AI 마스터 와이어프레임 프롬프트</h4>
+  <div class="flex items-center justify-between mb-2 pb-1 border-b border-slate-100">
+    <h4 class="text-xs font-bold text-slate-900 m-0">Meta AI 마스터 와이어프레임 프롬프트</h4>
+    <span class="text-[10px] text-blue-600 font-mono font-bold">1-SHOT TEMPLATE</span>
+  </div>
   <div class="p-3 rounded-xl bg-slate-900 text-slate-200 font-mono text-[10.5px] leading-relaxed border border-slate-800 space-y-1">
     <p class="text-emerald-400 m-0">"HTML, CSS, JS가 포함된 단일 파일 포트폴리오 웹을 만들어줘.</p>
     <p class="text-slate-300 m-0">1. Hero: 직무 슬로건 &amp; 프로필 소개<br>2. Projects: 3개의 STAR 문제해결 카드<br>3. Skills: 보유 기술 태그 모음</p>
@@ -1071,14 +1067,17 @@ class: pt-3 px-8
 
 ::right::
 <div class="p-4 bg-slate-900 text-slate-100 rounded-2xl border border-slate-800 shadow-xl mt-1">
-  <h4 class="text-xs font-bold text-emerald-400 mb-2 font-mono">⚡ Meta AI 코드 생성 3대 튜닝 팁</h4>
-  <div class="space-y-2 text-xs text-slate-300">
-    <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60">
-      <b class="text-white block text-[11px] mb-0.5">🎨 색상 톤 튜닝</b>
+  <div class="flex items-center justify-between mb-2.5 pb-1.5 border-b border-slate-800">
+    <span class="text-xs font-bold text-emerald-400 font-mono tracking-wider">TUNING TIPS</span>
+    <span class="text-[10px] text-slate-400 font-mono">Meta AI 코드 최적화</span>
+  </div>
+  <div class="space-y-2.5 text-xs text-slate-300">
+    <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+      <b class="text-blue-300 block text-[11px] mb-0.5">01. 색상 톤앤매너 튜닝</b>
       <span class="text-[10.5px] text-slate-400">"신뢰감을 주는 딥 네이비와 에메랄드 포인트 컬러로 바꿔줘."</span>
     </div>
-    <div class="p-2 rounded-xl bg-slate-800/80 border border-slate-700/60">
-      <b class="text-white block text-[11px] mb-0.5">✨ 인터랙션 추가</b>
+    <div class="p-2.5 rounded-xl bg-slate-800/80 border border-slate-700/60">
+      <b class="text-emerald-300 block text-[11px] mb-0.5">02. 마이크로 인터랙션 추가</b>
       <span class="text-[10.5px] text-slate-400">"프로젝트 카드에 마우스를 올리면 살짝 떠오르는 호버 효과를 넣어줘."</span>
     </div>
   </div>
