@@ -25,7 +25,7 @@ layout: intro
 
 <div class="grid grid-cols-2 gap-8 mt-6">
   <div class="p-6 bg-white rounded-2xl border border-gray-200 shadow-sm">
-    <div class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2 font-mono">DAY 1 (화요일 · 3시간)</div>
+    <div class="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2 font-mono">DAY 1 (수요일 · 3시간)</div>
     <h3 class="text-xl font-bold text-gray-900 mb-3">나만의 웹 포트폴리오 빌딩 & 배포</h3>
     <ul class="space-y-2 text-sm text-gray-600">
       <li><b>1교시</b>: 노션 공식 템플릿 활용 & 나만의 웹 포트폴리오 빌딩</li>
