@@ -192,17 +192,18 @@ onUnmounted(() => ro?.disconnect())
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 220px;
+  min-width: 250px;
 }
 
 .sc-art-img {
-  width: 220px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 20px;
+  width: 250px;
+  height: auto;
+  max-height: 175px;
+  object-fit: contain;
+  border-radius: 18px;
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
   border: 1.5px solid #E2E8F0;
-  background: #0F172A;
+  background: #0B0F19;
   display: block;
 }
 
