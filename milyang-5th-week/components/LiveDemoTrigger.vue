@@ -18,6 +18,13 @@ const props = withDefaults(defineProps<{
 })
 
 const targetUrl = computed(() => props.url || props.link)
+
+function handleLinkClick(e: MouseEvent) {
+  e.stopPropagation()
+  if (targetUrl.value) {
+    window.open(targetUrl.value, '_blank', 'noopener,noreferrer')
+  }
+}
 </script>
 
 <template>
@@ -35,6 +42,7 @@ const targetUrl = computed(() => props.url || props.link)
           rel="noopener noreferrer"
           class="tool-tag tool-tag-link"
           title="실습 사이트로 이동하기 (새 창)"
+          @click.stop="handleLinkClick"
         >
           <span>🛠️ {{ tool }}</span>
           <span class="link-arrow">↗</span>
@@ -77,6 +85,8 @@ const targetUrl = computed(() => props.url || props.link)
   color: #fff;
   position: relative;
   overflow: hidden;
+  pointer-events: auto !important;
+  z-index: 20;
 }
 
 .live-demo-card::before {
@@ -94,6 +104,8 @@ const targetUrl = computed(() => props.url || props.link)
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1rem;
+  position: relative;
+  z-index: 30;
 }
 
 .live-pulse-badge {
@@ -132,6 +144,8 @@ const targetUrl = computed(() => props.url || props.link)
 .tool-duration-tags {
   display: flex;
   gap: 8px;
+  position: relative;
+  z-index: 40;
 }
 
 .tool-tag {
@@ -149,12 +163,16 @@ const targetUrl = computed(() => props.url || props.link)
 }
 
 .tool-tag-link {
-  cursor: pointer;
+  cursor: pointer !important;
+  pointer-events: auto !important;
   background: rgba(71, 107, 255, 0.28);
   border: 1.5px solid rgba(140, 164, 255, 0.7);
   color: #c2d1ff;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 0 14px rgba(71, 107, 255, 0.25);
+  position: relative;
+  z-index: 50;
+  user-select: none;
 }
 
 .tool-tag-link:hover {
