@@ -13,14 +13,22 @@ const RULE_H = 20
 
 const isImage = computed(() => {
   if (!props.art) return false
-  return props.art.startsWith('/') || props.art.startsWith('http') || props.art.endsWith('.svg') || props.art.endsWith('.png') || props.art.endsWith('.webp')
+  return props.art.startsWith('/') || props.art.startsWith('http') || props.art.includes('.svg') || props.art.includes('.png') || props.art.includes('.jpg') || props.art.includes('.jpeg') || props.art.includes('.webp')
+})
+
+const isLogo = computed(() => {
+  if (!props.art) return false
+  return props.art.toLowerCase().includes('logo')
 })
 
 const base = import.meta.env.BASE_URL || '/'
 const resolvedArt = computed(() => {
   if (!props.art) return ''
   if (!isImage.value || props.art.startsWith('http') || props.art.startsWith('data:')) return props.art
-  const clean = props.art.startsWith('/') ? props.art.slice(1) : props.art
+  let clean = props.art.startsWith('/') ? props.art.slice(1) : props.art
+  if (!clean.startsWith('img/')) {
+    clean = `img/${clean}`
+  }
   return `${base}${clean}`
 })
 
@@ -41,7 +49,6 @@ function draw() {
     roughness: 1.8, bowing: 2.2, strokeWidth: 2.5, stroke: MINT,
   })
 
-  // roughjs가 생성한 path 요소들에 실시간 획 드로잉(stroke-dash) 애니메이션 주입
   const paths1 = Array.from(line1.querySelectorAll('path'))
   const paths2 = Array.from(line2.querySelectorAll('path'))
 
@@ -56,13 +63,12 @@ function draw() {
     const len = Math.ceil(p.getTotalLength?.() || w * 0.9)
     p.style.strokeDasharray = `${len}`
     p.style.strokeDashoffset = `${len}`
-    p.style.transition = 'stroke-dashoffset 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s' // 2차 민트선은 살짝 뒤따라 그려짐
+    p.style.transition = 'stroke-dashoffset 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.45s'
   })
 
   svg.appendChild(line1)
   svg.appendChild(line2)
 
-  // 다음 프레임에 획을 왼쪽에서 오른쪽으로 쓱 그어지게 실행
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       paths1.forEach(p => { p.style.strokeDashoffset = '0' })
@@ -78,7 +84,6 @@ onMounted(() => {
   if (titleEl.value) ro.observe(titleEl.value)
 })
 
-// 슬라이드 진입 시마다 다시 살아나서 쓱 그려짐
 onSlideEnter(() => {
   setTimeout(draw, 100)
 })
@@ -97,7 +102,13 @@ onUnmounted(() => ro?.disconnect())
       <div v-if="$slots.default" class="sc-teaser"><slot /></div>
     </div>
     <div v-if="art" class="sc-art-wrap">
-      <img v-if="isImage" :src="resolvedArt" class="sc-art-img" />
+      <img
+        v-if="isImage"
+        :src="resolvedArt"
+        class="sc-art-img"
+        :class="{ 'is-logo': isLogo }"
+        :alt="title"
+      />
       <div v-else class="sc-art-emoji">{{ art }}</div>
     </div>
   </div>
@@ -181,15 +192,26 @@ onUnmounted(() => ro?.disconnect())
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 220px;
 }
 
 .sc-art-img {
-  width: 180px;
-  height: auto;
+  width: 220px;
+  height: 160px;
+  object-fit: cover;
   border-radius: 20px;
   box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
-  border: 1px solid #E2E8F0;
+  border: 1.5px solid #E2E8F0;
+  background: #0F172A;
   display: block;
+}
+
+.sc-art-img.is-logo {
+  width: 170px;
+  height: 170px;
+  object-fit: contain;
+  background: #FFFFFF;
+  padding: 16px;
 }
 
 .sc-art-emoji {
