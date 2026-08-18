@@ -170,10 +170,6 @@ class: pt-3 px-8
 
 <NotionFlowSketch :stage="$clicks" />
 
-<div class="mt-2 text-xs text-slate-500 font-mono text-center">
-  마우스 클릭에 따라 템플릿 탐색부터 웹 게시까지의 단계가 순차적으로 등장합니다
-</div>
-
 ---
 layout: two-cols-header
 class: pt-3 px-8
@@ -759,10 +755,6 @@ clicks: 3
 # Gemini Canvas ➔ Netlify 1분 배포 파이프라인
 
 <DeployFlowSketch :stage="$clicks" />
-
-<div class="mt-4 text-xs text-gray-500 font-mono text-center">
-  마우스 클릭에 따라 생성부터 배포까지의 흐름이 순차적으로 등장합니다 ($clicks)
-</div>
 
 ---
 layout: two-cols-header

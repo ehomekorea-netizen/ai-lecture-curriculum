@@ -205,15 +205,15 @@ onUnmounted(() => {
               </div>
             </div>
 
-            <!-- Center Pocket -->
-            <div class="w-full py-2.5 px-1 rounded-xl bg-amber-200/40 border border-amber-300/60 mt-1">
-              <div class="text-[11px] font-extrabold text-amber-950">
+            <!-- Center Pocket (Clean & Direct without double glass box) -->
+            <div class="w-full flex flex-col items-center justify-center mt-2 py-1">
+              <div class="text-[12px] font-extrabold text-amber-950">
                 📥 모든 에셋을 한곳에 투입
               </div>
-              <div class="text-[12px] font-black text-emerald-700 mt-1 flex items-center justify-center gap-1">
+              <div class="text-[13px] font-black text-emerald-700 mt-1.5 flex items-center justify-center gap-1">
                 <span>🧠 Manus Plan 모드</span>
               </div>
-              <p class="text-[10px] text-stone-600 font-medium m-0 mt-0.5 leading-tight">
+              <p class="text-[11px] text-stone-600 font-medium m-0 mt-1 leading-snug">
                 에이전트가 알아서 파싱 & 기획
               </p>
             </div>

@@ -8,10 +8,10 @@ const root = ref<HTMLElement | null>(null)
 const canvasEl = ref<HTMLCanvasElement | null>(null)
 
 const stepBoxes = ref([
-  { x: 12, y: 35, w: 180, h: 135 },
-  { x: 220, y: 35, w: 180, h: 135 },
-  { x: 428, y: 35, w: 180, h: 135 },
-  { x: 636, y: 30, w: 180, h: 145 }
+  { x: 12, y: 22, w: 180, h: 150 },
+  { x: 220, y: 22, w: 180, h: 150 },
+  { x: 428, y: 22, w: 180, h: 150 },
+  { x: 636, y: 18, w: 180, h: 158 }
 ])
 
 const stepCenters = ref<number[]>([102, 310, 518, 726])
@@ -29,7 +29,7 @@ function draw() {
   if (!canvas || !container) return
 
   const W = container.clientWidth || 840
-  const H = 210
+  const H = 225
 
   // High-DPI Retina resolution setup
   const dpr = Math.max(2, window.devicePixelRatio || 1)
@@ -46,12 +46,12 @@ function draw() {
   ctx.clearRect(0, 0, W, H)
   const stage = props.stage
 
-  // 4등분 동적 좌표 계산
+  // 4등분 동적 좌표 계산 (여유 있는 높이와 상단 여백 확보)
   const pad = 12
   const arrowW = 28
   const bw = Math.max(140, (W - pad * 2 - arrowW * 3) / 4)
-  const bh = 135
-  const by = 35
+  const bh = 150
+  const by = 22
 
   const boxes = []
   const centers: number[] = []
@@ -60,9 +60,9 @@ function draw() {
     const isStep4 = i === 3
     boxes.push({
       x,
-      y: isStep4 ? by - 5 : by,
+      y: isStep4 ? by - 4 : by,
       w: bw,
-      h: isStep4 ? bh + 10 : bh
+      h: isStep4 ? bh + 8 : bh
     })
     centers.push(x + bw / 2)
   }
@@ -74,7 +74,7 @@ function draw() {
   // 1단계 박스 (Gemini Canvas)
   rc.rectangle(boxes[0].x, boxes[0].y, boxes[0].w, boxes[0].h, {
     stroke: '#2563EB',
-    roughness: 1.6,
+    roughness: 1.5,
     strokeWidth: 2.2,
     fill: '#EFF6FF',
     fillStyle: 'solid'
@@ -92,7 +92,7 @@ function draw() {
   // 2단계 박스 (index.html)
   rc.rectangle(boxes[1].x, boxes[1].y, boxes[1].w, boxes[1].h, {
     stroke: '#D97706',
-    roughness: 1.6,
+    roughness: 1.5,
     strokeWidth: 2.2,
     fill: '#FFFBEB',
     fillStyle: 'solid'
@@ -110,7 +110,7 @@ function draw() {
   // 3단계 박스 (Netlify Drop)
   rc.rectangle(boxes[2].x, boxes[2].y, boxes[2].w, boxes[2].h, {
     stroke: '#0D9488',
-    roughness: 1.6,
+    roughness: 1.5,
     strokeWidth: 2.2,
     fill: '#F0FDFA',
     fillStyle: 'solid'
@@ -128,7 +128,7 @@ function draw() {
   // 4단계 박스 (완료 하이라이트)
   rc.rectangle(boxes[3].x, boxes[3].y, boxes[3].w, boxes[3].h, {
     stroke: '#059669',
-    roughness: 1.8,
+    roughness: 1.7,
     strokeWidth: 2.6,
     fill: '#ECFDF5',
     fillStyle: 'solid'
@@ -150,12 +150,12 @@ watch(() => props.stage, () => nextTick(draw))
     <!-- Rough Canvas for Crisp Hand-drawn Outlines -->
     <canvas ref="canvasEl" class="sketch-canvas"></canvas>
 
-    <!-- Crystal Clear HTML Overlay Elements (Slide 42 Style) -->
+    <!-- Crystal Clear HTML Overlay Elements with Ample Top Clearance -->
     <div class="absolute inset-0 pointer-events-none">
       <!-- Step 1 Overlay -->
       <div
         v-if="stage >= 0 && stepBoxes[0]"
-        class="absolute p-3 flex flex-col justify-between text-center box-border"
+        class="absolute pt-6 pb-4 px-2.5 flex flex-col justify-between text-center box-border"
         :style="{
           left: `${stepBoxes[0].x}px`,
           top: `${stepBoxes[0].y}px`,
@@ -168,7 +168,7 @@ watch(() => props.stage, () => nextTick(draw))
             <span>✨</span>
             <span>Gemini Canvas</span>
           </div>
-          <div class="mt-1.5 inline-block text-[9.5px] font-mono font-bold text-blue-600 bg-blue-100/90 px-2 py-0.5 rounded-md">
+          <div class="mt-2 inline-block text-[9.5px] font-mono font-bold text-blue-600 bg-blue-100/90 px-2 py-0.5 rounded-md">
             자연어 바이브 코딩
           </div>
         </div>
@@ -180,7 +180,7 @@ watch(() => props.stage, () => nextTick(draw))
       <!-- Step 2 Overlay -->
       <div
         v-if="stage >= 1 && stepBoxes[1]"
-        class="absolute p-3 flex flex-col justify-between text-center box-border"
+        class="absolute pt-6 pb-4 px-2.5 flex flex-col justify-between text-center box-border"
         :style="{
           left: `${stepBoxes[1].x}px`,
           top: `${stepBoxes[1].y}px`,
@@ -193,7 +193,7 @@ watch(() => props.stage, () => nextTick(draw))
             <span>📄</span>
             <span>index.html</span>
           </div>
-          <div class="mt-1.5 inline-block text-[9.5px] font-mono font-bold text-amber-800 bg-amber-100/90 px-2 py-0.5 rounded-md">
+          <div class="mt-2 inline-block text-[9.5px] font-mono font-bold text-amber-800 bg-amber-100/90 px-2 py-0.5 rounded-md">
             CSS & JS 올인원 내장
           </div>
         </div>
@@ -205,7 +205,7 @@ watch(() => props.stage, () => nextTick(draw))
       <!-- Step 3 Overlay -->
       <div
         v-if="stage >= 2 && stepBoxes[2]"
-        class="absolute p-3 flex flex-col justify-between text-center box-border"
+        class="absolute pt-6 pb-4 px-2.5 flex flex-col justify-between text-center box-border"
         :style="{
           left: `${stepBoxes[2].x}px`,
           top: `${stepBoxes[2].y}px`,
@@ -218,7 +218,7 @@ watch(() => props.stage, () => nextTick(draw))
             <span>🚀</span>
             <span>Netlify Drop</span>
           </div>
-          <div class="mt-1.5 inline-block text-[9.5px] font-mono font-bold text-teal-800 bg-teal-100/90 px-2 py-0.5 rounded-md">
+          <div class="mt-2 inline-block text-[9.5px] font-mono font-bold text-teal-800 bg-teal-100/90 px-2 py-0.5 rounded-md">
             브라우저 Drag & Drop
           </div>
         </div>
@@ -230,7 +230,7 @@ watch(() => props.stage, () => nextTick(draw))
       <!-- Step 4 Overlay -->
       <div
         v-if="stage >= 3 && stepBoxes[3]"
-        class="absolute p-3 flex flex-col justify-between text-center box-border"
+        class="absolute pt-6 pb-4 px-2.5 flex flex-col justify-between text-center box-border"
         :style="{
           left: `${stepBoxes[3].x}px`,
           top: `${stepBoxes[3].y}px`,
@@ -243,7 +243,7 @@ watch(() => props.stage, () => nextTick(draw))
             <span>🌐</span>
             <span>글로벌 Live 배포</span>
           </div>
-          <div class="mt-1.5 inline-block text-[9.5px] font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">
+          <div class="mt-2 inline-block text-[9.5px] font-mono font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded-md">
             *.netlify.app 발급
           </div>
         </div>
@@ -274,14 +274,14 @@ watch(() => props.stage, () => nextTick(draw))
   background: #FFFFFF;
   border: 1.5px solid #E2E8F0;
   border-radius: 18px;
-  padding: 0.8rem 1rem 0.6rem;
+  padding: 0.6rem 1rem 0.5rem;
   margin-top: 0.5rem;
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
 }
 
 .sketch-canvas {
   width: 100%;
-  height: 210px;
+  height: 225px;
   display: block;
 }
 
@@ -289,7 +289,7 @@ watch(() => props.stage, () => nextTick(draw))
   position: relative;
   width: 100%;
   height: 34px;
-  margin-top: 0.3rem;
+  margin-top: 0.2rem;
 }
 
 .step-tag {
