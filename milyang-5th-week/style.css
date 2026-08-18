@@ -37,6 +37,14 @@
   letter-spacing: -0.015em;
 }
 
+.slidev-layout.cover {
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
 /* Headings Proportions - Clean Modern Tech Sans */
 .slidev-layout h1,
 .slidev-layout h2,

@@ -7,7 +7,7 @@ const coverImageUrl = computed(() => `${base}img/cover-teamwork.jpg`)
 
 <template>
   <div 
-    class="keynote-cover-container relative w-full h-full overflow-hidden select-none"
+    class="keynote-cover-container absolute inset-0 w-full h-full flex flex-col justify-between select-none overflow-hidden"
     :style="{
       backgroundImage: `linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(15, 23, 42, 0.62) 55%, rgba(15, 23, 42, 0.30) 100%), url('${coverImageUrl}')`
     }"
@@ -24,8 +24,8 @@ const coverImageUrl = computed(() => `${base}img/cover-teamwork.jpg`)
     </div>
 
     <!-- Main Typography Content (Anchored Bottom-Left for Apple Keynote Feel) -->
-    <div class="relative z-10 w-full h-[430px] px-12 flex flex-col justify-end pb-12">
-      <div class="max-w-[680px]">
+    <div class="relative z-10 w-full px-12 pb-12">
+      <div class="max-w-[720px]">
         <!-- Kicker -->
         <div class="inline-block text-xs font-extrabold uppercase tracking-widest text-emerald-400 font-mono mb-2.5">
           밀양 청년 취업역량 강화교육 · 5주차
