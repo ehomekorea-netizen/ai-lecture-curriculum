@@ -271,12 +271,12 @@ watch(() => props.stage, () => nextTick(draw))
 <style scoped>
 .sketch-wrap {
   width: 100%;
-  background: #FFFFFF;
-  border: 1.5px solid #E2E8F0;
-  border-radius: 18px;
-  padding: 0.6rem 1rem 0.5rem;
-  margin-top: 0.5rem;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0.2rem 0;
+  margin-top: 0.2rem;
+  box-shadow: none;
 }
 
 .sketch-canvas {
