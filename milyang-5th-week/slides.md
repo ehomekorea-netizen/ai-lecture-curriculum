@@ -234,6 +234,7 @@ class: pt-3 px-8
 <LiveDemoTrigger
   title="나만의 노션 웹 포트폴리오 빌딩 실습"
   tool="Notion (노션)"
+  url="https://www.notion.com/ko/templates"
   subtitle="공식 템플릿을 복제하고 4주차 나의 이력 DB 데이터를 채워 1초 만에 웹에 게시합니다."
   :steps="[
     '공식 노션 템플릿 갤러리(notion.com/ko/templates)에서 마음에 드는 포트폴리오 복제(Duplicate)',
@@ -349,6 +350,7 @@ layout: two-cols-header
 <LiveDemoTrigger
   title="작은 페이지로 완성하는 모바일 올인원 프로필 실습"
   tool="Littly (리틀리)"
+  url="https://start.litt.ly/"
   subtitle="리틀리에 가입하여 흩어진 나의 취업 자산을 단 하나의 모바일 링크로 완성합니다."
   :steps="[
     '리틀리(litt.ly) 가입 후 프로필 사진과 나만의 핵심 가치를 나타내는 슬로건 등록',
@@ -804,7 +806,8 @@ layout: two-cols-header
 
 <LiveDemoTrigger
   title="단일 HTML 포트폴리오 생성부터 도메인 라이브까지"
-  tool="Gemini Canvas + Netlify"
+  tool="Gemini (재미나이)"
+  url="https://gemini.google.com/app"
   subtitle="Gemini Canvas에서 프롬프트로 1페이지 웹을 빌드하고 Netlify로 즉시 배포합니다."
   :steps="[
     'Gemini 접속 후 Canvas 모드 활성화 및 포트폴리오 생성 프롬프트 입력',
@@ -1089,6 +1092,7 @@ class: pt-3 px-8
 <LiveDemoTrigger
   title="Meta AI 에이전트 기반 웹 포트폴리오 제작 실습"
   tool="Meta AI (meta.ai)"
+  url="https://www.meta.ai/"
   subtitle="자연어 대화로 3단 와이어프레임을 지시하고 4주차 경험 DB를 주입해 나만의 웹페이지를 완성합니다."
   :steps="[
     'meta.ai 접속 후 프론트엔드 에이전트 역할 부여 및 기본 와이어프레임 요청',
@@ -1194,6 +1198,7 @@ class: pt-3 px-8
 <LiveDemoTrigger
   title="Manus.ai 자율 코딩 포트폴리오 완제품 빌딩 실습"
   tool="Manus.ai Desktop"
+  url="https://manus.im/"
   subtitle="내 폴더의 경험 에셋(노션 DB, PDF)을 바탕으로 Plan 모드에서 완제품 웹 포트폴리오를 제작합니다."
   :steps="[
     'Manus Desktop 실행 후 내 로컬 경험 에셋 폴더(my-portfolio) 열기',

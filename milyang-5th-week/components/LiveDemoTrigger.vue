@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const props = withDefaults(defineProps<{
   title: string
   tool: string
   subtitle?: string
   steps?: string[]
+  url?: string
+  link?: string
 }>(), {
   subtitle: '슬라이드에서 강사의 라이브 화면으로 시선을 전환합니다.',
   steps: () => [
@@ -12,6 +16,8 @@ const props = withDefaults(defineProps<{
     '막히는 구간 발생 시 즉시 질문 및 실시간 트러블슈팅'
   ]
 })
+
+const targetUrl = computed(() => props.url || props.link)
 </script>
 
 <template>
@@ -22,7 +28,18 @@ const props = withDefaults(defineProps<{
         <span class="live-tag">LIVE ACTION STAGE</span>
       </div>
       <div class="tool-duration-tags">
-        <span class="tool-tag">🛠️ {{ tool }}</span>
+        <a
+          v-if="targetUrl"
+          :href="targetUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tool-tag tool-tag-link"
+          title="실습 사이트로 이동하기 (새 창)"
+        >
+          <span>🛠️ {{ tool }}</span>
+          <span class="link-arrow">↗</span>
+        </a>
+        <span v-else class="tool-tag">🛠️ {{ tool }}</span>
       </div>
     </div>
 
@@ -121,10 +138,47 @@ const props = withDefaults(defineProps<{
   background: rgba(71, 107, 255, 0.2);
   border: 1px solid rgba(71, 107, 255, 0.4);
   color: #8CA4FF;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: 8px;
   font-size: 0.75rem;
   font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.tool-tag-link {
+  cursor: pointer;
+  background: rgba(71, 107, 255, 0.28);
+  border: 1.5px solid rgba(140, 164, 255, 0.7);
+  color: #c2d1ff;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 14px rgba(71, 107, 255, 0.25);
+}
+
+.tool-tag-link:hover {
+  background: rgba(71, 107, 255, 0.55);
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(71, 107, 255, 0.5), 0 0 10px rgba(83, 223, 169, 0.3);
+}
+
+.tool-tag-link:active {
+  transform: translateY(0);
+}
+
+.link-arrow {
+  font-size: 0.82rem;
+  font-weight: 900;
+  color: #53DFA9;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.tool-tag-link:hover .link-arrow {
+  transform: translate(2px, -2px);
+  color: #ffffff;
 }
 
 .live-title {
