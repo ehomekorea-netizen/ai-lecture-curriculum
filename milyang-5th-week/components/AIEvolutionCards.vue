@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 
+const base = import.meta.env.BASE_URL || '/'
+
 const props = defineProps<{
   stage?: number
 }>()
@@ -128,12 +130,12 @@ const summaryText = computed(() => {
           <div class="grid grid-cols-2 gap-2">
             <!-- ChatGPT -->
             <div class="flex items-center justify-center px-2 py-1 bg-white rounded-lg border border-slate-200 shadow-2xs h-8.5">
-              <img src="/img/logos/logo-chatgpt.png" class="h-6 w-auto object-contain" alt="ChatGPT" />
+              <img :src="`${base}img/logos/logo-chatgpt.png`" class="h-6 w-auto object-contain" alt="ChatGPT" />
             </div>
 
             <!-- Gemini -->
             <div class="flex items-center justify-center px-2 py-1 bg-white rounded-lg border border-slate-200 shadow-2xs h-8.5">
-              <img src="/img/logos/logo-gemini.png" class="h-5.5 w-auto object-contain" alt="Gemini" />
+              <img :src="`${base}img/logos/logo-gemini.png`" class="h-5.5 w-auto object-contain" alt="Gemini" />
             </div>
           </div>
         </div>
@@ -173,17 +175,17 @@ const summaryText = computed(() => {
           <div class="grid grid-cols-3 gap-1.5">
             <!-- Zapier -->
             <div class="flex items-center justify-center px-1.5 py-1 bg-white rounded-lg border border-slate-200 shadow-2xs h-8.5">
-              <img src="/img/logos/logo-zapier.png" class="h-5 w-auto object-contain" alt="Zapier" />
+              <img :src="`${base}img/logos/logo-zapier.png`" class="h-5 w-auto object-contain" alt="Zapier" />
             </div>
 
             <!-- n8n -->
             <div class="flex items-center justify-center px-1.5 py-1 bg-white rounded-lg border border-slate-200 shadow-2xs h-8.5">
-              <img src="/img/logos/logo-n8n.png" class="h-5.5 w-auto object-contain" alt="n8n" />
+              <img :src="`${base}img/logos/logo-n8n.png`" class="h-5.5 w-auto object-contain" alt="n8n" />
             </div>
 
             <!-- Dify -->
             <div class="flex items-center justify-center px-1.5 py-1 bg-white rounded-lg border border-slate-200 shadow-2xs h-8.5">
-              <img src="/img/logos/logo-dify.png" class="h-5.5 w-auto object-contain" alt="Dify" />
+              <img :src="`${base}img/logos/logo-dify.png`" class="h-5.5 w-auto object-contain" alt="Dify" />
             </div>
           </div>
         </div>
@@ -223,22 +225,22 @@ const summaryText = computed(() => {
           <div class="grid grid-cols-2 gap-1.5">
             <!-- 1. Claude Code -->
             <div class="flex items-center justify-center px-1.5 py-0.5 bg-black rounded-lg border border-zinc-800 shadow-2xs h-8.5 overflow-hidden">
-              <img src="/img/logos/logo-claude-code.png" class="h-6.5 w-auto object-contain" alt="Claude Code" />
+              <img :src="`${base}img/logos/logo-claude-code.png`" class="h-6.5 w-auto object-contain" alt="Claude Code" />
             </div>
 
             <!-- 2. Codex -->
             <div class="flex items-center justify-center px-1.5 py-0.5 bg-white rounded-lg border border-slate-200 shadow-2xs h-8.5 overflow-hidden">
-              <img src="/img/logos/logo-codex.png" class="h-5.5 w-auto object-contain" alt="Codex" />
+              <img :src="`${base}img/logos/logo-codex.png`" class="h-5.5 w-auto object-contain" alt="Codex" />
             </div>
 
             <!-- 3. Manus -->
             <div class="flex items-center justify-center px-1.5 py-0.5 bg-white rounded-lg border border-slate-200 shadow-2xs h-8.5 overflow-hidden">
-              <img src="/img/logos/logo-manus.png" class="h-5.5 w-auto object-contain" alt="Manus" />
+              <img :src="`${base}img/logos/logo-manus.png`" class="h-5.5 w-auto object-contain" alt="Manus" />
             </div>
 
             <!-- 4. Meta AI -->
             <div class="flex items-center justify-center px-1.5 py-0.5 bg-black rounded-lg border border-zinc-800 shadow-2xs h-8.5 overflow-hidden">
-              <img src="/img/logos/logo-meta-ai.png" class="h-5 w-auto object-contain" alt="Meta AI" />
+              <img :src="`${base}img/logos/logo-meta-ai.png`" class="h-5 w-auto object-contain" alt="Meta AI" />
             </div>
           </div>
         </div>

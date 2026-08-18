@@ -16,6 +16,14 @@ const isImage = computed(() => {
   return props.art.startsWith('/') || props.art.startsWith('http') || props.art.endsWith('.svg') || props.art.endsWith('.png') || props.art.endsWith('.webp')
 })
 
+const base = import.meta.env.BASE_URL || '/'
+const resolvedArt = computed(() => {
+  if (!props.art) return ''
+  if (!isImage.value || props.art.startsWith('http') || props.art.startsWith('data:')) return props.art
+  const clean = props.art.startsWith('/') ? props.art.slice(1) : props.art
+  return `${base}${clean}`
+})
+
 function draw() {
   const svg = svgEl.value, t = titleEl.value
   if (!svg || !t) return
@@ -89,7 +97,7 @@ onUnmounted(() => ro?.disconnect())
       <div v-if="$slots.default" class="sc-teaser"><slot /></div>
     </div>
     <div v-if="art" class="sc-art-wrap">
-      <img v-if="isImage" :src="art" class="sc-art-img" />
+      <img v-if="isImage" :src="resolvedArt" class="sc-art-img" />
       <div v-else class="sc-art-emoji">{{ art }}</div>
     </div>
   </div>

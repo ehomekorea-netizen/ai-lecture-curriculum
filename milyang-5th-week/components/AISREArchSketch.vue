@@ -21,27 +21,29 @@ const shown = (k: Kind) => props.stage >= STAGE[k]
 
 type Kind = 'trigger' | 'llm' | 'out' | 'cat' | 'eg' | 'more'
 type Box = { id: string; l: number; t: number; w: number; h: number; label: string; kind: Kind; under?: string; logo?: string; icon?: any }
+const base = import.meta.env.BASE_URL || '/'
+
 const boxes: Box[] = [
-  // left lane — triggers (nothing sits below them)
-  { id: 'alerts', l: 1, t: 4, w: 15, h: 14, label: 'Alerts', kind: 'trigger', icon: markRaw(Bell) },
-  { id: 'prompts', l: 1, t: 21, w: 15, h: 14, label: 'Prompts', kind: 'trigger', icon: markRaw(MessageSquare) },
-  { id: 'events', l: 1, t: 38, w: 15, h: 14, label: 'Events', kind: 'trigger', icon: markRaw(Zap) },
-  // center lane — the LLM
-  { id: 'llm', l: 40, t: 5, w: 20, h: 18, label: 'LLM agent', kind: 'llm' },
-  // right lane — outputs
-  { id: 'fix', l: 84, t: 6, w: 15, h: 14, label: 'a fix (PR)', kind: 'out', icon: markRaw(GitPullRequest) },
-  { id: 'hyp', l: 84, t: 25, w: 15, h: 14, label: 'hypotheses', kind: 'out', icon: markRaw(Lightbulb) },
-  // center lane — five tool categories, narrow, centered under the LLM
+  // triggers
+  { id: 'alerts', l: 0, t: 16, w: 14, h: 18, label: 'Alerts', kind: 'trigger', icon: markRaw(Bell) },
+  { id: 'prompts', l: 0, t: 40, w: 14, h: 18, label: 'Prompts', kind: 'trigger', icon: markRaw(MessageSquare) },
+  { id: 'events', l: 0, t: 64, w: 14, h: 18, label: 'Events', kind: 'trigger', icon: markRaw(Zap) },
+  // the LLM (central)
+  { id: 'llm', l: 24, t: 16, w: 46, h: 22, label: 'LLM + Memory + Strategy', kind: 'llm' },
+  // outputs
+  { id: 'fix', l: 80, t: 24, w: 16, h: 22, label: 'Fix PR / Remediation', kind: 'out', icon: markRaw(GitPullRequest) },
+  { id: 'hyp', l: 80, t: 54, w: 16, h: 22, label: 'Hypotheses / Dashboard', kind: 'out', icon: markRaw(Lightbulb) },
+  // tools (fanned below LLM)
   { id: 'obs', l: 24, t: 45, w: 12.5, h: 14, label: 'Observability', kind: 'cat', icon: markRaw(Activity) },
-  { id: 'cls', l: 37, t: 45, w: 12.5, h: 14, label: 'Cluster', kind: 'cat', icon: markRaw(Boxes) },
+  { id: 'cls', l: 37, t: 45, w: 12.5, h: 14, label: 'Clusters', kind: 'cat', icon: markRaw(Boxes) },
   { id: 'cld', l: 50, t: 45, w: 12.5, h: 14, label: 'Cloud APIs', kind: 'cat', icon: markRaw(Cloud) },
   { id: 'ci', l: 63, t: 45, w: 12.5, h: 14, label: 'CI / CD', kind: 'cat', icon: markRaw(InfinityIcon) },
   { id: 'more', l: 76.5, t: 45, w: 7, h: 14, label: '…', kind: 'more' },
   // an example (with logo) under each named category
-  { id: 'eg-obs', l: 24, t: 64, w: 12.5, h: 15, label: 'Bronto MCP', kind: 'eg', under: 'obs', logo: '/img/bronto-dino.png' },
-  { id: 'eg-cls', l: 37, t: 64, w: 12.5, h: 15, label: 'K8s MCP', kind: 'eg', under: 'cls', logo: '/img/logo-k8s.svg' },
-  { id: 'eg-cld', l: 50, t: 64, w: 12.5, h: 15, label: 'AWS API', kind: 'eg', under: 'cld', logo: '/img/logo-aws.svg' },
-  { id: 'eg-ci', l: 63, t: 64, w: 12.5, h: 15, label: 'GitHub CLI', kind: 'eg', under: 'ci', logo: '/img/logo-github.svg' },
+  { id: 'eg-obs', l: 24, t: 64, w: 12.5, h: 15, label: 'Bronto MCP', kind: 'eg', under: 'obs', logo: `${base}img/bronto-dino.png` },
+  { id: 'eg-cls', l: 37, t: 64, w: 12.5, h: 15, label: 'K8s MCP', kind: 'eg', under: 'cls', logo: `${base}img/logo-k8s.svg` },
+  { id: 'eg-cld', l: 50, t: 64, w: 12.5, h: 15, label: 'AWS API', kind: 'eg', under: 'cld', logo: `${base}img/logo-aws.svg` },
+  { id: 'eg-ci', l: 63, t: 64, w: 12.5, h: 15, label: 'GitHub CLI', kind: 'eg', under: 'ci', logo: `${base}img/logo-github.svg` },
 ]
 const arrows: [string, string][] = [
   ['alerts', 'llm'], ['prompts', 'llm'], ['events', 'llm'],

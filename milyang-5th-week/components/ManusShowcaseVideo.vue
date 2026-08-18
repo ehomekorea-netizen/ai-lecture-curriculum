@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 
+const base = import.meta.env.BASE_URL || '/'
 const videoEl = ref<HTMLVideoElement | null>(null)
 
 onMounted(() => {
@@ -19,7 +20,7 @@ onMounted(() => {
     <div class="relative w-full max-w-[780px] h-[360px] rounded-2xl overflow-hidden bg-black shadow-2xl border border-slate-800 flex items-center justify-center">
       <video
         ref="videoEl"
-        src="/video/Manus_web_intro.mp4"
+        :src="`${base}video/Manus_web_intro.mp4`"
         class="w-full h-full object-contain"
         preload="auto"
         controls

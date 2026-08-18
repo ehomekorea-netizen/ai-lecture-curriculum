@@ -15,6 +15,14 @@ const props = withDefaults(defineProps<{
   url: 'https://my-vibe-portfolio.netlify.app',
   dark: false
 })
+
+const base = import.meta.env.BASE_URL || '/'
+const resolvedImage = computed(() => {
+  if (!props.image) return ''
+  if (props.image.startsWith('http') || props.image.startsWith('data:')) return props.image
+  const clean = props.image.startsWith('/') ? props.image.slice(1) : props.image
+  return `${base}${clean}`
+})
 </script>
 
 <template>
@@ -36,7 +44,7 @@ const props = withDefaults(defineProps<{
         </div>
       </div>
       <div class="macbook-screen">
-        <img v-if="image" :src="image" :alt="title" class="screen-img" />
+        <img v-if="resolvedImage" :src="resolvedImage" :alt="title" class="screen-img" />
         <slot v-else />
       </div>
       <div class="macbook-notch"></div>
@@ -49,7 +57,7 @@ const props = withDefaults(defineProps<{
         <div class="island-camera"></div>
       </div>
       <div class="iphone-screen">
-        <img v-if="image" :src="image" :alt="title" class="screen-img" />
+        <img v-if="resolvedImage" :src="resolvedImage" :alt="title" class="screen-img" />
         <slot v-else />
       </div>
       <div class="iphone-bar"></div>
@@ -67,7 +75,7 @@ const props = withDefaults(defineProps<{
         <div class="browser-url-input">{{ url }}</div>
       </div>
       <div class="browser-viewport">
-        <img v-if="image" :src="image" :alt="title" class="screen-img" />
+        <img v-if="resolvedImage" :src="resolvedImage" :alt="title" class="screen-img" />
         <slot v-else />
       </div>
     </div>

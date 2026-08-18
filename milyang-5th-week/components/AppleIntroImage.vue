@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const base = import.meta.env.BASE_URL || '/'
 withDefaults(defineProps<{
   image?: string
   overlay?: string
@@ -18,7 +19,7 @@ withDefaults(defineProps<{
     <!-- Top Partner Logos Banner -->
     <div class="top-logo-bar">
       <div class="logo-badge-wrapper">
-        <img src="/img/partner-logos.png" alt="밀양시 · 밀양소통협력센터 · 에이제이인포텍" class="partner-logos-img" />
+        <img :src="`${base}img/partner-logos.png`" alt="밀양시 · 밀양소통협력센터 · 에이제이인포텍" class="partner-logos-img" />
       </div>
     </div>
 

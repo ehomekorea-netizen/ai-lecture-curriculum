@@ -64,11 +64,13 @@ watch(() => props.go, (now, before) => {
     fired = false
   }
 })
+
+const base = import.meta.env.BASE_URL || '/'
 </script>
 
 <template>
   <img
-    src="/img/dino-van.png"
+    :src="`${base}img/dino-van.png`"
     class="van"
     :data-mode="mode"
     :style="{
