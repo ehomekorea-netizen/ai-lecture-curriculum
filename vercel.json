@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/mokpo-welfare/:path*",
+      "destination": "/mokpo-welfare/index.html"
+    },
+    {
+      "source": "/milyang-5th-week/:path*",
+      "destination": "/milyang-5th-week/index.html"
+    }
+  ]
+}
