@@ -8,7 +8,7 @@
 
 | 일시 | 기관 | 장소 | 대상 | 교육 주제 | 웹 교안 링크 |
 | :---: | :--- | :--- | :--- | :--- | :---: |
-| **8/28(목)** | 목포종합사회복지관 | [목포종합사회복지관](https://map.naver.com/p/search/%EB%AA%A9%ED%8F%AC%EC%20%EC%A2%85%ED%95%A9%EC%82%AC%ED%92%8D%EC%A7%80%EA%B4%80) | 🏛️ 사회복지 실무자 (복지관 종사자) | **AI를 활용한 문서 작성 협업 역량 강화 (1차시)** | [1차시 바로가기](https://ai-lecture-curriculum.vercel.app/mokpo-welfare/) |
+| **8/28(목)** | 목포종합사회복지관 | [목포종합사회복지관](https://map.naver.com/p/search/%EB%AA%A9%ED%8F%AC%EC%20%EC%A2%85%ED%95%A9%EC%82%AC%ED%92%8D%EC%A7%80%EA%B4%80) | 🏛️ 사회복지 실무자 (복지관 종사자) | **AI를 활용한 문서 작성 협업 역량 강화 (1차시)** | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/mokpo-welfare/) |
 | **8/12(수) ~ 8/27(목)**<br>(총 6회 / 매주 수·목) | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·구직자 | **웹 포트폴리오 빌딩 & AI 에이전트 바이브 코딩 (5주차)** | [5주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-5th-week/) |
 | **7/28(화)** | 퍼블릭AI | [전남해양수산과학원 고흥](https://map.naver.com/p/search/%EC%A0%84%EB%82%A8%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%EA%B3%BC%ED%95%99%EC%9B%90%20%EA%B3%A0%ED%9D%A5) | ⚓ 수산업 종사자 (어업인) | 수산업 종사자를 위한 생성형 AI | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/jeonnam-maritime/) |
 | **7/21(화), 23(목)** | 이음미래교육원 | [한울직업전문학교](https://map.naver.com/p/search/%ED%95%9C%EC%9A%B8%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90) | 👔 KIA 일반직 임직원 | 엑셀 활용 AI 업무 효율 향상 | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/kiamotors-excel/) |
