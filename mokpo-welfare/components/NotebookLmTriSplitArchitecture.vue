@@ -4,6 +4,13 @@ import { X } from 'lucide-vue-next'
 
 const props = withDefaults(defineProps<{ stage?: number }>(), { stage: 0 })
 
+const base = import.meta.env.BASE_URL || '/'
+const resolveAsset = (path: string) => {
+  if (!path || path.startsWith('http') || path.startsWith('data:')) return path
+  const clean = path.startsWith('/') ? path.slice(1) : path
+  return `${base}${clean}`
+}
+
 interface VideoSegment {
   id: number
   name: string
@@ -101,7 +108,7 @@ function onTimeUpdate() {
     >
       <!-- Real UI Image -->
       <img
-        src="/notebooklm-ui-3split.png"
+        :src="resolveAsset('/notebooklm-ui-3split.png')"
         alt="Gemini Notebook UI"
         class="w-full h-full object-fill block select-none"
       />
@@ -154,7 +161,7 @@ function onTimeUpdate() {
             <!-- HTML5 Video Player (Zero Crop, Pure 16:9 Edge-to-Edge) -->
             <video
               ref="videoRef"
-              src="/notebooklm-demo.mp4"
+              :src="resolveAsset('/notebooklm-demo.mp4')"
               class="w-full h-full object-cover block select-none"
               @timeupdate="onTimeUpdate"
               playsinline

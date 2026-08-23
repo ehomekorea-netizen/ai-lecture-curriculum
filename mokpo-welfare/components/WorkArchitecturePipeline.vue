@@ -8,6 +8,14 @@ import {
 } from 'lucide-vue-next'
 
 type ModalKey = 'plugin' | 'skill' | null
+
+const base = import.meta.env.BASE_URL || '/'
+const resolveAsset = (path: string) => {
+  if (!path || path.startsWith('http') || path.startsWith('data:')) return path
+  const clean = path.startsWith('/') ? path.slice(1) : path
+  return `${base}${clean}`
+}
+
 const activeModal = ref<ModalKey>(null)
 
 const closeModal = () => {
@@ -160,7 +168,7 @@ const data = {
           >
             <!-- Pure Image Itself (High-Res, Rounded, Floating Shadow) -->
             <img
-              :src="data[activeModal].imageSrc"
+              :src="resolveAsset(data[activeModal].imageSrc)"
               :alt="data[activeModal].title"
               class="max-w-full max-h-[78vh] object-contain rounded-2xl shadow-2xl border border-white/20 select-none"
             />
