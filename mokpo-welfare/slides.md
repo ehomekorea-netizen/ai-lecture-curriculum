@@ -304,7 +304,7 @@ layout: default
 />
 
 ---
-clicks: 2
+clicks: 4
 ---
 
 # ChatGPT Work란?
