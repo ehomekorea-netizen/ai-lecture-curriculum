@@ -1,0 +1,10 @@
+{
+  "name": "test-ai-lecture-session-1",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export"
+  }
+}
