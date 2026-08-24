@@ -477,4 +477,4 @@ clicks: 3
 layout: statement
 ---
 
-# AI는 초안을 쓰고,<br><span class="text-blue-600">가치는 담당자가 담습니다.</span>
+# AI는 초안을 쓰고,<br><span class="text-blue-600">가치는 여러분이 담습니다.</span>
