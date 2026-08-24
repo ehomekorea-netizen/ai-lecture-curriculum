@@ -80,15 +80,13 @@ clicks: 10
 
 
 ---
-clicks: 3
----
 
-# GPT는 도대체 무슨 뜻인가?
+# 우리가 쓰는 ChatGPT의 'GPT'는 무슨 뜻인가?
 
 <p class="subtitle">알파벳 세 글자 속에 모델의 3대 핵심 작동 원리가 모두 담겨 있습니다.</p>
 
 <div class="slide-body">
-  <GptFlipCards :stage="$clicks" />
+  <GptFlipCards />
   <div class="slide-footer quote-box text-xs">
     <strong>한 줄 결론</strong>: GPT는 <strong>"사전 학습된 문맥 신경망(Transformer)을 통해 질문에 맞춰 다음 단어를 확률적으로 조립하는 생성(Generative) 모델"</strong>입니다.
   </div>
