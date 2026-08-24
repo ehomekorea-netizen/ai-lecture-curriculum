@@ -47,7 +47,7 @@ layout: default
 <SectionPartDivider
   title="생성형 AI의 본질에서 AI에이전트까지"
   subtitle="단순 프롬프트 작성을 넘어, AI의 작동 원리와 할루시네이션(RAG), 그리고 스스로 일하는 에이전트 시대로의 도약"
-  image="/adobestock-556454258_1920-1080.avif"
+  image="/premium_photo-1764699342973-5d518dede42b.avif"
 />
 
 ---
