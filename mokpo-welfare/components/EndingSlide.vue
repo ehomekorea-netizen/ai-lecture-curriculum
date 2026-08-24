@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref, computed } from 'vue'
+import qrcode from 'qrcode-generator'
 
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 let animationId: number | null = null
@@ -8,6 +9,38 @@ let program: WebGLProgram | null = null
 let uTimeLoc: WebGLUniformLocation | null = null
 let uResLoc: WebGLUniformLocation | null = null
 let startTime = Date.now()
+
+// ── 5-Second Delayed Slide-In QR Code Logic ──
+const showQr = ref(false)
+let qrTimer: ReturnType<typeof setTimeout> | null = null
+
+const QR_URL = 'https://cafe.daangn.com/mogpo-ai-silheo?utm_medium=copy_link'
+const QUIET = 4
+
+const qrObj = computed(() => {
+  const c = qrcode(0, 'H') // Level H (30% High error correction for center logo embedding)
+  c.addData(QR_URL)
+  c.make()
+  return c
+})
+
+const count = computed(() => qrObj.value.getModuleCount())
+const span = computed(() => count.value + QUIET * 2)
+
+// Ultra-sharp vector SVG path for 100% permanent crisp projection
+const qrPath = computed(() => {
+  const c = qrObj.value
+  const n = count.value
+  let d = ''
+  for (let r = 0; r < n; r++) {
+    for (let col = 0; col < n; col++) {
+      if (c.isDark(r, col)) {
+        d += `M${col + QUIET} ${r + QUIET}h1v1h-1z`
+      }
+    }
+  }
+  return d
+})
 
 const vsSource = `
   attribute vec2 position;
@@ -159,10 +192,15 @@ function render() {
 onMounted(() => {
   initWebGL()
   window.addEventListener('resize', resize)
+  // Trigger smooth QR slide-in exactly after 5 seconds
+  qrTimer = setTimeout(() => {
+    showQr.value = true
+  }, 5000)
 })
 
 onBeforeUnmount(() => {
   if (animationId) cancelAnimationFrame(animationId)
+  if (qrTimer) clearTimeout(qrTimer)
   window.removeEventListener('resize', resize)
 })
 </script>
@@ -184,6 +222,37 @@ onBeforeUnmount(() => {
 
       <div class="pure-white-sub">
         경청해 주셔서 감사합니다.
+      </div>
+    </div>
+
+    <!-- ── 5s Delayed Slide-in Floating Glassmorphic QR Card with Center Daangn Emblem ── -->
+    <div
+      class="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 transition-all duration-700 ease-out"
+      :class="showQr ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' : 'opacity-0 translate-y-8 scale-90 pointer-events-none'"
+    >
+      <div class="relative bg-white/95 backdrop-blur-md p-2 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.45)] border border-white/80 ring-1 ring-black/5 flex items-center justify-center">
+        <!-- Crisp SVG QR Matrix -->
+        <svg
+          :viewBox="`0 0 ${span} ${span}`"
+          width="96"
+          height="96"
+          shape-rendering="crispEdges"
+          class="rounded-xl block"
+        >
+          <rect :width="span" :height="span" fill="#ffffff" />
+          <path :d="qrPath" fill="#0f172a" />
+        </svg>
+
+        <!-- Center Daangn Icon Badge -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div class="w-6 h-6 p-0.5 bg-white rounded-lg shadow-sm border border-slate-100 flex items-center justify-center overflow-hidden">
+            <img
+              src="/daangnInFrame.webp"
+              alt="당근 모임"
+              class="w-full h-full object-contain rounded-md block"
+            />
+          </div>
+        </div>
       </div>
     </div>
   </div>
