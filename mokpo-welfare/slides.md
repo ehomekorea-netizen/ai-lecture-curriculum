@@ -251,7 +251,7 @@ clicks: 5
 
 # 일반 생성형 AI vs Gemini Notebook 비교
 
-<p class="subtitle">"무엇이든 묻는 AI"와 <strong>"내 자료를 기준으로 묻는 AI"</strong>의 결정적 차이</p>
+<p class="subtitle break-keep"><span class="whitespace-nowrap">"무엇이든 묻는 AI"</span>와 <strong><span class="whitespace-nowrap">"내 자료를 기준으로 묻는 AI"</span></strong>의 결정적 차이</p>
 
 <div class="slide-body">
   <ComparisonTableSlide17 :stage="$clicks" />

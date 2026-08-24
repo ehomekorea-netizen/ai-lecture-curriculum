@@ -21,7 +21,8 @@ const currentStage = computed(() => props.stage ?? 0)
         <span class="relative inline-block font-medium text-slate-800">
           단순한 답변, 개념 설명, 아이디어 브레인스토밍, 짧은 초안 작성
           <svg
-            class="absolute left-0 -bottom-1 w-full h-[5px] pointer-events-none overflow-visible"
+            class="absolute left-0 -bottom-1 w-full h-[5px] pointer-events-none overflow-visible transition-opacity duration-200"
+            :class="currentStage >= 1 ? 'opacity-100' : 'opacity-0'"
             viewBox="0 0 100 6"
             preserveAspectRatio="none"
           >
@@ -30,7 +31,6 @@ const currentStage = computed(() => props.stage ?? 0)
               fill="none"
               stroke="#94A3B8"
               stroke-width="2.2"
-              stroke-linecap="round"
               class="line-stroke"
               :class="{ 'line-active': currentStage >= 1 }"
             />
@@ -45,7 +45,8 @@ const currentStage = computed(() => props.stage ?? 0)
         <span class="relative inline-block font-bold text-slate-900">
           내가 직접 검토하고 즉시 활용할 수 있는 명확한 결과물(파일)
           <svg
-            class="absolute left-0 -bottom-1 w-full h-[6px] pointer-events-none overflow-visible"
+            class="absolute left-0 -bottom-1 w-full h-[6px] pointer-events-none overflow-visible transition-opacity duration-200"
+            :class="currentStage >= 3 ? 'opacity-100' : 'opacity-0'"
             viewBox="0 0 100 6"
             preserveAspectRatio="none"
           >
@@ -54,7 +55,6 @@ const currentStage = computed(() => props.stage ?? 0)
               fill="none"
               stroke="#2563EB"
               stroke-width="2.6"
-              stroke-linecap="round"
               class="line-stroke"
               :class="{ 'line-active': currentStage >= 3 }"
             />
@@ -84,15 +84,17 @@ const currentStage = computed(() => props.stage ?? 0)
 </template>
 
 <style scoped>
-/* ── Clean Smooth SVG Animated Underlines ── */
+/* ── Clean Smooth SVG Animated Underlines (Zero Preview Artifacts) ── */
 .line-stroke {
-  stroke-dasharray: 100;
-  stroke-dashoffset: 100;
-  transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  opacity: 0;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
 }
 
 .line-stroke.line-active {
   stroke-dashoffset: 0;
+  opacity: 1;
 }
 
 /* ── Clean & Subtle Blue/Sky Highlighter Pen Brush Animation for Chat & ChatGPT Work ── */
