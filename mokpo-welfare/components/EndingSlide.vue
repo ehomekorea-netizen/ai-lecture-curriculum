@@ -17,8 +17,9 @@ let qrTimer: ReturnType<typeof setTimeout> | null = null
 const QR_URL = 'https://cafe.daangn.com/mogpo-ai-silheo?utm_medium=copy_link'
 const QUIET = 2
 
+// High error correction (Level Q 25%) for instant optical camera recognition
 const qrObj = computed(() => {
-  const c = qrcode(0, 'M') // Standard Error Correction Level M for crisp full dot density
+  const c = qrcode(0, 'Q')
   c.addData(QR_URL)
   c.make()
   return c
@@ -35,39 +36,34 @@ function isFinderPattern(r: number, c: number, n: number): boolean {
   return false
 }
 
-// Generate pure Instagram-style circular dot matrix (Full center filled, No Logo)
-const dotCircles = computed(() => {
+// Data modules with micro-rounded corners for high optical continuous density
+const dataModules = computed(() => {
   const c = qrObj.value
   const n = count.value
-  const dots: { cx: number; cy: number; r: number }[] = []
+  const modules: { x: number; y: number }[] = []
 
   for (let r = 0; r < n; r++) {
     for (let col = 0; col < n; col++) {
       if (isFinderPattern(r, col, n)) continue
 
       if (c.isDark(r, col)) {
-        dots.push({
-          cx: col + QUIET + 0.5,
-          cy: r + QUIET + 0.5,
-          r: 0.46
+        modules.push({
+          x: col + QUIET,
+          y: r + QUIET
         })
       }
     }
   }
-  return dots
+  return modules
 })
 
-// Extra Bold & Enlarged Instagram-Style Finder Eyes (3 Corner Markers)
-interface EyePos {
-  cx: number
-  cy: number
-}
-const finderEyes = computed<EyePos[]>(() => {
+// Exact ISO 1:1:3:1:1 Finder Pattern Positions (Top-Left, Top-Right, Bottom-Left)
+const finderOrigins = computed(() => {
   const n = count.value
   return [
-    { cx: QUIET + 3.5, cy: QUIET + 3.5 },          // Top-Left
-    { cx: QUIET + n - 3.5, cy: QUIET + 3.5 },      // Top-Right
-    { cx: QUIET + 3.5, cy: QUIET + n - 3.5 }       // Bottom-Left
+    { x: QUIET, y: QUIET },                 // Top-Left
+    { x: QUIET + n - 7, y: QUIET },         // Top-Right
+    { x: QUIET, y: QUIET + n - 7 }          // Bottom-Left
   ]
 })
 
@@ -254,54 +250,66 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <!-- ── 5s Delayed Slide-in: 1.2x Enlarged (164px) Pure Floating QR at Bottom-Left ── -->
+    <!-- ── 5s Delayed Slide-in: 100% Completely Free-Floating Pure White QR (Zero Glass, Zero Border) ── -->
     <div
-      class="absolute bottom-5 left-7 z-20 transition-all duration-800 ease-out"
+      class="absolute bottom-6 left-8 z-20 transition-all duration-800 ease-out"
       :class="showQr ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' : 'opacity-0 translate-y-8 scale-90 pointer-events-none'"
     >
-      <!-- Free-floating SVG (Zero outer background box, 100% transparent fluid backdrop) -->
-      <div class="relative flex items-center justify-center">
-        <!-- Exactly 1.2x Scaled (164px) Pure White Dotted SVG QR -->
-        <svg
-          :viewBox="`0 0 ${span} ${span}`"
-          width="164"
-          height="164"
-          class="block drop-shadow-[0_4px_20px_rgba(0,0,0,0.98)]"
-        >
-          <!-- 1. Three Enlarged & Extra-Bold Instagram-Style Finder Eyes (3각 동그라미) -->
-          <g v-for="(eye, idx) in finderEyes" :key="idx">
-            <!-- Outer Rounded Square (Thick, Smooth Squircle) -->
-            <rect
-              :x="eye.cx - 3.4"
-              :y="eye.cy - 3.4"
-              width="6.8"
-              height="6.8"
-              rx="2.2"
-              ry="2.2"
-              fill="none"
-              stroke="#FFFFFF"
-              stroke-width="1.15"
-            />
-            <!-- Inner Solid Center Circle (Enlarged) -->
-            <circle
-              :cx="eye.cx"
-              :cy="eye.cy"
-              r="1.85"
-              fill="#FFFFFF"
-            />
-          </g>
-
-          <!-- 2. Pure White Circular Data Modules (Full Grid, No Logo) -->
-          <circle
-            v-for="(dot, dIdx) in dotCircles"
-            :key="dIdx"
-            :cx="dot.cx"
-            :cy="dot.cy"
-            :r="dot.r"
+      <!-- Pure Vector SVG Floating Directly Over Fluid Canvas with Subtle Cinema Shadow -->
+      <svg
+        :viewBox="`0 0 ${span} ${span}`"
+        width="164"
+        height="164"
+        shape-rendering="geometricPrecision"
+        class="block drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)]"
+      >
+        <!-- 1. Three ISO 1:1:3:1:1 Finder Patterns (Instant Camera Lock Standard) -->
+        <g v-for="(origin, idx) in finderOrigins" :key="idx">
+          <!-- Outer 7x7 Square Ring (Radius 1.4) -->
+          <rect
+            :x="origin.x"
+            :y="origin.y"
+            width="7"
+            height="7"
+            rx="1.4"
+            ry="1.4"
             fill="#FFFFFF"
           />
-        </svg>
-      </div>
+          <!-- Inner 5x5 Transparent Gap (Shows Fluid Canvas) -->
+          <rect
+            :x="origin.x + 1"
+            :y="origin.y + 1"
+            width="5"
+            height="5"
+            rx="0.7"
+            ry="0.7"
+            fill="#050811"
+          />
+          <!-- Center 3x3 Solid Core -->
+          <rect
+            :x="origin.x + 2"
+            :y="origin.y + 2"
+            width="3"
+            height="3"
+            rx="0.6"
+            ry="0.6"
+            fill="#FFFFFF"
+          />
+        </g>
+
+        <!-- 2. Pure White Micro-Rounded Data Modules (Continuous Optical Density) -->
+        <rect
+          v-for="(mod, mIdx) in dataModules"
+          :key="mIdx"
+          :x="mod.x + 0.04"
+          :y="mod.y + 0.04"
+          width="0.92"
+          height="0.92"
+          rx="0.25"
+          ry="0.25"
+          fill="#FFFFFF"
+        />
+      </svg>
     </div>
   </div>
 </template>
