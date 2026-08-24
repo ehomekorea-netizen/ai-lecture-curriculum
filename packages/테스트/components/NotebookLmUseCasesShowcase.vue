@@ -3,6 +3,13 @@ import { computed } from 'vue'
 
 const props = withDefaults(defineProps<{ stage?: number }>(), { stage: 0 })
 
+const base = import.meta.env.BASE_URL || '/'
+const resolveAsset = (path: string) => {
+  if (!path || path.startsWith('http') || path.startsWith('data:')) return path
+  const clean = path.startsWith('/') ? path.slice(1) : path
+  return `${base}${clean}`
+}
+
 const cases = [
   {
     id: 1,
@@ -59,7 +66,7 @@ const currentCase = computed(() => {
         <template v-if="currentCase.imagePosition === 'left'">
           <div class="w-[45%] flex items-center justify-center">
             <img
-              :src="currentCase.image"
+              :src="resolveAsset(currentCase.image)"
               :alt="currentCase.title"
               class="w-full max-h-[290px] object-contain rounded-xl"
             />
@@ -86,7 +93,7 @@ const currentCase = computed(() => {
           </div>
           <div class="w-[45%] flex items-center justify-center">
             <img
-              :src="currentCase.image"
+              :src="resolveAsset(currentCase.image)"
               :alt="currentCase.title"
               class="w-full max-h-[290px] object-contain rounded-xl"
             />

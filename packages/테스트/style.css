@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Radio+Canada+Big:wght@400..700&family=Geist+Mono:wght@400;600;700&family=Kalam:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&family=Permanent+Marker&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Radio+Canada+Big:wght@400..700&family=Geist+Mono:wght@400;600;700&family=Kalam:wght@400;700&display=swap');
 
 
 :root {
@@ -44,6 +44,8 @@
   color: var(--ink-dim);
   margin: 0 0 0.75rem;
   flex-shrink: 0;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 /* Body wrapper — grows to fill remaining space and centres content+footer as a group */
@@ -68,6 +70,7 @@
   border-radius: 14px;
   padding: 1.1rem 1.4rem;
   box-shadow: 0 4px 14px rgba(43,38,32,0.04);
+  word-break: keep-all;
 }
 
 .quote-box {
@@ -79,6 +82,8 @@
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   box-shadow: 0 2px 8px rgba(43,38,32,0.03);
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .pill {

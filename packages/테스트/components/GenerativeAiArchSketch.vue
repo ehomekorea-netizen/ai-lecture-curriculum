@@ -5,6 +5,13 @@ import { FileText, Image, Mic, Code2, Sparkles, MessageSquare, Database } from '
 
 const props = withDefaults(defineProps<{ stage?: number }>(), { stage: 0 })
 
+const base = import.meta.env.BASE_URL || '/'
+const resolveAsset = (path: string) => {
+  if (!path || path.startsWith('http') || path.startsWith('data:')) return path
+  const clean = path.startsWith('/') ? path.slice(1) : path
+  return `${base}${clean}`
+}
+
 const wrap = ref<HTMLElement | null>(null)
 const overlay = ref<SVGSVGElement | null>(null)
 
@@ -258,7 +265,7 @@ const styleOf = (b: Box) => ({
     >
       <div class="flex items-center gap-5 bg-amber-50/70 rounded-xl px-5 py-2.5 border-l-4 border-emerald-500 shadow-xs">
         <img
-          src="/nist-logo.png"
+          :src="resolveAsset('/nist-logo.png')"
           class="h-13 w-auto object-contain shrink-0"
           alt="NIST 미국 국립표준기술연구소"
         />

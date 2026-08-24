@@ -11,21 +11,7 @@ fonts:
   mono: Geist Mono, monospace
 ---
 
-<div class="my-auto" style="padding-bottom:1.6rem">
-  <h1 class="text-5xl font-serif font-bold leading-tight text-slate-900 mb-5">
-    AI를 활용한<br><span class="text-blue-600">문서 작성 협업 역량 강화</span>
-  </h1>
-  <div class="quote-box max-w-3xl mb-5">
-    <div class="font-serif text-base text-slate-800 leading-relaxed">
-      "생성형 AI를 잘 쓰는 사람은 단순히 프롬프트를 잘 쓰는 사람이 아니라,<br>
-      <strong>AI가 무엇을 할 수 있고, 무엇을 모르는지를 명확히 이해하는 사람</strong>이다."
-    </div>
-  </div>
-  <div class="flex items-center gap-3">
-    <span class="pill pill-cream">교육 기관</span>
-    <span class="text-slate-900 font-bold text-sm">목포종합사회복지관</span>
-  </div>
-</div>
+<CoverSlide />
 
 ---
 
@@ -265,7 +251,7 @@ clicks: 5
 
 # 일반 생성형 AI vs Gemini Notebook 비교
 
-<p class="subtitle">"무엇이든 묻는 AI"와 <strong>"내 자료를 기준으로 묻는 AI"</strong>의 결정적 차이</p>
+<p class="subtitle break-keep"><span class="whitespace-nowrap">"무엇이든 묻는 AI"</span>와 <strong><span class="whitespace-nowrap">"내 자료를 기준으로 묻는 AI"</span></strong>의 결정적 차이</p>
 
 <div class="slide-body">
   <ComparisonTableSlide17 :stage="$clicks" />
@@ -304,7 +290,7 @@ layout: default
 />
 
 ---
-clicks: 2
+clicks: 4
 ---
 
 # ChatGPT Work란?
@@ -474,7 +460,6 @@ clicks: 3
 </div>
 
 ---
-layout: statement
----
 
-# AI는 초안을 쓰고,<br><span class="text-blue-600">가치는 여러분이 담습니다.</span>
+<EndingSlide />
+

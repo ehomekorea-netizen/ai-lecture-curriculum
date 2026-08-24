@@ -22,6 +22,13 @@ import {
 
 const props = withDefaults(defineProps<{ stage?: number }>(), { stage: 0 })
 
+const base = import.meta.env.BASE_URL || '/'
+const resolveAsset = (path: string) => {
+  if (!path || path.startsWith('http') || path.startsWith('data:')) return path
+  const clean = path.startsWith('/') ? path.slice(1) : path
+  return `${base}${clean}`
+}
+
 type LayerKey = 'ai' | 'ml' | 'dl' | 'genai'
 
 const layerKeys: LayerKey[] = ['ai', 'ml', 'dl', 'genai']
@@ -402,7 +409,7 @@ function selectLayer(key: LayerKey) {
             <!-- Brand SVG Logo if available -->
             <img
               v-if="tag.logo"
-              :src="tag.logo"
+              :src="resolveAsset(tag.logo)"
               class="w-3.5 h-3.5 object-contain shrink-0"
               :alt="tag.name"
             />

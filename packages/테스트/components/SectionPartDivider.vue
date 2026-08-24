@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import AnimatedBrushUnderline from './AnimatedBrushUnderline.vue'
 
 const props = withDefaults(defineProps<{
@@ -13,6 +14,21 @@ const props = withDefaults(defineProps<{
   subtitle: '규칙 기반 소프트웨어에서 확률적 생성, 그리고 스스로 일하는 에이전트로의 진화',
   image: '/adobestock-556454258_1920-1080.avif'
 })
+
+const base = import.meta.env.BASE_URL || '/'
+const resolveMedia = (path?: string) => {
+  if (!path) return ''
+  if (path.startsWith('http') || path.startsWith('data:')) return path
+  const clean = path.startsWith('/') ? path.slice(1) : path
+  return `${base}${clean}`
+}
+
+const resolvedVideo = computed(() => {
+  const target = props.video || (props.image && props.image.endsWith('.mp4') ? props.image : '')
+  return resolveMedia(target)
+})
+
+const resolvedImage = computed(() => resolveMedia(props.image))
 </script>
 
 <template>
@@ -48,7 +64,7 @@ const props = withDefaults(defineProps<{
         <!-- Looping Video Support -->
         <video
           v-if="video || (image && image.endsWith('.mp4'))"
-          :src="video || image"
+          :src="resolvedVideo"
           autoplay
           loop
           muted
@@ -58,7 +74,7 @@ const props = withDefaults(defineProps<{
         <!-- Image Fallback -->
         <img
           v-else
-          :src="image"
+          :src="resolvedImage"
           :alt="title"
           class="w-full h-full object-cover rounded-2xl select-none"
         />
