@@ -461,5 +461,26 @@ clicks: 3
 
 ---
 
+# "가장 핫한 새로운 개발 언어는 '영어(자연어)'다"
+
+<p class="subtitle">OpenAI 공동창업자이자 테슬라 전 AI 디렉터 <strong>안드레 카파시(Andrej Karpathy)</strong>가 촉발한 <strong>바이브 코딩(Vibe Coding)</strong> 혁명</p>
+
+<div class="slide-body">
+  <InstagramEmbed postId="DYlyHEAFLR7" />
+</div>
+
+---
+
+# 바이브 코딩(Vibe Coding) 실전 프로젝트 쇼케이스
+
+<p class="subtitle">비개발자도 프롬프트와 기획 의도(PRD)만으로 완성한 <strong>3대 실전 라이브 웹 서비스</strong></p>
+
+<div class="slide-body">
+  <VibeCodingProjectsShowcase />
+</div>
+
+---
+
 <EndingSlide />
+
 
