@@ -1,0 +1,157 @@
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+import {
+  FileSpreadsheet,
+  FileText,
+  BarChart3
+} from 'lucide-vue-next'
+
+const fullPrompt = `업로드한 [2026_희망기업_직무요구스킬_분석.xlsx]를 분석해줘.
+
+1. 기획/개발/마케팅 직무별 신입 채용 필수 스킬과 우대사항을 비교해줘.
+2. 내 프로젝트 경험과 가장 잘 매칭되는 핵심 역량 3가지를 찾아줘.
+3. 직무별 역량 중요도 비교 막대그래프와 요약표를 만들어줘.
+4. 수강생인 내가 자기소개서와 면접에서 강조할 포인트로 정리해줘.
+
+@Documents, 지금 분석한 결과를 1쪽짜리 [신입 지원자 맞춤 직무 역량 전략서] DOCX로 만들어줘.
+
+보고서에는 제목, 핵심 매칭 역량 3개, 이력서/면접 강조 팁 2개를 넣어줘.`
+
+const typedText = ref('')
+let timer: any = null
+
+onMounted(() => {
+  let charIdx = 0
+  typedText.value = ''
+  timer = setInterval(() => {
+    if (charIdx < fullPrompt.length) {
+      typedText.value += fullPrompt[charIdx]
+      charIdx++
+    } else {
+      clearInterval(timer)
+      timer = null
+    }
+  }, 14)
+})
+
+onUnmounted(() => {
+  if (timer) clearInterval(timer)
+})
+
+// Highlight keywords dynamically in typed text
+const formattedHtml = computed(() => {
+  let text = typedText.value
+  // Escape HTML
+  text = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  
+  // Highlight [2026_희망기업_직무요구스킬_분석.xlsx] (Amber)
+  text = text.replace(/\[2026_희망기업_직무요구스킬_분석\.xlsx\]/g, '<span class="text-amber-300 font-bold">[2026_희망기업_직무요구스킬_분석.xlsx]</span>')
+  // Highlight only the actual plugin @Documents (Blue)
+  text = text.replace(/@Documents/g, '<span class="text-blue-400 font-bold">@Documents</span>')
+  
+  return text
+})
+</script>
+
+<template>
+  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[330px] my-auto">
+    <!-- ── Top: Features & Plugins Tag Bar ── -->
+    <div class="flex items-center justify-between bg-white px-3 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs mb-2">
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="text-[10px] font-mono font-bold text-slate-400 uppercase tracking-wider whitespace-nowrap">
+          도구 및 플러그인
+        </span>
+        <div class="flex items-center gap-1.5">
+          <span class="px-2.5 py-0.5 rounded-full text-[10.5px] font-mono font-bold bg-emerald-100 text-emerald-900 border border-emerald-200 flex items-center gap-1 whitespace-nowrap">
+            <BarChart3 :size="11" class="text-emerald-600" />
+            <span>기본 데이터 분석</span>
+          </span>
+          <span class="px-2.5 py-0.5 rounded-full text-[10.5px] font-mono font-bold bg-blue-100 text-blue-900 border border-blue-200 flex items-center gap-1 whitespace-nowrap">
+            <FileText :size="11" class="text-blue-600" />
+            <span>@Documents</span>
+          </span>
+        </div>
+      </div>
+      <span class="text-[10.5px] text-slate-500 font-medium whitespace-nowrap pl-2">
+        채용 데이터 분석 연산 ➔ <strong>@Documents 맞춤 전략서(DOCX)</strong> 자동 렌더링
+      </span>
+    </div>
+
+    <!-- ── Main 2-Column Grid (Left: Pure Typewriter Prompt, Right: Role Division) ── -->
+    <div class="grid grid-cols-12 gap-4 items-stretch h-[275px]">
+      <!-- ── Left Column (7 Cols): Pure Typewriter Terminal Box ── -->
+      <div class="col-span-7 flex flex-col justify-start bg-slate-950 rounded-2xl border border-slate-800 p-4 shadow-xl relative overflow-hidden">
+        <!-- Terminal Header Dot Indicator -->
+        <div class="flex items-center gap-1.5 pb-2 border-b border-slate-800/80 mb-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+          <span class="text-[9.5px] font-mono text-slate-500 ml-1.5">job-skill-analysis-prompt</span>
+        </div>
+
+        <!-- Real-time Typewriter Prompt Body with Infinite Blinking Cursor -->
+        <div class="font-mono text-[10px] leading-relaxed text-slate-200 whitespace-pre-line tracking-tight">
+          <span v-html="formattedHtml"></span><span class="cursor-blink"></span>
+        </div>
+      </div>
+
+      <!-- ── Right Column (5 Cols): Role Division & Workflow ── -->
+      <div class="col-span-5 flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-2xs">
+        <div>
+          <span class="text-[11px] font-bold text-slate-900 font-serif block mb-2.5">
+            기본 분석 기능과 @Documents의 역할 분담
+          </span>
+
+          <div class="space-y-2.5">
+            <!-- Role 1: 내장 데이터 분석 기능 -->
+            <div class="p-2.5 rounded-xl bg-emerald-50/50 border border-emerald-200/70 shadow-2xs">
+              <div class="flex items-center gap-1.5 text-emerald-900 font-bold text-[10.5px] mb-1">
+                <BarChart3 :size="13" class="text-emerald-600 shrink-0" />
+                <span>기본 데이터 분석 (통계 & 시각화)</span>
+              </div>
+              <ul class="text-[9.5px] text-slate-600 space-y-0.5 pl-1">
+                <li>• 직무별 필수 요구 스킬 및 우대사항 교차 비교</li>
+                <li>• 내 경험과 매칭되는 3대 핵심 역량 추출 & 막대그래프 생성</li>
+              </ul>
+            </div>
+
+            <!-- Role 2: @Documents 플러그인 -->
+            <div class="p-2.5 rounded-xl bg-blue-50/50 border border-blue-200/70 shadow-2xs">
+              <div class="flex items-center gap-1.5 text-blue-900 font-bold text-[10.5px] mb-1">
+                <FileText :size="13" class="text-blue-600 shrink-0" />
+                <span>@Documents (보고서 제작 플러그인)</span>
+              </div>
+              <ul class="text-[9.5px] text-slate-600 space-y-0.5 pl-1">
+                <li>• 분석 결과를 1쪽짜리 맞춤 전략서(DOCX)로 변환</li>
+                <li>• 제목 + 핵심 역량 3개 + 이력서/면접 팁 2개 구조화</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Takeaway -->
+        <div class="pt-1.5 border-t border-slate-100 text-[9.5px] text-slate-600 font-medium">
+          💡 <strong>실무 포인트</strong>: 채용 데이터를 정밀 분석하고, @Documents로 나만의 1쪽 맞춤 취업 전략서를 즉시 출력
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+/* ── Terminal Blinking Cursor (Infinite) ── */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  display: inline-block;
+  width: 2px;
+  height: 1.15em;
+  background-color: #60a5fa;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: cursor-blink 0.85s infinite;
+}
+</style>

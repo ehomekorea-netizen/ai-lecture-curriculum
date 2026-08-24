@@ -8,11 +8,42 @@
 
 | 일시 | 기관 | 장소 | 대상 | 교육 주제 | 웹 교안 링크 |
 | :---: | :--- | :--- | :--- | :--- | :---: |
-| **9/3(목)**) | 목포종합사회복지관 | [목포종합사회복지관](https://map.naver.com/p/search/%EB%AA%A9%ED%8F%AC%EC%20%EC%A2%85%ED%95%A9%EC%82%AC%ED%92%8D%EC%A7%80%EA%B4%80) | 🏛️ 사회복지 실무자 (복지관 종사자) | **AI를 활용한 문서 작성 협업 역량 강화** | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/mokpo-welfare/) |
-| **8/12(수) ~ 8/27(목)**<br>(총 6회 / 매주 수·목) | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·구직자 | **웹 포트폴리오 빌딩 & AI 에이전트 바이브 코딩 (5주차)** | [5주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-5th-week/) |
+| **9/3(목)** | 목포종합사회복지관 | [목포종합사회복지관](https://map.naver.com/p/search/%EB%AA%A9%ED%8F%AC%EC%20%EC%A2%85%ED%95%A9%EC%82%AC%ED%92%8D%EC%A7%80%EA%B4%80) | 🏛️ 사회복지 실무자 (복지관 종사자) | **AI를 활용한 문서 작성 협업 역량 강화** | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/mokpo-welfare/) |
+| **8/27(목)** | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·청소년 구직자 | **AI 활용 실무 문서 작성 및 취업 역량 강화 (6주차)** | [6주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-6th-week/) |
+| **8/12(수) ~ 8/26(수)** | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·청소년 구직자 | **웹 포트폴리오 빌딩 & AI 에이전트 바이브 코딩 (5주차)** | [5주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-5th-week/) |
 | **7/28(화)** | 퍼블릭AI | [전남해양수산과학원 고흥](https://map.naver.com/p/search/%EC%A0%84%EB%82%A8%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%EA%B3%BC%ED%95%99%EC%9B%90%20%EA%B3%A0%ED%9D%A5) | ⚓ 수산업 종사자 (어업인) | 수산업 종사자를 위한 생성형 AI | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/jeonnam-maritime/) |
 | **7/21(화), 23(목)** | 이음미래교육원 | [한울직업전문학교](https://map.naver.com/p/search/%ED%95%9C%EC%9A%B8%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90) | 👔 KIA 일반직 임직원 | 엑셀 활용 AI 업무 효율 향상 | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/kiamotors-excel/) |
 | **7/15(수) ~ 16(목)** | 전남대 앵커사업단 / 링크21 | [남부대학교](https://map.naver.com/p/search/%EB%82%A8%EB%B6%80%EB%8C%80%ED%95%99%EA%B5%90) | 🏫 지역아동센터 기관장·센터장 | AI 사업계획서 기획 및 실습 | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/nambu-univ/) |
+
+---
+
+## 🌟 밀양시 6주차: AI를 활용한 실무 문서 작성 및 취업 역량 강화 (`milyang-6th-week`)
+
+> **"밀양시 청년·청소년 취업역량 강화교육 6주차 — 생성형 AI의 본질부터 나만의 스킬 자산화까지"**  
+> 단순한 프롬프트 작성을 넘어, AI 작동 원리(Transformer & RAG), Gemini Notebook 실전자료 분석, ChatGPT Work 로컬 파일 연동 및 다중 플러그인 협업, 그리고 교육생 개인의 프로젝트 경험을 영구적인 취업 자산으로 만드는 커스텀 '스킬(Skill)' 구축까지 완결형 4단계 로드맵으로 구성된 Slidev 인터랙티브 웹 프레젠테이션입니다.
+
+### 📑 핵심 교육 커리큘럼 로드맵 (4대 파트)
+1. **Part 01 · 생성형 AI와 에이전트의 본질 (Principles & Agent)**
+   - AI 우산 속 생성형 AI의 위치 및 3대 핵심 작동 원리 (`AiConcentricRings`, `GptFlipCards`)
+   - 검색엔진과 생성 모델의 차이 & RAG(검색 증강 생성) 오픈북 시험 모델 (`RagOpenBookSimulator`)
+   - 실무 프롬프트 5대 구조화 표준 (역할, 맥락, 목표, 제약, 출력형식) (`PromptStructureArchSketch`)
+   - AI 에이전트 자율 업무 시뮬레이터 (`AiAgentWorkflowDirector`: 경험DB ➔ 역량매핑 ➔ 기획서 ➔ 성과분석)
+2. **Part 02 · Gemini Notebook 실전 분석 (Gemini Notebook Practice)**
+   - 나만의 경험 자료와 기업 공고를 기준으로 묻는 RAG 사고 도구 (`NotebookLmUseCasesShowcase`)
+   - Sources / Chat / Studio 3분할 기본 구조 및 팩트 기반 질의응답 (`NotebookLmTriSplitArchitecture`)
+   - 6단계 실전 워크플로우: 채용조사 ➔ 선별 ➔ 분석 ➔ 지식환류 ➔ 포트폴리오 초안 ➔ 수강생 검토 (`GeminiNotebookPracticeWorkflow`)
+3. **Part 03 · ChatGPT Work 도구 및 5대 검토 체계 (Work Tools & Review)**
+   - 로컬 파일 기반 산출물 제작(Work)과 Chat / Codex 3대 환경 역할 분담 (`ChatWorkCodexComparison`)
+   - 명시적 플러그인 호출 표준 (@Documents, @Presentations)
+   - 실무 Use Case 1: 채용 가이드 분석 및 기획서·피치덱 동시 작성 (`WelfarePolicyUseCase`)
+   - 실무 Use Case 2: 직무스킬 데이터 분석 및 1쪽 맞춤 전략서 작성 (`DataAnalysisUseCase`)
+   - 보고서 제출 전 5대 검토 체크리스트 및 수강생 최종 확인 체계 (`DocumentFiveChecks`)
+4. **Part 04 · 나만의 스킬 구축과 취업 자산화 (Skill & Assetization)**
+   - 스킬의 정의: `반복되는 취업 준비 + 정해진 처리 방식 + 원하는 결과 기준 = 나만의 직무 Skill`
+   - 나만의 스킬 4단계 제작 워크플로우 & `SKILL.md` 표준 패키지 구조 (`SkillCreationProcess`, `SkillDirectoryStructure`)
+   - 실무 Use Case: 반복되는 프로젝트 경험 정리 스킬 제작 (`ProgramReportSkillUseCase`)
+   - 실시간 인터랙티브 나만의 스킬 4행 빌딩 실습 (`CreateMyOwnSkill`)
+   - Final Statement: *"AI는 초안을 쓰고, 가치는 여러분이 담습니다."*
 
 ---
 
@@ -92,14 +123,14 @@
 
 ```bash
 ai-lecture-curriculum/
-├── mokpo-welfare/            # 🏛️ [NEW] 목포종합사회복지관 1차시 Slidev 기반 인터랙티브 웹 교안 (Live)
+├── milyang-6th-week/         # 🌟 [NEW] 밀양 6주차 Slidev 기반 인터랙티브 웹 교안 (Live)
 │   ├── index.html            # Vercel 배포용 SPA 엔트리
-│   ├── slides.md             # 37개 슬라이드 전체 마크다운 소스 (TOC 포함)
+│   ├── slides.md             # 38개 슬라이드 전체 마크다운 소스 (TOC 포함)
 │   ├── components/           # Vue 3 인터랙티브 에디토리얼 컴포넌트 모음
-│   ├── layouts/              # statement.vue 등 전용 레이아웃
 │   ├── assets/               # 정적 번들 에셋
 │   └── package.json          # Slidev 환경 설정
 │
+├── mokpo-welfare/            # 🏛️ 목포종합사회복지관 1차시 Slidev 기반 인터랙티브 웹 교안 (Live)
 ├── milyang-5th-week/         # 🌟 밀양 5주차 Slidev 기반 인터랙티브 웹 교안 (Live)
 ├── milyang-notion-resume/    # 🗄️ [Legacy] 이전 제작된 노션 이력서 DB 교안 아카이브 (별도 보존)
 ├── nambu-univ/               # 남부대학교 지역아동센터 AI 사업계획서 교안

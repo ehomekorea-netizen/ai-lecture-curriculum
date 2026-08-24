@@ -8,6 +8,10 @@
     {
       "source": "/milyang-5th-week/:path*",
       "destination": "/milyang-5th-week/index.html"
+    },
+    {
+      "source": "/milyang-6th-week/:path*",
+      "destination": "/milyang-6th-week/index.html"
     }
   ]
 }
