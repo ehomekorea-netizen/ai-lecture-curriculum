@@ -1,219 +1,388 @@
 <script setup lang="ts">
-import { ExternalLink, Folder, Sparkles } from 'lucide-vue-next'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+import {
+  ExternalLink,
+  X,
+  Smartphone,
+  Monitor,
+  Sparkles,
+  HelpCircle,
+  Heart,
+  MessageSquare,
+  Send,
+  Bookmark,
+  Share2,
+  CheckCircle2,
+  Flame,
+  ArrowRight
+} from 'lucide-vue-next'
 
-const projects = [
+interface ProjectItem {
+  id: 'lecture-payment' | 'biblegram' | 'danggeun'
+  title: string
+  kicker: string
+  url: string
+  type: 'mobile' | 'desktop'
+  desc: string
+  tags: string[]
+}
+
+const projects: ProjectItem[] = [
   {
     id: 'lecture-payment',
-    kicker: 'LECTURER FINANCIAL PORTAL',
     title: '출강바이브',
+    kicker: 'LECTURER FINANCIAL PORTAL',
     url: 'https://lecture-payment-dashboard.vercel.app/',
-    isHero: true,
-    specs: [
-      'Vite & Tailwind CSS 기반 초경량 빌드',
-      '세율 공제 및 교통비 개별 합산 알고리즘',
-      '동적 스크롤 인디케이터 반응형 물리 모션'
-    ],
-    prd: '여러 기관에 출강하는 프리랜서 강사들을 위해 최적화된 스마트 정산 대시보드입니다. 강의 기관마다 주강사/보조강사 여부, 세율, 교통비 지급 조건 등이 달라 매월 수동으로 복잡하게 정산하던 고충을 해결하기 위해 개발되었습니다. 날짜별 수업 명세만 입력하면 최종 수령액을 자동 산출하고 월별 추이를 차트로 나타냅니다.',
-    tags: ['Vite', 'Tailwind CSS', 'Vanilla JS']
+    type: 'mobile',
+    desc: '프리랜서 강사를 위한 스마트 정산 PWA 대시보드',
+    tags: ['Vite', 'Tailwind CSS', 'PWA']
   },
   {
     id: 'biblegram',
-    kicker: 'DAILY LIFE PWA',
     title: '바이블그램',
+    kicker: 'DAILY LIFE DEVOTIONAL PWA',
     url: 'https://biblegram.vercel.app/',
-    isHero: false,
-    prd: '바쁜 현대인들이 상쾌한 아침을 성경 말씀과 함께 차분하게 시작할 수 있도록 설계된 아침 푸시 알림 PWA 서비스입니다. 매일 오전 지정된 시간에 영성 카드를 알림으로 전송하며, 마음에 드는 구절 카드를 터치해 이미지 파일로 손쉽게 내려받아 소장 및 소셜 채널로 공유할 수 있도록 기획되었습니다.',
-    tags: ['PWA', 'Vercel Cron', 'Web Push API']
+    type: 'mobile',
+    desc: '매일 아침 성경 구절 푸시 알림 및 영성 카드 PWA',
+    tags: ['Next.js', 'Vercel Cron', 'Web Push']
   },
   {
     id: 'danggeun',
-    kicker: 'COMMUNITY SHARING BOARDS',
     title: 'HEAT Carrot',
+    kicker: 'COMMUNITY SHARING BOARDS',
     url: 'https://danggeun-dashboard.vercel.app/',
-    isHero: false,
-    prd: '지역 주민들의 온기 있는 당근 모임과 거래를 통해 쌓인 기부 적립 현황을 실시간으로 게시하는 실시간 현황 모니터입니다. 주민들이 스스로 기부 참여 현황을 투명하게 확인하고 성과를 공유함으로써 지역 기부 문화를 더욱 활성화하기 위해 기획되었습니다. Next.js와 노션 연동을 통해 데이터를 상시 자동 업데이트합니다.',
-    tags: ['Next.js', 'Notion SDK', 'Dual Monitor Mod']
+    type: 'desktop',
+    desc: '당근 모임 기부 적립 현황 실시간 모니터 대시보드',
+    tags: ['Next.js', 'Notion SDK', 'Live Monitor']
   }
 ]
+
+const activeDrawer = ref<ProjectItem | null>(null)
+
+function openDrawer(item: ProjectItem) {
+  activeDrawer.value = item
+}
+
+function closeDrawer() {
+  activeDrawer.value = null
+}
+
+function handleKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape' && activeDrawer.value) {
+    closeDrawer()
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', handleKeydown)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', handleKeydown)
+})
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[335px] my-auto py-0.5 space-y-2.5">
-    <!-- ── 1. Top Hero Card: 출강바이브 (Full Width) ── -->
-    <div class="bg-white rounded-2xl border border-slate-200/90 p-3.5 px-5 shadow-2xs flex flex-col justify-between">
-      <div>
-        <!-- Card Header -->
-        <div class="flex items-center justify-between mb-1.5 pb-1 border-b border-slate-100">
-          <div>
-            <span class="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
-              {{ projects[0].kicker }}
+  <div class="relative w-full h-[335px] my-auto select-none font-sans overflow-hidden flex flex-col justify-between py-1">
+    <!-- ── 3 Interactive Live Preview Cards (3-Column Grid) ── -->
+    <div class="grid grid-cols-3 gap-3.5 h-full items-stretch">
+      <!-- ── 1. 출강바이브 Card (PWA Install & Coin Visual) ── -->
+      <div
+        class="group relative bg-gradient-to-b from-slate-50/90 to-white rounded-2xl border border-slate-200/90 p-3.5 px-4 shadow-2xs hover:shadow-md hover:border-blue-300 transition-all cursor-pointer flex flex-col justify-between text-left"
+        @click="openDrawer(projects[0])"
+      >
+        <div>
+          <!-- Top Badge & Device Tag -->
+          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-100">
+            <span class="text-[8.5px] font-mono font-bold text-blue-600 uppercase tracking-wider">
+              01 · LECTURER PORTAL
             </span>
-            <h3 class="text-base md:text-lg font-bold font-serif text-slate-900 leading-tight">
-              {{ projects[0].title }}
-            </h3>
+            <span class="flex items-center gap-1 text-[9px] font-mono bg-blue-50 text-blue-600 px-1.5 py-0.5 rounded-md font-semibold">
+              <Smartphone :size="10" /> PWA App
+            </span>
           </div>
 
-          <div class="flex items-center gap-1.5">
-            <span class="p-1 rounded-md bg-slate-50 text-slate-400 border border-slate-200/60">
-              <Folder :size="13" />
+          <!-- Visual App Identity Box -->
+          <div class="p-3 rounded-xl bg-white border border-slate-200/70 shadow-2xs text-center space-y-1.5 mb-2">
+            <!-- Animated 3D Coin Badge -->
+            <div class="w-10 h-10 mx-auto rounded-full bg-gradient-to-tr from-amber-400 to-yellow-300 flex items-center justify-center text-white text-lg font-black shadow-md ring-4 ring-amber-100 group-hover:scale-110 transition-transform">
+              ₩
+            </div>
+            <h4 class="text-sm font-bold font-serif text-slate-900 m-0">출강바이브</h4>
+            <p class="text-[9.5px] text-slate-500 leading-tight m-0 break-keep">
+              홈 화면에 추가하고 매일 편리하게 정산 현황을 관리하세요.
+            </p>
+          </div>
+
+          <!-- Micro Guide Pill -->
+          <div class="p-2 rounded-lg bg-blue-50/70 border border-blue-100 text-[9.5px] text-blue-800 space-y-0.5">
+            <div class="font-bold flex items-center gap-1">
+              <span>📥 [홈화면에 추가]</span>
+              <span class="text-blue-500 font-normal">누르면 끝!</span>
+            </div>
+            <p class="text-[8.5px] text-blue-600/80 leading-tight m-0">
+              세율 공제 및 교통비 자동 정산 알고리즘
+            </p>
+          </div>
+        </div>
+
+        <!-- Open Drawer Trigger Button -->
+        <div class="pt-2 border-t border-slate-100 flex items-center justify-between">
+          <span class="text-[10.5px] font-bold text-blue-600 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+            <span>실전 앱 열어보기</span>
+            <ArrowRight :size="11" />
+          </span>
+          <span class="text-[9px] text-slate-400 font-mono">Drawer ➔</span>
+        </div>
+      </div>
+
+      <!-- ── 2. 바이블그램 Card (Visual Devotional Sanctuary) ── -->
+      <div
+        class="group relative bg-gradient-to-b from-[#0F172A] to-[#1E293B] text-slate-100 rounded-2xl border border-slate-700/80 p-3.5 px-4 shadow-2xs hover:shadow-md hover:border-amber-400/50 transition-all cursor-pointer flex flex-col justify-between text-left"
+        @click="openDrawer(projects[1])"
+      >
+        <div>
+          <!-- Top Badge -->
+          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-slate-800">
+            <span class="text-[8.5px] font-mono font-bold text-amber-400 uppercase tracking-wider">
+              02 · DAILY LIFE PWA
             </span>
-            <a
-              :href="projects[0].url"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="p-1 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 transition-colors flex items-center justify-center cursor-pointer shadow-2xs"
-              title="라이브 사이트 바로가기"
+            <span class="flex items-center gap-1 text-[9px] font-mono bg-amber-400/10 text-amber-300 px-1.5 py-0.5 rounded-md font-semibold">
+              <Smartphone :size="10" /> Push Web
+            </span>
+          </div>
+
+          <!-- Sanctum Visual Card -->
+          <div class="relative p-2.5 rounded-xl bg-slate-950/80 border border-slate-800/90 shadow-inner overflow-hidden mb-2">
+            <div class="text-[8px] font-mono font-bold text-amber-300/80 tracking-widest text-center uppercase mb-1">
+              LIGHT OF WORD
+            </div>
+            <p class="text-[10px] text-slate-200 font-serif leading-relaxed text-center break-keep m-0 px-1 font-medium">
+              "나의 반석이시요 나의 구속자이신 여호와여, 내 입의 말과 마음의 묵상이 주의 앞에 열납되기를..."
+            </p>
+            <div class="text-[8.5px] text-amber-400/90 text-center font-serif mt-1">
+              (시편 19:14)
+            </div>
+
+            <!-- Floating Micro Icons -->
+            <div class="flex items-center justify-center gap-3 pt-1.5 mt-1 border-t border-slate-800/80 text-slate-400 text-[8.5px]">
+              <span class="flex items-center gap-0.5"><Sparkles :size="9" class="text-amber-400" /> AI 묵상</span>
+              <span class="flex items-center gap-0.5"><Heart :size="9" /> 0</span>
+              <span class="flex items-center gap-0.5"><Share2 :size="9" /> 공유</span>
+            </div>
+          </div>
+
+          <!-- Sub Feature -->
+          <div class="p-1.5 px-2 rounded-lg bg-slate-800/60 text-[9px] text-slate-300">
+            <span class="text-amber-300 font-semibold">⏰ 매일 아침 푸시</span> · 영성 카드 이미지 원클릭 다운로드
+          </div>
+        </div>
+
+        <!-- Open Drawer Trigger -->
+        <div class="pt-2 border-t border-slate-800 flex items-center justify-between">
+          <span class="text-[10.5px] font-bold text-amber-300 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+            <span>실전 앱 열어보기</span>
+            <ArrowRight :size="11" />
+          </span>
+          <span class="text-[9px] text-slate-500 font-mono">Drawer ➔</span>
+        </div>
+      </div>
+
+      <!-- ── 3. HEAT Carrot Card (Dark Dashboard & Rabbit Mascot) ── -->
+      <div
+        class="group relative bg-[#121212] text-white rounded-2xl border border-neutral-800 p-3.5 px-4 shadow-2xs hover:shadow-md hover:border-orange-500/50 transition-all cursor-pointer flex flex-col justify-between text-left"
+        @click="openDrawer(projects[2])"
+      >
+        <div>
+          <!-- Top Badge -->
+          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-neutral-800">
+            <span class="text-[8.5px] font-mono font-bold text-orange-400 uppercase tracking-wider">
+              03 · SHARING BOARDS
+            </span>
+            <span class="flex items-center gap-1 text-[9px] font-mono bg-orange-500/10 text-orange-400 px-1.5 py-0.5 rounded-md font-semibold">
+              <Monitor :size="10" /> Monitor
+            </span>
+          </div>
+
+          <!-- Header with Cute Rabbit Mascot Graphic -->
+          <div class="p-2.5 rounded-xl bg-neutral-900 border border-neutral-800 mb-2 flex items-center gap-2.5">
+            <!-- Cute SVG Rabbit Mascot -->
+            <div class="w-9 h-9 shrink-0 flex items-end justify-center">
+              <svg viewBox="0 0 64 64" class="w-full h-full drop-shadow">
+                <!-- Rabbit Ears -->
+                <ellipse cx="24" cy="18" rx="5" ry="16" fill="#FFFFFF" />
+                <ellipse cx="24" cy="18" rx="2.5" ry="11" fill="#FFB6C1" />
+                <ellipse cx="40" cy="18" rx="5" ry="16" fill="#FFFFFF" />
+                <ellipse cx="40" cy="18" rx="2.5" ry="11" fill="#FFB6C1" />
+                <!-- Head -->
+                <ellipse cx="32" cy="42" rx="20" ry="18" fill="#FFFFFF" />
+                <!-- Eyes -->
+                <circle cx="26" cy="38" r="2.2" fill="#1E293B" />
+                <circle cx="38" cy="38" r="2.2" fill="#1E293B" />
+                <!-- Cheeks -->
+                <circle cx="21" cy="43" r="2.2" fill="#FFB6C1" opacity="0.8" />
+                <circle cx="43" cy="43" r="2.2" fill="#FFB6C1" opacity="0.8" />
+                <!-- Nose -->
+                <polygon points="32,42 30,45 34,45" fill="#FF9494" />
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-1">
+                <span class="text-xs font-black tracking-tight bg-gradient-to-r from-red-500 via-orange-400 to-emerald-400 bg-clip-text text-transparent">
+                  HEAT Carrot
+                </span>
+                <span class="text-[10px] font-bold text-white">프로젝트</span>
+              </div>
+              <p class="text-[9px] text-neutral-400 leading-snug m-0 break-keep">
+                당근의 온기로 근처 이웃에게 따뜻함을 전합니다.
+              </p>
+            </div>
+          </div>
+
+          <!-- Feature Specs -->
+          <div class="p-2 rounded-lg bg-neutral-900/90 border border-neutral-800 text-[9.5px] text-neutral-300 space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-neutral-400">연동 시스템</span>
+              <span class="text-orange-400 font-mono font-bold">Next.js + Notion SDK</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="text-neutral-400">데이터 갱신</span>
+              <span class="text-emerald-400 font-mono font-bold">실시간 자동 동기화</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Open Drawer Trigger -->
+        <div class="pt-2 border-t border-neutral-800 flex items-center justify-between">
+          <span class="text-[10.5px] font-bold text-orange-400 flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
+            <span>실전 대시보드 열기</span>
+            <ArrowRight :size="11" />
+          </span>
+          <span class="text-[9px] text-neutral-500 font-mono">Drawer ➔</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Interactive Slide Drawer (In-Deck Left Drawer with Device Frame) ── -->
+    <Transition name="drawer">
+      <div
+        v-if="activeDrawer"
+        class="absolute inset-0 z-50 flex bg-slate-900/60 backdrop-blur-xs select-none"
+        @click.self="closeDrawer"
+      >
+        <!-- Drawer Panel: Slides from Left -->
+        <div class="relative w-[480px] max-w-[85%] h-full bg-white shadow-2xl flex flex-col justify-between border-r border-slate-200 overflow-hidden text-left">
+          <!-- Drawer Header -->
+          <div class="flex items-center justify-between px-4 py-2.5 bg-slate-50 border-b border-slate-200">
+            <div class="flex items-center gap-2">
+              <span
+                class="w-2.5 h-2.5 rounded-full"
+                :class="activeDrawer.id === 'lecture-payment' ? 'bg-blue-600' : activeDrawer.id === 'biblegram' ? 'bg-amber-500' : 'bg-orange-500'"
+              />
+              <span class="font-bold text-xs font-serif text-slate-900">{{ activeDrawer.title }}</span>
+              <span class="text-[9.5px] font-mono text-slate-400 uppercase tracking-wider">{{ activeDrawer.kicker }}</span>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <!-- Live External Link -->
+              <a
+                :href="activeDrawer.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-1 text-[10px] text-blue-600 hover:text-blue-800 bg-blue-50 px-2 py-0.8 rounded-md font-medium border border-blue-200 transition-colors"
+                title="새 탭에서 열기"
+              >
+                <span>새 창</span>
+                <ExternalLink :size="10" />
+              </a>
+
+              <!-- Close Button -->
+              <button
+                class="flex items-center gap-1 text-[10px] font-bold text-slate-600 hover:text-red-600 bg-slate-200/70 hover:bg-red-50 px-2.5 py-0.8 rounded-md transition-colors cursor-pointer border border-slate-300/80"
+                @click="closeDrawer"
+              >
+                <span>취소 ✕</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Drawer Body: Device Screen (Iframe / Live App Viewer) -->
+          <div class="flex-1 bg-slate-900 flex items-center justify-center p-2 overflow-hidden relative">
+            <!-- Mobile Frame -->
+            <div
+              v-if="activeDrawer.type === 'mobile'"
+              class="w-[260px] h-[260px] rounded-2xl bg-black border-2 border-slate-700 shadow-xl overflow-hidden relative flex flex-col"
             >
-              <ExternalLink :size="13" />
-            </a>
-          </div>
-        </div>
-
-        <!-- Card Body: 2-Column Split (Spec vs PRD) -->
-        <div class="grid grid-cols-12 gap-4 text-left">
-          <!-- Left: App Specification -->
-          <div class="col-span-5 space-y-1">
-            <span class="text-[9.5px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
-              APP SPECIFICATION
-            </span>
-            <ul class="text-[10.5px] text-slate-600 space-y-0.5 leading-snug pl-3 list-disc">
-              <li v-for="spec in projects[0].specs" :key="spec">
-                {{ spec }}
-              </li>
-            </ul>
-          </div>
-
-          <!-- Right: PRD -->
-          <div class="col-span-7 space-y-1">
-            <span class="text-[9.5px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
-              기획 의도 (PRD)
-            </span>
-            <p class="text-[10.5px] text-slate-600 leading-snug break-keep">
-              {{ projects[0].prd }}
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card Footer Tags -->
-      <div class="flex items-center gap-1.5 pt-1.5 mt-1 border-t border-slate-100">
-        <span
-          v-for="tag in projects[0].tags"
-          :key="tag"
-          class="px-2 py-0.5 rounded-md bg-slate-100/80 text-slate-600 text-[9.5px] font-mono font-medium border border-slate-200/60"
-        >
-          {{ tag }}
-        </span>
-      </div>
-    </div>
-
-    <!-- ── 2. Bottom 2 Split Cards: 바이블그램 & HEAT Carrot ── -->
-    <div class="grid grid-cols-2 gap-3">
-      <!-- Card 2: 바이블그램 -->
-      <div class="bg-white rounded-2xl border border-slate-200/90 p-3 px-4 shadow-2xs flex flex-col justify-between">
-        <div>
-          <!-- Header -->
-          <div class="flex items-center justify-between mb-1 pb-1 border-b border-slate-100">
-            <div>
-              <span class="text-[8.5px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
-                {{ projects[1].kicker }}
-              </span>
-              <h4 class="text-sm font-bold font-serif text-slate-900 leading-tight">
-                {{ projects[1].title }}
-              </h4>
+              <!-- Dynamic Island / Speaker Bar -->
+              <div class="w-full h-3 bg-black flex items-center justify-center shrink-0">
+                <div class="w-10 h-1 bg-slate-700 rounded-full" />
+              </div>
+              <iframe
+                :src="activeDrawer.url"
+                class="w-full flex-1 border-none bg-white"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              />
             </div>
 
-            <div class="flex items-center gap-1">
-              <span class="p-0.8 rounded-md bg-slate-50 text-slate-400 border border-slate-200/60">
-                <Folder :size="12" />
-              </span>
-              <a
-                :href="projects[1].url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-0.8 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 transition-colors flex items-center justify-center cursor-pointer shadow-2xs"
-                title="라이브 사이트 바로가기"
-              >
-                <ExternalLink :size="12" />
-              </a>
+            <!-- Desktop Frame -->
+            <div
+              v-else
+              class="w-full h-[260px] rounded-xl bg-slate-950 border border-slate-800 shadow-xl overflow-hidden flex flex-col"
+            >
+              <!-- Browser Chrome Bar -->
+              <div class="w-full h-5 bg-slate-900 border-b border-slate-800 flex items-center px-2.5 gap-1.5 shrink-0">
+                <div class="w-2 h-2 rounded-full bg-red-500/80" />
+                <div class="w-2 h-2 rounded-full bg-amber-500/80" />
+                <div class="w-2 h-2 rounded-full bg-emerald-500/80" />
+                <div class="flex-1 mx-2 h-3 rounded bg-slate-800 text-[8px] font-mono text-slate-400 flex items-center px-2 truncate">
+                  {{ activeDrawer.url }}
+                </div>
+              </div>
+              <iframe
+                :src="activeDrawer.url"
+                class="w-full flex-1 border-none bg-slate-900"
+              />
             </div>
           </div>
 
-          <!-- PRD Content -->
-          <div class="space-y-0.5 my-1">
-            <span class="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
-              기획 의도 (PRD)
-            </span>
-            <p class="text-[10px] text-slate-600 leading-snug break-keep line-clamp-3">
-              {{ projects[1].prd }}
-            </p>
+          <!-- Drawer Footer -->
+          <div class="px-4 py-1.5 bg-white border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-500">
+            <span class="truncate max-w-[280px]">{{ activeDrawer.desc }}</span>
+            <button
+              class="text-blue-600 font-bold hover:underline cursor-pointer"
+              @click="closeDrawer"
+            >
+              닫기
+            </button>
           </div>
-        </div>
-
-        <!-- Tags -->
-        <div class="flex items-center gap-1 pt-1 border-t border-slate-100">
-          <span
-            v-for="tag in projects[1].tags"
-            :key="tag"
-            class="px-1.5 py-0.2 rounded bg-slate-100/80 text-slate-600 text-[9px] font-mono font-medium border border-slate-200/60"
-          >
-            {{ tag }}
-          </span>
         </div>
       </div>
-
-      <!-- Card 3: HEAT Carrot -->
-      <div class="bg-white rounded-2xl border border-slate-200/90 p-3 px-4 shadow-2xs flex flex-col justify-between">
-        <div>
-          <!-- Header -->
-          <div class="flex items-center justify-between mb-1 pb-1 border-b border-slate-100">
-            <div>
-              <span class="text-[8.5px] font-mono font-bold text-slate-400 uppercase tracking-widest block">
-                {{ projects[2].kicker }}
-              </span>
-              <h4 class="text-sm font-bold font-serif text-slate-900 leading-tight">
-                {{ projects[2].title }}
-              </h4>
-            </div>
-
-            <div class="flex items-center gap-1">
-              <span class="p-0.8 rounded-md bg-slate-50 text-slate-400 border border-slate-200/60">
-                <Folder :size="12" />
-              </span>
-              <a
-                :href="projects[2].url"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-0.8 rounded-md bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white border border-blue-200 transition-colors flex items-center justify-center cursor-pointer shadow-2xs"
-                title="라이브 사이트 바로가기"
-              >
-                <ExternalLink :size="12" />
-              </a>
-            </div>
-          </div>
-
-          <!-- PRD Content -->
-          <div class="space-y-0.5 my-1">
-            <span class="text-[9px] font-mono font-bold text-slate-400 uppercase tracking-wider block">
-              기획 의도 (PRD)
-            </span>
-            <p class="text-[10px] text-slate-600 leading-snug break-keep line-clamp-3">
-              {{ projects[2].prd }}
-            </p>
-          </div>
-        </div>
-
-        <!-- Tags -->
-        <div class="flex items-center gap-1 pt-1 border-t border-slate-100">
-          <span
-            v-for="tag in projects[2].tags"
-            :key="tag"
-            class="px-1.5 py-0.2 rounded bg-slate-100/80 text-slate-600 text-[9px] font-mono font-medium border border-slate-200/60"
-          >
-            {{ tag }}
-          </span>
-        </div>
-      </div>
-    </div>
+    </Transition>
   </div>
 </template>
+
+<style scoped>
+/* ── Left Drawer Smooth Slide Transition ── */
+.drawer-enter-active,
+.drawer-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.drawer-enter-from,
+.drawer-leave-to {
+  opacity: 0;
+}
+
+.drawer-enter-active > div,
+.drawer-leave-active > div {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-enter-from > div {
+  transform: translateX(-100%);
+}
+
+.drawer-leave-to > div {
+  transform: translateX(-100%);
+}
+</style>
