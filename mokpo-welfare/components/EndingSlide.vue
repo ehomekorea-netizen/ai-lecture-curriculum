@@ -15,10 +15,10 @@ const showQr = ref(false)
 let qrTimer: ReturnType<typeof setTimeout> | null = null
 
 const QR_URL = 'https://cafe.daangn.com/mogpo-ai-silheo?utm_medium=copy_link'
-const QUIET = 4
+const QUIET = 2
 
 const qrObj = computed(() => {
-  const c = qrcode(0, 'H') // Level H (30% High error correction for center logo embedding)
+  const c = qrcode(0, 'M') // Standard Error Correction Level M for crisp full dot density
   c.addData(QR_URL)
   c.make()
   return c
@@ -27,19 +27,48 @@ const qrObj = computed(() => {
 const count = computed(() => qrObj.value.getModuleCount())
 const span = computed(() => count.value + QUIET * 2)
 
-// Ultra-sharp vector SVG path for 100% permanent crisp projection
-const qrPath = computed(() => {
+// Helper: Check if a coordinate belongs to one of the 3 Corner Finder Patterns (7x7)
+function isFinderPattern(r: number, c: number, n: number): boolean {
+  if (r < 7 && c < 7) return true
+  if (r < 7 && c >= n - 7) return true
+  if (r >= n - 7 && c < 7) return true
+  return false
+}
+
+// Generate pure Instagram-style circular dot matrix (Full center filled, No Logo)
+const dotCircles = computed(() => {
   const c = qrObj.value
   const n = count.value
-  let d = ''
+  const dots: { cx: number; cy: number; r: number }[] = []
+
   for (let r = 0; r < n; r++) {
     for (let col = 0; col < n; col++) {
+      if (isFinderPattern(r, col, n)) continue
+
       if (c.isDark(r, col)) {
-        d += `M${col + QUIET} ${r + QUIET}h1v1h-1z`
+        dots.push({
+          cx: col + QUIET + 0.5,
+          cy: r + QUIET + 0.5,
+          r: 0.46
+        })
       }
     }
   }
-  return d
+  return dots
+})
+
+// Extra Bold & Enlarged Instagram-Style Finder Eyes (3 Corner Markers)
+interface EyePos {
+  cx: number
+  cy: number
+}
+const finderEyes = computed<EyePos[]>(() => {
+  const n = count.value
+  return [
+    { cx: QUIET + 3.5, cy: QUIET + 3.5 },          // Top-Left
+    { cx: QUIET + n - 3.5, cy: QUIET + 3.5 },      // Top-Right
+    { cx: QUIET + 3.5, cy: QUIET + n - 3.5 }       // Bottom-Left
+  ]
 })
 
 const vsSource = `
@@ -225,34 +254,53 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <!-- ── 5s Delayed Slide-in Floating Glassmorphic QR Card with Center Daangn Emblem ── -->
+    <!-- ── 5s Delayed Slide-in: 1.2x Enlarged (164px) Pure Floating QR at Bottom-Left ── -->
     <div
-      class="absolute bottom-5 left-1/2 -translate-x-1/2 z-20 transition-all duration-700 ease-out"
+      class="absolute bottom-5 left-7 z-20 transition-all duration-800 ease-out"
       :class="showQr ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto' : 'opacity-0 translate-y-8 scale-90 pointer-events-none'"
     >
-      <div class="relative bg-white/95 backdrop-blur-md p-2 rounded-2xl shadow-[0_12px_36px_rgba(0,0,0,0.45)] border border-white/80 ring-1 ring-black/5 flex items-center justify-center">
-        <!-- Crisp SVG QR Matrix -->
+      <!-- Free-floating SVG (Zero outer background box, 100% transparent fluid backdrop) -->
+      <div class="relative flex items-center justify-center">
+        <!-- Exactly 1.2x Scaled (164px) Pure White Dotted SVG QR -->
         <svg
           :viewBox="`0 0 ${span} ${span}`"
-          width="96"
-          height="96"
-          shape-rendering="crispEdges"
-          class="rounded-xl block"
+          width="164"
+          height="164"
+          class="block drop-shadow-[0_4px_20px_rgba(0,0,0,0.98)]"
         >
-          <rect :width="span" :height="span" fill="#ffffff" />
-          <path :d="qrPath" fill="#0f172a" />
-        </svg>
-
-        <!-- Center Daangn Icon Badge -->
-        <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div class="w-6 h-6 p-0.5 bg-white rounded-lg shadow-sm border border-slate-100 flex items-center justify-center overflow-hidden">
-            <img
-              src="/daangnInFrame.webp"
-              alt="당근 모임"
-              class="w-full h-full object-contain rounded-md block"
+          <!-- 1. Three Enlarged & Extra-Bold Instagram-Style Finder Eyes (3각 동그라미) -->
+          <g v-for="(eye, idx) in finderEyes" :key="idx">
+            <!-- Outer Rounded Square (Thick, Smooth Squircle) -->
+            <rect
+              :x="eye.cx - 3.4"
+              :y="eye.cy - 3.4"
+              width="6.8"
+              height="6.8"
+              rx="2.2"
+              ry="2.2"
+              fill="none"
+              stroke="#FFFFFF"
+              stroke-width="1.15"
             />
-          </div>
-        </div>
+            <!-- Inner Solid Center Circle (Enlarged) -->
+            <circle
+              :cx="eye.cx"
+              :cy="eye.cy"
+              r="1.85"
+              fill="#FFFFFF"
+            />
+          </g>
+
+          <!-- 2. Pure White Circular Data Modules (Full Grid, No Logo) -->
+          <circle
+            v-for="(dot, dIdx) in dotCircles"
+            :key="dIdx"
+            :cx="dot.cx"
+            :cy="dot.cy"
+            :r="dot.r"
+            fill="#FFFFFF"
+          />
+        </svg>
       </div>
     </div>
   </div>
