@@ -21,6 +21,9 @@ import {
 
 const props = withDefaults(defineProps<{ stage?: number }>(), { stage: 0 })
 
+const rootRef = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | null = null
+
 const fullPrompt = '2026년 목포종합사회복지관 취약계층 아동 방과후 특별돌봄 사업계획서 작성 및 세출 예산안 비교 분석해줘.'
 
 // Live execution progression state (0 to 5)
@@ -102,12 +105,27 @@ function showCompletedState() {
 }
 
 onMounted(() => {
-  // Start execution stream right away when slide mounts
-  startAgentExecution()
+  if (rootRef.value) {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (props.stage === 0) {
+            startAgentExecution()
+          } else if (props.stage === 1) {
+            showCompletedState()
+          }
+        } else {
+          clearAllTimers()
+        }
+      })
+    }, { threshold: 0.15 })
+    observer.observe(rootRef.value)
+  }
 })
 
 onUnmounted(() => {
   clearAllTimers()
+  if (observer) observer.disconnect()
 })
 
 watch(() => props.stage, (newStage) => {
@@ -127,7 +145,7 @@ watch(() => props.stage, (newStage) => {
 </script>
 
 <template>
-  <div class="w-full flex flex-col items-center justify-center select-none my-auto h-[415px] relative font-sans">
+  <div ref="rootRef" class="w-full flex flex-col items-center justify-center select-none my-auto h-[415px] relative font-sans">
     <!-- Antigravity Native Dark Chat Interface (Expanded Zero-Clipping Layout: ~400px) -->
     <div class="w-full h-[400px] rounded-2xl bg-[#0D0E12] border border-[#232733] shadow-2xl p-3.5 px-4.5 flex flex-col justify-between z-10 text-[#C5C9D5] relative overflow-hidden">
       <!-- 1. Top Trajectory Header -->

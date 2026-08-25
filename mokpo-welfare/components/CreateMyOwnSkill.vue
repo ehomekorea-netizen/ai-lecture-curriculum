@@ -119,22 +119,49 @@ function runTypewriterForRow(idx: number) {
   }
 }
 
-onMounted(() => {
+const rootRef = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | null = null
+
+function clearAllTimeouts() {
+  timeouts.forEach(t => clearTimeout(t))
+  timeouts.length = 0
+}
+
+function startAllRows() {
+  clearAllTimeouts()
   rows.value.forEach((row, idx) => {
+    row.displayText = ''
+    row.isDeleting = false
     const t = setTimeout(() => {
       runTypewriterForRow(idx)
     }, row.initialDelay)
     timeouts.push(t)
   })
+}
+
+onMounted(() => {
+  if (rootRef.value) {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startAllRows()
+        } else {
+          clearAllTimeouts()
+        }
+      })
+    }, { threshold: 0.15 })
+    observer.observe(rootRef.value)
+  }
 })
 
 onUnmounted(() => {
-  timeouts.forEach(t => clearTimeout(t))
+  clearAllTimeouts()
+  if (observer) observer.disconnect()
 })
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-800 text-center h-[335px] my-auto py-0.5">
+  <div ref="rootRef" class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-800 text-center h-[335px] my-auto py-0.5">
     <!-- ── Center Stage: Grand Keynote Scale 4-Row Fill-in Card (Fixed Heights to Prevent Reflow/Shaking) ── -->
     <div class="w-full max-w-4xl bg-white rounded-3xl border border-slate-200/90 p-5 px-8 shadow-sm flex flex-col justify-between h-[272px] min-h-[272px] max-h-[272px] text-left overflow-hidden">
       <div class="space-y-2.5 my-auto">

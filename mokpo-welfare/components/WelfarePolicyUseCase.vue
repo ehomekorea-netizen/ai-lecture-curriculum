@@ -5,6 +5,9 @@ import {
   Presentation
 } from 'lucide-vue-next'
 
+const rootRef = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | null = null
+
 const fullPrompt = `@Documents, 개정된 [2026_복지부_디지털돌봄_정책지침.pdf]를 읽고 우리 기관에 적용할 신규 사업기획서 초안을 DOCX로 작성해줘.
 사업 배경, 목적, 대상, 주요 프로그램, 예산, 기대효과를 5대 목차로 정리하고, 정책 원문 수치는 원자료와 대조해줘.
 
@@ -14,7 +17,8 @@ const fullPrompt = `@Documents, 개정된 [2026_복지부_디지털돌봄_정책
 const typedText = ref('')
 let timer: any = null
 
-onMounted(() => {
+function startTyping() {
+  if (timer) clearInterval(timer)
   let charIdx = 0
   typedText.value = ''
   timer = setInterval(() => {
@@ -26,10 +30,33 @@ onMounted(() => {
       timer = null
     }
   }, 16)
+}
+
+function stopTyping() {
+  if (timer) {
+    clearInterval(timer)
+    timer = null
+  }
+}
+
+onMounted(() => {
+  if (rootRef.value) {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startTyping()
+        } else {
+          stopTyping()
+        }
+      })
+    }, { threshold: 0.15 })
+    observer.observe(rootRef.value)
+  }
 })
 
 onUnmounted(() => {
-  if (timer) clearInterval(timer)
+  stopTyping()
+  if (observer) observer.disconnect()
 })
 
 // Highlight keywords dynamically in typed text
@@ -50,7 +77,7 @@ const formattedHtml = computed(() => {
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[330px] my-auto">
+  <div ref="rootRef" class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[330px] my-auto">
     <!-- ── Top: Features & Plugins Tag Bar ── -->
     <div class="flex items-center justify-between bg-white px-3 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs mb-2">
       <div class="flex items-center gap-2">

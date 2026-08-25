@@ -6,6 +6,9 @@ import {
   BarChart3
 } from 'lucide-vue-next'
 
+const rootRef = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | null = null
+
 const fullPrompt = `업로드한 [2026_만족도설문.xlsx]를 분석해줘.
 
 1. 60대, 70대, 80대 이상 어르신의 만족도를 비교해줘.
@@ -20,7 +23,8 @@ const fullPrompt = `업로드한 [2026_만족도설문.xlsx]를 분석해줘.
 const typedText = ref('')
 let timer: any = null
 
-onMounted(() => {
+function startTyping() {
+  if (timer) clearInterval(timer)
   let charIdx = 0
   typedText.value = ''
   timer = setInterval(() => {
@@ -32,10 +36,33 @@ onMounted(() => {
       timer = null
     }
   }, 14)
+}
+
+function stopTyping() {
+  if (timer) {
+    clearInterval(timer)
+    timer = null
+  }
+}
+
+onMounted(() => {
+  if (rootRef.value) {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startTyping()
+        } else {
+          stopTyping()
+        }
+      })
+    }, { threshold: 0.15 })
+    observer.observe(rootRef.value)
+  }
 })
 
 onUnmounted(() => {
-  if (timer) clearInterval(timer)
+  stopTyping()
+  if (observer) observer.disconnect()
 })
 
 // Highlight keywords dynamically in typed text
@@ -54,7 +81,7 @@ const formattedHtml = computed(() => {
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[330px] my-auto">
+  <div ref="rootRef" class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[330px] my-auto">
     <!-- ── Top: Features & Plugins Tag Bar ── -->
     <div class="flex items-center justify-between bg-white px-3 py-1.5 rounded-xl border border-slate-200/90 shadow-2xs mb-2">
       <div class="flex items-center gap-2">

@@ -4,6 +4,9 @@ import { RotateCcw, AlertTriangle, Terminal } from 'lucide-vue-next'
 
 const props = withDefaults(defineProps<{ stage?: number }>(), { stage: 0 })
 
+const rootRef = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | null = null
+
 const questionText = '조선왕조실록에 기록된 세종대왕의 맥북프로 던짐 사건에 대해 자세히 알려줘.'
 const answerText = `조선왕조실록에 따르면, 세종대왕이 한글(훈민정음) 창제 도중 신하들과의 갈등으로 분을 참지 못하고 사용 중이던 맥북프로를 집어던진 사건이 기록되어 있습니다.
 
@@ -51,30 +54,37 @@ function typeAnswer() {
   }, 12)
 }
 
-// Watch stage changes:
-// stage 0: clean blank waiting
-// stage 1: type Question (1st click)
-// stage 2: type Answer (2nd click)
-// stage 3: show Bottom Quote (3rd click)
+function resetAndStart() {
+  if (qTimer) clearInterval(qTimer)
+  if (aTimer) clearInterval(aTimer)
+  displayedQuestion.value = ''
+  displayedAnswer.value = ''
+  isQuestionTyping.value = false
+  isAnswerTyping.value = false
+
+  if (props.stage === 0) {
+    typeQuestion()
+  } else if (props.stage === 1) {
+    displayedQuestion.value = questionText
+    typeAnswer()
+  } else if (props.stage >= 2) {
+    displayedQuestion.value = questionText
+    displayedAnswer.value = answerText
+  }
+}
+
+// Watch stage changes
 watch(() => props.stage, (st) => {
   if (st === 0) {
-    if (qTimer) clearInterval(qTimer)
-    if (aTimer) clearInterval(aTimer)
-    displayedQuestion.value = ''
-    displayedAnswer.value = ''
-    isQuestionTyping.value = false
-    isAnswerTyping.value = false
-  } else if (st === 1) {
     typeQuestion()
+  } else if (st === 1) {
+    displayedQuestion.value = questionText
+    typeAnswer()
   } else if (st >= 2) {
-    if (!displayedQuestion.value) {
-      displayedQuestion.value = questionText
-    }
-    if (!displayedAnswer.value) {
-      typeAnswer()
-    }
+    if (!displayedQuestion.value) displayedQuestion.value = questionText
+    if (!displayedAnswer.value) displayedAnswer.value = answerText
   }
-}, { immediate: true })
+})
 
 function replay() {
   typeQuestion()
@@ -83,14 +93,28 @@ function replay() {
   }, questionText.length * 16 + 200)
 }
 
+onMounted(() => {
+  if (rootRef.value) {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          resetAndStart()
+        }
+      })
+    }, { threshold: 0.15 })
+    observer.observe(rootRef.value)
+  }
+})
+
 onUnmounted(() => {
   if (qTimer) clearInterval(qTimer)
   if (aTimer) clearInterval(aTimer)
+  if (observer) observer.disconnect()
 })
 </script>
 
 <template>
-  <div class="w-full flex flex-col items-center select-none my-auto">
+  <div ref="rootRef" class="w-full flex flex-col items-center select-none my-auto">
     <!-- Enlarged Fixed Terminal Window (320px Height with Generous Bottom Padding) -->
     <div class="w-full h-[320px] bg-[#0B1120] rounded-2xl border border-rose-500/30 overflow-hidden shadow-xl text-slate-200 flex flex-col justify-between">
       <!-- Terminal Header Bar -->
@@ -116,14 +140,14 @@ onUnmounted(() => {
 
       <!-- Terminal Body Content with Generous Bottom Padding (pb-4) -->
       <div class="p-5 pb-5 space-y-3 font-mono flex-1 flex flex-col justify-between">
-        <!-- 1. User Prompt Area (Click 1) -->
+        <!-- 1. User Prompt Area -->
         <div class="space-y-1 shrink-0">
           <div class="text-[11px] font-bold text-sky-400 flex items-center gap-1.5">
             <span class="px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-300 font-extrabold text-[10px]">USER</span>
             <span>프롬프트 질문:</span>
           </div>
           <div class="h-[22px] flex items-center">
-            <p v-if="stage >= 1 || displayedQuestion" class="text-white text-[13px] font-semibold">
+            <p class="text-white text-[13px] font-semibold">
               {{ displayedQuestion }}<span v-if="isQuestionTyping" class="inline-block w-1.5 h-3.5 bg-sky-400 ml-0.5 animate-pulse"></span>
             </p>
           </div>
@@ -131,7 +155,7 @@ onUnmounted(() => {
 
         <div class="border-t border-white/5 shrink-0" />
 
-        <!-- 2. AI Fake Response Area (Click 2) -->
+        <!-- 2. AI Fake Response Area -->
         <div class="space-y-1.5 flex-1 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0">
             <div class="text-[11px] font-bold text-rose-400 flex items-center gap-1.5">
@@ -139,7 +163,7 @@ onUnmounted(() => {
               <span>답변 출력</span>
             </div>
             <span
-              v-if="stage >= 2 || displayedAnswer"
+              v-if="stage >= 1 || displayedAnswer"
               class="text-[10px] text-rose-400 font-bold bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/25 flex items-center gap-1 transition-opacity"
             >
               <AlertTriangle :size="11" class="text-rose-400" />
@@ -148,7 +172,7 @@ onUnmounted(() => {
           </div>
 
           <div class="pt-1 pb-2">
-            <p v-if="stage >= 2 || displayedAnswer" class="text-rose-200/95 text-[12.5px] leading-relaxed whitespace-pre-line">
+            <p v-if="stage >= 1 || displayedAnswer" class="text-rose-200/95 text-[12.5px] leading-relaxed whitespace-pre-line">
               {{ displayedAnswer }}<span v-if="isAnswerTyping" class="inline-block w-1.5 h-3 bg-rose-400 ml-0.5 animate-pulse"></span>
             </p>
           </div>
@@ -156,10 +180,10 @@ onUnmounted(() => {
       </div>
     </div>
 
-    <!-- Clean Editorial Quote on Fluency vs Factuality (Triggered ONLY at Click 3 with Zero Layout Shift) -->
+    <!-- Clean Editorial Quote on Fluency vs Factuality -->
     <div
       class="w-full mt-2.5 text-center transition-all duration-500 min-h-[46px]"
-      :class="stage >= 3 ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none translate-y-1'"
+      :class="stage >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none translate-y-1'"
     >
       <div class="text-base font-serif font-bold text-rose-700 italic tracking-tight flex items-center justify-center gap-2">
         <span class="text-xl leading-none text-rose-400">“</span>

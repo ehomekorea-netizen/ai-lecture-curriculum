@@ -2,6 +2,9 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 import { ShieldCheck } from 'lucide-vue-next'
 
+const rootRef = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | null = null
+
 const fullPrompt = `@skill-creator
 
 매달 프로그램 운영일지와 만족도 결과를
@@ -17,7 +20,8 @@ const typedText = ref('')
 const isTypingFinished = ref(false)
 let timer: any = null
 
-onMounted(() => {
+function startTyping() {
+  if (timer) clearInterval(timer)
   let charIdx = 0
   typedText.value = ''
   isTypingFinished.value = false
@@ -28,13 +32,36 @@ onMounted(() => {
     } else {
       clearInterval(timer)
       timer = null
-      isTypingFinished.value = true // 타이핑 완료 즉시 화살표 드로잉 트리거
+      isTypingFinished.value = true
     }
   }, 14)
+}
+
+function stopTyping() {
+  if (timer) {
+    clearInterval(timer)
+    timer = null
+  }
+}
+
+onMounted(() => {
+  if (rootRef.value) {
+    observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startTyping()
+        } else {
+          stopTyping()
+        }
+      })
+    }, { threshold: 0.15 })
+    observer.observe(rootRef.value)
+  }
 })
 
 onUnmounted(() => {
-  if (timer) clearInterval(timer)
+  stopTyping()
+  if (observer) observer.disconnect()
 })
 
 // Highlight keywords dynamically in typed text
@@ -55,7 +82,7 @@ const formattedHtml = computed(() => {
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[310px] my-auto py-1">
+  <div ref="rootRef" class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[310px] my-auto py-1">
     <!-- ── Main 2-Column Grid (Left: 100% Preserved Terminal, Right: Vertical 3-Card Timeline) ── -->
     <div class="grid grid-cols-12 gap-4.5 items-stretch h-full">
       <!-- ── Left Column (7 Cols): Pure Typewriter Terminal Box (100% Preserved) ── -->
