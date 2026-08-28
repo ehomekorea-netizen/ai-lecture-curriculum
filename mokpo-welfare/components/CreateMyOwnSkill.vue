@@ -161,28 +161,28 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="rootRef" class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-800 text-center h-[335px] my-auto py-0.5">
+  <div ref="rootRef" class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-100 text-center h-[335px] my-auto py-0.5">
     <!-- ── Center Stage: Grand Keynote Scale 4-Row Fill-in Card (Fixed Heights to Prevent Reflow/Shaking) ── -->
-    <div class="w-full max-w-4xl bg-white rounded-3xl border border-slate-200/90 p-5 px-8 shadow-sm flex flex-col justify-between h-[272px] min-h-[272px] max-h-[272px] text-left overflow-hidden">
+    <div class="w-full max-w-4xl bg-white/6 rounded-3xl border border-white/10 p-5 px-8 shadow-sm flex flex-col justify-between h-[272px] min-h-[272px] max-h-[272px] text-left overflow-hidden">
       <div class="space-y-2.5 my-auto">
         <div
           v-for="(item, idx) in rows"
           :key="item.label"
-          class="flex items-center justify-between px-4 rounded-2xl bg-slate-50/70 border border-slate-200/60 transition-colors hover:bg-blue-50/60 hover:border-blue-200/80 shadow-2xs h-[48px] min-h-[48px] max-h-[48px]"
+          class="flex items-center justify-between px-4 rounded-2xl bg-white/6 border border-white/10 transition-colors hover:bg-blue-950/40 hover:border-blue-200/80 shadow-2xs h-[48px] min-h-[48px] max-h-[48px]"
         >
           <!-- Left Label + Number Badge (Strict Fixed Width) -->
           <div class="flex items-center gap-3 w-[180px] shrink-0">
-            <span class="w-7 h-7 rounded-xl font-mono font-bold text-xs flex items-center justify-center bg-blue-50 text-blue-600 border border-blue-200 shadow-2xs shrink-0">
+            <span class="w-7 h-7 rounded-xl font-mono font-bold text-xs flex items-center justify-center bg-blue-950/40 text-blue-600 border border-blue-200 shadow-2xs shrink-0">
               0{{ idx + 1 }}
             </span>
-            <span class="text-base md:text-[17px] font-bold font-serif text-slate-900 tracking-tight whitespace-nowrap">
+            <span class="text-base md:text-[17px] font-bold font-serif text-white tracking-tight whitespace-nowrap">
               {{ item.label }}
             </span>
             <span class="text-slate-400 font-mono text-sm ml-auto mr-1">:</span>
           </div>
 
           <!-- Blank Underline & Live Asynchronous Typewriter (Fixed Height & Overflow Controlled) -->
-          <div class="flex-1 border-b-2 border-dashed border-slate-300 ml-4 pb-0.5 flex items-center justify-between overflow-hidden h-[34px]">
+          <div class="flex-1 border-b-2 border-dashed border-white/15 ml-4 pb-0.5 flex items-center justify-between overflow-hidden h-[34px]">
             <div class="flex items-center h-full overflow-hidden">
               <span class="text-sm md:text-base font-bold text-blue-600 tracking-tight whitespace-nowrap inline-block leading-none">
                 {{ item.displayText || '&nbsp;' }}
@@ -200,7 +200,7 @@ onUnmounted(() => {
     </div>
 
     <!-- ── Bottom Inspiration Bar ── -->
-    <div class="w-full max-w-2xl pt-2 pb-0.5 border-t border-slate-200/90 flex items-center justify-center">
+    <div class="w-full max-w-2xl pt-2 pb-0.5 border-t border-white/10 flex items-center justify-center">
       <p class="text-sm md:text-base font-serif font-bold text-blue-600 tracking-wide">
         반복되는 나의 업무를, 다시 쓸 수 있는 방식으로 바꿔보세요.
       </p>

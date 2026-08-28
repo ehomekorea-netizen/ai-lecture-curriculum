@@ -42,17 +42,17 @@ const steps = [
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[320px] my-auto py-1">
+  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-100 text-left h-[320px] my-auto py-1">
     <!-- ── 4-Step Cards + Rough Hand-drawn Arrows ── -->
     <div class="flex items-stretch justify-between gap-1.5 h-[235px]">
       <template v-for="(s, idx) in steps" :key="s.step">
         <!-- ── Step Card ── -->
         <div
-          class="flex-1 rounded-3xl p-4.5 flex flex-col justify-between transition-all duration-500 transform overflow-hidden"
+          class="flex-1 rounded-2xl p-3 px-3 flex flex-col justify-between transition-all duration-500 transform"
           :class="[
             currentStage >= idx
-              ? 'opacity-100 translate-y-0 scale-100 bg-white border-[1.5px] border-slate-300 shadow-2xs'
-              : 'opacity-25 translate-y-3 scale-95 bg-slate-50/60 border-[1.5px] border-dashed border-slate-200 pointer-events-none'
+              ? 'opacity-100 translate-y-0 scale-100 bg-white/6 border-[1.5px] border-white/15 shadow-2xs'
+              : 'opacity-25 translate-y-3 scale-95 bg-white/6 border-[1.5px] border-dashed border-white/10 pointer-events-none'
           ]"
         >
           <!-- Top: Step Number + Subtitle Tag -->
@@ -60,7 +60,7 @@ const steps = [
             <div class="flex items-center justify-between mb-3">
               <span
                 class="w-7 h-7 rounded-xl font-mono font-bold text-xs flex items-center justify-center border transition-colors"
-                :class="currentStage >= idx ? 'bg-blue-50 text-blue-600 border-blue-200 shadow-2xs' : 'bg-slate-100 text-slate-400 border-slate-200'"
+                :class="currentStage >= idx ? 'bg-blue-950/40 text-blue-600 border-blue-200 shadow-2xs' : 'bg-white/8 text-slate-400 border-white/10'"
               >
                 {{ s.step }}
               </span>
@@ -70,12 +70,12 @@ const steps = [
             </div>
 
             <!-- Title (Clean Single-Line, No Ugly Wrapping) -->
-            <h3 class="text-[14px] md:text-[14.5px] font-bold font-serif text-slate-900 leading-tight mb-2 whitespace-nowrap">
+            <h3 class="text-[13px] md:text-[13.5px] font-bold font-serif text-white leading-tight mb-1.5 whitespace-nowrap text-left">
               {{ s.title }}
             </h3>
 
             <!-- Description (2 Lines Perfectly Balanced) -->
-            <p class="text-[11.5px] text-slate-500 leading-relaxed break-keep">
+            <p class="text-[11px] text-slate-300 leading-snug break-keep text-left font-medium">
               {{ s.desc }}
             </p>
           </div>
@@ -131,10 +131,10 @@ const steps = [
     </div>
 
     <!-- ── Integrated Micro Tip Bar ── -->
-    <div class="flex items-center justify-between bg-slate-50 border border-slate-200 px-4 py-2 rounded-2xl text-xs text-slate-600">
+    <div class="flex items-center justify-between bg-white/5 border border-white/10 px-4 py-2 rounded-2xl text-xs text-slate-400">
       <div class="flex items-center gap-2">
         <Wand2 :size="14" class="text-blue-600 shrink-0" />
-        <span>ChatGPT Work에서는 <code class="text-blue-600 font-bold bg-white px-1.5 py-0.5 rounded border border-blue-200 font-mono">@skill-creator</code>에게 대화하듯 요구사항을 말하면 스킬 지침이 자동 생성됩니다.</span>
+        <span>ChatGPT Work에서는 <code class="text-blue-600 font-bold bg-white/6 px-1.5 py-0.5 rounded border border-blue-200 font-mono">@skill-creator</code>에게 대화하듯 요구사항을 말하면 스킬 지침이 자동 생성됩니다.</span>
       </div>
       <span class="text-[10.5px] font-mono text-slate-400 font-medium shrink-0 ml-3">
         4단계 표준 사이클

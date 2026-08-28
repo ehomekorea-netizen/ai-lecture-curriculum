@@ -72,10 +72,10 @@ const currentCase = computed(() => {
             />
           </div>
           <div class="w-[55%] text-left space-y-3 pr-1">
-            <h2 class="text-[23px] md:text-[25px] font-serif font-bold text-slate-900 leading-snug tracking-tight break-keep">
+            <h2 class="text-[23px] md:text-[25px] font-serif font-bold text-white leading-snug tracking-tight break-keep">
               {{ currentCase.title }}
             </h2>
-            <p class="text-[14.5px] md:text-[15px] font-sans font-medium text-slate-800 leading-relaxed break-keep">
+            <p class="text-[14.5px] md:text-[15px] font-sans font-medium text-slate-100 leading-relaxed break-keep">
               {{ currentCase.desc }}
             </p>
           </div>
@@ -84,10 +84,10 @@ const currentCase = computed(() => {
         <!-- Layout: Text Left / Image Right -->
         <template v-else>
           <div class="w-[55%] text-left space-y-3 pl-1">
-            <h2 class="text-[23px] md:text-[25px] font-serif font-bold text-slate-900 leading-snug tracking-tight break-keep">
+            <h2 class="text-[23px] md:text-[25px] font-serif font-bold text-white leading-snug tracking-tight break-keep">
               {{ currentCase.title }}
             </h2>
-            <p class="text-[14.5px] md:text-[15px] font-sans font-medium text-slate-800 leading-relaxed break-keep">
+            <p class="text-[14.5px] md:text-[15px] font-sans font-medium text-slate-100 leading-relaxed break-keep">
               {{ currentCase.desc }}
             </p>
           </div>

@@ -73,16 +73,16 @@ const metrics = [
 </script>
 
 <template>
-  <div class="w-full flex items-stretch gap-4 h-full select-none font-sans text-slate-800 text-left py-1">
+  <div class="w-full flex items-stretch gap-4 h-full select-none font-sans text-slate-100 text-left py-1">
     <!-- Left Column (50%): 4 Decision Criteria -->
-    <div class="w-1/2 flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-sm">
+    <div class="w-1/2 flex flex-col justify-between bg-white/6 rounded-2xl border border-white/10 p-3.5 shadow-sm">
       <div>
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-bold text-slate-900 font-serif flex items-center gap-1.5">
+          <span class="text-xs font-bold text-white font-serif flex items-center gap-1.5">
             <SlidersHorizontal :size="14" class="text-blue-600" />
             <span>자동화 대상 판단 4대 기준</span>
           </span>
-          <span class="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-blue-50 text-blue-700">
+          <span class="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-blue-950/40 text-blue-400">
             도입 평가
           </span>
         </div>
@@ -91,11 +91,11 @@ const metrics = [
           <div
             v-for="item in criteria"
             :key="item.title"
-            class="p-2 px-2.5 rounded-xl bg-[#FAF8F4] border border-[#E7E0D4] flex flex-col justify-between"
+            class="p-2 px-2.5 rounded-xl bg-white/6 border border-white/10 flex flex-col justify-between"
           >
             <div class="flex items-center justify-between mb-0.5">
-              <span class="text-xs font-bold text-slate-900 font-serif">{{ item.title }}</span>
-              <span class="text-[9.5px] font-mono text-slate-500">{{ item.q }}</span>
+              <span class="text-xs font-bold text-white font-serif">{{ item.title }}</span>
+              <span class="text-[9.5px] font-mono text-slate-400">{{ item.q }}</span>
             </div>
             <div class="text-[10px] font-bold mt-0.5" :style="{ color: item.color }">
               ➔ {{ item.signal }}
@@ -104,20 +104,20 @@ const metrics = [
         </div>
       </div>
 
-      <div class="bg-blue-50/70 p-2 rounded-xl border border-blue-100 text-[10px] text-blue-900 font-medium leading-tight">
+      <div class="bg-blue-950/40 p-2 rounded-xl border border-blue-100 text-[10px] text-blue-200 font-medium leading-tight">
         💡 <strong>핵심</strong>: '완전 무인 자동화'가 아니라 <strong>'사람이 쉽게 검토하는 반자동 템플릿'</strong>이 실무에 가장 안전합니다.
       </div>
     </div>
 
     <!-- Right Column (50%): 4 Quantitative Metrics -->
-    <div class="w-1/2 flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-sm">
+    <div class="w-1/2 flex flex-col justify-between bg-white/6 rounded-2xl border border-white/10 p-3.5 shadow-sm">
       <div>
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-bold text-slate-900 font-serif flex items-center gap-1.5">
+          <span class="text-xs font-bold text-white font-serif flex items-center gap-1.5">
             <TrendingUp :size="14" class="text-emerald-600" />
             <span>도입 성과 정량 측정 4대 지표</span>
           </span>
-          <span class="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-emerald-50 text-emerald-700">
+          <span class="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-emerald-950/40 text-emerald-400">
             KPI 지표
           </span>
         </div>
@@ -126,25 +126,25 @@ const metrics = [
           <div
             v-for="m in metrics"
             :key="m.label"
-            class="p-2.5 rounded-xl border border-slate-100 bg-slate-50/60 flex flex-col justify-between"
+            class="p-2.5 rounded-xl border border-slate-100 bg-white/6 flex flex-col justify-between"
           >
             <div>
               <div class="flex items-center justify-between mb-1">
                 <component :is="m.icon" :size="14" :style="{ color: m.color }" />
                 <span class="text-[9px] font-mono text-slate-400 font-bold uppercase">{{ m.unit }}</span>
               </div>
-              <h5 class="text-xs font-bold text-slate-900 font-serif mb-0.5">
+              <h5 class="text-xs font-bold text-white font-serif mb-0.5">
                 {{ m.label }}
               </h5>
             </div>
-            <p class="text-[9.5px] text-slate-600 leading-tight mt-1">
+            <p class="text-[9.5px] text-slate-400 leading-tight mt-1">
               {{ m.desc }}
             </p>
           </div>
         </div>
       </div>
 
-      <div class="bg-emerald-50/70 p-2 rounded-xl border border-emerald-100 text-[10px] text-emerald-900 font-medium leading-tight">
+      <div class="bg-emerald-950/40 p-2 rounded-xl border border-emerald-100 text-[10px] text-emerald-200 font-medium leading-tight">
         📊 <strong>측정 원칙</strong>: 사전 추정치가 아닌, <strong>'도입 전 시간 vs 템플릿 적용 후 시간'</strong>을 직접 기록하여 검증합니다.
       </div>
     </div>

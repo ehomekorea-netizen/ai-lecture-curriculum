@@ -83,12 +83,12 @@ const scenes = [
   {
     id: 4,
     step: 'STEP 04',
-    badge: 'STEP 04. 지식 축적 및 환류 (Note ➔ Source)',
+    badge: 'STEP 04. 정리 메모를 새 자료로 등록 (Note ➔ Source)',
     icon: Sparkles,
     color: 'amber',
-    title: '정리한 메모가 다시 AI의 지식이 되는 선순환',
-    desc: 'Chat으로 분석한 핵심 인사이트를 Note 메모로 저장하고, 이 Note를 다시 새로운 공식 Source로 승격시켜 지식을 연속 발전시킵니다.',
-    rule: 'Notebook은 단순 파일 보관함이 아닌, 지식이 계속 진화하는 작업 공간',
+    title: 'AI로 정리한 메모가 다음 작업의 새로운 원본 자료가 됩니다',
+    desc: 'Chat으로 분석하고 정제한 핵심 내용을 메모(Note)로 남기고, 이 메모를 다시 AI의 원본 자료(Source)로 추가하여 문서 작성을 이어갑니다.',
+    rule: '외부 자료 분석 ➔ 핵심 메모 정리 ➔ 새 원본 자료로 추가하여 완성도 높이기',
     type: 'knowledge_loop',
     notes: [
       { title: '사업 필요성', text: '단순 기기 보급을 넘어 실생활 서비스(키오스크·뱅킹) 활용 격차 심각' },
@@ -143,24 +143,24 @@ const currentScene = computed(() => scenes[currentIdx.value] || scenes[0])
 </script>
 
 <template>
-  <div class="w-full h-[290px] flex items-center justify-center select-none font-sans relative overflow-hidden">
+  <div class="w-full h-[280px] flex items-center justify-center select-none font-sans relative">
     <Transition name="practice-fade" mode="out-in">
       <div
         :key="currentScene.id"
         class="w-full h-full flex items-center justify-between gap-7 text-left"
       >
         <!-- ── Left Column: Statement, Concept & Key Rule (Matching Slide 16 Scale) ── -->
-        <div class="w-[44%] flex flex-col justify-between h-full py-1">
+        <div class="w-[44%] flex flex-col justify-between h-[270px] py-0.5">
           <div>
             <!-- Badge -->
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11.5px] font-bold mb-2.5 shadow-2xs"
               :class="{
-                'bg-blue-50 text-blue-700 border border-blue-200': currentScene.color === 'blue',
-                'bg-indigo-50 text-indigo-700 border border-indigo-200': currentScene.color === 'indigo',
+                'bg-blue-950/40 text-blue-400 border border-blue-200': currentScene.color === 'blue',
+                'bg-indigo-50 text-indigo-300 border border-indigo-200': currentScene.color === 'indigo',
                 'bg-purple-50 text-purple-700 border border-purple-200': currentScene.color === 'purple',
                 'bg-amber-50 text-amber-800 border border-amber-200': currentScene.color === 'amber',
-                'bg-emerald-50 text-emerald-800 border border-emerald-300': currentScene.color === 'emerald',
-                'bg-rose-50 text-rose-800 border border-rose-200': currentScene.color === 'rose'
+                'bg-emerald-950/40 text-emerald-300 border border-emerald-300': currentScene.color === 'emerald',
+                'bg-rose-950/40 text-rose-300 border border-rose-200': currentScene.color === 'rose'
               }"
             >
               <component :is="currentScene.icon" :size="13" />
@@ -168,20 +168,20 @@ const currentScene = computed(() => scenes[currentIdx.value] || scenes[0])
             </div>
 
             <!-- Main Title -->
-            <h2 class="text-[22px] md:text-[24px] font-serif font-bold text-slate-900 leading-snug tracking-tight mb-2.5 break-keep">
+            <h2 class="text-[22px] md:text-[24px] font-serif font-bold text-white leading-snug tracking-tight mb-2.5 break-keep">
               {{ currentScene.title }}
             </h2>
 
             <!-- Description -->
-            <p class="text-[13.5px] md:text-[14px] text-slate-800 font-sans font-medium leading-relaxed break-keep">
+            <p class="text-[13.5px] md:text-[14px] text-slate-100 font-sans font-medium leading-relaxed break-keep">
               {{ currentScene.desc }}
             </p>
           </div>
 
           <!-- Bottom Key Rule Tag -->
-          <div class="p-2 px-3 rounded-xl bg-slate-50 border border-slate-200/90 text-[11px] text-indigo-950 leading-normal flex items-start gap-2 shadow-2xs">
+          <div class="p-2 px-3 rounded-xl bg-white/5 border border-white/10 text-[10.5px] text-slate-200 leading-snug flex items-start gap-2 shadow-2xs mt-2">
             <Lightbulb :size="14" class="text-amber-500 shrink-0 mt-0.5" />
-            <span><strong class="text-indigo-900 font-bold">핵심 포인트: </strong>{{ currentScene.rule }}</span>
+            <span><strong class="text-indigo-300 font-bold">핵심 포인트: </strong>{{ currentScene.rule }}</span>
           </div>
         </div>
 
@@ -209,10 +209,10 @@ const currentScene = computed(() => scenes[currentIdx.value] || scenes[0])
           <!-- 2. Source Curation & Labeling (Step 2) -->
           <div
             v-else-if="currentScene.type === 'curation'"
-            class="w-full h-full rounded-2xl bg-white p-3.5 px-4 flex flex-col justify-between text-left border border-slate-200/90 shadow-xl"
+            class="w-full h-full rounded-2xl bg-white/6 p-3.5 px-4 flex flex-col justify-between text-left border border-white/10 shadow-xl"
           >
             <div>
-              <div class="text-[11.5px] font-mono font-bold text-indigo-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <div class="text-[11.5px] font-mono font-bold text-indigo-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                 <Filter :size="13" />
                 <span>자료 선별 기준 4원칙</span>
               </div>
@@ -220,64 +220,66 @@ const currentScene = computed(() => scenes[currentIdx.value] || scenes[0])
                 <div
                   v-for="(crit, idx) in currentScene.criteria"
                   :key="idx"
-                  class="flex items-center justify-between p-1.5 px-3 rounded-lg bg-indigo-50/50 border border-indigo-100 text-[12px]"
+                  class="flex items-center justify-between p-1.5 px-3 rounded-lg bg-white/5 border border-white/10 text-[12px]"
                 >
-                  <span class="font-bold text-indigo-950 flex items-center gap-1.5">
-                    <CheckCircle2 :size="13" class="text-indigo-600" />
+                  <span class="font-bold text-indigo-300 flex items-center gap-1.5">
+                    <CheckCircle2 :size="13" class="text-indigo-400" />
                     <span>{{ crit.tag }}</span>
                   </span>
-                  <span class="text-[11.5px] text-slate-600 font-medium">{{ crit.desc }}</span>
+                  <span class="text-[11.5px] text-white font-medium">{{ crit.desc }}</span>
                 </div>
               </div>
             </div>
 
             <div>
-              <div class="text-[11px] font-mono font-bold text-slate-500 uppercase tracking-wider mb-1.5">
+              <div class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-1.5">
                 5대 카테고리 자동 라벨링
               </div>
               <div class="flex flex-wrap gap-1.5">
                 <span
                   v-for="(l, idx) in currentScene.labels"
                   :key="idx"
-                  class="px-2 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-800 border border-slate-200"
+                  class="px-2 py-0.5 rounded text-[11px] font-bold bg-white/8 text-slate-100 border border-white/10"
                 >
-                  <strong class="text-blue-700 font-mono">{{ l.name }}</strong> {{ l.label }}
+                  <strong class="text-blue-400 font-mono">{{ l.name }}</strong> {{ l.label }}
                 </span>
               </div>
             </div>
           </div>
 
-          <!-- 3. Multi-Prompt Chat Questions (Step 3: Large, Crisp, 100% Fully Visible Questions) -->
+          <!-- 3. Multi-Prompt Chat Questions (Step 3: Exact 270px matching left column baseline) -->
           <div
             v-else-if="currentScene.type === 'chat_multi'"
-            class="w-full h-full rounded-2xl bg-white p-3.5 px-4 flex flex-col justify-between text-left border border-slate-200/90 shadow-xl"
+            class="w-full h-[270px] rounded-2xl bg-white/4 p-3 px-3.5 flex flex-col justify-between text-left border border-white/10 shadow-lg"
           >
-            <div class="text-[11.5px] font-mono font-bold text-purple-700 uppercase tracking-wider flex items-center justify-between pb-1.5 border-b border-slate-100">
+            <!-- Header (Height: 22px) -->
+            <div class="text-[11px] font-mono font-bold text-purple-300 uppercase tracking-wider flex items-center justify-between pb-1 border-b border-white/10 shrink-0">
               <span class="flex items-center gap-1.5">
-                <MessageSquare :size="13" />
+                <MessageSquare :size="13" class="text-purple-400" />
                 <span>Chat 심층 비교 질의 프롬프트 예시 4종</span>
               </span>
-              <span class="text-[10px] text-slate-400 font-normal">교안 원문</span>
+              <span class="text-[9.5px] text-slate-400 font-normal">교안 원문</span>
             </div>
 
-            <!-- 4 Distinct Spacious Question Cards -->
-            <div class="space-y-1.5 my-auto">
+            <!-- 4 Clean Rows (Height ~165px) -->
+            <div class="flex flex-col justify-between my-auto py-0.5 space-y-1">
               <div
                 v-for="p in currentScene.prompts"
                 :key="p.num"
-                class="p-2 px-3 rounded-xl bg-purple-50/80 border border-purple-200/90 flex items-center gap-2.5 shadow-2xs hover:border-purple-300 transition-colors"
+                class="flex items-center gap-2 py-0.5"
               >
-                <span class="w-5 h-5 rounded-md bg-purple-600 text-white font-mono text-[10px] font-bold flex items-center justify-center shrink-0">
+                <span class="w-4.5 h-4.5 rounded bg-purple-500/30 text-purple-300 border border-purple-400/40 font-mono text-[9.5px] font-extrabold flex items-center justify-center shrink-0">
                   {{ p.num }}
                 </span>
-                <p class="text-[12px] md:text-[12.5px] font-medium text-slate-900 leading-snug break-keep">
+                <p class="text-[11px] md:text-[11.5px] font-normal text-slate-100 leading-tight break-keep">
                   "{{ p.q }}"
                 </p>
               </div>
             </div>
 
-            <div class="text-[10.5px] text-purple-900 font-bold bg-purple-50 py-1 px-2.5 rounded-lg text-center flex items-center justify-center gap-1.5">
-              <Lightbulb :size="12" class="text-amber-500 shrink-0" />
+            <!-- Bottom Tip (Height: 30px, aligns perfectly with the left column's bottom tip baseline) -->
+            <div class="text-[10px] text-purple-200 font-medium bg-purple-950/60 py-1 px-2 rounded-lg text-center flex items-center justify-center gap-1.5 border border-purple-500/30 shrink-0 h-[30px]">
+              <Lightbulb :size="11" class="text-amber-400 shrink-0" />
               <span>단순 요약 대신 "비교해줘", "차이점을 구분해줘"로 질문하는 것이 핵심</span>
             </div>
           </div>
@@ -285,32 +287,32 @@ const currentScene = computed(() => scenes[currentIdx.value] || scenes[0])
           <!-- 4. Knowledge Loop Note -> Source (Step 4) -->
           <div
             v-else-if="currentScene.type === 'knowledge_loop'"
-            class="w-full h-full rounded-2xl bg-white p-3.5 px-4 flex flex-col justify-between text-left border border-slate-200/90 shadow-xl"
+            class="w-full h-full rounded-2xl bg-white/4 p-3 px-3.5 flex flex-col justify-between text-left border border-white/10 shadow-lg"
           >
-            <div class="text-[11.5px] font-mono font-bold text-amber-800 uppercase tracking-wider flex items-center justify-between pb-1.5 border-b border-slate-100">
+            <div class="text-[11px] font-mono font-bold text-amber-300 uppercase tracking-wider flex items-center justify-between pb-1 border-b border-white/10">
               <span class="flex items-center gap-1.5">
-                <Sparkles :size="13" />
-                <span>Note 작성 예시 ➔ 새 Source로 승격</span>
+                <Sparkles :size="13" class="text-amber-400" />
+                <span>정리 메모(Note) 예시 ➔ 새 원본(Source)으로 추가</span>
               </span>
-              <span class="text-[10px] text-amber-700 font-bold">지식 선순환</span>
+              <span class="text-[9.5px] text-amber-400 font-bold">자료 축적</span>
             </div>
 
-            <div class="space-y-1.5 my-auto">
+            <div class="flex flex-col gap-1.5 my-auto">
               <div
                 v-for="(n, idx) in currentScene.notes"
                 :key="idx"
-                class="p-1.5 px-3 rounded-lg bg-amber-50/50 border border-amber-200/80 text-[11.5px] leading-snug"
+                class="p-1.5 px-3 rounded-lg bg-white/5 border border-white/8 text-[11.5px] leading-snug"
               >
-                <div class="font-bold text-amber-950 mb-0.5 flex items-center gap-1.5">
-                  <Bookmark :size="12" class="text-amber-600" />
+                <div class="font-bold text-amber-300 mb-0.5 flex items-center gap-1.5">
+                  <Bookmark :size="12" class="text-amber-400" />
                   <span>{{ n.title }}</span>
                 </div>
-                <div class="text-slate-700 text-[11px] pl-4">{{ n.text }}</div>
+                <div class="text-slate-200 text-[11px] pl-4">{{ n.text }}</div>
               </div>
             </div>
 
             <!-- Loop Diagram Banner -->
-            <div class="p-2 px-3 rounded-lg bg-slate-900 text-white text-[10.5px] font-mono flex items-center justify-between shadow-sm">
+            <div class="p-1.5 px-3 rounded-lg bg-white/6 text-slate-200 text-[10.5px] font-mono flex items-center justify-between border border-white/10">
               <span>외부자료</span>
               <ArrowRight :size="11" class="text-amber-400" />
               <span>AI분석</span>
@@ -324,24 +326,24 @@ const currentScene = computed(() => scenes[currentIdx.value] || scenes[0])
           <!-- 5. Review & Human vs AI Roles (Step 6) -->
           <div
             v-else-if="currentScene.type === 'review_roles'"
-            class="w-full h-full rounded-2xl bg-white p-3.5 px-4 flex flex-col justify-between text-left border border-slate-200/90 shadow-xl"
+            class="w-full h-full rounded-2xl bg-white/6 p-3.5 px-4 flex flex-col justify-between text-left border border-white/10 shadow-xl"
           >
-            <div class="text-[11.5px] font-mono font-bold text-rose-800 uppercase tracking-wider flex items-center justify-between pb-1.5 border-b border-slate-100">
+            <div class="text-[11.5px] font-mono font-bold text-rose-300 uppercase tracking-wider flex items-center justify-between pb-1.5 border-b border-slate-100">
               <span class="flex items-center gap-1.5">
                 <ShieldCheck :size="13" />
                 <span>AI와 사람의 명확한 역할 분담 원칙</span>
               </span>
-              <span class="text-[10px] text-rose-700 font-bold">최종 책임 = 사람</span>
+              <span class="text-[10px] text-rose-400 font-bold">최종 책임 = 사람</span>
             </div>
 
             <div class="grid grid-cols-2 gap-2.5 my-auto">
               <!-- AI Role Box -->
-              <div class="p-2 rounded-xl bg-slate-50 border border-slate-200">
-                <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-800 mb-1 pb-1 border-b border-slate-200">
+              <div class="p-2 rounded-xl bg-white/5 border border-white/10">
+                <div class="flex items-center gap-1.5 text-[11px] font-bold text-slate-100 mb-1 pb-1 border-b border-white/10">
                   <Bot :size="13" class="text-blue-600" />
                   <span>AI가 잘하는 일</span>
                 </div>
-                <ul class="space-y-0.5 text-[10px] text-slate-600 leading-tight">
+                <ul class="space-y-0.5 text-[10px] text-slate-400 leading-tight">
                   <li v-for="(r, idx) in currentScene.aiRoles" :key="idx" class="flex items-start gap-1">
                     <span class="text-blue-500 font-bold">•</span>
                     <span>{{ r }}</span>
@@ -350,12 +352,12 @@ const currentScene = computed(() => scenes[currentIdx.value] || scenes[0])
               </div>
 
               <!-- Human Role Box -->
-              <div class="p-2 rounded-xl bg-rose-50/70 border border-rose-200">
-                <div class="flex items-center gap-1.5 text-[11px] font-bold text-rose-950 mb-1 pb-1 border-b border-rose-200">
+              <div class="p-2 rounded-xl bg-rose-950/40 border border-rose-200">
+                <div class="flex items-center gap-1.5 text-[11px] font-bold text-rose-300 mb-1 pb-1 border-b border-rose-200">
                   <UserCheck :size="13" class="text-rose-600" />
                   <span>사람이 해야 할 일</span>
                 </div>
-                <ul class="space-y-0.5 text-[10px] text-rose-900 font-medium leading-tight">
+                <ul class="space-y-0.5 text-[10px] text-rose-300 font-medium leading-tight">
                   <li v-for="(r, idx) in currentScene.humanRoles" :key="idx" class="flex items-start gap-1">
                     <Check :size="10" class="text-rose-600 shrink-0 mt-0.5" />
                     <span>{{ r }}</span>
@@ -364,7 +366,7 @@ const currentScene = computed(() => scenes[currentIdx.value] || scenes[0])
               </div>
             </div>
 
-            <div class="text-[9.5px] text-slate-800 font-bold bg-slate-100 py-1 px-2 rounded-md text-center">
+            <div class="text-[9.5px] text-slate-100 font-bold bg-white/8 py-1 px-2 rounded-md text-center">
               "AI는 초안을 만들 수 있지만, 사회복지사의 전문적 판단과 최종 책임은 사람이 집니다."
             </div>
           </div>

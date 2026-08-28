@@ -45,20 +45,20 @@ const activeScene = computed(() => scenes[currentIndex.value])
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-800 text-center h-[330px] my-auto">
+  <div class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-100 text-center h-[330px] my-auto">
     <!-- ── Center Stage (Ultra-Large Statement Typography with 1.5s Auto Loop) ── -->
     <div class="w-full max-w-4xl flex-1 flex flex-col items-center justify-center relative overflow-hidden py-2">
       <Transition name="statement-fade" mode="out-in">
         <div :key="currentIndex" class="flex flex-col items-center justify-center space-y-3 px-4">
           <!-- Statement Big Heading (Apple Keynote Statement Style) -->
-          <h2 class="text-3xl md:text-5xl lg:text-[46px] font-bold font-serif text-slate-900 tracking-tight leading-tight break-keep">
+          <h2 class="text-3xl md:text-5xl lg:text-[46px] font-bold font-serif text-white tracking-tight leading-tight break-keep">
             {{ activeScene.main }}
           </h2>
 
           <!-- Subtitle / Descriptive Message -->
-          <p class="text-lg md:text-2xl text-slate-500 font-sans font-medium max-w-2xl leading-relaxed break-keep">
+          <p class="text-lg md:text-2xl text-slate-400 font-sans font-medium max-w-2xl leading-relaxed break-keep">
             <template v-if="currentIndex === 2">
-              화면에 보이는 도구를 <span class="text-blue-600 font-mono font-bold px-2 py-0.5 rounded-lg bg-blue-50 border border-blue-200">@</span> 로 하나 이상 선택해보세요
+              화면에 보이는 도구를 <span class="text-blue-600 font-mono font-bold px-2 py-0.5 rounded-lg bg-blue-950/40 border border-blue-200">@</span> 로 하나 이상 선택해보세요
             </template>
             <template v-else-if="currentIndex === 5">
               <span class="text-blue-600 font-bold text-2xl font-serif">이제 시작하세요</span>
@@ -72,7 +72,7 @@ const activeScene = computed(() => scenes[currentIndex.value])
     </div>
 
     <!-- ── Bottom Inspiration Bar ── -->
-    <div class="w-full max-w-xl pt-3 pb-1 border-t border-slate-200/90 flex items-center justify-center">
+    <div class="w-full max-w-xl pt-3 pb-1 border-t border-white/10 flex items-center justify-center">
       <p class="text-xs md:text-sm font-serif font-bold text-blue-600 tracking-wide">
         아이디어 하나를 플러그인으로 결과물로 바꿔보세요
       </p>

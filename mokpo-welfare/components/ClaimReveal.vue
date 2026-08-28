@@ -22,7 +22,7 @@ function advance() {
       <!-- Wrong claim -->
       <span
         class="relative transition-all duration-500"
-        :class="step >= 1 ? 'text-slate-400' : 'text-slate-700'"
+        :class="step >= 1 ? 'text-slate-400' : 'text-slate-300'"
         style="font-family: 'Kalam', 'Noto Sans KR', cursive;"
       >
         AI는 저장된 문장을 복사해서 꺼내온다

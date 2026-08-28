@@ -36,7 +36,7 @@ const steps: WaveStep[] = [
     desc: '키워드 매칭 및 웹 링크 나열',
     subDesc: '정답을 사람이 직접 찾아야 함',
     color: '#64748B',
-    accentBg: 'bg-slate-100 text-slate-700',
+    accentBg: 'bg-white/8 text-slate-300',
     icon: markRaw(Search),
     stage: 1
   },
@@ -50,7 +50,7 @@ const steps: WaveStep[] = [
     desc: '확률 기반 텍스트·이미지 생성',
     subDesc: '초안 고속 작성 (단, 환각 위험)',
     color: '#3B82F6',
-    accentBg: 'bg-blue-100 text-blue-800',
+    accentBg: 'bg-blue-100 text-blue-300',
     icon: markRaw(Sparkles),
     stage: 2
   },
@@ -64,7 +64,7 @@ const steps: WaveStep[] = [
     desc: '내부 규정 문서(PDF) 팩트 검색',
     subDesc: '오픈북처럼 명확한 출처 인증',
     color: '#10B981',
-    accentBg: 'bg-emerald-100 text-emerald-800',
+    accentBg: 'bg-emerald-100 text-emerald-300',
     icon: markRaw(BookOpen),
     stage: 3
   },
@@ -78,7 +78,7 @@ const steps: WaveStep[] = [
     desc: '스스로 계획 ➔ 도구 호출 ➔ 검증',
     subDesc: '사람 개입 없이 목표 자율 완수',
     color: '#6366F1',
-    accentBg: 'bg-indigo-100 text-indigo-800',
+    accentBg: 'bg-indigo-100 text-indigo-300',
     icon: markRaw(Bot),
     stage: 4
   }
@@ -92,13 +92,13 @@ const steps: WaveStep[] = [
       <template v-for="(st, idx) in steps" :key="st.id">
         <!-- Step Card -->
         <div
-          class="w-[22.5%] h-[255px] rounded-3xl border-2 p-3.5 flex flex-col justify-between bg-white transition-all duration-600 relative"
+          class="w-[22.5%] h-[255px] rounded-3xl border-2 p-3.5 flex flex-col justify-between bg-white/6 transition-all duration-600 relative"
           :class="[
             stage >= st.stage
               ? 'opacity-100 scale-100 translate-y-0 shadow-md'
               : 'opacity-0 scale-95 translate-y-2 pointer-events-none border-transparent',
             st.stage === 4 && stage >= 4
-              ? 'border-indigo-500 ring-2 ring-indigo-400/50 bg-linear-to-b from-white via-indigo-50/20 to-indigo-50/40 glow-card z-20 scale-[1.02]'
+              ? 'border-indigo-500 ring-2 ring-indigo-400/50 bg-linear-to-b from-white/10 via-indigo-950/30 to-indigo-950/40 glow-card z-20 scale-[1.02]'
               : ''
           ]"
           :style="stage >= st.stage ? { borderColor: st.color } : {}"
@@ -128,7 +128,7 @@ const steps: WaveStep[] = [
 
           <!-- Main Title & Single-line English Tag -->
           <div class="my-auto py-1">
-            <h3 class="text-base font-black text-slate-900 leading-tight">
+            <h3 class="text-base font-black text-white leading-tight">
               {{ st.title }}
             </h3>
             <div
@@ -149,12 +149,12 @@ const steps: WaveStep[] = [
 
           <!-- Bottom Description -->
           <div class="pt-2 border-t border-slate-100 text-[10.5px] space-y-0.5 leading-snug">
-            <p class="font-bold text-slate-800 truncate">
+            <p class="font-bold text-slate-100 truncate">
               • {{ st.desc }}
             </p>
             <p
               class="text-[10px] truncate"
-              :class="st.stage === 4 ? 'text-indigo-700 font-bold' : 'text-slate-500'"
+              :class="st.stage === 4 ? 'text-indigo-300 font-bold' : 'text-slate-400'"
             >
               {{ st.subDesc }}
             </p>
@@ -179,10 +179,10 @@ const steps: WaveStep[] = [
       class="w-full mt-2.5 text-center transition-all duration-600 min-h-[40px] px-2"
       :class="stage >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none translate-y-1'"
     >
-      <div class="text-[14px] md:text-[15.5px] font-serif font-extrabold text-slate-800 tracking-tight flex items-center justify-center gap-1.5 flex-wrap">
+      <div class="text-[14px] md:text-[15.5px] font-serif font-extrabold text-slate-100 tracking-tight flex items-center justify-center gap-1.5 flex-wrap">
         <span>“ AI는 단순한 대화 상대를 넘어, </span>
         <span
-          class="inline-block px-2.5 py-0.5 rounded-md text-indigo-950 font-black tracking-tight transition-all duration-700"
+          class="inline-block px-2.5 py-0.5 rounded-md text-indigo-300 font-black tracking-tight transition-all duration-700"
           style="background: linear-gradient(104deg, rgba(99, 102, 241, 0.15) 0%, rgba(129, 140, 248, 0.35) 20%, rgba(99, 102, 241, 0.28) 85%, rgba(99, 102, 241, 0.12) 100%); border-bottom: 2.5px solid #6366F1;"
         >
           목표를 스스로 끝까지 완수하는 자율 에이전트(Agent)

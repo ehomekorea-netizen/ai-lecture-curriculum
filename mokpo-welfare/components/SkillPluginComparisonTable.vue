@@ -37,21 +37,21 @@ const rows = [
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[305px] my-auto">
+  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-100 text-left h-[305px] my-auto">
     <!-- ── Crisp Comparison Table (Slide 7 Styling, Static Pure Layout) ── -->
-    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs text-xs table-fixed">
+    <table class="w-full border-collapse bg-white/6 rounded-xl overflow-hidden border border-white/10 shadow-xs text-xs table-fixed">
       <thead>
-        <tr class="bg-[#FFEAD7] text-slate-900 font-bold border-b border-slate-200 h-[36px]">
-          <th :style="{ width: widths[0] }" class="p-2 px-3 text-left font-bold text-slate-800">
+        <tr class="bg-white/6 text-white font-bold border-b border-white/10 h-[36px]">
+          <th :style="{ width: widths[0] }" class="p-2 px-3 text-left font-bold text-slate-100">
             {{ headers[0] }}
           </th>
-          <th :style="{ width: widths[1] }" class="p-2 px-3 text-left font-bold text-blue-900 bg-blue-50/50 border-l border-slate-200/80">
+          <th :style="{ width: widths[1] }" class="p-2 px-3 text-left font-bold text-blue-200 bg-blue-950/40 border-l border-white/10">
             <div class="flex items-center gap-1.5">
               <BookOpenCheck :size="14" class="text-blue-600 shrink-0" />
               <span>{{ headers[1] }}</span>
             </div>
           </th>
-          <th :style="{ width: widths[2] }" class="p-2 px-3 text-left font-bold text-purple-900 bg-purple-50/50 border-l border-slate-200/80">
+          <th :style="{ width: widths[2] }" class="p-2 px-3 text-left font-bold text-purple-900 bg-purple-50/50 border-l border-white/10">
             <div class="flex items-center gap-1.5">
               <Package :size="14" class="text-purple-600 shrink-0" />
               <span>{{ headers[2] }}</span>
@@ -63,21 +63,21 @@ const rows = [
         <tr
           v-for="(row, idx) in rows"
           :key="idx"
-          class="border-b border-slate-200/80 transition-colors h-[38px]"
-          :class="idx % 2 === 1 ? 'bg-slate-50/40' : 'bg-white'"
+          class="border-b border-white/10 transition-colors h-[38px]"
+          :class="idx % 2 === 1 ? 'bg-white/6' : 'bg-white/6'"
         >
           <!-- Category -->
-          <td class="p-2 px-3 font-bold text-slate-900 align-middle">
+          <td class="p-2 px-3 font-bold text-white align-middle">
             {{ row.category }}
           </td>
 
           <!-- Skill Column -->
-          <td class="p-2 px-3 text-slate-700 font-medium border-l border-slate-200/70 align-middle leading-tight">
+          <td class="p-2 px-3 text-slate-300 font-medium border-l border-white/10 align-middle leading-tight">
             {{ row.skill }}
           </td>
 
           <!-- Plugin Column -->
-          <td class="p-2 px-3 text-slate-900 font-bold border-l border-slate-200/70 align-middle leading-tight bg-purple-50/20">
+          <td class="p-2 px-3 text-white font-bold border-l border-white/10 align-middle leading-tight bg-purple-50/20">
             {{ row.plugin }}
           </td>
         </tr>

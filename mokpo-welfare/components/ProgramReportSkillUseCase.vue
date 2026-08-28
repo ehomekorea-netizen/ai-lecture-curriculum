@@ -82,17 +82,17 @@ const formattedHtml = computed(() => {
 </script>
 
 <template>
-  <div ref="rootRef" class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left h-[310px] my-auto py-1">
+  <div ref="rootRef" class="w-full flex flex-col justify-between select-none font-sans text-slate-100 text-left h-[310px] my-auto py-1">
     <!-- ── Main 2-Column Grid (Left: 100% Preserved Terminal, Right: Vertical 3-Card Timeline) ── -->
     <div class="grid grid-cols-12 gap-4.5 items-stretch h-full">
       <!-- ── Left Column (7 Cols): Pure Typewriter Terminal Box (100% Preserved) ── -->
       <div class="col-span-7 flex flex-col justify-start bg-slate-950 rounded-3xl border border-slate-800 p-5 shadow-xl relative overflow-hidden">
         <!-- Terminal Header Dot Indicator -->
         <div class="flex items-center gap-1.5 pb-2.5 border-b border-slate-800/80 mb-3">
-          <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-rose-950/40"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-          <span class="text-[10px] font-mono text-slate-500 ml-1.5">skill-creator-prompt</span>
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-950/40"></span>
+          <span class="text-[10px] font-mono text-slate-400 ml-1.5">skill-creator-prompt</span>
         </div>
 
         <!-- Real-time Typewriter Prompt Body with Infinite Blinking Cursor -->
@@ -106,11 +106,11 @@ const formattedHtml = computed(() => {
         <!-- Top Area: 3 Vertical Independent Cards with Arrows Triggered on Typing Finish -->
         <div class="flex flex-col justify-center flex-1">
           <!-- Card 1: 운영일지·만족도 -->
-          <div class="w-full h-[52px] bg-white rounded-2xl border border-slate-300 shadow-2xs px-4 flex items-center gap-3">
-            <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-600 font-mono font-bold text-xs flex items-center justify-center border border-blue-200 shrink-0">
+          <div class="w-full h-[52px] bg-white/6 rounded-2xl border border-white/15 shadow-2xs px-4 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-lg bg-blue-950/40 text-blue-600 font-mono font-bold text-xs flex items-center justify-center border border-blue-200 shrink-0">
               01
             </span>
-            <span class="text-sm font-serif font-bold text-slate-800 tracking-tight whitespace-nowrap">
+            <span class="text-sm font-serif font-bold text-slate-100 tracking-tight whitespace-nowrap">
               운영일지 · 만족도
             </span>
           </div>
@@ -151,8 +151,8 @@ const formattedHtml = computed(() => {
           </div>
 
           <!-- Card 2: @skill-creator -->
-          <div class="w-full h-[52px] bg-white rounded-2xl border border-slate-300 shadow-2xs px-4 flex items-center gap-3">
-            <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-600 font-mono font-bold text-xs flex items-center justify-center border border-blue-200 shrink-0">
+          <div class="w-full h-[52px] bg-white/6 rounded-2xl border border-white/15 shadow-2xs px-4 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-lg bg-blue-950/40 text-blue-600 font-mono font-bold text-xs flex items-center justify-center border border-blue-200 shrink-0">
               02
             </span>
             <span class="text-sm font-mono font-bold text-blue-600 tracking-tight whitespace-nowrap">
@@ -196,20 +196,20 @@ const formattedHtml = computed(() => {
           </div>
 
           <!-- Card 3: 월간 결과보고서 -->
-          <div class="w-full h-[52px] bg-white rounded-2xl border border-slate-300 shadow-2xs px-4 flex items-center gap-3">
-            <span class="w-6 h-6 rounded-lg bg-blue-50 text-blue-600 font-mono font-bold text-xs flex items-center justify-center border border-blue-200 shrink-0">
+          <div class="w-full h-[52px] bg-white/6 rounded-2xl border border-white/15 shadow-2xs px-4 flex items-center gap-3">
+            <span class="w-6 h-6 rounded-lg bg-blue-950/40 text-blue-600 font-mono font-bold text-xs flex items-center justify-center border border-blue-200 shrink-0">
               03
             </span>
-            <span class="text-sm font-serif font-bold text-slate-800 tracking-tight whitespace-nowrap">
+            <span class="text-sm font-serif font-bold text-slate-100 tracking-tight whitespace-nowrap">
               월간 결과보고서
             </span>
           </div>
         </div>
 
         <!-- Bottom Info: Single Line Criteria + Privacy Tip -->
-        <div class="pt-2 border-t border-slate-200/90 space-y-1 mt-1">
-          <div class="text-[11px] text-slate-600 font-medium tracking-tight">
-            스킬 지침: <strong class="text-slate-800 font-semibold">필수 항목</strong> · <strong class="text-slate-800 font-semibold">수치 무결성</strong> · <strong class="text-slate-800 font-semibold">공문 문체</strong>
+        <div class="pt-2 border-t border-white/10 space-y-1 mt-1">
+          <div class="text-[11px] text-slate-400 font-medium tracking-tight">
+            스킬 지침: <strong class="text-slate-100 font-semibold">필수 항목</strong> · <strong class="text-slate-100 font-semibold">수치 무결성</strong> · <strong class="text-slate-100 font-semibold">공문 문체</strong>
           </div>
           <div class="text-[10px] text-slate-400 font-medium flex items-center gap-1.5">
             <ShieldCheck :size="12" class="text-emerald-600 shrink-0" />

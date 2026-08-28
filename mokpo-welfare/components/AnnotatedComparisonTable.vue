@@ -28,32 +28,28 @@ const currentStage = computed(() => props.stage ?? 0)
 
 function getMarkClasses(type?: string) {
   switch (type) {
-    case 'highlight':
-      return 'bg-amber-300/50 text-slate-950 font-bold px-1.5 py-0.5 rounded-sm shadow-2xs'
-    case 'circle':
-      return 'outline-2 outline-rose-500 text-rose-950 font-bold bg-rose-50/70 shadow-2xs rounded-full px-2.5 py-0.5 outline-offset-2'
-    case 'box':
-      return 'outline-2 outline-indigo-500 text-indigo-950 font-bold bg-indigo-50/80 shadow-2xs rounded-md px-2 py-0.5 outline-offset-2'
-    case 'underline':
-      return 'underline decoration-wavy decoration-emerald-500 decoration-2 underline-offset-4 text-emerald-950 font-bold bg-emerald-50/50 px-1 py-0.5 rounded-xs'
+    case 'highlight': return 'bg-amber-500/25 text-amber-200 border border-amber-400/50 font-bold px-2 py-0.5 rounded shadow-sm'
+    case 'circle': return 'bg-rose-500/25 text-rose-200 border border-rose-400/60 font-bold rounded-full px-2.5 py-0.5 shadow-sm'
+    case 'box': return 'bg-indigo-500/25 text-indigo-200 border border-indigo-400/60 font-bold rounded-md px-2.5 py-0.5 shadow-sm'
+    case 'underline': return 'bg-emerald-500/25 text-emerald-200 border-b-2 border-emerald-400 font-bold px-2 py-0.5 rounded-sm shadow-sm'
     default:
-      return 'text-blue-900 font-bold'
+      return 'text-blue-200 font-bold'
   }
 }
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-800">
-    <table class="w-full border-collapse bg-white rounded-xl overflow-hidden border border-slate-200 shadow-xs text-[13px] table-fixed">
+  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-100">
+    <table class="w-full border-collapse bg-white/6 rounded-xl overflow-hidden border border-white/10 shadow-xs text-[13px] table-fixed">
       <thead>
-        <tr class="bg-[#FFEAD7] text-slate-900 font-bold border-b border-slate-200 h-[38px]">
-          <th :style="{ width: widths[0] }" class="p-2.5 px-3.5 text-left font-bold text-slate-800">
+        <tr class="bg-white/8 text-white font-bold border-b border-white/10 h-[38px]">
+          <th :style="{ width: widths[0] }" class="p-2.5 px-3.5 text-left font-bold text-slate-100">
             {{ headers[0] }}
           </th>
-          <th :style="{ width: widths[1] }" class="p-2.5 px-3.5 text-left font-bold text-slate-700">
+          <th :style="{ width: widths[1] }" class="p-2.5 px-3.5 text-left font-bold text-slate-300">
             {{ headers[1] }}
           </th>
-          <th :style="{ width: widths[2] }" class="p-2.5 px-3.5 text-left font-bold text-blue-900 bg-blue-50/60 border-l border-slate-200/80">
+          <th :style="{ width: widths[2] }" class="p-2.5 px-3.5 text-left font-bold text-blue-200 bg-blue-950/40 border-l border-white/10">
             {{ headers[2] }}
           </th>
         </tr>
@@ -62,28 +58,28 @@ function getMarkClasses(type?: string) {
         <tr
           v-for="(row, idx) in rows"
           :key="idx"
-          class="border-b border-slate-200/80 transition-colors duration-300 h-[44px]"
-          :class="currentStage > idx ? 'bg-blue-50/20' : idx % 2 === 1 ? 'bg-slate-50/40' : 'bg-white'"
+          class="border-b border-white/10 transition-colors duration-300 h-[44px]"
+          :class="currentStage > idx ? 'bg-blue-950/40' : idx % 2 === 1 ? 'bg-white/6' : 'bg-white/6'"
         >
           <!-- Category Column -->
-          <td class="p-2 px-3.5 font-bold text-slate-900 align-middle">
+          <td class="p-2 px-3.5 font-bold text-white align-middle">
             {{ row.category }}
           </td>
 
           <!-- Left Column (Standard) -->
-          <td class="p-2 px-3.5 text-slate-600 font-normal align-middle leading-snug">
+          <td class="p-2 px-3.5 text-slate-400 font-normal align-middle leading-snug">
             {{ row.left }}
           </td>
 
           <!-- Right Column (Zero-CLS Animated Annotations on Clicks) -->
-          <td class="p-2 px-3.5 font-medium border-l border-slate-200/70 align-middle leading-snug">
+          <td class="p-2 px-3.5 font-medium border-l border-white/10 align-middle leading-snug">
             <div class="inline-flex items-center min-h-[26px]">
               <span
                 class="transition-all duration-300 inline-block"
                 :class="[
                   currentStage > idx
                     ? getMarkClasses(row.markType)
-                    : 'text-slate-800 font-medium px-1 py-0.5'
+                    : 'text-slate-100 font-medium px-1 py-0.5'
                 ]"
               >
                 {{ row.right }}

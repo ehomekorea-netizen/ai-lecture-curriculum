@@ -63,13 +63,13 @@ const checkItems = [
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between h-full select-none font-sans text-slate-800 text-left py-1">
+  <div class="w-full flex flex-col justify-between h-full select-none font-sans text-slate-100 text-left py-1">
     <!-- Top: 5-Item Audit Grid -->
     <div class="grid grid-cols-5 gap-2.5 mb-2.5">
       <div
         v-for="(item, idx) in checkItems"
         :key="item.num"
-        class="bg-white rounded-2xl border border-slate-200/90 p-3 shadow-2xs hover:shadow-sm transition-all flex flex-col justify-between"
+        class="bg-white/6 rounded-2xl border border-white/10 p-3 shadow-2xs hover:shadow-sm transition-all flex flex-col justify-between"
       >
         <div>
           <!-- Header -->
@@ -85,19 +85,19 @@ const checkItems = [
             </div>
           </div>
 
-          <h4 class="text-xs font-bold text-slate-900 font-serif leading-tight mb-1">
+          <h4 class="text-xs font-bold text-white font-serif leading-tight mb-1">
             {{ item.category }}
           </h4>
           <span class="text-[9.5px] font-mono text-slate-400 block mb-2">
             {{ item.en }}
           </span>
 
-          <p class="text-[10px] text-slate-600 leading-relaxed break-keep">
+          <p class="text-[10px] text-slate-400 leading-relaxed break-keep">
             {{ item.desc }}
           </p>
         </div>
 
-        <div class="mt-2.5 pt-2 border-t border-slate-100 flex items-center gap-1 text-[9.5px] font-bold text-slate-700">
+        <div class="mt-2.5 pt-2 border-t border-slate-100 flex items-center gap-1 text-[9.5px] font-bold text-slate-300">
           <CheckCircle2 :size="11" :style="{ color: item.color }" class="shrink-0" />
           <span class="truncate">{{ item.passCriteria }}</span>
         </div>
@@ -111,17 +111,17 @@ const checkItems = [
           <UserCheck :size="18" />
         </div>
         <div>
-          <h4 class="text-xs md:text-sm font-bold text-slate-900 flex items-center gap-2">
+          <h4 class="text-xs md:text-sm font-bold text-white flex items-center gap-2">
             <span>사람의 최종 승인 원칙: <strong class="text-amber-800">Human-in-the-Loop</strong></span>
             <span class="px-2 py-0.5 rounded-md bg-amber-600 text-white text-[10px] font-mono font-bold">책임 소재</span>
           </h4>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed mt-0.5">
-            AI가 생성한 결과물은 언제나 <strong>'초안(Draft)'</strong>입니다. 수치 대조, 사실 확인, 기관 공식 표현의 최종 검토 및 책임은 <strong class="text-slate-950">업무 담당자</strong>에게 있습니다.
+          <p class="text-[11.5px] text-slate-300 leading-relaxed mt-0.5">
+            AI가 생성한 결과물은 언제나 <strong>'초안(Draft)'</strong>입니다. 수치 대조, 사실 확인, 기관 공식 표현의 최종 검토 및 책임은 <strong class="text-white">업무 담당자</strong>에게 있습니다.
           </p>
         </div>
       </div>
 
-      <div class="px-3 py-1.5 rounded-xl bg-white border border-amber-300 text-[11px] font-bold text-amber-900 shadow-2xs shrink-0 flex items-center gap-1.5">
+      <div class="px-3 py-1.5 rounded-xl bg-white/6 border border-amber-300 text-[11px] font-bold text-amber-900 shadow-2xs shrink-0 flex items-center gap-1.5">
         <AlertTriangle :size="13" class="text-amber-600" />
         <span>무검수 제출 절대 금지</span>
       </div>

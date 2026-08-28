@@ -72,31 +72,22 @@ function isCodexUnderlineActive(idx: number) {
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-800 text-left py-0.5">
+  <div class="w-full flex flex-col justify-between select-none font-sans text-slate-100 text-left py-0.5">
     <!-- GPU-Accelerated 4-Column Table Frame (Zero Reflow Lag, 60fps Butter Smooth) -->
-    <div class="w-full bg-white rounded-xl overflow-hidden border border-slate-300 shadow-xs mb-2">
+    <div class="w-full bg-white/6 rounded-xl overflow-hidden border border-white/15 shadow-xs mb-2">
       <!-- ── Table Header (Fixed 4-Grid: 16% / 28% / 28% / 28%) ── -->
-      <div class="flex items-stretch border-b border-slate-300 h-[40px]">
+      <div class="flex items-stretch border-b border-white/15 h-[40px]">
         <!-- 1. Category Column (16%) -->
-        <div class="w-[16%] p-2.5 px-3.5 flex items-center font-bold text-slate-900 bg-[#E8E2D8] shrink-0 border-r border-[#DDD5C7] text-[12.5px] font-serif">
-          구분
-        </div>
+        <div class="w-[16%] p-2.5 px-3.5 flex items-center font-bold text-white bg-white/10 shrink-0 border-r border-white/15 text-[12.5px] font-serif">구분</div>
 
         <!-- 2. Chat Column (28%) -->
-        <div class="w-[28%] p-2.5 px-3.5 flex items-center gap-1.5 bg-[#E0F2FE] text-sky-950 font-bold border-r border-sky-200 text-[12.5px] shrink-0">
-          <MessageSquare :size="15" class="text-sky-700 shrink-0" />
-          <span>Chat (단순 대화 / 탐색)</span>
-        </div>
+        <div class="w-[28%] p-2.5 px-3.5 flex items-center gap-1.5 bg-sky-950/40 text-sky-300 font-bold border-r border-white/15 text-[12.5px] shrink-0"><MessageSquare :size="15" class="text-sky-400 shrink-0" /><span>Chat (단순 대화 / 탐색)</span></div>
 
         <!-- 3. ChatGPT Work Column (28%) -->
-        <div class="w-[28%] p-2.5 px-3.5 flex items-center gap-1.5 border-r border-blue-300 text-[12.5px] shrink-0 bg-[#BFDBFE] text-blue-950 font-bold border-l border-blue-300">
-          <Briefcase :size="15" class="text-blue-700 shrink-0" />
-          <span>ChatGPT Work (실무 산출물)</span>
-        </div>
+        <div class="w-[28%] p-2.5 px-3.5 flex items-center gap-1.5 border-r border-blue-400/40 text-[12.5px] shrink-0 bg-blue-900/40 text-blue-200 font-bold border-l border-blue-400/40 shadow-inner"><Briefcase :size="15" class="text-blue-300 shrink-0" /><span>ChatGPT Work (실무 산출물)</span></div>
 
         <!-- 4. Codex Column (28% GPU-Accelerated Smooth Reveal) -->
-        <div
-          class="w-[28%] p-2.5 px-3.5 flex items-center gap-1.5 bg-[#F3E8FF] text-purple-950 font-bold border-l border-purple-300 text-[12.5px] shrink-0 transition-all duration-500 ease-out"
+        <div class="w-[28%] p-2.5 px-3.5 flex items-center gap-1.5 bg-purple-950/40 text-purple-300 font-bold border-l border-white/15 text-[12.5px] shrink-0 transition-all duration-500 ease-out"
           :class="isCodexVisible ? 'opacity-100 translate-x-0' : 'opacity-20 translate-x-1 grayscale'"
         >
           <Terminal :size="15" :class="isCodexVisible ? 'text-purple-700' : 'text-slate-400'" class="shrink-0" />
@@ -112,17 +103,17 @@ function isCodexUnderlineActive(idx: number) {
           class="flex items-stretch h-[44px] transition-colors duration-300"
           :class="[
             (isChatActive(idx) || isWorkActive(idx) || isCodexUnderlineActive(idx))
-              ? 'bg-blue-50/15'
-              : idx % 2 === 1 ? 'bg-slate-50/40' : 'bg-white'
+              ? 'bg-blue-950/40'
+              : idx % 2 === 1 ? 'bg-white/6' : 'bg-white/6'
           ]"
         >
           <!-- Cell 1: Category (16%) -->
-          <div class="w-[16%] p-2 px-3.5 font-bold text-slate-900 bg-[#FAF8F4] flex items-center font-serif shrink-0 border-r border-[#E7E0D4]">
+          <div class="w-[16%] p-2 px-3.5 font-bold text-white bg-white/6 flex items-center font-serif shrink-0 border-r border-white/10">
             {{ row.category }}
           </div>
 
           <!-- Cell 2: Chat (28%, Sky Highlighter) -->
-          <div class="w-[28%] p-2 px-3 text-slate-700 bg-white/95 font-normal flex items-center leading-snug break-keep shrink-0 border-r border-slate-200/70">
+          <div class="w-[28%] p-2 px-3 text-slate-200 bg-white/3 font-normal flex items-center leading-snug break-keep shrink-0 border-r border-white/10">
             <div class="inline-flex items-center min-h-[26px]">
               <span
                 class="v-mark-highlighter v-mark-sky transition-all duration-400 inline-block"
@@ -134,7 +125,7 @@ function isCodexUnderlineActive(idx: number) {
           </div>
 
           <!-- Cell 3: ChatGPT Work (28%, Blue Highlighter) -->
-          <div class="w-[28%] p-2 px-3 font-medium flex items-center leading-snug break-keep shrink-0 border-r border-slate-200/70 bg-blue-50/35 border-l border-blue-200/80">
+          <div class="w-[28%] p-2 px-3 font-medium flex items-center leading-snug break-keep shrink-0 border-r border-blue-500/30 bg-blue-950/30 border-l border-blue-500/30">
             <div class="inline-flex items-center min-h-[26px]">
               <span
                 class="v-mark-highlighter v-mark-blue transition-all duration-400 inline-block"
@@ -146,8 +137,7 @@ function isCodexUnderlineActive(idx: number) {
           </div>
 
           <!-- Cell 4: Codex (28%, GPU Smooth Unlock & Underline) -->
-          <div
-            class="w-[28%] p-2 px-3 flex items-center leading-snug break-keep shrink-0 bg-purple-50/25 border-l border-purple-200/80 transition-all duration-500 ease-out"
+          <div class="w-[28%] p-2 px-3 flex items-center leading-snug break-keep shrink-0 bg-purple-950/20 border-l border-white/10 transition-all duration-500 ease-out"
             :class="isCodexVisible ? 'opacity-100 translate-x-0' : 'opacity-25 translate-x-1'"
           >
             <div class="inline-flex items-center min-h-[26px]">
@@ -169,8 +159,8 @@ function isCodexUnderlineActive(idx: number) {
         <div v-if="!isCodexVisible" key="quote-chat" class="w-full">
           🎯 <strong>핵심 공식</strong>: Chat이 <strong>"생각을 정리하는 대화 상대"</strong>라면, Work는 <strong>"내 컴퓨터의 실무 자료를 직접 읽고 완성형 문서를 만들어주는 전담 비서"</strong>입니다.
         </div>
-        <div v-else key="quote-codex" class="w-full text-purple-950">
-          ⚡ <strong>3대 환경 최종 정리</strong>: 일반 대화는 <strong>Chat</strong>, 실무 문서 제작은 <strong>Work</strong>, 대량 데이터 전처리·코딩 자동화는 <strong>Codex</strong>로 역할이 완벽히 분담됩니다.
+        <div v-else key="quote-codex" class="w-full text-slate-100 font-medium">
+          ⚡ <strong class="text-purple-300 font-bold">3대 환경 최종 정리</strong>: 일반 대화는 <strong class="text-sky-300 font-bold">Chat</strong>, 실무 문서 제작은 <strong class="text-blue-400 font-bold">Work</strong>, 대량 데이터 전처리·코딩 자동화는 <strong class="text-purple-300 font-bold">Codex</strong>로 역할이 완벽히 분담됩니다.
         </div>
       </transition>
     </div>
@@ -192,43 +182,43 @@ function isCodexUnderlineActive(idx: number) {
 
 /* 1. Chat Sky Highlighter (v-mark.sky) */
 .v-mark-sky {
-  background-image: linear-gradient(to right, rgba(56, 189, 248, 0.32), rgba(125, 211, 252, 0.42));
-  color: #334155;
+  background-image: linear-gradient(to right, rgba(56, 189, 248, 0.25), rgba(125, 211, 252, 0.25));
+  color: #e2e8f0;
 }
 .v-mark-sky.v-mark-active {
   background-size: 100% 100%;
-  color: #0369A1;
+  color: #38bdf8;
   font-weight: 700;
-  border-bottom: 2px solid rgba(56, 189, 248, 0.75);
+  border-bottom: 2px solid #38bdf8;
 }
 
 /* 2. Work Sapphire Blue Highlighter (v-mark.blue) */
 .v-mark-blue {
-  background-image: linear-gradient(to right, rgba(59, 130, 246, 0.3), rgba(147, 197, 253, 0.42));
-  color: #1E3A8A;
+  background-image: linear-gradient(to right, rgba(59, 130, 246, 0.25), rgba(147, 197, 253, 0.25));
+  color: #ffffff;
 }
 .v-mark-blue.v-mark-active {
   background-size: 100% 100%;
-  color: #1D4ED8;
+  color: #93c5fd;
   font-weight: 800;
-  border-bottom: 2px solid rgba(59, 130, 246, 0.85);
+  border-bottom: 2px solid #60a5fa;
 }
 
 /* 3. Codex Underline (Drawn in sequentially on Clicks 11 ~ 15) */
 .codex-underline {
   position: relative;
   display: inline-block;
-  color: #475569;
+  color: #94a3b8;
   font-weight: 400;
   transition: color 0.35s ease, font-weight 0.35s ease, text-decoration-color 0.4s ease;
 }
 
 .codex-underline.codex-underline-active {
-  color: #581C87;
+  color: #c084fc;
   font-weight: 700;
   text-decoration: underline;
-  text-decoration-color: #9333EA;
-  text-decoration-thickness: 2.5px;
+  text-decoration-color: #c084fc;
+  text-decoration-thickness: 2px;
   text-underline-offset: 4px;
 }
 

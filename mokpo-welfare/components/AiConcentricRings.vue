@@ -145,7 +145,7 @@ function selectLayer(key: LayerKey) {
 </script>
 
 <template>
-  <div class="w-full flex items-center justify-between gap-6 select-none font-sans text-slate-800 my-auto">
+  <div class="w-full flex items-center justify-between gap-6 select-none font-sans text-slate-100 my-auto">
     <!-- ── Left: Cosmic Ecosystem Concentric Orbit (280x280) ── -->
     <div class="relative flex flex-col items-center shrink-0">
       <!-- Cosmic Space Glass Sphere Background -->
@@ -317,7 +317,7 @@ function selectLayer(key: LayerKey) {
           @click="selectLayer('dl')"
           class="absolute left-1/2 -translate-x-1/2 top-[112px] flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[9.5px] font-mono font-bold transition-all cursor-pointer shadow-lg z-20 backdrop-blur-md"
           :class="activeLayer === 'dl'
-            ? 'bg-amber-500 text-slate-950 font-extrabold shadow-[0_0_12px_rgba(245,158,11,0.8)] ring-2 ring-amber-300 scale-105'
+            ? 'bg-amber-500 text-white font-extrabold shadow-[0_0_12px_rgba(245,158,11,0.8)] ring-2 ring-amber-300 scale-105'
             : 'bg-slate-900/80 text-amber-300 border border-amber-500/40 hover:bg-amber-950/90'"
         >
           <Layers :size="11" />
@@ -329,7 +329,7 @@ function selectLayer(key: LayerKey) {
           @click="selectLayer('genai')"
           class="absolute left-1/2 -translate-x-1/2 top-[156px] flex flex-col items-center justify-center w-[54px] h-[54px] rounded-full text-[10px] font-bold transition-all cursor-pointer z-30 shadow-2xl backdrop-blur-md"
           :class="activeLayer === 'genai'
-            ? 'bg-emerald-500 text-slate-950 font-black shadow-[0_0_18px_rgba(16,185,129,0.95)] ring-2 ring-emerald-200 scale-110'
+            ? 'bg-emerald-950/400 text-white font-black shadow-[0_0_18px_rgba(16,185,129,0.95)] ring-2 ring-emerald-200 scale-110'
             : 'bg-emerald-950/90 text-emerald-300 border border-emerald-400/60 hover:scale-105'"
         >
           <Sparkles :size="14" class="mb-0.5 animate-bounce" style="animation-duration: 2s;" />
@@ -354,8 +354,8 @@ function selectLayer(key: LayerKey) {
           @click="selectLayer(key)"
           class="px-3 py-1 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer border shadow-2xs"
           :class="activeLayer === key
-            ? 'border-slate-800 text-slate-900 bg-white shadow-sm ring-1 ring-slate-800 scale-102'
-            : 'border-slate-200 text-slate-500 hover:text-slate-900 bg-white/70 hover:bg-white'"
+            ? 'border-slate-800 text-white bg-white/6 shadow-sm ring-1 ring-slate-800 scale-102'
+            : 'border-white/10 text-slate-400 hover:text-white bg-white/70 hover:bg-white/6'"
         >
           <component :is="layerData[key].icon" :size="13" :style="{ color: layerData[key].color }" />
           <span>{{ layerData[key].title.split(' ')[0] }}</span>
@@ -364,7 +364,7 @@ function selectLayer(key: LayerKey) {
 
       <!-- Detail Card Container -->
       <div
-        class="bg-white rounded-2xl border p-4 shadow-sm transition-all duration-300 relative overflow-hidden"
+        class="bg-white/6 rounded-2xl border p-4 shadow-sm transition-all duration-300 relative overflow-hidden"
         :style="{ borderColor: layerData[activeLayer].color + '60' }"
       >
         <!-- Header -->
@@ -377,10 +377,10 @@ function selectLayer(key: LayerKey) {
               <component :is="layerData[activeLayer].icon" :size="18" />
             </div>
             <div>
-              <h3 class="text-base md:text-[17px] font-bold text-slate-900 font-serif leading-tight">
+              <h3 class="text-base md:text-[17px] font-bold text-white font-serif leading-tight">
                 {{ layerData[activeLayer].title }}
               </h3>
-              <div class="text-[10.5px] font-mono text-slate-500">
+              <div class="text-[10.5px] font-mono text-slate-400">
                 {{ layerData[activeLayer].en }}
               </div>
             </div>
@@ -395,7 +395,7 @@ function selectLayer(key: LayerKey) {
 
         <!-- Description with Highlighter Markers -->
         <p
-          class="text-[12.5px] text-slate-700 font-medium leading-relaxed mb-3 break-keep"
+          class="text-[12.5px] text-slate-300 font-medium leading-relaxed mb-3 break-keep"
           v-html="layerData[activeLayer].desc"
         />
 
@@ -404,7 +404,7 @@ function selectLayer(key: LayerKey) {
           <div
             v-for="tag in layerData[activeLayer].tags"
             :key="tag.name"
-            class="flex items-center gap-2 p-1.5 px-2.5 rounded-xl bg-[#FAF8F4] text-slate-800 text-[11px] font-bold border border-[#E7E0D4] shadow-2xs hover:border-slate-400 transition-colors whitespace-nowrap overflow-hidden"
+            class="flex items-center gap-2 p-1.5 px-2.5 rounded-xl bg-white/6 text-white text-[11px] font-bold border border-white/10 shadow-2xs hover:border-slate-400 transition-colors whitespace-nowrap overflow-hidden"
           >
             <!-- Brand SVG Logo if available -->
             <img
@@ -433,7 +433,7 @@ function selectLayer(key: LayerKey) {
         >
           <Lightbulb :size="15" class="text-amber-600 shrink-0 mt-0.5" />
           <span
-            class="text-slate-800 font-medium font-serif"
+            class="text-slate-100 font-medium font-serif"
             v-html="layerData[activeLayer].tip"
           />
         </div>
@@ -445,7 +445,7 @@ function selectLayer(key: LayerKey) {
 <style scoped>
 :deep(.hl-ai) {
   background: rgba(56, 189, 248, 0.22);
-  color: #0369A1;
+  color: #38BDF8 !important; background: rgba(56, 189, 248, 0.2) !important; border-bottom: 2px solid #38BDF8 !important;
   font-weight: 700;
   padding: 1px 4px;
   border-radius: 4px;
@@ -454,7 +454,7 @@ function selectLayer(key: LayerKey) {
 
 :deep(.hl-ml) {
   background: rgba(168, 85, 247, 0.22);
-  color: #6B21A8;
+  color: #C084FC !important; background: rgba(192, 132, 252, 0.2) !important; border-bottom: 2px solid #C084FC !important;
   font-weight: 700;
   padding: 1px 4px;
   border-radius: 4px;
@@ -463,7 +463,7 @@ function selectLayer(key: LayerKey) {
 
 :deep(.hl-dl) {
   background: rgba(245, 158, 11, 0.24);
-  color: #92400E;
+  color: #FBBF24 !important; background: rgba(251, 191, 36, 0.2) !important; border-bottom: 2px solid #FBBF24 !important;
   font-weight: 700;
   padding: 1px 4px;
   border-radius: 4px;
@@ -472,7 +472,7 @@ function selectLayer(key: LayerKey) {
 
 :deep(.hl-genai) {
   background: rgba(16, 185, 129, 0.25);
-  color: #065F46;
+  color: #34D399 !important; background: rgba(52, 211, 153, 0.2) !important; border-bottom: 2px solid #34D399 !important;
   font-weight: 700;
   padding: 1px 4px;
   border-radius: 4px;

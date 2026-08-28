@@ -115,32 +115,32 @@ function onTimeUpdate() {
 
       <!-- Red Vertical Line 1 (Exact 25.63%) -->
       <div
-        class="absolute top-0 bottom-0 left-[25.63%] w-[2.5px] bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.95)] z-10 pointer-events-none"
+        class="absolute top-0 bottom-0 left-[25.63%] w-[2.5px] bg-rose-950/400 shadow-[0_0_8px_rgba(244,63,94,0.95)] z-10 pointer-events-none"
       />
 
       <!-- Red Vertical Line 2 (Exact 73.95%) -->
       <div
-        class="absolute top-0 bottom-0 left-[73.95%] w-[2.5px] bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.95)] z-10 pointer-events-none"
+        class="absolute top-0 bottom-0 left-[73.95%] w-[2.5px] bg-rose-950/400 shadow-[0_0_8px_rgba(244,63,94,0.95)] z-10 pointer-events-none"
       />
 
       <!-- Clickable Zone 1: 출처 (0% ~ 25.63%) -->
       <div
         @click="playSegment(1)"
-        class="absolute top-0 bottom-0 left-0 w-[25.63%] cursor-pointer transition-colors duration-150 hover:bg-rose-500/15"
+        class="absolute top-0 bottom-0 left-0 w-[25.63%] cursor-pointer transition-colors duration-150 hover:bg-rose-950/40"
         title="1. 출처 (Sources) 시연 영상 재생 (0~15초)"
       />
 
       <!-- Clickable Zone 2: 채팅 (25.63% ~ 73.95%) -->
       <div
         @click="playSegment(2)"
-        class="absolute top-0 bottom-0 left-[25.63%] w-[48.32%] cursor-pointer transition-colors duration-150 hover:bg-rose-500/15"
+        class="absolute top-0 bottom-0 left-[25.63%] w-[48.32%] cursor-pointer transition-colors duration-150 hover:bg-rose-950/40"
         title="2. 채팅 (Chat) 시연 영상 재생 (16~25초)"
       />
 
       <!-- Clickable Zone 3: 스튜디오 (73.95% ~ 100%) -->
       <div
         @click="playSegment(3)"
-        class="absolute top-0 bottom-0 left-[73.95%] w-[26.05%] cursor-pointer transition-colors duration-150 hover:bg-rose-500/15"
+        class="absolute top-0 bottom-0 left-[73.95%] w-[26.05%] cursor-pointer transition-colors duration-150 hover:bg-rose-950/40"
         title="3. 스튜디오 (Studio) 시연 영상 재생 (26~51초)"
       />
     </div>

@@ -106,7 +106,7 @@ watch(() => props.stage, () => nextTick(draw))
       <div class="relative inline-block">
         <span
           class="text-base font-bold transition-all duration-300"
-          :class="stage >= 1 ? 'text-slate-400 line-through decoration-rose-500 decoration-3' : 'text-slate-800'"
+          :class="stage >= 1 ? 'text-slate-400 line-through decoration-rose-500 decoration-3' : 'text-slate-100'"
           style="font-family: 'Kalam', 'Source Serif 4', cursive;"
         >
           GPT = 똑똑한 네이버 / 구글 검색창
@@ -136,33 +136,33 @@ watch(() => props.stage, () => nextTick(draw))
 
       <!-- Left Card: 검색 시스템 (Search Engine) — Shown initially -->
       <div
-        class="rounded-2xl border p-4.5 transition-all duration-500 relative overflow-hidden bg-white shadow-xs flex flex-col justify-between h-[210px]"
-        :class="stage >= 2 ? 'opacity-40 grayscale-40 border-slate-300 bg-slate-50/70' : 'border-slate-300'"
+        class="rounded-2xl border p-4.5 transition-all duration-500 relative overflow-hidden bg-white/6 shadow-xs flex flex-col justify-between h-[210px]"
+        :class="stage >= 2 ? 'opacity-40 grayscale-40 border-white/15 bg-white/6' : 'border-white/15'"
       >
         <div>
           <!-- Tag Header -->
-          <div class="flex items-center justify-between pb-2 border-b border-slate-200 mb-2.5">
-            <div class="flex items-center gap-1.5 font-bold text-slate-700 text-xs font-serif">
-              <Search :size="15" class="text-slate-500" />
+          <div class="flex items-center justify-between pb-2 border-b border-white/10 mb-2.5">
+            <div class="flex items-center gap-1.5 font-bold text-slate-300 text-xs font-serif">
+              <Search :size="15" class="text-slate-400" />
               <span>검색 시스템 (Search Engine)</span>
             </div>
-            <span class="text-[10px] font-mono text-slate-400 px-2 py-0.5 rounded-full bg-slate-100">
+            <span class="text-[10px] font-mono text-slate-400 px-2 py-0.5 rounded-full bg-white/8">
               EXISTING DB
             </span>
           </div>
 
           <!-- Feature List -->
-          <div class="space-y-2 text-xs text-slate-700 leading-relaxed">
+          <div class="space-y-2 text-xs text-slate-300 leading-relaxed">
             <div class="flex items-start gap-1.5">
-              <span class="font-bold text-slate-900 shrink-0">• 동작:</span>
+              <span class="font-bold text-white shrink-0">• 동작:</span>
               <span>웹이나 DB의 문서를 <strong>찾아서 링크/원본을 제공</strong></span>
             </div>
             <div class="flex items-start gap-1.5">
-              <span class="font-bold text-slate-900 shrink-0">• 출처:</span>
+              <span class="font-bold text-white shrink-0">• 출처:</span>
               <span>가져온 웹페이지의 <strong>원문 URL 출처가 명확함</strong></span>
             </div>
             <div class="flex items-start gap-1.5">
-              <span class="font-bold text-slate-900 shrink-0">• 특징:</span>
+              <span class="font-bold text-white shrink-0">• 특징:</span>
               <span>실시간 최신 사실, 통계, 지자체 조례 번호 확인에 강함</span>
             </div>
           </div>
@@ -175,15 +175,15 @@ watch(() => props.stage, () => nextTick(draw))
 
       <!-- Right Card: 언어 모델 (LLM) — Pops Up ONLY at Stage 2 with zero layout jump -->
       <div
-        class="rounded-2xl border-2 p-4.5 transition-all duration-600 relative overflow-hidden bg-white flex flex-col justify-between h-[210px]"
+        class="rounded-2xl border-2 p-4.5 transition-all duration-600 relative overflow-hidden bg-white/6 flex flex-col justify-between h-[210px]"
         :class="stage >= 2
-          ? 'opacity-100 scale-100 translate-x-0 border-blue-600 ring-4 ring-blue-500/20 shadow-xl bg-linear-to-b from-white to-blue-50/40'
+          ? 'opacity-100 scale-100 translate-x-0 border-blue-600 ring-4 ring-blue-500/20 shadow-xl bg-linear-to-b from-white/10 to-blue-50/40'
           : 'opacity-0 scale-95 translate-x-3 pointer-events-none border-blue-200'"
       >
         <div>
           <!-- Tag Header -->
           <div class="flex items-center justify-between pb-2 border-b border-blue-100 mb-2.5">
-            <div class="flex items-center gap-1.5 font-bold text-blue-700 text-xs font-serif">
+            <div class="flex items-center gap-1.5 font-bold text-blue-400 text-xs font-serif">
               <Bot :size="16" class="text-blue-600" />
               <span>언어 모델 (LLM / Generative AI)</span>
             </div>
@@ -195,23 +195,23 @@ watch(() => props.stage, () => nextTick(draw))
           </div>
 
           <!-- Feature List -->
-          <div class="space-y-2 text-xs text-slate-800 leading-relaxed">
+          <div class="space-y-2 text-xs text-slate-100 leading-relaxed">
             <div class="flex items-start gap-1.5">
-              <span class="font-bold text-blue-900 shrink-0">• 동작:</span>
+              <span class="font-bold text-blue-200 shrink-0">• 동작:</span>
               <span>입력된 질문의 맥락을 보고 <strong>다음 말을 확률적으로 조립</strong></span>
             </div>
             <div class="flex items-start gap-1.5">
-              <span class="font-bold text-blue-900 shrink-0">• 출처:</span>
+              <span class="font-bold text-blue-200 shrink-0">• 출처:</span>
               <span>기억(패턴)에 기반하므로 원문 출처 자동 보장 불가</span>
             </div>
             <div class="flex items-start gap-1.5">
-              <span class="font-bold text-blue-900 shrink-0">• 특징:</span>
+              <span class="font-bold text-blue-200 shrink-0">• 특징:</span>
               <span><strong>요약, 서식 변환, 초안 작성, 번역</strong>에 압도적 강점</span>
             </div>
           </div>
         </div>
 
-        <div class="text-[11px] font-bold text-blue-700 font-serif pt-1.5 border-t border-blue-100 flex items-center justify-between">
+        <div class="text-[11px] font-bold text-blue-400 font-serif pt-1.5 border-t border-blue-100 flex items-center justify-between">
           <span>✨ "맥락에 맞춰 새로 써주는 작가"</span>
           <span class="text-[10px] font-mono text-blue-600 font-bold">★ FOCUS</span>
         </div>

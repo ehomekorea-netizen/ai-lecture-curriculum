@@ -27,7 +27,7 @@ const cards: CardItem[] = [
     color: '#476BFF',
     glowColor: 'rgba(71, 107, 255, 0.22)',
     textColor: 'text-blue-600',
-    bgLight: 'bg-blue-50/70',
+    bgLight: 'bg-blue-950/40',
     icon: markRaw(Sparkles),
     analogy: '💡 "백지를 채우는 초고속 전문 작가"',
     desc: '저장된 답을 복사하는 것이 아니라, 사용자의 요구 조건과 확률에 따라 새로운 문장과 서식을 직접 합성하여 창작합니다.',
@@ -41,7 +41,7 @@ const cards: CardItem[] = [
     color: '#10B981',
     glowColor: 'rgba(16, 185, 129, 0.22)',
     textColor: 'text-emerald-600',
-    bgLight: 'bg-emerald-50/70',
+    bgLight: 'bg-emerald-950/40',
     icon: markRaw(Database),
     analogy: '💡 "공문서 100만 권을 읽고 온 신입"',
     desc: '수억 건의 공문서와 웹 문서를 미리 학습하여, 별도 코딩이나 문법 교육 없이도 자연스러운 한국어 문맥을 이미 숙지하고 있습니다.',
@@ -123,7 +123,7 @@ function handleMouseLeave(id: string) {
         >
           <!-- ── FRONT FACE: Minimal, Clean, Bold ── -->
           <div
-            class="card-face card-front absolute inset-0 bg-white rounded-2xl border-2 p-5 flex flex-col justify-between overflow-hidden"
+            class="card-face card-front absolute inset-0 bg-white/6 rounded-2xl border-2 p-5 flex flex-col justify-between overflow-hidden"
             :style="{ borderColor: card.color + '80' }"
           >
             <!-- Top Icon only -->
@@ -141,7 +141,7 @@ function handleMouseLeave(id: string) {
               <div class="text-6xl font-black font-serif tracking-tight mb-1" :style="{ color: card.color }">
                 {{ card.letter }}
               </div>
-              <div class="text-2xl font-bold text-slate-900 font-serif leading-tight">
+              <div class="text-2xl font-bold text-white font-serif leading-tight">
                 {{ card.title }}
               </div>
               <div class="text-base font-bold mt-1" :style="{ color: card.color }">
@@ -157,7 +157,7 @@ function handleMouseLeave(id: string) {
 
           <!-- ── BACK FACE: Clean Layout with No Overflow ── -->
           <div
-            class="card-face card-back absolute inset-0 bg-white rounded-2xl border-2 p-4.5 flex flex-col justify-between overflow-hidden"
+            class="card-face card-back absolute inset-0 bg-white/6 rounded-2xl border-2 p-4.5 flex flex-col justify-between overflow-hidden"
             :style="{
               borderColor: card.color,
               background: `linear-gradient(180deg, #FFFFFF 0%, ${card.color}08 100%)`
@@ -170,7 +170,7 @@ function handleMouseLeave(id: string) {
                   <span class="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white font-serif" :style="{ background: card.color }">
                     {{ card.letter }}
                   </span>
-                  <span class="text-xs font-bold text-slate-900 font-serif">{{ card.title }}</span>
+                  <span class="text-xs font-bold text-white font-serif">{{ card.title }}</span>
                 </div>
                 <span class="text-[10px] text-slate-400 font-mono flex items-center gap-0.5">
                   <RotateCw :size="9" /> 뒤집기
@@ -179,7 +179,7 @@ function handleMouseLeave(id: string) {
 
               <!-- 2. Analogy Badge -->
               <div
-                class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-800 font-serif leading-snug"
+                class="px-2.5 py-1.5 rounded-lg text-xs font-bold text-slate-100 font-serif leading-snug"
                 :style="{ background: card.color + '15' }"
               >
                 {{ card.analogy }}
@@ -188,7 +188,7 @@ function handleMouseLeave(id: string) {
 
             <!-- 3. Clean Detailed Description -->
             <div class="my-auto py-1">
-              <p class="text-[11.5px] text-slate-700 leading-relaxed font-medium">
+              <p class="text-[11.5px] text-slate-300 leading-relaxed font-medium">
                 {{ card.desc }}
               </p>
             </div>

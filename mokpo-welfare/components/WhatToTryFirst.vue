@@ -75,7 +75,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-center items-center select-none font-sans text-slate-800 text-left h-[330px] my-auto">
+  <div class="w-full flex flex-col justify-center items-center select-none font-sans text-slate-100 text-left h-[330px] my-auto">
     <!-- ── Apple-Style Minimal Indicator (Dots/Bars) + Center Card ── -->
     <div class="w-full max-w-2xl flex flex-col items-center">
       <!-- Ultra-Minimal Dot/Bar Indicator -->
@@ -97,15 +97,15 @@ onUnmounted(() => {
       <!-- Pure White Card: Physical Mouse Click Trigger ONLY -->
       <div
         @click="openPromptModal"
-        class="w-full bg-white rounded-3xl border border-slate-200/90 p-10 shadow-sm hover:shadow-xl hover:border-blue-400 transition-all cursor-pointer text-center flex flex-col items-center justify-center space-y-3 group"
+        class="w-full bg-white/6 rounded-3xl border border-white/10 p-10 shadow-sm hover:shadow-xl hover:border-blue-400 transition-all cursor-pointer text-center flex flex-col items-center justify-center space-y-3 group"
       >
         <!-- Large Title -->
-        <h2 class="text-2xl md:text-3xl font-bold font-serif text-slate-900 tracking-tight leading-snug group-hover:text-blue-600 transition-colors">
+        <h2 class="text-2xl md:text-3xl font-bold font-serif text-white tracking-tight leading-snug group-hover:text-blue-600 transition-colors">
           {{ activeCase.title }}
         </h2>
 
         <!-- Subtitle Description -->
-        <p class="text-sm md:text-base text-slate-500 max-w-xl leading-relaxed break-keep font-normal">
+        <p class="text-sm md:text-base text-slate-400 max-w-xl leading-relaxed break-keep font-normal">
           {{ activeCase.description }}
         </p>
       </div>

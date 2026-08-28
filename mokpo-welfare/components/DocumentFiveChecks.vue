@@ -84,7 +84,7 @@ const activeItem = computed(() => checklist[activeIndex.value])
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-800 text-center h-[330px] my-auto">
+  <div class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-100 text-center h-[330px] my-auto">
     <!-- ── Top Horizontal 1-Line Navigation (근거 — 수치 — 개인정보 — 서식 — 버전) ── -->
     <div class="w-full max-w-2xl flex items-center justify-center gap-3 pt-2">
       <template v-for="(item, idx) in checklist" :key="item.id">
@@ -92,7 +92,7 @@ const activeItem = computed(() => checklist[activeIndex.value])
           class="text-sm md:text-base font-serif transition-all duration-300 px-3.5 py-1 rounded-full"
           :class="[
             activeIndex === idx
-              ? 'text-blue-600 font-bold bg-blue-50 border border-blue-200 shadow-2xs scale-105'
+              ? 'text-blue-600 font-bold bg-blue-950/40 border border-blue-200 shadow-2xs scale-105'
               : 'text-slate-400 font-medium'
           ]"
         >
@@ -111,7 +111,7 @@ const activeItem = computed(() => checklist[activeIndex.value])
           <span class="text-xs md:text-sm font-mono font-bold text-blue-500 mb-2 uppercase tracking-wider">
             Check 0{{ activeIndex + 1 }} · {{ activeItem.name }}
           </span>
-          <h2 class="text-3xl md:text-4xl lg:text-[42px] font-bold font-serif text-slate-900 tracking-tight leading-tight break-keep">
+          <h2 class="text-3xl md:text-4xl lg:text-[42px] font-bold font-serif text-white tracking-tight leading-tight break-keep">
             {{ activeItem.question }}
           </h2>
         </div>
@@ -123,10 +123,10 @@ const activeItem = computed(() => checklist[activeIndex.value])
       <Transition name="signature-pop">
         <div
           v-if="isApproved"
-          class="flex items-center gap-3.5 px-6 py-2 rounded-2xl bg-gradient-to-r from-amber-50/95 via-orange-50/90 to-amber-50/95 border border-amber-200/90 shadow-md"
+          class="flex items-center gap-3.5 px-6 py-2 rounded-2xl bg-emerald-950/80 border-2 border-emerald-400/80 shadow-2xl backdrop-blur-md"
         >
-          <!-- Prefix Label -->
-          <span class="text-xs md:text-sm font-serif font-bold text-slate-700 tracking-wider">
+          <!-- Prefix Label (Crisp High-Contrast Emerald) -->
+          <span class="text-xs md:text-sm font-serif font-black text-emerald-300 tracking-wider">
             최종 승인 :
           </span>
 
@@ -149,7 +149,7 @@ const activeItem = computed(() => checklist[activeIndex.value])
             </svg>
 
             <!-- Large Circular Red Approval Stamp Stamped Directly OVER "담당자" -->
-            <div class="stamp-seal absolute -top-3.5 right-0 w-11 h-11 rounded-full border-[2.5px] border-rose-600 text-rose-600 flex items-center justify-center font-serif font-bold text-sm shadow-2xs select-none pointer-events-none mix-blend-multiply bg-rose-500/10">
+            <div class="stamp-seal absolute -top-3.5 right-0 w-11 h-11 rounded-full border-[2.5px] border-rose-600 text-rose-600 flex items-center justify-center font-serif font-bold text-sm shadow-2xs select-none pointer-events-none mix-blend-multiply bg-rose-950/40">
               <span class="leading-none tracking-tight">승인</span>
             </div>
           </div>

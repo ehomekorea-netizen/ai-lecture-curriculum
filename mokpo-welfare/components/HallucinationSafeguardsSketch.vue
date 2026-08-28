@@ -119,9 +119,9 @@ watch(() => props.stage, () => nextTick(draw))
 
       <!-- 1. Top Left: 검색 연동 (Web Search) — Appears on Click 1 -->
       <div
-        class="rounded-2xl border-2 p-3.5 transition-all duration-500 relative overflow-hidden bg-white flex items-start gap-3.5 h-[116px] shadow-xs"
+        class="rounded-2xl border-2 p-3.5 transition-all duration-500 relative overflow-hidden bg-white/6 flex items-start gap-3.5 h-[116px] shadow-xs"
         :class="stage >= 1
-          ? 'opacity-100 scale-100 translate-y-0 border-blue-500 ring-4 ring-blue-500/15 shadow-md bg-linear-to-br from-white to-blue-50/40'
+          ? 'opacity-100 scale-100 translate-y-0 border-blue-500 ring-4 ring-blue-500/15 shadow-md bg-linear-to-br from-white/10 to-blue-50/40'
           : 'opacity-0 scale-95 translate-y-2 pointer-events-none border-transparent'"
       >
         <!-- Pure Handwritten Number Badge (No 'STEP', No Emojis) -->
@@ -136,14 +136,14 @@ watch(() => props.stage, () => nextTick(draw))
 
         <div class="flex-1 min-w-0">
           <div class="flex items-center justify-between mb-1">
-            <h4 class="font-bold text-[14px] text-blue-950 leading-tight">
+            <h4 class="font-bold text-[14px] text-blue-300 leading-tight">
               1. 실시간 검색 연동
             </h4>
-            <span class="text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-blue-100 text-blue-700">
+            <span class="text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-blue-100 text-blue-400">
               SEARCH
             </span>
           </div>
-          <p class="text-[11.5px] text-slate-600 leading-snug">
+          <p class="text-[11.5px] text-slate-400 leading-snug">
             웹 검색을 활성화하여 <strong>최신 사실 데이터·통계·법령</strong>을 AI에 직접 주입합니다.
           </p>
         </div>
@@ -151,9 +151,9 @@ watch(() => props.stage, () => nextTick(draw))
 
       <!-- 2. Top Right: RAG 문서 첨부 (Document Retrieval) — Appears on Click 2 -->
       <div
-        class="rounded-2xl border-2 p-3.5 transition-all duration-500 relative overflow-hidden bg-white flex items-start gap-3.5 h-[116px] shadow-xs"
+        class="rounded-2xl border-2 p-3.5 transition-all duration-500 relative overflow-hidden bg-white/6 flex items-start gap-3.5 h-[116px] shadow-xs"
         :class="stage >= 2
-          ? 'opacity-100 scale-100 translate-y-0 border-emerald-500 ring-4 ring-emerald-500/15 shadow-md bg-linear-to-br from-white to-emerald-50/40'
+          ? 'opacity-100 scale-100 translate-y-0 border-emerald-500 ring-4 ring-emerald-500/15 shadow-md bg-linear-to-br from-white/10 to-emerald-50/40'
           : 'opacity-0 scale-95 translate-y-2 pointer-events-none border-transparent'"
       >
         <!-- Pure Handwritten Number Badge -->
@@ -168,14 +168,14 @@ watch(() => props.stage, () => nextTick(draw))
 
         <div class="flex-1 min-w-0">
           <div class="flex items-center justify-between mb-1">
-            <h4 class="font-bold text-[14px] text-emerald-950 leading-tight">
+            <h4 class="font-bold text-[14px] text-emerald-300 leading-tight">
               2. RAG (문서 직접 첨부)
             </h4>
-            <span class="text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-700">
+            <span class="text-[9.5px] font-mono font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-400">
               RAG
             </span>
           </div>
-          <p class="text-[11.5px] text-slate-600 leading-snug">
+          <p class="text-[11.5px] text-slate-400 leading-snug">
             관련 <strong>규정/지침 PDF 파일</strong>을 업로드하여 답변의 확실한 팩트 근거를 확보합니다.
           </p>
         </div>
@@ -183,9 +183,9 @@ watch(() => props.stage, () => nextTick(draw))
 
       <!-- 4. Bottom Left: 인간의 최종 검증 (Human Verification) — Appears on Click 4 -->
       <div
-        class="rounded-2xl border-2 p-3.5 transition-all duration-500 relative overflow-hidden bg-white flex items-start gap-3.5 h-[116px] shadow-xs"
+        class="rounded-2xl border-2 p-3.5 transition-all duration-500 relative overflow-hidden bg-white/6 flex items-start gap-3.5 h-[116px] shadow-xs"
         :class="stage >= 4
-          ? 'opacity-100 scale-100 translate-y-0 border-amber-500 ring-4 ring-amber-500/15 shadow-md bg-linear-to-br from-white to-amber-50/40'
+          ? 'opacity-100 scale-100 translate-y-0 border-amber-500 ring-4 ring-amber-500/15 shadow-md bg-linear-to-br from-white/10 to-amber-50/40'
           : 'opacity-0 scale-95 translate-y-2 pointer-events-none border-transparent'"
       >
         <!-- Pure Handwritten Number Badge -->
@@ -207,7 +207,7 @@ watch(() => props.stage, () => nextTick(draw))
               VERIFY
             </span>
           </div>
-          <p class="text-[11.5px] text-slate-600 leading-snug">
+          <p class="text-[11.5px] text-slate-400 leading-snug">
             예산 산출식, 법령 번호, 고유명사는 <strong>실무자(인간)가 최종 크로스체크</strong>합니다.
           </p>
         </div>
@@ -215,9 +215,9 @@ watch(() => props.stage, () => nextTick(draw))
 
       <!-- 3. Bottom Right: 프롬프트 제약 (Constraint) — Appears on Click 3 -->
       <div
-        class="rounded-2xl border-2 p-3.5 transition-all duration-500 relative overflow-hidden bg-white flex items-start gap-3.5 h-[116px] shadow-xs"
+        class="rounded-2xl border-2 p-3.5 transition-all duration-500 relative overflow-hidden bg-white/6 flex items-start gap-3.5 h-[116px] shadow-xs"
         :class="stage >= 3
-          ? 'opacity-100 scale-100 translate-y-0 border-purple-500 ring-4 ring-purple-500/15 shadow-md bg-linear-to-br from-white to-purple-50/40'
+          ? 'opacity-100 scale-100 translate-y-0 border-purple-500 ring-4 ring-purple-500/15 shadow-md bg-linear-to-br from-white/10 to-purple-50/40'
           : 'opacity-0 scale-95 translate-y-2 pointer-events-none border-transparent'"
       >
         <!-- Pure Handwritten Number Badge -->
@@ -239,7 +239,7 @@ watch(() => props.stage, () => nextTick(draw))
               LOCK
             </span>
           </div>
-          <p class="text-[11.5px] text-slate-600 leading-snug">
+          <p class="text-[11.5px] text-slate-400 leading-snug">
             <strong>"첨부 문서에 없는 내용은 지어내지 말 것"</strong>이라는 탈출 방지 조건을 명시합니다.
           </p>
         </div>
@@ -251,7 +251,7 @@ watch(() => props.stage, () => nextTick(draw))
       class="w-full mt-3.5 text-center transition-all duration-500 min-h-[42px] px-2"
       :class="stage >= 5 ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none translate-y-1'"
     >
-      <div class="text-[16px] md:text-[17.5px] font-serif font-extrabold text-slate-800 tracking-tight flex items-center justify-center gap-2 flex-wrap">
+      <div class="text-[16px] md:text-[17.5px] font-serif font-extrabold text-slate-100 tracking-tight flex items-center justify-center gap-2 flex-wrap">
         <span>생성 AI 실무 역량 = </span>
         <span class="text-blue-600 font-black">생성(Generation)</span>
         <span class="text-slate-400 font-normal">+</span>

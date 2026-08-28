@@ -44,7 +44,7 @@ const resolvedImage = computed(() => resolveMedia(props.image))
 
       <!-- Main Serif Title -->
       <div class="relative inline-block">
-        <h1 class="text-4xl md:text-[46px] font-serif font-bold text-slate-900 leading-[1.15] tracking-tight mb-2 break-keep">
+        <h1 class="text-4xl md:text-[46px] font-serif font-bold text-white leading-[1.15] tracking-tight mb-2 break-keep">
           {{ title }}
         </h1>
 
@@ -53,7 +53,7 @@ const resolvedImage = computed(() => resolveMedia(props.image))
       </div>
 
       <!-- Subtitle & Quote Box -->
-      <div v-if="subtitle" class="quote-box text-sm md:text-base font-serif text-slate-700 leading-relaxed max-w-xl mt-3">
+      <div v-if="subtitle" class="quote-box text-sm md:text-base font-serif text-slate-300 leading-relaxed max-w-xl mt-3">
         {{ subtitle }}
       </div>
     </div>

@@ -57,13 +57,13 @@ const data = {
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-center items-center select-none font-sans text-slate-800 text-left h-[300px] my-auto px-2">
+  <div class="w-full flex flex-col justify-center items-center select-none font-sans text-slate-100 text-left h-[300px] my-auto px-2">
     <!-- ── Main 2-Card Balanced Presentation Layout (Airy & Centered) ── -->
     <div class="grid grid-cols-2 gap-6 w-full max-w-4xl h-full items-stretch">
       <!-- ── CARD 1: 플러그인 (Plugin) ── -->
       <div
         @click="activeModal = 'plugin'"
-        class="rounded-2xl p-5 px-6 border border-[#E7E0D4] bg-[#FAF8F4] hover:bg-white hover:border-purple-400 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer flex flex-col justify-between group shadow-xs"
+        class="rounded-2xl p-5 px-6 border border-white/10 bg-white/6 hover:bg-white/6 hover:border-purple-400 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer flex flex-col justify-between group shadow-xs"
       >
         <div>
           <!-- Header -->
@@ -73,7 +73,7 @@ const data = {
                 <Package :size="18" />
               </div>
               <div>
-                <h3 class="text-sm md:text-base font-bold font-serif text-slate-900 leading-tight">
+                <h3 class="text-sm md:text-base font-bold font-serif text-white leading-tight">
                   플러그인 (Plugin)
                 </h3>
                 <span class="text-[10.5px] font-mono text-purple-700 font-bold">
@@ -89,13 +89,13 @@ const data = {
           <h4 class="text-xs font-bold text-purple-950 mb-1">
             {{ data.plugin.subtitle }}
           </h4>
-          <p class="text-[11px] text-slate-600 leading-relaxed break-keep">
+          <p class="text-[11px] text-slate-400 leading-relaxed break-keep">
             {{ data.plugin.desc }}
           </p>
         </div>
 
         <!-- Card Footer (Click to inspect screenshot preview) -->
-        <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-[11px] text-purple-700 font-medium">
+        <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-purple-700 font-medium">
           <span class="flex items-center gap-1 group-hover:underline">
             <Search :size="13" />
             <span>실무 화면 팝업 보기</span>
@@ -109,39 +109,39 @@ const data = {
       <!-- ── CARD 2: 스킬 (Skill) ── -->
       <div
         @click="activeModal = 'skill'"
-        class="rounded-2xl p-5 px-6 border border-[#E7E0D4] bg-[#FAF8F4] hover:bg-white hover:border-blue-400 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer flex flex-col justify-between group shadow-xs"
+        class="rounded-2xl p-5 px-6 border border-white/10 bg-white/6 hover:bg-white/6 hover:border-blue-400 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer flex flex-col justify-between group shadow-xs"
       >
         <div>
           <!-- Header -->
           <div class="flex items-center justify-between mb-2.5">
             <div class="flex items-center gap-2.5">
-              <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 shadow-2xs group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+              <div class="w-9 h-9 rounded-xl bg-blue-100 text-blue-400 flex items-center justify-center shrink-0 shadow-2xs group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
                 <BookOpenCheck :size="18" />
               </div>
               <div>
-                <h3 class="text-sm md:text-base font-bold font-serif text-slate-900 leading-tight">
+                <h3 class="text-sm md:text-base font-bold font-serif text-white leading-tight">
                   스킬 (Skill)
                 </h3>
-                <span class="text-[10.5px] font-mono text-blue-700 font-bold">
+                <span class="text-[10.5px] font-mono text-blue-400 font-bold">
                   {{ data.skill.trigger }}
                 </span>
               </div>
             </div>
-            <span class="text-[9.5px] px-2.5 py-0.5 rounded-full font-mono font-bold bg-blue-100/80 text-blue-900 border border-blue-200">
+            <span class="text-[9.5px] px-2.5 py-0.5 rounded-full font-mono font-bold bg-blue-100/80 text-blue-200 border border-blue-200">
               {{ data.skill.badge }}
             </span>
           </div>
 
-          <h4 class="text-xs font-bold text-blue-950 mb-1">
+          <h4 class="text-xs font-bold text-blue-300 mb-1">
             {{ data.skill.subtitle }}
           </h4>
-          <p class="text-[11px] text-slate-600 leading-relaxed break-keep">
+          <p class="text-[11px] text-slate-400 leading-relaxed break-keep">
             {{ data.skill.desc }}
           </p>
         </div>
 
         <!-- Card Footer (Click to inspect screenshot preview) -->
-        <div class="pt-3 border-t border-slate-200/80 flex items-center justify-between text-[11px] text-blue-700 font-medium">
+        <div class="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-blue-400 font-medium">
           <span class="flex items-center gap-1 group-hover:underline">
             <Search :size="13" />
             <span>실무 화면 팝업 보기</span>

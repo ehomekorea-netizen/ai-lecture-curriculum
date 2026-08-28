@@ -120,9 +120,9 @@ onUnmounted(() => {
       <!-- Terminal Header Bar -->
       <div class="flex items-center justify-between px-4 py-2 bg-[#070D18] border-b border-white/10 shrink-0">
         <div class="flex items-center gap-2">
-          <span class="w-3 h-3 rounded-full bg-rose-500/90 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-rose-950/40 inline-block"></span>
           <span class="w-3 h-3 rounded-full bg-amber-500/90 inline-block"></span>
-          <span class="w-3 h-3 rounded-full bg-emerald-500/90 inline-block"></span>
+          <span class="w-3 h-3 rounded-full bg-emerald-950/40 inline-block"></span>
           <span class="text-xs text-slate-400 font-mono font-bold ml-2 flex items-center gap-1.5">
             <Terminal :size="13" class="text-rose-400" />
             <span>ChatGPT — 실시간 할루시네이션(환각) 재현 데모</span>
@@ -131,7 +131,7 @@ onUnmounted(() => {
 
         <button
           @click="replay"
-          class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold font-mono text-rose-300 bg-rose-500/15 hover:bg-rose-500/25 border border-rose-500/30 transition-all cursor-pointer active:scale-95"
+          class="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-bold font-mono text-rose-300 bg-rose-950/40 hover:bg-rose-950/40 border border-rose-500/30 transition-all cursor-pointer active:scale-95"
         >
           <RotateCcw :size="12" :class="{ 'animate-spin': isQuestionTyping || isAnswerTyping }" />
           <span>다시 재생</span>
@@ -159,12 +159,12 @@ onUnmounted(() => {
         <div class="space-y-1.5 flex-1 flex flex-col justify-start">
           <div class="flex items-center justify-between shrink-0">
             <div class="text-[11px] font-bold text-rose-400 flex items-center gap-1.5">
-              <span class="px-1.5 py-0.2 rounded bg-rose-500/20 text-rose-300 font-extrabold text-[10px]">AI</span>
+              <span class="px-1.5 py-0.2 rounded bg-rose-950/40 text-rose-300 font-extrabold text-[10px]">AI</span>
               <span>답변 출력</span>
             </div>
             <span
               v-if="stage >= 1 || displayedAnswer"
-              class="text-[10px] text-rose-400 font-bold bg-rose-500/10 px-2 py-0.5 rounded border border-rose-500/25 flex items-center gap-1 transition-opacity"
+              class="text-[10px] text-rose-400 font-bold bg-rose-950/40 px-2 py-0.5 rounded border border-rose-500/25 flex items-center gap-1 transition-opacity"
             >
               <AlertTriangle :size="11" class="text-rose-400" />
               <span>100% 날조된 허구 정보</span>
@@ -185,12 +185,12 @@ onUnmounted(() => {
       class="w-full mt-2.5 text-center transition-all duration-500 min-h-[46px]"
       :class="stage >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 pointer-events-none translate-y-1'"
     >
-      <div class="text-base font-serif font-bold text-rose-700 italic tracking-tight flex items-center justify-center gap-2">
+      <div class="text-base font-serif font-bold text-rose-400 italic tracking-tight flex items-center justify-center gap-2">
         <span class="text-xl leading-none text-rose-400">“</span>
         <span>AI의 유창함(Fluency)은 AI의 사실성(Factuality)과 절대 같지 않다!</span>
         <span class="text-xl leading-none text-rose-400">”</span>
       </div>
-      <p class="text-[11px] text-slate-500 mt-0.5 font-medium">
+      <p class="text-[11px] text-slate-400 mt-0.5 font-medium">
         문장이 매끄럽고 당당하다고 해서, 그 안에 담긴 내용이 사실임을 보장하지는 않습니다.
       </p>
     </div>

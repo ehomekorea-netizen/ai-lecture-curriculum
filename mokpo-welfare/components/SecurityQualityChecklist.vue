@@ -58,13 +58,13 @@ const stages = [
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between h-full select-none font-sans text-slate-800 text-left py-1">
+  <div class="w-full flex flex-col justify-between h-full select-none font-sans text-slate-100 text-left py-1">
     <!-- Top: 5-Stage Step Flow Cards -->
     <div class="grid grid-cols-5 gap-2.5 mb-2.5">
       <div
         v-for="s in stages"
         :key="s.step"
-        class="bg-white rounded-2xl border border-slate-200/90 p-3 shadow-2xs hover:shadow-sm transition-all flex flex-col justify-between"
+        class="bg-white/6 rounded-2xl border border-white/10 p-3 shadow-2xs hover:shadow-sm transition-all flex flex-col justify-between"
       >
         <div>
           <!-- Header -->
@@ -80,16 +80,16 @@ const stages = [
             </div>
           </div>
 
-          <h4 class="text-xs font-bold text-slate-900 font-serif leading-tight mb-1.5">
+          <h4 class="text-xs font-bold text-white font-serif leading-tight mb-1.5">
             {{ s.title }}
           </h4>
 
-          <p class="text-[10px] text-slate-600 leading-relaxed break-keep mb-2">
+          <p class="text-[10px] text-slate-400 leading-relaxed break-keep mb-2">
             {{ s.q }}
           </p>
         </div>
 
-        <div class="pt-2 border-t border-slate-100 flex items-center gap-1 text-[9.5px] font-bold text-slate-700">
+        <div class="pt-2 border-t border-slate-100 flex items-center gap-1 text-[9.5px] font-bold text-slate-300">
           <CheckCircle2 :size="11" :style="{ color: s.color }" class="shrink-0" />
           <span class="truncate">{{ s.rule }}</span>
         </div>
@@ -103,17 +103,17 @@ const stages = [
           <Lock :size="18" />
         </div>
         <div>
-          <h4 class="text-xs md:text-sm font-bold text-slate-900 flex items-center gap-2">
+          <h4 class="text-xs md:text-sm font-bold text-white flex items-center gap-2">
             <span>실무 보안 대원칙: <strong class="text-red-700">최소 권한 부여와 비식별화</strong></span>
             <span class="px-2 py-0.5 rounded-md bg-red-600 text-white text-[10px] font-mono font-bold">보안 지침</span>
           </h4>
-          <p class="text-[11.5px] text-slate-700 leading-relaxed mt-0.5">
+          <p class="text-[11.5px] text-slate-300 leading-relaxed mt-0.5">
             편의상 '전체 드라이브'를 허용하지 않으며, 클라이언트 실명·사례 정보는 사전에 가명 처리 후 작업합니다.
           </p>
         </div>
       </div>
 
-      <div class="px-3 py-1.5 rounded-xl bg-white border border-red-300 text-[11px] font-bold text-red-800 shadow-2xs shrink-0 flex items-center gap-1.5">
+      <div class="px-3 py-1.5 rounded-xl bg-white/6 border border-red-300 text-[11px] font-bold text-red-800 shadow-2xs shrink-0 flex items-center gap-1.5">
         <AlertTriangle :size="13" class="text-red-600" />
         <span>내부 보안 규정 준수</span>
       </div>

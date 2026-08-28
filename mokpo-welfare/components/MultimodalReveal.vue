@@ -47,7 +47,7 @@ function advance() {
           >
             <span style="font-size:1.4rem;">{{ item.icon }}</span>
             <span class="text-xs font-bold mt-0.5" :style="{ color: item.color }">{{ item.label }}</span>
-            <span class="text-[10px] text-slate-500 mt-0.5">{{ item.sub }}</span>
+            <span class="text-[10px] text-slate-400 mt-0.5">{{ item.sub }}</span>
           </div>
         </div>
 
@@ -77,9 +77,9 @@ function advance() {
         class="transition-all duration-500"
         :style="{ opacity: step >= total ? 1 : 0, transform: step >= total ? 'translateY(0)' : 'translateY(10px)' }"
       >
-        <div class="flex flex-col items-center justify-center rounded-xl border-2 border-slate-400/40 bg-slate-100 px-3 py-2 min-w-[68px]">
+        <div class="flex flex-col items-center justify-center rounded-xl border-2 border-slate-400/40 bg-white/8 px-3 py-2 min-w-[68px]">
           <img :src="resolveAsset('/nist-logo.png')" class="h-7 object-contain" alt="NIST" />
-          <span class="text-[10px] font-bold text-slate-600 mt-0.5">공식 정의</span>
+          <span class="text-[10px] font-bold text-slate-400 mt-0.5">공식 정의</span>
         </div>
       </div>
     </div>
@@ -89,7 +89,7 @@ function advance() {
       class="transition-all duration-700"
       :style="{ opacity: step >= total ? 1 : 0, transform: step >= total ? 'translateY(0)' : 'translateY(12px)' }"
     >
-      <div class="quote-box text-xs text-slate-700 font-medium leading-relaxed" style="border-left-color: #857B6E;">
+      <div class="quote-box text-xs text-slate-300 font-medium leading-relaxed" style="border-left-color: #857B6E;">
         <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-1">NIST Generative AI Framework (2023)</span>
         "학습 데이터의 구조와 특성을 분석하여, 이를 바탕으로 새롭고 독창적인 합성 콘텐츠를 생성해내는 AI 기술"
       </div>

@@ -208,7 +208,7 @@ const styleOf = (b: Box) => ({
       <div class="relative inline-block">
         <span
           class="text-base font-bold transition-all duration-300"
-          :class="stage >= 1 ? 'text-slate-400 line-through decoration-rose-500 decoration-3' : 'text-slate-800'"
+          :class="stage >= 1 ? 'text-slate-400 line-through decoration-rose-500 decoration-3' : 'text-slate-100'"
           style="font-family: 'Kalam', 'Source Serif 4', cursive;"
         >
           AI는 저장된 문장을 복사해서 꺼내온다
@@ -270,10 +270,10 @@ const styleOf = (b: Box) => ({
           alt="NIST 미국 국립표준기술연구소"
         />
         <div class="flex-1">
-          <div class="text-[11px] font-bold font-mono text-emerald-800 uppercase tracking-wider mb-0.5">
+          <div class="text-[11px] font-bold font-mono text-emerald-300 uppercase tracking-wider mb-0.5">
             NIST 공식 표준 정의 (미국 국립표준기술연구소 AI Risk Management Framework)
           </div>
-          <div class="text-[14.5px] text-slate-800 font-serif leading-relaxed italic font-medium">
+          <div class="text-[14.5px] text-slate-100 font-serif leading-relaxed italic font-medium">
             “학습 데이터의 구조와 특성을 분석하여, 이를 바탕으로 <strong>새롭고 독창적인 합성 콘텐츠(Synthetic Content)</strong>를 생성해내는 인공지능 기술”
           </div>
         </div>

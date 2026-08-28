@@ -36,20 +36,20 @@ const parts = [
       { num: '01', title: 'Gemini Notebook의 이해', desc: '무엇이든 묻는 AI vs 내 자료를 기준으로 묻는 AI' },
       { num: '02', numColor: 'text-emerald-600', title: '일반 AI vs Notebook 비교', desc: '출처 각주 기반 100% 팩트 검증 및 오디오 브리핑' },
       { num: '03', numColor: 'text-teal-600', title: '3분할 핵심 구조', desc: 'Sources(자료) ➔ Chat(질문) ➔ Studio(제작)' },
-      { num: '04', numColor: 'text-emerald-600', title: '실전 복지관 사업기획 실습', desc: '자료조사 ➔ 선별 ➔ 분석 ➔ 지식환류 ➔ 초안 ➔ 검토' }
+      { num: '04', numColor: 'text-emerald-600', title: '실전 복지관 사업기획 실습', desc: '자료조사 ➔ 선별 ➔ 분석 ➔ 정리 메모를 새 자료로 ➔ 초안 ➔ 검토' }
     ]
   }
 ]
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between h-[305px] select-none font-sans text-slate-800 py-1">
+  <div class="w-full flex flex-col justify-between h-[305px] select-none font-sans text-slate-100 py-1">
     <!-- 2 Column Part Cards -->
     <div class="grid grid-cols-2 gap-5 w-full">
       <div
         v-for="p in parts"
         :key="p.partNum"
-        class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 flex flex-col justify-between h-[255px] text-left relative overflow-hidden"
+        class="bg-white/6 rounded-2xl border border-white/10 shadow-sm p-4 flex flex-col justify-between h-[255px] text-left relative overflow-hidden"
       >
         <!-- Top Badge & Title Header -->
         <div>
@@ -60,10 +60,10 @@ const parts = [
             </div>
           </div>
 
-          <h3 class="text-[16px] md:text-[17px] font-serif font-bold text-slate-900 leading-snug tracking-tight mb-1">
+          <h3 class="text-[16px] md:text-[17px] font-serif font-bold text-white leading-snug tracking-tight mb-1">
             {{ p.title }}
           </h3>
-          <p class="text-[11px] text-slate-500 font-medium leading-tight mb-2.5">
+          <p class="text-[11px] text-slate-400 font-medium leading-tight mb-2.5">
             {{ p.summary }}
           </p>
         </div>
@@ -73,17 +73,17 @@ const parts = [
           <div
             v-for="item in p.items"
             :key="item.num"
-            class="flex items-start gap-2.5 p-1.5 px-2.5 rounded-lg bg-slate-50 border border-slate-100"
+            class="flex items-start gap-2.5 p-1.5 px-2.5 rounded-lg bg-white/5 border border-slate-100"
           >
             <span
               class="text-[10px] font-mono font-bold shrink-0 mt-0.5 px-1 py-0.2 rounded"
-              :class="p.color === 'blue' ? 'bg-blue-100 text-blue-800' : 'bg-emerald-100 text-emerald-800'"
+              :class="p.color === 'blue' ? 'bg-blue-100 text-blue-300' : 'bg-emerald-100 text-emerald-300'"
             >
               {{ item.num }}
             </span>
             <div class="leading-tight">
-              <span class="text-[11.5px] font-bold text-slate-800 mr-1.5">{{ item.title }}</span>
-              <span class="text-[10.5px] text-slate-500 font-medium">{{ item.desc }}</span>
+              <span class="text-[11.5px] font-bold text-slate-100 mr-1.5">{{ item.title }}</span>
+              <span class="text-[10.5px] text-slate-400 font-medium">{{ item.desc }}</span>
             </div>
           </div>
         </div>

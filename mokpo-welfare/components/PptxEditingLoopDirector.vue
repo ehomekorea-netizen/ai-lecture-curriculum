@@ -40,21 +40,21 @@ const loopSteps = [
 </script>
 
 <template>
-  <div class="w-full flex items-stretch gap-4 h-full select-none font-sans text-slate-800 text-left py-1">
+  <div class="w-full flex items-stretch gap-4 h-full select-none font-sans text-slate-100 text-left py-1">
     <!-- Left Column (46%): Structured Brief Box -->
-    <div class="w-[46%] flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-sm">
+    <div class="w-[46%] flex flex-col justify-between bg-white/6 rounded-2xl border border-white/10 p-3.5 shadow-sm">
       <div>
         <!-- Header -->
         <div class="flex items-center justify-between mb-2">
           <div class="flex items-center gap-1.5">
             <Presentation :size="15" class="text-purple-600" />
-            <span class="text-xs font-bold text-slate-900 font-serif">
+            <span class="text-xs font-bold text-white font-serif">
               구조화된 발표 브리프 (Structured Brief)
             </span>
           </div>
           <button
             @click="copyBrief"
-            class="flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-100 hover:bg-slate-200 text-slate-700 text-[10px] font-mono font-bold transition-colors cursor-pointer"
+            class="flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/8 hover:bg-slate-200 text-slate-300 text-[10px] font-mono font-bold transition-colors cursor-pointer"
           >
             <Check v-if="isCopied" :size="10" class="text-emerald-600" />
             <Copy v-else :size="10" />
@@ -66,29 +66,29 @@ const loopSteps = [
         <div class="space-y-1.5 text-[11px] font-mono">
           <div class="p-1.5 px-2 rounded-lg bg-purple-50/80 border border-purple-100 flex items-start gap-2">
             <span class="font-bold text-purple-700 shrink-0">[결과물]</span>
-            <span class="text-slate-800">@Presentations, 지역사회 보고용 PPTX</span>
+            <span class="text-slate-100">@Presentations, 지역사회 보고용 PPTX</span>
           </div>
-          <div class="p-1.5 px-2 rounded-lg bg-blue-50/80 border border-blue-100 flex items-start gap-2">
-            <span class="font-bold text-blue-700 shrink-0">[소 스]</span>
-            <span class="text-slate-800">지정한 결과보고서 DOCX + 원자료 확정 수치</span>
+          <div class="p-1.5 px-2 rounded-lg bg-blue-950/40 border border-blue-100 flex items-start gap-2">
+            <span class="font-bold text-blue-400 shrink-0">[소 스]</span>
+            <span class="text-slate-100">지정한 결과보고서 DOCX + 원자료 확정 수치</span>
           </div>
-          <div class="p-1.5 px-2 rounded-lg bg-slate-50 border border-slate-200 flex items-start gap-2">
-            <span class="font-bold text-slate-700 shrink-0">[대 상]</span>
-            <span class="text-slate-800">기관 내부 회의 및 지역사회 후원자 보고회</span>
+          <div class="p-1.5 px-2 rounded-lg bg-white/5 border border-white/10 flex items-start gap-2">
+            <span class="font-bold text-slate-300 shrink-0">[대 상]</span>
+            <span class="text-slate-100">기관 내부 회의 및 지역사회 후원자 보고회</span>
           </div>
           <div class="p-1.5 px-2 rounded-lg bg-amber-50/80 border border-amber-100 flex items-start gap-2">
             <span class="font-bold text-amber-700 shrink-0">[제 약]</span>
-            <span class="text-slate-800">10슬라이드 이내, 고딕체, 원자료 없는 주장 금지</span>
+            <span class="text-slate-100">10슬라이드 이내, 고딕체, 원자료 없는 주장 금지</span>
           </div>
-          <div class="p-1.5 px-2 rounded-lg bg-emerald-50/80 border border-emerald-100 flex items-start gap-2">
-            <span class="font-bold text-emerald-700 shrink-0">[노 트]</span>
-            <span class="text-slate-800">각 슬라이드 하단에 20~30초 발표 스크립트 작성</span>
+          <div class="p-1.5 px-2 rounded-lg bg-emerald-950/40 border border-emerald-100 flex items-start gap-2">
+            <span class="font-bold text-emerald-400 shrink-0">[노 트]</span>
+            <span class="text-slate-100">각 슬라이드 하단에 20~30초 발표 스크립트 작성</span>
           </div>
         </div>
       </div>
 
       <!-- Core Rule Hint -->
-      <div class="bg-[#FAF8F4] rounded-xl p-2 border border-[#E7E0D4] text-[10.5px] text-slate-700 font-serif leading-tight">
+      <div class="bg-white/6 rounded-xl p-2 border border-white/10 text-[10.5px] text-slate-300 font-serif leading-tight">
         💡 <strong>핵심 원칙</strong>: "예쁘게 만들기"보다 <strong>"정확하게 이해시키기"</strong>를 우선합니다.
       </div>
     </div>
@@ -97,7 +97,7 @@ const loopSteps = [
     <div class="w-[54%] flex flex-col justify-between space-y-2">
       <div>
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-mono font-bold text-slate-500 flex items-center gap-1.5">
+          <span class="text-xs font-mono font-bold text-slate-400 flex items-center gap-1.5">
             <RotateCw :size="13" class="text-purple-600 animate-spin" style="animation-duration: 8s;" />
             <span>반복 개선을 위한 5단계 에디팅 루프</span>
           </span>
@@ -111,17 +111,17 @@ const loopSteps = [
           <div
             v-for="(step, idx) in loopSteps"
             :key="step.num"
-            class="p-2 px-3 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-center justify-between hover:border-purple-300 transition-all"
+            class="p-2 px-3 rounded-xl bg-white/6 border border-white/10 shadow-2xs flex items-center justify-between hover:border-purple-300 transition-all"
           >
             <div class="flex items-center gap-2.5">
               <span class="w-5 h-5 rounded-full bg-purple-100 text-purple-700 font-mono font-bold text-[10px] flex items-center justify-center shrink-0">
                 {{ step.num }}
               </span>
               <div>
-                <span class="text-xs font-bold text-slate-900 font-serif block leading-tight">
+                <span class="text-xs font-bold text-white font-serif block leading-tight">
                   {{ step.title }}
                 </span>
-                <span class="text-[10px] text-slate-500 leading-tight">
+                <span class="text-[10px] text-slate-400 leading-tight">
                   {{ step.desc }}
                 </span>
               </div>

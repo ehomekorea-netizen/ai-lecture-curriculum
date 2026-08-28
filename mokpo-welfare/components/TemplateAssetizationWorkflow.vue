@@ -20,7 +20,7 @@ const baseFiles = [
     format: 'DOCX',
     rec: '가장 권장 ★★★',
     badge: '최적',
-    badgeColor: 'bg-emerald-100 text-emerald-800 border-emerald-300',
+    badgeColor: 'bg-emerald-100 text-emerald-300 border-emerald-300',
     desc: '문단·표·스타일 등 편집 가능한 구조와 서식 체계를 100% 온전히 유지하기 좋음',
     icon: FileText,
     iconColor: 'text-blue-600'
@@ -29,7 +29,7 @@ const baseFiles = [
     format: 'Google Docs',
     rec: '사용 가능 ★★☆',
     badge: '가능',
-    badgeColor: 'bg-blue-100 text-blue-800 border-blue-300',
+    badgeColor: 'bg-blue-100 text-blue-300 border-blue-300',
     desc: '클라우드에 연결된 Google 문서의 제목 계층과 스타일을 기준으로 활용',
     icon: FileText,
     iconColor: 'text-sky-600'
@@ -64,16 +64,16 @@ const steps = [
 </script>
 
 <template>
-  <div class="w-full flex items-stretch gap-4 h-full select-none font-sans text-slate-800 text-left py-1">
+  <div class="w-full flex items-stretch gap-4 h-full select-none font-sans text-slate-100 text-left py-1">
     <!-- Left Column (46%): Base File Selection Guide -->
     <div class="w-[46%] flex flex-col justify-between space-y-2">
       <div>
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-mono font-bold text-slate-500 flex items-center gap-1.5">
+          <span class="text-xs font-mono font-bold text-slate-400 flex items-center gap-1.5">
             <Layers :size="13" class="text-blue-600" />
             <span>템플릿 기준 파일 선택 가이드</span>
           </span>
-          <span class="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+          <span class="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-blue-950/40 text-blue-400 border border-blue-200">
             포맷 우선순위
           </span>
         </div>
@@ -83,17 +83,17 @@ const steps = [
           <div
             v-for="file in baseFiles"
             :key="file.format"
-            class="p-2 px-2.5 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-start gap-2.5"
+            class="p-2 px-2.5 rounded-xl bg-white/6 border border-white/10 shadow-2xs flex items-start gap-2.5"
           >
             <component :is="file.icon" :size="16" :class="file.iconColor" class="shrink-0 mt-0.5" />
             <div class="flex-1 min-w-0">
               <div class="flex items-center justify-between mb-0.5">
-                <span class="text-xs font-bold font-mono text-slate-900">{{ file.format }}</span>
+                <span class="text-xs font-bold font-mono text-white">{{ file.format }}</span>
                 <span class="text-[9.5px] px-1.5 py-0.2 rounded font-bold border" :class="file.badgeColor">
                   {{ file.badge }}
                 </span>
               </div>
-              <p class="text-[10px] text-slate-600 leading-tight">
+              <p class="text-[10px] text-slate-400 leading-tight">
                 {{ file.desc }}
               </p>
             </div>
@@ -109,14 +109,14 @@ const steps = [
     </div>
 
     <!-- Right Column (54%): 5-Step Creation Flow & Asset Philosophy -->
-    <div class="w-[54%] flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 p-3.5 shadow-sm">
+    <div class="w-[54%] flex flex-col justify-between bg-white/6 rounded-2xl border border-white/10 p-3.5 shadow-sm">
       <div>
         <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-bold text-slate-900 font-serif flex items-center gap-1.5">
+          <span class="text-xs font-bold text-white font-serif flex items-center gap-1.5">
             <Sparkles :size="14" class="text-emerald-600" />
             <span>5단계 템플릿 자산화 프로세스</span>
           </span>
-          <span class="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-emerald-100 text-emerald-800">
+          <span class="px-2 py-0.5 rounded-full text-[9.5px] font-bold bg-emerald-100 text-emerald-300">
             Template Creator
           </span>
         </div>
@@ -126,17 +126,17 @@ const steps = [
           <div
             v-for="st in steps"
             :key="st.num"
-            class="p-1.5 px-2.5 rounded-xl bg-[#FAF8F4] border border-[#E7E0D4] flex items-center justify-between"
+            class="p-1.5 px-2.5 rounded-xl bg-white/6 border border-white/10 flex items-center justify-between"
           >
             <div class="flex items-center gap-2">
               <span class="w-5 h-5 rounded-full bg-emerald-600 text-white font-mono font-bold text-[10px] flex items-center justify-center shrink-0">
                 {{ st.num }}
               </span>
               <div>
-                <span class="text-[11.5px] font-bold text-slate-900 block leading-tight font-serif">
+                <span class="text-[11.5px] font-bold text-white block leading-tight font-serif">
                   {{ st.title }}
                 </span>
-                <span class="text-[9.5px] text-slate-500 leading-tight">
+                <span class="text-[9.5px] text-slate-400 leading-tight">
                   {{ st.desc }}
                 </span>
               </div>
@@ -147,8 +147,8 @@ const steps = [
       </div>
 
       <!-- Core Philosophy Footer -->
-      <div class="mt-2 pt-2 border-t border-slate-100 bg-emerald-50/50 p-2 rounded-xl border border-emerald-100 flex items-start gap-1.5 text-[10px] text-emerald-900 leading-tight">
-        <FolderGit2 :size="13" class="text-emerald-700 shrink-0 mt-0.5" />
+      <div class="mt-2 pt-2 border-t border-slate-100 bg-emerald-950/40 p-2 rounded-xl border border-emerald-100 flex items-start gap-1.5 text-[10px] text-emerald-200 leading-tight">
+        <FolderGit2 :size="13" class="text-emerald-400 shrink-0 mt-0.5" />
         <span><strong>업무 자산화</strong>: 개인 템플릿을 시작으로, 검증된 서식은 기관의 표준 보고서로 발전시킵니다.</span>
       </div>
     </div>

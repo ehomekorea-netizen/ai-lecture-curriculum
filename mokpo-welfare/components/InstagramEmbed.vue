@@ -44,7 +44,7 @@ onMounted(() => {
 <template>
   <div class="insta-exact-wrapper w-full h-[330px] flex items-center justify-center select-none">
     <!-- Outer Card Frame: Exact 3:4 Aspect Ratio of the Instagram Media Card -->
-    <div class="insta-window rounded-2xl overflow-hidden border border-slate-200/90 bg-white shadow-xl">
+    <div class="insta-window rounded-2xl overflow-hidden border-0 bg-transparent shadow-2xl">
       <!-- Scaler Layer: Offsets 48px header and matches 440px media height perfectly -->
       <div class="insta-scaler">
         <iframe

@@ -3,32 +3,32 @@ import { Sparkles, Heart } from 'lucide-vue-next'
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-800 text-center h-[370px] my-auto py-2">
+  <div class="w-full flex flex-col justify-between items-center select-none font-sans text-slate-100 text-center h-[370px] my-auto py-2">
     <!-- ── Top Subtle Badge ── -->
-    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50/90 border border-blue-200/80 text-blue-700 text-xs font-mono font-bold shadow-2xs">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/40 border border-blue-200/80 text-blue-400 text-xs font-mono font-bold shadow-2xs">
       <Sparkles :size="13" class="text-blue-600" />
       <span>AI COLLABORATION STANDARD</span>
     </div>
 
     <!-- ── Grand Center Statement Typography ── -->
     <div class="my-auto space-y-4 max-w-4xl px-4">
-      <h1 class="text-4xl md:text-5xl lg:text-[54px] font-bold font-serif text-slate-900 tracking-tight leading-[1.25] break-keep">
+      <h1 class="text-4xl md:text-5xl lg:text-[54px] font-bold font-serif text-white tracking-tight leading-[1.25] break-keep">
         AI는 초안을 쓰고,<br>
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-sky-600 to-blue-700 underline decoration-blue-200 decoration-wavy decoration-from-font underline-offset-8">
           가치는 담당자가 담습니다.
         </span>
       </h1>
 
-      <p class="text-base md:text-xl text-slate-500 font-serif font-normal max-w-2xl mx-auto leading-relaxed break-keep pt-2">
+      <p class="text-base md:text-xl text-slate-400 font-serif font-normal max-w-2xl mx-auto leading-relaxed break-keep pt-2">
         오늘 정의한 <strong>나만의 스킬 하나</strong>가,<br class="hidden sm:inline">
         내일 여러분의 가장 든든한 동료가 됩니다.
       </p>
     </div>
 
     <!-- ── Bottom Closing Signature & Gratitude ── -->
-    <div class="w-full max-w-xl pt-3 border-t border-slate-200/90 flex items-center justify-between text-xs text-slate-400 font-medium">
+    <div class="w-full max-w-xl pt-3 border-t border-white/10 flex items-center justify-between text-xs text-slate-400 font-medium">
       <span class="font-mono text-slate-400">Q&A · 경청해 주셔서 감사합니다</span>
-      <span class="flex items-center gap-1 text-slate-500 font-serif">
+      <span class="flex items-center gap-1 text-slate-400 font-serif">
         사회복지 실무자를 위한 AI 협업 실무
       </span>
     </div>

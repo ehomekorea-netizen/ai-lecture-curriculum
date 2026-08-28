@@ -51,45 +51,45 @@ const sampleFiles = [
 </script>
 
 <template>
-  <div class="w-full flex items-stretch gap-3.5 select-none font-sans text-slate-800 text-left h-[325px] my-auto">
+  <div class="w-full flex items-stretch gap-3.5 select-none font-sans text-slate-100 text-left h-[325px] my-auto">
     <!-- ── Left Column (46%): STEP 1. 프로젝트 폴더 생성 & 다중 파일 적재 ── -->
-    <div class="w-[46%] flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 p-3 shadow-2xs">
+    <div class="w-[46%] flex flex-col justify-between bg-white/6 rounded-2xl border border-white/10 p-3 shadow-2xs">
       <div>
         <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 mb-2">
           <div class="flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-            <strong class="text-xs font-bold text-slate-900 font-serif">
+            <strong class="text-xs font-bold text-white font-serif">
               STEP 1. 프로젝트 폴더 생성 & 다중 파일 적재
             </strong>
           </div>
-          <span class="text-[9.5px] px-2 py-0.2 rounded-full bg-blue-50 text-blue-700 font-mono font-bold border border-blue-200">
+          <span class="text-[9.5px] px-2 py-0.2 rounded-full bg-blue-950/40 text-blue-400 font-mono font-bold border border-blue-200">
             사전 준비
           </span>
         </div>
 
         <!-- 1-1. 폴더 생성 액션 -->
-        <div class="p-2 rounded-xl bg-blue-50/70 border border-blue-200/80 mb-2 flex items-center justify-between">
+        <div class="p-2 rounded-xl bg-blue-950/40 border border-blue-200/80 mb-2 flex items-center justify-between">
           <div class="flex items-center gap-2">
             <div class="w-6 h-6 rounded-lg bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-2xs">
               <FolderPlus :size="13" />
             </div>
             <div>
-              <span class="text-[11px] font-bold text-blue-950 block leading-tight">
+              <span class="text-[11px] font-bold text-blue-300 block leading-tight">
                 1. ChatGPT Work에서 새 프로젝트 폴더 지정
               </span>
-              <span class="text-[10px] text-blue-800 font-mono font-semibold">
+              <span class="text-[10px] text-blue-300 font-mono font-semibold">
                 📁 실습폴더: <code class="bg-white/80 px-1 rounded">26_신규사업기획/</code>
               </span>
             </div>
           </div>
-          <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-900 font-bold shrink-0">
+          <span class="text-[9px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-200 font-bold shrink-0">
             폴더 격리
           </span>
         </div>
 
         <!-- 1-2. 다중 파일 적재 예시 -->
         <div class="space-y-1.5">
-          <div class="text-[10px] font-mono text-slate-500 font-bold flex items-center justify-between">
+          <div class="text-[10px] font-mono text-slate-400 font-bold flex items-center justify-between">
             <span class="flex items-center gap-1">
               <Upload :size="11" />
               <span>2. 기획 관련 다중 파일들(PDF·DOCX·XLSX 등) 넣기</span>
@@ -100,7 +100,7 @@ const sampleFiles = [
           <div
             v-for="file in sampleFiles"
             :key="file.name"
-            class="p-1.5 px-2.5 rounded-lg bg-[#FAF8F4] border border-slate-200/90 flex items-center justify-between hover:bg-slate-50 transition-colors"
+            class="p-1.5 px-2.5 rounded-lg bg-white/6 border border-white/10 flex items-center justify-between hover:bg-white/5 transition-colors"
           >
             <div class="flex items-center gap-2 min-w-0">
               <div
@@ -109,11 +109,11 @@ const sampleFiles = [
               >
                 <component :is="file.icon" :size="12" />
               </div>
-              <span class="text-[11px] font-mono font-bold text-slate-900 truncate">
+              <span class="text-[11px] font-mono font-bold text-white truncate">
                 {{ file.name }}
               </span>
             </div>
-            <span class="text-[9.5px] text-slate-500 truncate ml-2">
+            <span class="text-[9.5px] text-slate-400 truncate ml-2">
               {{ file.desc }}
             </span>
           </div>
@@ -121,20 +121,20 @@ const sampleFiles = [
       </div>
 
       <!-- Security / Least Privilege Note -->
-      <div class="pt-1.5 border-t border-slate-100 flex items-center gap-1.5 text-[10px] text-slate-600">
+      <div class="pt-1.5 border-t border-slate-100 flex items-center gap-1.5 text-[10px] text-slate-400">
         <ShieldCheck :size="13" class="text-emerald-600 shrink-0" />
-        <span class="truncate">최소 권한 원칙: Work는 지정된 <strong class="text-slate-800">이 폴더 안의 파일들만</strong> 안전하게 조합합니다.</span>
+        <span class="truncate">최소 권한 원칙: Work는 지정된 <strong class="text-slate-100">이 폴더 안의 파일들만</strong> 안전하게 조합합니다.</span>
       </div>
     </div>
 
     <!-- ── Right Column (54%): STEP 2 & STEP 3. @Documents 지시 & 기획서 DOCX 생성 ── -->
-    <div class="w-[54%] flex flex-col justify-between bg-white rounded-2xl border border-slate-200/90 p-3 shadow-2xs">
+    <div class="w-[54%] flex flex-col justify-between bg-white/6 rounded-2xl border border-white/10 p-3 shadow-2xs">
       <!-- Step 2: @Documents 지시문 -->
       <div>
         <div class="flex items-center justify-between pb-1.5 border-b border-slate-100 mb-1.5">
           <div class="flex items-center gap-1.5">
             <Sparkles :size="14" class="text-purple-600" />
-            <strong class="text-xs font-bold text-slate-900 font-serif">
+            <strong class="text-xs font-bold text-white font-serif">
               STEP 2. @Documents 플러그인 호출 & 기획서 작성 지시
             </strong>
           </div>
@@ -158,16 +158,16 @@ const sampleFiles = [
 
       <!-- Step 3: 사업기획서 DOCX 산출물 완성 -->
       <div>
-        <div class="p-2 px-3 rounded-xl bg-emerald-50/90 border border-emerald-300/80 flex items-center justify-between">
+        <div class="p-2 px-3 rounded-xl bg-emerald-950/40 border border-emerald-300/80 flex items-center justify-between">
           <div class="flex items-center gap-2.5">
             <div class="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-2xs">
               <FileCheck :size="14" />
             </div>
             <div>
-              <span class="text-[11.5px] font-bold text-emerald-950 font-serif block leading-tight">
+              <span class="text-[11.5px] font-bold text-emerald-300 font-serif block leading-tight">
                 STEP 3. 2026_신규_사업기획서_초안.docx 완성
               </span>
-              <span class="text-[10px] text-emerald-800 font-mono">
+              <span class="text-[10px] text-emerald-300 font-mono">
                 정부 지침 + 우수사례 + 통계자료 등 다중 파일이 결합된 고품질 기획서
               </span>
             </div>
