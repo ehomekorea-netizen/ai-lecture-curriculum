@@ -3,6 +3,10 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
       "source": "/mokpo-welfare/:match*",
       "destination": "/mokpo-welfare/:match*"
     },
