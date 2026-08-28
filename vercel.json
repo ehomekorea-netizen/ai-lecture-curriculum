@@ -3,32 +3,32 @@
   "cleanUrls": true,
   "rewrites": [
     {
+      "source": "/mokpo-welfare/:path*",
+      "destination": "/mokpo-welfare/index.html"
+    },
+    {
+      "source": "/milyang-6th-week/:path*",
+      "destination": "/milyang-6th-week/index.html"
+    },
+    {
+      "source": "/milyang-5th-week/:path*",
+      "destination": "/milyang-5th-week/index.html"
+    },
+    {
+      "source": "/jeonnam-maritime/:path*",
+      "destination": "/jeonnam-maritime/index.html"
+    },
+    {
+      "source": "/kiamotors-excel/:path*",
+      "destination": "/kiamotors-excel/index.html"
+    },
+    {
+      "source": "/nambu-univ/:path*",
+      "destination": "/nambu-univ/index.html"
+    },
+    {
       "source": "/",
       "destination": "/index.html"
-    },
-    {
-      "source": "/mokpo-welfare/:match*",
-      "destination": "/mokpo-welfare/:match*"
-    },
-    {
-      "source": "/milyang-6th-week/:match*",
-      "destination": "/milyang-6th-week/:match*"
-    },
-    {
-      "source": "/milyang-5th-week/:match*",
-      "destination": "/milyang-5th-week/:match*"
-    },
-    {
-      "source": "/jeonnam-maritime/:match*",
-      "destination": "/jeonnam-maritime/:match*"
-    },
-    {
-      "source": "/kiamotors-excel/:match*",
-      "destination": "/kiamotors-excel/:match*"
-    },
-    {
-      "source": "/nambu-univ/:match*",
-      "destination": "/nambu-univ/:match*"
     }
   ]
 }
