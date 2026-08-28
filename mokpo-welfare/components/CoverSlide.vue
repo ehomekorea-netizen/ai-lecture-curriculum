@@ -60,10 +60,10 @@ const fsSource = `
     // ── Silky Smooth Natural Gradient (Calm comfortable navy on left -> Luminous cobalt on right) ──
     float lightGrad = smoothstep(0.02, 0.95, uv.x);
 
-    vec3 calmNavy = vec3(0.0, 0.0, 0.0);
-    vec3 midCobalt = vec3(0.02, 0.05, 0.12);
-    vec3 brightCyan = vec3(0.05, 0.15, 0.35);
-    vec3 peakGlow = vec3(0.1, 0.25, 0.5);
+    vec3 calmNavy = vec3(0.02, 0.04, 0.11);
+    vec3 midCobalt = vec3(0.07, 0.22, 0.62);
+    vec3 brightCyan = vec3(0.18, 0.58, 0.98);
+    vec3 peakGlow = vec3(0.48, 0.85, 1.0);
 
     vec3 col = mix(calmNavy, midCobalt, clamp((f * f) * 3.4, 0.0, 1.0));
     col = mix(col, brightCyan, clamp(length(q) * (0.35 + 0.65 * lightGrad), 0.0, 1.0));
