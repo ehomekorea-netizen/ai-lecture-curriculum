@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import {
+  computed } from 'vue'
 import {
   XCircle,
-  CheckCircle2
+  CheckCircle2,
+  AlertTriangle,
+  Target,
+  Pin
 } from 'lucide-vue-next'
 
 const props = withDefaults(
@@ -56,7 +60,7 @@ const currentStage = computed(() => Number(props.stage ?? 0))
             <!-- AI Result Box -->
             <div class="bg-rose-950/50 rounded-xl p-3 border border-rose-500/40 text-xs text-rose-200 leading-relaxed">
               <span class="text-[10px] font-mono font-bold text-rose-400 block mb-0.5">실제 AI 동작 결과</span>
-              <strong>⚠️ AI의 오판:</strong> 문서 파일(DOCX)을 생성하지 않고, 채팅창에 짧은 텍스트 요약만 남기고 종료됨.
+              <AlertTriangle :size="13" class="inline text-rose-400 mr-1" /><strong>AI의 오판:</strong> 문서 파일(DOCX)을 생성하지 않고, 채팅창에 짧은 텍스트 요약만 남기고 종료됨.
             </div>
           </div>
 
@@ -88,7 +92,7 @@ const currentStage = computed(() => Number(props.stage ?? 0))
             <!-- AI Result Box -->
             <div class="bg-emerald-950/50 rounded-xl p-3 border border-emerald-500/40 text-xs text-emerald-200 leading-relaxed">
               <span class="text-[10px] font-mono font-bold text-emerald-400 block mb-0.5">실제 AI 동작 결과</span>
-              <strong>🎯 100% 확정:</strong> AI가 문서 제작 플러그인을 즉시 가동하여 실무 검토가 가능한 완성형 파일 렌더링.
+              <Target :size="13" class="inline text-emerald-400 mr-1" /><strong>100% 확정:</strong> AI가 문서 제작 플러그인을 즉시 가동하여 실무 검토가 가능한 완성형 파일 렌더링.
             </div>
           </div>
         </div>
@@ -161,7 +165,7 @@ const currentStage = computed(() => Number(props.stage ?? 0))
 
     <!-- ── Bottom Single Takeaway Bar ── -->
     <div class="p-2 px-3.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200 flex items-center gap-2 shadow-xs">
-      <span class="text-amber-400 font-bold">📌 실무 표준 원칙:</span>
+      <span class="text-amber-400 font-bold flex items-center gap-1"><Pin :size="12" class="text-amber-400" /><span>실무 표준 원칙:</span></span>
       <span>
         "자연어로도 알아듣지만, 의도 왜곡과 오차를 없애려면
         <strong class="text-sky-300">@도구이름</strong>을 통한 명시적 호출이 가장 확실한 실무 표준입니다."

@@ -3,7 +3,13 @@ import {
   BookOpenCheck,
   Package,
   Boxes,
-  ChefHat
+  ChefHat,
+  Scroll,
+  Sparkles,
+  Target,
+  CheckCircle2,
+  ArrowRight,
+  Lightbulb
 } from 'lucide-vue-next'
 </script>
 
@@ -30,7 +36,7 @@ import {
               </div>
             </div>
             <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold bg-sky-950/70 text-sky-300 border border-sky-400/50">
-              📜 나만의 비법 레시피
+              <span class="inline-flex items-center gap-1.5"><Scroll :size="12" class="text-sky-400" /><span>나만의 비법 레시피</span></span>
             </span>
           </div>
 
@@ -61,7 +67,7 @@ import {
 
         <!-- Bottom Goal -->
         <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[11px]">
-          <span class="font-serif font-bold text-sky-300">👉 핵심 목적: <strong class="text-white">"어떤 맛(품질)을 낼 것인가?"</strong></span>
+          <span class="font-serif font-bold text-sky-300"><ArrowRight :size="12" class="inline text-amber-400 mr-1" />핵심 목적: <strong class="text-white">"어떤 맛(품질)을 낼 것인가?"</strong></span>
           <span class="font-mono text-[10px] text-sky-300 font-bold bg-sky-950/70 px-2 py-0.5 rounded-md border border-sky-400/50">품질 통제</span>
         </div>
       </div>
@@ -85,7 +91,7 @@ import {
               </div>
             </div>
             <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold bg-purple-950/70 text-purple-300 border border-purple-400/50">
-              🍱 팀 전용 밀키트 세트
+              <span class="inline-flex items-center gap-1.5"><Package :size="12" class="text-purple-400" /><span>팀 전용 밀키트 세트</span></span>
             </span>
           </div>
 
@@ -116,7 +122,7 @@ import {
 
         <!-- Bottom Goal -->
         <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[11px]">
-          <span class="font-serif font-bold text-purple-300">👉 핵심 목적: <strong class="text-white">"누구에게 어떻게 배포할 것인가?"</strong></span>
+          <span class="font-serif font-bold text-purple-300"><ArrowRight :size="12" class="inline text-amber-400 mr-1" />핵심 목적: <strong class="text-white">"누구에게 어떻게 배포할 것인가?"</strong></span>
           <span class="font-mono text-[10px] text-purple-300 font-bold bg-purple-950/70 px-2 py-0.5 rounded-md border border-purple-400/50">조직 배포·표준화</span>
         </div>
       </div>
@@ -124,7 +130,7 @@ import {
 
     <!-- ── Bottom Single Takeaway Bar ── -->
     <div class="p-2 px-3.5 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-200 flex items-center gap-2 shadow-xs">
-      <span class="text-rose-400 font-bold">🎯 핵심 요약:</span>
+      <span class="text-rose-400 font-bold"><Target :size="13" class="inline text-rose-400 mr-1" />핵심 요약:</span>
       <span>
         <strong>스킬(레시피)</strong>이 고품질 결과물을 만드는 '품질 지침'이라면,
         <strong>플러그인(밀키트)</strong>은 팀 전체가 설치해 쓰는 '완성형 업무 도구 상자'

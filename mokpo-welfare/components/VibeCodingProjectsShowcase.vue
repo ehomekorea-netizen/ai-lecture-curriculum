@@ -86,7 +86,7 @@ const projects: ProjectItem[] = [
           <!-- Micro Guide Pill -->
           <div class="p-2 rounded-lg bg-amber-950/40 border border-amber-400/40 text-[10px] text-amber-200 space-y-0.5">
             <div class="font-bold flex items-center gap-1">
-              <span>📥 [홈화면에 추가]</span>
+              <span class="inline-flex items-center gap-1"><Download :size="11" class="text-amber-300" /><span>[홈화면에 추가]</span></span>
               <span class="text-amber-300 font-normal">누르면 끝!</span>
             </div>
             <p class="text-[9px] text-slate-300 leading-tight m-0">
@@ -139,7 +139,7 @@ const projects: ProjectItem[] = [
           <!-- Feature Tag List -->
           <div class="p-2 rounded-lg bg-indigo-950/40 border border-indigo-400/40 text-[10px] text-indigo-200 space-y-0.5">
             <div class="font-bold text-indigo-300">
-              🔔 매일 아침 7시 성경 말씀 푸시
+              <Bell :size="12" class="inline text-indigo-300 mr-1" />매일 아침 7시 성경 말씀 푸시
             </div>
             <p class="text-[9px] text-slate-300 leading-tight m-0">
               바쁜 현대인을 위한 영성 묵상 카드 PWA
@@ -178,7 +178,7 @@ const projects: ProjectItem[] = [
           <!-- Heat Thermometer Visual Box -->
           <div class="p-3 rounded-xl bg-black/60 border border-white/10 shadow-inner text-center space-y-1.5 mb-2">
             <div class="w-10 h-10 mx-auto rounded-full bg-gradient-to-tr from-orange-500 to-amber-400 flex items-center justify-center text-white text-lg font-black shadow-md ring-2 ring-orange-400/60 group-hover:scale-110 transition-transform">
-              🥕
+              <span class="text-sm font-bold text-orange-400">🥕</span>
             </div>
             <h4 class="text-base font-bold font-serif text-white m-0 tracking-tight">HEAT Carrot</h4>
             <p class="text-[10px] text-slate-200 leading-snug m-0 break-keep font-medium">

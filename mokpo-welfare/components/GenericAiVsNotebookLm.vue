@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import { MessageSquare, FileCheck, AlertTriangle, CheckCircle2, ArrowRight } from 'lucide-vue-next'
+import {
+  MessageSquare,
+  FileCheck,
+  AlertTriangle,
+  CheckCircle2,
+  ArrowRight,
+  Target,
+  XCircle
+} from 'lucide-vue-next'
 </script>
 
 <template>
@@ -75,7 +83,7 @@ import { MessageSquare, FileCheck, AlertTriangle, CheckCircle2, ArrowRight } fro
 
     <!-- Bottom Summary Bar -->
     <div class="p-1.5 px-3 rounded-lg bg-white/5 border border-white/10 text-xs text-slate-300 text-center font-medium shrink-0">
-      🎯 <strong>핵심 공식</strong>: 범용 AI가 <strong>"도서관 전체에서 찾아오는 AI"</strong>라면, NotebookLM은 <strong>"내가 건넨 서류철만 정독하는 AI"</strong>입니다.
+      <Target :size="13" class="inline text-rose-400 mr-1" /><strong>핵심 공식</strong>: 범용 AI가 <strong>"도서관 전체에서 찾아오는 AI"</strong>라면, NotebookLM은 <strong>"내가 건넨 서류철만 정독하는 AI"</strong>입니다.
     </div>
   </div>
 </template>

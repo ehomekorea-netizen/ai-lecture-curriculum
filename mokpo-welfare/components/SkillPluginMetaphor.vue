@@ -7,7 +7,9 @@ import {
   Users,
   Sparkles,
   ChefHat,
-  Boxes
+  Boxes,
+  Scroll,
+  Target
 } from 'lucide-vue-next'
 </script>
 
@@ -34,7 +36,7 @@ import {
               </div>
             </div>
             <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold bg-blue-100 text-blue-200 border border-blue-200">
-              📜 나만의 비법 레시피
+              <span class="inline-flex items-center gap-1.5"><Scroll :size="12" class="text-sky-400" /><span>나만의 비법 레시피</span></span>
             </span>
           </div>
 
@@ -83,7 +85,7 @@ import {
               </div>
             </div>
             <span class="px-2.5 py-1 rounded-full text-[10.5px] font-bold bg-purple-100 text-purple-900 border border-purple-200">
-              🍱 팀이 함께 쓰는 밀키트
+              <span class="inline-flex items-center gap-1.5"><Package :size="12" class="text-purple-400" /><span>팀이 함께 쓰는 밀키트</span></span>
             </span>
           </div>
 
@@ -116,7 +118,7 @@ import {
 
     <!-- ── Bottom Golden Takeaway Quote Box ── -->
     <div class="slide-footer quote-box text-xs py-1.5 px-4 font-medium truncate mt-1">
-      🎯 <strong>핵심 비유 공식</strong>: 나 혼자 쓸 때는 <strong>스킬(비법 레시피)</strong>로 시작하고, 팀 전체에 전사 표준으로 공유할 때 <strong>플러그인(밀키트 세트)</strong>으로 묶습니다.
+      <Target :size="13" class="inline text-rose-400 mr-1" /><strong>핵심 비유 공식</strong>: 나 혼자 쓸 때는 <strong>스킬(비법 레시피)</strong>로 시작하고, 팀 전체에 전사 표준으로 공유할 때 <strong>플러그인(밀키트 세트)</strong>으로 묶습니다.
     </div>
   </div>
 </template>

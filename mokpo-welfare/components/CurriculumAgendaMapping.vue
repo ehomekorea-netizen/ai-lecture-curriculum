@@ -7,7 +7,8 @@ import {
   Layers,
   ArrowRight,
   ShieldCheck,
-  CheckCircle2
+  CheckCircle2,
+  Target
 } from 'lucide-vue-next'
 
 const parts = [
@@ -92,7 +93,7 @@ const parts = [
 
     <!-- Bottom Footer Quote Box -->
     <div class="slide-footer quote-box text-xs font-medium text-center py-1 mt-1">
-      🎯 <strong>전체 교육 목표</strong>: "AI에게 무엇을 물어볼까?"를 넘어, <strong>"AI의 원리를 이해하고 실제 업무 문서를 어떻게 함께 완성할 것인가?"</strong>를 체득합니다.
+      <Target :size="13" class="inline text-rose-400 mr-1" /><strong>전체 교육 목표</strong>: "AI에게 무엇을 물어볼까?"를 넘어, <strong>"AI의 원리를 이해하고 실제 업무 문서를 어떻게 함께 완성할 것인가?"</strong>를 체득합니다.
     </div>
   </div>
 </template>
