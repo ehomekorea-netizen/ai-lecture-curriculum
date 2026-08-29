@@ -8,12 +8,36 @@
 
 | 일시 | 기관 | 장소 | 대상 | 교육 주제 | 웹 교안 링크 |
 | :---: | :--- | :--- | :--- | :--- | :---: |
+| **8/29(토)** | 마스터 특강 | 온라인 실시간 | 💼 AI 실무자 및 직장인 | **AI 에이전트 마스터코스: SKILL 기초부터 실전 응용까지** | [마스터 교안 바로가기](./26_0829_agent-skills/master-deck/) |
 | **9/3(목)** | 전남사회복지협의회 | [목포종합사회복지관](https://map.naver.com/p/search/%EB%AA%A9%ED%8F%AC%EC%20%EC%A2%85%ED%95%A9%EC%82%AC%ED%92%8D%EC%A7%80%EA%B4%80) | 🏛️ 사회복지 실무자 (복지관 종사자) | **AI를 활용한 문서 작성 협업 역량 강화** | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/mokpo-welfare/) |
 | **8/26(수)** | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·청소년 구직자 | **AI 활용 실무 문서 작성 및 취업 역량 강화 (6주차)** | [6주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-6th-week/) |
 | **8/19(수)** | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·청소년 구직자 | **웹 포트폴리오 빌딩 & AI 에이전트 바이브 코딩 (5주차)** | [5주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-5th-week/) |
 | **7/28(화)** | 퍼블릭AI | [전남해양수산과학원 고흥](https://map.naver.com/p/search/%EC%A0%84%EB%82%A8%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%EA%B3%BC%ED%95%99%EC%9B%90%20%EA%B3%A0%ED%9D%A5) | ⚓ 수산업 종사자 (어업인) | 수산업 종사자를 위한 생성형 AI | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/jeonnam-maritime/) |
 | **7/21(화), 23(목)** | 이음미래교육원 | [한울직업전문학교](https://map.naver.com/p/search/%ED%95%9C%EC%9A%B8%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90) | 👔 KIA 일반직 임직원 | 엑셀 활용 AI 업무 효율 향상 | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/kiamotors-excel/) |
 | **7/15(수) ~ 16(목)** | 전남대 앵커사업단 / 링크21 | [남부대학교](https://map.naver.com/p/search/%EB%82%A8%EB%B6%80%EB%8C%80%ED%95%99%EA%B5%90) | 🏫 지역아동센터 기관장·센터장 | AI 사업계획서 기획 및 실습 | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/nambu-univ/) |
+
+---
+
+## 🤖 AI 에이전트 마스터코스: SKILL 기초부터 실전 응용까지 (`26_0829_agent-skills`)
+
+> **"반복 프롬프트 복붙에서 벗어나, 조직의 재사용 가능한 업무 표준 절차서(SOP)와 도구 연동 자산화까지"**  
+> Anthropic Open Standard 기반의 Agent Skills 표준 규격, 100토큰 점진적 로딩(Progressive Disclosure) 아키텍처, GPTwork $skill creator 및 Google Antigravity 실습, 그리고 기획·마케팅·영업·CS·인사·운영 전 직무별 모범 사례와 4대 디버깅 기법을 다루는 2시간 완결형 Slidev 인터랙티브 프레젠테이션입니다.
+
+### 📑 핵심 교육 커리큘럼 로드맵 (2개 세션 + 28슬라이드 통합 마스터덱)
+1. **Session 01 · AI 에이전트 업무 매뉴얼: SKILL 기초와 핵심 아키텍처 (50분)**
+   - 프롬프트 복붙의 3대 한계 & AI용 표준 업무 절차서(SOP) 패키지 전환
+   - 100토큰 상시 대기 ➔ 온디맨드 주입 2-Stage 점진적 로딩(Progressive Disclosure) 메커니즘
+   - `SKILL.md` (YAML Frontmatter + SOP) 및 디렉토리 계층 해부
+   - 좋은 스킬 설계 원칙 (명명 공식, 목적+시점 설명, 자유도 제어)
+   - 💻 **[실습 P01]** GPTwork `$skill creator` 활용 `polishing-emails` 템플릿 제작 및 5대 자가점검
+   - 🌟 **[아키텍처]** Anthropic 공식 아키텍처 다이어그램 장착 피날레
+2. **Session 02 · 실전 SKILL 응용: Antigravity & GPTwork 실습과 직무별 모범 사례 (50분)**
+   - 스킬 3대 오작동(호출 실패, 포맷 이탈, 지식 왜곡) 진단 및 3단계 런타임 파이프라인
+   - 하위 폴더 선택 결정 트리 (단일 SKILL.md vs `references/` vs `scripts/`)
+   - 20페이지 CS 매뉴얼 분리 지식 주입 & LLM 암산 오차 극복 5줄 파이썬 도구 연동
+   - 기획·마케팅·영업 프론트오피스 3대 산출물 & CS·인사·운영 백오피스 단순업무 80% 절감 실무 사례
+   - 💻 **[실습 P02]** 사내 지식 결합 복합 스킬 제작 및 5대 자가진단 게이트 통과
+   - 4대 디버깅 점검 공식 매트릭스 & 4대 엔터프라이즈 지식 자산화 로드맵
 
 ---
 
@@ -123,7 +147,13 @@
 
 ```bash
 ai-lecture-curriculum/
-├── milyang-6th-week/         # 🌟 [NEW] 밀양 6주차 Slidev 기반 인터랙티브 웹 교안 (Live)
+├── 26_0829_agent-skills/     # 🤖 [NEW] AI 에이전트 마스터코스 (1차시+2차시+28슬라이드 마스터덱)
+│   ├── master-deck/          # 🌟 1차시 + 2차시 28슬라이드 통합 마스터덱
+│   ├── session-01-deck/      # 1차시 단독 실행 Slidev 덱 (14 슬라이드)
+│   ├── session-02-deck/      # 2차시 단독 실행 Slidev 덱 (14 슬라이드)
+│   └── README.md             # 코스 상세 안내
+│
+├── milyang-6th-week/         # 🌟 밀양 6주차 Slidev 기반 인터랙티브 웹 교안 (Live)
 │   ├── index.html            # Vercel 배포용 SPA 엔트리
 │   ├── slides.md             # 38개 슬라이드 전체 마크다운 소스 (TOC 포함)
 │   ├── components/           # Vue 3 인터랙티브 에디토리얼 컴포넌트 모음
