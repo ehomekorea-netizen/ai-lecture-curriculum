@@ -1,48 +1,52 @@
 {
   "rewrites": [
     {
-      "source": "/26_0829_agent-skills",
-      "destination": "/26_0829_agent-skills/index.html"
+      "source": "/260829_agent-skills",
+      "destination": "/260829_agent-skills/index.html"
     },
     {
-      "source": "/26_0829_agent-skills/:path((?!assets/|icons/|media/|.*\\..*).*)",
-      "destination": "/26_0829_agent-skills/index.html"
+      "source": "/260829_agent-skills/:path((?!assets/|icons/|media/|.*\\..*).*)",
+      "destination": "/260829_agent-skills/index.html"
     },
     {
-      "source": "/mokpo-welfare",
-      "destination": "/mokpo-welfare/index.html"
+      "source": "/260903_mokpo-welfare",
+      "destination": "/260903_mokpo-welfare/index.html"
     },
     {
-      "source": "/mokpo-welfare/:path((?!assets/|.*\\..*).*)",
-      "destination": "/mokpo-welfare/index.html"
+      "source": "/260903_mokpo-welfare/:path((?!assets/|.*\\..*).*)",
+      "destination": "/260903_mokpo-welfare/index.html"
     },
     {
-      "source": "/milyang-6th-week",
-      "destination": "/milyang-6th-week/index.html"
+      "source": "/260827_milyang-6th-week",
+      "destination": "/260827_milyang-6th-week/index.html"
     },
     {
-      "source": "/milyang-6th-week/:path((?!assets/|.*\\..*).*)",
-      "destination": "/milyang-6th-week/index.html"
+      "source": "/260827_milyang-6th-week/:path((?!assets/|.*\\..*).*)",
+      "destination": "/260827_milyang-6th-week/index.html"
     },
     {
-      "source": "/milyang-5th-week",
-      "destination": "/milyang-5th-week/index.html"
+      "source": "/260820_milyang-5th-week",
+      "destination": "/260820_milyang-5th-week/index.html"
     },
     {
-      "source": "/milyang-5th-week/:path((?!assets/|.*\\..*).*)",
-      "destination": "/milyang-5th-week/index.html"
+      "source": "/260820_milyang-5th-week/:path((?!assets/|.*\\..*).*)",
+      "destination": "/260820_milyang-5th-week/index.html"
     },
     {
-      "source": "/jeonnam-maritime",
-      "destination": "/jeonnam-maritime/index.html"
+      "source": "/260812_milyang-notion-resume",
+      "destination": "/260812_milyang-notion-resume/4주차/presentation.html"
     },
     {
-      "source": "/kiamotors-excel",
-      "destination": "/kiamotors-excel/index.html"
+      "source": "/260728_jeonnam-maritime",
+      "destination": "/260728_jeonnam-maritime/index.html"
     },
     {
-      "source": "/nambu-univ",
-      "destination": "/nambu-univ/index.html"
+      "source": "/260721_kiamotors-excel",
+      "destination": "/260721_kiamotors-excel/index.html"
+    },
+    {
+      "source": "/260715_nambu-univ",
+      "destination": "/260715_nambu-univ/index.html"
     },
     {
       "source": "/",
