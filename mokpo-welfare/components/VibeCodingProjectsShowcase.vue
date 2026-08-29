@@ -1,26 +1,30 @@
 <script setup lang="ts">
 import { ArrowUpRight } from 'lucide-vue-next'
 
+// Dynamic base URL resolution (handles both '/' and '/mokpo-welfare/')
+const baseUrl = import.meta.env.BASE_URL || '/'
+const cleanBase = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/'
+
 const projects = [
   {
     id: '01',
     title: '출강바이브',
     url: 'https://lecture-payment-dashboard.vercel.app/',
-    img: '/showcase-lecture-vibe.png',
+    img: cleanBase + 'showcase-lecture-vibe.png',
     desc: '강사용 실시간 정산 및 3.3% 세액 자동 계산',
   },
   {
     id: '02',
     title: '바이블그램',
     url: 'https://biblegram.vercel.app/',
-    img: '/showcase-biblegram.png',
+    img: cleanBase + 'showcase-biblegram.png',
     desc: '바쁜 일상 속 아침 7시 성경 말씀 푸시 알림',
   },
   {
     id: '03',
     title: 'HEAT Carrot',
     url: 'https://danggeun-dashboard.vercel.app/',
-    img: '/showcase-danggeun.png',
+    img: cleanBase + 'showcase-danggeun.png',
     desc: '당근 이웃 나눔 챌린지 기부 적립 실시간 모니터',
   },
 ]
