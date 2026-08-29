@@ -12,7 +12,7 @@
 * **총 교육 시간**: 6시간 (Day 1 수요일 3시간 + Day 2 목요일 3시간)
 * **교육 대상**: 밀양시 청년·구직자 (비전공자 및 취업준비생)
 * **프레젠테이션 프레임워크**: [Slidev](https://sli.dev/) (Vue 3 + Vite 기반 인터랙티브 웹 슬라이드)
-* **호스팅 플랫폼**: Vercel Monorepo (`https://ai-lecture-curriculum.vercel.app/milyang-5th-week/`)
+* **호스팅 플랫폼**: Vercel Monorepo (`https://ai-lecture-curriculum.vercel.app/260820_milyang-5th-week/`)
 * **핵심 기술 스택**: Vue 3, TailwindCSS / UnoCSS, Rough.js (손그림 효과), Lucide Icons, Lucide Vue
 
 ---
@@ -116,8 +116,8 @@ npm run dev
 # 브라우저: http://localhost:3050
 
 # 2. Vercel 배포용 정적 SPA 빌드
-node node_modules/@slidev/cli/bin/slidev.mjs build --base /milyang-5th-week/ --out dist
+node node_modules/@slidev/cli/bin/slidev.mjs build --base /260820_milyang-5th-week/ --out dist
 
 # 3. 저장소 배포 링크
-# https://ai-lecture-curriculum.vercel.app/milyang-5th-week/
+# https://ai-lecture-curriculum.vercel.app/260820_milyang-5th-week/
 ```
