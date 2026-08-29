@@ -8,13 +8,13 @@
 
 | 일시 | 기관 | 장소 | 대상 | 교육 주제 | 웹 교안 링크 |
 | :---: | :--- | :--- | :--- | :--- | :---: |
-| **8/29(토)** | 마스터 특강 | 온라인 실시간 | 💼 AI 실무자 및 직장인 | **AI 에이전트 마스터코스: SKILL 기초부터 실전 응용까지** | [마스터 교안 바로가기](./26_0829_agent-skills/master-deck/) |
-| **9/3(목)** | 전남사회복지협의회 | [목포종합사회복지관](https://map.naver.com/p/search/%EB%AA%A9%ED%8F%AC%EC%20%EC%A2%85%ED%95%A9%EC%82%AC%ED%92%8D%EC%A7%80%EA%B4%80) | 🏛️ 사회복지 실무자 (복지관 종사자) | **AI를 활용한 문서 작성 협업 역량 강화** | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/mokpo-welfare/) |
-| **8/26(수)** | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·청소년 구직자 | **AI 활용 실무 문서 작성 및 취업 역량 강화 (6주차)** | [6주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-6th-week/) |
-| **8/19(수)** | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·청소년 구직자 | **웹 포트폴리오 빌딩 & AI 에이전트 바이브 코딩 (5주차)** | [5주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-5th-week/) |
-| **7/28(화)** | 퍼블릭AI | [전남해양수산과학원 고흥](https://map.naver.com/p/search/%EC%A0%84%EB%82%A8%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%EA%B3%BC%ED%95%99%EC%9B%90%20%EA%B3%A0%ED%9D%A5) | ⚓ 수산업 종사자 (어업인) | 수산업 종사자를 위한 생성형 AI | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/jeonnam-maritime/) |
-| **7/21(화), 23(목)** | 이음미래교육원 | [한울직업전문학교](https://map.naver.com/p/search/%ED%95%9C%EC%9A%B8%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90) | 👔 KIA 일반직 임직원 | 엑셀 활용 AI 업무 효율 향상 | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/kiamotors-excel/) |
 | **7/15(수) ~ 16(목)** | 전남대 앵커사업단 / 링크21 | [남부대학교](https://map.naver.com/p/search/%EB%82%A8%EB%B6%80%EB%8C%80%ED%95%99%EA%B5%90) | 🏫 지역아동센터 기관장·센터장 | AI 사업계획서 기획 및 실습 | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/nambu-univ/) |
+| **7/21(화), 23(목)** | 이음미래교육원 | [한울직업전문학교](https://map.naver.com/p/search/%ED%95%9C%EC%9A%B8%EC%A7%81%EC%97%85%EC%A0%84%EB%AC%B8%ED%95%99%EA%B5%90) | 👔 KIA 일반직 임직원 | 엑셀 활용 AI 업무 효율 향상 | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/kiamotors-excel/) |
+| **7/28(화)** | 퍼블릭AI | [전남해양수산과학원 고흥](https://map.naver.com/p/search/%EC%A0%84%EB%82%A8%ED%95%B4%EC%96%91%EC%88%98%EC%82%B0%EA%B3%BC%ED%95%99%EC%9B%90%20%EA%B3%A0%ED%9D%A5) | ⚓ 수산업 종사자 (어업인) | 수산업 종사자를 위한 생성형 AI | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/jeonnam-maritime/) |
+| **8/19(수)** | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·청소년 구직자 | **웹 포트폴리오 빌딩 & AI 에이전트 바이브 코딩 (5주차)** | [5주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-5th-week/) |
+| **8/26(수)** | AJ인포텍 | [밀양소통협력센터](https://map.naver.com/p/search/%EB%B0%80%EC%96%91%EC%86%8C%ED%86%B5%ED%98%91%EB%A0%89%EC%84%BC%ED%84%B0) | 👦👧 밀양시 청년·청소년 구직자 | **AI 활용 실무 문서 작성 및 취업 역량 강화 (6주차)** | [6주차 바로가기](https://ai-lecture-curriculum.vercel.app/milyang-6th-week/) |
+| **8/29(토)** | 마스터 특강 | 오프라인 | 💼 AI 실무자 및 직장인 | **AI 에이전트 마스터코스: SKILL 기초부터 실전 응용까지** | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/26_0829_agent-skills/master-deck/) |
+| **9/3(목)** | 전남사회복지협의회 | [목포종합사회복지관](https://map.naver.com/p/search/%EB%AA%A9%ED%8F%AC%EC%20%EC%A2%85%ED%95%A9%EC%82%AC%ED%92%8D%EC%A7%80%EA%B4%80) | 🏛️ 사회복지 실무자 (복지관 종사자) | **AI를 활용한 문서 작성 협업 역량 강화** | [교안 바로가기](https://ai-lecture-curriculum.vercel.app/mokpo-welfare/) |
 
 ---
 
