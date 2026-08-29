@@ -1,44 +1,70 @@
 {
+  "framework": null,
+  "cleanUrls": false,
+  "trailingSlash": true,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    }
+  ],
   "rewrites": [
+    {
+      "source": "/26_0829_agent-skills/",
+      "destination": "/26_0829_agent-skills/index.html"
+    },
     {
       "source": "/26_0829_agent-skills",
       "destination": "/26_0829_agent-skills/index.html"
     },
     {
-      "source": "/26_0829_agent-skills/:path((?!assets/|icons/|media/|.*\\..*).*)",
-      "destination": "/26_0829_agent-skills/index.html"
+      "source": "/mokpo-welfare/",
+      "destination": "/mokpo-welfare/index.html"
     },
     {
       "source": "/mokpo-welfare",
       "destination": "/mokpo-welfare/index.html"
     },
     {
-      "source": "/mokpo-welfare/:path((?!assets/|.*\\..*).*)",
-      "destination": "/mokpo-welfare/index.html"
+      "source": "/milyang-6th-week/",
+      "destination": "/milyang-6th-week/index.html"
     },
     {
       "source": "/milyang-6th-week",
       "destination": "/milyang-6th-week/index.html"
     },
     {
-      "source": "/milyang-6th-week/:path((?!assets/|.*\\..*).*)",
-      "destination": "/milyang-6th-week/index.html"
+      "source": "/milyang-5th-week/",
+      "destination": "/milyang-5th-week/index.html"
     },
     {
       "source": "/milyang-5th-week",
       "destination": "/milyang-5th-week/index.html"
     },
     {
-      "source": "/milyang-5th-week/:path((?!assets/|.*\\..*).*)",
-      "destination": "/milyang-5th-week/index.html"
+      "source": "/jeonnam-maritime/",
+      "destination": "/jeonnam-maritime/index.html"
     },
     {
       "source": "/jeonnam-maritime",
       "destination": "/jeonnam-maritime/index.html"
     },
     {
+      "source": "/kiamotors-excel/",
+      "destination": "/kiamotors-excel/index.html"
+    },
+    {
       "source": "/kiamotors-excel",
       "destination": "/kiamotors-excel/index.html"
+    },
+    {
+      "source": "/nambu-univ/",
+      "destination": "/nambu-univ/index.html"
     },
     {
       "source": "/nambu-univ",
