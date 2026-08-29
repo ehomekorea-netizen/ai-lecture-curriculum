@@ -1,6 +1,10 @@
-node_modules
-dist
-.slidev
-*.log
-.DS_Store
-Thumbs.db
+
+*.pptx
+*.xlsx
+~$*
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+package-lock.json
+**/package-lock.json

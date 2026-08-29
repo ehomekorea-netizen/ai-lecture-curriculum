@@ -39,7 +39,7 @@ const projects = [
       rel="noopener noreferrer"
       class="group flex flex-col items-center text-center no-underline cursor-pointer transition-transform duration-300 hover:scale-103"
     >
-      <!-- Pure Raw Image with Direct Vite Asset Bundle -->
+      <!-- Pure Raw Image -->
       <img
         :src="p.img"
         :alt="p.title"
