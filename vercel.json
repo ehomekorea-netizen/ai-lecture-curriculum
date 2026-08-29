@@ -1,7 +1,13 @@
 {
+  "cleanUrls": false,
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/26_0829_agent-skills",
+      "destination": "/26_0829_agent-skills/index.html"
+    },
+    {
+      "source": "/26_0829_agent-skills/",
       "destination": "/26_0829_agent-skills/index.html"
     },
     {
@@ -13,11 +19,19 @@
       "destination": "/mokpo-welfare/index.html"
     },
     {
-      "source": "/mokpo-welfare/:path((?!assets/|.*\\..*).*)",
+      "source": "/mokpo-welfare/",
+      "destination": "/mokpo-welfare/index.html"
+    },
+    {
+      "source": "/mokpo-welfare/:path((?!assets/|icons/|cover/|.*\\..*).*)",
       "destination": "/mokpo-welfare/index.html"
     },
     {
       "source": "/milyang-6th-week",
+      "destination": "/milyang-6th-week/index.html"
+    },
+    {
+      "source": "/milyang-6th-week/",
       "destination": "/milyang-6th-week/index.html"
     },
     {
@@ -29,7 +43,7 @@
       "destination": "/milyang-5th-week/index.html"
     },
     {
-      "source": "/milyang-5th-week/:path((?!assets/|.*\\..*).*)",
+      "source": "/milyang-5th-week/",
       "destination": "/milyang-5th-week/index.html"
     },
     {
