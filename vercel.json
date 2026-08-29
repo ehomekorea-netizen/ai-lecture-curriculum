@@ -1,33 +1,52 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
-      "source": "/26_0829_agent-skills/:path*",
+      "source": "/26_0829_agent-skills",
       "destination": "/26_0829_agent-skills/index.html"
     },
     {
-      "source": "/mokpo-welfare/:path*",
+      "source": "/26_0829_agent-skills/:path((?!assets/|icons/|media/|.*\\..*).*)",
+      "destination": "/26_0829_agent-skills/index.html"
+    },
+    {
+      "source": "/mokpo-welfare",
       "destination": "/mokpo-welfare/index.html"
     },
     {
-      "source": "/milyang-6th-week/:path*",
+      "source": "/mokpo-welfare/:path((?!assets/|.*\\..*).*)",
+      "destination": "/mokpo-welfare/index.html"
+    },
+    {
+      "source": "/milyang-6th-week",
       "destination": "/milyang-6th-week/index.html"
     },
     {
-      "source": "/milyang-5th-week/:path*",
+      "source": "/milyang-6th-week/:path((?!assets/|.*\\..*).*)",
+      "destination": "/milyang-6th-week/index.html"
+    },
+    {
+      "source": "/milyang-5th-week",
       "destination": "/milyang-5th-week/index.html"
     },
     {
-      "source": "/jeonnam-maritime/:path*",
+      "source": "/milyang-5th-week/:path((?!assets/|.*\\..*).*)",
+      "destination": "/milyang-5th-week/index.html"
+    },
+    {
+      "source": "/jeonnam-maritime",
       "destination": "/jeonnam-maritime/index.html"
     },
     {
-      "source": "/kiamotors-excel/:path*",
+      "source": "/kiamotors-excel",
       "destination": "/kiamotors-excel/index.html"
     },
     {
-      "source": "/nambu-univ/:path*",
+      "source": "/nambu-univ",
       "destination": "/nambu-univ/index.html"
+    },
+    {
+      "source": "/",
+      "destination": "/index.html"
     }
   ]
 }
