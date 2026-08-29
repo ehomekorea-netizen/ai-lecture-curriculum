@@ -1,6 +1,7 @@
 {
-  "cleanUrls": false,
-  "trailingSlash": false,
+  "framework": null,
+  "buildCommand": "echo 'Vercel build ready'",
+  "outputDirectory": ".",
   "rewrites": [
     {
       "source": "/26_0829_agent-skills",
