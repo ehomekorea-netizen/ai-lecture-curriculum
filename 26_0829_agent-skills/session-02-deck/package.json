@@ -1,0 +1,38 @@
+{
+  "name": "slidev-deck-nekomeowww",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export --format pdf --timeout 60000",
+    "export-png": "slidev export --format png",
+    "export-pdf": "slidev export --format pdf"
+  },
+  "dependencies": {
+    "@fontsource-variable/comfortaa": "^5.1.0",
+    "@fontsource-variable/dm-sans": "^5.1.0",
+    "@fontsource-variable/nunito": "^5.1.0",
+    "@fontsource/kiwi-maru": "^5.1.0",
+    "@slidev/cli": "^0.49.0",
+    "@slidev/client": "^0.49.0",
+    "@slidev/theme-default": "^0.25.0",
+    "seedrandom": "^3.0.5",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.1.36",
+    "@iconify-json/devicon": "^1.1.29",
+    "@iconify-json/logos": "^1.1.42",
+    "@iconify-json/mdi": "^1.1.66",
+    "@iconify-json/ri": "^1.1.20",
+    "@iconify-json/simple-icons": "^1.1.100",
+    "@iconify/utils": "^2.1.22",
+    "@proj-airi/lobe-icons": "^1.0.0",
+    "@types/seedrandom": "^3.0.8",
+    "playwright-chromium": "^1.45.0",
+    "shiki-magic-move": "^0.4.0",
+    "typescript": "^5.4.0",
+    "unocss": "^0.61.0"
+  }
+}

@@ -1,0 +1,1552 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slidev Asset Review</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d12;
+      --panel: rgba(25, 29, 39, .88);
+      --panel-2: rgba(16, 19, 28, .92);
+      --line: rgba(255,255,255,.13);
+      --muted: #9da6b8;
+      --text: #f5f7fb;
+      --cyan: #55d6ff;
+      --violet: #c6a5ff;
+      --lime: #c4ef75;
+      --orange: #ffbf69;
+      --red: #ff8c9a;
+      --shadow: 0 18px 60px rgba(0,0,0,.28);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(58, 173, 201, .16), transparent 34rem),
+        radial-gradient(circle at 92% 8%, rgba(176, 93, 184, .15), transparent 30rem),
+        var(--bg);
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { padding: 34px 4vw 22px; border-bottom: 1px solid var(--line); }
+    .eyebrow { color: var(--cyan); font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 10px 0 7px; font-size: clamp(28px, 4vw, 52px); letter-spacing: -.04em; }
+    .subtitle { max-width: 980px; color: var(--muted); line-height: 1.6; margin: 0; }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 22px; }
+    .toolbar label { color: var(--muted); font-size: 12px; }
+    select, button { border: 1px solid var(--line); border-radius: 999px; color: var(--text); background: rgba(255,255,255,.06); padding: 9px 13px; font: inherit; }
+    button { cursor: pointer; }
+    button:hover, button.is-selected { border-color: rgba(85,214,255,.65); background: rgba(85,214,255,.14); }
+    #export { margin-left: auto; border-color: rgba(196,239,117,.42); color: var(--lime); }
+    .stats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+    .stat { border: 1px solid var(--line); border-radius: 12px; padding: 8px 11px; background: rgba(255,255,255,.035); color: var(--muted); font-size: 12px; }
+    .stat strong { color: var(--text); font-size: 16px; margin-right: 5px; }
+    main { display: grid; gap: 22px; padding: 26px 4vw 60px; }
+    .slide-card { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); box-shadow: var(--shadow); }
+    .slide-head { display: grid; grid-template-columns: minmax(210px, .72fr) 1.28fr; gap: 22px; padding: 20px; border-bottom: 1px solid var(--line); }
+    .slide-preview { min-height: 150px; display: grid; place-items: center; position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(145deg, #17212a, #18121d 70%, #101216); }
+    .slide-preview img { width: 100%; height: 100%; min-height: 150px; object-fit: cover; }
+    .slide-preview .wire { padding: 22px; width: 100%; color: rgba(255,255,255,.72); }
+    .wire .wire-kicker { width: 28%; height: 7px; border-radius: 6px; background: var(--cyan); opacity: .75; margin-bottom: 15px; }
+    .wire .wire-title { width: 76%; height: 18px; border-radius: 6px; background: rgba(255,255,255,.75); margin-bottom: 18px; }
+    .wire .wire-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .wire .wire-body i { height: 44px; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: rgba(255,255,255,.07); }
+    .slide-meta { display: flex; flex-direction: column; justify-content: center; }
+    .slide-id { color: var(--orange); font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .08em; }
+    .slide-meta h2 { margin: 8px 0 7px; font-size: clamp(21px, 2.2vw, 30px); letter-spacing: -.03em; }
+    .slide-meta p { color: var(--muted); line-height: 1.55; margin: 0 0 9px; }
+    .slide-meta .claim { color: #dbe3ef; }
+    .options { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; padding: 18px 20px 20px; }
+    .option { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--line); border-radius: 16px; padding: 15px; background: var(--panel-2); transition: border-color .2s, transform .2s, background .2s; }
+    .option:hover { transform: translateY(-2px); border-color: rgba(198,165,255,.52); }
+    .option.is-approved { border-color: rgba(196,239,117,.7); background: linear-gradient(145deg, rgba(196,239,117,.11), rgba(16,19,28,.96)); }
+    .option.is-skipped { opacity: .55; }
+    .option-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .option-label { color: var(--violet); font: 700 11px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .priority, .status { display: inline-flex; align-items: center; min-height: 22px; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .priority { color: var(--orange); border-color: rgba(255,191,105,.35); }
+    .recommendation { color: var(--violet); border-color: rgba(198,165,255,.35); }
+    .status { color: var(--cyan); border-color: rgba(85,214,255,.35); }
+    .option h3 { margin: 12px 0 7px; font-size: 18px; line-height: 1.28; }
+    .option p { color: var(--muted); font-size: 13px; line-height: 1.5; margin: 5px 0; }
+    .option p strong { color: #e8eef7; }
+    .asset-preview { min-height: 118px; display: grid; place-items: center; overflow: hidden; margin: 12px 0; border: 1px solid rgba(255,255,255,.1); border-radius: 12px; background: linear-gradient(135deg, rgba(85,214,255,.08), rgba(198,165,255,.09)); }
+    .asset-preview img { width: 100%; height: 118px; object-fit: cover; }
+    .asset-placeholder { width: 100%; padding: 17px; text-align: center; color: #dce5f3; }
+    .asset-placeholder .media-icon { display: block; margin-bottom: 7px; color: var(--cyan); font-size: 25px; }
+    .facts { display: grid; gap: 7px; margin: 10px 0 13px; }
+    .fact { padding-top: 7px; border-top: 1px solid rgba(255,255,255,.08); font-size: 12px; line-height: 1.45; }
+    .fact b { display: block; color: #dfe6f2; margin-bottom: 2px; }
+    .icon-row { display: flex; flex-wrap: wrap; gap: 7px; margin: 7px 0; }
+    .icon-token { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); border-radius: 8px; padding: 4px 6px; color: #dce5f3; font-size: 11px; }
+    .icon-token img { width: 18px; height: 18px; object-fit: contain; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; font-size: 12px; }
+    .links a { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 12px; }
+    .actions button { padding: 7px 9px; font-size: 11px; }
+    .actions button[data-action="approve"] { color: var(--lime); }
+    .actions button[data-action="skip"] { color: var(--red); }
+    .empty { padding: 42px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 16px; }
+    footer { padding: 0 4vw 32px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 760px) {
+      .slide-head { grid-template-columns: 1fr; }
+      #export { margin-left: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">Slidev / Static Enrichment Review</div>
+    <h1 id="page-title">Asset review</h1>
+    <p class="subtitle" id="page-subtitle"></p>
+    <div class="toolbar">
+      <label for="priority-filter">Priority</label>
+      <select id="priority-filter">
+        <option value="all">All</option>
+        <option value="P0">P0 core</option>
+        <option value="P1">P1 useful</option>
+        <option value="P2">P2 polish</option>
+      </select>
+      <label for="decision-filter">Decision</label>
+      <select id="decision-filter">
+        <option value="all">All</option>
+        <option value="undecided">Undecided</option>
+        <option value="approve">Approve</option>
+        <option value="find">Find</option>
+        <option value="capture">Capture</option>
+        <option value="create">Create</option>
+        <option value="skip">Skip</option>
+        <option value="defer">Defer</option>
+      </select>
+      <button id="export">Export decisions JSON</button>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main id="board"></main>
+  <footer>이 보드는 최종 덱이 아니라 에셋 선택용 검토 화면입니다. 승인한 자료를 실제 `public/` 경로에 넣은 뒤 정적 덱을 확인하세요.</footer>
+
+  <script id="review-data" type="application/json">
+{
+  "meta": {
+    "schemaVersion": 3,
+    "mode": "research",
+    "skillRevision": "slidev-asset-enrichment-v3",
+    "title": "Session 01 — AI 에이전트 업무 매뉴얼: SKILL 기초와 핵심 아키텍처",
+    "draft": "session-01-deck/slides.md",
+    "previewState": "wireframe",
+    "slideCount": 14,
+    "note": "Anthropic/OpenAI 공식 문서, YouTube 클립 타임코드, X/Threads 개발자 인용, 실제 UI 캡처 및 아키텍처 다이어그램 리서치가 전수 반영되었습니다."
+  },
+  "decisions": {},
+  "slides": [
+    {
+      "id": "S01",
+      "title": "AI 에이전트 업무 매뉴얼 표지",
+      "claim": "반복 프롬프트 복붙에서 벗어나, 점진적 로딩(Progressive Disclosure) 기반의 표준 SOP 설계",
+      "role": "orient",
+      "visualNeed": "required",
+      "question": "Anthropic Open Standard와 3대 런타임 IDE의 공식 브랜드 에셋이 신뢰성을 부여하는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-01-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Anthropic Open Standard 및 3대 IDE 공식 컬러/인버트 SVG 로고 레일",
+          "mediaType": "logo",
+          "kind": "logo-cluster + badge",
+          "previewLabel": "Claude, Claude Code, Antigravity, Cursor SVGs",
+          "visualJob": "orient + identity",
+          "why": "글로벌 에이전트 스킬 생태계의 신뢰성과 런타임 호환성을 명확히 전달",
+          "existingAssets": [
+            {
+              "label": "Anthropic Claude",
+              "path": "public/icons/claude-color.svg"
+            },
+            {
+              "label": "Claude Code",
+              "path": "public/icons/claudecode-color.svg"
+            },
+            {
+              "label": "Google Antigravity",
+              "path": "public/icons/antigravity-color.svg"
+            },
+            {
+              "label": "Cursor",
+              "path": "public/icons/cursor.svg"
+            }
+          ],
+          "staticPlacement": "중앙 타이틀 하단 뱃지 레일 (각 24×24px)",
+          "spec": "SVG Vector (Original Color \u0026 White Invert)",
+          "targetPath": "public/icons/",
+          "searchBrief": {
+            "ko": "공식 AI 에이전트 도구 벡터 로고 모음",
+            "en": "Anthropic Claude Cursor Antigravity official SVG logos"
+          },
+          "rights": "공식 상표 인용 (Nominative Fair Use)",
+          "fallback": "단색 텍스트 뱃지",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Agent Skills Open Standard",
+              "url": "https://agentskills.io",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "에이전트 스킬 오픈 표준 사양 및 공식 로고 규격",
+              "notes": "공식 오픈 표준 허브"
+            },
+            {
+              "label": "GitHub anthropics/skills Specification",
+              "url": "https://github.com/anthropics/skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "스킬 표준 리포지토리 및 구조 명세서",
+              "notes": "공식 오픈소스 리포지토리"
+            }
+          ]
+        },
+        {
+          "id": "ENR-01-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Claude Code CLI 터미널 스킬 로딩 히어로 캡처",
+          "mediaType": "screenshot",
+          "kind": "terminal-hero-capture",
+          "previewLabel": "Terminal Skill Discovery Frame",
+          "visualJob": "orient + context",
+          "why": "실제 터미널 환경에서 스킬이 감지되는 장면을 보여주어 실전 엔지니어링 몰입감 부여",
+          "existingAssets": [],
+          "staticPlacement": "중앙 우측 배경 은은한 글래스 프레임",
+          "spec": "PNG 1600×900, 터미널 폰트 14pt 이상, 텍스트 안전영역 확보",
+          "targetPath": "public/assets/s01/S01-terminal-hero.png",
+          "searchBrief": {
+            "ko": "Claude Code 터미널 에이전트 실행 시작 화면 캡처",
+            "en": "Claude Code CLI startup and agent skills discovery screenshot"
+          },
+          "rights": "사용자 직접 터미널 캡처 (개인정보/토큰 블라인드)",
+          "fallback": "현재의 순수 마크다운 다크 글래스 표지",
+          "candidateLinks": [
+            {
+              "label": "Claude Code CLI Documentation",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code",
+              "author": "Anthropic Docs",
+              "date": "2026-01",
+              "whatToUse": "CLI 초기화 및 인터페이스 캡처 가이드",
+              "notes": "공식 개발자 문서"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "문제 제기: 프롬프트 반복의 3대 한계",
+      "claim": "휘발성과 일관성 결여, 컨텍스트 창 낭비, 팀 공유 불가 3대 구조적 한계",
+      "role": "tension",
+      "visualNeed": "required",
+      "question": "프롬프트 복붙으로 고통받는 실제 개발자/실무자의 페인포인트가 체감되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-02-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "X(Twitter) / 커뮤니티 '프롬프트 복붙 vs 스킬' 실사용자 인용 카드",
+          "mediaType": "social",
+          "kind": "social-quote-card",
+          "previewLabel": "X/Developer Attributable Quote Card",
+          "visualJob": "tension + human-signal",
+          "why": "매 대화마다 수천 토큰의 프롬프트를 복붙하다 비용 폭탄과 컨텍스트 오염을 겪은 실무자의 생생한 목소리 전달",
+          "existingAssets": [],
+          "staticPlacement": "중앙 하단 또는 3열 카드 우측 보조 패널 (400×220px)",
+          "spec": "SVG/PNG 인용 카드 (작성자 핸들, 날짜, 하이라이트 문구)",
+          "targetPath": "public/assets/s01/S02-social-prompt-bloat.png",
+          "searchBrief": {
+            "ko": "프롬프트 복사 붙여넣기 컨텍스트 토큰 낭비 개발자 트윗 인용",
+            "en": "system prompt bloat vs agent skills token cost developer quote X post"
+          },
+          "rights": "공개 인용 및 출처 표기 (Attribution required)",
+          "fallback": "고대비 텍스트 인용 박스",
+          "candidateLinks": [
+            {
+              "label": "YouTube: Claude Agent Skills Explained",
+              "url": "https://www.youtube.com/watch?v=k_jQyR04l2Y",
+              "author": "Anthropic Technical Team",
+              "date": "2025-12",
+              "whatToUse": "00:45~01:20 프롬프트 복붙 한계와 스킬 도입 배경 설명 클립",
+              "notes": "공식 설명 영상"
+            },
+            {
+              "label": "Anthropic Prompt Engineering Guide",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+              "author": "Anthropic Docs",
+              "date": "2025-11",
+              "whatToUse": "컨텍스트 윈도우 한계 및 시스템 프롬프트 오버헤드 지침",
+              "notes": "공식 가이드"
+            }
+          ]
+        },
+        {
+          "id": "ENR-02-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "수천 토큰 프롬프트 복붙으로 인한 터미널 스크롤 압박 실제 캡처",
+          "mediaType": "screenshot",
+          "kind": "terminal-bloat-capture",
+          "previewLabel": "2000-Token Prompt Paste Bloat Capture",
+          "visualJob": "tension + evidence",
+          "why": "비효율적인 프롬프트 복붙이 화면과 토큰을 어떻게 낭비하는지 실제 증거로 제시",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 비교 프레임",
+          "spec": "PNG 1200×600, 경고 테두리, 불필요한 개인정보 블라인드",
+          "targetPath": "public/assets/s01/S02-terminal-bloat.png",
+          "searchBrief": {
+            "ko": "터미널 장문 시스템 프롬프트 복붙 컨텍스트 스크롤 캡처",
+            "en": "huge system prompt copy paste terminal bloat screenshot"
+          },
+          "rights": "직접 터미널 캡처",
+          "fallback": "3열 다크 글래스 카드 (Fragility / Bloat / Siloed)",
+          "candidateLinks": [
+            {
+              "label": "Claude Code Live Demo",
+              "url": "https://www.youtube.com/watch?v=y749pYpY8zY",
+              "author": "Claude Code Engineer Masterclass",
+              "date": "2026-01",
+              "whatToUse": "12:30~13:15 수동 프롬프트 입력의 비효율성 지적 구간",
+              "notes": "2시간 마스터클래스 튜토리얼"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "개념 정의: AI용 표준 업무 절차서 (SOP)",
+      "claim": "일회성 텍스트 복사-붙여넣기에서 규격화된 SOP 폴더 패키지로의 패러다임 전환",
+      "role": "concept",
+      "visualNeed": "required",
+      "question": "프롬프트와 SKILL 패키지의 패러다임 차이가 아키텍처적으로 이해되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-03-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "일회성 프롬프트 vs 구조화된 SOP 패키지 2단 비교 SVG 아키텍처 다이어그램",
+          "mediaType": "diagram",
+          "kind": "architecture-comparison-svg",
+          "previewLabel": "Ad-hoc Prompt vs Modular SOP Package Architecture",
+          "visualJob": "concept + contrast",
+          "why": "프롬프트 복붙 방식과 폴더 패키지(SKILL.md, scripts, references) 방식의 구조적 우월성을 도식화",
+          "existingAssets": [],
+          "staticPlacement": "좌우 2열 글래스 카드 중앙 상단 (880×260px)",
+          "spec": "SVG Vector (Cyan/Emerald/Rose 고대비 테마)",
+          "targetPath": "public/assets/s01/S03-sop-architecture.svg",
+          "searchBrief": {
+            "ko": "AI 에이전트 스킬 폴더 구조 SOP 모듈화 아키텍처 다이어그램",
+            "en": "AI agent skills modular SOP package folder architecture SVG diagram"
+          },
+          "rights": "자체 제작 벡터 다이어그램",
+          "fallback": "좌우 2열 마크다운 글래스 비교 카드",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Agent Skills Official Documentation",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "스킬의 공식 정의 및 구성요소 다이어그램 원본",
+              "notes": "공식 문서"
+            },
+            {
+              "label": "GitHub anthropics/skills spec",
+              "url": "https://github.com/anthropics/skills/blob/main/spec/specification.md",
+              "author": "Anthropic Open Source",
+              "date": "2025-12",
+              "whatToUse": "SOP 패키지 디렉토리 구조 스펙",
+              "notes": "표준 스펙 문서"
+            }
+          ]
+        },
+        {
+          "id": "ENR-03-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Anthropic 공식 문서의 'What is a Skill' 정의 섹션 캡처",
+          "mediaType": "screenshot",
+          "kind": "docs-definition-screenshot",
+          "previewLabel": "Official Docs Definition Frame",
+          "visualJob": "concept + evidence",
+          "why": "공식 제조사(Anthropic)의 원문 정의를 직접 보여주어 교육 내용의 권위 확보",
+          "existingAssets": [],
+          "staticPlacement": "하단 글래스 인용 배너 영역 (880×120px)",
+          "spec": "PNG 1600×400 크롭, 텍스트 하이라이트",
+          "targetPath": "public/assets/s01/S03-anthropic-definition.png",
+          "searchBrief": {
+            "ko": "Anthropic Claude 공식 문서 Agent Skills 정의 화면 캡처",
+            "en": "Anthropic docs what is an agent skill definition screenshot"
+          },
+          "rights": "공식 문서 캡처 및 출처 명시",
+          "fallback": "하단 텍스트 인용 배너",
+          "candidateLinks": [
+            {
+              "label": "Claude Docs: Agent Skills",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "공식 정의 문구 및 헤더",
+              "notes": "공식 레퍼런스"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "핵심 아키텍처: 점진적 로딩 (Progressive Disclosure)",
+      "claim": "세션 초기화 100토큰 대기 ➔ 온디맨드 실행 2단계 구조로 98% 토큰 절감",
+      "role": "mechanism",
+      "visualNeed": "required",
+      "question": "2단계 로딩 구조의 인과관계와 98% 토큰 절감 효과가 한눈에 입증되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-04-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "2-Stage 점진적 로딩 아키텍처 SVG 다이어그램 (Preload vs On-demand)",
+          "mediaType": "diagram",
+          "kind": "progressive-disclosure-flow",
+          "previewLabel": "Stage 1 (100 Tokens) -\u003e Stage 2 (Just-In-Time) SVG Flow",
+          "visualJob": "mechanism + evidence",
+          "why": "수백 개 스킬을 등록해도 100토큰만 쓰는 메커니즘과 온디맨드 지식 주입 과정을 시각적으로 완벽 증명",
+          "existingAssets": [],
+          "staticPlacement": "2열 카드 상단 인터랙티브 플로우 (880×280px)",
+          "spec": "SVG Vector (Cyan/Emerald 데이터 흐름 화살표 및 토큰 수치 레이블)",
+          "targetPath": "public/assets/s01/S04-progressive-disclosure.svg",
+          "searchBrief": {
+            "ko": "점진적 로딩 2단계 토큰 절감 에이전트 스킬 아키텍처 다이어그램",
+            "en": "progressive disclosure 2-stage token saving agent skills architecture SVG"
+          },
+          "rights": "자체 제작 벡터 다이어그램",
+          "fallback": "2열 스테이지 카드 + 하단 토큰 절감 바",
+          "candidateLinks": [
+            {
+              "label": "YouTube: Anthropic Agent Skills Explained",
+              "url": "https://www.youtube.com/watch?v=1n8jZ8H2bSg",
+              "author": "AI Engineer Guide",
+              "date": "2026-01",
+              "whatToUse": "02:15~03:00 점진적 로딩 2단계 설명 애니메이션",
+              "notes": "상세 튜토리얼"
+            },
+            {
+              "label": "Anthropic Context Window Cost Optimization",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/context-window",
+              "author": "Anthropic Docs",
+              "date": "2025-11",
+              "whatToUse": "토큰 절감 통계 및 온디맨드 로딩 비용 분석",
+              "notes": "비용 최적화 가이드"
+            }
+          ]
+        },
+        {
+          "id": "ENR-04-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Claude Code 콘솔 스킬 온디맨드 로딩 12초 MP4 비디오 클립",
+          "mediaType": "video",
+          "kind": "terminal-ondemand-video",
+          "previewLabel": "12s Screen Recording (0.1s Trigger Execution)",
+          "visualJob": "mechanism + behavior",
+          "why": "사용자가 질문했을 때 터미널에서 스킬이 0.1초 만에 로드되어 지침을 실행하는 실제 동작을 영상으로 체감",
+          "existingAssets": [],
+          "staticPlacement": "우측 패널 50% 비디오 프레임 + 포스터",
+          "spec": "MP4/H.264 12초, 무음, 1600×900, Poster Frame 포함",
+          "targetPath": "public/media/s01/S04-ondemand-load.mp4",
+          "searchBrief": {
+            "ko": "Claude Code 에이전트 스킬 온디맨드 자동 호출 화면 녹화",
+            "en": "Claude Code agent skills on demand trigger terminal screen recording"
+          },
+          "rights": "직접 화면 녹화",
+          "fallback": "정적 다이어그램 SVG",
+          "candidateLinks": [
+            {
+              "label": "Claude Code Live Demo Session",
+              "url": "https://www.youtube.com/watch?v=y749pYpY8zY",
+              "author": "Anthropic Live",
+              "date": "2026-01",
+              "whatToUse": "04:10~04:30 스킬 온디맨드 로딩 시연 구간",
+              "notes": "실제 시연 영상"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "title": "글로벌 오픈 표준과 생태계",
+      "claim": "특정 벤더 종속 없이 모든 AI 도구와 호환되는 글로벌 에이전트 스킬 생태계",
+      "role": "evidence",
+      "visualNeed": "required",
+      "question": "오픈 표준 제정과 주요 글로벌 빅테크 기업들의 실제 지원 현황이 증명되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-05-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "3열 생태계 카드 + 6대 글로벌 플랫폼 공식 컬러/인버트 SVG 로고월",
+          "mediaType": "logo",
+          "kind": "3-column grid + logo wall",
+          "previewLabel": "Anthropic, OpenAI, Google, Microsoft, Notion, Figma SVGs",
+          "visualJob": "evidence + ecosystem",
+          "why": "에이전트 스킬이 특정 도구에 종속되지 않고 산업 전반의 표준으로 정립되었음을 시각적으로 입증",
+          "existingAssets": [
+            {
+              "label": "Anthropic",
+              "path": "public/icons/claude-color.svg"
+            },
+            {
+              "label": "OpenAI",
+              "path": "public/icons/openai.svg"
+            },
+            {
+              "label": "Google",
+              "path": "public/icons/google-color.svg"
+            },
+            {
+              "label": "Microsoft",
+              "path": "public/icons/microsoft-color.svg"
+            },
+            {
+              "label": "Notion",
+              "path": "public/icons/notion.svg"
+            },
+            {
+              "label": "Figma",
+              "path": "public/icons/figma-color.svg"
+            }
+          ],
+          "staticPlacement": "상단 3열 카드 + 하단 로고월 배너 (각 28×28px)",
+          "spec": "SVG Vector (Original Color \u0026 White Invert)",
+          "targetPath": "public/icons/",
+          "searchBrief": {
+            "ko": "글로벌 AI SaaS 플랫폼 공식 로고 벡터 에셋",
+            "en": "OpenAI Google Microsoft Notion Figma official SVG logos"
+          },
+          "rights": "공식 상표 인용 (Nominative Fair Use)",
+          "fallback": "단색 텍스트 목록",
+          "candidateLinks": [
+            {
+              "label": "Agent Skills Open Standard Hub",
+              "url": "https://agentskills.io",
+              "author": "Agent Skills Consortium",
+              "date": "2025-12",
+              "whatToUse": "파트너사 및 에코시스템 현황",
+              "notes": "공식 표준 허브"
+            },
+            {
+              "label": "Model Context Protocol Specification",
+              "url": "https://modelcontextprotocol.io",
+              "author": "MCP Working Group",
+              "date": "2025-11",
+              "whatToUse": "글로벌 도구 호환성 스펙",
+              "notes": "공식 프로토콜 사이트"
+            },
+            {
+              "label": "OpenAI Tool Calling Guide",
+              "url": "https://platform.openai.com/docs/guides/tools",
+              "author": "OpenAI Docs",
+              "date": "2026-01",
+              "whatToUse": "OpenAI 런타임 도구 연동 스펙",
+              "notes": "공식 개발자 가이드"
+            }
+          ]
+        },
+        {
+          "id": "ENR-05-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Anthropic 공식 Agent Skills Open Standard 발표 트윗 및 GitHub 릴리즈 캡처",
+          "mediaType": "social",
+          "kind": "announcement-post-capture",
+          "previewLabel": "Anthropic Official Announcement Post",
+          "visualJob": "evidence + signal",
+          "why": "2025년 12월 공식 표준 발표 당시의 원문 소셜 게시물을 증거로 제시",
+          "existingAssets": [],
+          "staticPlacement": "하단 1/3 영역 글래스 카드 (880×140px)",
+          "spec": "PNG 1600×500 크롭, 고해상도",
+          "targetPath": "public/assets/s01/S05-open-standard-announcement.png",
+          "searchBrief": {
+            "ko": "Anthropic Agent Skills 공식 발표 트윗 GitHub 릴리즈 캡처",
+            "en": "Anthropic Agent Skills Open Standard official announcement tweet screenshot"
+          },
+          "rights": "공식 발표 인용",
+          "fallback": "기존 SVG 로고월 배너",
+          "candidateLinks": [
+            {
+              "label": "Anthropic News: Agent Skills Release",
+              "url": "https://www.anthropic.com/news/agent-skills",
+              "author": "Anthropic News",
+              "date": "2025-12",
+              "whatToUse": "오픈 표준 제정 보도자료 원문",
+              "notes": "공식 발표문"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "title": "SKILL.md 구조 해부",
+      "claim": "YAML Frontmatter 인덱스와 Markdown 본문 절차 및 디렉토리 계층",
+      "role": "show",
+      "visualNeed": "required",
+      "question": "실제 VS Code IDE 환경에서 파일과 폴더 구조가 어떻게 배치되는지 명확한가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-06-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "VS Code 실제 SKILL.md 파일 및 폴더 트리 하이라이트 IDE 캡처",
+          "mediaType": "code-capture",
+          "kind": "ide-file-tree-capture",
+          "previewLabel": "VS Code Editor + Folder Tree Split Capture",
+          "visualJob": "show + structure",
+          "why": "학습자가 본인 컴퓨터에서 열어볼 실제 VS Code의 파일 탐색기와 YAML 코드를 1:1로 매칭",
+          "existingAssets": [],
+          "staticPlacement": "좌측 7칸 Shiki 코드 패널 (520×320px)",
+          "spec": "PNG 1600×900, VS Code Dark+ 테마, 폰트 JetBrains Mono",
+          "targetPath": "public/assets/s01/S06-vscode-skill-anatomy.png",
+          "searchBrief": {
+            "ko": "VS Code 에디터 SKILL.md 폴더 구조 하이라이트 캡처",
+            "en": "VS Code editor SKILL.md folder hierarchy anatomy screenshot"
+          },
+          "rights": "직접 VS Code 캡처",
+          "fallback": "7:5 Shiki 코드 블록 및 마크다운 뷰어",
+          "candidateLinks": [
+            {
+              "label": "GitHub anthropics/skills templates",
+              "url": "https://github.com/anthropics/skills/tree/main/skills",
+              "author": "Anthropic Skills Repo",
+              "date": "2025-12",
+              "whatToUse": "표준 SKILL.md 템플릿 코드 파일",
+              "notes": "공식 예제 코드"
+            },
+            {
+              "label": "Claude Academy: Skills Anatomy",
+              "url": "https://academy.claude.com/",
+              "author": "Claude Academy",
+              "date": "2026-01",
+              "whatToUse": "스킬 파일 구조 강의 슬라이드 캡처",
+              "notes": "공식 온라인 강의"
+            }
+          ]
+        },
+        {
+          "id": "ENR-06-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "YAML 헤더 파싱 및 SOP 절차 실행 흐름도 SVG",
+          "mediaType": "diagram",
+          "kind": "yaml-parser-flow-svg",
+          "previewLabel": "YAML Header -\u003e SOP Parser SVG Diagram",
+          "visualJob": "show + mechanism",
+          "why": "에이전트가 YAML의 name/description을 읽고 본문 절차로 진입하는 과정을 다이어그램으로 해설",
+          "existingAssets": [],
+          "staticPlacement": "우측 5칸 해설 패널 상단",
+          "spec": "SVG Vector (Amber/Cyan/Emerald)",
+          "targetPath": "public/assets/s01/S06-yaml-parsing-diagram.svg",
+          "searchBrief": {
+            "ko": "YAML Frontmatter 마크다운 파싱 에이전트 스킬 다이어그램",
+            "en": "YAML frontmatter parser agent skills flow SVG diagram"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "마크다운 폴더 트리 텍스트",
+          "candidateLinks": [
+            {
+              "label": "Agent Skills Specification",
+              "url": "https://agentskills.io",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "Frontmatter 파싱 규칙 명세",
+              "notes": "공식 스펙"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "title": "좋은 스킬 설계 원칙: Name \u0026 Description",
+      "claim": "동작 형태 명명(-ing)과 목적+시점 공식으로 에이전트의 자동 트리거율 극대화",
+      "role": "guide",
+      "visualNeed": "required",
+      "question": "설명(Description)에 따라 에이전트가 스킬을 부르고 안 부르는 차이가 검증되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-07-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "에이전트 Description 키워드 매칭 터미널 디버깅 로그 캡처",
+          "mediaType": "screenshot",
+          "kind": "trigger-matching-log",
+          "previewLabel": "Terminal Semantic Search \u0026 Tool Match Log",
+          "visualJob": "guide + evidence",
+          "why": "사용자의 자연어 질문이 description 키워드와 매칭되어 0.1초 만에 도구가 선택되는 터미널 로그를 실물로 제시",
+          "existingAssets": [],
+          "staticPlacement": "하단 좋은/나쁜 예시 박스 우측 패널 (420×160px)",
+          "spec": "PNG 1200×600, 녹색 성공 매칭 하이라이트",
+          "targetPath": "public/assets/s01/S07-trigger-matching-log.png",
+          "searchBrief": {
+            "ko": "에이전트 스킬 설명 키워드 자동 트리거 터미널 로그 캡처",
+            "en": "agent skills description semantic search trigger terminal log screenshot"
+          },
+          "rights": "직접 터미널 캡처",
+          "fallback": "나쁜/좋은 예시 텍스트 비교 박스",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Docs: Best Practices for Skills",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills#best-practices",
+              "author": "Anthropic Docs",
+              "date": "2025-12",
+              "whatToUse": "Name과 Description 작성 공식 가이드라인",
+              "notes": "공식 문서 모범사례"
+            },
+            {
+              "label": "YouTube: How to Create Claude Code Agent Skills",
+              "url": "https://www.youtube.com/watch?v=Yp6S358Vj-w",
+              "author": "Developer Tutorial",
+              "date": "2026-01",
+              "whatToUse": "05:10~06:20 Description 튜닝에 따른 트리거 성공/실패 시연",
+              "notes": "실전 영상 튜토리얼"
+            }
+          ]
+        },
+        {
+          "id": "ENR-07-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Anthropic Best Practices 가이드의 Name/Description 공식 인용 카드",
+          "mediaType": "quote",
+          "kind": "best-practice-quote-card",
+          "previewLabel": "Official Naming \u0026 Description Rule Card",
+          "visualJob": "guide + authority",
+          "why": "3인칭 작성 원칙과 핵심 키워드 배치 규칙을 공식 가이드 인용 카드로 깔끔하게 정리",
+          "existingAssets": [],
+          "staticPlacement": "상단 Rule 2 카드 내 인용 박스",
+          "spec": "SVG/글래스 카드 인용구",
+          "targetPath": "public/assets/s01/S07-best-practices-quote.png",
+          "searchBrief": {
+            "ko": "Anthropic 에이전트 스킬 명명법 가이드 인용",
+            "en": "Anthropic agent skills naming convention best practices quote"
+          },
+          "rights": "공식 문서 인용",
+          "fallback": "현재의 2열 규칙 글래스 카드",
+          "candidateLinks": [
+            {
+              "label": "Agent Skills Best Practices",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "공식 작성 권장사항",
+              "notes": "공식 가이드"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "title": "작업 자유도 (Freedom Level) 제어",
+      "claim": "창의적 분석(High Freedom) vs 결정론적 실행(Low Freedom)에 따른 지침 설계",
+      "role": "decision",
+      "visualNeed": "required",
+      "question": "업무 성격에 따른 자율성 제어 스펙트럼이 시각적으로 명확한가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-08-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "High Freedom vs Low Freedom 자율성 스펙트럼 인포그래픽 SVG",
+          "mediaType": "diagram",
+          "kind": "freedom-spectrum-infographic",
+          "previewLabel": "Creative Heuristics \u003c---\u003e Deterministic CLI Spectrum",
+          "visualJob": "decision + balance",
+          "why": "기획/전략(휴리스틱)부터 DB/연산(결정론적 실행)까지 업무별 최적의 자유도 설정 기준을 스펙트럼으로 제시",
+          "existingAssets": [],
+          "staticPlacement": "좌우 2열 카드 상단 중앙 (880×220px)",
+          "spec": "SVG Vector (Purple/Cyan 그라디언트 스펙트럼 바)",
+          "targetPath": "public/assets/s01/S08-freedom-spectrum.svg",
+          "searchBrief": {
+            "ko": "AI 에이전트 작업 자유도 휴리스틱 결정론적 실행 스펙트럼 인포그래픽",
+            "en": "AI agent freedom level heuristics vs deterministic execution spectrum SVG"
+          },
+          "rights": "자체 제작 벡터 다이어그램",
+          "fallback": "좌우 2열 글래스 카드 (High vs Low)",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Prompt Engineering Tutorial",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+              "author": "Anthropic Docs",
+              "date": "2025-11",
+              "whatToUse": "모델 자유도 및 엄격한 포맷팅 제어 가이드",
+              "notes": "공식 튜토리얼"
+            },
+            {
+              "label": "YouTube: Claude Agents Masterclass",
+              "url": "https://www.youtube.com/watch?v=y749pYpY8zY",
+              "author": "Claude Engineer",
+              "date": "2026-01",
+              "whatToUse": "35:00~37:30 에이전트 자율성 레벨 설계 기법",
+              "notes": "심화 강의"
+            }
+          ]
+        },
+        {
+          "id": "ENR-08-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "코드 리뷰 스킬(High) vs DB 마이그레이션 스킬(Low) 실제 지침 비교 캡처",
+          "mediaType": "screenshot",
+          "kind": "freedom-skills-comparison",
+          "previewLabel": "Code Review SKILL.md vs DB Migration SKILL.md",
+          "visualJob": "decision + example",
+          "why": "원칙 중심의 자유로운 지침과 명령어 중심의 엄격한 지침의 실제 코드 형태를 대조",
+          "existingAssets": [],
+          "staticPlacement": "좌우 50:50 분할 패널 코드 뷰",
+          "spec": "PNG 1600×900, 분할 뷰",
+          "targetPath": "public/assets/s01/S08-freedom-comparison.png",
+          "searchBrief": {
+            "ko": "코드 리뷰 스킬 데이터베이스 마이그레이션 스킬 지침 비교 캡처",
+            "en": "code review skill vs db migration skill instruction comparison screenshot"
+          },
+          "rights": "직접 작성 및 캡처",
+          "fallback": "2열 마크다운 카드",
+          "candidateLinks": [
+            {
+              "label": "GitHub anthropics/skills example skills",
+              "url": "https://github.com/anthropics/skills/tree/main/skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "실제 리뷰 스킬 및 데이터 변환 스킬 샘플",
+              "notes": "공식 예제 모음"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "title": "실습 P01 안내",
+      "claim": "15분간 나만의 첫 SKILL.md 직접 작성하기 (업무 선정 ➔ YAML 헤더 ➔ 단계별 SOP)",
+      "role": "practice",
+      "visualNeed": "required",
+      "question": "GPTwork의 $skill creator 툴과 실습 단계가 직관적으로 전달되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-09-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "GPTwork $skill creator 실시간 대화 및 스킬 자동 생성 UI 캡처",
+          "mediaType": "screenshot",
+          "kind": "gptwork-skill-creator-ui",
+          "previewLabel": "GPTwork $skill creator Interactive Prompt Capture",
+          "visualJob": "practice + transfer",
+          "why": "수강생이 GPTwork 프롬프트 창에서 `$skill creator`를 치고 대화하는 실제 인터페이스를 보여주어 진입장벽을 제거",
+          "existingAssets": [],
+          "staticPlacement": "하단 배너 우측 캡처 프레임 (480×200px)",
+          "spec": "PNG 1200×600, GPTwork UI 다크 테마",
+          "targetPath": "public/assets/s01/S09-gptwork-skill-creator.png",
+          "searchBrief": {
+            "ko": "GPTwork skill creator 프롬프트 자동 생성 화면 캡처",
+            "en": "GPTwork skill creator prompt auto scaffolding UI screenshot"
+          },
+          "rights": "GPTwork 서비스 화면 캡처",
+          "fallback": "하단 글래스 Pro Tip 배너",
+          "candidateLinks": [
+            {
+              "label": "GPTwork Official Platform",
+              "url": "https://gptwork.io",
+              "author": "GPTwork",
+              "date": "2026-01",
+              "whatToUse": "플랫폼 내 $skill creator 툴 실행 화면",
+              "notes": "공식 실습 플랫폼"
+            },
+            {
+              "label": "Claude Code Hands-on Guide",
+              "url": "https://academy.claude.com/",
+              "author": "Anthropic",
+              "date": "2026-01",
+              "whatToUse": "실습 가이드라인",
+              "notes": "교육 허브"
+            }
+          ]
+        },
+        {
+          "id": "ENR-09-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "3단계 실습 진행 로드맵 안내 인포그래픽 SVG",
+          "mediaType": "diagram",
+          "kind": "practice-roadmap-svg",
+          "previewLabel": "Step 1(3m) -\u003e Step 2(5m) -\u003e Step 3(7m) Roadmap SVG",
+          "visualJob": "practice + orient",
+          "why": "15분 실습의 타임라인과 단계별 완수 목표를 명확한 로드맵으로 안내",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 연결 라인",
+          "spec": "SVG Vector (Cyan/Emerald/Purple)",
+          "targetPath": "public/assets/s01/S09-practice-roadmap.svg",
+          "searchBrief": {
+            "ko": "15분 실습 단계별 로드맵 타임라인 인포그래픽 SVG",
+            "en": "15-minute hands-on practice roadmap timeline infographic SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "3열 실습 스텝 글래스 카드",
+          "candidateLinks": [
+            {
+              "label": "YouTube: Create Agent Skills Fast",
+              "url": "https://www.youtube.com/watch?v=Yp6S358Vj-w",
+              "author": "Dev Tutorial",
+              "date": "2026-01",
+              "whatToUse": "실습 시간 관리 팁",
+              "notes": "유튜브 튜토리얼"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "실습 참고용 템플릿: polishing-emails",
+      "claim": "거친 초안을 정중한 글로벌 비즈니스 영문 이메일로 변환하는 완성형 스킬 템플릿",
+      "role": "show",
+      "visualNeed": "required",
+      "question": "변환 전과 후의 실물 결과물과 완성형 코드가 한눈에 대조되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-10-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "거친 한글 초안 vs 정중한 영문 메일 Before \u0026 After 대조 카드",
+          "mediaType": "artifact",
+          "kind": "before-after-email-card",
+          "previewLabel": "Rough Draft Input vs Polished Business Email Output",
+          "visualJob": "show + practice-transfer",
+          "why": "스킬이 작동했을 때 산출되는 실제 영문 이메일 결과물의 품질을 시각적으로 증명하여 작성 동기 부여",
+          "existingAssets": [],
+          "staticPlacement": "중앙 템플릿 패널 우측 분할 프레임 (420×280px)",
+          "spec": "SVG/PNG Before-After 카드 (Red Diff / Emerald Diff)",
+          "targetPath": "public/assets/s01/S10-email-before-after.png",
+          "searchBrief": {
+            "ko": "비즈니스 영문 이메일 변환 전후 Before After 예시 캡처",
+            "en": "rough draft to polite business email transformation before after example"
+          },
+          "rights": "직접 작성 예시",
+          "fallback": "단일 Shiki 마크다운 코드 뷰어",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Claude Prompt Library: Business Email",
+              "url": "https://docs.anthropic.com/en/prompt-library/library",
+              "author": "Anthropic Prompt Library",
+              "date": "2025-11",
+              "whatToUse": "영문 이메일 변환 프롬프트 및 완성 예제",
+              "notes": "공식 프롬프트 라이브러리"
+            },
+            {
+              "label": "GitHub anthropics/skills example templates",
+              "url": "https://github.com/anthropics/skills/tree/main/skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "이메일 변환 스킬 템플릿",
+              "notes": "공식 샘플 리포"
+            }
+          ]
+        },
+        {
+          "id": "ENR-10-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "polishing-emails 완성형 SKILL.md 컬러 코드 하이라이트 캡처",
+          "mediaType": "code-capture",
+          "kind": "email-skill-code-capture",
+          "previewLabel": "polishing-emails Full Syntax Highlight Capture",
+          "visualJob": "show + template",
+          "why": "수강생이 그대로 복사해서 수정할 수 있는 완전한 코드 형태를 제공",
+          "existingAssets": [],
+          "staticPlacement": "중앙 풀 너비 글래스 프레임",
+          "spec": "PNG 1600×900, JetBrains Mono, Shiki Dark 테마",
+          "targetPath": "public/assets/s01/S10-email-skill-template.png",
+          "searchBrief": {
+            "ko": "polishing-emails SKILL.md 템플릿 코드 캡처",
+            "en": "polishing-emails SKILL.md full template syntax screenshot"
+          },
+          "rights": "직접 캡처",
+          "fallback": "인라인 Shiki 코드 블록",
+          "candidateLinks": [
+            {
+              "label": "GitHub anthropics/skills",
+              "url": "https://github.com/anthropics/skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "마크다운 원본 템플릿",
+              "notes": "오픈소스 리포"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "title": "실습 진행 및 5대 자가 점검 체크리스트",
+      "claim": "15:00 라이브 타이머 + 5대 자가 점검 체크리스트 + 작성 핵심 팁",
+      "role": "verify",
+      "visualNeed": "required",
+      "question": "스킬 구문 검증기(Validator) 통과 터미널 화면과 실전 체크리스트가 대비되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-11-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "터미널 스킬 유효성 검증(`skills validate`) 100% 통과 캡처",
+          "mediaType": "screenshot",
+          "kind": "skill-validation-pass-log",
+          "previewLabel": "Terminal 'Skill Validation Passed (5/5 Gates)' Capture",
+          "visualJob": "verify + achievement",
+          "why": "수강생이 스스로 5대 체크리스트를 통과했을 때의 터미널 정상 검증 화면을 보여주어 성취감 고취",
+          "existingAssets": [],
+          "staticPlacement": "우측 패널 상단 (420×180px)",
+          "spec": "PNG 1200×600, 녹색 PASS 뱃지 하이라이트",
+          "targetPath": "public/assets/s01/S11-skill-validation-pass.png",
+          "searchBrief": {
+            "ko": "에이전트 스킬 유효성 검증 성공 터미널 화면 캡처",
+            "en": "agent skills validation pass check terminal output screenshot"
+          },
+          "rights": "직접 터미널 캡처",
+          "fallback": "좌우 2열 체크리스트 글래스 카드",
+          "candidateLinks": [
+            {
+              "label": "Agent Skills Schema Validator Tool",
+              "url": "https://github.com/anthropics/skills/tree/main/spec",
+              "author": "Anthropic Skills Spec",
+              "date": "2025-12",
+              "whatToUse": "공식 유효성 검증 CLI 명령어",
+              "notes": "공식 검증 도구"
+            },
+            {
+              "label": "Claude Code CLI Guide",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code",
+              "author": "Anthropic Docs",
+              "date": "2026-01",
+              "whatToUse": "CLI 스킬 진단 명령어",
+              "notes": "공식 문서"
+            }
+          ]
+        },
+        {
+          "id": "ENR-11-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "5대 자가 점검 게이트 뱃지 인포그래픽 SVG",
+          "mediaType": "diagram",
+          "kind": "verification-gates-svg",
+          "previewLabel": "5 Quality Gates (Name / Trigger / Step / Format / Security) SVG",
+          "visualJob": "verify + checklist",
+          "why": "5개 필수 검증 항목을 게이트 형태의 SVG 다이어그램으로 시각화",
+          "existingAssets": [],
+          "staticPlacement": "좌측 패널 체크리스트 헤더",
+          "spec": "SVG Vector (Emerald/Cyan 체크 뱃지)",
+          "targetPath": "public/assets/s01/S11-verification-gates.svg",
+          "searchBrief": {
+            "ko": "5대 품질 점검 게이트 체크리스트 인포그래픽 SVG",
+            "en": "5 quality verification gates checklist infographic SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "현재의 5대 체크리스트 텍스트",
+          "candidateLinks": [
+            {
+              "label": "Agent Skills Best Practices Checklist",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "공식 체크리스트 항목",
+              "notes": "공식 가이드"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "title": "스킬 검증과 트리거 디버깅 요령",
+      "claim": "자연어 호출 검증, 오작동(과호출) 방지, 멀티모델 일관성 3단계 테스트",
+      "role": "troubleshoot",
+      "visualNeed": "required",
+      "question": "트리거 실패 시 해결하는 3단계 디버깅 플로우가 선명한가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-12-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "자연어 트리거 테스트 및 부정 조건 디버깅 터미널 세션 캡처",
+          "mediaType": "screenshot",
+          "kind": "trigger-debugging-terminal",
+          "previewLabel": "Natural Trigger vs False-Positive Prevention Debug Log",
+          "visualJob": "troubleshoot + evidence",
+          "why": "스킬 이름을 직접 부르지 않아도 자연어 질문에 에이전트가 스킬을 자동 호출하는 실제 디버깅 터미널 화면 제시",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 프레임 (880×200px)",
+          "spec": "PNG 1600×800, 에이전트 디버그 로그 하이라이트",
+          "targetPath": "public/assets/s01/S12-trigger-debugging.png",
+          "searchBrief": {
+            "ko": "에이전트 자연어 스킬 호출 디버깅 터미널 세션 캡처",
+            "en": "agent natural language skill trigger debugging terminal session screenshot"
+          },
+          "rights": "직접 터미널 캡처",
+          "fallback": "3열 글래스 검증 카드",
+          "candidateLinks": [
+            {
+              "label": "YouTube: Claude Code Agent Skills Debugging",
+              "url": "https://www.youtube.com/watch?v=1n8jZ8H2bSg",
+              "author": "AI Engineer",
+              "date": "2026-01",
+              "whatToUse": "08:15~09:40 트리거 과호출 방지 부정 조건 튜닝 구간",
+              "notes": "디버깅 실무 팁 영상"
+            },
+            {
+              "label": "Anthropic Docs: Troubleshooting Agent Skills",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills#troubleshooting",
+              "author": "Anthropic Docs",
+              "date": "2025-12",
+              "whatToUse": "오작동 원인 분석 및 해결 공식",
+              "notes": "공식 트러블슈팅 가이드"
+            }
+          ]
+        },
+        {
+          "id": "ENR-12-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "스킬 3단계 디버깅 순서도 SVG (호출 검증 ➔ 부정 조건 ➔ 모델 테스트)",
+          "mediaType": "diagram",
+          "kind": "debugging-flowchart-svg",
+          "previewLabel": "3-Step Skill Debugging Decision Flowchart SVG",
+          "visualJob": "troubleshoot + guide",
+          "why": "스킬이 작동하지 않을 때 어떤 순서로 원인을 짚어야 하는지 명확한 의사결정 트리 제공",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 플로우 라인",
+          "spec": "SVG Vector (Cyan/Amber/Purple 플로우차트)",
+          "targetPath": "public/assets/s01/S12-debugging-flow.svg",
+          "searchBrief": {
+            "ko": "에이전트 스킬 트리거 디버깅 순서도 의사결정 트리 SVG",
+            "en": "agent skills trigger debugging decision tree flowchart SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "3열 글래스 카드 텍스트",
+          "candidateLinks": [
+            {
+              "label": "Claude Developer Guide: Debugging",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code",
+              "author": "Anthropic",
+              "date": "2026-01",
+              "whatToUse": "디버그 플로우차트 레퍼런스",
+              "notes": "공식 문서"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "title": "Session 1 핵심 요약",
+      "claim": "AI의 업무 표준 절차서, 100토큰의 점진적 로딩, 정밀한 트리거 \u0026 자유도 3대 배움",
+      "role": "evidence",
+      "visualNeed": "required",
+      "question": "1세션의 3대 핵심 기둥이 구조적 통합 맵으로 한눈에 조망되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-13-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "Session 1 핵심 3대 기둥 통합 아키텍처 맵 SVG",
+          "mediaType": "diagram",
+          "kind": "session1-summary-map-svg",
+          "previewLabel": "SOP + 100-Token Disclosure + Freedom Control Integrated Map",
+          "visualJob": "evidence + summary",
+          "why": "1세션 50분 동안 배운 SOP 개념, 점진적 로딩, 자유도 제어를 하나의 유기적 맵으로 정리",
+          "existingAssets": [],
+          "staticPlacement": "3열 요약 카드 상단 통합 맵 (880×220px)",
+          "spec": "SVG Vector (Emerald/Cyan/Purple 다크 글래스 맵)",
+          "targetPath": "public/assets/s01/S13-session1-summary-map.svg",
+          "searchBrief": {
+            "ko": "AI 에이전트 스킬 아키텍처 3대 원칙 요약 인포그래픽 맵",
+            "en": "AI agent skills 3 key architectural pillars summary infographic map SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "3열 요약 넘버링 글래스 카드",
+          "candidateLinks": [
+            {
+              "label": "Agent Skills Open Standard Hub",
+              "url": "https://agentskills.io",
+              "author": "Agent Skills Consortium",
+              "date": "2025-12",
+              "whatToUse": "핵심 원칙 요약",
+              "notes": "표준 사이트"
+            },
+            {
+              "label": "Anthropic Research Blog: The Future of Agentic Skills",
+              "url": "https://www.anthropic.com/news/agent-skills",
+              "author": "Anthropic Research",
+              "date": "2025-12",
+              "whatToUse": "에이전트 스킬의 엔터프라이즈 도입 가치",
+              "notes": "공식 블로그"
+            }
+          ]
+        },
+        {
+          "id": "ENR-13-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Anthropic 수석 연구원의 'Agent Skills Paradigm' 명언 인용 카드",
+          "mediaType": "quote",
+          "kind": "key-takeaway-quote-card",
+          "previewLabel": "Anthropic 'Skills Turn Prompts into Software' Quote Card",
+          "visualJob": "evidence + inspiration",
+          "why": "단순한 기법이 아닌, 프롬프트 엔지니어링이 재사용 가능한 엔터프라이즈 소프트웨어로 진화한다는 핵심 철학 각인",
+          "existingAssets": [],
+          "staticPlacement": "하단 요약 배너 영역 (880×120px)",
+          "spec": "SVG/글래스 인용 카드",
+          "targetPath": "public/assets/s01/S13-summary-quote.png",
+          "searchBrief": {
+            "ko": "Anthropic 에이전트 스킬 패러다임 소프트웨어 전환 인용구",
+            "en": "Anthropic agent skills turn prompt engineering into software engineering quote"
+          },
+          "rights": "공식 발표 인용",
+          "fallback": "3열 글래스 카드 텍스트",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Announcement",
+              "url": "https://www.anthropic.com/news/agent-skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "공식 인용구",
+              "notes": "발표문 원문"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "title": "Session 2 예고 \u0026 피날레",
+      "claim": "MCP 커넥터 연동, 플러그인, 엔터프라이즈 운영 전략 및 10분 휴식",
+      "role": "orient",
+      "visualNeed": "required",
+      "question": "2세션 공식 MCP 실습 리포지토리로 바로 연결되는 인터랙티브 QR과 로드맵이 제공되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-14-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "Session 2 공식 MCP 실습 리포지토리 연결 고대비 다크 QR 코드",
+          "mediaType": "qr",
+          "kind": "session2-mcp-qr-card",
+          "previewLabel": "Dark-mode High Contrast QR Code (Links to MCP Repo)",
+          "visualJob": "orient + next-action",
+          "why": "10분 쉬는 시간 동안 수강생들이 스마트폰이나 노트북으로 2세션 리포지토리와 MCP 공식 문서를 즉시 확인할 수 있도록 지원",
+          "existingAssets": [],
+          "staticPlacement": "중앙 하단 10분 휴식 배너 좌측 (140×140px)",
+          "spec": "PNG/SVG 고대비 다크 테마 QR (Quiet Zone 확보, 스마트폰 스캔 최적화)",
+          "targetPath": "public/assets/s01/S14-session2-mcp-qr.png",
+          "searchBrief": {
+            "ko": "Model Context Protocol 공식 문서 연결 QR 코드",
+            "en": "Model Context Protocol official GitHub documentation dark QR code"
+          },
+          "rights": "자체 생성 QR (modelcontextprotocol.io 링크)",
+          "fallback": "단색 텍스트 링크",
+          "candidateLinks": [
+            {
+              "label": "Model Context Protocol Official Site",
+              "url": "https://modelcontextprotocol.io",
+              "author": "Model Context Protocol",
+              "date": "2025-11",
+              "whatToUse": "2세션 MCP 프로토콜 표준 문서",
+              "notes": "공식 사이트"
+            },
+            {
+              "label": "GitHub modelcontextprotocol",
+              "url": "https://github.com/modelcontextprotocol",
+              "author": "MCP Open Source",
+              "date": "2025-11",
+              "whatToUse": "MCP 서버 리포지토리 및 SDK",
+              "notes": "공식 리포지토리"
+            },
+            {
+              "label": "Anthropic Claude Academy",
+              "url": "https://academy.claude.com/",
+              "author": "Anthropic",
+              "date": "2026-01",
+              "whatToUse": "2세션 심화 과정 안내",
+              "notes": "교육 허브"
+            }
+          ]
+        },
+        {
+          "id": "ENR-14-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "SKILL ➔ MCP Server ➔ 사내 DB/Slack 연동 확장 아키텍처 로드맵 SVG",
+          "mediaType": "diagram",
+          "kind": "skill-to-mcp-roadmap-svg",
+          "previewLabel": "SKILL (Instructions) + MCP (Tools/DB) Full Architecture Map",
+          "visualJob": "orient + bridge",
+          "why": "스킬(지침)과 MCP(도구/데이터 연결)가 어떻게 결합하여 완벽한 엔터프라이즈 AI를 만드는지 2세션의 큰 그림 제시",
+          "existingAssets": [],
+          "staticPlacement": "중앙 카드 상단 연결 다이어그램 (640×200px)",
+          "spec": "SVG Vector (Purple/Cyan/Pink)",
+          "targetPath": "public/assets/s01/S01-skill-to-mcp-roadmap.svg",
+          "searchBrief": {
+            "ko": "SKILL 지침과 MCP 도구 커넥터 결합 에이전트 확장 아키텍처 로드맵 SVG",
+            "en": "SKILL instructions combined with MCP tool connectors enterprise architecture SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "현재의 MCP Protocol / plugin.json 뱃지 클러스터",
+          "candidateLinks": [
+            {
+              "label": "Anthropic: Introducing Model Context Protocol",
+              "url": "https://www.anthropic.com/news/model-context-protocol",
+              "author": "Anthropic",
+              "date": "2024-11",
+              "whatToUse": "MCP 도입 배경 및 아키텍처 도식",
+              "notes": "공식 발표문"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <script>
+    const reviewData = JSON.parse(document.getElementById('review-data').textContent)
+    const stateKey = `slidev-asset-review:${location.pathname}:${reviewData.meta?.skillRevision || 'legacy'}`
+    const saved = JSON.parse(localStorage.getItem(stateKey) || '{}')
+    // `option.decision` is deliberately ignored. Generated proposals are
+    // undecided; only this explicit decision map or a browser click is a user
+    // decision. This also makes an accidentally pre-approved old board appear
+    // undecided instead of silently treating model preference as consent.
+    const decisions = { ...(reviewData.decisions || {}), ...saved }
+
+    const decisionFor = (option) => {
+      const value = decisions[option.id]
+      if (typeof value === 'string' && value) return value
+      if (value && typeof value === 'object' && value.decision) return value.decision
+      return 'undecided'
+    }
+    const recommendationFor = (option) => {
+      const value = String(option.recommendation || '').toLowerCase()
+      if (['preferred', 'alternative', 'fallback'].includes(value)) return value
+      const label = String(option.label || '').toLowerCase()
+      if (label.includes('alternative')) return 'alternative'
+      if (label.includes('fallback')) return 'fallback'
+      return 'missing'
+    }
+
+    const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
+    })[char])
+    const safeUrl = (value = '') => /^(https?:\/\/|\.\.?\/|\/)/i.test(value) ? value : '#'
+    const text = (value = '') => escapeHtml(value || '—')
+    const link = (item) => `<a href="${escapeHtml(safeUrl(item.url))}" target="_blank" rel="noopener noreferrer">${text(item.label || item.url)}</a>`
+
+    const mediaGlyph = (kind = '') => {
+      const key = kind.toLowerCase()
+      if (key.includes('video') || key.includes('youtube') || key.includes('gif')) return '▶'
+      if (key.includes('social') || key.includes('quote')) return '❝'
+      if (key.includes('diagram') || key.includes('svg') || key.includes('flow')) return '◇'
+      if (key.includes('screenshot') || key.includes('screen')) return '▣'
+      if (key.includes('chart') || key.includes('data')) return '▥'
+      if (key.includes('logo') || key.includes('icon')) return '✦'
+      return '＋'
+    }
+
+    const iconRow = (assets = []) => assets.length
+      ? `<div class="icon-row">${assets.map(asset => `<span class="icon-token">${asset.path ? `<img src="${escapeHtml(asset.path)}" alt="">` : ''}${text(asset.label)}</span>`).join('')}</div>`
+      : ''
+
+    const optionMatches = (option, priority, decision) => {
+      const chosen = decisionFor(option)
+      return (priority === 'all' || option.priority === priority) && (decision === 'all' || chosen === decision)
+    }
+
+    const optionCard = (slide, option) => {
+      const decision = decisionFor(option)
+      const recommendation = recommendationFor(option)
+      const classes = ['option', decision === 'approve' ? 'is-approved' : '', decision === 'skip' ? 'is-skipped' : ''].filter(Boolean).join(' ')
+      const preview = option.previewImage
+        ? `<img src="${escapeHtml(option.previewImage)}" alt="${escapeHtml(option.title || option.kind || 'asset candidate')}">`
+        : `<div class="asset-placeholder"><span class="media-icon">${mediaGlyph(option.mediaType || option.kind)}</span>${text(option.previewLabel || option.mediaType || option.kind || 'static candidate')}</div>`
+      const hasSearchBrief = option.searchBrief && (option.searchBrief.ko || option.searchBrief.en)
+      const search = hasSearchBrief ? `<div class="fact"><b>Search / capture brief</b>${text(option.searchBrief.ko)}${option.searchBrief.en ? `<br><span>${text(option.searchBrief.en)}</span>` : ''}</div>` : ''
+      const links = option.candidateLinks?.length ? `<div class="links">${option.candidateLinks.map(link).join('')}</div>` : ''
+      const actions = ['approve', 'find', 'capture', 'create', 'skip', 'defer'].map(action => `<button type="button" data-option="${escapeHtml(option.id)}" data-action="${action}" class="${decision === action ? 'is-selected' : ''}">${action}</button>`).join('')
+      return `<article class="${classes}" data-option-id="${escapeHtml(option.id)}" data-priority="${escapeHtml(option.priority || '')}" data-decision="${escapeHtml(decision)}">
+        <div class="option-top"><span class="option-label">${text(option.id || 'Option')}</span><span class="chips"><span class="recommendation">${text(recommendation)}</span><span class="priority">${text(option.priority || 'P1')}</span><span class="status">${text(decision)}</span></span></div>
+        <h3>${text(option.title || option.kind || 'Asset candidate')}</h3>
+        <div class="asset-preview">${preview}</div>
+        <p><strong>Visual job:</strong> ${text(option.visualJob)}</p>
+        <p><strong>Why:</strong> ${text(option.why)}</p>
+        ${iconRow(option.existingAssets)}
+        <div class="facts">
+          <div class="fact"><b>Media type</b>${text(option.mediaType || option.kind)}</div>
+          <div class="fact"><b>Static placement</b>${text(option.staticPlacement)}</div>
+          <div class="fact"><b>Minimum spec / target</b>${text(option.spec)}${option.targetPath ? `<br><code>${text(option.targetPath)}</code>` : ''}</div>
+          ${search}
+          <div class="fact"><b>Rights / fallback</b>${text(option.rights)}<br><span>${text(option.fallback)}</span></div>
+        </div>
+        ${links}
+        <div class="actions">${actions}</div>
+      </article>`
+    }
+
+    const render = () => {
+      const priority = document.getElementById('priority-filter').value
+      const decision = document.getElementById('decision-filter').value
+      const board = document.getElementById('board')
+      const visibleSlides = []
+      for (const slide of reviewData.slides || []) {
+        const options = (slide.options || []).filter(option => optionMatches(option, priority, decision))
+        if (!options.length) continue
+        visibleSlides.push(`<section class="slide-card">
+          <div class="slide-head">
+            <div class="slide-preview">${slide.previewImage ? `<img src="${escapeHtml(slide.previewImage)}" alt="${escapeHtml(slide.title || slide.id)}">` : `<div class="wire"><div class="wire-kicker"></div><div class="wire-title"></div><div class="wire-body"><i></i><i></i><i></i></div></div>`}</div>
+            <div class="slide-meta"><div class="slide-id">${text(slide.id)}</div><h2>${text(slide.title)}</h2><p class="claim">${text(slide.claim)}</p><p><strong>Current role:</strong> ${text(slide.role)}<br><strong>Static question:</strong> ${text(slide.question)}</p></div>
+          </div>
+          <div class="options">${options.map(option => optionCard(slide, option)).join('')}</div>
+        </section>`)
+      }
+      board.innerHTML = visibleSlides.join('') || '<div class="empty">현재 필터와 일치하는 후보가 없습니다.</div>'
+      document.querySelectorAll('[data-action]').forEach(button => button.addEventListener('click', () => {
+        decisions[button.dataset.option] = button.dataset.action
+        localStorage.setItem(stateKey, JSON.stringify(decisions))
+        render()
+        renderStats()
+      }))
+    }
+
+    const renderStats = () => {
+      const options = (reviewData.slides || []).flatMap(slide => slide.options || [])
+      const count = value => options.filter(option => decisionFor(option) === value).length
+      const priorityCount = value => options.filter(option => option.priority === value).length
+      document.getElementById('stats').innerHTML = [
+        ['slides', (reviewData.slides || []).length],
+        ['ideas', options.length],
+        ['P0', priorityCount('P0')],
+        ['P1', priorityCount('P1')],
+        ['P2', priorityCount('P2')],
+        ['decided', options.length - count('undecided')],
+      ].map(([label, value]) => `<span class="stat"><strong>${value}</strong>${label}</span>`).join('')
+    }
+
+    document.getElementById('page-title').textContent = reviewData.meta?.title || 'Asset review'
+    document.getElementById('page-subtitle').textContent = [
+      reviewData.meta?.draft ? `Draft: ${reviewData.meta.draft}` : '',
+      reviewData.meta?.previewState ? `Preview: ${reviewData.meta.previewState}` : '',
+      reviewData.meta?.note || '승인된 슬라이드 흐름은 유지하고, 정적 에셋 선택지만 검토합니다.',
+    ].filter(Boolean).join(' · ')
+    document.getElementById('priority-filter').addEventListener('change', render)
+    document.getElementById('decision-filter').addEventListener('change', render)
+    document.getElementById('export').addEventListener('click', () => {
+      const payload = {
+        kind: 'slidev-asset-review-decisions',
+        generatedAt: new Date().toISOString(),
+        draft: reviewData.meta?.draft || '',
+        schemaVersion: reviewData.meta?.schemaVersion || 3,
+        skillRevision: reviewData.meta?.skillRevision || '',
+        decisions,
+      }
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const anchor = document.createElement('a')
+      anchor.href = url
+      anchor.download = 'asset-review-decisions.json'
+      anchor.click()
+      URL.revokeObjectURL(url)
+    })
+    renderStats()
+    render()
+  </script>
+</body>
+</html>

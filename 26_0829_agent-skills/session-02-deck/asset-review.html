@@ -1,0 +1,1520 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slidev Asset Review</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0d12;
+      --panel: rgba(25, 29, 39, .88);
+      --panel-2: rgba(16, 19, 28, .92);
+      --line: rgba(255,255,255,.13);
+      --muted: #9da6b8;
+      --text: #f5f7fb;
+      --cyan: #55d6ff;
+      --violet: #c6a5ff;
+      --lime: #c4ef75;
+      --orange: #ffbf69;
+      --red: #ff8c9a;
+      --shadow: 0 18px 60px rgba(0,0,0,.28);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(58, 173, 201, .16), transparent 34rem),
+        radial-gradient(circle at 92% 8%, rgba(176, 93, 184, .15), transparent 30rem),
+        var(--bg);
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { padding: 34px 4vw 22px; border-bottom: 1px solid var(--line); }
+    .eyebrow { color: var(--cyan); font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { margin: 10px 0 7px; font-size: clamp(28px, 4vw, 52px); letter-spacing: -.04em; }
+    .subtitle { max-width: 980px; color: var(--muted); line-height: 1.6; margin: 0; }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-top: 22px; }
+    .toolbar label { color: var(--muted); font-size: 12px; }
+    select, button { border: 1px solid var(--line); border-radius: 999px; color: var(--text); background: rgba(255,255,255,.06); padding: 9px 13px; font: inherit; }
+    button { cursor: pointer; }
+    button:hover, button.is-selected { border-color: rgba(85,214,255,.65); background: rgba(85,214,255,.14); }
+    #export { margin-left: auto; border-color: rgba(196,239,117,.42); color: var(--lime); }
+    .stats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 17px; }
+    .stat { border: 1px solid var(--line); border-radius: 12px; padding: 8px 11px; background: rgba(255,255,255,.035); color: var(--muted); font-size: 12px; }
+    .stat strong { color: var(--text); font-size: 16px; margin-right: 5px; }
+    main { display: grid; gap: 22px; padding: 26px 4vw 60px; }
+    .slide-card { border: 1px solid var(--line); border-radius: 22px; overflow: hidden; background: linear-gradient(135deg, rgba(255,255,255,.065), rgba(255,255,255,.02)); box-shadow: var(--shadow); }
+    .slide-head { display: grid; grid-template-columns: minmax(210px, .72fr) 1.28fr; gap: 22px; padding: 20px; border-bottom: 1px solid var(--line); }
+    .slide-preview { min-height: 150px; display: grid; place-items: center; position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(145deg, #17212a, #18121d 70%, #101216); }
+    .slide-preview img { width: 100%; height: 100%; min-height: 150px; object-fit: cover; }
+    .slide-preview .wire { padding: 22px; width: 100%; color: rgba(255,255,255,.72); }
+    .wire .wire-kicker { width: 28%; height: 7px; border-radius: 6px; background: var(--cyan); opacity: .75; margin-bottom: 15px; }
+    .wire .wire-title { width: 76%; height: 18px; border-radius: 6px; background: rgba(255,255,255,.75); margin-bottom: 18px; }
+    .wire .wire-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .wire .wire-body i { height: 44px; border: 1px solid rgba(255,255,255,.2); border-radius: 8px; background: rgba(255,255,255,.07); }
+    .slide-meta { display: flex; flex-direction: column; justify-content: center; }
+    .slide-id { color: var(--orange); font: 700 12px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .08em; }
+    .slide-meta h2 { margin: 8px 0 7px; font-size: clamp(21px, 2.2vw, 30px); letter-spacing: -.03em; }
+    .slide-meta p { color: var(--muted); line-height: 1.55; margin: 0 0 9px; }
+    .slide-meta .claim { color: #dbe3ef; }
+    .options { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; padding: 18px 20px 20px; }
+    .option { display: flex; flex-direction: column; min-width: 0; border: 1px solid var(--line); border-radius: 16px; padding: 15px; background: var(--panel-2); transition: border-color .2s, transform .2s, background .2s; }
+    .option:hover { transform: translateY(-2px); border-color: rgba(198,165,255,.52); }
+    .option.is-approved { border-color: rgba(196,239,117,.7); background: linear-gradient(145deg, rgba(196,239,117,.11), rgba(16,19,28,.96)); }
+    .option.is-skipped { opacity: .55; }
+    .option-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .option-label { color: var(--violet); font: 700 11px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; }
+    .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+    .priority, .status { display: inline-flex; align-items: center; min-height: 22px; padding: 3px 7px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .priority { color: var(--orange); border-color: rgba(255,191,105,.35); }
+    .recommendation { color: var(--violet); border-color: rgba(198,165,255,.35); }
+    .status { color: var(--cyan); border-color: rgba(85,214,255,.35); }
+    .option h3 { margin: 12px 0 7px; font-size: 18px; line-height: 1.28; }
+    .option p { color: var(--muted); font-size: 13px; line-height: 1.5; margin: 5px 0; }
+    .option p strong { color: #e8eef7; }
+    .asset-preview { min-height: 118px; display: grid; place-items: center; overflow: hidden; margin: 12px 0; border: 1px solid rgba(255,255,255,.1); border-radius: 12px; background: linear-gradient(135deg, rgba(85,214,255,.08), rgba(198,165,255,.09)); }
+    .asset-preview img { width: 100%; height: 118px; object-fit: cover; }
+    .asset-placeholder { width: 100%; padding: 17px; text-align: center; color: #dce5f3; }
+    .asset-placeholder .media-icon { display: block; margin-bottom: 7px; color: var(--cyan); font-size: 25px; }
+    .facts { display: grid; gap: 7px; margin: 10px 0 13px; }
+    .fact { padding-top: 7px; border-top: 1px solid rgba(255,255,255,.08); font-size: 12px; line-height: 1.45; }
+    .fact b { display: block; color: #dfe6f2; margin-bottom: 2px; }
+    .icon-row { display: flex; flex-wrap: wrap; gap: 7px; margin: 7px 0; }
+    .icon-token { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); border-radius: 8px; padding: 4px 6px; color: #dce5f3; font-size: 11px; }
+    .icon-token img { width: 18px; height: 18px; object-fit: contain; }
+    .links { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; font-size: 12px; }
+    .links a { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .actions { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 12px; }
+    .actions button { padding: 7px 9px; font-size: 11px; }
+    .actions button[data-action="approve"] { color: var(--lime); }
+    .actions button[data-action="skip"] { color: var(--red); }
+    .empty { padding: 42px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: 16px; }
+    footer { padding: 0 4vw 32px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 760px) {
+      .slide-head { grid-template-columns: 1fr; }
+      #export { margin-left: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">Slidev / Static Enrichment Review</div>
+    <h1 id="page-title">Asset review</h1>
+    <p class="subtitle" id="page-subtitle"></p>
+    <div class="toolbar">
+      <label for="priority-filter">Priority</label>
+      <select id="priority-filter">
+        <option value="all">All</option>
+        <option value="P0">P0 core</option>
+        <option value="P1">P1 useful</option>
+        <option value="P2">P2 polish</option>
+      </select>
+      <label for="decision-filter">Decision</label>
+      <select id="decision-filter">
+        <option value="all">All</option>
+        <option value="undecided">Undecided</option>
+        <option value="approve">Approve</option>
+        <option value="find">Find</option>
+        <option value="capture">Capture</option>
+        <option value="create">Create</option>
+        <option value="skip">Skip</option>
+        <option value="defer">Defer</option>
+      </select>
+      <button id="export">Export decisions JSON</button>
+    </div>
+    <div class="stats" id="stats"></div>
+  </header>
+  <main id="board"></main>
+  <footer>이 보드는 최종 덱이 아니라 에셋 선택용 검토 화면입니다. 승인한 자료를 실제 `public/` 경로에 넣은 뒤 정적 덱을 확인하세요.</footer>
+
+  <script id="review-data" type="application/json">
+{
+  "meta": {
+    "schemaVersion": 3,
+    "mode": "research",
+    "skillRevision": "slidev-asset-enrichment-v3",
+    "title": "Session 02 — 실전 SKILL 응용: Antigravity \u0026 GPTwork 실습과 직무별 모범 사례",
+    "draft": "session-02-deck/slides.md",
+    "previewState": "wireframe",
+    "slideCount": 14,
+    "note": "Anthropic/OpenAI 공식 문서, YouTube 튜토리얼 타임코드, 비개발 직무별 산출물, 터미널 실행 캡처 및 아키텍처 다이어그램 리서치가 전수 반영되었습니다."
+  },
+  "decisions": {},
+  "slides": [
+    {
+      "id": "S01",
+      "title": "실전 SKILL 응용 표지",
+      "claim": "사내 지식(references/)과 도구(scripts/)를 결합한 전 직무 AI 비서 구축 및 디버깅",
+      "role": "orient",
+      "visualNeed": "required",
+      "question": "Google Antigravity 공식 컬러 로고와 실무 뱃지가 런타임 호환성을 명확히 보장하는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-01-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Google Antigravity 공식 컬러 SVG 로고 + 직무별 뱃지 레일",
+          "mediaType": "logo",
+          "kind": "logo-cluster + badge",
+          "previewLabel": "Antigravity Color SVG + Role Badges",
+          "visualJob": "orient + identity",
+          "why": "공식 런타임 플랫폼의 신뢰성과 실무 적용성을 선명하게 제시",
+          "existingAssets": [
+            {
+              "label": "Google Antigravity",
+              "path": "public/icons/antigravity-color.svg"
+            }
+          ],
+          "staticPlacement": "중앙 타이틀 하단 뱃지 레일 (24×24px)",
+          "spec": "SVG Vector (Original Color)",
+          "targetPath": "public/icons/antigravity-color.svg",
+          "searchBrief": {
+            "ko": "Google Antigravity 공식 벡터 SVG 로고",
+            "en": "Google Antigravity official SVG logo vector"
+          },
+          "rights": "공식 상표 인용 (Nominative Fair Use)",
+          "fallback": "단색 텍스트 뱃지",
+          "candidateLinks": [
+            {
+              "label": "Google Antigravity Documentation",
+              "url": "https://agentskills.io",
+              "author": "Google / Antigravity",
+              "date": "2026-01",
+              "whatToUse": "공식 로고 및 스킬 런타임 연동 가이드",
+              "notes": "공식 플랫폼 문서"
+            },
+            {
+              "label": "GPTwork Official Platform",
+              "url": "https://gptwork.io",
+              "author": "GPTwork",
+              "date": "2026-01",
+              "whatToUse": "실습 허브 및 직무별 템플릿",
+              "notes": "실습 플랫폼"
+            }
+          ]
+        },
+        {
+          "id": "ENR-01-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Google Antigravity \u0026 GPTwork 통합 런타임 히어로 캡처",
+          "mediaType": "screenshot",
+          "kind": "runtime-hero-capture",
+          "previewLabel": "Antigravity/GPTwork Startup UI Frame",
+          "visualJob": "orient + context",
+          "why": "수강생이 실습하게 될 실제 Antigravity/GPTwork 대시보드 화면을 배경에 배치하여 현장감 고취",
+          "existingAssets": [],
+          "staticPlacement": "중앙 우측 글래스 프레임",
+          "spec": "PNG 1600×900, 고해상도 다크 UI",
+          "targetPath": "public/assets/s02/S01-antigravity-hero.png",
+          "searchBrief": {
+            "ko": "Google Antigravity 에이전트 실행 시작 화면 캡처",
+            "en": "Google Antigravity AI agent workspace startup screenshot"
+          },
+          "rights": "직접 UI 캡처",
+          "fallback": "현재의 순수 마크다운 다크 글래스 표지",
+          "candidateLinks": [
+            {
+              "label": "Claude Code CLI Guide",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code",
+              "author": "Anthropic",
+              "date": "2026-01",
+              "whatToUse": "런타임 인터페이스 캡처 레퍼런스",
+              "notes": "공식 개발자 가이드"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S02",
+      "title": "스킬 실행 3대 오작동 증상",
+      "claim": "초기 스킬 실행 시 누구나 마주치는 호출 실패, 포맷 이탈, 지식 왜곡",
+      "role": "tension",
+      "visualNeed": "required",
+      "question": "스킬이 왜 오작동하는지 실제 에러 로그나 커뮤니티 사례로 체감되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-02-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "스킬 트리거 실패(Not Triggered) 및 포맷 이탈 실제 터미널 디버그 캡처",
+          "mediaType": "screenshot",
+          "kind": "skill-failure-debug-log",
+          "previewLabel": "Skill Not Triggered \u0026 Format Mismatch Debug Capture",
+          "visualJob": "tension + evidence",
+          "why": "에이전트가 스킬을 무시하고 일반 LLM 답변으로 빠지는 실제 실패 로그를 보여주어 공감대와 학습 몰입도 형성",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 디버그 프레임 (880×220px)",
+          "spec": "PNG 1600×800, 붉은색 에러 하이라이트",
+          "targetPath": "public/assets/s02/S02-skill-failure-modes.png",
+          "searchBrief": {
+            "ko": "에이전트 스킬 호출 실패 포맷 이탈 터미널 에러 로그 캡처",
+            "en": "agent skill not triggered format mismatch terminal debug log screenshot"
+          },
+          "rights": "직접 터미널 캡처",
+          "fallback": "3열 고대비 다크 글래스 카드 (Rose/Amber/Purple)",
+          "candidateLinks": [
+            {
+              "label": "YouTube: Claude Code Agent Skills Debugging",
+              "url": "https://www.youtube.com/watch?v=1n8jZ8H2bSg",
+              "author": "AI Engineer Guide",
+              "date": "2026-01",
+              "whatToUse": "01:10~02:30 스킬 오작동 3대 원인 설명 구간",
+              "notes": "실전 디버깅 튜토리얼"
+            },
+            {
+              "label": "Anthropic Docs: Troubleshooting Skills",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills#troubleshooting",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "스킬 오작동 원인 분석 문서",
+              "notes": "공식 문서"
+            }
+          ]
+        },
+        {
+          "id": "ENR-02-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "커뮤니티 '스킬 오작동 고통' 실사용자 질문 글 인용 카드",
+          "mediaType": "social",
+          "kind": "community-trouble-quote-card",
+          "previewLabel": "Developer Community Skill Failure Post Card",
+          "visualJob": "tension + human-signal",
+          "why": "실제 현업 실무자가 겪은 '분명 스킬을 만들었는데 AI가 지침을 무시한다'는 생생한 질문 인용",
+          "existingAssets": [],
+          "staticPlacement": "우측 보조 패널 (400×220px)",
+          "spec": "SVG/PNG 인용 카드",
+          "targetPath": "public/assets/s02/S02-community-failure-quote.png",
+          "searchBrief": {
+            "ko": "AI 에이전트 스킬 지침 무시 오작동 커뮤니티 질문 인용",
+            "en": "agent ignoring skill instructions community question post quote"
+          },
+          "rights": "공개 인용 (Attribution required)",
+          "fallback": "3열 글래스 카드 텍스트",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Developer Forum",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+              "author": "Anthropic Forum",
+              "date": "2025-12",
+              "whatToUse": "프롬프트 상충 및 스킬 미동작 사례",
+              "notes": "개발자 포럼"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S03",
+      "title": "3단계 실행 런타임 파이프라인",
+      "claim": "0.1초 트리거 감지 ➔ 온디맨드 지식 로드 ➔ Few-shot 규칙 완수의 3단계 파이프라인",
+      "role": "mechanism",
+      "visualNeed": "required",
+      "question": "스킬의 3단계 실행 과정(트리거-\u003e지식로드-\u003e완수)이 도식화되어 보이는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-03-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "스킬 3단계 실행 런타임 데이터 플로우 아키텍처 SVG 다이어그램",
+          "mediaType": "diagram",
+          "kind": "runtime-pipeline-flow-svg",
+          "previewLabel": "Trigger (0.1s) -\u003e Knowledge Load -\u003e Execution Pipeline SVG",
+          "visualJob": "mechanism + causality",
+          "why": "자연어 입력부터 최종 규격화된 출력까지의 3단계 흐름을 시각적 데이터 파이프라인으로 완벽히 해석",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 파이프라인 흐름도 (880×240px)",
+          "spec": "SVG Vector (Cyan/Sky/Emerald 순차 흐름선)",
+          "targetPath": "public/assets/s02/S03-runtime-pipeline.svg",
+          "searchBrief": {
+            "ko": "에이전트 스킬 3단계 실행 런타임 파이프라인 데이터 흐름도 SVG",
+            "en": "AI agent skills 3-step runtime execution pipeline data flow SVG diagram"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "3열 순차 파이프라인 글래스 카드",
+          "candidateLinks": [
+            {
+              "label": "YouTube: Anthropic Agent Skills Explained",
+              "url": "https://www.youtube.com/watch?v=k_jQyR04l2Y",
+              "author": "Anthropic Engineering",
+              "date": "2025-12",
+              "whatToUse": "02:10~03:20 런타임 실행 3단계 시각화 클립",
+              "notes": "공식 설명 영상"
+            },
+            {
+              "label": "Agent Skills Open Standard Spec",
+              "url": "https://agentskills.io",
+              "author": "Agent Skills Consortium",
+              "date": "2025-12",
+              "whatToUse": "런타임 라이프사이클 명세",
+              "notes": "공식 표준 스펙"
+            }
+          ]
+        },
+        {
+          "id": "ENR-03-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "Antigravity 스킬 3단계 실시간 실행 15초 MP4 비디오 클립",
+          "mediaType": "video",
+          "kind": "runtime-execution-video",
+          "previewLabel": "15s Screen Recording (Trigger to Done)",
+          "visualJob": "mechanism + behavior",
+          "why": "실제 도구가 트리거되어 references를 읽고 출력물을 완성하는 15초 과정을 화면 녹화로 생생하게 전달",
+          "existingAssets": [],
+          "staticPlacement": "우측 50% 비디오 프레임 + 포스터",
+          "spec": "MP4/H.264 15초, 무음, 1600×900, Poster Frame 포함",
+          "targetPath": "public/media/s02/S03-runtime-execution.mp4",
+          "searchBrief": {
+            "ko": "Google Antigravity 에이전트 스킬 자동 실행 화면 녹화",
+            "en": "Google Antigravity agent skill automated execution screen recording"
+          },
+          "rights": "직접 화면 녹화",
+          "fallback": "정적 파이프라인 SVG",
+          "candidateLinks": [
+            {
+              "label": "Claude Code Live Demo",
+              "url": "https://www.youtube.com/watch?v=y749pYpY8zY",
+              "author": "Claude Code Engineer",
+              "date": "2026-01",
+              "whatToUse": "18:20~18:45 스킬 실행 전 과정 시연 구간",
+              "notes": "실시간 라이브 시연"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S04",
+      "title": "하위 폴더 선택 결정 트리",
+      "claim": "80%는 SKILL.md 단일 파일, 규정은 references/, 계산은 scripts/",
+      "role": "decision",
+      "visualNeed": "required",
+      "question": "내 업무에 어떤 폴더 구조를 써야 할지 1초 만에 분기 판단이 서는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-04-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "업무 유형별 Type A/B/C 폴더 선택 의사결정 순서도 SVG",
+          "mediaType": "diagram",
+          "kind": "folder-decision-tree-svg",
+          "previewLabel": "Type A (Single) / Type B (references/) / Type C (scripts/) Tree SVG",
+          "visualJob": "decision + orientation",
+          "why": "업무 특성(단순 지침 vs 방대한 사내 규정 vs 정밀 연산)에 맞춰 어떤 하위 폴더를 만들어야 하는지 명쾌한 분기점 제공",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 의사결정 트리 (880×240px)",
+          "spec": "SVG Vector (Slate / Sky / Amber 분기선)",
+          "targetPath": "public/assets/s02/S04-folder-decision-tree.svg",
+          "searchBrief": {
+            "ko": "에이전트 스킬 하위 폴더 선택 의사결정 순서도 다이어그램 SVG",
+            "en": "agent skills subfolder choice decision tree flowchart SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "Type A/B/C 3열 결정 트리 글래스 카드",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Agent Skills Directory Hierarchy",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "디렉토리 구조 및 서브폴더 사용 권장사항",
+              "notes": "공식 문서"
+            },
+            {
+              "label": "GitHub anthropics/skills spec",
+              "url": "https://github.com/anthropics/skills/blob/main/spec/specification.md",
+              "author": "Anthropic Open Source",
+              "date": "2025-12",
+              "whatToUse": "scripts 및 references 폴더 스펙",
+              "notes": "표준 명세서"
+            }
+          ]
+        },
+        {
+          "id": "ENR-04-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "3가지 스킬 폴더 구조의 실제 디렉토리 트리 비교 캡처",
+          "mediaType": "screenshot",
+          "kind": "directory-structures-comparison",
+          "previewLabel": "3-Type Directory Hierarchy Side-by-side Capture",
+          "visualJob": "decision + show",
+          "why": "실제 VS Code에서 생성되는 3가지 폴더 트리 구조를 시각적으로 나란히 제시",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 내부",
+          "spec": "PNG 1600×900, 트리 하이라이트",
+          "targetPath": "public/assets/s02/S04-folder-structures-comparison.png",
+          "searchBrief": {
+            "ko": "스킬 폴더 구조 scripts references 디렉토리 캡처",
+            "en": "agent skill subfolders scripts references directory structure screenshot"
+          },
+          "rights": "직접 캡처",
+          "fallback": "마크다운 폴더 트리 텍스트",
+          "candidateLinks": [
+            {
+              "label": "Claude Code CLI Tutorial",
+              "url": "https://academy.claude.com/",
+              "author": "Claude Academy",
+              "date": "2026-01",
+              "whatToUse": "폴더 구조 예제",
+              "notes": "공식 강의"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S05",
+      "title": "references/ 패턴의 위력",
+      "claim": "20페이지 규정집도 평소엔 100토큰만 쓰고 질문 시에만 온디맨드 로드",
+      "role": "evidence",
+      "visualNeed": "required",
+      "question": "20페이지 규정집을 분리하고 SKILL.md에서 링크하는 코드가 선명하게 보이는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-05-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "CS 응대 매뉴얼 references/ 분리 및 SKILL.md 온디맨드 호출 스플릿 코드 캡처",
+          "mediaType": "code-capture",
+          "kind": "references-linkage-code-capture",
+          "previewLabel": "references/cs_manual.md \u003c--\u003e SKILL.md Linkage Capture",
+          "visualJob": "evidence + structure",
+          "why": "본문에 규정을 다 넣지 않고 `references/cs_manual.md`로 분리하여 필요할 때만 읽게 만드는 실제 코드 형태 제시",
+          "existingAssets": [],
+          "staticPlacement": "좌우 2열 글래스 패널 (880×300px)",
+          "spec": "PNG 1600×900, JetBrains Mono, Shiki Dark 테마",
+          "targetPath": "public/assets/s02/S05-references-ondemand-code.png",
+          "searchBrief": {
+            "ko": "에이전트 스킬 references 폴더 사내 규정 링크 호출 코드 캡처",
+            "en": "agent skill references folder manual linkage on demand code capture"
+          },
+          "rights": "직접 작성 및 캡처",
+          "fallback": "좌우 2열 글래스 카드 (폴더 구조 + Shiki 코드 뷰)",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Agent Skills: Subdirectories Guide",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "references 폴더 지식 참조 문법",
+              "notes": "공식 문서"
+            },
+            {
+              "label": "YouTube: How to Create Claude Code Skills",
+              "url": "https://www.youtube.com/watch?v=Yp6S358Vj-w",
+              "author": "Developer Guide",
+              "date": "2026-01",
+              "whatToUse": "07:30~08:45 references 폴더 온디맨드 로딩 시연",
+              "notes": "실무 튜토리얼"
+            }
+          ]
+        },
+        {
+          "id": "ENR-05-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "20페이지 규정집 100토큰 압축 유지 지식 주입 아키텍처 다이어그램 SVG",
+          "mediaType": "diagram",
+          "kind": "references-architecture-svg",
+          "previewLabel": "20-page Manual (100 Tokens Standby) Knowledge Injection SVG",
+          "visualJob": "evidence + mechanism",
+          "why": "컨텍스트 윈도우 비용을 95% 이상 절감하는 지식 분리 원리를 다이어그램으로 증명",
+          "existingAssets": [],
+          "staticPlacement": "좌우 패널 상단 연결 다이어그램",
+          "spec": "SVG Vector (Cyan/Amber/Emerald)",
+          "targetPath": "public/assets/s02/S05-references-architecture.svg",
+          "searchBrief": {
+            "ko": "대용량 사내 규정 온디맨드 로딩 지식 주입 아키텍처 SVG",
+            "en": "large document on demand loading knowledge injection architecture SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "좌우 2열 마크다운 비교 카드",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Context Optimization Guide",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/context-window",
+              "author": "Anthropic Docs",
+              "date": "2025-11",
+              "whatToUse": "대용량 문서 참조 최적화 기법",
+              "notes": "비용 최적화 가이드"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S06",
+      "title": "scripts/ 패턴의 위력",
+      "claim": "확률적 언어모델의 연산 한계를 5줄 파이썬 도구로 완벽 극복",
+      "role": "prove",
+      "visualNeed": "required",
+      "question": "AI의 날짜/영업일 암산 오차와 파이썬 스크립트의 100% 정답이 명확히 대비되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-06-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "LLM 암산 오차(D+14일 계산 실수) vs 파이썬 계산기(0.001초 100% 정답) 터미널 대조 캡처",
+          "mediaType": "screenshot",
+          "kind": "llm-vs-python-calc-capture",
+          "previewLabel": "LLM Hallucinated Date vs calc_days.py 100% Correct Capture",
+          "visualJob": "prove + contrast",
+          "why": "AI에게 암산을 시켰을 때 생기는 영업일 오차와, 5줄짜리 파이썬 도구를 쥐여주었을 때의 완벽한 계산 결과를 실물로 대조",
+          "existingAssets": [],
+          "staticPlacement": "좌우 2열 카드 상단 대조 프레임 (880×260px)",
+          "spec": "PNG 1600×900, Rose/Emerald 대조 테두리",
+          "targetPath": "public/assets/s02/S06-llm-vs-python-calc.png",
+          "searchBrief": {
+            "ko": "LLM 날짜 계산 실수 파이썬 스크립트 도구 실행 비교 터미널 캡처",
+            "en": "LLM date calculation error vs python script tool execution comparison screenshot"
+          },
+          "rights": "직접 터미널 캡처",
+          "fallback": "좌우 2열 대비 글래스 카드",
+          "candidateLinks": [
+            {
+              "label": "OpenAI Tool Calling Guide",
+              "url": "https://platform.openai.com/docs/guides/tools",
+              "author": "OpenAI Docs",
+              "date": "2026-01",
+              "whatToUse": "결정론적 도구 실행 원리 및 코드 예제",
+              "notes": "공식 문서"
+            },
+            {
+              "label": "Anthropic Bash \u0026 Tool Execution Guide",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code",
+              "author": "Anthropic",
+              "date": "2026-01",
+              "whatToUse": "스크립트 도구 연동 가이드",
+              "notes": "공식 CLI 가이드"
+            }
+          ]
+        },
+        {
+          "id": "ENR-06-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "에이전트가 calc_days.py를 실행하여 100% 정확한 보고서를 작성하는 10초 MP4 클립",
+          "mediaType": "video",
+          "kind": "script-tool-execution-video",
+          "previewLabel": "10s Demo (AI Delegates Math to Python Tool)",
+          "visualJob": "prove + behavior",
+          "why": "AI가 스스로 계산기를 켜서 돌리고 결과값을 보고서에 적어내는 실제 동작 화면을 비디오로 체감",
+          "existingAssets": [],
+          "staticPlacement": "우측 패널 비디오 프레임",
+          "spec": "MP4/H.264 10초, 무음, 1600×900",
+          "targetPath": "public/media/s02/S06-script-execution.mp4",
+          "searchBrief": {
+            "ko": "에이전트 파이썬 스크립트 실행 날짜 계산 화면 녹화",
+            "en": "agent python script execution date calculation screen recording"
+          },
+          "rights": "직접 화면 녹화",
+          "fallback": "현재의 좌우 2열 마크다운 카드",
+          "candidateLinks": [
+            {
+              "label": "Claude Code Live Demo",
+              "url": "https://www.youtube.com/watch?v=y749pYpY8zY",
+              "author": "Anthropic Masterclass",
+              "date": "2026-01",
+              "whatToUse": "22:15~22:40 로컬 도구 실행 시연 구간",
+              "notes": "실시간 라이브 영상"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S07",
+      "title": "직무별 모범 사례 1 (기획·마케팅·영업)",
+      "claim": "비즈니스 프론트 직무의 기획서 초안, 카피라이팅, 제안서 요약 즉시 자동화",
+      "role": "practice",
+      "visualNeed": "required",
+      "question": "기획/마케팅/영업 3대 직무의 실물 산출물과 시간 절감 효과가 한눈에 보이는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-07-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "기획서 초안(4시간-\u003e10분), 채널별 카피, 미팅 팔로업 3대 직무 실물 산출물 Before/After 카드",
+          "mediaType": "artifact",
+          "kind": "front-office-usecases-card",
+          "previewLabel": "Planning / Marketing / Sales Deliverables Before \u0026 After",
+          "visualJob": "practice + transfer",
+          "why": "비즈니스 현업 수강생들이 본인의 실무 산출물이 어떻게 10분 만에 자동화되는지 실물 예시로 확인",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 산출물 프리뷰 영역 (880×220px)",
+          "spec": "SVG/PNG 산출물 카드 (Cyan/Pink/Emerald 테마)",
+          "targetPath": "public/assets/s02/S07-front-office-usecases.png",
+          "searchBrief": {
+            "ko": "사업 기획서 채널별 마케팅 카피 영업 팔로업 메일 자동화 산출물",
+            "en": "business proposal marketing copy sales follow-up email automated deliverables card"
+          },
+          "rights": "자체 제작 산출물 예시",
+          "fallback": "3열 직무 글래스 카드 + 단일행 팁 박스",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Prompt Library: Marketing \u0026 Sales",
+              "url": "https://docs.anthropic.com/en/prompt-library/library",
+              "author": "Anthropic Prompt Library",
+              "date": "2025-11",
+              "whatToUse": "마케팅 카피 및 비즈니스 제안서 템플릿",
+              "notes": "공식 라이브러리"
+            },
+            {
+              "label": "GPTwork Job Templates Hub",
+              "url": "https://gptwork.io",
+              "author": "GPTwork",
+              "date": "2026-01",
+              "whatToUse": "프론트오피스 스킬 템플릿",
+              "notes": "실무 템플릿 모음"
+            }
+          ]
+        },
+        {
+          "id": "ENR-07-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "기획·마케팅·영업 프론트오피스 3대 워크플로우 인포그래픽 SVG",
+          "mediaType": "diagram",
+          "kind": "front-office-pipeline-svg",
+          "previewLabel": "Planning -\u003e Copywriting -\u003e Sales Outreach Pipeline SVG",
+          "visualJob": "practice + mechanism",
+          "why": "각 직무별 입력값에서 최종 산출물까지의 자동화 파이프라인을 도식화",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 연결 플로우",
+          "spec": "SVG Vector (Cyan/Pink/Emerald)",
+          "targetPath": "public/assets/s02/S07-front-office-pipeline.svg",
+          "searchBrief": {
+            "ko": "비즈니스 기획 마케팅 영업 자동화 워크플로우 인포그래픽 SVG",
+            "en": "business planning marketing sales automation workflow infographic SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "3열 글래스 카드 텍스트",
+          "candidateLinks": [
+            {
+              "label": "Claude Enterprise Workflow Guide",
+              "url": "https://www.anthropic.com/news/agent-skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "기업용 워크플로우 자동화 가이드",
+              "notes": "엔터프라이즈 가이드"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S08",
+      "title": "직무별 모범 사례 2 (CS·인사·운영)",
+      "claim": "CS VOC 분류, 인사 온보딩 FAQ, 주간 보고 취합 등 백오피스 혁신",
+      "role": "practice",
+      "visualNeed": "required",
+      "question": "백오피스 3대 직무의 단순 문의 응대 시간 80% 절감 실물 데이터가 확인되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-08-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "CS VOC 분류, 인사 FAQ 응대(80% 절감), 주간보고 취합 자동화 실물 엑셀/보고서 대조 카드",
+          "mediaType": "artifact",
+          "kind": "back-office-usecases-card",
+          "previewLabel": "CS VOC / HR FAQ / Weekly Report Automated Deliverables",
+          "visualJob": "practice + transfer",
+          "why": "반복적인 문의 응대와 보고서 취합 업무가 스킬로 어떻게 처리되는지 실물 엑셀/슬랙 보고서 형태로 제시",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 산출물 프리뷰 영역 (880×220px)",
+          "spec": "SVG/PNG 산출물 카드 (Amber/Purple/Blue 테마)",
+          "targetPath": "public/assets/s02/S08-back-office-usecases.png",
+          "searchBrief": {
+            "ko": "CS VOC 자동 분류 인사팀 온보딩 FAQ 주간보고 취합 자동화 엑셀 보고서 캡처",
+            "en": "CS ticket classification HR FAQ weekly report automation excel spreadsheet screenshot"
+          },
+          "rights": "자체 제작 산출물 예시 (가명 데이터)",
+          "fallback": "3열 백오피스 글래스 카드 + 단일행 팁 박스",
+          "candidateLinks": [
+            {
+              "label": "GPTwork Enterprise Back-office Hub",
+              "url": "https://gptwork.io",
+              "author": "GPTwork",
+              "date": "2026-01",
+              "whatToUse": "백오피스 스킬 템플릿",
+              "notes": "실무 템플릿 모음"
+            },
+            {
+              "label": "Anthropic Case Studies: Enterprise Operations",
+              "url": "https://www.anthropic.com/news/agent-skills",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "운영 자동화 사례",
+              "notes": "공식 사례 연구"
+            }
+          ]
+        },
+        {
+          "id": "ENR-08-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "백오피스 단순 반복 업무 80% 절감 워크플로우 인포그래픽 SVG",
+          "mediaType": "diagram",
+          "kind": "back-office-pipeline-svg",
+          "previewLabel": "CS Inbox -\u003e HR Onboarding -\u003e Weekly Report Pipeline SVG",
+          "visualJob": "practice + mechanism",
+          "why": "반복 업무의 80%가 자동화되는 백오피스 데이터 파이프라인을 도식화",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 플로우",
+          "spec": "SVG Vector (Amber/Purple/Blue)",
+          "targetPath": "public/assets/s02/S08-back-office-pipeline.svg",
+          "searchBrief": {
+            "ko": "백오피스 인사 총무 CS 반복 업무 자동화 인포그래픽 SVG",
+            "en": "back office HR admin CS routine automation infographic SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "3열 글래스 카드 텍스트",
+          "candidateLinks": [
+            {
+              "label": "Claude Enterprise Workflow Guide",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+              "author": "Anthropic",
+              "date": "2025-11",
+              "whatToUse": "사내 운영 자동화 가이드",
+              "notes": "공식 문서"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S09",
+      "title": "스킬 디버깅 4대 점검법",
+      "claim": "Description 키워드, 단계 번호화, Few-shot 예시, 예외 처리 4대 공식",
+      "role": "troubleshoot",
+      "visualNeed": "required",
+      "question": "스킬이 작동하지 않을 때 즉시 진단할 수 있는 4대 점검 매트릭스가 명쾌한가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-09-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "4대 점검 공식(Description ➔ 번호화 ➔ Few-shot ➔ 예외처리) 2×2 디버깅 매트릭스 SVG",
+          "mediaType": "diagram",
+          "kind": "debugging-matrix-svg",
+          "previewLabel": "2x2 Diagnostic Matrix (Trigger / Logic / Format / Safety) SVG",
+          "visualJob": "troubleshoot + guide",
+          "why": "스킬 오작동 시 수강생이 스스로 4대 체크포인트를 1분 만에 점검할 수 있는 매트릭스 맵 제공",
+          "existingAssets": [],
+          "staticPlacement": "2×2 그리드 카드 상단 중앙 (880×240px)",
+          "spec": "SVG Vector (Cyan/Emerald/Amber/Purple 4분면 맵)",
+          "targetPath": "public/assets/s02/S09-debugging-matrix.svg",
+          "searchBrief": {
+            "ko": "에이전트 스킬 디버깅 4대 점검 공식 2x2 매트릭스 다이어그램 SVG",
+            "en": "agent skills debugging 4-step checklist 2x2 diagnostic matrix SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "2×2 글래스 점검 카드 그리드",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Docs: Troubleshooting Agent Skills",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills#troubleshooting",
+              "author": "Anthropic Docs",
+              "date": "2025-12",
+              "whatToUse": "4대 디버깅 점검 공식 원본",
+              "notes": "공식 문서"
+            },
+            {
+              "label": "YouTube: Agent Skills Masterclass",
+              "url": "https://www.youtube.com/watch?v=y749pYpY8zY",
+              "author": "Claude Engineer",
+              "date": "2026-01",
+              "whatToUse": "42:10~44:30 실전 스킬 디버깅 4단계 시연",
+              "notes": "심화 강의 영상"
+            }
+          ]
+        },
+        {
+          "id": "ENR-09-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "디버깅 4단계를 적용하여 오작동 스킬을 100% 정상화한 터미널 전후 비교 캡처",
+          "mediaType": "screenshot",
+          "kind": "debugging-before-after-capture",
+          "previewLabel": "Skill Failure -\u003e 4-Step Fix -\u003e 100% Success Terminal Capture",
+          "visualJob": "troubleshoot + evidence",
+          "why": "설명 수정과 Few-shot 추가만으로 엉뚱한 출력이 정밀한 출력으로 변하는 실제 터미널 전후 화면 제시",
+          "existingAssets": [],
+          "staticPlacement": "2×2 카드 내부 패널",
+          "spec": "PNG 1600×900, 분할 뷰",
+          "targetPath": "public/assets/s02/S09-debugging-before-after.png",
+          "searchBrief": {
+            "ko": "스킬 디버깅 수정 전후 터미널 실행 결과 비교 캡처",
+            "en": "skill debugging fix before after terminal execution screenshot"
+          },
+          "rights": "직접 터미널 캡처",
+          "fallback": "2×2 마크다운 글래스 카드",
+          "candidateLinks": [
+            {
+              "label": "Claude Code Debugging Guide",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code",
+              "author": "Anthropic",
+              "date": "2026-01",
+              "whatToUse": "디버그 세션 가이드",
+              "notes": "공식 문서"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S10",
+      "title": "실습 P02 안내",
+      "claim": "15분간 사내 지식(references/)을 결합한 실전 복합 스킬 작성 및 테스트",
+      "role": "practice",
+      "visualNeed": "required",
+      "question": "GPTwork $skill creator로 복합 스킬을 스캐폴딩하는 실제 UI가 안내되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-10-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "GPTwork $skill creator로 references/ 포함 복합 스킬 자동 생성 UI 캡처",
+          "mediaType": "screenshot",
+          "kind": "gptwork-complex-skill-ui",
+          "previewLabel": "GPTwork Complex Skill Scaffolding Interface Capture",
+          "visualJob": "practice + transfer",
+          "why": "단일 파일이 아닌 `references/` 하위 폴더까지 한 번에 스캐폴딩해주는 GPTwork의 실제 화면을 보여주어 실습 속도 2배 가속",
+          "existingAssets": [],
+          "staticPlacement": "하단 Pro Tip 배너 우측 프레임 (480×200px)",
+          "spec": "PNG 1200×600, 다크 테마",
+          "targetPath": "public/assets/s02/S10-gptwork-complex-skill.png",
+          "searchBrief": {
+            "ko": "GPTwork 복합 스킬 references 자동 생성 화면 캡처",
+            "en": "GPTwork complex skill references scaffolding UI screenshot"
+          },
+          "rights": "GPTwork 서비스 화면 캡처",
+          "fallback": "하단 글래스 Pro Tip 배너",
+          "candidateLinks": [
+            {
+              "label": "GPTwork Official Hub",
+              "url": "https://gptwork.io",
+              "author": "GPTwork",
+              "date": "2026-01",
+              "whatToUse": "플랫폼 내 복합 스킬 생성 도구",
+              "notes": "실습 플랫폼"
+            },
+            {
+              "label": "Claude Academy: Advanced Skills",
+              "url": "https://academy.claude.com/",
+              "author": "Anthropic",
+              "date": "2026-01",
+              "whatToUse": "복합 스킬 제작 가이드",
+              "notes": "공식 교육 허브"
+            }
+          ]
+        },
+        {
+          "id": "ENR-10-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "실습 P02 3단계(기획 3분 ➔ 지식 분리 5분 ➔ 테스트 7분) 타임라인 로드맵 SVG",
+          "mediaType": "diagram",
+          "kind": "practice-p02-roadmap-svg",
+          "previewLabel": "P02 3-Step Practice Roadmap SVG",
+          "visualJob": "practice + orient",
+          "why": "15분 동안 지식 분리와 테스트를 완료할 수 있도록 시간 배분 가이드 제시",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 연결선",
+          "spec": "SVG Vector (Cyan/Emerald/Purple)",
+          "targetPath": "public/assets/s02/S10-practice-p02-roadmap.svg",
+          "searchBrief": {
+            "ko": "15분 실습 P02 타임라인 로드맵 SVG 다이어그램",
+            "en": "15-minute hands-on practice P02 timeline roadmap SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "3열 실습 스텝 카드",
+          "candidateLinks": [
+            {
+              "label": "YouTube: Advanced Agent Skills Creation",
+              "url": "https://www.youtube.com/watch?v=Yp6S358Vj-w",
+              "author": "Dev Guide",
+              "date": "2026-01",
+              "whatToUse": "복합 스킬 시간 관리 팁",
+              "notes": "실전 영상"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S11",
+      "title": "실습 템플릿 예시",
+      "claim": "SKILL.md 템플릿과 references/guide.md 템플릿의 1:1 연동 구조",
+      "role": "show",
+      "visualNeed": "required",
+      "question": "메인 지침과 하위 참조 문서가 어떻게 1:1로 연결되는지 코드가 한눈에 보이는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-11-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "SKILL.md와 references/guide.md 1:1 연동 구조 VS Code 스플릿 에디터 컬러 캡처",
+          "mediaType": "code-capture",
+          "kind": "split-editor-template-capture",
+          "previewLabel": "SKILL.md vs references/guide.md Split Editor Capture",
+          "visualJob": "show + template",
+          "why": "수강생이 좌측 메인 지침과 우측 사내 규정 문서를 어떻게 배치하고 링크해야 하는지 실제 IDE 분할 화면으로 즉시 이해",
+          "existingAssets": [],
+          "staticPlacement": "좌우 2열 글래스 패널 (880×300px)",
+          "spec": "PNG 1600×900, JetBrains Mono, Shiki Dark 테마",
+          "targetPath": "public/assets/s02/S11-split-editor-template.png",
+          "searchBrief": {
+            "ko": "VS Code 분할 화면 SKILL.md references guide.md 템플릿 캡처",
+            "en": "VS Code split editor SKILL.md references guide.md template syntax screenshot"
+          },
+          "rights": "직접 캡처",
+          "fallback": "좌우 2열 마크다운 템플릿 코드 뷰",
+          "candidateLinks": [
+            {
+              "label": "GitHub anthropics/skills templates",
+              "url": "https://github.com/anthropics/skills/tree/main/skills",
+              "author": "Anthropic Skills Repo",
+              "date": "2025-12",
+              "whatToUse": "완성형 복합 스킬 템플릿",
+              "notes": "공식 예제 코드"
+            },
+            {
+              "label": "Claude Code CLI Guide",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/claude-code",
+              "author": "Anthropic",
+              "date": "2026-01",
+              "whatToUse": "스킬 파일 구조 가이드",
+              "notes": "공식 문서"
+            }
+          ]
+        },
+        {
+          "id": "ENR-11-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "메인 지침과 하위 참조 문서 데이터 전달 관계도 SVG",
+          "mediaType": "diagram",
+          "kind": "reference-linkage-diagram-svg",
+          "previewLabel": "SKILL.md (Caller) \u003c---\u003e references/ (Callee) Data Linkage SVG",
+          "visualJob": "show + mechanism",
+          "why": "지침에서 참조 문서를 부르고 에이전트가 이를 읽어오는 관계를 다이어그램으로 해설",
+          "existingAssets": [],
+          "staticPlacement": "좌우 패널 상단 연결선",
+          "spec": "SVG Vector (Cyan/Emerald)",
+          "targetPath": "public/assets/s02/S11-reference-linkage-diagram.svg",
+          "searchBrief": {
+            "ko": "에이전트 스킬 메인 지침 하위 문서 데이터 전달 관계도 SVG",
+            "en": "agent skill main instruction sub document data linkage diagram SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "2열 마크다운 카드",
+          "candidateLinks": [
+            {
+              "label": "Agent Skills Specification",
+              "url": "https://agentskills.io",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "문서 참조 표준 스펙",
+              "notes": "공식 스펙"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S12",
+      "title": "15분 집중 실습 \u0026 5대 자가진단",
+      "claim": "트리거, 지식 참조, 포맷 준수, 예외 처리, 재현성 5대 항목 스스로 검증",
+      "role": "verify",
+      "visualNeed": "required",
+      "question": "15:00 라이브 타이머와 5대 자가진단 통과 화면이 실습 몰입도를 높이는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-12-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "5대 자가진단(트리거/참조/포맷/예외/재현성) 통과 터미널 테스트 결과 캡처",
+          "mediaType": "screenshot",
+          "kind": "5gates-test-pass-capture",
+          "previewLabel": "5 Self-Diagnosis Gates Passed Terminal Verification Capture",
+          "visualJob": "verify + achievement",
+          "why": "수강생이 5대 자가진단을 마쳤을 때 에이전트가 완벽하게 지침을 수행하는 터미널 화면을 제시하여 기준점 제공",
+          "existingAssets": [],
+          "staticPlacement": "우측 패널 상단 (420×180px)",
+          "spec": "PNG 1200×600, 녹색 성공 뱃지 하이라이트",
+          "targetPath": "public/assets/s02/S12-5gates-test-pass.png",
+          "searchBrief": {
+            "ko": "에이전트 복합 스킬 5대 자가진단 테스트 통과 화면 캡처",
+            "en": "agent complex skill 5 self diagnosis gates test pass screenshot"
+          },
+          "rights": "직접 터미널 캡처",
+          "fallback": "15분 타이머 카드 + 5대 자가진단 체크리스트",
+          "candidateLinks": [
+            {
+              "label": "Agent Skills Quality Assurance Guide",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills",
+              "author": "Anthropic Docs",
+              "date": "2025-12",
+              "whatToUse": "자가진단 품질 검증 체크포인트",
+              "notes": "공식 문서"
+            },
+            {
+              "label": "Agent Skills Schema Validator",
+              "url": "https://github.com/anthropics/skills/tree/main/spec",
+              "author": "Anthropic Spec",
+              "date": "2025-12",
+              "whatToUse": "스키마 유효성 검증 도구",
+              "notes": "공식 검증기"
+            }
+          ]
+        },
+        {
+          "id": "ENR-12-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "5대 자가진단 품질 게이트 뱃지 인포그래픽 SVG",
+          "mediaType": "diagram",
+          "kind": "quality-gates-svg",
+          "previewLabel": "5 Self-Diagnosis Gates (Trigger/Ref/Format/Exception/Reproducibility) SVG",
+          "visualJob": "verify + checklist",
+          "why": "5대 항목을 체크 가능한 게이트 형태로 도식화",
+          "existingAssets": [],
+          "staticPlacement": "우측 체크리스트 헤더",
+          "spec": "SVG Vector (Emerald/Cyan 체크 뱃지)",
+          "targetPath": "public/assets/s02/S12-quality-gates.svg",
+          "searchBrief": {
+            "ko": "5대 품질 자가진단 게이트 인포그래픽 SVG",
+            "en": "5 self diagnosis quality gates infographic SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "체크리스트 텍스트",
+          "candidateLinks": [
+            {
+              "label": "Claude Developer Guide",
+              "url": "https://academy.claude.com/",
+              "author": "Claude Academy",
+              "date": "2026-01",
+              "whatToUse": "품질 검증 가이드",
+              "notes": "공식 강의"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S13",
+      "title": "흔히 하는 3대 실수와 주의점",
+      "claim": "본문 과다 복붙, 지침 간 상충, 부정어 남발 3대 안티패턴 회피",
+      "role": "caution",
+      "visualNeed": "required",
+      "question": "3대 안티패턴과 실전 해결책이 실물 사례와 함께 1:1로 대비되는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-13-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "3대 안티패턴(과다 복붙, 상충, 부정어) vs 3대 해결책 실물 비교 카드",
+          "mediaType": "artifact",
+          "kind": "antipattern-vs-solution-card",
+          "previewLabel": "3 Common Pitfalls vs Emerald Best Practice Solutions",
+          "visualJob": "caution + guide",
+          "why": "수강생이 현업 복귀 후 가장 많이 저지르는 3대 실수를 실물 사례와 함께 대조하여 시행착오를 원천 차단",
+          "existingAssets": [],
+          "staticPlacement": "3열 카드 상단 대비 영역 (880×220px)",
+          "spec": "SVG/PNG 안티패턴 대비 카드 (Rose vs Emerald)",
+          "targetPath": "public/assets/s02/S13-antipattern-vs-solution.png",
+          "searchBrief": {
+            "ko": "프롬프트 스킬 3대 안티패턴 부정어 남발 해결책 비교 카드",
+            "en": "prompt skills 3 antipatterns negative prompt overload solution comparison card"
+          },
+          "rights": "자체 제작 산출물 예시",
+          "fallback": "3열 안티패턴 글래스 카드 (실수 ➔ 해결책 대비)",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Prompt Engineering Anti-patterns",
+              "url": "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview",
+              "author": "Anthropic Docs",
+              "date": "2025-11",
+              "whatToUse": "안티패턴 및 부정 지침 회피 공식",
+              "notes": "공식 프롬프트 가이드"
+            },
+            {
+              "label": "YouTube: How to Debug Claude Code Skills",
+              "url": "https://www.youtube.com/watch?v=1n8jZ8H2bSg",
+              "author": "AI Engineer",
+              "date": "2026-01",
+              "whatToUse": "10:15~11:30 안티패턴 3가지와 해결책 시연",
+              "notes": "실무 영상"
+            }
+          ]
+        },
+        {
+          "id": "ENR-13-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "개발자 소셜 인용: '부정 지침(~하지 마세요) 남발로 인한 AI 환각' X 트윗 카드",
+          "mediaType": "social",
+          "kind": "negative-prompt-tweet-card",
+          "previewLabel": "Developer X Post: Negative Prompting Pitfall",
+          "visualJob": "caution + human-signal",
+          "why": "부정어 대신 긍정적인 Few-shot 예시를 주었을 때의 성능 개선 체감 트윗 인용",
+          "existingAssets": [],
+          "staticPlacement": "우측 보조 패널 (400×220px)",
+          "spec": "SVG/PNG 소셜 인용 카드",
+          "targetPath": "public/assets/s02/S13-negative-prompt-tweet.png",
+          "searchBrief": {
+            "ko": "AI 프롬프트 부정어 남발 환각 개발자 트윗 인용",
+            "en": "AI prompting negative constraints hallucination developer tweet quote"
+          },
+          "rights": "공개 인용 (Attribution required)",
+          "fallback": "3열 마크다운 카드",
+          "candidateLinks": [
+            {
+              "label": "Claude Best Practices: Positive Guidance",
+              "url": "https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills#best-practices",
+              "author": "Anthropic",
+              "date": "2025-12",
+              "whatToUse": "긍정 지침 작성 원칙",
+              "notes": "공식 문서"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "S14",
+      "title": "2시간 마스터 요약 \u0026 엔딩",
+      "claim": "SOP 표준화, 100토큰 대기, references 확장, 사내 공유 4대 원칙",
+      "role": "evidence",
+      "visualNeed": "required",
+      "question": "Google Antigravity, Claude Code, OpenAI 3대 플랫폼 공식 로고월과 엔터프라이즈 로드맵이 피날레를 완성하는가?",
+      "previewImage": "",
+      "options": [
+        {
+          "id": "ENR-14-A",
+          "label": "Preferred",
+          "recommendation": "preferred",
+          "decision": "undecided",
+          "priority": "P1",
+          "title": "4열 요약 글래스 카드 + 3대 플랫폼 공식 컬러 SVG 로고월",
+          "mediaType": "logo",
+          "kind": "4-column summary + logo wall",
+          "previewLabel": "Antigravity, Claude Code, OpenAI Official SVGs",
+          "visualJob": "evidence + closing",
+          "why": "2시간 동안 학습한 스킬 제작 기술을 바탕으로 글로벌 표준 생태계 전반에서 동작하는 AI 에이전트를 구축할 수 있다는 자부심과 비전 제시",
+          "existingAssets": [
+            {
+              "label": "Google Antigravity",
+              "path": "public/icons/antigravity-color.svg"
+            },
+            {
+              "label": "Claude Code",
+              "path": "public/icons/claude-color.svg"
+            },
+            {
+              "label": "OpenAI",
+              "path": "public/icons/openai.svg"
+            }
+          ],
+          "staticPlacement": "상단 4열 요약 카드 + 하단 엔딩 배너 로고월 (각 24×24px)",
+          "spec": "SVG Vector + Carbon Trophy",
+          "targetPath": "public/icons/",
+          "searchBrief": {
+            "ko": "Google Antigravity Claude Code OpenAI 공식 로고 벡터",
+            "en": "Google Antigravity Claude Code OpenAI official SVG logos"
+          },
+          "rights": "공식 상표 인용 (Nominative Fair Use)",
+          "fallback": "단색 텍스트 로고 목록",
+          "candidateLinks": [
+            {
+              "label": "Agent Skills Open Standard Hub",
+              "url": "https://agentskills.io",
+              "author": "Agent Skills Consortium",
+              "date": "2025-12",
+              "whatToUse": "오픈 표준 생태계 비전",
+              "notes": "공식 표준 허브"
+            },
+            {
+              "label": "Model Context Protocol Hub",
+              "url": "https://modelcontextprotocol.io",
+              "author": "MCP Working Group",
+              "date": "2025-11",
+              "whatToUse": "도구 연결 확장 프로토콜",
+              "notes": "공식 사이트"
+            },
+            {
+              "label": "Claude Academy: Next Steps",
+              "url": "https://academy.claude.com/",
+              "author": "Anthropic",
+              "date": "2026-01",
+              "whatToUse": "엔터프라이즈 도입 가이드",
+              "notes": "교육 허브"
+            }
+          ]
+        },
+        {
+          "id": "ENR-14-B",
+          "label": "Alternative",
+          "recommendation": "alternative",
+          "decision": "undecided",
+          "priority": "P0",
+          "title": "나만의 AI 비서에서 팀 전체의 업무 자산으로 4대 엔터프라이즈 로드맵 SVG",
+          "mediaType": "diagram",
+          "kind": "enterprise-asset-roadmap-svg",
+          "previewLabel": "Personal Assistant -\u003e Team Knowledge Asset Roadmap SVG",
+          "visualJob": "evidence + vision",
+          "why": "스킬을 개인 생산성 도구를 넘어 사내 Git으로 공유되는 조직 차원의 지식 자산으로 확장하는 로드맵 제공",
+          "existingAssets": [],
+          "staticPlacement": "상단 4열 카드와 결합된 로드맵 맵",
+          "spec": "SVG Vector (Emerald/Cyan/Purple/Amber)",
+          "targetPath": "public/assets/s02/S14-enterprise-asset-roadmap.svg",
+          "searchBrief": {
+            "ko": "에이전트 스킬 엔터프라이즈 지식 자산 로드맵 다이어그램 SVG",
+            "en": "agent skills enterprise knowledge asset roadmap diagram SVG"
+          },
+          "rights": "자체 제작 다이어그램",
+          "fallback": "4열 요약 글래스 카드",
+          "candidateLinks": [
+            {
+              "label": "Anthropic Research Blog: Enterprise Skills",
+              "url": "https://www.anthropic.com/news/agent-skills",
+              "author": "Anthropic Research",
+              "date": "2025-12",
+              "whatToUse": "사내 공유 및 엔터프라이즈 자산화 가이드",
+              "notes": "공식 연구 블로그"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+  </script>
+  <script>
+    const reviewData = JSON.parse(document.getElementById('review-data').textContent)
+    const stateKey = `slidev-asset-review:${location.pathname}:${reviewData.meta?.skillRevision || 'legacy'}`
+    const saved = JSON.parse(localStorage.getItem(stateKey) || '{}')
+    // `option.decision` is deliberately ignored. Generated proposals are
+    // undecided; only this explicit decision map or a browser click is a user
+    // decision. This also makes an accidentally pre-approved old board appear
+    // undecided instead of silently treating model preference as consent.
+    const decisions = { ...(reviewData.decisions || {}), ...saved }
+
+    const decisionFor = (option) => {
+      const value = decisions[option.id]
+      if (typeof value === 'string' && value) return value
+      if (value && typeof value === 'object' && value.decision) return value.decision
+      return 'undecided'
+    }
+    const recommendationFor = (option) => {
+      const value = String(option.recommendation || '').toLowerCase()
+      if (['preferred', 'alternative', 'fallback'].includes(value)) return value
+      const label = String(option.label || '').toLowerCase()
+      if (label.includes('alternative')) return 'alternative'
+      if (label.includes('fallback')) return 'fallback'
+      return 'missing'
+    }
+
+    const escapeHtml = (value = '') => String(value).replace(/[&<>'"]/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;',
+    })[char])
+    const safeUrl = (value = '') => /^(https?:\/\/|\.\.?\/|\/)/i.test(value) ? value : '#'
+    const text = (value = '') => escapeHtml(value || '—')
+    const link = (item) => `<a href="${escapeHtml(safeUrl(item.url))}" target="_blank" rel="noopener noreferrer">${text(item.label || item.url)}</a>`
+
+    const mediaGlyph = (kind = '') => {
+      const key = kind.toLowerCase()
+      if (key.includes('video') || key.includes('youtube') || key.includes('gif')) return '▶'
+      if (key.includes('social') || key.includes('quote')) return '❝'
+      if (key.includes('diagram') || key.includes('svg') || key.includes('flow')) return '◇'
+      if (key.includes('screenshot') || key.includes('screen')) return '▣'
+      if (key.includes('chart') || key.includes('data')) return '▥'
+      if (key.includes('logo') || key.includes('icon')) return '✦'
+      return '＋'
+    }
+
+    const iconRow = (assets = []) => assets.length
+      ? `<div class="icon-row">${assets.map(asset => `<span class="icon-token">${asset.path ? `<img src="${escapeHtml(asset.path)}" alt="">` : ''}${text(asset.label)}</span>`).join('')}</div>`
+      : ''
+
+    const optionMatches = (option, priority, decision) => {
+      const chosen = decisionFor(option)
+      return (priority === 'all' || option.priority === priority) && (decision === 'all' || chosen === decision)
+    }
+
+    const optionCard = (slide, option) => {
+      const decision = decisionFor(option)
+      const recommendation = recommendationFor(option)
+      const classes = ['option', decision === 'approve' ? 'is-approved' : '', decision === 'skip' ? 'is-skipped' : ''].filter(Boolean).join(' ')
+      const preview = option.previewImage
+        ? `<img src="${escapeHtml(option.previewImage)}" alt="${escapeHtml(option.title || option.kind || 'asset candidate')}">`
+        : `<div class="asset-placeholder"><span class="media-icon">${mediaGlyph(option.mediaType || option.kind)}</span>${text(option.previewLabel || option.mediaType || option.kind || 'static candidate')}</div>`
+      const hasSearchBrief = option.searchBrief && (option.searchBrief.ko || option.searchBrief.en)
+      const search = hasSearchBrief ? `<div class="fact"><b>Search / capture brief</b>${text(option.searchBrief.ko)}${option.searchBrief.en ? `<br><span>${text(option.searchBrief.en)}</span>` : ''}</div>` : ''
+      const links = option.candidateLinks?.length ? `<div class="links">${option.candidateLinks.map(link).join('')}</div>` : ''
+      const actions = ['approve', 'find', 'capture', 'create', 'skip', 'defer'].map(action => `<button type="button" data-option="${escapeHtml(option.id)}" data-action="${action}" class="${decision === action ? 'is-selected' : ''}">${action}</button>`).join('')
+      return `<article class="${classes}" data-option-id="${escapeHtml(option.id)}" data-priority="${escapeHtml(option.priority || '')}" data-decision="${escapeHtml(decision)}">
+        <div class="option-top"><span class="option-label">${text(option.id || 'Option')}</span><span class="chips"><span class="recommendation">${text(recommendation)}</span><span class="priority">${text(option.priority || 'P1')}</span><span class="status">${text(decision)}</span></span></div>
+        <h3>${text(option.title || option.kind || 'Asset candidate')}</h3>
+        <div class="asset-preview">${preview}</div>
+        <p><strong>Visual job:</strong> ${text(option.visualJob)}</p>
+        <p><strong>Why:</strong> ${text(option.why)}</p>
+        ${iconRow(option.existingAssets)}
+        <div class="facts">
+          <div class="fact"><b>Media type</b>${text(option.mediaType || option.kind)}</div>
+          <div class="fact"><b>Static placement</b>${text(option.staticPlacement)}</div>
+          <div class="fact"><b>Minimum spec / target</b>${text(option.spec)}${option.targetPath ? `<br><code>${text(option.targetPath)}</code>` : ''}</div>
+          ${search}
+          <div class="fact"><b>Rights / fallback</b>${text(option.rights)}<br><span>${text(option.fallback)}</span></div>
+        </div>
+        ${links}
+        <div class="actions">${actions}</div>
+      </article>`
+    }
+
+    const render = () => {
+      const priority = document.getElementById('priority-filter').value
+      const decision = document.getElementById('decision-filter').value
+      const board = document.getElementById('board')
+      const visibleSlides = []
+      for (const slide of reviewData.slides || []) {
+        const options = (slide.options || []).filter(option => optionMatches(option, priority, decision))
+        if (!options.length) continue
+        visibleSlides.push(`<section class="slide-card">
+          <div class="slide-head">
+            <div class="slide-preview">${slide.previewImage ? `<img src="${escapeHtml(slide.previewImage)}" alt="${escapeHtml(slide.title || slide.id)}">` : `<div class="wire"><div class="wire-kicker"></div><div class="wire-title"></div><div class="wire-body"><i></i><i></i><i></i></div></div>`}</div>
+            <div class="slide-meta"><div class="slide-id">${text(slide.id)}</div><h2>${text(slide.title)}</h2><p class="claim">${text(slide.claim)}</p><p><strong>Current role:</strong> ${text(slide.role)}<br><strong>Static question:</strong> ${text(slide.question)}</p></div>
+          </div>
+          <div class="options">${options.map(option => optionCard(slide, option)).join('')}</div>
+        </section>`)
+      }
+      board.innerHTML = visibleSlides.join('') || '<div class="empty">현재 필터와 일치하는 후보가 없습니다.</div>'
+      document.querySelectorAll('[data-action]').forEach(button => button.addEventListener('click', () => {
+        decisions[button.dataset.option] = button.dataset.action
+        localStorage.setItem(stateKey, JSON.stringify(decisions))
+        render()
+        renderStats()
+      }))
+    }
+
+    const renderStats = () => {
+      const options = (reviewData.slides || []).flatMap(slide => slide.options || [])
+      const count = value => options.filter(option => decisionFor(option) === value).length
+      const priorityCount = value => options.filter(option => option.priority === value).length
+      document.getElementById('stats').innerHTML = [
+        ['slides', (reviewData.slides || []).length],
+        ['ideas', options.length],
+        ['P0', priorityCount('P0')],
+        ['P1', priorityCount('P1')],
+        ['P2', priorityCount('P2')],
+        ['decided', options.length - count('undecided')],
+      ].map(([label, value]) => `<span class="stat"><strong>${value}</strong>${label}</span>`).join('')
+    }
+
+    document.getElementById('page-title').textContent = reviewData.meta?.title || 'Asset review'
+    document.getElementById('page-subtitle').textContent = [
+      reviewData.meta?.draft ? `Draft: ${reviewData.meta.draft}` : '',
+      reviewData.meta?.previewState ? `Preview: ${reviewData.meta.previewState}` : '',
+      reviewData.meta?.note || '승인된 슬라이드 흐름은 유지하고, 정적 에셋 선택지만 검토합니다.',
+    ].filter(Boolean).join(' · ')
+    document.getElementById('priority-filter').addEventListener('change', render)
+    document.getElementById('decision-filter').addEventListener('change', render)
+    document.getElementById('export').addEventListener('click', () => {
+      const payload = {
+        kind: 'slidev-asset-review-decisions',
+        generatedAt: new Date().toISOString(),
+        draft: reviewData.meta?.draft || '',
+        schemaVersion: reviewData.meta?.schemaVersion || 3,
+        skillRevision: reviewData.meta?.skillRevision || '',
+        decisions,
+      }
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' })
+      const url = URL.createObjectURL(blob)
+      const anchor = document.createElement('a')
+      anchor.href = url
+      anchor.download = 'asset-review-decisions.json'
+      anchor.click()
+      URL.revokeObjectURL(url)
+    })
+    renderStats()
+    render()
+  </script>
+</body>
+</html>
