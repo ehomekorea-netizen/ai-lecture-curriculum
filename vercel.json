@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/26_0829_agent-skills",
+      "destination": "/26_0829_agent-skills/index.html"
+    },
+    {
+      "source": "/26_0829_agent-skills/:path((?!assets/|icons/|media/|.*\\..*).*)",
+      "destination": "/26_0829_agent-skills/index.html"
+    },
+    {
       "source": "/mokpo-welfare",
       "destination": "/mokpo-welfare/index.html"
     },
