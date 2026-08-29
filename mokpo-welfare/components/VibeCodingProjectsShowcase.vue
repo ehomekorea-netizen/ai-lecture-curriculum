@@ -1,30 +1,29 @@
 <script setup lang="ts">
 import { ArrowUpRight } from 'lucide-vue-next'
-
-// Dynamic base URL resolution (handles both '/' and '/mokpo-welfare/')
-const baseUrl = import.meta.env.BASE_URL || '/'
-const cleanBase = baseUrl.endsWith('/') ? baseUrl : baseUrl + '/'
+import lectureImg from '../public/showcase-lecture-vibe.png'
+import biblegramImg from '../public/showcase-biblegram.png'
+import danggeunImg from '../public/showcase-danggeun.png'
 
 const projects = [
   {
     id: '01',
     title: '출강바이브',
     url: 'https://lecture-payment-dashboard.vercel.app/',
-    img: cleanBase + 'showcase-lecture-vibe.png',
+    img: lectureImg,
     desc: '강사용 실시간 정산 및 3.3% 세액 자동 계산',
   },
   {
     id: '02',
     title: '바이블그램',
     url: 'https://biblegram.vercel.app/',
-    img: cleanBase + 'showcase-biblegram.png',
+    img: biblegramImg,
     desc: '바쁜 일상 속 아침 7시 성경 말씀 푸시 알림',
   },
   {
     id: '03',
     title: 'HEAT Carrot',
     url: 'https://danggeun-dashboard.vercel.app/',
-    img: cleanBase + 'showcase-danggeun.png',
+    img: danggeunImg,
     desc: '당근 이웃 나눔 챌린지 기부 적립 실시간 모니터',
   },
 ]
@@ -40,7 +39,7 @@ const projects = [
       rel="noopener noreferrer"
       class="group flex flex-col items-center text-center no-underline cursor-pointer transition-transform duration-300 hover:scale-103"
     >
-      <!-- Pure Raw Image (No box wrapper, no section background) -->
+      <!-- Pure Raw Image with Direct Vite Asset Bundle -->
       <img
         :src="p.img"
         :alt="p.title"
