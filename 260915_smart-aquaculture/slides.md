@@ -1246,7 +1246,7 @@ class: text-center
   </p>
 
   <div class="flex flex-wrap items-center justify-center gap-2.5 pt-4 border-t border-white/10 text-[11px] font-mono text-white/60">
-    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-openai text-xs"></span> OpenAI ChatGPT</span>
+    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-openai-icon text-xs"></span> OpenAI ChatGPT</span>
     <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-claude-icon text-xs"></span> Anthropic Claude</span>
     <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-google-gemini text-xs"></span> Google Gemini</span>
     <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-meta-icon text-xs"></span> Meta Llama</span>
