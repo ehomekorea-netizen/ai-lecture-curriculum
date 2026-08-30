@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/260915_smart-aquaculture",
+      "destination": "/260915_smart-aquaculture/index.html"
+    },
+    {
+      "source": "/260915_smart-aquaculture/:path((?!assets/|.*\\..*).*)",
+      "destination": "/260915_smart-aquaculture/index.html"
+    },
+    {
       "source": "/260829_agent-skills",
       "destination": "/260829_agent-skills/index.html"
     },

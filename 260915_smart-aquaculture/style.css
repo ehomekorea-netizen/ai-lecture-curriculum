@@ -1,0 +1,79 @@
+:root {
+  --slidev-code-padding: 10px 14px;
+  --slidev-code-background: #111111ee !important;
+  --stage-ink: #000000;
+  --deck-content-pad-x: 3.5rem;
+  --deck-content-pad-top: 2.8rem;
+  --deck-content-pad-bottom: 2.5rem;
+}
+
+html,
+body,
+#app {
+  background: var(--stage-ink) !important;
+}
+
+.slidev-layout {
+  color: rgb(255 255 255 / 92%);
+  font-family: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.slidev-layout.default,
+.slidev-layout.two-columns {
+  padding: var(--deck-content-pad-top) var(--deck-content-pad-x) var(--deck-content-pad-bottom);
+  text-align: left;
+}
+
+/* Transitions (Pure Blur Dissolve) */
+.slidev-vclick-target {
+  transition:
+    opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 400ms cubic-bezier(0.16, 1, 0.3, 1),
+    color 300ms ease,
+    transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, filter;
+  transform: translateZ(0);
+}
+
+.slidev-vclick-hidden {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.slidev-vclick-hidden:not(.slidev-vclick-anim-none) {
+  filter: blur(5px) !important;
+  transform: translateY(0.75rem);
+}
+
+/* Page transitions */
+.fade-out-leave-active {
+  transition:
+    opacity 350ms cubic-bezier(0.25, 1, 0.5, 1),
+    filter 300ms ease-out !important;
+  will-change: opacity, filter;
+}
+
+.fade-out-enter-active {
+  transition:
+    opacity 500ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 400ms cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition-delay: 200ms !important;
+  will-change: opacity, filter;
+}
+
+.fade-out-enter-from,
+.fade-out-leave-to {
+  opacity: 0 !important;
+  filter: blur(6px) !important;
+}
+
+/* Code block aesthetic */
+.slidev-code {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.75rem;
+  backdrop-filter: blur(12px);
+}
