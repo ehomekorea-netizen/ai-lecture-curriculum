@@ -197,14 +197,11 @@ onBeforeUnmount(() => {
       </p>
     </div>
 
-    <!-- ── Bottom Bar: Right-Aligned Presenter Text (정누리 강사) ── -->
-    <div class="relative z-10 flex items-center justify-between border-t border-white/20 pt-4">
-      <span class="text-xs text-white/70 font-medium pure-white-text">
-        제15장 수산양식과 인공지능 활용
-      </span>
+    <!-- ── Bottom Bar: Right-Aligned Presenter Text (오진실 강사) ── -->
+    <div class="relative z-10 flex items-center justify-end border-t border-white/20 pt-4">
       <span class="text-sm md:text-base font-bold text-white tracking-wide flex items-center gap-2 pure-white-text">
         <span class="text-white/60 font-normal text-xs uppercase tracking-widest">Presenter</span>
-        정누리 강사
+        오진실 강사
       </span>
     </div>
   </div>
