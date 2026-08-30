@@ -1,5 +1,5 @@
 ---
-layout: center
+layout: default
 highlighter: shiki
 css: unocss
 colorSchema: dark
@@ -20,45 +20,7 @@ routerMode: hash
 ---
 <!-- slide:01-Cover -->
 
-<div class="flex flex-col items-center justify-center text-center">
-  <div class="mb-3">
-    <AquacultureConceptReel />
-  </div>
-
-  <h1 class="text-5xl font-black text-white tracking-tight leading-tight mb-4">
-    수산양식과<br />
-    <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-teal-300 to-emerald-400">
-      인공지능(AI) 실무 활용 전략
-    </span>
-  </h1>
-
-  <p class="text-white/80 text-lg max-w-2xl font-normal mb-8 leading-relaxed">
-    스마트양식 빅데이터부터 머신러닝·딥러닝, 생성형 AI(RCTF), AI 에이전트 운영지원까지
-  </p>
-
-  <div class="flex items-center gap-6 text-xs text-white/50 border-t border-white/10 pt-5">
-    <div class="flex items-center gap-1.5">
-      <span class="i-carbon-fish text-sky-400 text-sm"></span>
-      <span>스마트수산업 전문가 양성과정</span>
-    </div>
-    <div class="flex items-center gap-1.5">
-      <span class="i-carbon-data-enrichment text-emerald-400 text-sm"></span>
-      <span>빅데이터 & ML·DL</span>
-    </div>
-    <div class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 shadow-[0_0_15px_rgba(251,191,36,0.2)]">
-      <svg class="w-3.5 h-3.5 text-amber-300 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2L14.4 7.6L20 10L14.4 12.4L12 18L9.6 12.4L4 10L9.6 7.6L12 2Z" />
-        <path d="M19 15L20.2 17.8L23 19L20.2 20.2L19 23L17.8 20.2L15 19L17.8 17.8L19 15Z" opacity="0.8" />
-        <path d="M5 16L5.8 17.8L7.5 18.5L5.8 19.2L5 21L4.2 19.2L2.5 18.5L4.2 17.8L5 16Z" opacity="0.6" />
-      </svg>
-      <span class="font-bold text-white/90">생성형 AI & RAG</span>
-    </div>
-    <div class="flex items-center gap-1.5">
-      <span class="i-carbon-bot text-purple-400 text-sm"></span>
-      <span>AI 에이전트</span>
-    </div>
-  </div>
-</div>
+<CoverSlide />
 
 <!--
 [강사 오프닝]
