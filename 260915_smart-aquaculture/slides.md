@@ -45,9 +45,13 @@ routerMode: hash
       <span class="i-carbon-data-enrichment text-emerald-400 text-sm"></span>
       <span>빅데이터 & ML·DL</span>
     </div>
-    <div class="flex items-center gap-1.5">
-      <span class="i-logos-openai text-sm"></span>
-      <span>생성형 AI & RAG</span>
+    <div class="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 shadow-[0_0_15px_rgba(251,191,36,0.2)]">
+      <svg class="w-3.5 h-3.5 text-amber-300 animate-pulse" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2L14.4 7.6L20 10L14.4 12.4L12 18L9.6 12.4L4 10L9.6 7.6L12 2Z" />
+        <path d="M19 15L20.2 17.8L23 19L20.2 20.2L19 23L17.8 20.2L15 19L17.8 17.8L19 15Z" opacity="0.8" />
+        <path d="M5 16L5.8 17.8L7.5 18.5L5.8 19.2L5 21L4.2 19.2L2.5 18.5L4.2 17.8L5 16Z" opacity="0.6" />
+      </svg>
+      <span class="font-bold text-white/90">생성형 AI & RAG</span>
     </div>
     <div class="flex items-center gap-1.5">
       <span class="i-carbon-bot text-purple-400 text-sm"></span>
@@ -1237,9 +1241,16 @@ class: text-center
   <h2 class="text-5xl font-black text-white tracking-tight mb-4 leading-tight">
     생성형 AI의 양식장 업무 활용 &<br />환각(Hallucination) 극복
   </h2>
-  <p class="text-white/75 text-lg font-light max-w-xl leading-relaxed">
+  <p class="text-white/75 text-lg font-light max-w-xl leading-relaxed mb-6">
     “확률적 문장생성의 실체와 양식장 전용 RCTF 지시문, Few-Shot 일지 변환”
   </p>
+
+  <div class="flex flex-wrap items-center justify-center gap-2.5 pt-4 border-t border-white/10 text-[11px] font-mono text-white/60">
+    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-openai text-xs"></span> OpenAI ChatGPT</span>
+    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-claude-icon text-xs"></span> Anthropic Claude</span>
+    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-google-gemini text-xs"></span> Google Gemini</span>
+    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-meta-icon text-xs"></span> Meta Llama</span>
+  </div>
 </div>
 
 <!--
@@ -1602,9 +1613,16 @@ class: text-center
   <h2 class="text-5xl font-black text-white tracking-tight mb-4 leading-tight">
     AI 에이전트 기반 운영지원 &<br />스마트양식 도입 로드맵
   </h2>
-  <p class="text-white/75 text-lg font-light max-w-xl leading-relaxed">
+  <p class="text-white/75 text-lg font-light max-w-xl leading-relaxed mb-6">
     “스스로 계획하고 도구를 쓰는 에이전트와 되돌릴 수 없는 행위의 자동화 금지 원칙”
   </p>
+
+  <div class="flex flex-wrap items-center justify-center gap-2.5 pt-4 border-t border-white/10 text-[11px] font-mono text-white/60">
+    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-python text-xs"></span> Python Ecosystem</span>
+    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-pytorch-icon text-xs"></span> PyTorch AI</span>
+    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-logos-hugging-face-icon text-xs"></span> Hugging Face</span>
+    <span class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10"><span class="i-carbon-bot text-purple-400 text-xs"></span> Autonomous Agent</span>
+  </div>
 </div>
 
 <!--
