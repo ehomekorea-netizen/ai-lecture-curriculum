@@ -8,8 +8,8 @@ title: '수산양식과 인공지능 활용'
 exportFilename: '스마트수산업_수산양식과_인공지능_활용_강의덱'
 info: |
   스마트수산업 전문가 양성과정
-  제15장 수산양식과 인공지능 활용
-  집필: 정누리 (퍼블릭에이아이)
+  수산양식과 인공지능 활용
+  집필: 오진실 (퍼블릭에이아이)
 lineNumbers: false
 drawings:
   persist: false
