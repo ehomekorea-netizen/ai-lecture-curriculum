@@ -195,16 +195,24 @@ onBeforeUnmount(() => {
         생성형 AI를 통한 실무능력 향상
       </h1>
 
-      <p class="text-sm md:text-base font-normal leading-relaxed max-w-2xl pure-white-sub">
-        AI의 본질과 2026 트렌드부터 개인 맞춤설정, 보안 마스킹, 그리고 안전한 RCTF 지시법까지
+      <p class="text-sm md:text-base font-normal leading-relaxed max-w-2xl pure-white-sub break-keep">
+        AI의 본질과 팩트 검증부터 업무 위임(Work), 그리고 실무 시각화(Images 2.0 & Canva) 완성까지
       </p>
     </div>
 
     <!-- ── Bottom Bar: Logos & Presenter Text ── -->
     <div class="relative z-10 flex items-center justify-between border-t border-white/20 pt-4">
-      <div class="flex items-center gap-2.5">
-        <img src="/mc-energy-logo.jpg" alt="MC Energy" class="h-6.5 rounded px-2.5 py-1 bg-white object-contain shadow-sm" />
-        <img src="/smhrd-logo.png" alt="스마트인재개발원" class="h-6.5 rounded px-2.5 py-1 bg-white object-contain shadow-sm" />
+      <div class="flex items-center gap-3">
+        <img
+          src="/mc-energy-logo.jpg"
+          alt="MC Energy"
+          class="h-7.5 rounded px-2.5 py-0.5 bg-white object-contain shadow-sm"
+        />
+        <img
+          src="/smhrd-logo.png"
+          alt="스마트인재개발원"
+          class="h-6 rounded px-2.5 py-1 bg-white object-contain shadow-sm"
+        />
       </div>
       <span class="text-sm md:text-base font-bold text-white tracking-wide flex items-center gap-2 pure-white-text">
         <span class="text-white/60 font-normal text-xs uppercase tracking-widest">Presenter</span>
