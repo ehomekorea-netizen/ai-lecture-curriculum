@@ -2147,6 +2147,7 @@ title: 글로벌 비주얼 벤치마크 압도적 1위
 layout: default
 class: px-14 py-6
 glowSeed: 415
+clicks: 1
 ---
 <!-- slide:52-Gpt-Image-2-Benchmark -->
 
@@ -2154,12 +2155,13 @@ glowSeed: 415
   글로벌 비주얼 벤치마크 압도적 1위
 </h2>
 
-<GptImage2Benchmark />
+<GptImage2Benchmark :stage="$clicks" />
+<div v-click="1" class="hidden"></div>
 
 <!--
 [강사 멘트]
-보시는 것처럼 ChatGPT Images 2.0은 1,512점으로 2위 경쟁 모델 대비 240점 이상의 압도적인 격차로 1위를 기록했습니다.
-단순 확산 모델을 넘어선 자기회귀 추론형 비주얼 엔진으로 실무 투입 수준의 완성도를 자랑합니다.
+[click 0] ChatGPT Images 2.0(gpt-image-2)은 글로벌 Image Arena에서 1,512점으로 압도적 1위를 기록했습니다.
+[click 1] 1클릭 시 1~15위 전체 리더보드로 확장하여 확인하실 수 있습니다. 단순 확산 모델(Diffusion)을 넘어선 자기회귀 추론형 엔진으로 99% 텍스트 정확도와 실무 인쇄급 화질을 제공합니다.
 -->
 
 ---
@@ -2205,23 +2207,23 @@ ChatGPT 대화창에서 기획과 카피를 뽑으며 @Canva를 호출하면 맞
 -->
 
 ---
-title: 정적 포스터에서 15초 홍보 숏폼 영상으로 확장
+title: 실무 홍보 이미지 & 멀티채널 비주얼 제작 완결
 layout: default
 class: px-14 py-6
 glowSeed: 418
 clicks: 1
 ---
-<!-- slide:55-Image-To-Video-Evolution -->
+<!-- slide:55-Enterprise-Visual-Production -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  정적 포스터에서 15초 홍보 숏폼 영상으로 확장
+  실무 홍보 이미지 & 멀티채널 비주얼 제작 완결
 </h2>
 
-<ImageToVideoEvolution :stage="$clicks" />
+<EnterpriseVisualProduction :stage="$clicks" />
 <div v-click="1" class="hidden"></div>
 
 <!--
 [강사 멘트]
-ChatGPT Images 2.0으로 생성한 정적 포스터를 캔바에서 모션 자막과 음악을 더해 15초 세로형 숏폼 영상으로 확장합니다.
-단 하나의 기획으로 사내 안내문과 숏폼 홍보 영상을 동시에 완성하는 1 Source Multi-Use 파이프라인으로 전체 과정을 완결합니다.
+ChatGPT Images 2.0과 Canva 연동을 통해 사내 공지 배너(16:9), 사이니지 포스터(9:16), 메신저 카드뉴스(1:1)를 한 번에 완성합니다.
+단 하나의 기획과 프롬프트로 전사 멀티채널 시각 자산을 완결하는 실무 비주얼 파이프라인으로 전체 과정을 마칩니다.
 -->
