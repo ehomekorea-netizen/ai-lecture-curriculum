@@ -398,9 +398,9 @@ clicks: 2
     <LiquidGlass glow="cyan" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-cyan-500/20">
-            <span class="text-xs font-bold text-cyan-300">1단계: 출처 및 수치 확인</span>
-            <span class="text-[9px] font-mono text-cyan-400">Citation</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-cyan-500/20 text-xs font-bold text-cyan-300">
+            <span class="i-carbon:catalog text-sm"></span>
+            <span>1단계: 출처 및 수치 확인</span>
           </div>
           <p class="text-xs text-white/80 m-0 leading-relaxed mb-2">
             답변에 포함된 통계 수치, 날짜, 법률/규정 조항이 실제 원본 출처와 정확히 일치하는지 1차 확인합니다.
@@ -415,9 +415,9 @@ clicks: 2
     <LiquidGlass glow="blue" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-blue-500/20">
-            <span class="text-xs font-bold text-blue-300">2단계: 교차 검증 (Cross-Check)</span>
-            <span class="text-[9px] font-mono text-blue-400">Multi-Source</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-blue-500/20 text-xs font-bold text-blue-300">
+            <span class="i-carbon:compare text-sm"></span>
+            <span>2단계: 교차 검증 (Cross-Check)</span>
           </div>
           <p class="text-xs text-white/80 m-0 leading-relaxed mb-2">
             검색 엔진이나 사내 타 부서 공식 자료와 대조하여 상충되는 정보나 최신 개정 사항이 없는지 확인합니다.
@@ -432,9 +432,9 @@ clicks: 2
     <LiquidGlass glow="emerald" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-emerald-500/20">
-            <span class="text-xs font-bold text-emerald-300">3단계: 논리적 인과 점검</span>
-            <span class="text-[9px] font-mono text-emerald-400">Logic Check</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-emerald-500/20 text-xs font-bold text-emerald-300">
+            <span class="i-carbon:rule-test text-sm"></span>
+            <span>3단계: 논리적 인과 점검</span>
           </div>
           <p class="text-xs text-white/90 m-0 leading-relaxed mb-2">
             전제와 결론 사이에 논리적 비약이 없는지, 제시된 해결책이 우리 회사 현업에 실현 가능한지 점검합니다.
@@ -992,9 +992,9 @@ clicks: 2
     <LiquidGlass glow="cyan" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-cyan-500/20">
-            <span class="text-xs font-bold text-cyan-300">공식 ① 기준 연도 명시</span>
-            <span class="text-[9px] font-mono text-cyan-400">Target Year</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-cyan-500/20 text-xs font-bold text-cyan-300">
+            <span class="i-carbon:calendar text-sm"></span>
+            <span>공식 ① 기준 연도 명시</span>
           </div>
           <div class="p-2 rounded bg-black/40 font-mono text-[10px] text-cyan-100 mb-2 border border-cyan-500/20">
             "2026년 최신 기준 국내 태양광 REC 가격 추이를 검색하라."
@@ -1012,9 +1012,9 @@ clicks: 2
     <LiquidGlass glow="blue" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-blue-500/20">
-            <span class="text-xs font-bold text-blue-300">공식 ② 공신력 출처 한정</span>
-            <span class="text-[9px] font-mono text-blue-400">Trusted Domain</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-blue-500/20 text-xs font-bold text-blue-300">
+            <span class="i-carbon:security text-sm"></span>
+            <span>공식 ② 공신력 출처 한정</span>
           </div>
           <div class="p-2 rounded bg-black/40 font-mono text-[10px] text-blue-100 mb-2 border border-blue-500/20">
             "산업통상자원부, 전력거래소(KPX), 한국에너지공단 공식 발표만 인용하라."
@@ -1032,9 +1032,9 @@ clicks: 2
     <LiquidGlass glow="emerald" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-emerald-500/20">
-            <span class="text-xs font-bold text-emerald-300">공식 ③ 비교 및 출처 표기</span>
-            <span class="text-[9px] font-mono text-emerald-400">Table & Citation</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-emerald-500/20 text-xs font-bold text-emerald-300">
+            <span class="i-carbon:table-split text-sm"></span>
+            <span>공식 ③ 비교 및 출처 표기</span>
           </div>
           <div class="p-2 rounded bg-black/40 font-mono text-[10px] text-emerald-100 mb-2 border border-emerald-500/20">
             "각 수치 뒤에 `[출처: KPX 2026.03 보고서]` 형식으로 링크와 함께 표로 정리하라."
