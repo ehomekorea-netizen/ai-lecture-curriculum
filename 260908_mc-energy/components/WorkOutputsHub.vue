@@ -7,7 +7,7 @@ const props = withDefaults(defineProps<{
   stage: 0
 })
 
-const showOutputs = computed(() => (props.stage ?? 0) >= 1)
+const isHighlight = computed(() => (props.stage ?? 0) >= 1)
 const showBottom = computed(() => (props.stage ?? 0) >= 2)
 </script>
 
@@ -30,52 +30,52 @@ const showBottom = computed(() => (props.stage ?? 0) >= 2)
         </div>
       </div>
 
-      <!-- Right: 5 Output Artifacts -->
-      <div
-        class="col-span-8 grid grid-cols-2 gap-3 transition-all duration-500"
-        :class="[showOutputs ? 'opacity-100 translate-x-0' : 'opacity-20 translate-x-2']"
-      >
-        <div class="p-3.5 rounded-xl bg-black/30 border border-white/10 flex items-center gap-3">
+      <!-- Right: 5 Output Artifacts (Always Crisp & Visible) -->
+      <div class="col-span-8 grid grid-cols-2 gap-3">
+        <div class="p-3.5 rounded-xl bg-black/40 border border-emerald-500/30 flex items-center gap-3 shadow-md">
           <span class="i-carbon:table text-emerald-400 text-2xl"></span>
           <div>
             <div class="text-xs font-bold text-white">Spreadsheet</div>
-            <div class="text-[11px] text-white/50">표, 수식, 데이터 시트 (.xlsx)</div>
+            <div class="text-[11px] text-white/60">표, 수식, 데이터 시트 (.xlsx)</div>
           </div>
         </div>
 
-        <div class="p-3.5 rounded-xl bg-black/30 border border-white/10 flex items-center gap-3">
+        <div class="p-3.5 rounded-xl bg-black/40 border border-blue-500/30 flex items-center gap-3 shadow-md">
           <span class="i-carbon:document text-blue-400 text-2xl"></span>
           <div>
             <div class="text-xs font-bold text-white">Document</div>
-            <div class="text-[11px] text-white/50">정식 기획서, 실무 보고서 (.docx)</div>
+            <div class="text-[11px] text-white/60">정식 기획서, 실무 보고서 (.docx)</div>
           </div>
         </div>
 
-        <div class="p-3.5 rounded-xl bg-black/30 border border-white/10 flex items-center gap-3">
+        <div class="p-3.5 rounded-xl bg-black/40 border border-purple-500/30 flex items-center gap-3 shadow-md">
           <span class="i-carbon:presentation-file text-purple-400 text-2xl"></span>
           <div>
             <div class="text-xs font-bold text-white">Presentation</div>
-            <div class="text-[11px] text-white/50">발표 슬라이드 구조 (.pptx)</div>
+            <div class="text-[11px] text-white/60">발표 슬라이드 구조 (.pptx)</div>
           </div>
         </div>
 
-        <div class="p-3.5 rounded-xl bg-black/30 border border-white/10 flex items-center gap-3">
+        <div class="p-3.5 rounded-xl bg-black/40 border border-amber-500/30 flex items-center gap-3 shadow-md">
           <span class="i-carbon:chart-line text-amber-400 text-2xl"></span>
           <div>
             <div class="text-xs font-bold text-white">Analysis & Chart</div>
-            <div class="text-[11px] text-white/50">통계 분석 & 시각화 그래프</div>
+            <div class="text-[11px] text-white/60">통계 분석 & 시각화 그래프</div>
           </div>
         </div>
 
-        <div class="col-span-2 p-3.5 rounded-xl bg-black/30 border border-white/10 flex items-center justify-between">
+        <div
+          class="col-span-2 p-3.5 rounded-xl bg-black/40 border transition-all duration-500 flex items-center justify-between"
+          :class="[isHighlight ? 'border-cyan-400 bg-cyan-950/30 shadow-lg' : 'border-white/15']"
+        >
           <div class="flex items-center gap-3">
             <span class="i-carbon:image text-cyan-400 text-2xl"></span>
             <div>
               <div class="text-xs font-bold text-white">Image Assets</div>
-              <div class="text-[11px] text-white/50">사내 공지, 시각 포스터, 카드뉴스</div>
+              <div class="text-[11px] text-white/70">사내 공지, 시각 포스터, 카드뉴스 이미지 생성</div>
             </div>
           </div>
-          <span class="text-[10px] font-mono text-white/40">DALL-E 3</span>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold">DALL-E 3 실습</span>
         </div>
       </div>
     </div>
@@ -83,7 +83,7 @@ const showBottom = computed(() => (props.stage ?? 0) >= 2)
     <!-- Bottom Callout -->
     <div
       class="mt-4 p-3.5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between text-xs text-white/90 transition-all duration-500"
-      :class="[showBottom ? 'opacity-100' : 'opacity-20']"
+      :class="[showBottom ? 'opacity-100 border-blue-400/40 bg-blue-950/20' : 'opacity-50']"
     >
       <div class="flex items-center gap-2">
         <span class="i-carbon:checkmark-filled text-base text-blue-400"></span>

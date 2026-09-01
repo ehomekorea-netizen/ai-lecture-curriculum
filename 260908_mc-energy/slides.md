@@ -210,15 +210,18 @@ clicks: 2
     <LiquidGlass glow="cyan" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-cyan-500/20">
-            <span class="text-xs font-bold text-cyan-300">① 사고 모델 (Reasoning)</span>
-            <span class="text-[9px] font-mono text-cyan-400">Deep Think</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-cyan-500/20 text-xs font-bold text-cyan-300">
+            <span class="i-carbon:brain text-sm"></span>
+            <span>① 사고 모델 (Reasoning)</span>
           </div>
           <p class="text-xs text-white/80 m-0 leading-relaxed">
-            단순 암기 답변을 넘어 스스로 논리를 검증하고 깊이 추론하는 <strong>Reasoning/Thinking</strong> 모델 보편화
+            단순 암기 답변을 넘어 스스로 논리를 검증하고 깊이 추론하는 <strong>사고형 모델</strong> 보편화
           </p>
         </div>
-        <div class="text-[10px] font-mono text-cyan-300/80 pt-2 border-t border-white/10">논리적 오차 최소화</div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-cyan-300/80 pt-2 border-t border-white/10">
+          <span>Deep Think</span>
+          <span>논리 오차 최소화</span>
+        </div>
       </div>
     </LiquidGlass>
   </div>
@@ -227,15 +230,18 @@ clicks: 2
     <LiquidGlass glow="blue" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-blue-500/20">
-            <span class="text-xs font-bold text-blue-300">② 에이전트 워크플로우</span>
-            <span class="text-[9px] font-mono text-blue-400">ChatGPT Work</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-blue-500/20 text-xs font-bold text-blue-300">
+            <span class="i-lobe-icons:openai text-sm"></span>
+            <span>② 에이전트 워크플로우</span>
           </div>
           <p class="text-xs text-white/80 m-0 leading-relaxed">
-            텍스트 말대꾸를 넘어 실제 <strong>파일을 읽고, 분석하고, 결과 문서(DOCX/XLSX)를 완결</strong>하는 실행형 체계
+            텍스트 말대꾸를 넘어 실제 <strong>파일을 읽고, 분석하고, 결과 파일(DOCX/XLSX)을 완결</strong>하는 실행 체계
           </p>
         </div>
-        <div class="text-[10px] font-mono text-blue-300/80 pt-2 border-t border-white/10">업무 직접 완결</div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-blue-300/80 pt-2 border-t border-white/10">
+          <span>ChatGPT Work</span>
+          <span>업무 직접 완결</span>
+        </div>
       </div>
     </LiquidGlass>
   </div>
@@ -244,15 +250,18 @@ clicks: 2
     <LiquidGlass glow="emerald" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-emerald-500/20">
-            <span class="text-xs font-bold text-emerald-300">③ 근거 기반 RAG 통합</span>
-            <span class="text-[9px] font-mono text-emerald-400">Notebook RAG</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-emerald-500/20 text-xs font-bold text-emerald-300">
+            <span class="i-lobe-icons:gemini text-sm"></span>
+            <span>③ 근거 기반 RAG 통합</span>
           </div>
           <p class="text-xs text-white/80 m-0 leading-relaxed">
-            사내 지식 베이스와 업로드 문서를 오픈북으로 대조하는 <strong>Gemini Notebook 및 RAG</strong>의 기본 탑재
+            사내 지식 베이스와 업로드 문서를 오픈북으로 대조하는 <strong>Gemini Notebook</strong>의 기본 탑재
           </p>
         </div>
-        <div class="text-[10px] font-mono text-emerald-300/80 pt-2 border-t border-white/10">100% 팩트 보장</div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-emerald-300/80 pt-2 border-t border-white/10">
+          <span>Notebook RAG</span>
+          <span>100% 팩트 보장</span>
+        </div>
       </div>
     </LiquidGlass>
   </div>
@@ -261,15 +270,18 @@ clicks: 2
     <LiquidGlass glow="violet" :radius="14">
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
-          <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-purple-500/20">
-            <span class="text-xs font-bold text-purple-300">④ 도구 연동 체계</span>
-            <span class="text-[9px] font-mono text-purple-400">MCP & Tools</span>
+          <div class="flex items-center gap-1.5 mb-2.5 pb-1.5 border-b border-purple-500/20 text-xs font-bold text-purple-300">
+            <span class="i-carbon:tools text-sm"></span>
+            <span>④ 도구 연동 생태계</span>
           </div>
           <p class="text-xs text-white/80 m-0 leading-relaxed">
-            @visualize 차트, @document 보고서, 외부 사내 시스템을 <strong>단일 대화창에서 원클릭 제어</strong>
+            @visualize 차트, @document 보고서, 사내 시스템을 <strong>단일 대화창에서 원클릭 제어</strong>
           </p>
         </div>
-        <div class="text-[10px] font-mono text-purple-300/80 pt-2 border-t border-white/10">원스톱 올인원 완결</div>
+        <div class="flex items-center justify-between text-[10px] font-mono text-purple-300/80 pt-2 border-t border-white/10">
+          <span>MCP & Tools</span>
+          <span>올인원 제어</span>
+        </div>
       </div>
     </LiquidGlass>
   </div>
@@ -298,11 +310,14 @@ clicks: 1
   <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
     <div>
       <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
-        <div class="flex items-center gap-2 text-white/70 font-bold text-base">
-          <span class="i-carbon:search"></span>
-          <span>기존 검색 (포털 / Google)</span>
+        <div class="flex items-center gap-2 text-white/90 font-bold text-base">
+          <span class="i-carbon:search text-white/60"></span>
+          <span>기존 포털 검색</span>
         </div>
-        <span class="text-xs font-mono text-white/40">Data Finder</span>
+        <div class="flex items-center gap-2">
+          <span class="i-logos:google text-base"></span>
+          <span class="i-simple-icons:naver text-emerald-400 text-sm"></span>
+        </div>
       </div>
       <div class="space-y-2 text-xs text-white/70">
         <p class="m-0 leading-relaxed">✓ 인터넷 링크와 문서 목록을 사람이 직접 일일이 클릭</p>
@@ -321,10 +336,13 @@ clicks: 1
         <div>
           <div class="flex items-center justify-between mb-3 border-b border-cyan-500/20 pb-2">
             <div class="flex items-center gap-2 text-cyan-300 font-bold text-base">
-              <span class="i-carbon:chat-bot"></span>
-              <span>생성형 AI (ChatGPT / Gemini)</span>
+              <span class="i-carbon:chat-bot text-cyan-400"></span>
+              <span>생성형 AI</span>
             </div>
-            <span class="text-xs font-mono text-cyan-400 font-bold">Synthesizer & Agent</span>
+            <div class="flex items-center gap-2.5">
+              <span class="i-lobe-icons:openai text-base text-white"></span>
+              <span class="i-lobe-icons:gemini text-base text-cyan-300"></span>
+            </div>
           </div>
           <div class="space-y-2 text-xs text-white/90">
             <p class="m-0 leading-relaxed">✓ 방대한 정보 속에서 핵심을 추론하여 맞춤형 결과물을 직접 합성</p>
@@ -476,8 +494,7 @@ clicks: 1
   <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
     <div>
       <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
-        <span class="text-xs font-bold text-white/60 uppercase">단순 질문 (Chat 방식)</span>
-        <span class="text-[10px] font-mono text-white/40">비효율</span>
+        <span class="text-xs font-mono font-bold text-white/70 uppercase">단순 질문 (Chat 방식)</span>
       </div>
       <div class="p-3 rounded-xl bg-black/40 font-mono text-xs text-white/80 border border-white/5 mb-3">
         "신재생에너지 정책 요약해줘."
@@ -494,8 +511,7 @@ clicks: 1
       <div class="p-6 flex flex-col justify-between h-76">
         <div>
           <div class="flex items-center justify-between mb-3 border-b border-blue-500/20 pb-2">
-            <span class="text-xs font-bold text-blue-300 uppercase">업무 위임 (Work Order 방식)</span>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">100점 결과</span>
+            <span class="text-xs font-mono font-bold text-blue-300 uppercase">업무 위임 (Work Order 방식)</span>
           </div>
           <div class="p-3 rounded-xl bg-black/40 font-mono text-[11px] text-blue-200 leading-relaxed border border-blue-500/20 mb-2">
             "너는 에너지 정책 분석관이다. MC에너지 임원 보고용으로 2026년 RPS 의무공급비율 개정안의 핵심 영향을 표(항목|현행|개정안|영향)로 1페이지 정리하라."
@@ -877,7 +893,7 @@ glow: none
   part="2차시"
   title="심층 리서치 & Gemini Notebook"
   subtitle="단순 검색을 넘어선 심층 리서치 방법론과 Gemini Notebook을 활용한 나만의 사내 맞춤형 지식 베이스 구축"
-  image="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop"
+  image="/Gemini-notebook-768x432.webp"
 />
 
 <!--
@@ -1434,7 +1450,10 @@ clicks: 2
         두 명의 AI 호스트가 사내 문서를 친절하게 대화형 팟캐스트로 해설 (출퇴근/이동 중 청취)
       </p>
     </div>
-    <div class="p-2 rounded bg-black/40 text-[10px] font-mono text-cyan-300 border border-cyan-500/20">원클릭 오디오 생성</div>
+    <div class="p-2 rounded bg-black/40 text-[10px] font-mono text-cyan-300 border border-cyan-500/20 flex items-center justify-center gap-1.5">
+      <span class="i-carbon:audio-console text-xs"></span>
+      <span>원클릭 오디오 생성</span>
+    </div>
   </div>
 
   <div v-click="1" class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-74">
@@ -1447,7 +1466,10 @@ clicks: 2
         복잡한 사내 규정이나 방대한 기술 문서를 신규 입사자도 3분 만에 이해하는 Q&A 및 요약본으로 변환
       </p>
     </div>
-    <div class="p-2 rounded bg-black/40 text-[10px] font-mono text-blue-300 border border-blue-500/20">실무 배포용 요약집</div>
+    <div class="p-2 rounded bg-black/40 text-[10px] font-mono text-blue-300 border border-blue-500/20 flex items-center justify-center gap-1.5">
+      <span class="i-carbon:document-view text-xs"></span>
+      <span>실무 배포용 요약집</span>
+    </div>
   </div>
 
   <div v-click="2" class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 backdrop-blur-md flex flex-col justify-between h-74">
@@ -1460,7 +1482,10 @@ clicks: 2
         사업 일정표 및 프로젝트 마일스톤을 시간 순서대로 정렬하고 핵심 퀴즈 생성
       </p>
     </div>
-    <div class="p-2 rounded bg-black/40 text-[10px] font-mono text-emerald-300 font-bold border border-emerald-500/20">일정표 자동 정렬</div>
+    <div class="p-2 rounded bg-black/40 text-[10px] font-mono text-emerald-300 font-bold border border-emerald-500/20 flex items-center justify-center gap-1.5">
+      <span class="i-carbon:calendar-tools text-xs"></span>
+      <span>일정표 자동 정렬</span>
+    </div>
   </div>
 </div>
 
@@ -1682,7 +1707,7 @@ title: ChatGPT Work 구조와 6단계 에이전트 루프
 layout: default
 class: px-14 py-7
 glowSeed: 402
-clicks: 4
+clicks: 5
 ---
 <!-- slide:39-Agent-Execution-Engine -->
 
@@ -1986,20 +2011,27 @@ clicks: 2
   AI 도구 생태계와 실제 실행
 </h2>
 
-<div class="grid grid-cols-12 gap-5 items-center">
+<div class="grid grid-cols-12 gap-6 items-stretch mt-1">
   <div class="col-span-7">
     <WorkToolsHub :stage="$clicks" />
   </div>
-  <div class="col-span-5 flex flex-col justify-between h-84">
-    <div class="rounded-xl overflow-hidden border border-white/20 bg-white p-2 shadow-2xl">
-      <img src="/chatgpt-app-execution.jpg" alt="Real App Execution" class="rounded-lg w-full max-h-52 object-contain" />
-    </div>
-    <div class="p-2.5 rounded-xl border border-white/10 bg-white/5 text-xs text-white/80 mt-2">
-      <div class="flex items-center gap-1.5 text-cyan-300 font-bold mb-1">
-        <span class="i-carbon:flash"></span>
-        <span>실전 실행 장면:</span>
+  <div class="col-span-5">
+    <div class="p-3.5 rounded-2xl border border-white/15 bg-zinc-950/70 backdrop-blur-md shadow-2xl flex flex-col justify-between h-full">
+      <div>
+        <div class="flex items-center justify-between mb-2.5 pb-1.5 border-b border-white/10 px-1">
+          <span class="text-xs font-bold text-white flex items-center gap-1.5">
+            <span class="i-carbon:flash text-cyan-400"></span>
+            <span>실제 구동 화면 (Live Execution)</span>
+          </span>
+          <span class="text-[10px] font-mono text-cyan-300">LG ThinQ & Apps</span>
+        </div>
+        <div class="rounded-xl overflow-hidden border border-white/10 bg-black flex items-center justify-center p-1">
+          <img src="/chatgpt-app-execution.jpg" alt="Real App Execution" class="rounded-lg w-full max-h-54 object-contain select-none" />
+        </div>
       </div>
-      대화창에서 자연어 명령으로 외부 앱(@LG ThinQ 등)과 엔터프라이즈 기기 제어 및 데이터 연동을 즉시 수행합니다.
+      <div class="mt-2.5 p-2.5 rounded-xl bg-black/40 text-[11px] text-white/80 border border-white/5 leading-relaxed">
+        대화창에서 자연어 명령 한마디로 외부 앱(@LG ThinQ 등)과 엔터프라이즈 기기·데이터를 직접 제어합니다.
+      </div>
     </div>
   </div>
 </div>
