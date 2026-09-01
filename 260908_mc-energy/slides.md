@@ -2147,7 +2147,6 @@ title: 글로벌 비주얼 벤치마크 압도적 1위
 layout: default
 class: px-14 py-6
 glowSeed: 415
-clicks: 1
 ---
 <!-- slide:52-Gpt-Image-2-Benchmark -->
 
@@ -2155,13 +2154,12 @@ clicks: 1
   글로벌 비주얼 벤치마크 압도적 1위
 </h2>
 
-<GptImage2Benchmark :stage="$clicks" />
-<div v-click="1" class="hidden"></div>
+<GptImage2Benchmark />
 
 <!--
 [강사 멘트]
-[click 0] ChatGPT Images 2.0(gpt-image-2)은 글로벌 Image Arena에서 1,512점으로 압도적 1위를 기록했습니다.
-[click 1] 1클릭 시 1~15위 전체 리더보드로 확장하여 확인하실 수 있습니다. 단순 확산 모델(Diffusion)을 넘어선 자기회귀 추론형 엔진으로 99% 텍스트 정확도와 실무 인쇄급 화질을 제공합니다.
+ChatGPT Images 2.0(gpt-image-2)은 글로벌 Text-to-Image Arena에서 1,512점으로 2위 그룹과 240점 이상의 격차를 벌리며 압도적 1위를 기록했습니다.
+단순 확산 모델(Diffusion)을 넘어선 Thinking 기반 지능형 자가보정 엔진으로, 99%에 달하는 한글·다국어 텍스트 정확도와 인위적인 색감을 걷어낸 실무 인쇄급 화질을 제공합니다.
 -->
 
 ---

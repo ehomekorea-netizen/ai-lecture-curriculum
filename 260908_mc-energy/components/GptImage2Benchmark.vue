@@ -1,45 +1,32 @@
 <script setup lang="ts">
-import { useSlideContext } from '@slidev/client'
-import { computed } from 'vue'
-
-const props = withDefaults(defineProps<{
-  stage?: number
-}>(), {
-  stage: 0
-})
-
-const slideContext = useSlideContext()
-const currentStage = computed(() => {
-  const ctxClicks = slideContext?.$clicks?.value ?? slideContext?.$nav?.clicks ?? 0
-  return Math.max(props.stage ?? 0, ctxClicks)
-})
-
-const isExpanded = computed(() => currentStage.value >= 1)
-
-const coreInsights = [
+const points = [
   {
-    title: '1. Text-to-Image Arena 글로벌 1위 (1,512 pts)',
-    desc: '2위 Nano Banana 2(1,271점), 3위 Nano Banana Pro(1,244점) 대비 240+ 점의 압도적 격차 기록',
-    tag: 'SOTA 1위 달성',
-    color: 'cyan',
+    badge: '1,512 pts',
+    badgeColor: 'text-amber-300 border-amber-500/30 bg-amber-500/10',
+    title: 'Text-to-Image Arena 글로벌 1위',
+    desc: '2위 그룹(1,271점) 대비 240+ 점의 압도적 격차로 글로벌 1위 달성',
+    svg: `<svg class="w-5 h-5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>`,
   },
   {
-    title: '2. 99% 수준의 텍스트 렌더링 정확도',
-    desc: '기존 확산 모델의 최대 난제였던 다국어·한글 텍스트 및 곡면/라벨 타이포그래피를 완벽 인쇄',
-    tag: '오타·깨짐 완전 극복',
-    color: 'blue',
+    badge: '99% 정확도',
+    badgeColor: 'text-cyan-300 border-cyan-500/30 bg-cyan-500/10',
+    title: '정밀한 한글 및 다국어 텍스트 인쇄',
+    desc: '기존 모델의 오타/외계어를 극복하고 포스터·간판·라벨 한글 완벽 인쇄',
+    svg: `<svg class="w-5 h-5 text-cyan-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" x2="15" y1="20" y2="20"/><line x1="12" x2="12" y1="4" y2="20"/></svg>`,
   },
   {
-    title: '3. 자기회귀(Autoregressive) 추론 엔진',
-    desc: '단순 노이즈 제거(Diffusion)가 아닌 프롬프트의 복합 제약조건을 사전 추론하고 자가 보정',
-    tag: '추론형 생성 엔진',
-    color: 'violet',
+    badge: 'Thinking Engine',
+    badgeColor: 'text-blue-300 border-blue-500/30 bg-blue-500/10',
+    title: 'Thinking 기반 지능형 자가보정 추론',
+    desc: '단순 이미지 생성을 넘어 복합 요구조건을 스스로 분석하고 결함을 자가 교정',
+    svg: `<svg class="w-5 h-5 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7Z"/><path d="M9 21h6"/></svg>`,
   },
   {
-    title: '4. 인위적 AI 틴트(AI Tint/Look) 제거',
-    desc: '누런 색조와 과장된 플라스틱 광택을 걷어내고 실무 포스터에 바로 쓰는 고화질 포토리얼리즘 완성',
-    tag: '실무 인쇄급 화질',
-    color: 'emerald',
+    badge: '2K 실무급',
+    badgeColor: 'text-emerald-300 border-emerald-500/30 bg-emerald-500/10',
+    title: '인위적 AI 색조 제거 & 2K 초고해상도',
+    desc: '누런 톤과 플라스틱 광택을 걷어내고 사내 포스터에 즉시 쓰는 실무 인쇄 화질',
+    svg: `<svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>`,
   },
 ]
 </script>
@@ -47,82 +34,53 @@ const coreInsights = [
 <template>
   <div class="w-full flex flex-col justify-between py-1 select-none">
     <div class="grid grid-cols-12 gap-6 items-stretch">
-      <!-- Left: Interactive Image Switch (Click 0: Top 5 -> Click 1: Full 15 Leaderboard) -->
-      <div class="col-span-5 flex flex-col justify-center items-center h-82 relative">
-        <!-- Top 5 Image (Click 0) -->
-        <transition name="fade">
-          <div v-if="!isExpanded" class="w-full h-full flex flex-col justify-center items-center">
-            <img
-              src="/ChatGPT-Images-2.0-1.webp"
-              alt="ChatGPT Images 2.0 Leaderboard Top 5"
-              class="rounded-2xl w-full max-h-78 object-contain select-none shadow-2xl transition-all duration-500"
-            />
-            <div class="text-[10px] font-mono text-cyan-300/70 mt-1">
-              Top 5 리더보드 요약 (클릭 시 1~15위 전체 랭킹 확장)
-            </div>
-          </div>
-        </transition>
-
-        <!-- Full 15 Leaderboard Image (Click 1) -->
-        <transition name="fade">
-          <div v-if="isExpanded" class="w-full h-full flex flex-col justify-center items-center">
-            <img
-              src="/GPT-image-2.webp"
-              alt="Text-to-Image Arena Full Leaderboard #1"
-              class="rounded-2xl w-full max-h-78 object-contain select-none shadow-2xl transition-all duration-500"
-            />
-            <div class="text-[10px] font-mono text-emerald-300 font-bold mt-1">
-              Arena.ai 공식 Text-to-Image 전체 15대 모델 비교
-            </div>
-          </div>
-        </transition>
+      <!-- Left: Full Long Image (GPT-image-2.webp) -->
+      <div class="col-span-5 flex items-center justify-center h-82">
+        <img
+          src="/GPT-image-2.webp"
+          alt="Text-to-Image Arena Full Leaderboard #1"
+          class="rounded-2xl w-full h-82 object-contain select-none shadow-2xl"
+        />
       </div>
 
-      <!-- Right: Structured Analytics Vidhya Insights Grid -->
-      <div class="col-span-7 flex flex-col justify-between h-82">
-        <div class="grid grid-cols-2 gap-3.5 items-stretch flex-1 mb-2">
+      <!-- Right: Clean, Spacious Bullet Points with SVG Icons -->
+      <div class="col-span-7 flex flex-col justify-between h-82 py-1">
+        <div class="space-y-3 flex-1 flex flex-col justify-between">
           <div
-            v-for="item in coreInsights"
+            v-for="item in points"
             :key="item.title"
-            class="p-3.5 rounded-xl bg-white/5 border border-white/10 flex flex-col justify-between h-34"
+            class="flex items-start gap-3.5 p-2.5 px-3.5 rounded-xl bg-white/5 border border-white/10"
           >
-            <div>
-              <div class="border-b border-white/10 pb-1 mb-1.5 whitespace-nowrap">
-                <strong class="text-xs text-white">{{ item.title }}</strong>
+            <!-- SVG Icon Container -->
+            <div
+              class="mt-0.5 p-2 rounded-lg bg-black/40 border border-white/10 flex items-center justify-center shrink-0"
+              v-html="item.svg"
+            />
+
+            <!-- Content Area -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between mb-0.5">
+                <strong class="text-xs text-white font-bold">{{ item.title }}</strong>
+                <span
+                  class="text-[9.5px] font-mono px-2 py-0.5 rounded border whitespace-nowrap"
+                  :class="item.badgeColor"
+                >
+                  {{ item.badge }}
+                </span>
               </div>
-              <p class="text-[10.5px] text-white/80 m-0 leading-relaxed break-keep">
+              <p class="text-[11px] text-white/75 m-0 leading-snug break-keep">
                 {{ item.desc }}
               </p>
-            </div>
-
-            <div
-              class="pt-1 border-t border-white/10 text-[9.5px] font-mono whitespace-nowrap font-bold"
-              :class="item.color === 'cyan' ? 'text-cyan-300' : item.color === 'blue' ? 'text-blue-300' : item.color === 'violet' ? 'text-purple-300' : 'text-emerald-300'"
-            >
-              ✓ {{ item.tag }}
             </div>
           </div>
         </div>
 
-        <!-- Bottom Source Bar -->
-        <div class="p-2 rounded-lg bg-black/40 border border-white/10 flex items-center justify-between text-[10px] text-white/60">
-          <span class="font-mono">Source: Arena.ai & Analytics Vidhya (2026.04)</span>
-          <span class="font-mono text-cyan-300 font-bold">Autoregressive vs Diffusion</span>
+        <!-- Footer Source Note -->
+        <div class="pt-2 text-[10px] font-mono text-white/40 flex items-center justify-between">
+          <span>Source: Arena.ai & Analytics Vidhya (2026.04)</span>
+          <span class="text-cyan-300/80 font-bold">Thinking Visual Engine</span>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-  transform: scale(0.97);
-}
-</style>
