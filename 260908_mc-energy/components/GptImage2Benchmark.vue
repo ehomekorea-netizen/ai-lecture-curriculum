@@ -32,24 +32,24 @@ const points = [
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between py-1 select-none">
+  <div class="w-full flex flex-col justify-between select-none">
     <div class="grid grid-cols-12 gap-6 items-stretch">
-      <!-- Left: Full Long Image (GPT-image-2.webp) -->
-      <div class="col-span-5 flex items-center justify-center h-82">
+      <!-- Left: Expanded Full Long Image (Optimized Height to Fill Vertical Space) -->
+      <div class="col-span-5 flex items-center justify-center h-92">
         <img
           src="/GPT-image-2.webp"
           alt="Text-to-Image Arena Full Leaderboard #1"
-          class="rounded-2xl w-full h-82 object-contain select-none shadow-2xl"
+          class="rounded-2xl w-full h-92 object-contain select-none shadow-2xl"
         />
       </div>
 
       <!-- Right: Clean, Spacious Bullet Points with SVG Icons -->
-      <div class="col-span-7 flex flex-col justify-between h-82 py-1">
-        <div class="space-y-3 flex-1 flex flex-col justify-between">
+      <div class="col-span-7 flex flex-col justify-between h-92 py-0.5">
+        <div class="space-y-2.5 flex-1 flex flex-col justify-between">
           <div
             v-for="item in points"
             :key="item.title"
-            class="flex items-start gap-3.5 p-2.5 px-3.5 rounded-xl bg-white/5 border border-white/10"
+            class="flex items-start gap-3.5 p-3 rounded-xl bg-white/5 border border-white/10"
           >
             <!-- SVG Icon Container -->
             <div
@@ -59,7 +59,7 @@ const points = [
 
             <!-- Content Area -->
             <div class="flex-1 min-w-0">
-              <div class="flex items-center justify-between mb-0.5">
+              <div class="flex items-center justify-between mb-1">
                 <strong class="text-xs text-white font-bold">{{ item.title }}</strong>
                 <span
                   class="text-[9.5px] font-mono px-2 py-0.5 rounded border whitespace-nowrap"
@@ -68,7 +68,7 @@ const points = [
                   {{ item.badge }}
                 </span>
               </div>
-              <p class="text-[11px] text-white/75 m-0 leading-snug break-keep">
+              <p class="text-[11px] text-white/75 m-0 leading-relaxed break-keep">
                 {{ item.desc }}
               </p>
             </div>
