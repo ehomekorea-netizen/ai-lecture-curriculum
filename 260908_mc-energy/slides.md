@@ -2163,7 +2163,7 @@ ChatGPT Images 2.0(gpt-image-2)은 글로벌 Text-to-Image Arena에서 1,512점�
 -->
 
 ---
-title: 실전 한글 비주얼 렌더링 & 사내 안내문 제작
+title: 실전 한글 비주얼 렌더링 & 추론 프롬프트 지침
 layout: default
 class: px-14 py-6
 glowSeed: 416
@@ -2171,7 +2171,7 @@ glowSeed: 416
 <!-- slide:53-Gpt-Image-2-Showcase -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실전 한글 비주얼 렌더링 & 사내 안내문 제작
+  실전 한글 비주얼 렌더링 & 추론 프롬프트 지침
 </h2>
 
 <GptImage2Showcase />
@@ -2179,17 +2179,37 @@ glowSeed: 416
 <!--
 [강사 멘트]
 실제 생성 사례에서 보시듯, 간판이나 포스터 속 한글 문구와 가격표가 깨짐 없이 완벽하게 인쇄됩니다.
-용도 정의, 인쇄할 한글 텍스트, 2K 규격을 지정하면 사내 공지 및 사이니지용 포스터를 단 한 번에 완성할 수 있습니다.
+추론 모델에게 이미지를 요구할 때는 목적 정의, 큰따옴표 한글 텍스트 명시, 2K 규격 통제의 3원칙을 지키는 것이 핵심입니다.
+-->
+
+---
+title: 추론 모델 실전 프롬프트 예제 (Chat & Work)
+layout: default
+class: px-14 py-6
+glowSeed: 417
+---
+<!-- slide:54-Gpt-Image-Prompt-Template -->
+
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  추론 모델 실전 프롬프트 예제 (Chat & Work)
+</h2>
+
+<GptImagePromptTemplate />
+
+<!--
+[강사 멘트]
+교육생 여러분이 실무에서 바로 복사해서 사용하실 수 있는 실전 프롬프트 예제입니다.
+일반 Chat에서는 단독 포스터를 제작하고, ChatGPT Work에서는 앞서 작성한 보고서나 데이터 분석 맥락을 그대로 이어받아 인트라넷 배너를 원클릭으로 생성할 수 있습니다.
 -->
 
 ---
 title: 역방향 디자인: 대화창에서 @Canva 호출하기
 layout: default
 class: px-14 py-6
-glowSeed: 417
+glowSeed: 418
 clicks: 1
 ---
-<!-- slide:54-Canva-Reverse-Workflow -->
+<!-- slide:55-Canva-Reverse-Workflow -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   역방향 디자인: 대화창에서 @Canva 호출하기
@@ -2208,10 +2228,10 @@ ChatGPT 대화창에서 기획과 카피를 뽑으며 @Canva를 호출하면 맞
 title: 실무 홍보 이미지 & 멀티채널 비주얼 제작 완결
 layout: default
 class: px-14 py-6
-glowSeed: 418
+glowSeed: 419
 clicks: 1
 ---
-<!-- slide:55-Enterprise-Visual-Production -->
+<!-- slide:56-Enterprise-Visual-Production -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실무 홍보 이미지 & 멀티채널 비주얼 제작 완결
