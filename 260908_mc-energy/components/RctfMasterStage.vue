@@ -14,33 +14,33 @@ const pillars = [
   {
     letter: 'R',
     name: 'Role',
-    kr: '역할 부여',
-    example: '"너는 10년 차 에너지 정책 및 전력시장 수급 분석 전문가다."',
-    desc: '전문 지식 영역의 가중치 활성화',
+    kr: '역할 정의',
+    example: '"너는 10년 차 에너지 정책 및 전력 수급 분석가다."',
+    desc: '답변의 전문 지식 도메인과 톤앤매너를 지정합니다.',
     color: 'cyan',
   },
   {
     letter: 'C',
     name: 'Context',
-    kr: '배경 · 맥락',
-    example: '"MC에너지 임원진 주간 경영회의 보고용 실무 자료를 작성 중이다."',
-    desc: '청중 수준 및 비즈니스 목적 정의',
+    kr: '배경·맥락',
+    example: '"MC에너지 임원진 주간 경영회의 보고용 자료를 작성 중이다."',
+    desc: '보고 대상(청중)과 업무 목적을 제시합니다.',
     color: 'blue',
   },
   {
     letter: 'T',
     name: 'Task',
     kr: '핵심 과업',
-    example: '"전력시장 SMP 가격 변동 원인을 3가지로 분석하고 단기 대응안을 작성하라."',
-    desc: '구체적 동사로 명확한 작업 지시',
+    example: '"전력시장 SMP 가격 변동 원인을 3가지로 분석하고 대응안을 제시하라."',
+    desc: '구체적인 동사로 실행할 업무를 명시합니다.',
     color: 'violet',
   },
   {
     letter: 'F',
     name: 'Format',
-    kr: '출력 형식',
-    example: '"A4 1페이지 분량, 결론 우선 3줄 요약 후 표와 글머리 기호 3개 이내로 출력하라."',
-    desc: '분량, 서식, 제외 조건 등 엄격한 제약',
+    kr: '출력 서식',
+    example: '"A4 1페이지 분량, 결론 요약 후 항목별 비교표로 작성하라."',
+    desc: '분량, 서식, 제외 조건 등 출력 규격을 통제합니다.',
     color: 'emerald',
   },
 ]
@@ -85,7 +85,7 @@ const pillars = [
             </div>
 
             <div class="pt-2 border-t border-white/10 text-[10px] font-mono text-white/40 flex items-center justify-between">
-              <span>기둥 0{{ idx + 1 }}</span>
+              <span>Pillar 0{{ idx + 1 }}</span>
               <span class="font-bold text-white/70">{{ item.kr }}</span>
             </div>
           </div>
@@ -93,18 +93,18 @@ const pillars = [
       </div>
     </div>
 
-    <!-- Bottom: 3 Essential Elements & Master Formula -->
+    <!-- Bottom Master Formula -->
     <div
       class="mt-3.5 transition-all duration-500"
       :class="[currentStage >= 3 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-1']"
     >
       <LiquidGlass glow="neutral" :radius="12">
         <div class="p-3 px-4 flex items-center justify-between text-xs text-white/90">
-          <div class="flex items-center gap-3">
-            <span class="text-xs font-mono font-bold text-cyan-300">💡 좋은 프롬프트 공식:</span>
-            <span class="text-white/80"><strong>[Role]</strong>(전문가) + <strong>[Context]</strong>(사내 배경) + <strong>[Task]</strong>(구체적 동사) + <strong>[Format]</strong>(엄격한 제약)</span>
+          <div class="flex items-center gap-2.5">
+            <span class="i-carbon:formula text-cyan-400 text-base"></span>
+            <span class="text-white/80"><strong>[Role]</strong>(전문가) + <strong>[Context]</strong>(사내 배경) + <strong>[Task]</strong>(구체적 동사) + <strong>[Format]</strong>(엄격한 서식 제약)</span>
           </div>
-          <span class="text-[11px] font-mono text-emerald-300 font-bold">= 100점 실무 결과물</span>
+          <span class="text-[11px] font-mono text-emerald-300 font-bold">= 실무 즉시 채택 산출물</span>
         </div>
       </LiquidGlass>
     </div>

@@ -52,17 +52,9 @@ clicks: 2
 ---
 <!-- slide:03-Hook -->
 
-<div class="flex items-center justify-between mb-4">
-  <div>
-    <h2 class="text-3xl font-extrabold text-white tracking-tight">
-      프롬프트 어조와 정답률: 지시문의 명확성이 미치는 영향
-    </h2>
-    <p class="text-xs text-white/50 m-0 font-mono">
-      실험 연구 데이터: 감정적 압박 vs 명확한 역할 부여(Role-playing) 성능 비교
-    </p>
-  </div>
-  <EnergyConceptReel />
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  프롬프트 어조와 정답률 실험
+</h2>
 
 <HookToneExperiment :stage="$clicks" />
 
@@ -75,7 +67,7 @@ AI를 다룰 때는 감정이 아니라 '명확한 역할(Role)과 맥락(Contex
 -->
 
 ---
-title: 인공지능 · 머신러닝 · 딥러닝 · 생성형 AI 계층도
+title: 인공지능(AI)과 생성형 AI 계층 구조
 layout: default
 class: px-16 py-8
 glowSeed: 201
@@ -84,7 +76,7 @@ clicks: 3
 <!-- slide:04-AI-Hierarchy -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  인공지능 생태계 속 생성형 AI의 정확한 위치
+  인공지능(AI)과 생성형 AI 계층 구조
 </h2>
 
 <div class="grid grid-cols-12 gap-8 items-center mt-2">
@@ -97,12 +89,12 @@ clicks: 3
     <div class="space-y-2.5">
       <div v-click="1">
         <LiquidGlass glow="blue" :radius="12">
-          <div class="p-3">
+          <div class="p-3.5">
             <div class="flex items-center justify-between">
               <span class="text-xs font-mono font-bold text-blue-400">1. 인공지능 (AI)</span>
               <span class="text-[11px] font-mono text-white/50">가장 포괄적인 개념</span>
             </div>
-            <p class="text-xs text-white/80 m-0 mt-1 leading-relaxed">
+            <p class="text-xs text-white/80 m-0 mt-1.5 leading-relaxed">
               인간의 학습, 추론, 지각 능력을 컴퓨터 프로그램으로 모방한 모든 기술의 총칭
             </p>
           </div>
@@ -110,12 +102,12 @@ clicks: 3
       </div>
       <div v-click="2">
         <LiquidGlass glow="cyan" :radius="12">
-          <div class="p-3">
+          <div class="p-3.5">
             <div class="flex items-center justify-between">
               <span class="text-xs font-mono font-bold text-cyan-400">2. 머신러닝 & 딥러닝 (ML/DL)</span>
               <span class="text-[11px] font-mono text-white/50">데이터 기반 학습</span>
             </div>
-            <p class="text-xs text-white/80 m-0 mt-1 leading-relaxed">
+            <p class="text-xs text-white/80 m-0 mt-1.5 leading-relaxed">
               규칙을 직접 코딩하지 않고 데이터를 통해 패턴을 학습(ML)하며, 다층 신경망으로 복잡한 특징을 추출(DL)
             </p>
           </div>
@@ -123,13 +115,13 @@ clicks: 3
       </div>
       <div v-click="3">
         <LiquidGlass glow="emerald" :radius="12">
-          <div class="p-3">
+          <div class="p-3.5">
             <div class="flex items-center justify-between">
               <span class="text-xs font-mono font-bold text-emerald-400">3. 생성형 AI (Generative AI)</span>
               <span class="text-[11px] font-mono text-emerald-300 font-bold">2026 실무 핵심</span>
             </div>
-            <p class="text-xs text-white/90 m-0 mt-1 leading-relaxed">
-              단순 분류·예측을 넘어 <strong>텍스트, 코드, 이미지 등 새로운 창작물을 직접 합성</strong>해내는 최신 딥러닝 기술
+            <p class="text-xs text-white/90 m-0 mt-1.5 leading-relaxed">
+              단순 분류·예측을 넘어 <strong>텍스트, 코드, 이미지 등 새로운 산출물을 직접 합성</strong>해내는 최신 딥러닝 기술
             </p>
           </div>
         </LiquidGlass>
@@ -144,7 +136,7 @@ AI라는 가장 큰 그릇 안에 데이터를 학습하는 머신러닝이 있�
 -->
 
 ---
-title: 머신러닝과 딥러닝의 특징 비교
+title: 머신러닝과 딥러닝 비교
 layout: default
 class: px-16 py-8
 glowSeed: 202
@@ -152,8 +144,8 @@ clicks: 1
 ---
 <!-- slide:05-ML-vs-DL -->
 
-<h2 class="text-3xl font-extrabold text-white tracking-tight mb-5">
-  머신러닝과 딥러닝의 특징 및 작동 방식 비교
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  머신러닝(ML)과 딥러닝(DL) 비교
 </h2>
 
 <div class="flex items-center justify-center my-2">
@@ -179,7 +171,7 @@ clicks: 1
 -->
 
 ---
-title: ChatGPT의 3대 핵심 어원과 작동 원리
+title: ChatGPT 어원과 작동 원리 (G·P·T)
 layout: default
 class: px-16 py-8
 glowSeed: 203
@@ -187,12 +179,9 @@ clicks: 2
 ---
 <!-- slide:06-GPT-Etymology -->
 
-<div class="flex items-center justify-between mb-4">
-  <h2 class="text-3xl font-extrabold text-white tracking-tight">
-    ChatGPT의 3대 핵심 어원과 작동 원리
-  </h2>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-white/10 text-white/70">G · P · T</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  ChatGPT 어원과 작동 원리 (G·P·T)
+</h2>
 
 <PromptEtymologyGlow :stage="$clicks" />
 
@@ -204,7 +193,7 @@ GPT의 세 글자(G-P-T)는 생성(Generative), 사전학습(Pre-trained), 문�
 -->
 
 ---
-title: 2026 AI 활용 환경의 변화
+title: 2026 AI 4대 패러다임 변화
 layout: default
 class: px-16 py-8
 glowSeed: 204
@@ -213,7 +202,7 @@ clicks: 2
 <!-- slide:07-2026-Trends -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  2026 AI 활용 패러다임의 4대 변화: 대화에서 완결로
+  2026 AI 4대 패러다임 변화
 </h2>
 
 <div class="grid grid-cols-4 gap-4 mt-3">
@@ -273,7 +262,7 @@ clicks: 2
       <div class="p-4 flex flex-col justify-between h-72">
         <div>
           <div class="flex items-center justify-between mb-2 pb-1.5 border-b border-purple-500/20">
-            <span class="text-xs font-bold text-purple-300">④ 도구 연동 생태계</span>
+            <span class="text-xs font-bold text-purple-300">④ 도구 연동 체계</span>
             <span class="text-[9px] font-mono text-purple-400">MCP & Tools</span>
           </div>
           <p class="text-xs text-white/80 m-0 leading-relaxed">
@@ -293,7 +282,7 @@ clicks: 2
 -->
 
 ---
-title: 검색과 생성형 AI의 본질적 차이
+title: 웹검색과 생성형 AI의 차이
 layout: default
 class: px-16 py-8
 glowSeed: 205
@@ -302,7 +291,7 @@ clicks: 1
 <!-- slide:08-Search-vs-GenAI -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  기존 웹검색과 생성형 AI의 본질적 차이
+  기존 웹검색 vs 생성형 AI
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-4">
@@ -316,8 +305,8 @@ clicks: 1
         <span class="text-xs font-mono text-white/40">Data Finder</span>
       </div>
       <div class="space-y-2 text-xs text-white/70">
-        <p class="m-0 leading-relaxed">✓ 인터넷에 존재하는 링크와 문서 목록을 사람이 직접 일일이 클릭</p>
-        <p class="m-0 leading-relaxed">✓ 정보의 취합, 분석, 요약, 보고서 작성을 100% 사람이 직접 수행</p>
+        <p class="m-0 leading-relaxed">✓ 인터넷 링크와 문서 목록을 사람이 직접 일일이 클릭</p>
+        <p class="m-0 leading-relaxed">✓ 정보 취합, 분석, 요약, 보고서 작성을 100% 사람이 직접 수행</p>
         <p class="m-0 leading-relaxed">✓ "어디에 정보가 있는가?"를 찾는 도구</p>
       </div>
     </div>
@@ -357,7 +346,7 @@ clicks: 1
 -->
 
 ---
-title: 할루시네이션의 원인과 현상
+title: AI 환각의 원인과 해결책
 layout: default
 class: px-16 py-8
 glowSeed: 206
@@ -366,7 +355,7 @@ clicks: 1
 <!-- slide:09-Hallucination -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  할루시네이션(환각): 왜 AI는 그럴듯한 거짓말을 하는가?
+  AI 환각(Hallucination)의 원인과 해결책
 </h2>
 
 <HallucinationShowcase :stage="$clicks" />
@@ -378,7 +367,7 @@ AI는 거짓말을 치려는 게 아니라, 그럴듯한 문장을 확률적으�
 -->
 
 ---
-title: AI 답변 결과 검증 3단계
+title: AI 결과 검증 3단계
 layout: default
 class: px-16 py-8
 glowSeed: 207
@@ -387,7 +376,7 @@ clicks: 2
 <!-- slide:10-Verification-Criteria -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실무자를 위한 AI 답변 결과 검증 3단계 프로세스
+  AI 답변 결과 검증 3단계
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
@@ -434,7 +423,7 @@ clicks: 2
             <span class="text-[9px] font-mono text-emerald-400">Logic Check</span>
           </div>
           <p class="text-xs text-white/90 m-0 leading-relaxed mb-2">
-            전제와 결론 사이에 논리적 비약이 없는지, 제시된 해결책이 우리 회사(MC에너지) 현업에 실현 가능한지 점검합니다.
+            전제와 결론 사이에 논리적 비약이 없는지, 제시된 해결책이 우리 회사 현업에 실현 가능한지 점검합니다.
           </p>
         </div>
         <div class="text-[10px] font-mono text-emerald-300 font-bold pt-2 border-t border-white/10">실무 채택 최종 승인</div>
@@ -449,7 +438,7 @@ AI 결과물은 반드시 [1단계 수치 확인 ➔ 2단계 교차 검증 ➔ 3
 -->
 
 ---
-title: RAG 시스템의 작동 구조와 3단계 메커니즘
+title: RAG 작동 구조: 사실 기반 오픈북 AI
 layout: default
 class: px-16 py-8
 glowSeed: 208
@@ -457,17 +446,9 @@ clicks: 2
 ---
 <!-- slide:11-RAG-Interactive-Stage -->
 
-<div class="flex items-center justify-between mb-3">
-  <div>
-    <h2 class="text-3xl font-extrabold text-white tracking-tight">
-      RAG (검색 증강 생성): 100% 사실 기반의 오픈북 AI
-    </h2>
-    <p class="text-xs text-white/50 m-0 font-mono">
-      Retrieval(사내 DB 검색) ➔ Augmentation(컨텍스트 주입) ➔ Generation(사실 기반 정답 생성)
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 font-bold">Open-Book Architecture</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  RAG 작동 구조: 사실 기반 오픈북 AI
+</h2>
 
 <RagInteractiveStage :stage="$clicks" />
 
@@ -479,7 +460,7 @@ RAG는 AI에게 오픈북 시험을 치르게 하는 기술입니다.
 -->
 
 ---
-title: 프롬프트의 본질과 역할
+title: 프롬프트의 본질: 업무 위임장
 layout: default
 class: px-16 py-8
 glowSeed: 209
@@ -488,14 +469,14 @@ clicks: 1
 <!-- slide:12-Prompt-As-Work-Order -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  프롬프트의 본질: 단순 질문이 아닌 “업무 위임장(Work Order)”
+  프롬프트의 본질: 업무 위임장
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-4">
   <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
     <div>
       <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
-        <span class="text-xs font-bold text-white/60 uppercase">단순 질문자 (Chat 방식)</span>
+        <span class="text-xs font-bold text-white/60 uppercase">단순 질문 (Chat 방식)</span>
         <span class="text-[10px] font-mono text-white/40">비효율</span>
       </div>
       <div class="p-3 rounded-xl bg-black/40 font-mono text-xs text-white/80 border border-white/5 mb-3">
@@ -513,7 +494,7 @@ clicks: 1
       <div class="p-6 flex flex-col justify-between h-76">
         <div>
           <div class="flex items-center justify-between mb-3 border-b border-blue-500/20 pb-2">
-            <span class="text-xs font-bold text-blue-300 uppercase">업무 위임자 (Work Order 방식)</span>
+            <span class="text-xs font-bold text-blue-300 uppercase">업무 위임 (Work Order 방식)</span>
             <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">100점 결과</span>
           </div>
           <div class="p-3 rounded-xl bg-black/40 font-mono text-[11px] text-blue-200 leading-relaxed border border-blue-500/20 mb-2">
@@ -535,7 +516,7 @@ clicks: 1
 -->
 
 ---
-title: 실무 지시문 구성 원칙 (RCTF) & 3대 필수 요소
+title: 실전 프롬프트 4대 기둥 (RCTF)
 layout: default
 class: px-16 py-8
 glowSeed: 210
@@ -543,17 +524,9 @@ clicks: 3
 ---
 <!-- slide:13-Rctf-Master-Stage -->
 
-<div class="flex items-center justify-between mb-3">
-  <div>
-    <h2 class="text-3xl font-extrabold text-white tracking-tight">
-      실전 프롬프트 4대 기둥 (RCTF) & 3대 필수 요소
-    </h2>
-    <p class="text-xs text-white/50 m-0 font-mono">
-      Role(역할) · Context(맥락) · Task(과업) · Format(형식/제약) 마스터 아키텍처
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 font-bold">RCTF Framework</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  실전 프롬프트 4대 기둥 (RCTF)
+</h2>
 
 <RctfMasterStage :stage="$clicks" />
 
@@ -566,7 +539,7 @@ clicks: 3
 -->
 
 ---
-title: 프롬프트 품질 고도화: Zero-shot vs Few-shot
+title: Zero-shot vs Few-shot (예시 주입)
 layout: default
 class: px-16 py-8
 glowSeed: 211
@@ -575,7 +548,7 @@ clicks: 1
 <!-- slide:14-Few-Shot-Prompting -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  프롬프트 품질 고도화: Zero-shot vs Few-shot 예시 주입
+  Zero-shot vs Few-shot (예시 주입)
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-4">
@@ -633,7 +606,7 @@ clicks: 1
 <!-- slide:15-Custom-Instructions -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  사용자 맞춤설정 (Custom Instructions): 매번 쓰지 않고 기본값 고정
+  사용자 맞춤설정 (Custom Instructions)
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-4">
@@ -683,7 +656,7 @@ clicks: 1
 -->
 
 ---
-title: AI 입력 전 3초 점검 (정보보안 및 마스킹)
+title: AI 입력 전 3초 보안 점검과 마스킹
 layout: default
 class: px-16 py-8
 glowSeed: 213
@@ -691,17 +664,9 @@ clicks: 1
 ---
 <!-- slide:16-Security-Check -->
 
-<div class="flex items-center justify-between mb-3">
-  <div>
-    <h2 class="text-3xl font-extrabold text-white tracking-tight">
-      AI 입력 전 3초 점검: 정보보안 및 개인정보 마스킹
-    </h2>
-    <p class="text-xs text-white/50 m-0 font-mono">
-      사내 비공개 기밀 · 고객 개인정보(PII) · 재무 단가 자동 가명화 수칙
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-rose-500/20 text-rose-300 font-bold">Security First</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  AI 입력 전 3초 보안 점검과 마스킹
+</h2>
 
 <SecurityMaskingDemo :stage="$clicks" />
 
@@ -712,7 +677,7 @@ AI에 자료를 넣기 전 딱 3초만 확인하십시오.
 -->
 
 ---
-title: 실습 전 점검: 실무 프롬프트 5초 체크리스트
+title: 실무 프롬프트 5대 체크리스트
 layout: default
 class: px-14 py-7
 glowSeed: 214
@@ -720,8 +685,8 @@ clicks: 4
 ---
 <!-- slide:17-Prompt-Checklist -->
 
-<h2 class="text-2xl font-extrabold text-white tracking-tight mb-2">
-  실습 전 점검: 실무 프롬프트 5초 체크리스트
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  실무 프롬프트 5대 체크리스트
 </h2>
 
 <PromptChecklistInteractive :stage="$clicks" />
@@ -741,7 +706,7 @@ clicks: 1
 <!-- slide:18-Mission-Card -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  1차시 실습 과제: 사내 맞춤형 RCTF 프롬프트 작성 및 결과 검증
+  1차시 실습: 사내 맞춤형 RCTF 프롬프트 작성
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-2">
@@ -794,7 +759,10 @@ clicks: 1
           </div>
         </div>
         <div class="p-2 rounded-lg bg-black/40 border border-emerald-500/30 text-[11px] text-emerald-200 font-bold flex items-center justify-between">
-          <span>🏆 80점 이상 시 1차시 실무 인증 완료</span>
+          <div class="flex items-center gap-1.5">
+            <span class="i-carbon:award text-emerald-400 text-sm"></span>
+            <span>80점 이상 시 1차시 실무 인증 완료</span>
+          </div>
           <span class="font-mono">Pass Criteria</span>
         </div>
       </div>
@@ -808,7 +776,7 @@ clicks: 1
 -->
 
 ---
-title: 실습 중 자주 발생하는 2대 오류 해결 가이드
+title: 프롬프트 2대 오류 해결 가이드
 layout: default
 class: px-16 py-8
 glowSeed: 216
@@ -817,7 +785,7 @@ clicks: 1
 <!-- slide:19-Troubleshooting -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 중 자주 발생하는 2대 오류 해결 가이드
+  프롬프트 2대 오류 해결 가이드
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-4">
@@ -831,7 +799,10 @@ clicks: 1
         <strong>원인:</strong> 분량 및 서식 제약(Format)이 누락되어 교과서 전체를 서술함.
       </p>
       <div class="p-3 rounded-xl bg-black/40 font-mono text-[11px] text-cyan-200 border border-cyan-500/20">
-        💡 <strong>처방 프롬프트:</strong><br/>
+        <div class="flex items-center gap-1 text-cyan-400 font-bold mb-1">
+          <span class="i-carbon:light"></span>
+          <span>처방 프롬프트:</span>
+        </div>
         "미사여구를 모두 빼고, 실무 결론만 3줄 개조식으로 요약하라. 각 항목은 50자 이내로 제한하라."
       </div>
     </div>
@@ -849,7 +820,10 @@ clicks: 1
             <strong>원인:</strong> 근거 자료 부재 또는 네거티브 제약 미설정.
           </p>
           <div class="p-3 rounded-xl bg-black/40 font-mono text-[11px] text-emerald-100 border border-emerald-500/20">
-            💡 <strong>처방 프롬프트:</strong><br/>
+            <div class="flex items-center gap-1 text-emerald-400 font-bold mb-1">
+              <span class="i-carbon:light"></span>
+              <span>처방 프롬프트:</span>
+            </div>
             "첨부한 파일의 내용에만 근거하여 답변하라. 데이터에 없는 사실은 임의 추측하지 말고 '확인 불가'로 표시하라."
           </div>
         </div>
@@ -873,7 +847,7 @@ glowSeed: 217
 
 <div class="flex flex-col items-center justify-center">
   <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-300 mb-4">
-    <span>1차시 핵심 마스터 테이크어웨이</span>
+    <span>1차시 핵심 공식</span>
   </div>
   <div class="p-6 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md shadow-2xl max-w-3xl mb-5">
     <div class="text-2xl font-black text-white tracking-tight leading-relaxed">
@@ -913,7 +887,7 @@ glow: none
 -->
 
 ---
-title: 검색과 리서치의 차이
+title: 단순 웹검색 vs 심층 리서치
 layout: default
 class: px-16 py-8
 glowSeed: 301
@@ -922,7 +896,7 @@ clicks: 1
 <!-- slide:22-Search-vs-Research -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  단순 웹검색(Search)과 심층 리서치(Deep Research)의 차이
+  단순 웹검색 vs 심층 리서치
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-4">
@@ -969,7 +943,7 @@ clicks: 1
 -->
 
 ---
-title: 좋은 리서치의 4단계 (Research Pipeline)
+title: 리서치 4단계 파이프라인
 layout: default
 class: px-16 py-8
 glowSeed: 302
@@ -977,17 +951,9 @@ clicks: 3
 ---
 <!-- slide:23-Research-4-Steps -->
 
-<div class="flex items-center justify-between mb-3">
-  <div>
-    <h2 class="text-3xl font-extrabold text-white tracking-tight">
-      좋은 리서치의 4단계: 질문에서 완결 보고서까지
-    </h2>
-    <p class="text-xs text-white/50 m-0 font-mono">
-      Clarify(구체화) ➔ Collect(다중 수집) ➔ Verify(교차 검증) ➔ Synthesize(종합 보고)
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 font-bold">4-Phase Pipeline</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  리서치 4단계 파이프라인
+</h2>
 
 <ResearchFunnelStage :stage="$clicks" />
 
@@ -997,7 +963,7 @@ clicks: 3
 -->
 
 ---
-title: 웹검색을 잘하는 질문법
+title: AI 웹검색 3대 질문 공식
 layout: default
 class: px-16 py-8
 glowSeed: 303
@@ -1006,7 +972,7 @@ clicks: 2
 <!-- slide:24-Search-Prompting -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  AI 웹검색의 품질을 3배 높이는 3대 질문 공식
+  AI 웹검색 3대 질문 공식
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
@@ -1077,18 +1043,19 @@ AI에게 검색을 시킬 때는 [1. 기준 연도 ➔ 2. 공신력 출처 ➔ 3
 -->
 
 ---
-title: NotebookLM에서 Gemini Notebook으로의 진화
+title: Google AI 브랜드 진화와 포지셔닝
 layout: default
 class: px-16 py-8
 glowSeed: 304
+clicks: 1
 ---
 <!-- slide:25-Brand-Evolution -->
 
-<h2 class="text-3xl font-extrabold text-white tracking-tight mb-2">
-  Google AI 생태계의 브랜드 진화와 실제 도구 포지셔닝
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  Google AI 브랜드 진화와 포지셔닝
 </h2>
 
-<BrandEvolution />
+<BrandEvolution :stage="$clicks" />
 
 <!--
 [강사 멘트]
@@ -1097,7 +1064,7 @@ glowSeed: 304
 -->
 
 ---
-title: Gemini Notebook의 개념과 사내 RAG 구조
+title: Gemini Notebook: 사내 문서 기반 지식 비서
 layout: default
 class: px-16 py-8
 glowSeed: 305
@@ -1106,7 +1073,7 @@ clicks: 1
 <!-- slide:26-Gemini-Notebook-RAG -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  Gemini Notebook: 내 문서에만 100% 근거하여 답하는 지식 비서
+  Gemini Notebook: 사내 문서 기반 지식 비서
 </h2>
 
 <GeminiNotebookRAG :stage="$clicks" />
@@ -1117,7 +1084,7 @@ Gemini Notebook은 1차시에서 배운 RAG를 코딩 한 줄 없이 파일 업�
 -->
 
 ---
-title: Gemini Notebook 3단 화면 구조 & 4대 기능 & 3원칙
+title: Gemini Notebook 핵심 구조와 3원칙
 layout: default
 class: px-14 py-7
 glowSeed: 306
@@ -1125,17 +1092,9 @@ clicks: 3
 ---
 <!-- slide:27-Notebook-Studio-Stage -->
 
-<div class="flex items-center justify-between mb-2">
-  <div>
-    <h2 class="text-2xl font-extrabold text-white tracking-tight">
-      Gemini Notebook 3단 화면 구조 & 4대 기능 & 실무 3원칙
-    </h2>
-    <p class="text-[11px] text-white/50 m-0 font-mono">
-      Left: 소스 패널 · Center: 근거 채팅 & 각주 · Right: Studio 9대 맞춤 변환
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">Studio Hub</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  Gemini Notebook 핵심 구조와 3원칙
+</h2>
 
 <GeminiNotebookStudio :stage="$clicks" />
 
@@ -1148,7 +1107,7 @@ Gemini Notebook은 좌측 소스 패널, 중앙 근거 채팅, 우측 Studio 9�
 -->
 
 ---
-title: Gemini Notebook 프롬프트 공식 (S-A-F)
+title: Gemini Notebook 공식 (S-A-F)
 layout: default
 class: px-16 py-8
 glowSeed: 307
@@ -1157,7 +1116,7 @@ clicks: 2
 <!-- slide:28-SAF-Framework -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  Gemini Notebook 전용 프롬프트 공식: S-A-F
+  Gemini Notebook 공식 (S-A-F)
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
@@ -1213,7 +1172,7 @@ Notebook에서는 S(Source), A(Action), F(Format)의 3단계로 질문할 때 �
 -->
 
 ---
-title: 실습 ① ChatGPT 웹검색 (Web Search)
+title: 실습 1: ChatGPT 웹검색 (최신 정책 탐색)
 layout: default
 class: px-16 py-8
 glowSeed: 308
@@ -1222,7 +1181,7 @@ clicks: 1
 <!-- slide:29-Practice-WebSearch -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 ① ChatGPT 웹검색: 최신 전력 및 에너지 정책 팩트 탐색
+  실습 1: ChatGPT 웹검색 (최신 정책 탐색)
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-3">
@@ -1238,7 +1197,7 @@ clicks: 1
           </div>
         </div>
         <div class="text-xs font-mono text-cyan-300 font-bold pt-2 border-t border-white/10">
-          최신 정책 팩트 실시간 크롤링
+          최신 정책 팩트 실시간 탐색
         </div>
       </div>
     </LiquidGlass>
@@ -1250,11 +1209,13 @@ clicks: 1
         <div>
           <div class="text-xs font-mono text-white/50 uppercase font-bold mb-2">확인 포인트</div>
           <div class="space-y-2 text-xs text-white/80 leading-relaxed">
-            <div class="p-2 rounded bg-black/40 border border-white/5">
-              ✓ 검색 아이콘(🌐) 활성화 및 출처 인용구 링크 확인
+            <div class="p-2 rounded bg-black/40 border border-white/5 flex items-center gap-2">
+              <span class="i-carbon:earth text-cyan-400 text-base"></span>
+              <span>검색 기능 활성화 및 출처 인용구 링크 확인</span>
             </div>
-            <div class="p-2 rounded bg-black/40 border border-white/5">
-              ✓ 2026년 이전 과거 레거시 수치 배제 여부 검증
+            <div class="p-2 rounded bg-black/40 border border-white/5 flex items-center gap-2">
+              <span class="i-carbon:checkmark-outline text-emerald-400 text-base"></span>
+              <span>2026년 이전 과거 레거시 수치 배제 여부 검증</span>
             </div>
           </div>
         </div>
@@ -1272,7 +1233,7 @@ clicks: 1
 -->
 
 ---
-title: 실습 ② ChatGPT 심층 리서치 (Deep Research)
+title: 실습 2: 심층 리서치 (보고서 교차 분석)
 layout: default
 class: px-16 py-8
 glowSeed: 309
@@ -1281,7 +1242,7 @@ clicks: 1
 <!-- slide:30-Practice-DeepResearch -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 ② ChatGPT 심층 리서치: 다중 보고서 교차 분석
+  실습 2: 심층 리서치 (보고서 교차 분석)
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-3">
@@ -1331,7 +1292,7 @@ Deep Research 기능을 실행하여 다단계 추론과 종합 보고서가 생
 -->
 
 ---
-title: 실습 ③ Gemini Notebook에 다중 소스 등록
+title: 실습 3: Gemini Notebook 소스 등록
 layout: default
 class: px-16 py-8
 glowSeed: 310
@@ -1340,7 +1301,7 @@ clicks: 1
 <!-- slide:31-Practice-Notebook-Sources -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 ③ Gemini Notebook: 사내 실무 자료 다중 소스 등록
+  실습 3: Gemini Notebook 소스 등록
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-3">
@@ -1391,16 +1352,16 @@ clicks: 1
 -->
 
 ---
-title: 실습 ④ 자료에 질문하기 (3단계 심화)
+title: 실습 4: 소스 기반 3단계 질문법
 layout: default
 class: px-16 py-8
 glowSeed: 311
-clicks: 1
+clicks: 2
 ---
 <!-- slide:32-Practice-Deep-Questioning -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 ④ 소스 기반 질문: 팩트 확인 ➔ 비교 분석 ➔ 인사이트 도출
+  실습 4: 소스 기반 3단계 질문법
 </h2>
 
 <div class="grid grid-cols-3 gap-4 mt-3">
@@ -1430,7 +1391,7 @@ clicks: 1
     <div class="text-[10px] font-mono text-blue-300 pt-1 border-t border-blue-500/20">교차 대조</div>
   </div>
 
-  <div v-click="1" class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 backdrop-blur-md flex flex-col justify-between h-74">
+  <div v-click="2" class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 backdrop-blur-md flex flex-col justify-between h-74">
     <div>
       <span class="text-xs font-mono text-emerald-300 font-bold uppercase">3단계: 실무 시사점 도출</span>
       <div class="p-2.5 rounded-lg bg-black/40 text-[11px] font-mono text-emerald-100 mt-2 mb-2 border border-emerald-500/20">
@@ -1450,22 +1411,25 @@ clicks: 1
 -->
 
 ---
-title: 실습 ⑤ Studio 9대 맞춤형 결과물 변환
+title: 실습 5: Studio 실무 포맷 변환
 layout: default
 class: px-16 py-8
 glowSeed: 312
-clicks: 1
+clicks: 2
 ---
 <!-- slide:33-Practice-Studio-Outputs -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 ⑤ Studio: 사내 문서를 9대 실무 포맷으로 원클릭 변환
+  실습 5: Studio 실무 포맷 변환
 </h2>
 
 <div class="grid grid-cols-3 gap-4 mt-3">
   <div class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-74">
     <div>
-      <div class="text-xs font-bold text-cyan-300 mb-1">🎙️ 오디오 오버뷰 (Audio Deep Dive)</div>
+      <div class="flex items-center gap-1.5 text-xs font-bold text-cyan-300 mb-1.5">
+        <span class="i-carbon:microphone text-base"></span>
+        <span>오디오 팟캐스트 변환</span>
+      </div>
       <p class="text-[11px] text-white/70 leading-relaxed m-0 mb-2">
         두 명의 AI 호스트가 사내 문서를 친절하게 대화형 팟캐스트로 해설 (출퇴근/이동 중 청취)
       </p>
@@ -1473,9 +1437,12 @@ clicks: 1
     <div class="p-2 rounded bg-black/40 text-[10px] font-mono text-cyan-300 border border-cyan-500/20">원클릭 오디오 생성</div>
   </div>
 
-  <div class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-74">
+  <div v-click="1" class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-74">
     <div>
-      <div class="text-xs font-bold text-blue-300 mb-1">📋 브리핑 문서 & FAQ</div>
+      <div class="flex items-center gap-1.5 text-xs font-bold text-blue-300 mb-1.5">
+        <span class="i-carbon:report text-base"></span>
+        <span>브리핑 문서 & FAQ</span>
+      </div>
       <p class="text-[11px] text-white/70 leading-relaxed m-0 mb-2">
         복잡한 사내 규정이나 방대한 기술 문서를 신규 입사자도 3분 만에 이해하는 Q&A 및 요약본으로 변환
       </p>
@@ -1483,9 +1450,12 @@ clicks: 1
     <div class="p-2 rounded bg-black/40 text-[10px] font-mono text-blue-300 border border-blue-500/20">실무 배포용 요약집</div>
   </div>
 
-  <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 backdrop-blur-md flex flex-col justify-between h-74">
+  <div v-click="2" class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 backdrop-blur-md flex flex-col justify-between h-74">
     <div>
-      <div class="text-xs font-bold text-emerald-300 mb-1">⏳ 타임라인 및 스터디 가이드</div>
+      <div class="flex items-center gap-1.5 text-xs font-bold text-emerald-300 mb-1.5">
+        <span class="i-carbon:time text-base"></span>
+        <span>타임라인 및 스터디 가이드</span>
+      </div>
       <p class="text-[11px] text-white/80 leading-relaxed m-0 mb-2">
         사업 일정표 및 프로젝트 마일스톤을 시간 순서대로 정렬하고 핵심 퀴즈 생성
       </p>
@@ -1500,7 +1470,7 @@ clicks: 1
 -->
 
 ---
-title: 실습 ⑥ 리서치 결과를 Canvas에서 정리하기
+title: 실습 6: Canvas 실시간 문서 편집
 layout: default
 class: px-16 py-8
 glowSeed: 313
@@ -1509,7 +1479,7 @@ clicks: 1
 <!-- slide:34-Practice-Canvas -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 ⑥ ChatGPT Canvas: 리서치 결과물을 실시간 문서로 편집
+  실습 6: Canvas 실시간 문서 편집
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-3">
@@ -1560,7 +1530,7 @@ Canvas 화면에서 특정 문단을 선택해 수정해 보고 파일로 내보
 -->
 
 ---
-title: 2차시 최종 실습 과제 (Mission)
+title: 2차시 실습: Gemini Notebook 지식 허브
 layout: default
 class: px-16 py-8
 glowSeed: 314
@@ -1569,7 +1539,7 @@ clicks: 1
 <!-- slide:35-Session2-Mission -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  2차시 실습 과제: 사내 자료 기반 Gemini Notebook 지식 허브 구축
+  2차시 실습: Gemini Notebook 지식 허브
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-2">
@@ -1622,7 +1592,10 @@ clicks: 1
           </div>
         </div>
         <div class="p-2 rounded-lg bg-black/40 border border-emerald-500/30 text-[11px] text-emerald-200 font-bold flex items-center justify-between">
-          <span>🏆 80점 이상 시 2차시 리서치 역량 인증</span>
+          <div class="flex items-center gap-1.5">
+            <span class="i-carbon:award text-emerald-400 text-sm"></span>
+            <span>80점 이상 시 2차시 리서치 역량 인증</span>
+          </div>
           <span class="font-mono">Pass Criteria</span>
         </div>
       </div>
@@ -1645,7 +1618,7 @@ glowSeed: 315
 
 <div class="flex flex-col items-center justify-center">
   <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-300 mb-4">
-    <span>2차시 핵심 마스터 테이크어웨이</span>
+    <span>2차시 핵심 공식</span>
   </div>
   <div class="p-6 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md shadow-2xl max-w-3xl mb-5">
     <div class="text-2xl font-black text-white tracking-tight leading-relaxed">
@@ -1685,7 +1658,7 @@ glow: none
 -->
 
 ---
-title: 질문에 답하는 AI vs 일을 수행하는 AI
+title: 대화(Chat)에서 실행(Work)으로
 layout: default
 class: px-14 py-7
 glowSeed: 401
@@ -1693,8 +1666,8 @@ clicks: 2
 ---
 <!-- slide:38-Chat-vs-Work -->
 
-<h2 class="text-2xl font-extrabold text-white tracking-tight mb-2">
-  패러다임의 전환: “도움을 받는 것(Chat)”에서 “일을 맡기는 것(Work)”으로
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  대화(Chat)에서 실행(Work)으로
 </h2>
 
 <ChatVsWorkComparison :stage="$clicks" />
@@ -1705,7 +1678,7 @@ Chat은 질문에 텍스트로 답을 구하는 것이라면, Work는 목표를 
 -->
 
 ---
-title: ChatGPT Work 내부 실행 구조 & 6단계 에이전트 루프
+title: ChatGPT Work 구조와 6단계 에이전트 루프
 layout: default
 class: px-14 py-7
 glowSeed: 402
@@ -1713,17 +1686,9 @@ clicks: 4
 ---
 <!-- slide:39-Agent-Execution-Engine -->
 
-<div class="flex items-center justify-between mb-2">
-  <div>
-    <h2 class="text-2xl font-extrabold text-white tracking-tight">
-      ChatGPT Work 내부 실행 구조 & 6단계 자율 에이전트 루프
-    </h2>
-    <p class="text-[11px] text-white/50 m-0 font-mono">
-      Goal Intake ➔ Observe ➔ Plan ➔ Tool Act (@doc, @vis, xlsx) ➔ Reflect ➔ Deliver
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 font-bold">Agent Engine</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  ChatGPT Work 구조와 6단계 에이전트 루프
+</h2>
 
 <AgentExecutionEngine :stage="$clicks" />
 
@@ -1733,19 +1698,19 @@ Work 모드의 내부에서는 AI가 자율적으로 [목표 수신 ➔ 파일 �
 -->
 
 ---
-title: Work의 핵심: 파일과 결과물을 만든다
+title: Work 모드 핵심: 완성형 파일 생성
 layout: default
 class: px-14 py-7
 glowSeed: 403
-clicks: 1
+clicks: 2
 ---
 <!-- slide:40-Work-Outputs-Hub -->
 
-<h2 class="text-2xl font-extrabold text-white tracking-tight mb-2">
-  Work의 핵심: 대화창에 갇힌 글이 아닌 실제 완성형 “파일”을 생성한다
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  Work 모드 핵심: 완성형 파일 생성
 </h2>
 
-<WorkOutputsHub />
+<WorkOutputsHub :stage="$clicks" />
 
 <!--
 [강사 멘트]
@@ -1753,7 +1718,7 @@ Work의 최종 목적지는 텍스트 답변이 아니라, 사내 보고에 바�
 -->
 
 ---
-title: 도구 선택 생태계 & 업무별 도구 매칭 기준
+title: 도구 생태계와 업무별 최적 도구 매칭
 layout: default
 class: px-14 py-7
 glowSeed: 404
@@ -1761,17 +1726,9 @@ clicks: 3
 ---
 <!-- slide:41-Tool-Ecosystem-Matrix -->
 
-<div class="flex items-center justify-between mb-2">
-  <div>
-    <h2 class="text-2xl font-extrabold text-white tracking-tight">
-      도구를 선택하는 AI (Plugins & Apps) & 업무별 최적 도구 매칭
-    </h2>
-    <p class="text-[11px] text-white/50 m-0 font-mono">
-      Spreadsheet · @visualize · @document · Custom Skill 자율 매칭 기준
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">Tool Matrix</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  도구 생태계와 업무별 최적 도구 매칭
+</h2>
 
 <ToolEcosystemMatrix :stage="$clicks" />
 
@@ -1781,7 +1738,7 @@ clicks: 3
 -->
 
 ---
-title: Excel 데이터 분석 실무 & 4단계 사고방식 파이프라인
+title: 엑셀 데이터 분석 4단계 사고법
 layout: default
 class: px-14 py-7
 glowSeed: 405
@@ -1789,17 +1746,9 @@ clicks: 3
 ---
 <!-- slide:42-Excel-Analysis-Pipeline -->
 
-<div class="flex items-center justify-between mb-2">
-  <div>
-    <h2 class="text-2xl font-extrabold text-white tracking-tight">
-      Excel 데이터 분석 실무: 4단계 기본 사고방식 파이프라인
-    </h2>
-    <p class="text-[11px] text-white/50 m-0 font-mono">
-      ①점검 ➔ ②분석 ➔ ③시각화 ➔ ④점진적 수정(피드백)
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 font-bold">Data Pipeline</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  엑셀 데이터 분석 4단계 사고법
+</h2>
 
 <ExcelAnalysisPipeline :stage="$clicks" />
 
@@ -1809,7 +1758,7 @@ clicks: 3
 -->
 
 ---
-title: 실습 ① 엑셀 기본 프롬프트: 데이터 상태 파악
+title: 실습 1: 엑셀 데이터 상태 파악
 layout: default
 class: px-16 py-8
 glowSeed: 406
@@ -1818,7 +1767,7 @@ clicks: 1
 <!-- slide:43-Excel-Prompt-1-Inspection -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 ① 엑셀 기본 프롬프트: 데이터 상태 및 오류 먼저 파악하기
+  실습 1: 엑셀 데이터 상태 파악
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-3">
@@ -1845,7 +1794,7 @@ clicks: 1
     <LiquidGlass glow="neutral" :radius="14" class="h-full">
       <div class="p-5 flex flex-col justify-between h-76">
         <div>
-          <div class="text-xs font-mono text-white/50 uppercase font-bold mb-2">핵심 교육 포인트</div>
+          <div class="text-xs font-mono text-white/50 uppercase font-bold mb-2">핵심 포인트</div>
           <div class="space-y-2 text-xs text-white/80 leading-relaxed">
             <div class="p-2 rounded bg-black/40 border border-white/5">
               <strong class="text-white">① 바로 분석 금지:</strong> 결측치나 오타가 있으면 통계가 왜곡됩니다.
@@ -1869,7 +1818,7 @@ clicks: 1
 -->
 
 ---
-title: 실습 ② 엑셀 기본 프롬프트: 데이터 분석 및 원인 도출
+title: 실습 2: 엑셀 추이 분석 & 원인 도출
 layout: default
 class: px-16 py-8
 glowSeed: 407
@@ -1878,7 +1827,7 @@ clicks: 1
 <!-- slide:44-Excel-Prompt-2-Analysis -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 ② 엑셀 기본 프롬프트: 추이 분석 및 핵심 요인 도출
+  실습 2: 엑셀 추이 분석 & 원인 도출
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-3">
@@ -1915,8 +1864,9 @@ clicks: 1
             </div>
           </div>
         </div>
-        <div class="p-2 rounded-lg bg-black/40 border border-white/10 text-[11px] text-white/70">
-          💡 "추측 금지" 제약으로 할루시네이션 완벽 방지
+        <div class="p-2 rounded-lg bg-black/40 border border-white/10 text-[11px] text-white/70 flex items-center gap-1.5">
+          <span class="i-carbon:checkmark text-emerald-400"></span>
+          <span>"추측 금지" 제약으로 환각 완벽 방지</span>
         </div>
       </div>
     </LiquidGlass>
@@ -1929,24 +1879,16 @@ clicks: 1
 -->
 
 ---
-title: @visualize 플러그인: 실시간 시각화 데모
+title: @visualize 플러그인: 실시간 시각화
 layout: default
 class: px-14 py-6
 glowSeed: 408
 ---
 <!-- slide:45-Visualize-Video-Stage -->
 
-<div class="flex items-center justify-between mb-3">
-  <div>
-    <h2 class="text-2xl font-extrabold text-white tracking-tight">
-      @visualize 플러그인: 실시간 시각화 & 뷰 전환
-    </h2>
-    <p class="text-xs text-white/50 m-0 font-mono">
-      대화창 안에서 텍스트 요약을 인터랙티브 타임라인 및 캘린더 뷰로 실시간 전환
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-white/10 text-white/70">Plugin Demo</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  @visualize 플러그인: 실시간 시각화
+</h2>
 
 <div class="flex justify-center items-center">
   <div class="rounded-2xl overflow-hidden border border-white/15 bg-black shadow-2xl w-[86%]">
@@ -1968,7 +1910,7 @@ glowSeed: 408
 -->
 
 ---
-title: 실습 ④ 엑셀 기본 프롬프트: 점진적 수정 (Iterative Loop)
+title: 실습 4: 피드백을 통한 점진적 수정
 layout: default
 class: px-16 py-8
 glowSeed: 409
@@ -1977,7 +1919,7 @@ clicks: 2
 <!-- slide:46-Excel-Prompt-4-Iterative-Refine -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  실습 ④ 엑셀 기본 프롬프트: 피드백으로 완성도 높이기 (점진적 수정)
+  실습 4: 피드백을 통한 점진적 수정
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-3">
@@ -2032,7 +1974,7 @@ AI는 한 번에 100점짜리를 뽑는 자판기가 아닙니다.
 -->
 
 ---
-title: “AI 하나 + 여러 도구”: 확장되는 업무 생태계
+title: AI 도구 생태계와 실제 실행
 layout: default
 class: px-14 py-6
 glowSeed: 410
@@ -2040,8 +1982,8 @@ clicks: 2
 ---
 <!-- slide:47-Work-Tools-Hub -->
 
-<h2 class="text-2xl font-extrabold text-white tracking-tight mb-2">
-  “AI 하나 + 여러 도구”: 확장되는 업무 생태계와 실제 실행
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  AI 도구 생태계와 실제 실행
 </h2>
 
 <div class="grid grid-cols-12 gap-5 items-center">
@@ -2053,7 +1995,10 @@ clicks: 2
       <img src="/chatgpt-app-execution.jpg" alt="Real App Execution" class="rounded-lg w-full max-h-52 object-contain" />
     </div>
     <div class="p-2.5 rounded-xl border border-white/10 bg-white/5 text-xs text-white/80 mt-2">
-      <span class="text-white font-semibold">💡 실전 실행 장면:</span>
+      <div class="flex items-center gap-1.5 text-cyan-300 font-bold mb-1">
+        <span class="i-carbon:flash"></span>
+        <span>실전 실행 장면:</span>
+      </div>
       대화창에서 자연어 명령으로 외부 앱(@LG ThinQ 등)과 엔터프라이즈 기기 제어 및 데이터 연동을 즉시 수행합니다.
     </div>
   </div>
@@ -2066,24 +2011,16 @@ clicks: 2
 -->
 
 ---
-title: OpenAI Skill 패키지 구조 데모
+title: OpenAI Skill: 반복 업무 패키지화
 layout: default
 class: px-14 py-6
 glowSeed: 411
 ---
 <!-- slide:48-Skill-Video-Stage -->
 
-<div class="flex items-center justify-between mb-3">
-  <div>
-    <h2 class="text-2xl font-extrabold text-white tracking-tight">
-      OpenAI Skill: 반복 업무를 위한 맞춤형 패키지
-    </h2>
-    <p class="text-xs text-white/50 m-0 font-mono">
-      SKILL.md 표준 지침과 참조 문서를 결합하여 대화창에서 원클릭으로 실행
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-white/10 text-white/70">Skill Package</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  OpenAI Skill: 반복 업무 패키지화
+</h2>
 
 <div class="flex justify-center items-center">
   <div class="rounded-2xl overflow-hidden border border-white/15 bg-black shadow-2xl w-[86%]">
@@ -2113,8 +2050,8 @@ clicks: 2
 ---
 <!-- slide:49-Prompt-vs-Skill -->
 
-<h2 class="text-2xl font-extrabold text-white tracking-tight mb-2">
-  Skill과 Prompt의 차이: 1회성 지시에서 조직의 영구 자산으로
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  Skill과 Prompt의 차이
 </h2>
 
 <PromptVsSkillComparison :stage="$clicks" />
@@ -2126,7 +2063,7 @@ clicks: 2
 -->
 
 ---
-title: 나만의 Skill 만들기 & 개선 루프 & 실무 사례
+title: 나만의 Skill 설계: 4대 핵심 구성요소
 layout: default
 class: px-14 py-7
 glowSeed: 413
@@ -2134,17 +2071,9 @@ clicks: 2
 ---
 <!-- slide:50-Skill-Engineering-Suite -->
 
-<div class="flex items-center justify-between mb-2">
-  <div>
-    <h2 class="text-2xl font-extrabold text-white tracking-tight">
-      나만의 Skill 설계: 4대 핵심 구성요소 & 실전 개선 사례
-    </h2>
-    <p class="text-[11px] text-white/50 m-0 font-mono">
-      목적(Goal) · 입력(Inputs) · 절차(Workflow) · 루브릭(Rubric) ➔ 표준 매뉴얼 자산화
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 font-bold">Skill Lifecycle</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  나만의 Skill 설계: 4대 핵심 구성요소
+</h2>
 
 <SkillEngineeringSuite :stage="$clicks" />
 
@@ -2156,7 +2085,7 @@ clicks: 2
 -->
 
 ---
-title: 이미지 생성도 “업무”로 접근 & 점진적 수정
+title: 이미지 생성의 점진적 수정 (Iterative Loop)
 layout: default
 class: px-14 py-7
 glowSeed: 414
@@ -2164,8 +2093,8 @@ clicks: 2
 ---
 <!-- slide:51-Image-Iterative-Refinement -->
 
-<h2 class="text-2xl font-extrabold text-white tracking-tight mb-2">
-  이미지 생성도 “업무”로 접근: 생성 ➔ 평가 ➔ 수정 (Iterative Refinement)
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  이미지 생성의 점진적 수정 (Iterative Loop)
 </h2>
 
 <ImageIterativeRefine :stage="$clicks" />
@@ -2178,7 +2107,7 @@ clicks: 2
 -->
 
 ---
-title: ★ Final Mission & 6대 실무 산출물 패키지 대시보드
+title: Final Mission: 실무 프로젝트 완결 (35분)
 layout: default
 class: px-14 py-6
 glowSeed: 415
@@ -2186,17 +2115,9 @@ clicks: 1
 ---
 <!-- slide:52-Final-Mission-Dashboard -->
 
-<div class="flex items-center justify-between mb-2">
-  <div>
-    <h2 class="text-2xl font-extrabold text-white tracking-tight">
-      ★ Final Mission: 내 업무 올인원 실무 프로젝트 완성 (35분)
-    </h2>
-    <p class="text-[11px] text-white/50 m-0 font-mono">
-      7단계 연속 실행 파이프라인 & 6대 실무 산출물 패키지 제출 루브릭
-    </p>
-  </div>
-  <span class="text-xs font-mono px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">Mission Control</span>
-</div>
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  Final Mission: 실무 프로젝트 완결 (35분)
+</h2>
 
 <FinalMissionDashboard :stage="$clicks" />
 
@@ -2216,7 +2137,7 @@ glowSeed: 999
 
 <div class="flex flex-col items-center justify-center">
   <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-white/70 mb-4">
-    <span>전체 커리큘럼 핵심 공식 (Master Takeaway)</span>
+    <span>전체 커리큘럼 핵심 공식</span>
   </div>
   <div class="p-6 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md shadow-2xl max-w-4xl mb-5">
     <div class="text-2xl font-black text-white tracking-tight leading-relaxed">

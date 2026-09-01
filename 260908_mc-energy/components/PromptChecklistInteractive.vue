@@ -1,5 +1,11 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
+
+const props = withDefaults(defineProps<{
+  stage?: number
+}>(), {
+  stage: 0
+})
 
 interface ChecklistItem {
   id: number
@@ -19,7 +25,7 @@ const items: ChecklistItem[] = [
     key: '1. Role',
     title: '누가 하는 일인가?',
     sub: '담당자 역할과 관점을 명시했는가?',
-    tag: '고객 지원 담당자',
+    tag: '에너지 분석 담당자',
     activeBorder: 'border-blue-500/50',
     activeBg: 'bg-blue-950/30',
     activeText: 'text-blue-400',
@@ -41,7 +47,7 @@ const items: ChecklistItem[] = [
     key: '3. Task',
     title: '무엇을 해야 하는가?',
     sub: '구체적인 작업 지시를 명시했는가?',
-    tag: '단계별 안내문 작성',
+    tag: '단계별 보고서 작성',
     activeBorder: 'border-sky-500/50',
     activeBg: 'bg-sky-950/30',
     activeText: 'text-sky-400',
@@ -73,6 +79,15 @@ const items: ChecklistItem[] = [
 
 const checkedList = ref<boolean[]>([false, false, false, false, false])
 
+watch(() => props.stage, (newVal) => {
+  const stageVal = newVal ?? 0
+  for (let i = 0; i < 5; i++) {
+    if (i <= stageVal) {
+      checkedList.value[i] = true
+    }
+  }
+}, { immediate: true })
+
 const toggleItem = (index: number) => {
   checkedList.value[index] = !checkedList.value[index]
 }
@@ -102,13 +117,13 @@ const selectAll = () => {
       <div class="flex items-center gap-2">
         <button
           @click="resetAll"
-          class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white/50 hover:text-white transition-colors"
+          class="text-[11px] font-mono px-2.5 py-0.5 rounded bg-white/5 border border-white/10 text-white/50 hover:text-white transition-colors cursor-pointer"
         >
           초기화
         </button>
         <button
           @click="selectAll"
-          class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/10 border border-white/15 text-white/80 hover:text-white transition-colors"
+          class="text-[11px] font-mono px-2.5 py-0.5 rounded bg-white/10 border border-white/15 text-white/80 hover:text-white transition-colors cursor-pointer"
         >
           전체 선택
         </button>
@@ -180,7 +195,7 @@ const selectAll = () => {
       </div>
     </div>
 
-    <!-- Bottom Status Area (Clean and Minimal) -->
+    <!-- Bottom Status Area -->
     <div class="mt-1">
       <div
         v-if="allChecked"
@@ -188,9 +203,9 @@ const selectAll = () => {
       >
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span><strong>5개 점검 완료:</strong> 역할(R) · 맥락(C) · 작업(T) · 형식(F) · 제약조건이 충족되었습니다. 실습을 시작합니다.</span>
+          <span><strong>5대 항목 점검 완료:</strong> 역할(R) · 맥락(C) · 작업(T) · 형식(F) · 제약조건 검증 완료</span>
         </div>
-        <span class="font-mono text-[11px] font-bold text-emerald-300">19번 실습으로 진행</span>
+        <span class="font-mono text-[11px] font-bold text-emerald-300">실습 준비 완료</span>
       </div>
 
       <div
