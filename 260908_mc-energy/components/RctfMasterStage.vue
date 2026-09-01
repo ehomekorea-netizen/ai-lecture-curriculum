@@ -21,7 +21,7 @@ const pillars = [
     name: 'Role',
     kr: '역할 정의',
     example: '"너는 10년 차 에너지 정책 및 전력 수급 분석가다."',
-    desc: '전문 지식 도메인과 톤앤매너 지정',
+    desc: '전문 도메인 및 톤앤매너 설정',
     color: 'cyan',
     requiredStage: 1,
   },
@@ -30,7 +30,7 @@ const pillars = [
     name: 'Context',
     kr: '배경·맥락',
     example: '"MC에너지 임원진 주간 경영회의 보고용 자료를 작성 중이다."',
-    desc: '보고 대상(청중)과 업무 목적 제시',
+    desc: '보고 대상과 업무 배경·목적 제시',
     color: 'blue',
     requiredStage: 1,
   },
@@ -39,7 +39,7 @@ const pillars = [
     name: 'Task',
     kr: '핵심 과업',
     example: '"전력시장 SMP 가격 변동 원인을 3가지로 분석하고 대응안을 제시하라."',
-    desc: '구체적인 동사로 실행할 업무 명시',
+    desc: '구체적 동사로 실행할 과업 명시',
     color: 'violet',
     requiredStage: 2,
   },
@@ -48,7 +48,7 @@ const pillars = [
     name: 'Format',
     kr: '출력 서식',
     example: '"A4 1페이지 분량, 결론 요약 후 항목별 비교표로 작성하라."',
-    desc: '분량, 서식, 제외 조건 등 규격 통제',
+    desc: '출력 분량·서식·제외 조건 통제',
     color: 'emerald',
     requiredStage: 2,
   },
@@ -84,11 +84,11 @@ const pillars = [
                 </div>
               </div>
 
-              <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 font-mono text-[11px] text-white/90 leading-relaxed mb-2.5">
+              <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 font-mono text-[11px] text-white/90 leading-relaxed mb-2.5 break-keep">
                 {{ item.example }}
               </div>
 
-              <p class="text-[11.5px] text-white/75 m-0 leading-relaxed">
+              <p class="text-[11px] text-white/80 m-0 leading-normal break-keep whitespace-nowrap">
                 {{ item.desc }}
               </p>
             </div>
@@ -106,9 +106,9 @@ const pillars = [
         <div class="p-3 px-4 flex items-center justify-between text-xs text-white/90">
           <div class="flex items-center gap-2.5">
             <span class="i-carbon:formula text-cyan-400 text-base"></span>
-            <span class="text-white/80"><strong>[Role]</strong>(전문가) + <strong>[Context]</strong>(사내 배경) + <strong>[Task]</strong>(구체적 동사) + <strong>[Format]</strong>(엄격한 서식 제약)</span>
+            <span class="text-white/80 break-keep"><strong>[Role]</strong>(전문가) + <strong>[Context]</strong>(사내 배경) + <strong>[Task]</strong>(구체적 동사) + <strong>[Format]</strong>(엄격한 서식 제약)</span>
           </div>
-          <span class="text-[11px] font-mono text-emerald-300 font-bold">= 실무 즉시 채택 산출물</span>
+          <span class="text-[11px] font-mono text-emerald-300 font-bold whitespace-nowrap">= 실무 즉시 채택 산출물</span>
         </div>
       </LiquidGlass>
     </div>

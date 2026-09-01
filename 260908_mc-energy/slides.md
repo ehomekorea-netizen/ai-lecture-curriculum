@@ -18,6 +18,14 @@ routerMode: hash
 
 <CoverSlide />
 
+<style>
+/* Global Korean typography & orphan wrap prevention */
+.slidev-layout, p, span, div, strong, li, h1, h2, h3, h4 {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+</style>
+
 <!--
 [오프닝]
 안녕하십니까. 1차시 강의를 시작하겠습니다.
