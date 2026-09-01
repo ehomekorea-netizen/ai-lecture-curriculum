@@ -17,7 +17,7 @@ const isTransformed = computed(() => (props.stage ?? 0) >= 1)
       
       <!-- NotebookLM (Left / Center) -->
       <div
-        class="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center rounded-2xl bg-white shadow-2xl p-6 border border-white/20"
+        class="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center rounded-2xl bg-white p-6"
         :class="[
           isTransformed
             ? 'w-84 h-48 opacity-90 scale-95 -translate-x-2'
@@ -43,19 +43,19 @@ const isTransformed = computed(() => (props.stage ?? 0) >= 1)
         <span class="i-carbon:arrow-right text-4xl text-cyan-400 font-bold"></span>
       </div>
 
-      <!-- Gemini Notebook (Appears on Right when stage >= 1) -->
+      <!-- Gemini Notebook (Appears on Right when stage >= 1, Pure Direct Image) -->
       <div
-        class="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center rounded-2xl overflow-hidden shadow-2xl border border-cyan-500/30 bg-zinc-950 p-2"
+        class="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex items-center justify-center"
         :class="[
           isTransformed
             ? 'w-88 h-48 opacity-100 scale-100 translate-x-2'
-            : 'w-0 h-48 opacity-0 scale-75 translate-x-12 overflow-hidden pointer-events-none p-0 border-0'
+            : 'w-0 h-48 opacity-0 scale-75 translate-x-12 overflow-hidden pointer-events-none'
         ]"
       >
         <img
           src="/Gemini-notebook-768x432.webp"
           alt="Gemini Notebook"
-          class="w-full h-full object-cover select-none pointer-events-none rounded-xl"
+          class="rounded-xl w-full h-full object-cover select-none pointer-events-none"
         />
       </div>
 

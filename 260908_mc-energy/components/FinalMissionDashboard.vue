@@ -21,10 +21,10 @@ const pipelineSteps = [
 ]
 
 const deliverables = [
-  { num: '1', name: '원본 데이터', tag: 'Input', desc: '분석에 사용한 엑셀 또는 원천 문서' },
-  { num: '2', name: '지시문 전문', tag: 'Prompt', desc: 'RCTF 구조 단계별 프롬프트' },
-  { num: '3', name: '분석 결과표', tag: 'Table', desc: '증감률 및 핵심 원인 분석표' },
-  { num: '4', name: '시각화 차트', tag: 'Chart', desc: '추세가 한눈에 보이는 그래프' },
+  { num: '1', name: '원본 데이터', tag: 'XLSX', desc: '분석에 사용한 엑셀 원천 데이터' },
+  { num: '2', name: '지시문 전문', tag: 'RCTF', desc: 'RCTF 구조 단계별 프롬프트' },
+  { num: '3', name: '분석 결과표', tag: '표/수식', desc: '증감률 및 핵심 원인 분석표' },
+  { num: '4', name: '시각화 차트', tag: '차트', desc: '추세가 한눈에 보이는 그래프' },
   { num: '5', name: '실무 보고서', tag: 'DOCX', desc: '상사 보고용 1페이지 완성본' },
   { num: '6', name: '스킬 지침', tag: 'Skill', desc: '다음 달에도 반복 실행할 지침' },
 ]
@@ -43,7 +43,7 @@ const deliverables = [
             <div>
               <div class="flex items-center gap-2 text-xs font-bold text-blue-300 border-b border-blue-500/20 pb-2 mb-2">
                 <span class="i-carbon:pipeline text-base"></span>
-                <span>7단계 실행 파이프라인 (35분)</span>
+                <span>7단계 실행 파이프라인 (35분 실습)</span>
               </div>
 
               <div class="space-y-1 text-xs">
@@ -56,7 +56,7 @@ const deliverables = [
                     <span class="font-mono text-white/40 text-[10px]">{{ s.step }}</span>
                     <span>{{ s.name }}</span>
                   </div>
-                  <span class="text-[9px] font-mono px-1.5 py-0.5 rounded bg-white/10 text-white/70">{{ s.tag }}</span>
+                  <span class="text-[9px] font-mono text-cyan-300 font-bold">{{ s.tag }}</span>
                 </div>
               </div>
             </div>
@@ -90,7 +90,7 @@ const deliverables = [
                   <div>
                     <div class="flex items-center justify-between text-white font-bold text-[11px] mb-0.5">
                       <span>{{ d.num }}. {{ d.name }}</span>
-                      <span class="text-[9px] font-mono text-emerald-300/80">{{ d.tag }}</span>
+                      <span class="text-[9px] font-mono text-emerald-300 font-bold">{{ d.tag }}</span>
                     </div>
                     <p class="text-[9px] text-white/60 m-0 leading-tight">{{ d.desc }}</p>
                   </div>
@@ -103,7 +103,7 @@ const deliverables = [
                 <span class="i-carbon:award text-emerald-400 text-sm"></span>
                 <span>6종 산출물 완비 시 실무 역량 인증</span>
               </div>
-              <span class="font-mono text-emerald-400">Validated</span>
+              <span class="font-mono text-emerald-400 font-bold">인증 완료</span>
             </div>
           </div>
         </LiquidGlass>
