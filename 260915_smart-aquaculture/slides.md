@@ -2229,44 +2229,7 @@ layout: default
   <p class="stage-subtitle">현장 작업자와 AI 에이전트가 오해 없이 소통하는 7가지 필수 항목</p>
 </div>
 
-<div class="grid grid-cols-[1.2fr_1fr] gap-4 my-1 text-xs">
-  <div class="glass-card p-3 bg-black/60 font-mono text-[11px] leading-relaxed text-white/90 overflow-y-auto max-h-[300px]">
-    <div class="text-sky-400 font-bold mb-1 border-b border-white/10 pb-1"># 스마트수산업 숏폼 S01 쇼트 규격서</div>
-    <div><span class="text-sky-300">shot_id:</span> S01</div>
-    <div><span class="text-sky-300">duration_seconds:</span> 4</div>
-    <div><span class="text-sky-300">purpose:</span> "첫 3초의 낯선 질문을 시각적으로 제시"</div>
-    <div><span class="text-sky-300">subject:</span> "스마트 양식장 수조와 수질 센서 하우징"</div>
-    <div><span class="text-sky-300">action:</span> "카메라가 수조 가장자리에서 센서와 물고기를 향해 천천히 전진"</div>
-    <div><span class="text-sky-300">camera:</span> "medium wide shot, slow push-in, stable movement"</div>
-    <div><span class="text-sky-300">environment:</span> "clean indoor recirculating aquaculture facility"</div>
-    <div><span class="text-sky-300">lighting:</span> "cool daylight mixed with soft reflections on water"</div>
-    <div><span class="text-sky-300">style:</span> "documentary realism, premium educational short-form"</div>
-    <div><span class="text-sky-300">continuity:</span> "same blue-and-silver palette, no new people"</div>
-    <div><span class="text-sky-300">caption_after_edit:</span> "양식장인데, 물을 계속 바꾸지 않는다고요?"</div>
-  </div>
-
-  <div class="flex flex-col gap-2.5">
-    <div class="p-3 bg-sky-950/30 rounded-xl border border-sky-500/30">
-      <div class="text-sky-300 font-bold text-xs mb-1 flex items-center gap-1.5">
-        <span class="i-carbon-checkmark-filled"></span>
-        <span>항목별 정리의 이점</span>
-      </div>
-      <p class="text-white/80 text-[11px] leading-relaxed m-0">
-        말로 길게 설명하지 않고, 항목별로 딱딱 적어주면 AI가 엉뚱한 요소를 멋대로 추가하지 않습니다.
-      </p>
-    </div>
-
-    <div class="p-3 bg-amber-950/30 rounded-xl border border-amber-500/30">
-      <div class="text-amber-300 font-bold text-xs mb-1 flex items-center gap-1.5">
-        <span class="i-carbon-rule"></span>
-        <span>연속성(Continuity) 메모 필수</span>
-      </div>
-      <p class="text-white/80 text-[11px] leading-relaxed m-0">
-        다음 컷으로 넘어갈 때 배관 색상이나 조명 색감이 갑자기 바뀌지 않도록 '동일한 파란색 배관'처럼 고정 문구를 적어둡니다.
-      </p>
-    </div>
-  </div>
-</div>
+<ShotYamlTemplate />
 
 <!--
 [강사]
@@ -2842,7 +2805,6 @@ layout: default
       <div>• <strong class="text-sky-300">다음 생성 프롬프트 변경점:</strong> (1줄)</div>
       <div>• <strong class="text-purple-300">사실 확인이 필요한 부분:</strong> (1줄)</div>
     </div>
-
     <div class="p-2.5 bg-sky-950/40 rounded-xl border border-sky-500/30 text-[10.5px] text-sky-200">
       <strong>성공 기준:</strong> AI 생성의 화려함보다 수산업의 본질과 사람의 판단을 숏폼으로 전달하는 감각을 익히는 것입니다.
     </div>
