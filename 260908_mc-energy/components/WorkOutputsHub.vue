@@ -71,25 +71,25 @@ const showBottom = computed(() => (props.stage ?? 0) >= 2)
           <div class="flex items-center gap-3">
             <span class="i-carbon:image text-cyan-400 text-2xl"></span>
             <div>
-              <div class="text-xs font-bold text-white">Image Assets</div>
+              <div class="text-xs font-bold text-white">Image Assets (DALL-E 3)</div>
               <div class="text-[11px] text-white/70">사내 공지, 시각 포스터, 카드뉴스 이미지 생성</div>
             </div>
           </div>
-          <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-bold">DALL-E 3 실습</span>
+          <span class="text-[10px] font-mono text-cyan-300 font-bold">이미지 실습</span>
         </div>
       </div>
     </div>
 
     <!-- Bottom Callout -->
     <div
-      class="mt-4 p-3.5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between text-xs text-white/90 transition-all duration-500"
+      class="mt-4 p-3 px-4 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between text-xs text-white/90 transition-all duration-500"
       :class="[showBottom ? 'opacity-100 border-blue-400/40 bg-blue-950/20' : 'opacity-50']"
     >
       <div class="flex items-center gap-2">
         <span class="i-carbon:checkmark-filled text-base text-blue-400"></span>
         <span>단순 대화 텍스트가 아니라, <strong>실무에서 즉시 활용하는 완성형 파일</strong>을 직접 생성합니다.</span>
       </div>
-      <span class="text-[11px] font-mono text-white/40">Output Centric</span>
+      <span class="text-[11px] font-mono text-cyan-300 font-bold">완성형 파일 생성</span>
     </div>
   </div>
 </template>

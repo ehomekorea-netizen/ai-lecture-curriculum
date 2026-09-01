@@ -305,20 +305,20 @@ clicks: 1
 <div class="grid grid-cols-2 gap-8 mt-4">
   <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
     <div>
-      <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
+      <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2.5">
         <div class="flex items-center gap-2 text-white/90 font-bold text-base">
           <span class="i-carbon:search text-white/60"></span>
           <span>기존 포털 검색</span>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/10 border border-white/15">
           <span class="i-logos:google text-base"></span>
-          <span class="i-simple-icons:naver text-emerald-400 text-sm"></span>
+          <span class="i-simple-icons:naver text-[#03C75A] text-sm"></span>
         </div>
       </div>
       <div class="space-y-2 text-xs text-white/70">
-        <p class="m-0 leading-relaxed">✓ 인터넷 링크와 문서 목록을 사람이 직접 일일이 클릭</p>
-        <p class="m-0 leading-relaxed">✓ 정보 취합, 분석, 요약, 보고서 작성을 100% 사람이 직접 수행</p>
-        <p class="m-0 leading-relaxed">✓ "어디에 정보가 있는가?"를 찾는 도구</p>
+        <p class="m-0 leading-relaxed">✓ 웹상의 수많은 링크와 원문 문서를 사람이 일일이 직접 탐색</p>
+        <p class="m-0 leading-relaxed">✓ 정보 수집, 선별, 요약, 문서 작성을 사용자가 100% 직접 수행</p>
+        <p class="m-0 leading-relaxed">✓ "어디에 정보가 있는가?"를 찾는 링크 제공 도구</p>
       </div>
     </div>
     <div class="pt-3 border-t border-white/10 text-xs font-mono text-white/50">
@@ -330,20 +330,20 @@ clicks: 1
     <LiquidGlass glow="cyan" :radius="16">
       <div class="p-6 flex flex-col justify-between h-76">
         <div>
-          <div class="flex items-center justify-between mb-3 border-b border-cyan-500/20 pb-2">
+          <div class="flex items-center justify-between mb-3 border-b border-cyan-500/20 pb-2.5">
             <div class="flex items-center gap-2 text-cyan-300 font-bold text-base">
               <span class="i-carbon:chat-bot text-cyan-400"></span>
               <span>생성형 AI</span>
             </div>
-            <div class="flex items-center gap-2.5">
-              <span class="i-lobe-icons:openai text-base text-white"></span>
-              <span class="i-lobe-icons:gemini text-base text-cyan-300"></span>
+            <div class="flex items-center gap-2 px-2.5 py-1 rounded-lg bg-white/10 border border-white/15">
+              <span class="i-lobe-icons:openai text-base text-[#10A37F]"></span>
+              <span class="i-lobe-icons:gemini text-base text-[#1BA1E3]"></span>
             </div>
           </div>
           <div class="space-y-2 text-xs text-white/90">
-            <p class="m-0 leading-relaxed">✓ 방대한 정보 속에서 핵심을 추론하여 맞춤형 결과물을 직접 합성</p>
+            <p class="m-0 leading-relaxed">✓ 방대한 데이터를 추론하여 요구조건에 맞는 산출물을 직접 합성</p>
             <p class="m-0 leading-relaxed">✓ 단순 정보 나열이 아닌 비교표, 기획서, 실무 파일 형태로 가공</p>
-            <p class="m-0 leading-relaxed">✓ "이 정보를 어떻게 실행 가능한 결과물로 바꿀 것인가?"를 해결</p>
+            <p class="m-0 leading-relaxed">✓ "원하는 결과물을 어떻게 만들 것인가?"를 해결하는 실행 엔진</p>
           </div>
         </div>
         <div class="pt-3 border-t border-cyan-500/20 text-xs font-mono font-bold text-cyan-300">

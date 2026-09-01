@@ -100,7 +100,7 @@ const toolRows = [
             <span class="i-carbon:flash text-cyan-400 text-base"></span>
             <span><strong>도구 선택의 핵심 원칙:</strong> 질문에 맞는 도구를 사람이 고민하지 않고, <strong>자연어 명령 한마디로 AI가 최적의 도구를 자율 매칭</strong>합니다.</span>
           </div>
-          <span class="text-[11px] font-mono text-cyan-300 font-bold">Smart Dispatching</span>
+          <span class="text-[11px] font-mono text-cyan-300 font-bold">도구 자율 매칭</span>
         </div>
       </LiquidGlass>
     </div>
