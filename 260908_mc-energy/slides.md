@@ -42,7 +42,7 @@ glow: none
   part="1차시"
   title="생성형 AI 알아보기"
   subtitle="AI의 기본 작동 구조를 이해하고, 사실에 기반한 업무 결과물을 얻기 위한 프롬프트 작성법과 결과 검증 체계 확립"
-  image="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop"
+  image="/premium_photo-1764699342973-5d518dede42b.avif"
 />
 
 <!--
