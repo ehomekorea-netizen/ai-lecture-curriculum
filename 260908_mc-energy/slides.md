@@ -60,10 +60,10 @@ clicks: 2
 
 <!--
 [강사 멘트]
-실제 실험 결과, 위협적 프롬프트는 정답률을 떨어뜨립니다.
-[click 1] 부정적·위협적 어조("틀리면 해고야")는 정답률 56.6%로 급락합니다.
-[click 2] 반면 긍정적·역할 중심 지시("전문가처럼 답하라")는 정답률 71.9%로 15.3%p나 높습니다.
-AI를 다룰 때는 감정이 아니라 '명확한 역할(Role)과 맥락(Context)'을 설계하는 것이 핵심입니다.
+2025년 최신 연구('Mind Your Tone')에 따르면, 프롬프트의 어조가 AI의 정확도에 직접적인 영향을 미칩니다.
+[click 1] 지나치게 공손한 부탁조 표현("검토해주시겠습니까")은 불필요한 토큰으로 주의를 분산시켜 정답률이 80.8%로 가장 낮았습니다.
+[click 2] 반면 감정적 미사여구를 뺀 단도직입적이고 명확한 지시문은 84.8%로 최고 정답률을 기록했습니다.
+AI를 다룰 때는 감정이나 미사여구가 아닌, '군더더기 없는 명확한 지시(Direct Prompting)'가 핵심입니다.
 -->
 
 ---
@@ -2012,17 +2012,17 @@ clicks: 2
     <WorkToolsHub :stage="$clicks" />
   </div>
   <div class="col-span-5 flex flex-col justify-between">
-    <img src="/chatgpt-app-execution.jpg" alt="Real App Execution" class="rounded-xl w-full max-h-64 object-contain select-none" />
+    <img src="/chatgpt-app-execution.jpg" alt="Real App Execution (@LG ThinQ)" class="rounded-xl w-full max-h-64 object-contain select-none" />
     <div class="p-2.5 rounded-xl bg-black/40 text-[11px] text-white/80 border border-white/10 leading-relaxed">
-      대화창에서 자연어 명령 한마디로 외부 앱(@LG ThinQ 등)과 엔터프라이즈 기기·데이터를 직접 제어합니다.
+      <strong>실제 구동 화면:</strong> 대화창에서 <code>@LG ThinQ</code>를 호출하여 사내 에어컨/기기 상태를 조회하고 전원·온도 제어를 직접 수행합니다.
     </div>
   </div>
 </div>
 
 <!--
 [강사 멘트]
-[click 1] 좌측 구조도처럼 사용자는 하나의 대화창에서 지시하지만, 백그라운드에서는 Document, Spreadsheet, Visualize, 외부 앱들이 유기적으로 협업합니다.
-[click 2] 우측 실제 실행 화면처럼 자연어로 외부 앱을 직접 제어하고 작업을 완결하는 엔터프라이즈 생태계가 구현됩니다.
+[click 1] 좌측 구조도처럼 사용자는 하나의 대화창에서 지시하지만, 백그라운드에서는 Document, Spreadsheet, 그리고 외부 앱들이 유기적으로 협업합니다.
+[click 2] 우측 실제 실행 화면처럼 @LG ThinQ 커넥터를 통해 자연어로 실제 사물·기기 상태를 확인하고 전원/온도를 제어하는 엔터프라이즈 도구 생태계가 열렸습니다.
 -->
 
 ---

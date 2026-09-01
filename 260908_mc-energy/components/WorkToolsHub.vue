@@ -58,8 +58,8 @@ const showTakeaway = computed(() => (props.stage ?? 0) >= 2)
           </div>
 
           <div class="p-2 px-3 rounded-lg bg-black/40 border border-blue-500/20 flex items-center justify-between text-xs">
-            <span class="font-mono font-semibold text-blue-300">외부 Apps & Connectors</span>
-            <span class="text-[10px] text-blue-300/60">기기·서비스 연동</span>
+            <span class="font-mono font-semibold text-blue-300">@LG ThinQ & Apps</span>
+            <span class="text-[10px] text-blue-300/80 font-bold">사물·기기 직접 제어</span>
           </div>
         </div>
 
