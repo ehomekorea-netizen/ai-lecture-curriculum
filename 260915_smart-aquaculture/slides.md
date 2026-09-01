@@ -1939,15 +1939,15 @@ class: text-center
     Google Veo 3.1과<br />AI 영상 생성의 원리
   </h2>
   <p class="text-white/75 text-lg font-light max-w-xl leading-relaxed">
-    “텍스트와 이미지에서 시간축과 물리 법칙을 제어하는 최신 비디오 생성 기술”
+    “정지된 사진을 넘어, 시간과 움직임을 통제하는 최신 비디오 생성 기술”
   </p>
 </div>
 
 <!--
 [강사]
 5차시를 시작하겠습니다.
-이제 텍스트와 이미지 생성에서 한 단계 더 나아가, 움직이는 영상을 AI로 제어하는 '비디오 생성 모델'의 원리를 배웁니다.
-Google DeepMind의 Veo 3.1 모델을 통해 비디오 프롬프트 5대 요소와 시작·끝 프레임 제어 메커니즘을 살펴보겠습니다.
+지금까지 글과 그림을 만드는 법을 배웠다면, 이번 시간에는 움직이는 영상을 AI로 만드는 비디오 생성 기술을 다룹니다.
+Google DeepMind의 Veo 3.1 모델을 보면서, 프롬프트에 무엇을 적어야 화면이 뭉개지지 않고 원하는 영상이 나오는지 살펴보겠습니다.
 -->
 
 ---
@@ -1956,8 +1956,8 @@ layout: default
 <!-- slide:53-S05-02-VideoParadigm -->
 
 <div class="mb-3">
-  <h2 class="stage-title">생성형 비디오의 패러다임 전환 (2D 이미지 ➔ 4D 시공간 제어)</h2>
-  <p class="stage-subtitle">정지된 1장의 그림에서 프레임 간 연속성과 물리 법칙을 계산하는 기술</p>
+  <h2 class="stage-title">사진 생성과 영상 생성의 3가지 결정적 차이</h2>
+  <p class="stage-subtitle">정지된 1장의 그림을 넘어 시간의 흐름과 실제 물리 법칙을 계산하는 기술</p>
 </div>
 
 <div class="grid grid-cols-3 gap-3.5 my-4 text-xs">
@@ -1965,48 +1965,48 @@ layout: default
   <div class="glass-card border-t-2 border-t-teal-400 p-4 flex flex-col justify-between">
     <div>
       <div class="flex items-center justify-between mb-2">
-        <span class="text-teal-300 font-bold text-xs">1. 시간축(Time)의 추가</span>
+        <span class="text-teal-300 font-bold text-xs">1. 시간의 흐름 (프레임 연속성)</span>
         <span class="i-carbon-time text-teal-400 text-lg"></span>
       </div>
-      <div class="font-bold text-white text-sm mb-1.5">프레임 간 시공간 일관성</div>
+      <div class="font-bold text-white text-sm mb-1.5">초당 24장 모양 유지</div>
       <p class="text-white/75 text-[11.5px] leading-relaxed m-0">
-        2D 이미지는 단일 순간의 확률 분포를 계산하지만, 비디오는 수십 개의 연속 프레임 간에 사물의 형태와 속도를 일관되게 유지해야 합니다.
+        사진은 한 순간만 그럴듯하면 되지만, 영상은 1초에 24~30장의 그림이 이어지는 동안 사물이나 사람의 모양이 제멋대로 바뀌지 않아야 합니다.
       </p>
     </div>
     <div class="text-[10px] text-teal-300/90 border-t border-white/10 pt-2 mt-3 font-mono">
-      핵심 과제: 피사체 형태 왜곡(Drift) 방지
+      주의점: 피사체 형태 왜곡 방지
     </div>
   </div>
 
   <div class="glass-card border-t-2 border-t-sky-400 p-4 flex flex-col justify-between">
     <div>
       <div class="flex items-center justify-between mb-2">
-        <span class="text-sky-300 font-bold text-xs">2. 물리 법칙의 렌더링</span>
+        <span class="text-sky-300 font-bold text-xs">2. 실제 물리 법칙 계산</span>
         <span class="i-carbon-movement text-sky-400 text-lg"></span>
       </div>
-      <div class="font-bold text-white text-sm mb-1.5">광원·유체·중력 시뮬레이션</div>
+      <div class="font-bold text-white text-sm mb-1.5">물방울·빛 반사·옷자락</div>
       <p class="text-white/75 text-[11.5px] leading-relaxed m-0">
-        수면 반사, 물방울의 튐, 옷자락의 펄럭임 등 현실 세계의 물리 법칙이 카메라의 동적 이동 중에도 자연스럽게 계산되어야 합니다.
+        카메라가 움직일 때 수면의 반사광, 튀는 물방울, 바람에 날리는 작업복의 움직임이 현실의 물리 법칙과 맞아야 어색하지 않습니다.
       </p>
     </div>
     <div class="text-[10px] text-sky-300/90 border-t border-white/10 pt-2 mt-3 font-mono">
-      Veo 3.1 강점: 고해상도 물리 렌더링
+      Veo 3.1 강점: 자연스러운 조명과 물리 렌더링
     </div>
   </div>
 
   <div class="glass-card border-t-2 border-t-indigo-400 p-4 flex flex-col justify-between">
     <div>
       <div class="flex items-center justify-between mb-2">
-        <span class="text-indigo-300 font-bold text-xs">3. 쇼트 분할의 필연성</span>
+        <span class="text-indigo-300 font-bold text-xs">3. 1쇼트 1행동 원칙</span>
         <span class="i-carbon-cut-out text-indigo-400 text-lg"></span>
       </div>
-      <div class="font-bold text-white text-sm mb-1.5">1쇼트 = 1행동 원칙</div>
+      <div class="font-bold text-white text-sm mb-1.5">한 번에 한 가지만 지시</div>
       <p class="text-white/75 text-[11.5px] leading-relaxed m-0">
-        AI 모델에게 긴 서사나 복잡한 복합 동작을 한 번에 요구하면 실패 확률이 급증합니다. 4~8초 단위 단일 행동으로 쪼개어 생성해야 합니다.
+        AI에게 "문 열고 들어와서 버튼 누르고 물고기 밥 줘"라고 한 번에 시키면 영상이 망가집니다. 4초 단위로 쪼개어 하나씩 만들어 이어붙입니다.
       </p>
     </div>
     <div class="text-[10px] text-indigo-300/90 border-t border-white/10 pt-2 mt-3 font-mono">
-      실무 철칙: 쪼개서 생성하고 조립한다
+      현장 철칙: 쪼개서 만들고 편집기로 조립
     </div>
   </div>
 </v-clicks>
@@ -2014,9 +2014,9 @@ layout: default
 
 <!--
 [강사]
-이미지 생성과 비디오 생성의 가장 큰 차이점은 '시간'과 '물리'입니다.
-2D 그림은 한 장만 그럴듯하면 되지만, 비디오는 1초에 24~30장의 프레임이 지나가는 동안 물고기의 형태와 빛의 반사가 유지되어야 합니다.
-따라서 AI 영상 제작에서는 한 장면에 너무 많은 동작을 넣지 않고, 쇼트별로 분리하여 생성하는 것이 핵심입니다.
+그림 그리는 AI와 영상 만드는 AI는 난이도가 완전히 다릅니다.
+영상은 1초에 수십 장의 프레임이 지나가기 때문에, 물고기의 모양이나 수조의 배관 위치가 프레임마다 달라지면 시청자가 바로 가짜인 걸 눈치챕니다.
+그래서 AI 영상 제작에서는 한 장면에 너무 많은 동작을 욱여넣지 않고, 짧은 컷 단위로 나누어 지시하는 것이 핵심입니다.
 -->
 
 ---
@@ -2026,73 +2026,73 @@ layout: default
 
 <div class="mb-3">
   <h2 class="stage-title">비디오 프롬프트 5대 필수 구성요소 (S·A·C·E·S)</h2>
-  <p class="stage-subtitle">성공적인 AI 영상 클립을 만드는 구조화된 지시문 작성 공식</p>
+  <p class="stage-subtitle">AI가 엉뚱한 영상을 만들지 않게 지시하는 5가지 필수 기둥</p>
 </div>
 
 <div class="grid grid-cols-5 gap-2.5 my-3 text-xs">
 <v-clicks>
   <div class="glass-card p-3 flex flex-col justify-between border-t-2 border-t-sky-400">
     <div>
-      <div class="text-sky-300 font-bold text-xs mb-1">1. Subject</div>
-      <div class="font-bold text-white text-sm mb-1">주체 (피사체)</div>
+      <div class="text-sky-300 font-bold text-xs mb-1">1. Subject (주체)</div>
+      <div class="font-bold text-white text-sm mb-1">누가 / 무엇이</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        누가/무엇이 등장하는가. 인물, 양식장 수조, 물고기, 수질 센서 등의 외형과 특징을 명시.
+        화면에 나올 주인공. 인물, 양식 수조, 사료 공급기, 수질 센서 등 대상의 외형을 적습니다.
       </p>
     </div>
     <div class="text-[10px] text-sky-300/80 bg-black/40 p-1.5 rounded mt-2 font-mono">
-      예: clean indoor aquaculture tank with sensors
+      예: indoor aquaculture tank
     </div>
   </div>
 
   <div class="glass-card p-3 flex flex-col justify-between border-t-2 border-t-indigo-400">
     <div>
-      <div class="text-indigo-300 font-bold text-xs mb-1">2. Action</div>
-      <div class="font-bold text-white text-sm mb-1">핵심 행동 (단일)</div>
+      <div class="text-indigo-300 font-bold text-xs mb-1">2. Action (행동)</div>
+      <div class="font-bold text-white text-sm mb-1">단 하나의 동작</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        피사체가 수행하는 단 하나의 명확한 동작. 복합 동작을 배제하고 1개 동작에 집중.
+        피사체가 수행하는 단 1가지 행동만 적습니다. 복합 동작을 넣지 않는 것이 핵심입니다.
       </p>
     </div>
     <div class="text-[10px] text-indigo-300/80 bg-black/40 p-1.5 rounded mt-2 font-mono">
-      예: water flows into filtration unit smoothly
+      예: water flows into filter
     </div>
   </div>
 
   <div class="glass-card p-3 flex flex-col justify-between border-t-2 border-t-amber-400">
     <div>
-      <div class="text-amber-300 font-bold text-xs mb-1">3. Camera</div>
-      <div class="font-bold text-white text-sm mb-1">카메라 워크</div>
+      <div class="text-amber-300 font-bold text-xs mb-1">3. Camera (카메라)</div>
+      <div class="font-bold text-white text-sm mb-1">촬영 시선 이동</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        카메라의 구도, 렌즈 거리, 이동 궤적과 속도를 구체적인 촬영 문법으로 지정.
+        천천히 다가가기(Push-in), 옆으로 이동(Tracking), 확대(Close-up) 등 촬영 구도를 지정합니다.
       </p>
     </div>
     <div class="text-[10px] text-amber-300/80 bg-black/40 p-1.5 rounded mt-2 font-mono">
-      예: slow push-in, eye-level tracking
+      예: slow push-in, eye-level
     </div>
   </div>
 
   <div class="glass-card p-3 flex flex-col justify-between border-t-2 border-t-emerald-400">
     <div>
-      <div class="text-emerald-300 font-bold text-xs mb-1">4. Environment</div>
-      <div class="font-bold text-white text-sm mb-1">공간 & 조명</div>
+      <div class="text-emerald-300 font-bold text-xs mb-1">4. Environment (공간)</div>
+      <div class="font-bold text-white text-sm mb-1">장소와 조명</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        배경 환경, 조명의 색온도, 수조 표면 반사광 등 분위기를 결정짓는 공간 요소.
+        깔끔한 실내 순환여과 양식동, 자연 채광과 은은한 수면 반사 등 주변 분위기를 적습니다.
       </p>
     </div>
     <div class="text-[10px] text-emerald-300/80 bg-black/40 p-1.5 rounded mt-2 font-mono">
-      예: modern recirculating facility, cool daylight
+      예: clean modern facility
     </div>
   </div>
 
   <div class="glass-card p-3 flex flex-col justify-between border-t-2 border-t-purple-400">
     <div>
-      <div class="text-purple-300 font-bold text-xs mb-1">5. Style</div>
-      <div class="font-bold text-white text-sm mb-1">영상 문법 & 톤</div>
+      <div class="text-purple-300 font-bold text-xs mb-1">5. Style (스타일)</div>
+      <div class="font-bold text-white text-sm mb-1">영상 질감 톤</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        다큐멘터리 리얼리즘, 프리미엄 숏폼, 자연스러운 질감 등 전체적인 톤앤매너.
+        현장감 있는 다큐멘터리 톤, 선명한 고화질 교육 숏폼 등 전체적인 영상 문법을 지정합니다.
       </p>
     </div>
     <div class="text-[10px] text-purple-300/80 bg-black/40 p-1.5 rounded mt-2 font-mono">
-      예: documentary realism, cinematic 4k
+      예: documentary realism
     </div>
   </div>
 </v-clicks>
@@ -2101,17 +2101,16 @@ layout: default
 <div class="p-2.5 bg-black/40 rounded-xl border border-white/10 flex items-center justify-between text-xs">
   <div class="flex items-center gap-2 text-white/90">
     <span class="i-carbon-warning-filled text-amber-400"></span>
-    <span><strong>절대 금지:</strong> "카메라가 돌면서 물고기가 점프하고 관리자가 뛰어와서 버튼을 누른다"처럼 3가지 행동을 한 번에 넣으면 모델이 붕괴합니다.</span>
+    <span><strong>주의:</strong> "카메라가 돌면서 물고기가 뛰고 작업자가 달려와 밸브를 잠근다"처럼 동작 3개를 한 문장에 쓰면 화면이 찢어집니다.</span>
   </div>
-  <span class="text-emerald-300 font-mono text-[11px] font-bold">1 Shot = 1 Action</span>
+  <span class="text-emerald-300 font-mono text-[11px] font-bold">1 컷 = 1 행동</span>
 </div>
 
 <!--
 [강사]
-비디오 프롬프트는 5가지 기둥(S·A·C·E·S)으로 씁니다.
-주체, 행동, 카메라, 환경, 스타일입니다.
-여기서 가장 중요한 철칙은 'Action은 무조건 1개만' 넣는 것입니다.
-카메라가 움직이면서 사람도 뛰고 물고기도 도약하는 복합 동작을 주면 AI는 신체 왜곡이나 배경 붕괴를 일으킵니다.
+비디오 프롬프트는 5가지로 나눕니다. 누가, 무엇을, 카메라, 장소, 스타일.
+여기서 가장 중요한 철칙은 '행동은 무조건 1개만' 적는 것입니다.
+카메라가 움직이면서 사람도 뛰고 물고기도 튀어오르게 시키면 AI는 손가락이 6개가 되거나 배경이 뭉개집니다. 행동은 딱 하나만 지정하세요.
 -->
 
 ---
@@ -2119,18 +2118,18 @@ layout: default
 ---
 <!-- slide:55-S05-04-FirstLastFrame -->
 
-<div class="mb-3">
-  <h2 class="stage-title">Veo 3.1 First & Last Frame 컨트롤 (시작·끝 프레임 제어)</h2>
-  <p class="stage-subtitle">시작 이미지와 도착 이미지를 앵커로 고정하여 시공간 왜곡을 원천 차단하는 결정론적 생성</p>
+<div class="mb-2">
+  <h2 class="stage-title">시작 프레임과 끝 프레임 고정 기술 (First & Last Frame)</h2>
+  <p class="stage-subtitle">시작 사진과 끝 사진을 먼저 정해두고, 그 사이 움직임만 AI가 채우도록 통제하는 기법</p>
 </div>
 
 <FirstLastFrameControls />
 
 <!--
 [강사]
-Google Veo 3.1의 혁신적인 기능인 First & Last Frame 컨트롤입니다.
-시작 프레임(first.webp)과 도착 프레임(last.webp)을 강사나 제작자가 지정해주면, AI는 그 사이 5초간의 움직임을 물리 법칙에 맞춰 자연스럽게 보간(Interpolation) 생성합니다.
-이렇게 하면 쇼트 간 연결부에서 인물이나 장비가 갑자기 순간이동하거나 바뀌는 현상을 100% 방어할 수 있습니다.
+Google Veo 3.1의 가장 강력한 기능 중 하나인 '시작·끝 프레임 고정'입니다.
+시작 사진 한 장과 끝 사진 한 장을 우리가 딱 정해주면, AI는 그 사이 5초 동안 사람이 어떻게 움직여야 하는지 물리 법칙에 맞춰 자연스럽게 이어줍니다.
+이렇게 하면 다음 컷으로 넘어갈 때 시설 모양이나 사람이 갑자기 딴사람으로 바뀌는 현상을 완벽하게 막을 수 있습니다.
 -->
 
 ---
@@ -2138,28 +2137,28 @@ layout: default
 ---
 <!-- slide:56-S05-05-BackgroundPreservation -->
 
-<div class="mb-2">
-  <h2 class="stage-title">Veo 3.1 배경 및 객체 보존 (Background Object Preservation)</h2>
-  <p class="stage-subtitle">격렬한 카메라 돌리(Dolly)와 인물 도약 중에도 모노크롬 복도와 복장 색감을 완벽히 보존</p>
+<div class="mb-1.5">
+  <h2 class="stage-title">카메라가 돌아도 배경과 옷이 유지되는 원리 (배경 보존)</h2>
+  <p class="stage-subtitle">인물이 크게 도약하는 동안에도 단색 복도 배경과 트렌치코트의 질감이 그대로 유지</p>
 </div>
 
 <VeoPromptShowcase
   videoSrc="/veo3/background-preservation.webm"
-  title="Google Veo 3.1 배경 및 객체 보존 쇼케이스 (16:9)"
+  title="Google Veo 3.1 배경 및 사물 형태 보존 (16:9)"
   badge="Veo 3.1 Cinematic"
-  prompt="Camera dramatically dollies around the subject in this striking cinematic scene. It captures a high-tension moment within a long, sterile, monochromatic green corridor. A lone woman, dressed in a dark, flowing trench coat and trousers that billow dramatically, is suspended mid-air in a powerful, graceful leap. Her arms are outstretched as if bracing for impact or propelling herself forward. Her sharp profile reveals an intense, focused expression, suggesting profound determination."
+  prompt="Camera dramatically dollies around the subject in this striking cinematic scene. It captures a high-tension moment within a long, sterile, monochromatic green corridor. A lone woman, dressed in a dark, flowing trench coat and trousers that billow dramatically, is suspended mid-air in a powerful, graceful leap. Her sharp profile reveals an intense, focused expression, suggesting profound determination."
   subject="단독 여성 (어두운 트렌치코트와 바지 착용)"
   action="공중 도약 및 착지 준비 동작 (1개 집중 동작)"
   camera="Dramatic Dolly (인물 주변을 역동적으로 회전하는 카메라)"
   environment="무균 모노크롬 그린 복도 (배경 색조 일관성 보존)"
-  takeaway="인물이 공중에 도약하는 격렬한 움직임 속에서도 트렌치코트의 질감과 배경 녹색 복도의 구조가 뭉개짐 없이 선명하게 유지됩니다."
+  takeaway="인물이 공중에 크게 도약하는 동안에도 코트의 펄럭임과 녹색 복도 구조가 깨지지 않고 선명하게 유지됩니다."
 />
 
 <!--
 [강사]
-DeepMind 공식 Veo 3.1 레퍼런스 영상입니다.
-프롬프트를 보시면 카메라가 인물 주위를 역동적으로 도는(dolly) 동안, 단색 녹색 복도 배경과 펄럭이는 트렌치코트의 물리 법칙이 완벽하게 계산되어 렌더링됩니다.
-수산양식에서도 가두리 수조 주변을 회전하거나 수중 센서를 둘러볼 때 이 프롬프트 구조를 그대로 응용할 수 있습니다.
+DeepMind 공식 Veo 3.1 예시입니다.
+카메라가 인물 주위를 휙 돌면서 찍는데도, 녹색 복도의 기둥이나 옷자락의 주름이 뭉개지지 않고 끝까지 살아있습니다.
+양식장에서도 수조 주변을 한 바퀴 빙 돌면서 찍거나 수중 센서를 비출 때 이 프롬프트 구조를 그대로 응용하면 됩니다.
 -->
 
 ---
@@ -2167,29 +2166,29 @@ layout: default
 ---
 <!-- slide:57-S05-06-ExpressiveShorts -->
 
-<div class="mb-2">
-  <h2 class="stage-title">9:16 세로형 포맷 & 캐릭터 표현력 (Expressive & Creative)</h2>
-  <p class="stage-subtitle">Shorts / Reels / TikTok 최적화 9:16 비율과 현장감 넘치는 다큐멘터리 질감 렌더링</p>
+<div class="mb-1.5">
+  <h2 class="stage-title">스마트폰 세로 숏폼(9:16)과 다큐멘터리 질감 연출</h2>
+  <p class="stage-subtitle">유튜브 쇼츠 / 릴스 / 틱톡에 맞는 9:16 세로 화면과 현장감 있는 다큐 스타일</p>
 </div>
 
 <VeoPromptShowcase
   videoSrc="/veo3/expressive-raccoon.webm"
   aspectRatio="9/16"
-  title="모바일 숏폼 9:16 세로 비율 & 다큐멘터리 연출 쇼케이스"
-  badge="9:16 Vertical Shorts"
+  title="모바일 세로형 9:16 다큐멘터리 연출 쇼케이스"
+  badge="9:16 Shorts"
   prompt="Documentary style, A raccoon manages a coffee shop. Dialogue."
   subject="커피숍을 운영하는 라쿤 (디테일한 털과 표정)"
   action="카운터에서 손님과 대화하듯 음료를 다루는 행동"
   camera="Documentary Eye-level (현장감 있는 다큐 시선)"
   environment="따뜻한 조명의 커피숍 바 카운터"
-  takeaway="쇼츠와 릴스에 최적화된 9:16 세로 프레임에서도 캐릭터의 손동작과 털의 세밀한 질감이 다큐멘터리 톤으로 안정적으로 생성됩니다."
+  takeaway="쇼츠에 맞춘 세로 화면에서도 캐릭터의 손동작과 털의 질감이 다큐멘터리 느낌으로 자연스럽게 생성됩니다."
 />
 
 <!--
 [강사]
-숏폼 플랫폼(유튜브 쇼츠, 인스타 릴스, 틱톡)의 기본 표준인 9:16 세로형 영상입니다.
-'Documentary style'이라는 짧은 스타일 키워드만으로도 캐릭터의 현실적인 조명과 공간감이 극대화됩니다.
-스마트수산업 홍보 숏폼을 만들 때도 9:16 세로 비율을 지정하여 모바일 시청자의 몰입감을 높여야 합니다.
+모바일 숏폼의 표준인 9:16 세로 영상입니다.
+'Documentary style'이라는 짧은 스타일 키워드 하나만 넣어도 조명과 질감이 다큐멘터리처럼 사실적으로 변합니다.
+우리가 스마트양식 숏폼을 만들 때도 9:16 세로 비율을 지정해야 모바일 시청자가 화면에 꽉 찬 영상을 볼 수 있습니다.
 -->
 
 ---
@@ -2197,28 +2196,27 @@ layout: default
 ---
 <!-- slide:58-S05-07-CameraLanguage -->
 
-<div class="mb-2">
-  <h2 class="stage-title">정밀 카메라 워크 & 복합 공간 전환 (Camera Language)</h2>
-  <p class="stage-subtitle">트래킹 ➔ 푸시인 ➔ 우측 피벗 ➔ 칵테일 클로즈업으로 이어지는 정밀한 시선 이동</p>
+<div class="mb-1.5">
+  <h2 class="stage-title">카메라 이동 경로 지시법 (복도 이동부터 사물 클로즈업까지)</h2>
+  <p class="stage-subtitle">카메라가 어디를 지나 어디로 시선을 옮기는지 단계별로 명시하는 기법</p>
 </div>
 
 <VeoPromptShowcase
   videoSrc="/veo3/camera-bar.webm"
-  title="연속 카메라 워크 & 다단계 공간 전환 렌더링 (16:9)"
+  title="카메라 이동 경로 연속 연출 쇼케이스 (16:9)"
   badge="Multi-Move Camera"
   prompt='The camera begins with a slow, elegant track along the richly paneled walls of a dimly lit, sophisticated hallway, the warm glow of the ornate wall sconces casting inviting reflections on the polished floor. Soft jazz music plays in the background. As we approach an arched entryway, the camera performs a graceful push-in, revealing a grand mirror and flickering candles, then smoothly pivots to the right, opening up to a luxurious home bar. The clinking of ice and the murmur of conversation become audible. The camera settles on a close-up of a perfectly crafted cocktail. "Welcome," a smooth, baritone voice says. "Care for a taste?" Suddenly, a renowned mixologist, known for his eccentric creations, steps into frame, followed by a playful, mischievous cat that jumps onto the bar, batting at a cocktail stirrer.'
-  subject="복도 ➔ 아치형 입구 ➔ 홈 바 칵테일 ➔ 바텐더와 고양이"
-  action="복도 이동 ➔ 문 진입 ➔ 우측 회전 ➔ 잔 클로즈업 ➔ 고양이 도약"
-  camera="Slow Track ➔ Push-in ➔ Pivot Right ➔ Close-up"
-  environment="은은한 조명의 목재 복도 & 럭셔리 홈 바 조명 일관성"
-  takeaway="카메라의 동선(복도 트래킹 -> 입구 푸시인 -> 우측 피벗 -> 잔 클로즈업)을 단계별로 서술하면 모델이 하나의 롱테이크 영상처럼 자연스러운 공간 이동을 연출합니다."
+  subject="복도 ➔ 아치형 입구 ➔ 바 테이블의 칵테일 잔과 고양이"
+  action="복도를 지나 실내로 진입하여 잔을 비추고 고양이가 올라오는 장면"
+  camera="천천히 이동(Track) ➔ 진입(Push-in) ➔ 우측 회전(Pivot) ➔ 잔 클로즈업"
+  environment="은은한 조명의 목재 복도 & 럭셔리 홈 바"
+  takeaway='스마트 양식장에서도 "관리동 복도 이동 ➔ 수조실 진입 ➔ 수질 센서 모니터 클로즈업" 순서로 적으면 매끄러운 1컷 투어 영상이 완성됩니다.'
 />
 
 <!--
 [강사]
-카메라 문법의 정수를 보여주는 예시입니다.
-복도를 따라 걷다가, 아치형 문으로 들어가서, 오른쪽으로 부드럽게 틀어 칵테일 잔을 비추는 4단계 카메라 워크가 프롬프트에 정확히 명시되어 있습니다.
-양식장에서도 "시설 복도를 지나 ➔ 3번 수조로 들어가서 ➔ 수질 센서 모니터로 클로즈업"하는 동선을 이렇게 구현할 수 있습니다.
+카메라에게 "양식장을 잘 찍어줘"라고 하면 헤맵니다.
+대신 "복도를 지나서, 문을 열고 들어가서, 3번 수조의 수질 센서를 크게 비춰줘"처럼 카메라가 이동하는 길을 순서대로 적어주면 하나의 긴 컷으로 자연스럽게 이어집니다.
 -->
 
 ---
@@ -2226,12 +2224,12 @@ layout: default
 ---
 <!-- slide:59-S05-08-ShotYamlTemplate -->
 
-<div class="mb-3">
-  <h2 class="stage-title">스마트수산업 쇼트 설계 YAML 표준 템플릿</h2>
-  <p class="stage-subtitle">현장 작업자와 AI 에이전트가 오차 없이 소통하는 7대 메타데이터 규격</p>
+<div class="mb-2">
+  <h2 class="stage-title">스마트 양식장 숏폼 쇼트 카드 작성법 (YAML 양식)</h2>
+  <p class="stage-subtitle">현장 작업자와 AI 에이전트가 오해 없이 소통하는 7가지 필수 항목</p>
 </div>
 
-<div class="grid grid-cols-[1.2fr_1fr] gap-4 my-2 text-xs">
+<div class="grid grid-cols-[1.2fr_1fr] gap-4 my-1 text-xs">
   <div class="glass-card p-3 bg-black/60 font-mono text-[11px] leading-relaxed text-white/90 overflow-y-auto max-h-[300px]">
     <div class="text-sky-400 font-bold mb-1 border-b border-white/10 pb-1"># 스마트수산업 숏폼 S01 쇼트 규격서</div>
     <div><span class="text-sky-300">shot_id:</span> S01</div>
@@ -2251,20 +2249,20 @@ layout: default
     <div class="p-3 bg-sky-950/30 rounded-xl border border-sky-500/30">
       <div class="text-sky-300 font-bold text-xs mb-1 flex items-center gap-1.5">
         <span class="i-carbon-checkmark-filled"></span>
-        <span>YAML 표준화의 이점</span>
+        <span>항목별 정리의 이점</span>
       </div>
       <p class="text-white/80 text-[11px] leading-relaxed m-0">
-        자연어로 장황하게 설명하지 않고, AI 에이전트에게 정형화된 필드로 입력하여 쇼트 간 파라미터 누락을 방지합니다.
+        말로 길게 설명하지 않고, 항목별로 딱딱 적어주면 AI가 엉뚱한 요소를 멋대로 추가하지 않습니다.
       </p>
     </div>
 
     <div class="p-3 bg-amber-950/30 rounded-xl border border-amber-500/30">
       <div class="text-amber-300 font-bold text-xs mb-1 flex items-center gap-1.5">
         <span class="i-carbon-rule"></span>
-        <span>연속성(Continuity) 필드 필수</span>
+        <span>연속성(Continuity) 메모 필수</span>
       </div>
       <p class="text-white/80 text-[11px] leading-relaxed m-0">
-        다음 쇼트로 넘어갈 때 수조 배관 색상, 센서 외형, 조명 톤이 바뀌지 않도록 팔레트 고정 키워드를 명시합니다.
+        다음 컷으로 넘어갈 때 배관 색상이나 조명 색감이 갑자기 바뀌지 않도록 '동일한 파란색 배관'처럼 고정 문구를 적어둡니다.
       </p>
     </div>
   </div>
@@ -2272,8 +2270,8 @@ layout: default
 
 <!--
 [강사]
-실제 현장에서 AI 영상 에이전트를 쓸 때는 이렇게 YAML 형식으로 쇼트 카드를 정리합니다.
-주체, 행동, 카메라, 환경뿐 아니라 '연속성(continuity)'과 '후편집 자막'까지 분리해 두어야 나중에 편집할 때 혼선이 생기지 않습니다.
+실제로 AI 영상 에이전트와 일할 때는 이렇게 표나 메모 형태로 정리해서 넘깁니다.
+주체, 행동, 카메라뿐 아니라 '연속성'과 '나중에 넣을 자막'까지 분리해 적어두어야 나중에 편집할 때 일이 두 번 안 생깁니다.
 -->
 
 ---
@@ -2282,8 +2280,8 @@ layout: default
 <!-- slide:60-S05-09-SessionSummary -->
 
 <div class="mb-3">
-  <h2 class="stage-title">5차시 요약 — 생성 안정성을 높이는 3대 원칙</h2>
-  <p class="stage-subtitle">AI 영상 생성에서 실패와 크레딧 낭비를 줄이는 핵심 기준</p>
+  <h2 class="stage-title">5차시 요약 — 영상 생성 실패를 줄이는 3가지 기준</h2>
+  <p class="stage-subtitle">AI 영상 생성에서 버리는 컷과 시간 낭비를 막는 핵심 원칙</p>
 </div>
 
 <div class="grid grid-cols-3 gap-4 my-4 text-xs">
@@ -2291,39 +2289,39 @@ layout: default
   <div class="glass-card border-t-2 border-t-teal-400 p-4.5 flex flex-col justify-between">
     <div>
       <div class="w-8 h-8 rounded-full bg-teal-500/20 text-teal-300 flex items-center justify-center font-bold text-sm mb-3">1</div>
-      <div class="font-bold text-white text-sm mb-1.5">1쇼트 1핵심 행동</div>
+      <div class="font-bold text-white text-sm mb-1.5">1컷에 행동 1개만 지시</div>
       <p class="text-white/75 text-[11.5px] leading-relaxed m-0">
-        한 클립(4~8초)에는 단 하나의 물리적 동작만 넣습니다. 여러 동작이 필요하면 쇼트를 나누어 생성하고 이어 붙입니다.
+        4초짜리 한 컷에는 단 하나의 물리적 동작만 넣습니다. 여러 동작이 필요하면 컷을 나누어 만들고 이어 붙입니다.
       </p>
     </div>
     <div class="text-[10px] text-teal-300 font-mono border-t border-white/10 pt-2 mt-3">
-      왜곡 및 형태 붕괴 90% 예방
+      인물/시설 뭉개짐 90% 예방
     </div>
   </div>
 
   <div class="glass-card border-t-2 border-t-sky-400 p-4.5 flex flex-col justify-between">
     <div>
       <div class="w-8 h-8 rounded-full bg-sky-500/20 text-sky-300 flex items-center justify-center font-bold text-sm mb-3">2</div>
-      <div class="font-bold text-white text-sm mb-1.5">시작·끝 프레임 고정</div>
+      <div class="font-bold text-white text-sm mb-1.5">시작·끝 사진 먼저 고정</div>
       <p class="text-white/75 text-[11.5px] leading-relaxed m-0">
-        First & Last Frame을 앵커로 지정하여 결정론적 움직임을 유도하고, 쇼트 간 연결부에서 장면 이탈을 방지합니다.
+        시작 사진과 끝 사진을 먼저 고정해두면, AI가 엉뚱한 방향으로 장면을 틀어버리는 사고를 막을 수 있습니다.
       </p>
     </div>
     <div class="text-[10px] text-sky-300 font-mono border-t border-white/10 pt-2 mt-3">
-      인물/시설 순간이동 방지
+      장면 이탈 및 순간이동 방지
     </div>
   </div>
 
   <div class="glass-card border-t-2 border-t-indigo-400 p-4.5 flex flex-col justify-between">
     <div>
       <div class="w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-300 flex items-center justify-center font-bold text-sm mb-3">3</div>
-      <div class="font-bold text-white text-sm mb-1.5">글자·숫자는 후편집</div>
+      <div class="font-bold text-white text-sm mb-1.5">글자·숫자는 편집기 자막으로</div>
       <p class="text-white/75 text-[11.5px] leading-relaxed m-0">
-        AI 비디오 모델에게 작은 텍스트나 계측기 수치를 그리게 하지 않습니다. 영상은 배경만 만들고 정보는 캡컷/프리미어로 올립니다.
+        AI 비디오 모델에게 작은 글자나 계측기 수치를 그리게 하지 않습니다. 영상은 배경만 만들고 자막은 캡컷으로 올립니다.
       </p>
     </div>
     <div class="text-[10px] text-indigo-300 font-mono border-t border-white/10 pt-2 mt-3">
-      깨진 글자 없는 고품질 완성
+      깨진 글자 없는 깔끔한 완성
     </div>
   </div>
 </v-clicks>
@@ -2331,11 +2329,11 @@ layout: default
 
 <!--
 [강사]
-5차시를 정리합니다.
-첫째, 한 쇼트에는 행동 하나만 지시합니다.
-둘째, 시작과 끝 프레임을 고정하여 장면 이탈을 막습니다.
-셋째, 글자와 숫자는 생성 모델에 맡기지 말고 후편집 자막으로 올립니다.
-이제 6차시에서는 이 기술로 스마트수산업 홍보 숏폼을 직접 기획하고 제작해 보겠습니다.
+5차시 핵심을 딱 3개로 정리합니다.
+첫째, 한 컷에는 행동 하나만 시킨다.
+둘째, 시작과 끝 사진을 정해두고 사이를 채우게 한다.
+셋째, 글자나 숫자는 AI한테 그리라 하지 말고 편집 프로그램에서 자막으로 친다.
+이제 6차시에서는 이 기술로 15초짜리 스마트수산업 숏폼을 직접 만들어보겠습니다.
 -->
 
 ---
@@ -2350,15 +2348,14 @@ class: text-center
     스마트수산업 숏폼 기획과<br />Google Flow Agent 실무
   </h2>
   <p class="text-white/75 text-lg font-light max-w-xl leading-relaxed">
-    “15~20초 숏폼 문법부터 Flow Agent 협업, 플랫폼 심의까지 완결하는 실전 워크플로”
+    “15~20초 숏폼 구성법부터 AI 에이전트 협업, 플랫폼 표시 규정까지”
   </p>
 </div>
 
 <!--
 [강사]
 마지막 6차시입니다.
-지금까지 배운 데이터, AI 원리, Veo 3.1 비디오 기술을 종합하여, 수산양식의 가치를 15~20초 모바일 숏폼으로 전달하는 실무 워크플로를 실습합니다.
-Google Flow Agent와의 실전 대화법과 플랫폼 심의 규정을 완결하겠습니다.
+지금까지 배운 데이터 분석, AI 원리, Veo 3.1 비디오 기술을 합쳐서, 스마트 양식장의 가치를 전하는 15~20초 숏폼 영상을 직접 기획하고 제작하는 실무를 진행합니다.
 -->
 
 ---
@@ -2368,7 +2365,7 @@ layout: default
 
 <div class="mb-3">
   <h2 class="stage-title">15~20초 스마트수산업 숏폼 5단계 기승전결 공식</h2>
-  <p class="stage-subtitle">시청자의 오해를 깨고 스마트 수산업의 본질과 전문인력의 역할을 각인시키는 서사 구조</p>
+  <p class="stage-subtitle">시청자의 오해를 풀고 스마트 수산업의 가치와 전문인력의 역할을 전달하는 구성법</p>
 </div>
 
 <div class="grid grid-cols-5 gap-2.5 my-3 text-xs">
@@ -2379,9 +2376,9 @@ layout: default
         <span class="text-sky-300 font-bold text-xs">1단계 (0~3초)</span>
         <span class="font-mono text-white/50 text-[10px]">Hook</span>
       </div>
-      <div class="font-bold text-white text-sm mb-1">낯선 질문 (훅)</div>
+      <div class="font-bold text-white text-sm mb-1">낯선 질문 (호기심)</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        물고기보다 수질 센서와 배관을 먼저 보여주며 호기심 유발.
+        물고기 대신 수질 센서와 배관을 먼저 비추며 호기심 유발.
       </p>
     </div>
     <div class="text-[10px] text-sky-200 bg-sky-950/40 p-1.5 rounded mt-2 font-medium">
@@ -2397,7 +2394,7 @@ layout: default
       </div>
       <div class="font-bold text-white text-sm mb-1">상식/오해 깨기</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        물을 무작정 많이 버리는 게 능사가 아니라는 딜레마 제시.
+        물을 무작정 많이 버리는 게 능사가 아니라는 점을 제시.
       </p>
     </div>
     <div class="text-[10px] text-indigo-200 bg-indigo-950/40 p-1.5 rounded mt-2 font-medium">
@@ -2411,9 +2408,9 @@ layout: default
         <span class="text-amber-300 font-bold text-xs">3단계 (7~12초)</span>
         <span class="font-mono text-white/50 text-[10px]">Mechanism</span>
       </div>
-      <div class="font-bold text-white text-sm mb-1">순환여과 작동 원리</div>
+      <div class="font-bold text-white text-sm mb-1">순환여과 원리</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        기계·생물학적 여과와 산소·가스 관리, 센서 데이터의 유기적 협업.
+        여과 장치, 산소 공급, 센서 데이터가 맞물려 돌아가는 장면.
       </p>
     </div>
     <div class="text-[10px] text-amber-200 bg-amber-950/40 p-1.5 rounded mt-2 font-medium">
@@ -2427,9 +2424,9 @@ layout: default
         <span class="text-emerald-300 font-bold text-xs">4단계 (12~17초)</span>
         <span class="font-mono text-white/50 text-[10px]">Human</span>
       </div>
-      <div class="font-bold text-white text-sm mb-1">전문인력의 판단</div>
+      <div class="font-bold text-white text-sm mb-1">사람의 최종 판단</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        대시보드 숫자와 실제 수조 물고기 상태를 함께 읽는 관리자.
+        화면의 수치와 실제 수조 속 어체를 함께 확인하는 관리자.
       </p>
     </div>
     <div class="text-[10px] text-emerald-200 bg-emerald-950/40 p-1.5 rounded mt-2 font-medium">
@@ -2443,9 +2440,9 @@ layout: default
         <span class="text-purple-300 font-bold text-xs">5단계 (17~20초)</span>
         <span class="font-mono text-white/50 text-[10px]">Call to Action</span>
       </div>
-      <div class="font-bold text-white text-sm mb-1">결론 및 초대</div>
+      <div class="font-bold text-white text-sm mb-1">결론 및 교육 안내</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        예비 수산업 전문인을 향한 비전 제시 및 교육과정 CTA.
+        수산업 전문가 양성과정 안내 및 교육 참여 권유.
       </p>
     </div>
     <div class="text-[10px] text-purple-200 bg-purple-950/40 p-1.5 rounded mt-2 font-medium">
@@ -2458,19 +2455,18 @@ layout: default
 <div class="p-2.5 bg-black/40 rounded-xl border border-white/10 flex items-center justify-between text-xs">
   <div class="flex items-center gap-2 text-white/90">
     <span class="i-carbon-idea text-amber-400"></span>
-    <span><strong>인사이트:</strong> 기술 이름(RAS, AI)을 자랑하기보다, 현장의 문제를 데이터와 사람이 어떻게 해결하는지 보여줄 때 시청자가 끝까지 봅니다.</span>
+    <span><strong>핵심:</strong> 어려운 기술 이름(RAS, AI)을 나열하기보다, 현장의 문제를 데이터와 사람이 어떻게 해결하는지 보여줄 때 시청자가 끝까지 봅니다.</span>
   </div>
-  <span class="text-purple-300 font-mono text-[11px] font-bold">15~20s Retention Formula</span>
+  <span class="text-purple-300 font-mono text-[11px] font-bold">15~20초 시청 지속 공식</span>
 </div>
 
 <!--
 [강사]
-유튜브 쇼츠나 릴스에서 가장 반응이 좋은 5단계 서사 구조입니다.
-1단계에서 '양식장인데 물을 안 바꾼다?'라는 상식 밖의 질문을 던지고,
-2단계에서 오해를 깨뜨리며,
-3단계에서 여과와 센서의 원리를 보여주고,
-4단계에서 결국 핵심은 '숫자와 현장을 함께 보는 사람'임을 강조한 뒤,
-5단계에서 전문인력 양성과정으로 초대합니다.
+유튜브 쇼츠나 릴스에서 반응이 가장 좋은 5단계 구성입니다.
+첫 3초에 '양식장인데 물을 안 바꾼다?'라는 질문으로 눈길을 사로잡고,
+물을 무작정 버리는 게 능사가 아니라는 오해를 푼 뒤,
+여과 장치와 센서의 원리를 보여주고,
+결국 핵심은 '숫자와 현장을 함께 보는 사람'임을 짚어주며 끝맺습니다.
 -->
 
 ---
@@ -2498,8 +2494,8 @@ layout: default
 <!-- slide:64-S06-04-FlowPipeline -->
 
 <div class="mb-3">
-  <h2 class="stage-title">Google Flow & Flow Agent 협업 파이프라인</h2>
-  <p class="stage-subtitle">자연어 기획부터 360p 초안, SceneBuilder 조립, 1080p 마스터링까지의 5단계 워크플로</p>
+  <h2 class="stage-title">Google Flow & Flow Agent 작업 파이프라인</h2>
+  <p class="stage-subtitle">기획부터 초안 생성, SceneBuilder 조립, 고화질 출력까지 4단계 작업 흐름</p>
 </div>
 
 <div class="grid grid-cols-4 gap-3 my-3 text-xs">
@@ -2507,52 +2503,52 @@ layout: default
   <div class="glass-card p-3.5 flex flex-col justify-between border-t-2 border-t-sky-400">
     <div>
       <div class="text-sky-300 font-bold text-xs mb-1">Step 01</div>
-      <div class="font-bold text-white text-sm mb-1">Instructions 고정</div>
+      <div class="font-bold text-white text-sm mb-1">지시 규칙(Instructions) 입력</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        프로젝트 지시사항에 9:16 비율, 15~20초, 3~5개 쇼트, 레퍼런스 모방 금지 규칙을 사전 입력.
+        9:16 세로 화면, 15~20초, 3~5개 컷, 다른 채널 모방 금지 규칙을 먼저 설정합니다.
       </p>
     </div>
     <div class="text-[10px] text-sky-300/80 border-t border-white/10 pt-1.5 mt-2 font-mono">
-      규칙: 승인 전 생성 금지
+      원칙: 승인 전 영상 생성 금지
     </div>
   </div>
 
   <div class="glass-card p-3.5 flex flex-col justify-between border-t-2 border-t-emerald-400">
     <div>
       <div class="text-emerald-300 font-bold text-xs mb-1">Step 02</div>
-      <div class="font-bold text-white text-sm mb-1">계획 검토 & 승인</div>
+      <div class="font-bold text-white text-sm mb-1">대본 & 컷 계획 승인</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        Agent에게 훅 3안과 쇼트 리스트 계획만 먼저 요구. 확인되지 않은 사실에 [검증 필요] 태깅.
+        에이전트에게 훅 3가지와 쇼트 목록을 먼저 텍스트로 받아 검토하고 승인합니다.
       </p>
     </div>
     <div class="text-[10px] text-emerald-300/80 border-t border-white/10 pt-1.5 mt-2 font-mono">
-      안전: 크레딧 낭비 원천 방지
+      효과: 생성 크레딧 낭비 방지
     </div>
   </div>
 
   <div class="glass-card p-3.5 flex flex-col justify-between border-t-2 border-t-amber-400">
     <div>
       <div class="text-amber-300 font-bold text-xs mb-1">Step 03</div>
-      <div class="font-bold text-white text-sm mb-1">360p 초안 & 정밀 수정</div>
+      <div class="font-bold text-white text-sm mb-1">저화질 초안 & 정밀 수정</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        S01 초안 생성 후 구체적 오류(배관 위치, 카메라 속도)를 1:1 지적하여 수정하고 4개 변형안 비교.
+        360p 초안으로 먼저 뽑아본 뒤, 배관 위치나 카메라 속도를 1:1로 피드백해 수정합니다.
       </p>
     </div>
     <div class="text-[10px] text-amber-300/80 border-t border-white/10 pt-1.5 mt-2 font-mono">
-      방식: Draft Quality First
+      방식: 빠른 초안 검증 후 확정
     </div>
   </div>
 
   <div class="glass-card p-3.5 flex flex-col justify-between border-t-2 border-t-purple-400">
     <div>
       <div class="text-purple-300 font-bold text-xs mb-1">Step 04</div>
-      <div class="font-bold text-white text-sm mb-1">SceneBuilder 조립</div>
+      <div class="font-bold text-white text-sm mb-1">타임라인 조립 & 고화질 출력</div>
       <p class="text-white/75 text-[11px] leading-relaxed m-0">
-        완성된 클립들을 타임라인에 배치하고, 내레이션 음성·자막·로고를 결합하여 최종 1080p/4K 출력.
+        완성된 컷들을 타임라인에 얹고, 내레이션 음성과 자막을 결합해 최종 출력합니다.
       </p>
     </div>
     <div class="text-[10px] text-purple-300/80 border-t border-white/10 pt-1.5 mt-2 font-mono">
-      완성: 타임라인 컷 편집 & 자막
+      완성: 1080p 고화질 렌더링
     </div>
   </div>
 </v-clicks>
@@ -2560,9 +2556,9 @@ layout: default
 
 <!--
 [강사]
-Google Flow를 사용할 때 가장 중요한 것은 '순서'입니다.
-처음부터 고화질 비디오를 마구 누르면 크레딧이 순식간에 소진됩니다.
-반드시 Agent에게 계획을 먼저 받고 ➔ 승인한 뒤 ➔ 360p 초안으로 만들고 ➔ 수정과 변형을 거쳐 ➔ SceneBuilder에서 조립한 후 최종 업스케일해야 합니다.
+Google Flow를 쓸 때 가장 조심해야 할 것은 '순서'입니다.
+처음부터 고화질 버튼을 마구 누르면 생성 크레딧이 금방 바닥납니다.
+반드시 대본과 계획을 글자로 먼저 승인하고, 360p 초안으로 확인한 뒤 마음에 들면 최종 조립해서 고화질로 뽑아야 합니다.
 -->
 
 ---
@@ -2589,74 +2585,74 @@ layout: default
 <!-- slide:66-S06-06-Troubleshooting -->
 
 <div class="mb-3">
-  <h2 class="stage-title">영상 생성 5대 트러블슈팅 가이드</h2>
-  <p class="stage-subtitle">생성 결과가 의도와 다를 때 신속하게 프롬프트를 보정하는 처방전</p>
+  <h2 class="stage-title">영상이 이상하게 나올 때 바로잡는 5가지 해결법</h2>
+  <p class="stage-subtitle">생성 결과가 의도와 다를 때 프롬프트를 빠르게 수정하는 처방전</p>
 </div>
 
 <div class="grid grid-cols-3 gap-3 my-3 text-xs">
 <v-clicks>
   <div class="glass-card border-rose-500/20 p-3.5 flex flex-col justify-between">
     <div>
-      <div class="text-rose-400 font-bold text-xs mb-1">증상 1: 영상은 예쁜데 내용이 없음</div>
-      <div class="font-bold text-white text-[12px] mb-1">메시지 중심 중앙 재배치</div>
+      <div class="text-rose-400 font-bold text-xs mb-1">증상 1: 화면은 예쁜데 메시지가 없음</div>
+      <div class="font-bold text-white text-[12px] mb-1">핵심 장비/행동을 화면 중앙에 배치</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        "시각적 화려함보다 수산업 문제를 중앙에 두고, 이를 해결하는 장치나 사람의 행동을 화면 중심에 배치해줘."
+        "화려한 풍경보다 수산업 문제를 해결하는 센서 장치나 관리자의 손동작을 화면 정중앙에 크게 놓아줘."
       </p>
     </div>
     <div class="text-[10px] text-rose-300/80 border-t border-white/10 pt-1.5 mt-2">
-      처방: 장식 요소 제거, 핵심 피사체 집중
+      처방: 배경 장식 줄이고 주인공에 집중
     </div>
   </div>
 
   <div class="glass-card border-amber-500/20 p-3.5 flex flex-col justify-between">
     <div>
-      <div class="text-amber-400 font-bold text-xs mb-1">증상 2: 쇼트마다 인물·장비가 바뀜</div>
-      <div class="font-bold text-white text-sm mb-1">이전 쇼트 참조 고정 지시</div>
+      <div class="text-amber-400 font-bold text-xs mb-1">증상 2: 컷마다 사람이나 장비가 바뀜</div>
+      <div class="font-bold text-white text-sm mb-1">이전 컷 색상과 모양 고정 지시</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        "이전 쇼트의 인물 복장, 센서 하우징 형태, 수조 배관 방향, 조명 색감을 고정해줘. 새 장비 추가 금지."
+        "이전 컷의 작업복 색상, 센서 외형, 수조 배관 방향을 그대로 유지해줘. 새로운 장비 추가 금지."
       </p>
     </div>
     <div class="text-[10px] text-amber-300/80 border-t border-white/10 pt-1.5 mt-2">
-      처방: @ 이전 에셋 참조 + 팔레트 고정
+      처방: @ 이전 에셋 참조 + 색상 고정
     </div>
   </div>
 
   <div class="glass-card border-sky-500/20 p-3.5 flex flex-col justify-between">
     <div>
-      <div class="text-sky-400 font-bold text-xs mb-1">증상 3: 장면이 복잡하고 왜곡 발생</div>
-      <div class="font-bold text-white text-sm mb-1">단순화 (주체1, 행동1, 카메라1)</div>
+      <div class="text-sky-400 font-bold text-xs mb-1">증상 3: 화면이 복잡하고 모양이 뭉개짐</div>
+      <div class="font-bold text-white text-sm mb-1">단순화 (주체 1개, 행동 1개)</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        "장면을 단순화해줘. 주체는 하나, 핵심 행동은 하나, 카메라 움직임은 하나만 남겨줘. 배경 장비는 최소화."
+        "화면을 단순하게 만들어줘. 주인공 1개, 행동 1개, 카메라 움직임 1개만 남기고 복잡한 배경 제거."
       </p>
     </div>
     <div class="text-[10px] text-sky-300/80 border-t border-white/10 pt-1.5 mt-2">
-      처방: 1 Shot = 1 Action 엄수
+      처방: 1 컷 = 1 행동 원칙 엄수
     </div>
   </div>
 
   <div class="glass-card border-emerald-500/20 p-3.5 flex flex-col justify-between">
     <div>
-      <div class="text-emerald-400 font-bold text-xs mb-1">증상 4: 이미지 속 글자가 깨짐</div>
-      <div class="font-bold text-white text-sm mb-1">글자 제거 및 여백 확보</div>
+      <div class="text-emerald-400 font-bold text-xs mb-1">증상 4: 영상 속 글자가 깨짐</div>
+      <div class="font-bold text-white text-sm mb-1">글자 지우고 자막 넣을 여백 확보</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        "화면 속 글자·숫자는 모두 제거하고 추상적 표시로 처리해줘. 후편집 자막을 넣을 수 있도록 화면 여백 확보."
+        "화면 속 글자·숫자는 모두 없애줘. 나중에 편집기에서 자막을 넣을 수 있게 화면 아래 여백 확보."
       </p>
     </div>
     <div class="text-[10px] text-emerald-300/80 border-t border-white/10 pt-1.5 mt-2">
-      처방: 자막은 100% 후편집 처리
+      처방: 자막은 100% 캡컷/프리미어로 처리
     </div>
   </div>
 
   <div class="glass-card border-purple-500/20 p-3.5 flex flex-col justify-between col-span-2">
     <div>
-      <div class="text-purple-400 font-bold text-xs mb-1">증상 5: 레퍼런스 영상과 너무 똑같아짐 (표절 위험)</div>
-      <div class="font-bold text-white text-sm mb-1">문법만 남기고 독자적 수산양식 소재로 전면 교체</div>
+      <div class="text-purple-400 font-bold text-xs mb-1">증상 5: 참고 영상과 너무 똑같아짐 (표절 위험)</div>
+      <div class="font-bold text-white text-sm mb-1">문법만 남기고 우리 양식장 이야기로 교체</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        "참고 채널에서 가져올 것은 '질문형 훅'과 '반전형 정보 구조'뿐이다. 대사, 화면 구성, 인물, 배경, 음악, 자막을 새로 설계하고 스마트 수산업의 물·센서·전문인력 소재 중심으로 다시 만들어줘."
+        "참고 채널에서 배울 것은 '질문형 훅' 구조뿐이다. 대사, 화면, 인물, 장소, 자막을 우리 스마트 양식장의 물 관리와 센서 이야기로 전부 바꿔줘."
       </p>
     </div>
     <div class="text-[10px] text-purple-300/80 border-t border-white/10 pt-1.5 mt-2">
-      처방: 표절 방지 & 독자적 수산업 전문성 확립
+      처방: 표절 방지 & 독자적 수산업 전문성 확보
     </div>
   </div>
 </v-clicks>
@@ -2664,10 +2660,10 @@ layout: default
 
 <!--
 [강사]
-생성 도중 문제가 생기면 이 5가지 처방전을 쓰십시오.
-화면이 너무 복잡하면 주체와 행동을 1개로 줄이고,
-글자가 깨지면 생성하지 말고 후편집으로 돌리며,
-인물이 바뀌면 이전 쇼트의 색감과 하우징을 고정 지시하십시오.
+영상을 만들다 보면 흔히 생기는 5가지 문제입니다.
+화면이 복잡하면 요소를 빼고,
+글자가 깨지면 AI한테 글씨 쓰게 하지 말고 자막으로 돌리며,
+사람이 딴사람으로 바뀌면 이전 컷의 옷 색상을 고정하라고 지시하십시오.
 -->
 
 ---
@@ -2676,17 +2672,17 @@ layout: default
 <!-- slide:67-S06-07-PlatformCompliance -->
 
 <div class="mb-2">
-  <h2 class="stage-title">플랫폼별 AI 라벨링 규정 & 사실성 검수 (YouTube / TikTok / IG)</h2>
-  <p class="stage-subtitle">2026년 강화된 C2PA 표준, 생성 사실 투명 공개, 허위 과장 광고 방지 가이드라인</p>
+  <h2 class="stage-title">유튜브 쇼츠·틱톡·릴스 올릴 때 AI 표시 규정</h2>
+  <p class="stage-subtitle">플랫폼별 AI 생성 라벨 표기 의무, 허위 과장 방지, 안전한 배포 가이드라인</p>
 </div>
 
 <PlatformComplianceAudit />
 
 <!--
 [강사]
-완성된 영상을 유튜브 쇼츠, 틱톡, 릴스에 올릴 때 반드시 지켜야 할 플랫폼 컴플라이언스입니다.
-2026년부터는 C2PA 메타데이터와 플랫폼 내 'AI 생성 콘텐츠' 라벨 표기가 의무화되었습니다.
-AI 생성 사실을 숨기려 하지 말고 투명하게 밝히면서, 내용의 사실성과 현장 가치를 정확히 담는 것이 최고의 브랜딩입니다.
+완성된 영상을 유튜브 쇼츠나 릴스, 틱톡에 올릴 때 꼭 지켜야 할 규칙입니다.
+현재 주요 플랫폼들은 AI가 생성한 영상에 'AI 생성 콘텐츠' 라벨을 붙이도록 의무화하고 있습니다.
+AI로 만들었다는 사실을 숨길 필요 없이 당당하게 밝히고, 영상의 내용이 실제 양식 원리에 맞는지 사실 확인을 거치는 것이 가장 신뢰받는 방법입니다.
 -->
 
 ---
@@ -2696,34 +2692,34 @@ layout: default
 
 <div class="mb-3">
   <h2 class="stage-title">120분 팀 실습 운영 & 5대 역할 분담</h2>
-  <p class="stage-subtitle">예비 수산업 전문인 팀이 2시간 내에 1편의 완성도 높은 숏폼을 완성하는 실무 분업 체계</p>
+  <p class="stage-subtitle">2시간 안에 1편의 완성도 높은 숏폼을 완성하는 실무 분업 체계</p>
 </div>
 
 <div class="grid grid-cols-5 gap-2.5 my-3 text-xs">
 <v-clicks>
   <div class="glass-card p-3 flex flex-col justify-between border-t-2 border-t-sky-400">
     <div>
-      <div class="text-sky-300 font-bold text-xs mb-1">1. 디렉터 (Director)</div>
-      <div class="font-bold text-white text-sm mb-1">핵심 주장 & 톤 결정</div>
+      <div class="text-sky-300 font-bold text-xs mb-1">1. 기획 디렉터</div>
+      <div class="font-bold text-white text-sm mb-1">핵심 메시지 결정</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        영상의 한 줄 메시지, 타깃 시청자, 톤앤매너 설정 및 최종 변형안 선택.
+        영상의 한 줄 주제, 타깃 시청자, 톤을 정하고 최종 컷을 결정합니다.
       </p>
     </div>
     <div class="text-[10px] text-sky-300/80 border-t border-white/10 pt-1.5 mt-2">
-      역할: 의사결정 지연 방지
+      역할: 신속한 의사결정
     </div>
   </div>
 
   <div class="glass-card p-3 flex flex-col justify-between border-t-2 border-t-indigo-400">
     <div>
-      <div class="text-indigo-300 font-bold text-xs mb-1">2. 리서처 (Researcher)</div>
-      <div class="font-bold text-white text-sm mb-1">사실·출처 검증</div>
+      <div class="text-indigo-300 font-bold text-xs mb-1">2. 사실 검수관</div>
+      <div class="font-bold text-white text-sm mb-1">수치·사실 확인</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        RAS 원리, 센서 수치, 과장 표현 점검 및 [검증 필요] 항목 태깅.
+        양식 원리, 수치 오류, 과장된 홍보 문구가 없는지 점검합니다.
       </p>
     </div>
     <div class="text-[10px] text-indigo-300/80 border-t border-white/10 pt-1.5 mt-2">
-      역할: 허위·과장 광고 차단
+      역할: 허위·과장 광고 방지
     </div>
   </div>
 
@@ -2732,20 +2728,20 @@ layout: default
       <div class="text-amber-300 font-bold text-xs mb-1">3. 쇼트 디자이너</div>
       <div class="font-bold text-white text-sm mb-1">장면·카메라 설계</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        S01~S05 쇼트별 주체, 1개 행동, 카메라 궤적, 연속성 규칙 카드 작성.
+        S01~S05 컷별로 주인공 1개, 행동 1개, 카메라 구도를 작성합니다.
       </p>
     </div>
     <div class="text-[10px] text-amber-300/80 border-t border-white/10 pt-1.5 mt-2">
-      역할: 1쇼트 1행동 통제
+      역할: 1컷 1행동 통제
     </div>
   </div>
 
   <div class="glass-card p-3 flex flex-col justify-between border-t-2 border-t-emerald-400">
     <div>
-      <div class="text-emerald-300 font-bold text-xs mb-1">4. Agent 오퍼레이터</div>
-      <div class="font-bold text-white text-sm mb-1">프롬프트 & 생성</div>
+      <div class="text-emerald-300 font-bold text-xs mb-1">4. AI 프롬프트 오퍼레이터</div>
+      <div class="font-bold text-white text-sm mb-1">에이전트 생성 지시</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        Flow Agent와 대화하며 초안 생성, 오류 수정 지시, 4개 변형안 도출.
+        AI 에이전트와 대화하며 초안을 만들고 수정 사항을 반영합니다.
       </p>
     </div>
     <div class="text-[10px] text-emerald-300/80 border-t border-white/10 pt-1.5 mt-2">
@@ -2755,29 +2751,29 @@ layout: default
 
   <div class="glass-card p-3 flex flex-col justify-between border-t-2 border-t-purple-400">
     <div>
-      <div class="text-purple-300 font-bold text-xs mb-1">5. 에디터·발표자</div>
-      <div class="font-bold text-white text-sm mb-1">SceneBuilder 조립</div>
+      <div class="text-purple-300 font-bold text-xs mb-1">5. 편집·발표자</div>
+      <div class="font-bold text-white text-sm mb-1">자막 조립 및 상영</div>
       <p class="text-white/75 text-[10.5px] leading-relaxed m-0">
-        클립 타임라인 조립, 내레이션·자막 싱크 맞추기 및 20초 발표 진행.
+        영상 컷을 이어 붙이고 자막과 소리를 얹어 20초 상영을 진행합니다.
       </p>
     </div>
     <div class="text-[10px] text-purple-300/80 border-t border-white/10 pt-1.5 mt-2">
-      역할: 최종 영상 완성 및 상영
+      역할: 최종 영상 완성
     </div>
   </div>
 </v-clicks>
 </div>
 
 <div class="p-2 bg-black/40 rounded-xl border border-white/10 flex items-center justify-between text-xs">
-  <span class="text-white/80 font-medium"><strong>팀 실습 범위:</strong> 팀당 1편 완성 / 주제 1개 / 변형안 4개 이하 비교 / 초안 전체 완성 우선</span>
-  <span class="text-amber-300 font-mono text-[11px] font-bold">120min Production Rule</span>
+  <span class="text-white/80 font-medium"><strong>팀 실습 원칙:</strong> 팀당 1편 완성 / 주제 1개 / 변형안 4개 이하 비교 / 초안 완결 우선</span>
+  <span class="text-amber-300 font-mono text-[11px] font-bold">120분 실전 제작</span>
 </div>
 
 <!--
 [강사]
 팀 실습 5대 역할입니다.
-디렉터, 리서처, 쇼트 디자이너, Agent 오퍼레이터, 에디터로 역할을 나누어 2시간 안에 15~20초 숏폼 1편을 완결해 주십시오.
-인원이 적으면 역할을 겸임하되, '리서처의 사실 검수'는 반드시 거쳐야 합니다.
+기획, 사실 검수, 장면 설계, AI 생성, 자막 편집으로 역할을 나누어 2시간 안에 15초짜리 숏폼 1편을 완성해 주십시오.
+인원이 적으면 역할을 겸임하되, '사실 검수'는 절대 건너뛰지 마십시오.
 -->
 
 ---

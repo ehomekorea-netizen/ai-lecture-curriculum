@@ -22,21 +22,14 @@ const props = withDefaults(
 )
 
 const videoRef = ref<HTMLVideoElement | null>(null)
-const isMuted = ref(false)
+const isMuted = ref(true)
 const copied = ref(false)
 
 onMounted(() => {
   if (videoRef.value) {
-    videoRef.value.muted = false
-    isMuted.value = false
-    videoRef.value.play().catch(() => {
-      // Browser autoplay policy fallback
-      if (videoRef.value) {
-        videoRef.value.muted = true
-        isMuted.value = true
-        videoRef.value.play()
-      }
-    })
+    videoRef.value.muted = true
+    isMuted.value = true
+    videoRef.value.play().catch(() => {})
   }
 })
 
@@ -56,47 +49,46 @@ const copyPrompt = () => {
 </script>
 
 <template>
-  <div class="w-full my-1">
-    <!-- 9:16 Vertical Video Layout (35% : 65% Ratio) -->
+  <div class="w-full my-0.5">
+    <!-- 9:16 Vertical Layout (35% : 65%) -->
     <div
       v-if="aspectRatio === '9/16'"
-      class="grid grid-cols-[35%_65%] gap-5 items-center"
+      class="grid grid-cols-[35%_65%] gap-5 items-start"
     >
-      <!-- Hero 9:16 Video (Direct Full Asset with Mute Toggle) -->
-      <div class="relative h-[320px] w-full flex items-center justify-center bg-black/60 rounded-2xl border border-white/20 overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.7)]">
-        <video
-          ref="videoRef"
-          :src="videoSrc"
-          :poster="poster"
-          autoplay
-          loop
-          playsinline
-          class="w-full h-full object-contain select-none"
-        ></video>
-        
-        <!-- Top-left Aspect Badge -->
-        <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[9.5px] font-mono font-bold bg-black/75 backdrop-blur text-sky-300 border border-sky-400/40 select-none">
-          9:16 Shorts
-        </span>
-
-        <!-- Bottom-right Ultra-Compact Mute Toggle -->
-        <button
-          @click.stop="toggleMute"
-          class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded-md bg-black/80 hover:bg-black/95 backdrop-blur text-white border border-white/20 flex items-center gap-1 text-[9.5px] font-mono cursor-pointer transition-all z-10 shadow-md select-none"
-          :title="isMuted ? '소리 켜기' : '소리 끄기'"
-        >
-          <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'" class="text-xs"></span>
-          <span :class="isMuted ? 'text-rose-300' : 'text-emerald-300'">{{ isMuted ? 'MUTE' : 'SOUND' }}</span>
-        </button>
+      <!-- Video Column (Pure Clean Video without internal overlays) -->
+      <div class="flex flex-col">
+        <div class="h-[310px] w-full flex items-center justify-center bg-black/60 rounded-2xl border border-white/20 overflow-hidden shadow-xl">
+          <video
+            ref="videoRef"
+            :src="videoSrc"
+            :poster="poster"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-full object-contain select-none"
+          ></video>
+        </div>
+        <!-- Controls outside video frame -->
+        <div class="flex items-center justify-between mt-1.5 px-1">
+          <span class="text-[10px] font-mono text-sky-400 font-medium">9:16 Shorts 포맷</span>
+          <button
+            @click.stop="toggleMute"
+            class="px-2 py-0.5 rounded text-[10px] font-mono transition-all cursor-pointer border flex items-center gap-1"
+            :class="isMuted ? 'bg-white/5 text-white/60 hover:text-white border-white/15' : 'bg-emerald-500/20 text-emerald-300 border-emerald-400'"
+          >
+            <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'"></span>
+            <span>{{ isMuted ? '음소거 중' : '소리 켜짐' }}</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Right Column: Minimalist Content -->
+      <!-- Right Column: Clean Minimalist Breakdown -->
       <div class="flex flex-col gap-2">
-        <!-- Header & Action -->
+        <!-- Header -->
         <div class="flex items-center justify-between border-b border-white/10 pb-1.5">
           <div class="flex items-center gap-2">
-            <span class="i-carbon-video-filled text-sky-400 text-base"></span>
-            <span class="font-bold text-white text-[13px]">{{ title }}</span>
+            <span class="font-bold text-white text-[13.5px]">{{ title }}</span>
             <span
               v-if="badge"
               class="px-1.5 py-0.5 rounded text-[9.5px] font-mono font-bold bg-sky-500/20 text-sky-300 border border-sky-500/40"
@@ -114,24 +106,24 @@ const copyPrompt = () => {
         </div>
 
         <!-- Official DeepMind Prompt -->
-        <div class="p-2.5 rounded-xl bg-black/50 border border-white/10">
-          <div class="text-[9.5px] font-mono uppercase tracking-wider text-sky-400 font-bold mb-0.5 flex items-center gap-1">
+        <div class="p-2 rounded-xl bg-black/50 border border-white/10">
+          <div class="text-[9px] font-mono uppercase tracking-wider text-sky-400 font-bold mb-0.5 flex items-center gap-1">
             <span class="i-carbon-terminal"></span>
-            <span>Official DeepMind Prompt</span>
+            <span>Google Veo 3.1 공식 프롬프트</span>
           </div>
-          <p class="text-[11.5px] font-mono text-white/95 leading-relaxed italic m-0">
+          <p class="text-[11px] font-mono text-white/95 leading-relaxed italic m-0">
             "{{ prompt }}"
           </p>
         </div>
 
-        <!-- Clean 4-Point Breakdown -->
+        <!-- 4-Point Specs -->
         <div class="grid grid-cols-2 gap-1.5 text-[10.5px]">
           <div v-if="subject" class="p-1.5 bg-white/5 rounded-lg border border-white/10">
             <span class="text-sky-300 font-bold block text-[9.5px] mb-0.5">1. Subject (주체)</span>
             <span class="text-white/85 leading-snug">{{ subject }}</span>
           </div>
           <div v-if="action" class="p-1.5 bg-white/5 rounded-lg border border-white/10">
-            <span class="text-indigo-300 font-bold block text-[9.5px] mb-0.5">2. Action (핵심 행동)</span>
+            <span class="text-indigo-300 font-bold block text-[9.5px] mb-0.5">2. Action (행동)</span>
             <span class="text-white/85 leading-snug">{{ action }}</span>
           </div>
           <div v-if="camera" class="p-1.5 bg-white/5 rounded-lg border border-white/10">
@@ -151,48 +143,48 @@ const copyPrompt = () => {
         >
           <span class="i-carbon-idea text-sky-400 text-xs flex-shrink-0 mt-0.5"></span>
           <p class="text-[10px] text-sky-200 leading-snug m-0">
-            <strong>핵심 인사이트:</strong> {{ takeaway }}
+            <strong>핵심 포인트:</strong> {{ takeaway }}
           </p>
         </div>
       </div>
     </div>
 
-    <!-- 16:9 Landscape Video Layout (46% : 54% Balanced Ratio) -->
+    <!-- 16:9 Landscape Layout (46% : 54%) -->
     <div
       v-else
-      class="grid grid-cols-[46%_54%] gap-4.5 items-center"
+      class="grid grid-cols-[46%_54%] gap-4.5 items-start"
     >
-      <!-- Hero 16:9 Video (Direct Full Asset with Mute Toggle) -->
-      <div class="relative h-[255px] w-full rounded-2xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.7)] border border-white/20 bg-black/80 flex items-center justify-center">
-        <video
-          ref="videoRef"
-          :src="videoSrc"
-          :poster="poster"
-          autoplay
-          loop
-          playsinline
-          class="w-full h-full object-cover select-none"
-        ></video>
-        
-        <!-- Top-left Aspect Badge -->
-        <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[9.5px] font-mono font-bold bg-black/75 backdrop-blur text-teal-300 border border-teal-400/40 select-none">
-          16:9 Cinematic
-        </span>
-
-        <!-- Bottom-right Ultra-Compact Mute Toggle -->
-        <button
-          @click.stop="toggleMute"
-          class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded-md bg-black/80 hover:bg-black/95 backdrop-blur text-white border border-white/20 flex items-center gap-1 text-[9.5px] font-mono cursor-pointer transition-all z-10 shadow-md select-none"
-          :title="isMuted ? '소리 켜기' : '소리 끄기'"
-        >
-          <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'" class="text-xs"></span>
-          <span :class="isMuted ? 'text-rose-300' : 'text-emerald-300'">{{ isMuted ? 'MUTE' : 'SOUND' }}</span>
-        </button>
+      <!-- Video Column (Pure Clean Video without internal overlays) -->
+      <div class="flex flex-col">
+        <div class="h-[245px] w-full rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-black/80 flex items-center justify-center">
+          <video
+            ref="videoRef"
+            :src="videoSrc"
+            :poster="poster"
+            autoplay
+            loop
+            muted
+            playsinline
+            class="w-full h-full object-cover select-none"
+          ></video>
+        </div>
+        <!-- Controls outside video frame -->
+        <div class="flex items-center justify-between mt-1.5 px-1">
+          <span class="text-[10px] font-mono text-teal-400 font-medium">16:9 와이드 영상</span>
+          <button
+            @click.stop="toggleMute"
+            class="px-2 py-0.5 rounded text-[10px] font-mono transition-all cursor-pointer border flex items-center gap-1"
+            :class="isMuted ? 'bg-white/5 text-white/60 hover:text-white border-white/15' : 'bg-emerald-500/20 text-emerald-300 border-emerald-400'"
+          >
+            <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'"></span>
+            <span>{{ isMuted ? '음소거 중' : '소리 켜짐' }}</span>
+          </button>
+        </div>
       </div>
 
       <!-- Right Column: Minimalist Breakdown -->
       <div class="flex flex-col gap-1.5">
-        <!-- Header & Action -->
+        <!-- Header -->
         <div class="flex items-center justify-between border-b border-white/10 pb-1">
           <div class="flex items-center gap-1.5">
             <span class="font-bold text-white text-[12.5px]">{{ title }}</span>
@@ -212,11 +204,11 @@ const copyPrompt = () => {
           </button>
         </div>
 
-        <!-- Official DeepMind Prompt (Clean No Overflow) -->
+        <!-- Official DeepMind Prompt -->
         <div class="p-2 rounded-xl bg-black/50 border border-white/10">
           <div class="text-[9px] font-mono uppercase tracking-wider text-sky-400 font-bold mb-0.5 flex items-center gap-1">
             <span class="i-carbon-terminal"></span>
-            <span>Official DeepMind Prompt</span>
+            <span>Google Veo 3.1 공식 프롬프트</span>
           </div>
           <p class="text-[10px] font-mono text-white/90 leading-relaxed italic m-0 line-clamp-3">
             "{{ prompt }}"
@@ -250,7 +242,7 @@ const copyPrompt = () => {
         >
           <span class="i-carbon-idea text-teal-400 text-xs flex-shrink-0 mt-0.5"></span>
           <p class="text-[9.5px] text-teal-200 leading-snug m-0">
-            <strong>인사이트:</strong> {{ takeaway }}
+            <strong>핵심 포인트:</strong> {{ takeaway }}
           </p>
         </div>
       </div>
