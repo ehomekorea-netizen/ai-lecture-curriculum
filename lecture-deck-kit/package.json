@@ -1,0 +1,39 @@
+{
+  "name": "lecture-deck-kit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Reusable Slidev starter kit anchored to the latest VueConf visual language.",
+  "scripts": {
+    "dev": "slidev --open --remote",
+    "build": "slidev build",
+    "export": "slidev export --with-clicks --per-slide --wait-until none"
+  },
+  "dependencies": {
+    "@slidev/cli": "^52.5.0",
+    "@slidev/client": "^52.5.0",
+    "@slidev/theme-default": "latest",
+    "shiki": "^4.3.1",
+    "vue": "^3.5.39"
+  },
+  "devDependencies": {
+    "@fontsource-variable/comfortaa": "^5.2.8",
+    "@fontsource-variable/dm-sans": "^5.2.8",
+    "@fontsource-variable/nunito": "^5.2.7",
+    "@fontsource/kiwi-maru": "^5.2.8",
+    "@fontsource/momo-trust-display": "^5.2.1",
+    "@iconify-json/logos": "^1.2.11",
+    "@iconify-json/carbon": "^1.2.14",
+    "@iconify-json/mdi": "^1.2.3",
+    "@iconify-json/mingcute": "^1.2.7",
+    "@iconify-json/ph": "^1.2.2",
+    "@iconify-json/ri": "^1.2.6",
+    "@iconify-json/simple-icons": "^1.2.55",
+    "@iconify-json/twemoji": "^1.2.5",
+    "@iconify-json/unjs": "^1.2.4",
+    "@iconify/utils": "^3.0.2",
+    "animejs": "^4.5.0",
+    "unocss": "^66.5.4",
+    "playwright-chromium": "^1.56.1"
+  }
+}

@@ -1,0 +1,31 @@
+deck:
+  title: Replace with deck title
+  audience: Describe the audience
+  duration_min: 50
+  outcome: What should the audience understand, believe, choose, or do?
+  visual_preset: dark-minimal-vueconf
+
+flow:
+  - id: opening
+    purpose: Create attention and establish the question
+    claim: One sentence describing the main point
+    assets: []
+    interaction: none
+
+  - id: concept
+    purpose: Explain the core idea
+    claim: One sentence describing the main point
+    assets: []
+    interaction: reveal
+
+  - id: application
+    purpose: Connect the concept to work or practice
+    claim: One sentence describing the main point
+    assets: []
+    interaction: demo
+
+  - id: closing
+    purpose: Resolve the opening and give a memorable takeaway
+    claim: One sentence describing the main point
+    assets: []
+    interaction: none

@@ -1,0 +1,16 @@
+version: 1
+
+assets:
+  - id: AST-001
+    file: public/example.png
+    kind: image
+    role: concept-diagram
+    summary: Short description of what the asset shows
+    source: user-provided
+    rights: internal-use
+    must_use: false
+    preferred_layout: centered-media
+    focal_point: center
+    slide_candidates:
+      - concept-01
+    notes: Crop, contrast, or usage constraints
