@@ -16,13 +16,13 @@ const currentStage = computed(() => {
 })
 
 const pipelineSteps = [
-  { step: 'Step 1', name: 'Excel 데이터 업로드', tag: '자료 주입', icon: 'i-carbon:upload' },
-  { step: 'Step 2', name: '데이터 구조 & 결측치 점검', tag: '무결성 점검', icon: 'i-carbon:search' },
-  { step: 'Step 3', name: '증감률 & 원인 분석', tag: '통계 분석', icon: 'i-carbon:analytics' },
-  { step: 'Step 4', name: '@visualize 차트 시각화', tag: '시각화', icon: 'i-carbon:chart-line' },
-  { step: 'Step 5', name: '@document 1페이지 보고서', tag: '문서화', icon: 'i-carbon:document' },
-  { step: 'Step 6', name: '사내 공유용 이미지 생성', tag: '비주얼', icon: 'i-carbon:image' },
-  { step: 'Step 7', name: '나만의 Skill로 영구 자산화', tag: '자산화', icon: 'i-carbon:skill-level' },
+  { step: 'Step 1', name: 'Excel 데이터 업로드', tag: '자료 주입' },
+  { step: 'Step 2', name: '데이터 구조 & 결측치 점검', tag: '무결성 점검' },
+  { step: 'Step 3', name: '증감률 & 원인 분석', tag: '통계 분석' },
+  { step: 'Step 4', name: '@visualize 차트 시각화', tag: '시각화' },
+  { step: 'Step 5', name: '@document 1페이지 보고서', tag: '문서화' },
+  { step: 'Step 6', name: 'Images 2.0 포스터 & @Canva 15초 영상', tag: '비주얼/영상' },
+  { step: 'Step 7', name: '나만의 Skill로 영구 자산화', tag: '자산화' },
 ]
 
 const deliverables = [
@@ -31,7 +31,7 @@ const deliverables = [
   { num: '3', name: '분석 결과표', tag: '표/수식', desc: '증감률 및 핵심 원인 분석표' },
   { num: '4', name: '시각화 차트', tag: '차트', desc: '추세가 한눈에 보이는 그래프' },
   { num: '5', name: '실무 보고서', tag: 'DOCX', desc: '상사 보고용 1페이지 완성본' },
-  { num: '6', name: '스킬 지침', tag: 'Skill', desc: '다음 달에도 반복 실행할 지침' },
+  { num: '6', name: '홍보 패키지', tag: 'PNG+MP4', desc: '사내 안내문 포스터 & 15초 숏폼 영상' },
 ]
 </script>
 
@@ -47,7 +47,7 @@ const deliverables = [
             <div>
               <div class="flex items-center gap-2 text-xs font-bold text-blue-300 border-b border-blue-500/20 pb-2 mb-2 whitespace-nowrap">
                 <span class="i-carbon:pipeline text-base"></span>
-                <span>7단계 실행 파이프라인 (35분 실습)</span>
+                <span>7단계 실무 완결 파이프라인</span>
               </div>
 
               <div class="space-y-1 text-xs">
@@ -72,7 +72,7 @@ const deliverables = [
         </LiquidGlass>
       </div>
 
-      <!-- Right: 6 Submission Deliverables (Appears on click 1) -->
+      <!-- Right: Submission Deliverables Package (Appears on click 1) -->
       <div
         class="col-span-6 transition-all duration-500 transform"
         :class="[currentStage >= 1 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-35 translate-y-1 scale-98']"
@@ -82,7 +82,7 @@ const deliverables = [
             <div>
               <div class="flex items-center gap-2 text-xs font-bold text-emerald-300 border-b border-emerald-500/20 pb-2 mb-2 whitespace-nowrap">
                 <span class="i-carbon:badge text-base"></span>
-                <span>제출 산출물 6종 패키지</span>
+                <span>제출 산출물 패키지</span>
               </div>
 
               <div class="grid grid-cols-2 gap-2 text-[10px]">
@@ -105,7 +105,7 @@ const deliverables = [
             <div class="p-2 rounded-lg bg-black/40 border border-emerald-500/30 text-[10px] text-emerald-200 font-bold flex items-center justify-between whitespace-nowrap">
               <div class="flex items-center gap-1.5">
                 <span class="i-carbon:award text-emerald-400 text-sm"></span>
-                <span>6종 산출물 완비 시 실무 역량 인증</span>
+                <span>전 과정 산출물 완비 시 실무 역량 인증</span>
               </div>
               <span class="font-mono text-emerald-400 font-bold">인증 완료</span>
             </div>
