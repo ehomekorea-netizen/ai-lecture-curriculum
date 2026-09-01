@@ -11,7 +11,7 @@ drawings:
   persist: false
 mdc: true
 clicks: 0
-preload: false
+preload: true
 routerMode: hash
 ---
 <!-- slide:01-Cover -->

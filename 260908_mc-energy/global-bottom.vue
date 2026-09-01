@@ -176,13 +176,17 @@ const poly3 = usePloy(3)
 <style scoped>
 .bg,
 .clip {
-  transition: all 2.5s ease;
+  transition: all 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 .bg {
   position: absolute;
   inset: 0;
   z-index: -10;
+  contain: strict;
+  will-change: filter, transform;
 }
 
 .clip {
@@ -190,6 +194,8 @@ const poly3 = usePloy(3)
   aspect-ratio: 16 / 9;
   position: absolute;
   inset: 0;
+  contain: strict;
+  will-change: clip-path, opacity;
 }
 
 .light .clip {
@@ -198,7 +204,7 @@ const poly3 = usePloy(3)
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s;
+  transition: opacity 0.4s ease;
 }
 
 .fade-enter-from,
