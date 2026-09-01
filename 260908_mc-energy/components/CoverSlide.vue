@@ -202,16 +202,16 @@ onBeforeUnmount(() => {
 
     <!-- ── Bottom Bar: Logos & Presenter Text ── -->
     <div class="relative z-10 flex items-center justify-between border-t border-white/20 pt-4">
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2.5">
         <img
           src="/mc-energy-logo.jpg"
           alt="MC Energy"
-          class="h-7.5 rounded px-2.5 py-0.5 bg-white object-contain shadow-sm"
+          class="h-6.5 rounded px-2.5 py-1 bg-white object-contain shadow-sm"
         />
         <img
           src="/smhrd-logo.png"
           alt="스마트인재개발원"
-          class="h-6 rounded px-2.5 py-1 bg-white object-contain shadow-sm"
+          class="h-6.5 rounded px-2.5 py-1 bg-white object-contain shadow-sm"
         />
       </div>
       <span class="text-sm md:text-base font-bold text-white tracking-wide flex items-center gap-2 pure-white-text">
