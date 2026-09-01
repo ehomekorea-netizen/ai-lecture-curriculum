@@ -80,10 +80,8 @@ clicks: 3
 </h2>
 
 <div class="grid grid-cols-12 gap-8 items-center mt-2">
-  <div class="col-span-5 flex justify-center">
-    <div class="rounded-2xl overflow-hidden border border-white/20 bg-zinc-950 p-3 shadow-2xl">
-      <img src="/ai-ml-dl-hierarchy.png" alt="AI Hierarchy" class="rounded-xl w-full max-h-80 object-contain" />
-    </div>
+  <div class="col-span-5 flex items-center justify-center">
+    <img src="/ai-ml-dl-hierarchy.png" alt="AI Hierarchy" class="rounded-xl w-full max-h-80 object-contain select-none" />
   </div>
   <div class="col-span-7 flex flex-col justify-between h-84">
     <div class="space-y-2.5">
@@ -149,9 +147,7 @@ clicks: 1
 </h2>
 
 <div class="flex items-center justify-center my-2">
-  <div class="rounded-2xl overflow-hidden border border-white/20 bg-zinc-950 p-4 shadow-2xl transition-all duration-300">
-    <img src="/ml-vs-dl.png" alt="머신러닝 vs 딥러닝" class="rounded-xl max-h-76 w-auto object-contain" />
-  </div>
+  <img src="/ml-vs-dl.png" alt="머신러닝 vs 딥러닝" class="rounded-xl max-h-80 w-auto object-contain select-none" />
 </div>
 
 <div v-click="1" class="mt-3">
@@ -2015,23 +2011,10 @@ clicks: 2
   <div class="col-span-7">
     <WorkToolsHub :stage="$clicks" />
   </div>
-  <div class="col-span-5">
-    <div class="p-3.5 rounded-2xl border border-white/15 bg-zinc-950/70 backdrop-blur-md shadow-2xl flex flex-col justify-between h-full">
-      <div>
-        <div class="flex items-center justify-between mb-2.5 pb-1.5 border-b border-white/10 px-1">
-          <span class="text-xs font-bold text-white flex items-center gap-1.5">
-            <span class="i-carbon:flash text-cyan-400"></span>
-            <span>실제 구동 화면 (Live Execution)</span>
-          </span>
-          <span class="text-[10px] font-mono text-cyan-300">LG ThinQ & Apps</span>
-        </div>
-        <div class="rounded-xl overflow-hidden border border-white/10 bg-black flex items-center justify-center p-1">
-          <img src="/chatgpt-app-execution.jpg" alt="Real App Execution" class="rounded-lg w-full max-h-54 object-contain select-none" />
-        </div>
-      </div>
-      <div class="mt-2.5 p-2.5 rounded-xl bg-black/40 text-[11px] text-white/80 border border-white/5 leading-relaxed">
-        대화창에서 자연어 명령 한마디로 외부 앱(@LG ThinQ 등)과 엔터프라이즈 기기·데이터를 직접 제어합니다.
-      </div>
+  <div class="col-span-5 flex flex-col justify-between">
+    <img src="/chatgpt-app-execution.jpg" alt="Real App Execution" class="rounded-xl w-full max-h-64 object-contain select-none" />
+    <div class="p-2.5 rounded-xl bg-black/40 text-[11px] text-white/80 border border-white/10 leading-relaxed">
+      대화창에서 자연어 명령 한마디로 외부 앱(@LG ThinQ 등)과 엔터프라이즈 기기·데이터를 직접 제어합니다.
     </div>
   </div>
 </div>

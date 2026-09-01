@@ -13,15 +13,13 @@ const showSolution = computed(() => (props.stage ?? 0) >= 1)
 
 <template>
   <div class="w-full flex flex-col justify-between select-none py-1">
-    <!-- Top: Enlarged Crisp Visual Showcase -->
+    <!-- Top: Direct Crisp Visual (No Shell Wrapper) -->
     <div class="w-full flex justify-center mb-3">
-      <div class="w-full max-w-4xl flex items-center justify-center">
-        <img
-          src="/hallucination-macbook.png"
-          alt="환각(Hallucination) 사례 화면"
-          class="rounded-xl w-full max-h-52 object-contain select-none drop-shadow-2xl"
-        />
-      </div>
+      <img
+        src="/hallucination-macbook.png"
+        alt="환각(Hallucination) 사례 화면"
+        class="rounded-xl w-full max-w-4xl max-h-56 object-contain select-none"
+      />
     </div>
 
     <!-- Bottom: 2 Minimal Clear Pillar Cards (Cause vs Solution) -->

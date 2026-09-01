@@ -14,15 +14,13 @@ const showCard2 = computed(() => (props.stage ?? 0) >= 2)
 
 <template>
   <div class="w-full flex flex-col justify-between select-none py-1">
-    <!-- Top: Large Aspect Ratio UI Showcase Frame -->
+    <!-- Top: Direct UI Screenshot (No Shell Wrapper) -->
     <div class="w-full flex justify-center mb-3">
-      <div class="rounded-2xl overflow-hidden border border-white/20 bg-zinc-950 p-2.5 shadow-2xl w-full max-w-4xl flex items-center justify-center">
-        <img
-          src="/gemini-notebook-ui.png"
-          alt="Gemini Notebook UI"
-          class="rounded-xl w-full max-h-52 object-contain select-none"
-        />
-      </div>
+      <img
+        src="/gemini-notebook-ui.png"
+        alt="Gemini Notebook UI"
+        class="rounded-xl w-full max-w-4xl max-h-56 object-contain select-none"
+      />
     </div>
 
     <!-- Bottom: 2 Key Pillar Cards (Interactive Clicks) -->

@@ -16,15 +16,13 @@ const showPositive = computed(() => (props.stage ?? 0) >= 2)
 <template>
   <div class="w-full flex flex-col justify-between py-1 select-none">
     <div class="grid grid-cols-12 gap-6 items-center">
-      <!-- Left: Research Experiment Data Image -->
-      <div class="col-span-5 flex justify-center">
-        <div class="rounded-2xl overflow-hidden border border-white/20 bg-zinc-950 p-2 shadow-2xl w-full">
-          <img
-            src="/0002820859_002_20260831071212490.jpg"
-            alt="프롬프트 어조별 정답률 실험"
-            class="rounded-xl w-full max-h-76 object-contain select-none"
-          />
-        </div>
+      <!-- Left: Direct Research Experiment Image (No Wrapper Shell) -->
+      <div class="col-span-5 flex items-center justify-center">
+        <img
+          src="/0002820859_002_20260831071212490.jpg"
+          alt="프롬프트 어조별 정답률 실험"
+          class="rounded-xl w-full max-h-80 object-contain select-none"
+        />
       </div>
 
       <!-- Right: Tone Comparison Cards (Clicks) -->
