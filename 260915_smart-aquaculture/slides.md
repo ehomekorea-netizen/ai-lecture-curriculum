@@ -48,7 +48,7 @@ layout: default
         <span class="text-xs font-mono text-sky-400 font-bold uppercase tracking-wider whitespace-nowrap">Session 01</span>
         <span class="i-carbon-data-volume text-sky-400 text-base"></span>
       </div>
-      <h3 class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">데이터와 ML·DL 원리</h3>
+      <div class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">데이터와 ML·DL 원리</div>
       <p class="text-[11px] text-white/70 leading-relaxed m-0">"양식장 빅데이터와 머신러닝·딥러닝의 본질"</p>
     </div>
     <div class="text-[10.5px] text-white/60 border-t border-white/10 pt-2 mt-2.5 leading-relaxed">
@@ -62,7 +62,7 @@ layout: default
         <span class="text-xs font-mono text-indigo-400 font-bold uppercase tracking-wider whitespace-nowrap">Session 02</span>
         <span class="i-carbon-dashboard text-indigo-400 text-base"></span>
       </div>
-      <h3 class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">AI 4유형과 도입 검증</h3>
+      <div class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">AI 4유형과 도입 검증</div>
       <p class="text-[11px] text-white/70 leading-relaxed m-0">"해상가두리 AI 4유형과 정확도 97%의 함정"</p>
     </div>
     <div class="text-[10.5px] text-white/60 border-t border-white/10 pt-2 mt-2.5 leading-relaxed">
@@ -76,7 +76,7 @@ layout: default
         <span class="text-xs font-mono text-amber-400 font-bold uppercase tracking-wider whitespace-nowrap">Session 03</span>
         <span class="i-carbon-chat-bot text-amber-400 text-base"></span>
       </div>
-      <h3 class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">생성형 AI와 RCTF</h3>
+      <div class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">생성형 AI와 RCTF</div>
       <p class="text-[11px] text-white/70 leading-relaxed m-0">"양식일지 자동화와 환각 잡는 RAG"</p>
     </div>
     <div class="text-[10.5px] text-white/60 border-t border-white/10 pt-2 mt-2.5 leading-relaxed">
@@ -90,7 +90,7 @@ layout: default
         <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider whitespace-nowrap">Session 04</span>
         <span class="i-carbon-bot text-emerald-400 text-base"></span>
       </div>
-      <h3 class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">에이전트 & 로드맵</h3>
+      <div class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">에이전트 & 로드맵</div>
       <p class="text-[11px] text-white/70 leading-relaxed m-0">"아침 06시 자동 브리핑과 단계별 도입"</p>
     </div>
     <div class="text-[10.5px] text-white/60 border-t border-white/10 pt-2 mt-2.5 leading-relaxed">
@@ -1794,7 +1794,7 @@ layout: default
   <div class="glass-card border-t-2 border-t-emerald-400 p-3.5 flex flex-col justify-between">
     <div>
       <div class="text-xs font-mono text-emerald-300 font-bold mb-2 whitespace-nowrap">1단계 (즉시~3개월)</div>
-      <h3 class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">문서 업무 + RAG</h3>
+      <div class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">문서 업무 + RAG</div>
       <p class="text-xs text-white/75 leading-relaxed m-0">작업일지 Few-shot 정리<br>고시문 RAG 질의응답</p>
     </div>
     <div class="text-xs text-emerald-300 border-t border-white/10 pt-2 mt-2.5 font-medium whitespace-nowrap">
@@ -1805,7 +1805,7 @@ layout: default
   <div class="glass-card border-t-2 border-t-sky-400 p-3.5 flex flex-col justify-between">
     <div>
       <div class="text-xs font-mono text-sky-300 font-bold mb-2 whitespace-nowrap">2단계 (3~12개월)</div>
-      <h3 class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">기록 표준화 & 탐지</h3>
+      <div class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">기록 표준화 & 탐지</div>
       <p class="text-xs text-white/75 leading-relaxed m-0">동별·숫자 기록 정착<br>센서 수질 급변 이상탐지</p>
     </div>
     <div class="text-xs text-sky-300 border-t border-white/10 pt-2 mt-2.5 font-medium whitespace-nowrap">
@@ -1816,7 +1816,7 @@ layout: default
   <div class="glass-card border-t-2 border-t-indigo-400 p-3.5 flex flex-col justify-between">
     <div>
       <div class="text-xs font-mono text-indigo-300 font-bold mb-2 whitespace-nowrap">3단계 (1~2년)</div>
-      <h3 class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">예측 솔루션 도입</h3>
+      <div class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">예측 솔루션 도입</div>
       <p class="text-xs text-white/75 leading-relaxed m-0">고수온 조기 경보<br>급이량·성장 곡선 분석</p>
     </div>
     <div class="text-xs text-indigo-300 border-t border-white/10 pt-2 mt-2.5 font-medium whitespace-nowrap">
@@ -1827,7 +1827,7 @@ layout: default
   <div class="glass-card border-t-2 border-t-purple-400 p-3.5 flex flex-col justify-between">
     <div>
       <div class="text-xs font-mono text-purple-300 font-bold mb-2 whitespace-nowrap">4단계 (2년 이후~)</div>
-      <h3 class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">영상인식 & 에이전트</h3>
+      <div class="font-bold text-white text-[13px] mt-1 mb-1.5 whitespace-nowrap">영상인식 & 에이전트</div>
       <p class="text-xs text-white/75 leading-relaxed m-0">수중영상 어체 계수<br>급이 연동 자동 브리핑</p>
     </div>
     <div class="text-xs text-purple-300 border-t border-white/10 pt-2 mt-2.5 font-medium whitespace-nowrap">
