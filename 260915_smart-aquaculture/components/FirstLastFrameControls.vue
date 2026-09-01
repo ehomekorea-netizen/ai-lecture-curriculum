@@ -1,7 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const activeStep = ref<'all' | 'first' | 'video' | 'last'>('all')
+const videoRef = ref<HTMLVideoElement | null>(null)
+const isMuted = ref(false)
+
+onMounted(() => {
+  if (videoRef.value) {
+    videoRef.value.muted = false
+    isMuted.value = false
+    videoRef.value.play().catch(() => {
+      if (videoRef.value) {
+        videoRef.value.muted = true
+        isMuted.value = true
+        videoRef.value.play()
+      }
+    })
+  }
+})
+
+const toggleMute = () => {
+  if (!videoRef.value) return
+  videoRef.value.muted = !videoRef.value.muted
+  isMuted.value = videoRef.value.muted
+}
 </script>
 
 <template>
@@ -85,13 +107,23 @@ const activeStep = ref<'all' | 'first' | 'video' | 'last'>('all')
         </div>
         <div class="relative rounded-xl overflow-hidden border border-white/20 aspect-video bg-black/80 shadow-2xl">
           <video
+            ref="videoRef"
             src="/veo3/first-last-output.mp4"
             autoplay
             loop
-            muted
             playsinline
             class="w-full h-full object-contain select-none"
           ></video>
+
+          <!-- Bottom-right Ultra-Compact Mute Toggle -->
+          <button
+            @click.stop="toggleMute"
+            class="absolute bottom-2 right-2 px-1.5 py-0.5 rounded-md bg-black/80 hover:bg-black/95 backdrop-blur text-white border border-white/20 flex items-center gap-1 text-[9.5px] font-mono cursor-pointer transition-all z-10 shadow-md select-none"
+            :title="isMuted ? '소리 켜기' : '소리 끄기'"
+          >
+            <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'" class="text-xs"></span>
+            <span :class="isMuted ? 'text-rose-300' : 'text-emerald-300'">{{ isMuted ? 'MUTE' : 'SOUND' }}</span>
+          </button>
         </div>
         <p class="text-[11px] text-emerald-200 m-0 leading-tight">
           양 끝을 고정하여 중간 시공간 움직임의 물리적 왜곡 원천 차단
