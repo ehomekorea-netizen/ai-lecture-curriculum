@@ -2124,36 +2124,57 @@ clicks: 2
 -->
 
 ---
-title: ChatGPT Images 2.0: 생각하는 비주얼 엔진 & 벤치마크 1위
+title: ChatGPT Images 2.0: 생각하는 비주얼 엔진의 등장
 layout: default
 class: px-14 py-6
 glowSeed: 414
 clicks: 2
 ---
-<!-- slide:51-Gpt-Image-2-Benchmark -->
+<!-- slide:51-Gpt-Image-2-Intro -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  ChatGPT Images 2.0: 생각하는 비주얼 엔진 & 벤치마크 1위
+  ChatGPT Images 2.0: 생각하는 비주얼 엔진의 등장
 </h2>
 
-<GptImage2Benchmark :stage="$clicks" />
+<GptImage2Intro :stage="$clicks" />
 <div v-click="1" class="hidden"></div>
 <div v-click="2" class="hidden"></div>
 
 <!--
 [강사 멘트]
-2026년 4월 공개된 ChatGPT Images 2.0(gpt-image-2)은 글로벌 비주얼 벤치마크 1,512점으로 압도적 1위를 기록했습니다.
-단순 생성을 넘어 스스로 추론(Thinking)하고, 완벽한 한글 텍스트를 인쇄하며, 3:1부터 1:3까지 2K 초고해상도로 자유롭게 출력합니다.
+2026년 4월 공개된 ChatGPT Images 2.0(gpt-image-2)은 프롬프트를 깊이 생각(Thinking)하고, 스스로 자가 수정(Self-Correction)을 거쳐 완벽한 한글 텍스트와 2K 초고해상도를 구현하는 차세대 비주얼 모델입니다.
+-->
+
+---
+title: 글로벌 비주얼 벤치마크 압도적 1위
+layout: default
+class: px-14 py-6
+glowSeed: 415
+clicks: 1
+---
+<!-- slide:52-Gpt-Image-2-Benchmark -->
+
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  글로벌 비주얼 벤치마크 압도적 1위
+</h2>
+
+<GptImage2Benchmark :stage="$clicks" />
+<div v-click="1" class="hidden"></div>
+
+<!--
+[강사 멘트]
+보시는 것처럼 ChatGPT Images 2.0은 1,512점으로 2위 경쟁 모델 대비 240점 이상의 압도적인 격차로 1위를 기록했습니다.
+단순 확산 모델을 넘어선 추론형 비주얼 엔진으로 실무 투입 수준의 완성도를 자랑합니다.
 -->
 
 ---
 title: 실전 한글 비주얼 렌더링 & 사내 안내문 제작
 layout: default
 class: px-14 py-6
-glowSeed: 415
+glowSeed: 416
 clicks: 1
 ---
-<!-- slide:52-Gpt-Image-2-Showcase -->
+<!-- slide:53-Gpt-Image-2-Showcase -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실전 한글 비주얼 렌더링 & 사내 안내문 제작
@@ -2172,10 +2193,10 @@ clicks: 1
 title: 역방향 디자인: 대화창에서 @Canva 호출하기
 layout: default
 class: px-14 py-6
-glowSeed: 416
+glowSeed: 417
 clicks: 1
 ---
-<!-- slide:53-Canva-Reverse-Workflow -->
+<!-- slide:54-Canva-Reverse-Workflow -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   역방향 디자인: 대화창에서 @Canva 호출하기
@@ -2194,10 +2215,10 @@ ChatGPT 대화창에서 기획과 카피를 뽑으며 @Canva를 호출하면 맞
 title: 정적 포스터에서 15초 홍보 숏폼 영상으로 확장
 layout: default
 class: px-14 py-6
-glowSeed: 417
+glowSeed: 418
 clicks: 1
 ---
-<!-- slide:54-Image-To-Video-Evolution -->
+<!-- slide:55-Image-To-Video-Evolution -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   정적 포스터에서 15초 홍보 숏폼 영상으로 확장
@@ -2216,10 +2237,10 @@ ChatGPT Images 2.0으로 생성한 정적 포스터를 캔바에서 모션 자�
 title: Final Mission: 올인원 실무 프로젝트 완결
 layout: default
 class: px-14 py-6
-glowSeed: 418
+glowSeed: 419
 clicks: 1
 ---
-<!-- slide:55-Final-Mission-Dashboard -->
+<!-- slide:56-Final-Mission-Dashboard -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   Final Mission: 올인원 실무 프로젝트 완결
@@ -2240,7 +2261,7 @@ layout: center
 class: text-center px-12
 glowSeed: 999
 ---
-<!-- slide:56-Master-Takeaway -->
+<!-- slide:57-Master-Takeaway -->
 
 <div class="flex flex-col items-center justify-center">
   <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-white/70 mb-4">

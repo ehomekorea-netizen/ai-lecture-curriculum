@@ -18,41 +18,20 @@ const currentStage = computed(() => {
 
 <template>
   <div class="w-full flex flex-col justify-between py-1 select-none">
-    <div class="grid grid-cols-12 gap-5 items-stretch">
-      <!-- Left: Real Korean Text Generation Showcase -->
-      <div class="col-span-6 flex flex-col justify-between h-82">
-        <LiquidGlass glow="emerald" :radius="14" class="h-full">
-          <div class="p-3.5 flex flex-col justify-between h-full">
-            <div>
-              <div class="flex items-center justify-between border-b border-emerald-500/20 pb-2 mb-2">
-                <div class="flex items-center gap-2">
-                  <span class="i-carbon:image text-emerald-400 text-base"></span>
-                  <span class="text-xs font-bold text-emerald-300">실제 한글 텍스트 인쇄 생성 사례</span>
-                </div>
-                <span class="text-[10px] font-mono text-emerald-300 font-bold">2K Typography</span>
-              </div>
-
-              <!-- High-res Korean Showcase Image -->
-              <div class="rounded-xl overflow-hidden bg-black/40 border border-white/10 p-1">
-                <img
-                  src="/image.inblog.webp"
-                  alt="ChatGPT Images 2.0 Korean Typography Showcase"
-                  class="w-full h-48 object-cover rounded-lg select-none"
-                />
-              </div>
-            </div>
-
-            <div class="text-[10.5px] text-white/70 pt-1.5 border-t border-white/10 break-keep leading-tight">
-              간판·포스터·라벨 속 <strong>한글 문구와 가격표를 오타 없이 완벽하게 인쇄</strong>
-            </div>
-          </div>
-        </LiquidGlass>
+    <div class="grid grid-cols-12 gap-6 items-stretch">
+      <!-- Left: Direct Pure Image (No Unnecessary Glass Wrapper) -->
+      <div class="col-span-6 flex flex-col justify-center items-center h-82">
+        <img
+          src="/image.inblog.webp"
+          alt="ChatGPT Images 2.0 Korean Typography Showcase"
+          class="rounded-2xl w-full max-h-76 object-cover select-none shadow-2xl"
+        />
       </div>
 
       <!-- Right: Enterprise Poster Prompt Formula -->
       <div class="col-span-6 flex flex-col justify-between h-82">
         <LiquidGlass glow="cyan" :radius="14" class="h-full">
-          <div class="p-4 flex flex-col justify-between h-full">
+          <div class="p-5 flex flex-col justify-between h-full">
             <div>
               <div class="flex items-center justify-between border-b border-cyan-500/20 pb-2 mb-2.5">
                 <div class="flex items-center gap-2">
@@ -80,10 +59,11 @@ const currentStage = computed(() => {
 
             <!-- Bottom Example Output Card -->
             <div
-              class="pt-2 border-t border-cyan-500/20 text-[10.5px] font-mono text-cyan-200 transition-all duration-500"
+              class="pt-2 border-t border-cyan-500/20 text-[10.5px] font-mono text-cyan-200 transition-all duration-500 flex items-center justify-between"
               :class="[currentStage >= 1 ? 'opacity-100' : 'opacity-40']"
             >
-              ✓ 사내 인트라넷 공지 및 엘리베이터 사이니지에 즉시 배포 가능
+              <span>✓ 사내 인트라넷 공지 및 엘리베이터 사이니지 즉시 배포</span>
+              <span class="font-bold">Ready to Print</span>
             </div>
           </div>
         </LiquidGlass>
