@@ -1,0 +1,1 @@
+var e=`/260908_mc-energy/gptwork.png`;export{e as t};
