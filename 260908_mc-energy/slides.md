@@ -221,9 +221,9 @@ clicks: 2
             단순 암기 답변을 넘어 스스로 논리를 검증하고 깊이 추론하는 <strong>사고형 모델</strong> 보편화
           </p>
         </div>
-        <div class="flex items-center justify-between text-[11px] font-mono text-cyan-300/90 pt-2.5 border-t border-white/10">
-          <span>Deep Think</span>
-          <span class="font-bold">논리 오차 최소화</span>
+        <div class="flex items-center justify-between text-[10.5px] font-mono pt-2.5 border-t border-white/10 whitespace-nowrap">
+          <span class="text-cyan-300/80">Deep Think</span>
+          <span class="font-bold text-cyan-300">오차 최소화</span>
         </div>
       </div>
     </LiquidGlass>
@@ -240,9 +240,9 @@ clicks: 2
             텍스트 말대꾸를 넘어 실제 <strong>파일을 읽고, 분석하고, 결과 파일(DOCX/XLSX)을 완결</strong>하는 실행 체계
           </p>
         </div>
-        <div class="flex items-center justify-between text-[11px] font-mono text-blue-300/90 pt-2.5 border-t border-white/10">
-          <span>ChatGPT Work</span>
-          <span class="font-bold">업무 직접 완결</span>
+        <div class="flex items-center justify-between text-[10.5px] font-mono pt-2.5 border-t border-white/10 whitespace-nowrap">
+          <span class="text-blue-300/80">Work AI</span>
+          <span class="font-bold text-blue-300">직접 완결</span>
         </div>
       </div>
     </LiquidGlass>
@@ -259,9 +259,9 @@ clicks: 2
             사내 지식 베이스와 업로드 문서를 오픈북으로 대조하는 <strong>Gemini Notebook</strong>의 기본 탑재
           </p>
         </div>
-        <div class="flex items-center justify-between text-[11px] font-mono text-emerald-300/90 pt-2.5 border-t border-white/10">
-          <span>Notebook RAG</span>
-          <span class="font-bold">100% 팩트 보장</span>
+        <div class="flex items-center justify-between text-[10.5px] font-mono pt-2.5 border-t border-white/10 whitespace-nowrap">
+          <span class="text-emerald-300/80">Notebook</span>
+          <span class="font-bold text-emerald-300">팩트 보장</span>
         </div>
       </div>
     </LiquidGlass>
@@ -278,9 +278,9 @@ clicks: 2
             @visualize 차트, @document 보고서, 사내 시스템을 <strong>단일 대화창에서 원클릭 제어</strong>
           </p>
         </div>
-        <div class="flex items-center justify-between text-[11px] font-mono text-purple-300/90 pt-2.5 border-t border-white/10">
-          <span>MCP & Tools</span>
-          <span class="font-bold">올인원 제어</span>
+        <div class="flex items-center justify-between text-[10.5px] font-mono pt-2.5 border-t border-white/10 whitespace-nowrap">
+          <span class="text-purple-300/80">MCP Tools</span>
+          <span class="font-bold text-purple-300">올인원 제어</span>
         </div>
       </div>
     </LiquidGlass>
