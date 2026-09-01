@@ -2128,7 +2128,6 @@ title: ChatGPT Images 2.0: 생각하는 비주얼 엔진의 등장
 layout: default
 class: px-14 py-6
 glowSeed: 414
-clicks: 2
 ---
 <!-- slide:51-Gpt-Image-2-Intro -->
 
@@ -2136,9 +2135,7 @@ clicks: 2
   ChatGPT Images 2.0: 생각하는 비주얼 엔진의 등장
 </h2>
 
-<GptImage2Intro :stage="$clicks" />
-<div v-click="1" class="hidden"></div>
-<div v-click="2" class="hidden"></div>
+<GptImage2Intro />
 
 <!--
 [강사 멘트]
@@ -2150,7 +2147,6 @@ title: 글로벌 비주얼 벤치마크 압도적 1위
 layout: default
 class: px-14 py-6
 glowSeed: 415
-clicks: 1
 ---
 <!-- slide:52-Gpt-Image-2-Benchmark -->
 
@@ -2158,13 +2154,12 @@ clicks: 1
   글로벌 비주얼 벤치마크 압도적 1위
 </h2>
 
-<GptImage2Benchmark :stage="$clicks" />
-<div v-click="1" class="hidden"></div>
+<GptImage2Benchmark />
 
 <!--
 [강사 멘트]
 보시는 것처럼 ChatGPT Images 2.0은 1,512점으로 2위 경쟁 모델 대비 240점 이상의 압도적인 격차로 1위를 기록했습니다.
-단순 확산 모델을 넘어선 추론형 비주얼 엔진으로 실무 투입 수준의 완성도를 자랑합니다.
+단순 확산 모델을 넘어선 자기회귀 추론형 비주얼 엔진으로 실무 투입 수준의 완성도를 자랑합니다.
 -->
 
 ---
@@ -2172,7 +2167,6 @@ title: 실전 한글 비주얼 렌더링 & 사내 안내문 제작
 layout: default
 class: px-14 py-6
 glowSeed: 416
-clicks: 1
 ---
 <!-- slide:53-Gpt-Image-2-Showcase -->
 
@@ -2180,8 +2174,7 @@ clicks: 1
   실전 한글 비주얼 렌더링 & 사내 안내문 제작
 </h2>
 
-<GptImage2Showcase :stage="$clicks" />
-<div v-click="1" class="hidden"></div>
+<GptImage2Showcase />
 
 <!--
 [강사 멘트]
@@ -2230,73 +2223,5 @@ clicks: 1
 <!--
 [강사 멘트]
 ChatGPT Images 2.0으로 생성한 정적 포스터를 캔바에서 모션 자막과 음악을 더해 15초 세로형 숏폼 영상으로 확장합니다.
-단 하나의 기획으로 사내 안내문과 숏폼 홍보 영상을 동시에 완성하는 1 Source Multi-Use 파이프라인입니다.
--->
-
----
-title: Final Mission: 올인원 실무 프로젝트 완결
-layout: default
-class: px-14 py-6
-glowSeed: 419
-clicks: 1
----
-<!-- slide:56-Final-Mission-Dashboard -->
-
-<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
-  Final Mission: 올인원 실무 프로젝트 완결
-</h2>
-
-<FinalMissionDashboard :stage="$clicks" />
-<div v-click="1" class="hidden"></div>
-
-<!--
-[실습 안내]
-전체 과정을 아우르는 Final Mission을 진행합니다.
-데이터 분석부터 시각화, 실무 보고서, Images 2.0 포스터, 그리고 캔바 15초 홍보 영상까지 하나의 업무 패키지로 완성해 보시기 바랍니다.
--->
-
----
-title: 전체 교육 마스터 Takeaway & 핵심 공식
-layout: center
-class: text-center px-12
-glowSeed: 999
----
-<!-- slide:57-Master-Takeaway -->
-
-<div class="flex flex-col items-center justify-center">
-  <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-white/70 mb-4">
-    <span>전체 커리큘럼 핵심 공식</span>
-  </div>
-  <div class="p-6 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md shadow-2xl max-w-4xl mb-5">
-    <div class="text-2xl font-black text-white tracking-tight leading-relaxed">
-      Chat ➔ <span class="text-blue-400">Work</span> | 질문자 ➔ <span class="text-emerald-400">업무 위임자</span>
-    </div>
-    <div class="text-sm font-mono text-white/60 mt-2">
-      생성(Generate) ➔ 실행(Execute) ➔ 검토(Review) ➔ 개선(Refine)
-    </div>
-  </div>
-  <div class="grid grid-cols-3 gap-4 max-w-3xl text-left text-xs mb-5">
-    <div class="p-4 rounded-xl bg-black/40 border border-white/10">
-      <strong class="text-white">1·2차시 기초</strong>
-      <p class="text-[11px] text-white/60 m-0 mt-1">지시 체계(RCTF) + 근거 자료(S-A-F)로 정확한 답변을 얻는 법</p>
-    </div>
-    <div class="p-4 rounded-xl bg-black/40 border border-white/10">
-      <strong class="text-white">3·4차시 심화</strong>
-      <p class="text-[11px] text-white/60 m-0 mt-1">파일 연동 + 도구 실행으로 실제 결과물과 파일을 완성하는 법</p>
-    </div>
-    <div class="p-4 rounded-xl bg-black/40 border border-blue-500/30">
-      <strong class="text-blue-300">실무 지속 자산화</strong>
-      <p class="text-[11px] text-white/70 m-0 mt-1">반복 업무를 Skill로 만들어 팀과 조직의 영구 표준으로 정착</p>
-    </div>
-  </div>
-  <div class="text-xs text-white/40 font-mono">
-    MC에너지 2026 생성형 AI 실무능력 향상 과정 수료를 축하합니다.
-  </div>
-</div>
-
-<!--
-[교육 마무리]
-수고 많으셨습니다.
-생성형 AI는 단순한 질문 상자가 아니라, 여러분의 업무를 대신 수행하고 표준화해 주는 가장 강력한 실무 파트너입니다.
-현업에서 AI를 통해 더 가치 있는 일에 집중하시기 바랍니다. 감사합니다.
+단 하나의 기획으로 사내 안내문과 숏폼 홍보 영상을 동시에 완성하는 1 Source Multi-Use 파이프라인으로 전체 과정을 완결합니다.
 -->
