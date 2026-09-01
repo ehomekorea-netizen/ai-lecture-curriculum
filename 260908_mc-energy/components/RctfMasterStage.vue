@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
 import LiquidGlass from './LiquidGlass.vue'
 
@@ -8,7 +9,11 @@ const props = withDefaults(defineProps<{
   stage: 0
 })
 
-const currentStage = computed(() => props.stage ?? 0)
+const slideContext = useSlideContext()
+const currentStage = computed(() => {
+  const ctxClicks = slideContext?.$clicks?.value ?? slideContext?.$nav?.clicks ?? 0
+  return Math.max(props.stage ?? 0, ctxClicks)
+})
 
 const pillars = [
   {
@@ -18,6 +23,7 @@ const pillars = [
     example: '"너는 10년 차 에너지 정책 및 전력 수급 분석가다."',
     desc: '전문 지식 도메인과 톤앤매너 지정',
     color: 'cyan',
+    requiredStage: 1,
   },
   {
     letter: 'C',
@@ -26,6 +32,7 @@ const pillars = [
     example: '"MC에너지 임원진 주간 경영회의 보고용 자료를 작성 중이다."',
     desc: '보고 대상(청중)과 업무 목적 제시',
     color: 'blue',
+    requiredStage: 1,
   },
   {
     letter: 'T',
@@ -34,6 +41,7 @@ const pillars = [
     example: '"전력시장 SMP 가격 변동 원인을 3가지로 분석하고 대응안을 제시하라."',
     desc: '구체적인 동사로 실행할 업무 명시',
     color: 'violet',
+    requiredStage: 2,
   },
   {
     letter: 'F',
@@ -42,24 +50,25 @@ const pillars = [
     example: '"A4 1페이지 분량, 결론 요약 후 항목별 비교표로 작성하라."',
     desc: '분량, 서식, 제외 조건 등 규격 통제',
     color: 'emerald',
+    requiredStage: 2,
   },
 ]
 </script>
 
 <template>
   <div class="w-full flex flex-col justify-between py-1 select-none">
-    <!-- Top 4 Pillars Grid (No Bottom Sub-footer lines) -->
+    <!-- Top 4 Pillars Grid -->
     <div class="grid grid-cols-4 gap-4 items-stretch">
       <div
         v-for="item in pillars"
         :key="item.letter"
         class="transition-all duration-500 transform"
         :class="[
-          currentStage >= 0 ? 'opacity-100 translate-y-0' : 'opacity-25 translate-y-2',
+          currentStage >= item.requiredStage ? 'opacity-100 translate-y-0 scale-100' : 'opacity-35 translate-y-1 scale-98',
         ]"
       >
         <LiquidGlass
-          :glow="item.color === 'cyan' ? 'cyan' : item.color === 'blue' ? 'blue' : item.color === 'violet' ? 'violet' : 'emerald'"
+          :glow="currentStage >= item.requiredStage ? (item.color === 'cyan' ? 'cyan' : item.color === 'blue' ? 'blue' : item.color === 'violet' ? 'violet' : 'emerald') : 'neutral'"
           :radius="14"
           class="h-full"
         >
@@ -88,10 +97,10 @@ const pillars = [
       </div>
     </div>
 
-    <!-- Bottom Master Formula -->
+    <!-- Bottom Master Formula (Appears on click 3) -->
     <div
       class="mt-3.5 transition-all duration-500"
-      :class="[currentStage >= 0 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-1']"
+      :class="[currentStage >= 3 ? 'opacity-100 translate-y-0' : 'opacity-25 translate-y-1']"
     >
       <LiquidGlass glow="neutral" :radius="12">
         <div class="p-3 px-4 flex items-center justify-between text-xs text-white/90">

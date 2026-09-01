@@ -206,9 +206,8 @@ clicks: 2
     <LiquidGlass glow="cyan" :radius="14">
       <div class="p-4.5 flex flex-col justify-between h-64">
         <div>
-          <div class="flex items-center gap-2 mb-3 pb-2 border-b border-cyan-500/20 text-sm font-bold text-cyan-300">
-            <span class="i-carbon:brain text-base"></span>
-            <span>① 사고 모델 (Reasoning)</span>
+          <div class="mb-3 pb-2 border-b border-cyan-500/20 text-sm font-bold text-cyan-300 whitespace-nowrap">
+            ① 사고 모델 (추론)
           </div>
           <p class="text-[13px] text-white/85 m-0 leading-relaxed">
             단순 암기 답변을 넘어 스스로 논리를 검증하고 깊이 추론하는 <strong>사고형 모델</strong> 보편화
@@ -226,9 +225,8 @@ clicks: 2
     <LiquidGlass glow="blue" :radius="14">
       <div class="p-4.5 flex flex-col justify-between h-64">
         <div>
-          <div class="flex items-center gap-2 mb-3 pb-2 border-b border-blue-500/20 text-sm font-bold text-blue-300">
-            <span class="i-simple-icons:openai text-base text-[#10A37F]"></span>
-            <span>② 에이전트 워크플로우</span>
+          <div class="mb-3 pb-2 border-b border-blue-500/20 text-sm font-bold text-blue-300 whitespace-nowrap">
+            ② 에이전트 (실행)
           </div>
           <p class="text-[13px] text-white/85 m-0 leading-relaxed">
             텍스트 말대꾸를 넘어 실제 <strong>파일을 읽고, 분석하고, 결과 파일(DOCX/XLSX)을 완결</strong>하는 실행 체계
@@ -246,9 +244,8 @@ clicks: 2
     <LiquidGlass glow="emerald" :radius="14">
       <div class="p-4.5 flex flex-col justify-between h-64">
         <div>
-          <div class="flex items-center gap-2 mb-3 pb-2 border-b border-emerald-500/20 text-sm font-bold text-emerald-300">
-            <span class="i-simple-icons:googlegemini text-base text-[#1BA1E3]"></span>
-            <span>③ 근거 기반 RAG 통합</span>
+          <div class="mb-3 pb-2 border-b border-emerald-500/20 text-sm font-bold text-emerald-300 whitespace-nowrap">
+            ③ RAG 지식 (검증)
           </div>
           <p class="text-[13px] text-white/85 m-0 leading-relaxed">
             사내 지식 베이스와 업로드 문서를 오픈북으로 대조하는 <strong>Gemini Notebook</strong>의 기본 탑재
@@ -266,9 +263,8 @@ clicks: 2
     <LiquidGlass glow="violet" :radius="14">
       <div class="p-4.5 flex flex-col justify-between h-64">
         <div>
-          <div class="flex items-center gap-2 mb-3 pb-2 border-b border-purple-500/20 text-sm font-bold text-purple-300">
-            <span class="i-carbon:tools text-base"></span>
-            <span>④ 도구 연동 생태계</span>
+          <div class="mb-3 pb-2 border-b border-purple-500/20 text-sm font-bold text-purple-300 whitespace-nowrap">
+            ④ 도구 연동 (확장)
           </div>
           <p class="text-[13px] text-white/85 m-0 leading-relaxed">
             @visualize 차트, @document 보고서, 사내 시스템을 <strong>단일 대화창에서 원클릭 제어</strong>
@@ -466,6 +462,9 @@ clicks: 3
 </h2>
 
 <RagInteractiveStage :stage="$clicks" />
+<div v-click="1" class="hidden"></div>
+<div v-click="2" class="hidden"></div>
+<div v-click="3" class="hidden"></div>
 
 <!--
 [강사 멘트]
@@ -542,6 +541,9 @@ clicks: 3
 </h2>
 
 <RctfMasterStage :stage="$clicks" />
+<div v-click="1" class="hidden"></div>
+<div v-click="2" class="hidden"></div>
+<div v-click="3" class="hidden"></div>
 
 <!--
 [강사 멘트]
@@ -1094,6 +1096,8 @@ clicks: 2
 </h2>
 
 <GeminiNotebookRAG :stage="$clicks" />
+<div v-click="1" class="hidden"></div>
+<div v-click="2" class="hidden"></div>
 
 <!--
 [강사 멘트]
@@ -1779,6 +1783,9 @@ clicks: 3
 </h2>
 
 <ExcelAnalysisPipeline :stage="$clicks" />
+<div v-click="1" class="hidden"></div>
+<div v-click="2" class="hidden"></div>
+<div v-click="3" class="hidden"></div>
 
 <!--
 [강사 멘트]
@@ -2098,6 +2105,8 @@ clicks: 2
 </h2>
 
 <SkillEngineeringSuite :stage="$clicks" />
+<div v-click="1" class="hidden"></div>
+<div v-click="2" class="hidden"></div>
 
 <!--
 [강사 멘트]
@@ -2120,6 +2129,8 @@ clicks: 2
 </h2>
 
 <ImageIterativeRefine :stage="$clicks" />
+<div v-click="1" class="hidden"></div>
+<div v-click="2" class="hidden"></div>
 
 <!--
 [강사 멘트]
@@ -2142,6 +2153,7 @@ clicks: 1
 </h2>
 
 <FinalMissionDashboard :stage="$clicks" />
+<div v-click="1" class="hidden"></div>
 
 <!--
 [실습 안내]

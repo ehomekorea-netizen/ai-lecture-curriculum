@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
 import LiquidGlass from './LiquidGlass.vue'
 
@@ -8,13 +9,19 @@ const props = withDefaults(defineProps<{
   stage: 0,
 })
 
-const showCard1 = computed(() => (props.stage ?? 0) >= 1)
-const showCard2 = computed(() => (props.stage ?? 0) >= 2)
+const slideContext = useSlideContext()
+const currentStage = computed(() => {
+  const ctxClicks = slideContext?.$clicks?.value ?? slideContext?.$nav?.clicks ?? 0
+  return Math.max(props.stage ?? 0, ctxClicks)
+})
+
+const showCard1 = computed(() => currentStage.value >= 1)
+const showCard2 = computed(() => currentStage.value >= 2)
 </script>
 
 <template>
   <div class="w-full flex flex-col justify-between select-none py-1">
-    <!-- Top: Direct UI Screenshot (No Shell Wrapper) -->
+    <!-- Top: Direct UI Screenshot -->
     <div class="w-full flex justify-center mb-3">
       <img
         src="/gemini-notebook-ui.png"
@@ -28,9 +35,9 @@ const showCard2 = computed(() => (props.stage ?? 0) >= 2)
       <!-- Feature 1: Grounding -->
       <div
         class="transition-all duration-500 transform"
-        :class="[showCard1 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-2']"
+        :class="[showCard1 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-35 translate-y-1 scale-98']"
       >
-        <LiquidGlass glow="cyan" :radius="14" class="h-full">
+        <LiquidGlass :glow="showCard1 ? 'cyan' : 'neutral'" :radius="14" class="h-full">
           <div class="p-3.5 px-4 flex flex-col justify-between h-30">
             <div>
               <div class="flex items-center gap-2 text-cyan-300 font-bold text-xs mb-1 border-b border-cyan-500/20 pb-1">
@@ -51,9 +58,9 @@ const showCard2 = computed(() => (props.stage ?? 0) >= 2)
       <!-- Feature 2: Instant RAG Practice -->
       <div
         class="transition-all duration-500 transform"
-        :class="[showCard2 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-2']"
+        :class="[showCard2 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-35 translate-y-1 scale-98']"
       >
-        <LiquidGlass glow="emerald" :radius="14" class="h-full">
+        <LiquidGlass :glow="showCard2 ? 'emerald' : 'neutral'" :radius="14" class="h-full">
           <div class="p-3.5 px-4 flex flex-col justify-between h-30">
             <div>
               <div class="flex items-center gap-2 text-emerald-300 font-bold text-xs mb-1 border-b border-emerald-500/20 pb-1">

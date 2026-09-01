@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
 import LiquidGlass from './LiquidGlass.vue'
 
@@ -8,7 +9,11 @@ const props = withDefaults(defineProps<{
   stage: 0
 })
 
-const currentStage = computed(() => props.stage ?? 0)
+const slideContext = useSlideContext()
+const currentStage = computed(() => {
+  const ctxClicks = slideContext?.$clicks?.value ?? slideContext?.$nav?.clicks ?? 0
+  return Math.max(props.stage ?? 0, ctxClicks)
+})
 
 const pipelineSteps = [
   {
@@ -52,17 +57,7 @@ const pipelineSteps = [
 
 <template>
   <div class="w-full flex flex-col justify-between py-1 select-none">
-    <!-- SVG Stream Connector -->
     <div class="relative py-2">
-      <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 900 180" fill="none">
-        <path
-          d="M 215 90 L 255 90 M 440 90 L 480 90 M 665 90 L 705 90"
-          stroke="rgba(34, 211, 238, 0.4)"
-          stroke-width="3"
-          stroke-dasharray="6 4"
-        />
-      </svg>
-
       <div class="grid grid-cols-4 gap-4 relative z-10">
         <div
           v-for="(item, idx) in pipelineSteps"

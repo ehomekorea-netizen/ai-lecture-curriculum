@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
 import LiquidGlass from './LiquidGlass.vue'
 
@@ -8,7 +9,11 @@ const props = withDefaults(defineProps<{
   stage: 0
 })
 
-const currentStage = computed(() => props.stage ?? 0)
+const slideContext = useSlideContext()
+const currentStage = computed(() => {
+  const ctxClicks = slideContext?.$clicks?.value ?? slideContext?.$nav?.clicks ?? 0
+  return Math.max(props.stage ?? 0, ctxClicks)
+})
 
 const skillElements = [
   {
@@ -49,10 +54,7 @@ const skillElements = [
       <div
         v-for="elem in skillElements"
         :key="elem.name"
-        class="transition-all duration-500 transform"
-        :class="[
-          currentStage >= 0 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-1',
-        ]"
+        class="transition-all duration-500 transform opacity-100 translate-y-0"
       >
         <LiquidGlass
           :glow="elem.color === 'cyan' ? 'cyan' : elem.color === 'blue' ? 'blue' : elem.color === 'violet' ? 'violet' : 'emerald'"
@@ -79,9 +81,9 @@ const skillElements = [
       <!-- Left: Before (막연한 1회성 프롬프트) -->
       <div
         class="col-span-5 transition-all duration-500 transform"
-        :class="[currentStage >= 1 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-2']"
+        :class="[currentStage >= 1 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-35 translate-y-1 scale-98']"
       >
-        <LiquidGlass glow="pink" :radius="14" class="h-full">
+        <LiquidGlass :glow="currentStage >= 1 ? 'pink' : 'neutral'" :radius="14" class="h-full">
           <div class="p-4 flex flex-col justify-between h-40">
             <div>
               <div class="flex items-center gap-1.5 border-b border-rose-500/20 pb-1.5 mb-2 text-xs font-bold text-rose-300">
@@ -103,9 +105,9 @@ const skillElements = [
       <!-- Right: After (4단 고정 규격 스킬) -->
       <div
         class="col-span-7 transition-all duration-500 transform"
-        :class="[currentStage >= 2 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-2']"
+        :class="[currentStage >= 2 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-35 translate-y-1 scale-98']"
       >
-        <LiquidGlass glow="emerald" :radius="14" class="h-full">
+        <LiquidGlass :glow="currentStage >= 2 ? 'emerald' : 'neutral'" :radius="14" class="h-full">
           <div class="p-4 flex flex-col justify-between h-40">
             <div>
               <div class="flex items-center gap-1.5 border-b border-emerald-500/20 pb-1.5 mb-2 text-xs font-bold text-emerald-300">

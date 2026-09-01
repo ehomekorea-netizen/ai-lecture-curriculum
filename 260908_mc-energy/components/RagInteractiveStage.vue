@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
 import LiquidGlass from './LiquidGlass.vue'
 
@@ -8,7 +9,11 @@ const props = withDefaults(defineProps<{
   stage: 0
 })
 
-const currentStep = computed(() => props.stage ?? 0)
+const slideContext = useSlideContext()
+const currentStep = computed(() => {
+  const ctxClicks = slideContext?.$clicks?.value ?? slideContext?.$nav?.clicks ?? 0
+  return Math.max(props.stage ?? 0, ctxClicks)
+})
 
 const steps = [
   {
@@ -83,11 +88,11 @@ const steps = [
           :class="[
             currentStep >= (idx + 1)
               ? 'opacity-100 translate-y-0 scale-100'
-              : 'opacity-25 translate-y-2 scale-98',
+              : 'opacity-35 translate-y-1 scale-98',
           ]"
         >
           <LiquidGlass
-            :glow="step.color === 'cyan' ? 'cyan' : step.color === 'blue' ? 'blue' : 'emerald'"
+            :glow="currentStep >= (idx + 1) ? (step.color === 'cyan' ? 'cyan' : step.color === 'blue' ? 'blue' : 'emerald') : 'neutral'"
             :radius="16"
           >
             <div class="p-4 flex flex-col justify-between h-42">

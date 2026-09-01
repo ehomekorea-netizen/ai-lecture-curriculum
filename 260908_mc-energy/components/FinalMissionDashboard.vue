@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useSlideContext } from '@slidev/client'
 import { computed } from 'vue'
 import LiquidGlass from './LiquidGlass.vue'
 
@@ -8,7 +9,11 @@ const props = withDefaults(defineProps<{
   stage: 0
 })
 
-const currentStage = computed(() => props.stage ?? 0)
+const slideContext = useSlideContext()
+const currentStage = computed(() => {
+  const ctxClicks = slideContext?.$clicks?.value ?? slideContext?.$nav?.clicks ?? 0
+  return Math.max(props.stage ?? 0, ctxClicks)
+})
 
 const pipelineSteps = [
   { step: 'Step 1', name: 'Excel 데이터 업로드', tag: '자료 주입', icon: 'i-carbon:upload' },
@@ -33,10 +38,9 @@ const deliverables = [
 <template>
   <div class="w-full flex flex-col justify-between py-1 select-none">
     <div class="grid grid-cols-12 gap-5 items-stretch">
-      <!-- Left: 7-Step Pipeline -->
+      <!-- Left: 7-Step Pipeline (Initial Focus) -->
       <div
-        class="col-span-6 transition-all duration-500 transform"
-        :class="[currentStage >= 0 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-2']"
+        class="col-span-6 transition-all duration-500 transform opacity-100 translate-y-0"
       >
         <LiquidGlass glow="blue" :radius="14" class="h-full">
           <div class="p-4 flex flex-col justify-between h-82">
@@ -68,12 +72,12 @@ const deliverables = [
         </LiquidGlass>
       </div>
 
-      <!-- Right: 6 Submission Deliverables -->
+      <!-- Right: 6 Submission Deliverables (Appears on click 1) -->
       <div
         class="col-span-6 transition-all duration-500 transform"
-        :class="[currentStage >= 1 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-2']"
+        :class="[currentStage >= 1 ? 'opacity-100 translate-y-0 scale-100' : 'opacity-35 translate-y-1 scale-98']"
       >
-        <LiquidGlass glow="emerald" :radius="14" class="h-full">
+        <LiquidGlass :glow="currentStage >= 1 ? 'emerald' : 'neutral'" :radius="14" class="h-full">
           <div class="p-4 flex flex-col justify-between h-82">
             <div>
               <div class="flex items-center gap-2 text-xs font-bold text-emerald-300 border-b border-emerald-500/20 pb-2 mb-2">
