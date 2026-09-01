@@ -19,21 +19,21 @@ const showTakeaway = computed(() => (props.stage ?? 0) >= 2)
         
         <!-- Left: User -->
         <div class="col-span-3 p-4 rounded-xl bg-black/40 border border-white/10 flex flex-col items-center justify-center text-center h-48">
-          <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white mb-2">
+          <div class="w-10 h-10 rounded-full bg-white/10 border border-white/15 flex items-center justify-center text-white mb-2 shadow-inner">
             <span class="i-carbon:user text-xl"></span>
           </div>
-          <span class="text-xs font-bold text-white mb-0.5">사용자</span>
+          <span class="text-xs font-bold text-white mb-1">사용자</span>
           <span class="text-[10px] text-white/50">자연어 업무 지시</span>
         </div>
 
-        <!-- Center: Work Orchestrator -->
+        <!-- Center: Work Orchestrator (No image, clean typography) -->
         <div class="col-span-4 flex flex-col items-center justify-center">
-          <div class="p-4 rounded-xl border border-blue-500/30 bg-blue-950/20 shadow-md flex flex-col items-center justify-center text-center w-full h-48">
-            <div class="h-6 flex items-center bg-white px-2.5 py-0.5 rounded-lg shadow-sm mb-2">
-              <img src="/gptwork.png" alt="ChatGPT Work" class="h-4 w-auto object-contain" />
+          <div class="p-4 rounded-xl border border-blue-500/40 bg-blue-950/30 shadow-lg flex flex-col items-center justify-center text-center w-full h-48">
+            <div class="w-10 h-10 rounded-full bg-blue-500/20 border border-blue-500/40 flex items-center justify-center text-blue-400 mb-2 shadow-inner">
+              <span class="i-carbon:network-4 text-xl"></span>
             </div>
             <span class="text-xs font-bold text-white mb-1">중앙 오케스트레이션</span>
-            <span class="text-[10px] font-mono text-blue-300">작업 분해 & 도구 호출</span>
+            <span class="text-[10px] font-mono text-blue-300">작업 분해 및 도구 호출</span>
           </div>
         </div>
 

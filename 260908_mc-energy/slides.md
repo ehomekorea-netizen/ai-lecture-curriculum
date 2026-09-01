@@ -442,7 +442,7 @@ title: RAG 작동 구조: 사실 기반 오픈북 AI
 layout: default
 class: px-16 py-8
 glowSeed: 208
-clicks: 2
+clicks: 3
 ---
 <!-- slide:11-RAG-Interactive-Stage -->
 
@@ -1068,7 +1068,7 @@ title: Gemini Notebook: 사내 문서 기반 지식 비서
 layout: default
 class: px-16 py-8
 glowSeed: 305
-clicks: 1
+clicks: 2
 ---
 <!-- slide:26-Gemini-Notebook-RAG -->
 
@@ -1646,9 +1646,9 @@ glow: none
 
 <SectionPartDivider
   part="3~4차시"
-  title="ChatGPT Work & 나만의 Skill"
-  subtitle="말대꾸를 넘어 실제 파일을 생성·수정하는 Work 모드와 반복 업무를 자동화하는 나만의 OpenAI Skill 제작 실무"
-  image="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"
+  title="ChatGPT Work, 나만의 Skill & 이미지 생성"
+  subtitle="말대꾸를 넘어 실제 파일(DOCX/XLSX/비주얼)을 생성·수정하는 Work 모드와 반복 업무를 자동화하는 나만의 Skill 및 이미지 제작 실습"
+  image="/gptwork.png"
 />
 
 <!--

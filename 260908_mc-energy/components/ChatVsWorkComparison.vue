@@ -64,9 +64,7 @@ const showTakeaway = computed(() => (props.stage ?? 0) >= 2)
       >
         <div>
           <div class="flex items-center justify-between mb-4 border-b border-blue-500/20 pb-3">
-            <div class="h-6 flex items-center bg-white px-2.5 py-0.5 rounded-lg shadow-sm">
-              <img src="/gptwork.png" alt="ChatGPT Work" class="h-4 w-auto object-contain" />
-            </div>
+            <span class="text-xs font-mono font-bold text-blue-300 uppercase tracking-wider">WORK (실행 모드)</span>
             <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">일을 맡기는 것</span>
           </div>
 

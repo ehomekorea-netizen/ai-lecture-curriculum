@@ -14,15 +14,15 @@ const toolRows = [
   {
     icon: 'i-carbon:table',
     task: '엑셀 데이터 분석 · 수치 집계',
-    tool: 'Spreadsheet (Python Code)',
-    output: '증감률 계산 + 이상치 원인 표',
+    tool: '@spreadsheet',
+    output: '증감률 계산 및 이상치 원인 표',
     format: 'XLSX 파일',
     color: 'emerald',
   },
   {
     icon: 'i-carbon:chart-line-data',
     task: '추이 시각화 · 프로세스 흐름',
-    tool: '@visualize 플러그인',
+    tool: '@visualize',
     output: '인터랙티브 꺾은선/막대 차트',
     format: 'HTML/PNG 차트',
     color: 'amber',
@@ -30,17 +30,17 @@ const toolRows = [
   {
     icon: 'i-carbon:document',
     task: '임원 보고서 · 기획서 작성',
-    tool: '@document 플러그인',
-    output: '서식과 개조식이 완비된 1페이지',
+    tool: '@document',
+    output: '서식 완비 1페이지 보고서',
     format: 'DOCX 문서',
     color: 'blue',
   },
   {
-    icon: 'i-carbon:skill-level',
-    task: '매주 반복되는 정형 보고서',
-    tool: 'OpenAI Skill 패키지',
-    output: '팀 공통 4단 표준 템플릿 완성',
-    format: '조직 영구 자산',
+    icon: 'i-carbon:presentation-file',
+    task: '슬라이드 구성 · 발표 자료',
+    tool: '@presentations',
+    output: '발표용 슬라이드 개요 및 구조',
+    format: 'PPTX 슬라이드',
     color: 'violet',
   },
 ]
@@ -71,18 +71,18 @@ const toolRows = [
               </div>
 
               <div class="text-[10px] font-mono text-white/50 uppercase font-bold mb-1">업무 목적</div>
-              <div class="text-xs font-bold text-white mb-2 leading-snug">{{ row.task }}</div>
+              <div class="text-xs font-bold text-white mb-2.5 leading-snug">{{ row.task }}</div>
 
               <div class="p-2 rounded bg-black/40 border border-white/5 mb-2">
-                <div class="text-[9px] font-mono text-white/40">호출 도구</div>
-                <div class="text-[11px] font-mono font-bold" :class="row.color === 'emerald' ? 'text-emerald-300' : row.color === 'amber' ? 'text-amber-300' : row.color === 'blue' ? 'text-blue-300' : 'text-purple-300'">
+                <div class="text-[9px] font-mono text-white/40 mb-0.5">호출 도구</div>
+                <div class="text-xs font-mono font-bold" :class="row.color === 'emerald' ? 'text-emerald-300' : row.color === 'amber' ? 'text-amber-300' : row.color === 'blue' ? 'text-blue-300' : 'text-purple-300'">
                   {{ row.tool }}
                 </div>
               </div>
             </div>
 
-            <div class="pt-2 border-t border-white/10 text-[10px] text-white/70 leading-tight">
-              <strong>결과물:</strong> {{ row.output }}
+            <div class="pt-2 border-t border-white/10 text-[10.5px] text-white/80 whitespace-nowrap overflow-hidden text-ellipsis">
+              <strong>결과:</strong> {{ row.output }}
             </div>
           </div>
         </LiquidGlass>

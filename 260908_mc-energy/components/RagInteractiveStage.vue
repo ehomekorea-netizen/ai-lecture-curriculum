@@ -39,9 +39,9 @@ const steps = [
 </script>
 
 <template>
-  <div class="w-full flex flex-col justify-between select-none">
+  <div class="w-full flex flex-col justify-between select-none py-1">
     <!-- Top Row: Closed-Book vs Open-Book Comparison -->
-    <div class="grid grid-cols-12 gap-5 items-stretch mb-3.5">
+    <div class="grid grid-cols-12 gap-5 items-stretch mb-3">
       <!-- Left: Closed-Book -->
       <div class="col-span-5">
         <LiquidGlass glow="neutral" :radius="14" class="h-full">
@@ -75,29 +75,15 @@ const steps = [
 
     <!-- Center Stage: 3-Step RAG Pipeline with Flow Lines -->
     <div class="relative py-2">
-      <!-- SVG Flow Lines -->
-      <svg class="absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 900 130" fill="none">
-        <path
-          d="M 285 65 L 335 65"
-          stroke="rgba(34, 211, 238, 0.4)"
-          stroke-width="3"
-          stroke-dasharray="6 4"
-        />
-        <path
-          d="M 585 65 L 635 65"
-          stroke="rgba(16, 185, 129, 0.4)"
-          stroke-width="3"
-          stroke-dasharray="6 4"
-        />
-      </svg>
-
       <div class="grid grid-cols-3 gap-5 relative z-10">
         <div
           v-for="(step, idx) in steps"
           :key="step.id"
           class="transition-all duration-500 transform"
           :class="[
-            currentStep >= idx ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-2',
+            currentStep >= (idx + 1)
+              ? 'opacity-100 translate-y-0 scale-100'
+              : 'opacity-25 translate-y-2 scale-98',
           ]"
         >
           <LiquidGlass
@@ -107,7 +93,10 @@ const steps = [
             <div class="p-4 flex flex-col justify-between h-42">
               <div>
                 <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-white/10">
-                  <span class="w-5 h-5 rounded-full bg-white/10 flex items-center justify-center font-mono text-xs font-bold text-white">
+                  <span
+                    class="w-5 h-5 rounded-full flex items-center justify-center font-mono text-xs font-bold transition-colors duration-300"
+                    :class="currentStep >= (idx + 1) ? (step.color === 'cyan' ? 'bg-cyan-500/30 text-cyan-300' : step.color === 'blue' ? 'bg-blue-500/30 text-blue-300' : 'bg-emerald-500/30 text-emerald-300') : 'bg-white/10 text-white/50'"
+                  >
                     {{ step.num }}
                   </span>
                   <strong class="text-xs text-white">{{ step.title }}</strong>
@@ -118,7 +107,7 @@ const steps = [
               </div>
 
               <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono">
-                <span class="text-white/40">Step {{ step.num }}</span>
+                <span class="text-white/40">Step 0{{ step.num }}</span>
                 <span class="font-bold" :class="step.color === 'cyan' ? 'text-cyan-300' : step.color === 'blue' ? 'text-blue-300' : 'text-emerald-300'">
                   {{ step.tag }}
                 </span>
@@ -131,8 +120,8 @@ const steps = [
 
     <!-- Bottom Example -->
     <div
-      class="mt-2.5 transition-all duration-500"
-      :class="[currentStep >= 2 ? 'opacity-100 translate-y-0' : 'opacity-30 translate-y-1']"
+      class="mt-2 transition-all duration-500"
+      :class="[currentStep >= 3 ? 'opacity-100 translate-y-0' : 'opacity-25 translate-y-1']"
     >
       <LiquidGlass glow="neutral" :radius="12">
         <div class="p-3 px-4 flex items-center justify-between text-xs text-white/90">
