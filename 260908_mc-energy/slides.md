@@ -294,13 +294,49 @@ clicks: 2
 -->
 
 ---
-title: 웹검색과 생성형 AI의 차이
+title: 2026 패러다임의 실체화 - OpenAI GPT-6 Astra
 layout: default
 class: px-16 py-8
 glowSeed: 205
+clicks: 0
+---
+<!-- slide:08-GPT6-Astra -->
+
+<div class="flex items-center justify-between mb-2">
+  <div>
+    <h2 class="text-3xl font-extrabold text-white tracking-tight">
+      2026 패러다임의 실체화: OpenAI GPT-6 Astra
+    </h2>
+    <p class="text-xs text-cyan-300/80 m-0 mt-1 font-medium">
+      단순 대화형 챗봇을 넘어 PC를 직접 조작하고 엔드투엔드 복합 실무를 자율 완결하는 차세대 프론티어 AGI 모델
+    </p>
+  </div>
+  <div class="flex items-center gap-2">
+    <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono font-bold bg-cyan-950/80 border border-cyan-400/50 text-cyan-300 flex items-center gap-1.5 shadow-sm">
+      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
+      2026.09.03 RELEASE
+    </span>
+  </div>
+</div>
+
+<Gpt6AstraShowcase />
+
+<!--
+[강사 멘트]
+바로 어제(2026년 9월 3일), OpenAI가 차세대 모델인 GPT-6 Astra를 전격 공개했습니다.
+앞서 7번 슬라이드에서 짚어본 '2026 AI 4대 패러다임(사고 모델, 에이전트, 사내 RAG, 도구 연동)'이 실험실 연구 단계를 넘어, 실제 우리 PC를 직접 제어하는 현실로 구현된 첫 번째 상용 모델입니다.
+영상을 함께 보시겠습니다. 모델이 단순히 텍스트로 답을 써주는 것이 아니라, 마우스와 키보드를 직접 움직이며 엑셀과 웹 브라우저, 사내 소프트웨어를 넘나들며 복잡한 업무를 스스로 완결합니다.
+우리 MC에너지 실무에서도 이제 'AI에게 어떤 질문을 던질까'가 아니라, 'AI에게 어떤 업무 프로세스를 맡겨서 시간을 아낄 것인가'로 관점을 완전히 전환해야 합니다.
+-->
+
+---
+title: 웹검색과 생성형 AI의 차이
+layout: default
+class: px-16 py-8
+glowSeed: 206
 clicks: 1
 ---
-<!-- slide:08-Search-vs-GenAI -->
+<!-- slide:09-Search-vs-GenAI -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   기존 웹검색 vs 생성형 AI
