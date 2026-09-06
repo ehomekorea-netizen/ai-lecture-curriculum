@@ -33,10 +33,40 @@ routerMode: hash
 -->
 
 ---
+title: MC에너지 기업 소개: AI 비전 영상
+layout: default
+class: px-14 py-6
+glowSeed: 101
+---
+<!-- slide:02-Company-Video -->
+
+<h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
+  MC에너지 기업 소개: AI 비전 영상
+</h2>
+
+<div class="flex justify-center items-center">
+  <div class="rounded-2xl overflow-hidden border border-white/15 bg-black shadow-2xl w-[86%] max-w-[695px]">
+    <video
+      src="/MC에너지 기업영상.mp4"
+      controls
+      playsinline
+      preload="auto"
+      class="rounded-xl w-full max-h-[390px] object-contain"
+    ></video>
+  </div>
+</div>
+
+<!--
+[강사 멘트]
+본격적인 교육에 앞서, AI로 제작된 MC에너지의 10초 소개 영상을 함께 확인하겠습니다.
+친환경 에너지와 스마트 인프라를 향한 MC에너지의 혁신 비전처럼, 오늘 교육을 통해 우리의 일상 업무에 AI를 실질적으로 접목하는 방법을 하나씩 다져보겠습니다.
+-->
+
+---
 layout: default
 glow: none
 ---
-<!-- slide:02-Divider-Session-1 -->
+<!-- slide:03-Divider-Session-1 -->
 
 <SectionPartDivider
   part="1차시"
@@ -58,7 +88,7 @@ class: px-16 py-8
 glowSeed: 105
 clicks: 2
 ---
-<!-- slide:03-Hook -->
+<!-- slide:04-Hook -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   프롬프트 어조와 정답률 실험
@@ -81,7 +111,7 @@ class: px-16 py-8
 glowSeed: 201
 clicks: 3
 ---
-<!-- slide:04-AI-Hierarchy -->
+<!-- slide:05-AI-Hierarchy -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   인공지능(AI)과 생성형 AI 계층 구조
@@ -148,7 +178,7 @@ class: px-16 py-8
 glowSeed: 202
 clicks: 1
 ---
-<!-- slide:05-ML-vs-DL -->
+<!-- slide:06-ML-vs-DL -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   머신러닝(ML)과 딥러닝(DL) 비교
@@ -181,7 +211,7 @@ class: px-16 py-8
 glowSeed: 203
 clicks: 2
 ---
-<!-- slide:06-GPT-Etymology -->
+<!-- slide:07-GPT-Etymology -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   ChatGPT 어원과 작동 원리 (G·P·T)
@@ -203,7 +233,7 @@ class: px-16 py-8
 glowSeed: 204
 clicks: 2
 ---
-<!-- slide:07-2026-Trends -->
+<!-- slide:08-2026-Trends -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   2026 AI 4대 패러다임 변화
@@ -299,7 +329,7 @@ layout: default
 class: px-14 py-6
 glowSeed: 205
 ---
-<!-- slide:08-GPT6-Astra -->
+<!-- slide:09-GPT6-Astra -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   2026 패러다임의 실체화: OpenAI GPT-6 Astra
@@ -331,7 +361,7 @@ class: px-16 py-8
 glowSeed: 206
 clicks: 1
 ---
-<!-- slide:09-Search-vs-GenAI -->
+<!-- slide:10-Search-vs-GenAI -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   기존 웹검색 vs 생성형 AI
@@ -402,7 +432,7 @@ class: px-16 py-8
 glowSeed: 206
 clicks: 1
 ---
-<!-- slide:09-Hallucination -->
+<!-- slide:10-Hallucination -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   AI 환각(Hallucination)의 원인과 해결책
@@ -423,7 +453,7 @@ class: px-16 py-8
 glowSeed: 207
 clicks: 2
 ---
-<!-- slide:10-Verification-Criteria -->
+<!-- slide:11-Verification-Criteria -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   AI 답변 결과 검증 3단계
@@ -494,7 +524,7 @@ class: px-16 py-8
 glowSeed: 208
 clicks: 3
 ---
-<!-- slide:11-RAG-Interactive-Stage -->
+<!-- slide:12-RAG-Interactive-Stage -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   RAG 작동 구조: 사실 기반 오픈북 AI
@@ -519,7 +549,7 @@ class: px-16 py-8
 glowSeed: 209
 clicks: 1
 ---
-<!-- slide:12-Prompt-As-Work-Order -->
+<!-- slide:13-Prompt-As-Work-Order -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   프롬프트의 본질: 업무 위임장
@@ -573,7 +603,7 @@ class: px-16 py-8
 glowSeed: 210
 clicks: 3
 ---
-<!-- slide:13-Rctf-Master-Stage -->
+<!-- slide:14-Rctf-Master-Stage -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실전 프롬프트 4대 기둥 (RCTF)
@@ -599,7 +629,7 @@ class: px-16 py-8
 glowSeed: 211
 clicks: 1
 ---
-<!-- slide:14-Few-Shot-Prompting -->
+<!-- slide:15-Few-Shot-Prompting -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   Zero-shot vs Few-shot (예시 주입)
@@ -661,7 +691,7 @@ class: px-16 py-8
 glowSeed: 212
 clicks: 1
 ---
-<!-- slide:15-Custom-Instructions -->
+<!-- slide:16-Custom-Instructions -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   사용자 맞춤설정 (Custom Instructions)
@@ -720,7 +750,7 @@ class: px-16 py-8
 glowSeed: 213
 clicks: 1
 ---
-<!-- slide:16-Security-Check -->
+<!-- slide:17-Security-Check -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   AI 입력 전 3초 보안 점검과 마스킹
@@ -741,7 +771,7 @@ class: px-14 py-7
 glowSeed: 214
 clicks: 4
 ---
-<!-- slide:17-Prompt-Checklist -->
+<!-- slide:18-Prompt-Checklist -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실무 프롬프트 5대 체크리스트
@@ -761,7 +791,7 @@ class: px-16 py-8
 glowSeed: 215
 clicks: 1
 ---
-<!-- slide:18-Mission-Card -->
+<!-- slide:19-Mission-Card -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   1차시 실습: 사내 맞춤형 RCTF 프롬프트 작성
@@ -840,7 +870,7 @@ class: px-16 py-8
 glowSeed: 216
 clicks: 1
 ---
-<!-- slide:19-Troubleshooting -->
+<!-- slide:20-Troubleshooting -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   프롬프트 2대 오류 해결 가이드
@@ -901,7 +931,7 @@ layout: center
 class: text-center px-12
 glowSeed: 217
 ---
-<!-- slide:20-Takeaway -->
+<!-- slide:21-Takeaway -->
 
 <div class="flex flex-col items-center justify-center">
   <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-300 mb-4">
@@ -929,7 +959,7 @@ glowSeed: 217
 layout: default
 glow: none
 ---
-<!-- slide:21-Divider-Session-2 -->
+<!-- slide:22-Divider-Session-2 -->
 
 <SectionPartDivider
   part="2차시"
@@ -951,7 +981,7 @@ class: px-16 py-8
 glowSeed: 301
 clicks: 1
 ---
-<!-- slide:22-Search-vs-Research -->
+<!-- slide:23-Search-vs-Research -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   단순 웹검색 vs 심층 리서치
@@ -1007,7 +1037,7 @@ class: px-16 py-8
 glowSeed: 302
 clicks: 3
 ---
-<!-- slide:23-Research-4-Steps -->
+<!-- slide:24-Research-4-Steps -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   리서치 4단계 파이프라인
@@ -1027,7 +1057,7 @@ class: px-16 py-8
 glowSeed: 303
 clicks: 2
 ---
-<!-- slide:24-Search-Prompting -->
+<!-- slide:25-Search-Prompting -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   AI 웹검색 3대 질문 공식
@@ -1107,7 +1137,7 @@ class: px-16 py-8
 glowSeed: 304
 clicks: 1
 ---
-<!-- slide:25-Brand-Evolution -->
+<!-- slide:26-Brand-Evolution -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   Google AI 브랜드 진화와 포지셔닝
@@ -1128,7 +1158,7 @@ class: px-16 py-8
 glowSeed: 305
 clicks: 2
 ---
-<!-- slide:26-Gemini-Notebook-RAG -->
+<!-- slide:27-Gemini-Notebook-RAG -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   Gemini Notebook: 사내 문서 기반 지식 비서
@@ -1152,7 +1182,7 @@ class: px-14 py-7
 glowSeed: 306
 clicks: 3
 ---
-<!-- slide:27-Notebook-Studio-Stage -->
+<!-- slide:28-Notebook-Studio-Stage -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   Gemini Notebook 핵심 구조와 3원칙
@@ -1175,7 +1205,7 @@ class: px-16 py-8
 glowSeed: 307
 clicks: 2
 ---
-<!-- slide:28-SAF-Framework -->
+<!-- slide:29-SAF-Framework -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   Gemini Notebook 공식 (S-A-F)
@@ -1240,7 +1270,7 @@ class: px-16 py-8
 glowSeed: 308
 clicks: 1
 ---
-<!-- slide:29-Practice-WebSearch -->
+<!-- slide:30-Practice-WebSearch -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실습 1: ChatGPT 웹검색 (최신 정책 탐색)
@@ -1301,7 +1331,7 @@ class: px-16 py-8
 glowSeed: 309
 clicks: 1
 ---
-<!-- slide:30-Practice-DeepResearch -->
+<!-- slide:31-Practice-DeepResearch -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실습 2: 심층 리서치 (보고서 교차 분석)
@@ -1360,7 +1390,7 @@ class: px-16 py-8
 glowSeed: 310
 clicks: 1
 ---
-<!-- slide:31-Practice-Notebook-Sources -->
+<!-- slide:32-Practice-Notebook-Sources -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실습 3: Gemini Notebook 소스 등록
@@ -1420,7 +1450,7 @@ class: px-16 py-8
 glowSeed: 311
 clicks: 2
 ---
-<!-- slide:32-Practice-Deep-Questioning -->
+<!-- slide:33-Practice-Deep-Questioning -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실습 4: 소스 기반 3단계 질문법
@@ -1479,7 +1509,7 @@ class: px-16 py-8
 glowSeed: 312
 clicks: 2
 ---
-<!-- slide:33-Practice-Studio-Outputs -->
+<!-- slide:34-Practice-Studio-Outputs -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실습 5: Studio 실무 포맷 변환
@@ -1547,7 +1577,7 @@ class: px-16 py-8
 glowSeed: 313
 clicks: 1
 ---
-<!-- slide:34-Practice-Canvas -->
+<!-- slide:35-Practice-Canvas -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실습 6: Canvas 실시간 문서 편집
@@ -1607,7 +1637,7 @@ class: px-16 py-8
 glowSeed: 314
 clicks: 1
 ---
-<!-- slide:35-Session2-Mission -->
+<!-- slide:36-Session2-Mission -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   2차시 실습: Gemini Notebook 지식 허브
@@ -1685,7 +1715,7 @@ layout: center
 class: text-center px-12
 glowSeed: 315
 ---
-<!-- slide:36-Session2-Takeaway -->
+<!-- slide:37-Session2-Takeaway -->
 
 <div class="flex flex-col items-center justify-center">
   <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-xs font-mono text-cyan-300 mb-4">
@@ -1713,7 +1743,7 @@ glowSeed: 315
 layout: default
 glow: none
 ---
-<!-- slide:37-Divider-Session-3-4 -->
+<!-- slide:38-Divider-Session-3-4 -->
 
 <SectionPartDivider
   part="3~4차시"
@@ -1735,7 +1765,7 @@ class: px-14 py-7
 glowSeed: 401
 clicks: 2
 ---
-<!-- slide:38-Chat-vs-Work -->
+<!-- slide:39-Chat-vs-Work -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   대화(Chat)에서 실행(Work)으로
@@ -1755,7 +1785,7 @@ class: px-14 py-7
 glowSeed: 402
 clicks: 5
 ---
-<!-- slide:39-Agent-Execution-Engine -->
+<!-- slide:40-Agent-Execution-Engine -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   ChatGPT Work 구조와 6단계 에이전트 루프
@@ -1775,7 +1805,7 @@ class: px-14 py-7
 glowSeed: 403
 clicks: 2
 ---
-<!-- slide:40-Work-Outputs-Hub -->
+<!-- slide:41-Work-Outputs-Hub -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   Work 모드 핵심: 완성형 파일 생성
@@ -1795,7 +1825,7 @@ class: px-14 py-7
 glowSeed: 404
 clicks: 3
 ---
-<!-- slide:41-Tool-Ecosystem-Matrix -->
+<!-- slide:42-Tool-Ecosystem-Matrix -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   도구 생태계와 업무별 최적 도구 매칭
@@ -1815,7 +1845,7 @@ class: px-14 py-7
 glowSeed: 405
 clicks: 3
 ---
-<!-- slide:42-Excel-Analysis-Pipeline -->
+<!-- slide:43-Excel-Analysis-Pipeline -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   엑셀 데이터 분석 4단계 사고법
@@ -1838,7 +1868,7 @@ class: px-16 py-8
 glowSeed: 406
 clicks: 1
 ---
-<!-- slide:43-Excel-Prompt-1-Inspection -->
+<!-- slide:44-Excel-Prompt-1-Inspection -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실습 1: 엑셀 데이터 상태 파악
@@ -1898,7 +1928,7 @@ class: px-16 py-8
 glowSeed: 407
 clicks: 1
 ---
-<!-- slide:44-Excel-Prompt-2-Analysis -->
+<!-- slide:45-Excel-Prompt-2-Analysis -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실습 2: 엑셀 추이 분석 & 원인 도출
@@ -1958,7 +1988,7 @@ layout: default
 class: px-14 py-6
 glowSeed: 408
 ---
-<!-- slide:45-Visualize-Video-Stage -->
+<!-- slide:46-Visualize-Video-Stage -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   @visualize 플러그인: 실시간 시각화
@@ -1990,7 +2020,7 @@ class: px-16 py-8
 glowSeed: 409
 clicks: 2
 ---
-<!-- slide:46-Excel-Prompt-4-Iterative-Refine -->
+<!-- slide:47-Excel-Prompt-4-Iterative-Refine -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실습 4: 피드백을 통한 점진적 수정
@@ -2054,7 +2084,7 @@ class: px-14 py-6
 glowSeed: 410
 clicks: 2
 ---
-<!-- slide:47-Work-Tools-Hub -->
+<!-- slide:48-Work-Tools-Hub -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   AI 도구 생태계와 실제 실행
@@ -2084,7 +2114,7 @@ layout: default
 class: px-14 py-6
 glowSeed: 411
 ---
-<!-- slide:48-Skill-Video-Stage -->
+<!-- slide:49-Skill-Video-Stage -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   OpenAI Skill: 반복 업무 패키지화
@@ -2116,7 +2146,7 @@ class: px-14 py-7
 glowSeed: 412
 clicks: 2
 ---
-<!-- slide:49-Prompt-vs-Skill -->
+<!-- slide:50-Prompt-vs-Skill -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   Skill과 Prompt의 차이
@@ -2137,7 +2167,7 @@ class: px-14 py-7
 glowSeed: 413
 clicks: 2
 ---
-<!-- slide:50-Skill-Engineering-Suite -->
+<!-- slide:51-Skill-Engineering-Suite -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   나만의 Skill 설계: 4대 핵심 구성요소
@@ -2160,7 +2190,7 @@ layout: default
 class: px-14 py-6
 glowSeed: 414
 ---
-<!-- slide:51-Gpt-Image-2-Intro -->
+<!-- slide:52-Gpt-Image-2-Intro -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   ChatGPT Images 2.0: 생각하는 비주얼 엔진의 등장
@@ -2179,7 +2209,7 @@ layout: default
 class: px-14 py-6
 glowSeed: 415
 ---
-<!-- slide:52-Gpt-Image-2-Benchmark -->
+<!-- slide:53-Gpt-Image-2-Benchmark -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   글로벌 비주얼 벤치마크 압도적 1위
@@ -2199,7 +2229,7 @@ layout: default
 class: px-14 py-6
 glowSeed: 416
 ---
-<!-- slide:53-Gpt-Image-2-Showcase -->
+<!-- slide:54-Gpt-Image-2-Showcase -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실전 한글 비주얼 렌더링 & 추론 프롬프트 지침
@@ -2219,7 +2249,7 @@ layout: default
 class: px-14 py-6
 glowSeed: 417
 ---
-<!-- slide:54-Gpt-Image-Prompt-Template -->
+<!-- slide:55-Gpt-Image-Prompt-Template -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   추론 모델 실전 프롬프트 예제 (Chat & Work)
@@ -2240,7 +2270,7 @@ class: px-14 py-6
 glowSeed: 418
 clicks: 1
 ---
-<!-- slide:55-Canva-Reverse-Workflow -->
+<!-- slide:56-Canva-Reverse-Workflow -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   역방향 디자인: 대화창에서 @Canva 호출하기
@@ -2262,7 +2292,7 @@ class: px-14 py-6
 glowSeed: 419
 clicks: 1
 ---
-<!-- slide:56-Enterprise-Visual-Production -->
+<!-- slide:57-Enterprise-Visual-Production -->
 
 <h2 class="text-3xl font-extrabold text-white tracking-tight mb-4">
   실무 홍보 이미지 & 멀티채널 비주얼 제작 완결
