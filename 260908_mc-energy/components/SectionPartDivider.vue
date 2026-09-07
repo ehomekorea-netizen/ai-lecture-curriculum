@@ -37,7 +37,7 @@ const resolvedImage = computed(() => resolveMedia(props.image))
     <div class="w-[54%] flex flex-col justify-center space-y-4">
       <!-- Part Tag (Optional) -->
       <div v-if="part">
-        <span class="text-xs md:text-[13px] font-mono font-bold tracking-[0.25em] text-cyan-400 uppercase bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 rounded-full">
+        <span class="text-sm font-mono font-bold tracking-[0.2em] text-cyan-400 uppercase bg-cyan-500/10 border border-cyan-500/30 px-3.5 py-1.5 rounded-full">
           {{ part }}
         </span>
       </div>
@@ -53,7 +53,7 @@ const resolvedImage = computed(() => resolveMedia(props.image))
       </div>
 
       <!-- Subtitle & Quote Box -->
-      <div v-if="subtitle" class="p-4 rounded-xl border border-white/15 bg-white/5 backdrop-blur-md text-sm md:text-[15px] font-serif text-slate-300 leading-relaxed max-w-xl mt-4">
+      <div v-if="subtitle" class="p-4 rounded-xl border border-white/15 bg-white/5 backdrop-blur-md text-base font-serif text-slate-200 leading-relaxed max-w-xl mt-4">
         {{ subtitle }}
       </div>
     </div>

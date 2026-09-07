@@ -16,32 +16,32 @@ const showTakeaway = computed(() => (props.stage ?? 0) >= 2)
     <div class="grid grid-cols-12 gap-8 items-stretch">
       
       <!-- Left: CHAT Mode -->
-      <div class="col-span-5 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-80">
+      <div class="col-span-5 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[20.5rem]">
         <div>
           <div class="flex items-center justify-between mb-4 border-b border-white/10 pb-3">
-            <span class="text-xs font-mono font-bold text-white/70 uppercase tracking-wider">CHAT (대화 모드)</span>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/10 text-white/50">도움을 받는 것</span>
+            <span class="text-sm font-mono font-bold text-white/80 uppercase tracking-wider">CHAT (대화 모드)</span>
+            <span class="text-xs font-mono px-2.5 py-1 rounded bg-white/10 text-white/60">도움을 받는 것</span>
           </div>
 
-          <div class="space-y-2.5 my-3 text-xs">
-            <div class="p-2.5 rounded-xl bg-black/30 border border-white/5 flex items-center justify-between text-white/80">
+          <div class="space-y-2.5 my-3 text-sm">
+            <div class="p-2.5 rounded-xl bg-black/30 border border-white/5 flex items-center justify-between text-white/85">
               <span class="font-semibold">1. 질문 입력</span>
-              <span class="text-white/40 font-mono text-[11px]">"정보 알려줘"</span>
+              <span class="text-white/50 font-mono text-xs">"정보 알려줘"</span>
             </div>
-            <div class="p-2.5 rounded-xl bg-black/30 border border-white/5 flex items-center justify-between text-white/80">
+            <div class="p-2.5 rounded-xl bg-black/30 border border-white/5 flex items-center justify-between text-white/85">
               <span class="font-semibold">2. 텍스트 답변</span>
-              <span class="text-white/40 font-mono text-[11px]">화면 표시</span>
+              <span class="text-white/50 font-mono text-xs">화면 표시</span>
             </div>
             <div class="p-2.5 rounded-xl bg-black/30 border border-rose-500/20 flex items-center justify-between text-rose-300">
               <span class="font-semibold">3. 사람의 직접 실행</span>
-              <span class="text-rose-300/60 font-mono text-[11px]">복사 / 붙여넣기</span>
+              <span class="text-rose-300/70 font-mono text-xs">복사 / 붙여넣기</span>
             </div>
           </div>
         </div>
 
-        <div class="pt-3 border-t border-white/10 text-xs text-white/50 flex items-center justify-between">
+        <div class="pt-3 border-t border-white/10 text-sm text-white/60 flex items-center justify-between">
           <span>작업 주체</span>
-          <span class="font-semibold text-white/80">사용자가 직접 완결</span>
+          <span class="font-semibold text-white/90">사용자가 직접 완결</span>
         </div>
       </div>
 
@@ -54,12 +54,12 @@ const showTakeaway = computed(() => (props.stage ?? 0) >= 2)
           <span class="i-carbon:arrow-right text-xl hidden md:block"></span>
           <span class="i-carbon:arrow-down text-xl md:hidden"></span>
         </div>
-        <span class="text-[11px] font-mono text-white/40 mt-2">패러다임 전환</span>
+        <span class="text-xs font-mono text-white/50 mt-2">패러다임 전환</span>
       </div>
 
       <!-- Right: WORK Mode -->
       <div
-        class="col-span-5 p-6 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-xl flex flex-col justify-between h-80 transition-all duration-500"
+        class="col-span-5 p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-xl flex flex-col justify-between min-h-[20.5rem] transition-all duration-500"
         :class="[showWork ? 'opacity-100 translate-x-0' : 'opacity-20 translate-x-2']"
       >
         <div>
@@ -67,26 +67,26 @@ const showTakeaway = computed(() => (props.stage ?? 0) >= 2)
             <div class="h-6 flex items-center bg-white px-2.5 py-0.5 rounded-lg shadow-sm">
               <img src="/gptwork.png" alt="ChatGPT Work" class="h-4 w-auto object-contain" />
             </div>
-            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">일을 맡기는 것</span>
+            <span class="text-xs font-mono px-2.5 py-1 rounded bg-blue-500/20 text-blue-300 font-bold">일을 맡기는 것</span>
           </div>
 
-          <div class="space-y-1.5 my-2 text-xs">
-            <div class="p-2 rounded-xl bg-black/40 border border-white/5 text-white/90 flex items-center justify-between">
+          <div class="space-y-2 my-2 text-sm">
+            <div class="p-2.5 rounded-xl bg-black/40 border border-white/5 text-white/90 flex items-center justify-between">
               <span>① 목표 전달 및 맥락 제시</span>
-              <span class="text-[10px] font-mono text-white/40">Goal</span>
+              <span class="text-xs font-mono text-white/50">Goal</span>
             </div>
-            <div class="p-2 rounded-xl bg-black/40 border border-white/5 text-white/90 flex items-center justify-between">
+            <div class="p-2.5 rounded-xl bg-black/40 border border-white/5 text-white/90 flex items-center justify-between">
               <span>② 다단계 도구 실행 및 분석</span>
-              <span class="text-[10px] font-mono text-white/40">Execution</span>
+              <span class="text-xs font-mono text-white/50">Execution</span>
             </div>
-            <div class="p-2 rounded-xl bg-black/40 border border-emerald-500/30 text-emerald-300 font-semibold flex items-center justify-between">
+            <div class="p-2.5 rounded-xl bg-black/40 border border-emerald-500/30 text-emerald-300 font-semibold flex items-center justify-between">
               <span>③ 완성형 파일 및 산출물 생성</span>
-              <span class="text-[10px] font-mono text-emerald-400">DOCX · XLSX</span>
+              <span class="text-xs font-mono text-emerald-400">DOCX · XLSX</span>
             </div>
           </div>
         </div>
 
-        <div class="pt-3 border-t border-blue-500/20 text-xs text-blue-300/80 flex items-center justify-between">
+        <div class="pt-3 border-t border-blue-500/20 text-sm text-blue-300/90 flex items-center justify-between">
           <span>작업 주체</span>
           <span class="font-bold text-blue-300">AI가 작업을 스스로 완결</span>
         </div>
@@ -96,14 +96,14 @@ const showTakeaway = computed(() => (props.stage ?? 0) >= 2)
 
     <!-- Bottom Takeaway Callout -->
     <div
-      class="mt-4 p-3.5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between text-xs text-white/90 transition-all duration-500"
+      class="mt-3.5 p-3.5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between text-sm text-white/95 transition-all duration-500"
       :class="[showTakeaway ? 'opacity-100' : 'opacity-20']"
     >
       <div class="flex items-center gap-2.5">
-        <span class="i-carbon:checkmark-filled text-base text-blue-400"></span>
+        <span class="i-carbon:checkmark-filled text-lg text-blue-400"></span>
         <span><strong>핵심 공식:</strong> <strong>Chat</strong>은 질문에 답을 구하는 것이고, <strong>Work</strong>는 실제 완성형 결과물을 맡기는 것입니다.</span>
       </div>
-      <span class="text-[11px] font-mono text-white/40">Chat ➔ Work</span>
+      <span class="text-xs font-mono text-white/50">Chat ➔ Work</span>
     </div>
   </div>
 </template>

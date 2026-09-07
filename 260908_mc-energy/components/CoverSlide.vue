@@ -184,7 +184,7 @@ onBeforeUnmount(() => {
 
     <!-- ── Top Tag ── -->
     <div class="relative z-10">
-      <span class="inline-block text-xs md:text-sm font-bold tracking-widest text-white uppercase pure-white-text">
+      <span class="inline-block text-sm md:text-base font-bold tracking-widest text-white uppercase pure-white-text">
         2026년 MC에너지 AI 실무역량 강화과정
       </span>
     </div>
@@ -195,7 +195,7 @@ onBeforeUnmount(() => {
         생성형 AI를 통한 실무능력 향상
       </h1>
 
-      <p class="text-sm md:text-base font-normal leading-relaxed max-w-2xl pure-white-sub">
+      <p class="text-base md:text-lg font-normal leading-relaxed max-w-2xl pure-white-sub">
         AI의 본질과 2026 트렌드부터 개인 맞춤설정, 보안 마스킹, 그리고 안전한 RCTF 지시법까지
       </p>
     </div>
@@ -207,7 +207,7 @@ onBeforeUnmount(() => {
         <img src="/smhrd-logo.png" alt="스마트인재개발원" class="h-6.5 rounded px-2.5 py-1 bg-white object-contain shadow-sm" />
       </div>
       <span class="text-sm md:text-base font-bold text-white tracking-wide flex items-center gap-2 pure-white-text">
-        <span class="text-white/60 font-normal text-xs uppercase tracking-widest">Presenter</span>
+        <span class="text-white/60 font-normal text-sm uppercase tracking-widest">Presenter</span>
         오진실 강사
       </span>
     </div>

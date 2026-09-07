@@ -178,3 +178,36 @@ iframe {
 .footnotes > .footnotes-list p {
   margin: 0;
 }
+
+/* Global Presentation Typography & Readability */
+.slidev-layout {
+  font-size: 1.06rem;
+  line-height: 1.55;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.slidev-layout h1 {
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+
+.slidev-layout h2 {
+  letter-spacing: -0.015em;
+  font-weight: 800;
+}
+
+.slidev-layout h3 {
+  letter-spacing: -0.01em;
+  font-weight: 700;
+}
+
+.slidev-code {
+  font-size: 0.95em !important;
+  line-height: 1.45em !important;
+}
+
+.slidev-layout ul, .slidev-layout ol {
+  line-height: 1.55;
+}
+

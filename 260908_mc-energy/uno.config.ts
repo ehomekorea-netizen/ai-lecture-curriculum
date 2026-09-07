@@ -9,6 +9,18 @@ export default mergeConfigs([
     rules: [
       ['font-math', { 'font-family': 'Latin Modern Roman, ui-serif, Georgia, Cambria, "Times New Roman", Times, serif' }],
     ],
+    theme: {
+      fontSize: {
+        xs: ['0.875rem', { lineHeight: '1.32rem' }],
+        sm: ['1.02rem', { lineHeight: '1.45rem' }],
+        base: ['1.15rem', { lineHeight: '1.6rem' }],
+        lg: ['1.28rem', { lineHeight: '1.75rem' }],
+        xl: ['1.42rem', { lineHeight: '1.9rem' }],
+        '2xl': ['1.75rem', { lineHeight: '2.2rem' }],
+        '3xl': ['2.15rem', { lineHeight: '2.5rem' }],
+        '4xl': ['2.65rem', { lineHeight: '2.9rem' }],
+      },
+    },
     safelist: [
       ...Array.from({ length: 30 }, (_, i) => `delay-${(i + 1) * 100}`),
     ],

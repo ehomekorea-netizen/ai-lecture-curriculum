@@ -46,7 +46,7 @@ AI의 작동 원리와 한계를 명확히 짚고, 실무 프롬프트 작성법
 ---
 title: 프롬프트 어조와 정답률 실험
 layout: default
-class: px-16 py-10
+class: px-16 py-6.5
 glowSeed: 105
 clicks: 2
 ---
@@ -62,7 +62,7 @@ clicks: 2
       <img src="/0002820859_002_20260831071212490.jpg" alt="프롬프트 어조별 정답률" class="rounded-xl w-full max-h-100 object-contain" />
     </div>
   </div>
-  <div class="col-span-7 flex flex-col justify-between h-96">
+  <div class="col-span-7 flex flex-col justify-between min-h-[22rem]">
     <div class="space-y-4">
       <div v-click="1" class="p-4 rounded-xl border border-rose-500/30 bg-rose-950/20 backdrop-blur-md">
         <div class="flex items-center gap-2 text-rose-400 font-bold text-sm mb-1">
@@ -101,7 +101,7 @@ AI를 다룰 때는 감정이 아니라 '명확한 역할(Role)과 맥락(Contex
 ---
 title: 인공지능 · 머신러닝 · 딥러닝 · 생성형 AI 계층도
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 201
 clicks: 3
 ---
@@ -114,15 +114,15 @@ clicks: 3
 <div class="grid grid-cols-12 gap-8 items-center mt-2">
   <div class="col-span-5 flex justify-center">
     <div class="rounded-2xl overflow-hidden border border-white/20 bg-zinc-950 p-3 shadow-2xl">
-      <img src="/ai-ml-dl-hierarchy.png" alt="AI Hierarchy" class="rounded-xl w-full max-h-80 object-contain" />
+      <img src="/ai-ml-dl-hierarchy.png" alt="AI Hierarchy" class="rounded-xl w-full max-h-[20rem] object-contain" />
     </div>
   </div>
-  <div class="col-span-7 flex flex-col justify-between h-84">
+  <div class="col-span-7 flex flex-col justify-between min-h-[21rem]">
     <div class="space-y-2.5">
       <div v-click="1" class="p-3 rounded-xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md">
         <div class="flex items-center justify-between">
           <span class="text-xs font-mono font-bold text-blue-400">1. 인공지능 (AI)</span>
-          <span class="text-[11px] font-mono text-white/50">가장 포괄적인 개념</span>
+          <span class="text-xs font-mono text-white/50">가장 포괄적인 개념</span>
         </div>
         <p class="text-xs text-white/80 m-0 leading-relaxed">
           인간의 학습, 추론, 지각 능력을 컴퓨터 프로그램으로 모방한 모든 기술의 총칭
@@ -131,7 +131,7 @@ clicks: 3
       <div v-click="2" class="p-3 rounded-xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md">
         <div class="flex items-center justify-between">
           <span class="text-xs font-mono font-bold text-cyan-400">2. 머신러닝 & 딥러닝 (ML/DL)</span>
-          <span class="text-[11px] font-mono text-white/50">데이터 기반 학습</span>
+          <span class="text-xs font-mono text-white/50">데이터 기반 학습</span>
         </div>
         <p class="text-xs text-white/80 m-0 leading-relaxed">
           규칙을 직접 코딩하지 않고 데이터를 통해 패턴을 학습(ML)하며, 다층 신경망으로 복잡한 특징을 추출(DL)
@@ -140,7 +140,7 @@ clicks: 3
       <div v-click="3" class="p-3 rounded-xl border border-emerald-500/40 border-t-3 border-t-emerald-400 bg-emerald-950/30 backdrop-blur-md shadow-lg">
         <div class="flex items-center justify-between">
           <span class="text-xs font-mono font-bold text-emerald-400">3. 생성형 AI (Generative AI)</span>
-          <span class="text-[11px] font-mono text-emerald-300 font-bold">2026 실무 핵심</span>
+          <span class="text-xs font-mono text-emerald-300 font-bold">2026 실무 핵심</span>
         </div>
         <p class="text-xs text-white/90 m-0 leading-relaxed">
           단순 분류·예측을 넘어 <strong>텍스트, 코드, 이미지 등 새로운 창작물을 직접 합성</strong>해내는 최신 딥러닝 기술
@@ -158,7 +158,7 @@ AI라는 가장 큰 그릇 안에 데이터를 학습하는 머신러닝이 있�
 ---
 title: 머신러닝과 딥러닝의 특징 비교
 layout: default
-class: px-16 py-8
+class: px-16 py-6.5
 glowSeed: 202
 clicks: 1
 ---
@@ -170,7 +170,7 @@ clicks: 1
 
 <div class="flex items-center justify-center my-3">
   <div class="rounded-2xl overflow-hidden border border-white/20 bg-zinc-950 p-4 shadow-2xl transition-all duration-300">
-    <img src="/ml-vs-dl.png" alt="머신러닝 vs 딥러닝" class="rounded-xl max-h-76 w-auto object-contain" />
+    <img src="/ml-vs-dl.png" alt="머신러닝 vs 딥러닝" class="rounded-xl max-h-[19rem] w-auto object-contain" />
   </div>
 </div>
 
@@ -189,7 +189,7 @@ clicks: 1
 ---
 title: ChatGPT의 3대 핵심 어원과 작동 원리
 layout: default
-class: px-16 py-8
+class: px-16 py-6.5
 glowSeed: 203
 clicks: 3
 ---
@@ -200,7 +200,7 @@ clicks: 3
 </h2>
 
 <div class="grid grid-cols-3 gap-6">
-  <div v-click="1" class="p-6 rounded-2xl border border-cyan-500/30 border-t-4 border-t-cyan-400 bg-cyan-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="1" class="p-6 rounded-2xl border border-cyan-500/30 border-t-4 border-t-cyan-400 bg-cyan-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="text-3xl font-mono font-black text-cyan-400 mb-2">G</div>
       <div class="text-sm font-bold text-white mb-2">Generative (생성형)</div>
@@ -210,7 +210,7 @@ clicks: 3
     </div>
     <div class="pt-3 border-t border-white/10 text-xs font-mono text-cyan-300">새로운 콘텐츠 창작</div>
   </div>
-  <div v-click="2" class="p-6 rounded-2xl border border-blue-500/30 border-t-4 border-t-blue-400 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="2" class="p-6 rounded-2xl border border-blue-500/30 border-t-4 border-t-blue-400 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="text-3xl font-mono font-black text-blue-400 mb-2">P</div>
       <div class="text-sm font-bold text-white mb-2">Pre-trained (사전학습)</div>
@@ -220,7 +220,7 @@ clicks: 3
     </div>
     <div class="pt-3 border-t border-white/10 text-xs font-mono text-blue-300">방대한 지식 베이스 구축</div>
   </div>
-  <div v-click="3" class="p-6 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="3" class="p-6 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="text-3xl font-mono font-black text-emerald-400 mb-2">T</div>
       <div class="text-sm font-bold text-white mb-2">Transformer (신경망)</div>
@@ -241,7 +241,7 @@ GPT의 세 글자(G-P-T)는 생성(Generative), 사전학습(Pre-trained), 문�
 ---
 title: 2026 AI 활용 환경의 변화
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 204
 clicks: 2
 ---
@@ -252,7 +252,7 @@ clicks: 2
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-4">
-  <div class="p-6 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div class="p-6 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="text-xs font-mono text-white/50 uppercase mb-2">과거 (~2023)</div>
       <div class="text-lg font-bold text-white mb-3">단순 챗봇 질의응답 (Q&A)</div>
@@ -264,7 +264,7 @@ clicks: 2
     </div>
     <div class="pt-3 border-t border-white/10 text-xs font-mono text-white/50">단방향 텍스트 생성 도구</div>
   </div>
-  <div v-click="1" class="p-6 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="1" class="p-6 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="text-xs font-mono text-cyan-400 font-bold uppercase mb-2">현재 (2026 실무 표준)</div>
       <div class="text-lg font-bold text-white mb-3">다중 파일 기반 AI 에이전트 협업</div>
@@ -287,7 +287,7 @@ clicks: 2
 ---
 title: 검색과 생성형 AI의 본질적 차이
 layout: default
-class: px-16 py-8
+class: px-16 py-6.5
 glowSeed: 205
 clicks: 2
 ---
@@ -370,7 +370,7 @@ clicks: 2
 ---
 title: 할루시네이션의 원인과 현상
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 206
 clicks: 2
 ---
@@ -383,10 +383,10 @@ clicks: 2
 <div class="grid grid-cols-12 gap-8 items-center">
   <div class="col-span-5 flex justify-center">
     <div class="rounded-2xl overflow-hidden border border-white/20 bg-zinc-950 p-2 shadow-2xl">
-      <img src="/hallucination-macbook.png" alt="Hallucination Concept" class="rounded-xl w-full max-h-76 object-contain" />
+      <img src="/hallucination-macbook.png" alt="Hallucination Concept" class="rounded-xl w-full max-h-[19rem] object-contain" />
     </div>
   </div>
-  <div class="col-span-7 flex flex-col justify-between h-80">
+  <div class="col-span-7 flex flex-col justify-between min-h-[20rem]">
     <div class="space-y-3">
       <div class="p-4 rounded-xl border border-rose-500/30 bg-rose-950/20 backdrop-blur-md">
         <div class="text-xs font-mono font-bold text-rose-400 uppercase mb-1">정의</div>
@@ -419,7 +419,7 @@ AI는 거짓말을 하려고 속이는 것이 아닙니다. 문장의 자연스�
 ---
 title: AI 답변 결과 검증 3단계
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 207
 clicks: 3
 ---
@@ -430,7 +430,7 @@ clicks: 3
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
-  <div v-click="1" class="p-5 rounded-2xl border border-blue-500/30 border-t-4 border-t-blue-400 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="1" class="p-5 rounded-2xl border border-blue-500/30 border-t-4 border-t-blue-400 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono font-bold text-blue-400 uppercase mb-1">Step 01</div>
       <div class="text-base font-bold text-white mb-2">원문 출처 대조</div>
@@ -440,7 +440,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-blue-300">사실(Fact) 유효성 확인</div>
   </div>
-  <div v-click="2" class="p-5 rounded-2xl border border-cyan-500/30 border-t-4 border-t-cyan-400 bg-cyan-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="2" class="p-5 rounded-2xl border border-cyan-500/30 border-t-4 border-t-cyan-400 bg-cyan-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono font-bold text-cyan-400 uppercase mb-1">Step 02</div>
       <div class="text-base font-bold text-white mb-2">논리 및 전후 맥락 검증</div>
@@ -450,7 +450,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-cyan-300">논리적 일관성 확보</div>
   </div>
-  <div v-click="3" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="3" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono font-bold text-emerald-400 uppercase mb-1">Step 03</div>
       <div class="text-base font-bold text-white mb-2">실무 적합성 및 법적 검토</div>
@@ -470,7 +470,7 @@ clicks: 3
 ---
 title: RAG 시스템의 작동 구조
 layout: default
-class: px-16 py-8
+class: px-16 py-6.5
 glowSeed: 208
 clicks: 1
 ---
@@ -502,7 +502,7 @@ RAG는 질문이 들어왔을 때 모델의 기억에만 의존하지 않고, �
 ---
 title: RAG의 3단계 핵심 메커니즘과 오픈북 원리
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 209
 clicks: 3
 ---
@@ -513,7 +513,7 @@ clicks: 3
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
-  <div v-click="1" class="p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="1" class="p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="w-8 h-8 rounded-lg bg-cyan-500/20 flex items-center justify-center mb-3 text-cyan-400">
         <span class="i-carbon:search text-xl"></span>
@@ -527,7 +527,7 @@ clicks: 3
       <span class="text-xs font-mono font-bold text-cyan-300">사내 최신 지식 탐색</span>
     </div>
   </div>
-  <div v-click="2" class="p-5 rounded-2xl border border-amber-500/40 border-t-4 border-t-amber-400 bg-amber-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="2" class="p-5 rounded-2xl border border-amber-500/40 border-t-4 border-t-amber-400 bg-amber-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="w-8 h-8 rounded-lg bg-amber-500/20 flex items-center justify-center mb-3 text-amber-400">
         <span class="i-carbon:data-enrichment text-xl"></span>
@@ -541,7 +541,7 @@ clicks: 3
       <span class="text-xs font-mono font-bold text-amber-300">공식 근거 문서 결합</span>
     </div>
   </div>
-  <div v-click="3" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="3" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="w-8 h-8 rounded-lg bg-emerald-500/20 flex items-center justify-center mb-3 text-emerald-400">
         <span class="i-carbon:document-view text-xl"></span>
@@ -574,7 +574,7 @@ clicks: 3
 ---
 title: 프롬프트의 본질과 역할
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 210
 clicks: 3
 ---
@@ -585,49 +585,49 @@ clicks: 3
 </h2>
 
 <div class="grid grid-cols-4 gap-4 mt-4">
-  <div class="p-4 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between h-76">
+  <div class="p-4 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <span class="text-xs font-mono text-white/50 font-bold uppercase">1단계: 막연한 지시</span>
       <div class="p-3 rounded-xl bg-black/60 text-xs font-mono text-rose-300 mt-2 mb-2 border border-rose-500/20">
         "홍보문 작성해줘."
       </div>
-      <p class="text-[11.5px] text-white/70 leading-relaxed m-0">
+      <p class="text-xs text-white/70 leading-relaxed m-0">
         대상, 채널, 목적이 없어 누구나 아는 뻔한 내용만 나열됩니다.
       </p>
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-rose-400">품질 최하 (재작업)</div>
   </div>
-  <div v-click="1" class="p-4 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between h-76">
+  <div v-click="1" class="p-4 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <span class="text-xs font-mono text-white/50 font-bold uppercase">2단계: 대상 추가</span>
       <div class="p-3 rounded-xl bg-black/60 text-xs font-mono text-amber-300 mt-2 mb-2 border border-amber-500/20">
         "30대 직장인을 위한 홍보문을 작성해줘."
       </div>
-      <p class="text-[11.5px] text-white/70 leading-relaxed m-0">
+      <p class="text-xs text-white/70 leading-relaxed m-0">
         타깃은 생겼으나 발신자의 톤앤매너와 핵심 혜택이 모호합니다.
       </p>
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-amber-400">품질 보통 (수정 필요)</div>
   </div>
-  <div v-click="2" class="p-4 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between h-76">
+  <div v-click="2" class="p-4 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <span class="text-xs font-mono text-white/50 font-bold uppercase">3단계: 관점 추가</span>
       <div class="p-3 rounded-xl bg-black/60 text-xs font-mono text-sky-300 mt-2 mb-2 border border-sky-500/20">
         "마케팅 담당자 입장에서 30대 직장인용 홍보문 작성해줘."
       </div>
-      <p class="text-[11.5px] text-white/70 leading-relaxed m-0">
+      <p class="text-xs text-white/70 leading-relaxed m-0">
         전문적 어조는 갖추었으나 구체적인 출력 서식이 빠져 있습니다.
       </p>
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-sky-300">품질 양호</div>
   </div>
-  <div v-click="3" class="p-4 rounded-2xl border border-cyan-500/50 border-t-4 border-t-cyan-400 bg-cyan-950/30 backdrop-blur-md flex flex-col justify-between h-76 shadow-lg">
+  <div v-click="3" class="p-4 rounded-2xl border border-cyan-500/50 border-t-4 border-t-cyan-400 bg-cyan-950/30 backdrop-blur-md flex flex-col justify-between min-h-[19rem] shadow-lg">
     <div>
       <span class="text-xs font-mono text-cyan-400 font-bold uppercase">4단계: 업무지시서(RCTF)</span>
       <div class="p-3 rounded-xl bg-black/60 text-xs font-mono text-cyan-300 mt-2 mb-2 border border-cyan-500/30">
         "역할 + 배경 맥락 + 구체적 작업 + 결과물 형식 + 제약 조건"
       </div>
-      <p class="text-[11.5px] text-white/85 leading-relaxed m-0">
+      <p class="text-xs text-white/85 leading-relaxed m-0">
         원하는 결과물의 규격과 금지 사항을 명확히 정의해 한 번에 완성합니다.
       </p>
     </div>
@@ -645,7 +645,7 @@ clicks: 3
 ---
 title: 실무 지시문 구성 원칙 (RCTF)
 layout: default
-class: px-16 py-8
+class: px-16 py-6.5
 glowSeed: 211
 clicks: 1
 ---
@@ -682,7 +682,7 @@ RCTF는 프롬프트를 구조화하는 가장 검증된 실무용 기본 틀입
 ---
 title: 좋은 프롬프트의 3대 필수 요소
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 212
 clicks: 2
 ---
@@ -693,7 +693,7 @@ clicks: 2
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
-  <div class="p-5 rounded-2xl border border-rose-500/30 bg-rose-950/20 backdrop-blur-md flex flex-col justify-between h-76">
+  <div class="p-5 rounded-2xl border border-rose-500/30 bg-rose-950/20 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-rose-400 font-bold text-sm mb-2">
         <span class="i-carbon:close-filled text-base"></span>
@@ -702,13 +702,13 @@ clicks: 2
       <div class="p-3 rounded-xl bg-black/60 text-xs font-mono text-white/80 mb-2 border border-rose-500/20">
         "매출 분석해줘."
       </div>
-      <p class="text-[11.5px] text-white/70 leading-relaxed m-0">
+      <p class="text-xs text-white/70 leading-relaxed m-0">
         분석할 원본 데이터와 판단 기준이 없어 피상적인 일반론만 답변합니다.
       </p>
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-rose-400">자료·기준 누락</div>
   </div>
-  <div v-click="1" class="p-5 rounded-2xl border border-amber-500/30 bg-amber-950/20 backdrop-blur-md flex flex-col justify-between h-76">
+  <div v-click="1" class="p-5 rounded-2xl border border-amber-500/30 bg-amber-950/20 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-amber-400 font-bold text-sm mb-2">
         <span class="i-carbon:help-filled text-base"></span>
@@ -717,24 +717,24 @@ clicks: 2
       <div class="p-3 rounded-xl bg-black/60 text-xs font-mono text-white/80 mb-2 border border-amber-500/20">
         "다음 매출 데이터를 분석해줘. [데이터 첨부]"
       </div>
-      <p class="text-[11.5px] text-white/70 leading-relaxed m-0">
+      <p class="text-xs text-white/70 leading-relaxed m-0">
         데이터는 있으나 어떤 지표(증감률/원인 등)를 어떤 형식으로 볼지 기준이 모호합니다.
       </p>
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-amber-400">판단 기준 모호</div>
   </div>
-  <div v-click="2" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="2" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm mb-2">
         <span class="i-carbon:checkmark-filled text-base"></span>
         <span>지시 + 자료 + 기준 결합</span>
       </div>
-      <div class="p-3 rounded-xl bg-black/60 text-xs font-mono text-emerald-300 mb-2 border border-emerald-500/20 leading-relaxed text-[11px]">
+      <div class="p-3 rounded-xl bg-black/60 text-xs font-mono text-emerald-300 mb-2 border border-emerald-500/20 leading-relaxed text-xs">
         "다음 매출 데이터를 분석하되,<br/>
         1. 전년 대비 증감률을 계산하고<br/>
         2. 상위 3개 요인을 표로 정리하라."
       </div>
-      <p class="text-[11.5px] text-white/85 leading-relaxed m-0">
+      <p class="text-xs text-white/85 leading-relaxed m-0">
         명확한 계산 기준과 서식이 주어져 바로 보고서에 쓸 수 있는 결과가 완성됩니다.
       </p>
     </div>
@@ -750,7 +750,7 @@ AI에게 질문할 때는 항상 지시(Task) + 자료(Data) + 기준(Criteria)�
 ---
 title: 프롬프트 품질 고도화: Zero-shot vs Few-shot
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 213
 clicks: 1
 ---
@@ -761,7 +761,7 @@ clicks: 1
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-4">
-  <div class="p-5 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between h-76">
+  <div class="p-5 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-white/70 font-bold text-sm mb-2">
         <span class="i-carbon:flash text-base"></span>
@@ -776,13 +776,13 @@ clicks: 1
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-white/50">단순 질의 시 활용</div>
   </div>
-  <div v-click="1" class="p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="1" class="p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-cyan-400 font-bold text-sm mb-2">
         <span class="i-carbon:data-table text-base"></span>
         <span>Few-shot (1~2개 예시 제공)</span>
       </div>
-      <div class="p-3 rounded-xl bg-black/60 font-mono text-[11px] text-cyan-300 mb-2 border border-cyan-500/20 leading-relaxed">
+      <div class="p-3 rounded-xl bg-black/60 font-mono text-xs text-cyan-300 mb-2 border border-cyan-500/20 leading-relaxed">
         "예시 1: '결제 오류' ➔ [시스템/긴급]<br/>
         예시 2: '단가 문의' ➔ [영업/일반]<br/>
         위 기준에 따라 다음 문의를 분류하라: [문의 내용]"
@@ -803,7 +803,7 @@ clicks: 1
 ---
 title: 사용자 맞춤설정 (Custom Instructions)
 layout: default
-class: px-16 py-10
+class: px-16 py-6.5
 glowSeed: 214
 clicks: 2
 ---
@@ -814,7 +814,7 @@ clicks: 2
 </h2>
 
 <div class="grid grid-cols-2 gap-8">
-  <div v-click="1" class="p-6 rounded-2xl border border-blue-500/30 border-t-4 border-t-blue-400 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="1" class="p-6 rounded-2xl border border-blue-500/30 border-t-4 border-t-blue-400 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-blue-400 font-bold text-sm mb-3">
         <span class="i-carbon:user-profile text-base"></span>
@@ -828,7 +828,7 @@ clicks: 2
       "국내 에너지 및 제조 기업의 실무 담당자 관점에서 답변할 것"
     </div>
   </div>
-  <div v-click="2" class="p-6 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="2" class="p-6 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm mb-3">
         <span class="i-carbon:settings-adjust text-base"></span>
@@ -852,7 +852,7 @@ clicks: 2
 ---
 title: AI 입력 전 3초 점검
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 215
 clicks: 3
 ---
@@ -863,7 +863,7 @@ clicks: 3
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
-  <div v-click="1" class="p-5 rounded-2xl border border-rose-500/40 border-t-4 border-t-rose-400 bg-rose-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="1" class="p-5 rounded-2xl border border-rose-500/40 border-t-4 border-t-rose-400 bg-rose-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-rose-400 font-bold text-sm mb-2">
         <span class="i-carbon:user-avatar-filled-alt text-base"></span>
@@ -875,7 +875,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-rose-400">개인정보보호법 준수</div>
   </div>
-  <div v-click="2" class="p-5 rounded-2xl border border-amber-500/40 border-t-4 border-t-amber-400 bg-amber-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="2" class="p-5 rounded-2xl border border-amber-500/40 border-t-4 border-t-amber-400 bg-amber-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-amber-400 font-bold text-sm mb-2">
         <span class="i-carbon:locked text-base"></span>
@@ -887,7 +887,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-amber-300">영업비밀 보호</div>
   </div>
-  <div v-click="3" class="p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="3" class="p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-cyan-400 font-bold text-sm mb-2">
         <span class="i-carbon:data-check text-base"></span>
@@ -909,7 +909,7 @@ AI 프롬프트를 전송하기 전 3초만 점검하십시오. 개인정보 마
 ---
 title: 실습 전 점검: 실무 프롬프트 5초 체크리스트
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 301
 ---
 <!-- slide:18-Prompt-Checklist -->
@@ -928,7 +928,7 @@ glowSeed: 301
 ---
 title: 실습 과제 및 루브릭
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 302
 ---
 <!-- slide:19-Mission-Card -->
@@ -950,7 +950,7 @@ glowSeed: 302
         <li><strong>과제 C:</strong> 고객사 문의 유형별 표준 대응 매뉴얼(FAQ) 작성 프롬프트</li>
       </ul>
     </div>
-    <div class="text-[11px] text-cyan-300/80 mt-2">
+    <div class="text-xs text-cyan-300/80 mt-2">
       ※ 본인의 실제 담당 업무를 주제로 자유롭게 작성하셔도 좋습니다.
     </div>
   </div>
@@ -988,7 +988,7 @@ glowSeed: 302
 ---
 title: 실습 중 자주 발생하는 2대 오류 해결 가이드
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 303
 clicks: 2
 ---
@@ -999,7 +999,7 @@ clicks: 2
 </h2>
 
 <div class="grid grid-cols-2 gap-8">
-  <div v-click="1" class="p-6 rounded-2xl border border-rose-500/30 border-t-4 border-t-rose-400 bg-rose-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="1" class="p-6 rounded-2xl border border-rose-500/30 border-t-4 border-t-rose-400 bg-rose-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-rose-400 font-bold text-sm mb-3">
         <span class="i-carbon:warning-filled text-base"></span>
@@ -1013,7 +1013,7 @@ clicks: 2
       해결: 배경 맥락(Context)에 사내 현황, 대상 고객군, 해결하려는 구체적 문제를 추가합니다.
     </div>
   </div>
-  <div v-click="2" class="p-6 rounded-2xl border border-amber-500/30 border-t-4 border-t-amber-400 bg-amber-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="2" class="p-6 rounded-2xl border border-amber-500/30 border-t-4 border-t-amber-400 bg-amber-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-amber-400 font-bold text-sm mb-3">
         <span class="i-carbon:misuse text-base"></span>
@@ -1090,7 +1090,7 @@ glow: none
 ---
 title: 검색과 리서치의 차이
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 502
 clicks: 2
 ---
@@ -1101,7 +1101,7 @@ clicks: 2
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
-  <div class="p-5 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div class="p-5 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-white/70 font-bold text-sm mb-2">
         <span class="i-carbon:search text-lg"></span>
@@ -1116,7 +1116,7 @@ clicks: 2
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-white/50">단순 링크 탐색</div>
   </div>
-  <div v-click="1" class="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="1" class="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-cyan-300 font-bold text-sm mb-2">
         <span class="i-carbon:bot text-lg text-cyan-400"></span>
@@ -1131,7 +1131,7 @@ clicks: 2
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-cyan-300 font-bold">자료 탐색 및 요약</div>
   </div>
-  <div v-click="2" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-72">
+  <div v-click="2" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm mb-2">
         <span class="i-carbon:data-structured text-lg text-emerald-400"></span>
@@ -1163,7 +1163,7 @@ clicks: 2
 ---
 title: 좋은 리서치의 4단계
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 503
 clicks: 3
 ---
@@ -1174,7 +1174,7 @@ clicks: 3
 </h2>
 
 <div class="grid grid-cols-4 gap-4 mt-4">
-  <div class="p-4 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md flex flex-col justify-between h-72">
+  <div class="p-4 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md flex flex-col justify-between min-h-[18rem]">
     <div>
       <span class="text-xs font-mono text-blue-400 font-bold uppercase">Step 01</span>
       <div class="text-sm font-bold text-white mt-1 mb-2">질문 정의</div>
@@ -1184,7 +1184,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-blue-300">조사 목적 명확화</div>
   </div>
-  <div v-click="1" class="p-4 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md flex flex-col justify-between h-72">
+  <div v-click="1" class="p-4 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md flex flex-col justify-between min-h-[18rem]">
     <div>
       <span class="text-xs font-mono text-cyan-400 font-bold uppercase">Step 02</span>
       <div class="text-sm font-bold text-white mt-1 mb-2">자료 탐색</div>
@@ -1194,7 +1194,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-cyan-300">신뢰 소스 확보</div>
   </div>
-  <div v-click="2" class="p-4 rounded-2xl border border-amber-500/30 bg-amber-950/20 backdrop-blur-md flex flex-col justify-between h-72">
+  <div v-click="2" class="p-4 rounded-2xl border border-amber-500/30 bg-amber-950/20 backdrop-blur-md flex flex-col justify-between min-h-[18rem]">
     <div>
       <span class="text-xs font-mono text-amber-400 font-bold uppercase">Step 03</span>
       <div class="text-sm font-bold text-white mt-1 mb-2">자료 비교·검증</div>
@@ -1204,7 +1204,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-amber-300">교차 대조 및 검증</div>
   </div>
-  <div v-click="3" class="p-4 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md flex flex-col justify-between h-72 shadow-lg">
+  <div v-click="3" class="p-4 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md flex flex-col justify-between min-h-[18rem] shadow-lg">
     <div>
       <span class="text-xs font-mono text-emerald-400 font-bold uppercase">Step 04</span>
       <div class="text-sm font-bold text-white mt-1 mb-2">결과물 작성</div>
@@ -1232,7 +1232,7 @@ AI가 만든 문장을 그대로 믿기보다 3단계 비교 검증을 거치는
 ---
 title: 웹검색을 잘하는 질문법
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 504
 clicks: 2
 ---
@@ -1243,7 +1243,7 @@ clicks: 2
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-4">
-  <div class="p-6 rounded-2xl border border-rose-500/40 border-t-4 border-t-rose-400 bg-rose-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div class="p-6 rounded-2xl border border-rose-500/40 border-t-4 border-t-rose-400 bg-rose-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-rose-400 font-bold text-base mb-3">
         <span class="i-carbon:close-filled text-xl"></span>
@@ -1258,13 +1258,13 @@ clicks: 2
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-rose-400">실무 활용도 낮음</div>
   </div>
-  <div v-click="1" class="p-6 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="1" class="p-6 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center gap-2 text-emerald-400 font-bold text-base mb-3">
         <span class="i-carbon:checkmark-filled text-xl"></span>
         <span>좋은 검색 질문 (구조화된 지시)</span>
       </div>
-      <div class="p-3.5 rounded-xl bg-black/60 font-mono text-[11px] text-emerald-300 mb-3 border border-emerald-500/20 leading-relaxed">
+      <div class="p-3.5 rounded-xl bg-black/60 font-mono text-xs text-emerald-300 mb-3 border border-emerald-500/20 leading-relaxed">
         "2026년 국내 중소기업의 생성형 AI 활용 트렌드를 조사하라.<br/>
         1. 최근 6개월 내 자료를 우선 반영할 것<br/>
         2. 실제 기업 활용 사례와 도입 효과를 구분하여 정리할 것<br/>
@@ -1293,7 +1293,7 @@ clicks: 2
 ---
 title: NotebookLM에서 Gemini Notebook으로의 진화
 layout: default
-class: px-16 py-8 text-center flex flex-col justify-center items-center
+class: px-16 py-6.5 text-center flex flex-col justify-center items-center
 glowSeed: 501
 clicks: 1
 ---
@@ -1314,7 +1314,7 @@ clicks: 1
 ---
 title: Gemini Notebook의 개념과 정의
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 505
 clicks: 1
 ---
@@ -1367,7 +1367,7 @@ Gemini Notebook은 인터넷 전체가 아니라, 내가 직접 넣은 문서만
 ---
 title: 1차시 RAG 이론의 실제 도구 구현 다이어그램
 layout: default
-class: px-16 py-7
+class: px-16 py-6
 glowSeed: 506
 clicks: 2
 ---
@@ -1411,23 +1411,23 @@ clicks: 3
     <div v-click="1" class="p-2.5 rounded-xl border border-blue-500/30 border-t-3 border-t-blue-400 bg-blue-950/30 backdrop-blur-md text-left">
       <div class="flex items-center justify-between mb-1">
         <span class="text-xs font-mono font-bold text-blue-400">① Source (좌측 패널)</span>
-        <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300">자료 등록</span>
+        <span class="text-xs font-mono px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300">자료 등록</span>
       </div>
-      <p class="text-[11px] text-white/80 m-0 leading-tight">PDF 문서, 웹 URL, 유튜브 링크 등 분석할 원본 문서 등록 및 선별</p>
+      <p class="text-xs text-white/80 m-0 leading-tight">PDF 문서, 웹 URL, 유튜브 링크 등 분석할 원본 문서 등록 및 선별</p>
     </div>
     <div v-click="2" class="p-2.5 rounded-xl border border-cyan-500/30 border-t-3 border-t-cyan-400 bg-cyan-950/30 backdrop-blur-md text-left">
       <div class="flex items-center justify-between mb-1">
         <span class="text-xs font-mono font-bold text-cyan-400">② Chat & ③ Citation (중앙)</span>
-        <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300">질문 & 대조</span>
+        <span class="text-xs font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300">질문 & 대조</span>
       </div>
-      <p class="text-[11px] text-white/80 m-0 leading-tight">자료 기반 질문 및 답변 번호 인용구 클릭 원문 즉시 확인</p>
+      <p class="text-xs text-white/80 m-0 leading-tight">자료 기반 질문 및 답변 번호 인용구 클릭 원문 즉시 확인</p>
     </div>
     <div v-click="3" class="p-2.5 rounded-xl border border-emerald-500/40 border-t-3 border-t-emerald-400 bg-emerald-950/30 backdrop-blur-md shadow-lg text-left">
       <div class="flex items-center justify-between mb-1">
         <span class="text-xs font-mono font-bold text-emerald-400">④ Studio (우측 패널)</span>
-        <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">산출물 변환</span>
+        <span class="text-xs font-mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">산출물 변환</span>
       </div>
-      <p class="text-[11px] text-white/85 m-0 leading-tight">보고서, 마인드맵, 오디오 등 9대 실무 산출물 원클릭 생성</p>
+      <p class="text-xs text-white/85 m-0 leading-tight">보고서, 마인드맵, 오디오 등 9대 실무 산출물 원클릭 생성</p>
     </div>
   </div>
 </div>
@@ -1443,7 +1443,7 @@ clicks: 3
 ---
 title: Gemini Notebook을 잘 쓰는 3가지 원칙
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 508
 clicks: 3
 ---
@@ -1454,7 +1454,7 @@ clicks: 3
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
-  <div v-click="1" class="p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="1" class="p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-cyan-400 font-bold uppercase mb-1">원칙 01</div>
       <div class="text-sm font-bold text-white mb-2">입력 자료 품질이 곧 결과의 품질</div>
@@ -1464,7 +1464,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/15 text-xs font-mono text-cyan-300">자료의 양보다 신선도·정확성</div>
   </div>
-  <div v-click="2" class="p-5 rounded-2xl border border-amber-500/40 border-t-4 border-t-amber-400 bg-amber-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="2" class="p-5 rounded-2xl border border-amber-500/40 border-t-4 border-t-amber-400 bg-amber-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-amber-400 font-bold uppercase mb-1">원칙 02</div>
       <div class="text-sm font-bold text-white mb-2">질문은 구체적으로 (S-A-F)</div>
@@ -1474,7 +1474,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/15 text-xs font-mono text-amber-300">구체적 지시문(S-A-F) 작성</div>
   </div>
-  <div v-click="3" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="3" class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-emerald-400 font-bold uppercase mb-1">원칙 03</div>
       <div class="text-sm font-bold text-white mb-2">해석은 AI가, 최종 판단은 사람이</div>
@@ -1494,7 +1494,7 @@ clicks: 3
 ---
 title: Gemini Notebook 프롬프트 공식 (S-A-F)
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 509
 clicks: 2
 ---
@@ -1523,7 +1523,7 @@ clicks: 2
         </div>
       </div>
     </div>
-    <div class="text-[11px] font-mono text-cyan-300 pt-2 border-t border-white/10">
+    <div class="text-xs font-mono text-cyan-300 pt-2 border-t border-white/10">
       1차시 지시 체계 ➔ 2차시 자료 분석 체계
     </div>
   </div>
@@ -1554,7 +1554,7 @@ clicks: 2
 ---
 title: 실습 ① ChatGPT 웹검색
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 601
 ---
 <!-- slide:32-Practice-WebSearch -->
@@ -1564,7 +1564,7 @@ glowSeed: 601
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-3">
-  <div class="col-span-5 p-5 rounded-2xl border border-rose-500/30 bg-rose-950/20 backdrop-blur-md flex flex-col justify-between h-76">
+  <div class="col-span-5 p-5 rounded-2xl border border-rose-500/30 bg-rose-950/20 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-rose-400 uppercase font-bold mb-2">Step 1: 단순 질문 테스트</div>
       <div class="p-3.5 rounded-xl bg-black/60 font-mono text-xs text-white/80 border border-rose-500/20 mb-3">
@@ -1576,10 +1576,10 @@ glowSeed: 601
     </div>
     <div class="text-xs font-mono text-rose-400">초기 질문 실행</div>
   </div>
-  <div class="col-span-7 p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md flex flex-col justify-between h-76 shadow-lg">
+  <div class="col-span-7 p-5 rounded-2xl border border-cyan-500/40 border-t-4 border-t-cyan-400 bg-cyan-950/25 backdrop-blur-md flex flex-col justify-between min-h-[19rem] shadow-lg">
     <div>
       <div class="text-xs font-mono text-cyan-400 uppercase font-bold mb-2">Step 2: 구조화된 개선 질문 실행</div>
-      <div class="p-3.5 rounded-xl bg-black/60 font-mono text-[11px] text-cyan-300 border border-cyan-500/20 leading-relaxed mb-2">
+      <div class="p-3.5 rounded-xl bg-black/60 font-mono text-xs text-cyan-300 border border-cyan-500/20 leading-relaxed mb-2">
         "2026년 국내 기업의 생성형 AI 도입 실무 사례를 웹에서 조사하라.<br/>
         1. 공공/민간 기업의 실제 적용 업무 분야 3개를 도출할 것<br/>
         2. 도입 전/후 업무 시간 단축 효과를 수치로 명시할 것<br/>
@@ -1601,7 +1601,7 @@ glowSeed: 601
 ---
 title: 실습 ② ChatGPT 심층 리서치 (Deep Research)
 layout: default
-class: px-16 py-8
+class: px-16 py-6.5
 glowSeed: 602
 ---
 <!-- slide:33-Practice-DeepResearch -->
@@ -1611,7 +1611,7 @@ glowSeed: 602
 </h2>
 
 <div class="grid grid-cols-12 gap-6 items-center">
-  <div class="col-span-6 p-4 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/20 backdrop-blur-md shadow-xl flex flex-col justify-between h-80">
+  <div class="col-span-6 p-4 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/20 backdrop-blur-md shadow-xl flex flex-col justify-between min-h-[20rem]">
     <div>
       <div class="text-xs font-mono text-emerald-400 font-bold uppercase mb-1.5">실습 주제 선택 (택 1)</div>
       <div class="space-y-2 mb-3">
@@ -1622,7 +1622,7 @@ glowSeed: 602
           <strong>주제 B:</strong> "2026년 국내 에너지 및 제조업 분야 AI 전환 트렌드"
         </div>
       </div>
-      <p class="text-[11.5px] text-white/75 m-0 leading-relaxed">
+      <p class="text-xs text-white/75 m-0 leading-relaxed">
         입력창의 <strong>[Deep research]</strong> 버튼을 활성화한 뒤 연구 질문을 입력합니다.
       </p>
     </div>
@@ -1630,11 +1630,11 @@ glowSeed: 602
       실습 시간: 15분 (다각도 웹 수십 개 문서 분석)
     </div>
   </div>
-  <div class="col-span-6 flex flex-col items-center justify-center p-3 rounded-2xl border border-white/20 bg-white/5 backdrop-blur-md shadow-2xl h-80">
+  <div class="col-span-6 flex flex-col items-center justify-center p-3 rounded-2xl border border-white/20 bg-white/5 backdrop-blur-md shadow-2xl min-h-[20rem]">
     <div class="rounded-xl overflow-hidden border border-white/20 shadow-lg bg-black/40">
       <img src="/de269090-e238-11ef-b53f-c8a9c246552c.png" alt="ChatGPT Deep Research UI" class="rounded-xl max-h-56 w-auto object-contain" />
     </div>
-    <span class="text-[11px] font-mono text-cyan-300 mt-2">ChatGPT 입력창 하단 [Deep research] 활성화</span>
+    <span class="text-xs font-mono text-cyan-300 mt-2">ChatGPT 입력창 하단 [Deep research] 활성화</span>
   </div>
 </div>
 
@@ -1646,7 +1646,7 @@ glowSeed: 602
 ---
 title: 실습 ③ Gemini Notebook에 다중 소스 등록
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 603
 ---
 <!-- slide:34-Practice-Notebook-Sources -->
@@ -1656,7 +1656,7 @@ glowSeed: 603
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
-  <div class="p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md flex flex-col justify-between h-72">
+  <div class="p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-blue-400 font-bold text-sm mb-2">
         <span class="i-carbon:document-pdf text-lg"></span>
@@ -1668,7 +1668,7 @@ glowSeed: 603
     </div>
     <div class="text-xs font-mono text-blue-300">공식 문서 색인</div>
   </div>
-  <div class="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md flex flex-col justify-between h-72">
+  <div class="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-cyan-400 font-bold text-sm mb-2">
         <span class="i-carbon:link text-lg"></span>
@@ -1680,7 +1680,7 @@ glowSeed: 603
     </div>
     <div class="text-xs font-mono text-cyan-300">최신 웹 소스 연동</div>
   </div>
-  <div class="p-5 rounded-2xl border border-purple-500/30 bg-purple-950/20 backdrop-blur-md flex flex-col justify-between h-72">
+  <div class="p-5 rounded-2xl border border-purple-500/30 bg-purple-950/20 backdrop-blur-md flex flex-col justify-between min-h-[18rem]">
     <div>
       <div class="flex items-center gap-2 text-purple-400 font-bold text-sm mb-2">
         <span class="i-carbon:video text-lg"></span>
@@ -1710,7 +1710,7 @@ glowSeed: 603
 ---
 title: 실습 ④ 자료에 질문하기 (3단계 심화)
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 604
 ---
 <!-- slide:35-Practice-Deep-Questioning -->
@@ -1720,37 +1720,37 @@ glowSeed: 604
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
-  <div class="p-5 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between h-76">
+  <div class="p-5 rounded-2xl border border-white/15 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-white/50 font-bold uppercase mb-1">Level 1: 기본 요약</div>
       <div class="p-3 rounded-xl bg-black/60 font-mono text-xs text-white/80 border border-white/10 mb-2">
         "이 자료의 핵심 내용을 3줄로 요약해줘."
       </div>
-      <p class="text-[11.5px] text-white/70 leading-relaxed m-0">
+      <p class="text-xs text-white/70 leading-relaxed m-0">
         전체 문서의 기본 개요와 주제를 빠르게 파악합니다.
       </p>
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-white/50">개요 파악</div>
   </div>
-  <div class="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md flex flex-col justify-between h-76">
+  <div class="p-5 rounded-2xl border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-cyan-300 font-bold uppercase mb-1">Level 2: 핵심 주장 추출</div>
       <div class="p-3 rounded-xl bg-black/60 font-mono text-xs text-cyan-200 border border-cyan-500/20 mb-2">
         "이 자료에서 가장 중요한 핵심 주장 5개와 근거를 찾아줘."
       </div>
-      <p class="text-[11.5px] text-white/80 leading-relaxed m-0">
+      <p class="text-xs text-white/80 leading-relaxed m-0">
         문서 내 주요 논점과 수치 데이터를 체계적으로 추출합니다.
       </p>
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-cyan-300">구체적 근거 확보</div>
   </div>
-  <div class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md flex flex-col justify-between h-76 shadow-lg">
+  <div class="p-5 rounded-2xl border border-emerald-500/40 border-t-4 border-t-emerald-400 bg-emerald-950/25 backdrop-blur-md flex flex-col justify-between min-h-[19rem] shadow-lg">
     <div>
       <div class="text-xs font-mono text-emerald-300 font-bold uppercase mb-1">Level 3: 교차 검증 및 대조</div>
-      <div class="p-3 rounded-xl bg-black/60 font-mono text-[11px] text-emerald-300 border border-emerald-500/20 mb-2 leading-relaxed">
+      <div class="p-3 rounded-xl bg-black/60 font-mono text-xs text-emerald-300 border border-emerald-500/20 mb-2 leading-relaxed">
         "PDF와 웹자료의 수치를 대조하고, 서로 다른 주장이 있다면 비교표로 정리해줘."
       </div>
-      <p class="text-[11.5px] text-white/85 leading-relaxed m-0">
+      <p class="text-xs text-white/85 leading-relaxed m-0">
         여러 문서 간 상충점을 분석하고 <strong>번호 인용구를 클릭해 원문을 직접 검증</strong>합니다.
       </p>
     </div>
@@ -1766,7 +1766,7 @@ Level 1부터 Level 3까지 질문을 점진적으로 고도화하며 답변에 
 ---
 title: 실습 ⑤ Studio 9대 맞춤형 결과물 변환
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 605
 ---
 <!-- slide:36-Practice-Studio-Outputs -->
@@ -1778,49 +1778,49 @@ glowSeed: 605
 <div class="grid grid-cols-12 gap-5 items-center">
   <div class="col-span-5 flex justify-center">
     <div class="rounded-2xl overflow-hidden border border-white/20 bg-white p-2 shadow-2xl w-full">
-      <img src="/20223753r0xNU.jpg" alt="NotebookLM 9대 Studio 기능" class="rounded-xl w-full max-h-84 object-contain" />
+      <img src="/20223753r0xNU.jpg" alt="NotebookLM 9대 Studio 기능" class="rounded-xl w-full max-h-[21rem] object-contain" />
     </div>
   </div>
-  <div class="col-span-7 flex flex-col justify-between h-84">
-    <div class="grid grid-cols-1 gap-1.5 text-[11px] leading-tight">
+  <div class="col-span-7 flex flex-col justify-between min-h-[21rem]">
+    <div class="grid grid-cols-1 gap-1.5 text-xs leading-tight">
       <div class="p-1.5 px-2.5 rounded-lg bg-black/50 border border-blue-500/30 flex items-center justify-between">
         <span><strong class="text-blue-300">① AI 오디오 오버뷰:</strong> 긴 문서를 2인 대화형 팟캐스트 음성으로 요약 청취</span>
-        <span class="text-[9px] font-mono text-blue-300">Audio</span>
+        <span class="text-xs font-mono text-blue-300">Audio</span>
       </div>
       <div class="p-1.5 px-2.5 rounded-lg bg-black/50 border border-emerald-500/30 flex items-center justify-between">
         <span><strong class="text-emerald-300">② 동영상 개요:</strong> 시각적 슬라이드와 나레이션이 포함된 영상 설명 제작</span>
-        <span class="text-[9px] font-mono text-emerald-300">Video</span>
+        <span class="text-xs font-mono text-emerald-300">Video</span>
       </div>
       <div class="p-1.5 px-2.5 rounded-lg bg-black/50 border border-cyan-500/30 flex items-center justify-between">
         <span><strong class="text-cyan-300">③ 마인드맵:</strong> 복잡한 자료의 핵심 논리 구조를 시각적 노드 트리로 정리</span>
-        <span class="text-[9px] font-mono text-cyan-300">Mind Map</span>
+        <span class="text-xs font-mono text-cyan-300">Mind Map</span>
       </div>
       <div class="p-1.5 px-2.5 rounded-lg bg-black/50 border border-indigo-500/30 flex items-center justify-between">
         <span><strong class="text-indigo-300">④ 보고서:</strong> 브리핑, 요약본, FAQ 등 정식 실무 보고서 초안 생성</span>
-        <span class="text-[9px] font-mono text-indigo-300">Report</span>
+        <span class="text-xs font-mono text-indigo-300">Report</span>
       </div>
       <div class="p-1.5 px-2.5 rounded-lg bg-black/50 border border-pink-500/30 flex items-center justify-between">
         <span><strong class="text-pink-300">⑤ 플래시카드:</strong> 핵심 개념과 용어를 질문-답변 카드로 자동 변환</span>
-        <span class="text-[9px] font-mono text-pink-300">Flashcard</span>
+        <span class="text-xs font-mono text-pink-300">Flashcard</span>
       </div>
       <div class="p-1.5 px-2.5 rounded-lg bg-black/50 border border-sky-500/30 flex items-center justify-between">
         <span><strong class="text-sky-300">⑥ 퀴즈:</strong> 내용 숙지 및 이해도 점검을 위한 셀프 테스트 문제 생성</span>
-        <span class="text-[9px] font-mono text-sky-300">Quiz</span>
+        <span class="text-xs font-mono text-sky-300">Quiz</span>
       </div>
       <div class="p-1.5 px-2.5 rounded-lg bg-black/50 border border-purple-500/30 flex items-center justify-between">
         <span><strong class="text-purple-300">⑦ 인포그래픽 (베타):</strong> 복잡한 내용을 한 장의 시각적 요약 이미지로 생성</span>
-        <span class="text-[9px] font-mono text-purple-300">Infographic</span>
+        <span class="text-xs font-mono text-purple-300">Infographic</span>
       </div>
       <div class="p-1.5 px-2.5 rounded-lg bg-black/50 border border-orange-500/30 flex items-center justify-between">
         <span><strong class="text-orange-300">⑧ 슬라이드 자료 (베타):</strong> 보고서 내용을 바탕으로 발표용 PPT 구조 자동 구성</span>
-        <span class="text-[9px] font-mono text-orange-300">Slides</span>
+        <span class="text-xs font-mono text-orange-300">Slides</span>
       </div>
       <div class="p-1.5 px-2.5 rounded-lg bg-black/50 border border-amber-500/30 flex items-center justify-between">
         <span><strong class="text-amber-300">⑨ 데이터 표:</strong> 흩어진 비교 정보를 표로 정리하고 구글 시트로 내보내기</span>
-        <span class="text-[9px] font-mono text-amber-300">Data Table</span>
+        <span class="text-xs font-mono text-amber-300">Data Table</span>
       </div>
     </div>
-    <div class="text-[10px] text-white/60 pt-1.5 border-t border-white/10 flex items-center justify-between">
+    <div class="text-xs text-white/60 pt-1.5 border-t border-white/10 flex items-center justify-between">
       <span>💡 <strong>원칙:</strong> 동일한 원본 자료를 실무 목적에 맞춰 다양한 산출물로 즉시 변환</span>
       <span class="font-mono text-emerald-300 font-bold">실습 시간: 10분</span>
     </div>
@@ -1835,7 +1835,7 @@ glowSeed: 605
 ---
 title: 실습 ⑥ 리서치 결과를 Canvas에서 정리하기
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 606
 ---
 <!-- slide:37-Practice-Canvas -->
@@ -1883,7 +1883,7 @@ Notebook에서 추출한 인사이트를 Canvas로 가져와 문단을 다듬고
 ---
 title: 2차시 최종 실습 과제 (Mission)
 layout: default
-class: px-14 py-8
+class: px-14 py-6.5
 glowSeed: 701
 ---
 <!-- slide:38-Session2-Mission -->
@@ -1907,7 +1907,7 @@ glowSeed: 701
         <li>5. 업무 관련 최신 규정 및 법령 개정안 조사</li>
       </ul>
     </div>
-    <div class="text-[11px] text-cyan-300/80 mt-2">
+    <div class="text-xs text-cyan-300/80 mt-2">
       ※ 본인의 실제 실무와 가장 밀접한 주제를 자유롭게 선택해도 좋습니다.
     </div>
   </div>
@@ -1935,7 +1935,7 @@ glowSeed: 701
   </div>
 </div>
 
-<div class="mt-2.5 p-2.5 rounded-xl border border-white/15 bg-white/5 flex items-center justify-between text-[11px] text-white/70">
+<div class="mt-2.5 p-2.5 rounded-xl border border-white/15 bg-white/5 flex items-center justify-between text-xs text-white/70">
   <span><strong>실습 4대 평가 기준:</strong> ① 소스 신뢰성 ② 원문 인용 대조 정확도 ③ S-A-F 질문 구체성 ④ Canvas 최종본 완성도</span>
   <span class="font-mono text-emerald-300 font-bold">실습 시간: 25분</span>
 </div>
@@ -2003,7 +2003,7 @@ glow: none
 ---
 title: 질문에 답하는 AI vs 일을 수행하는 AI
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 901
 clicks: 2
 ---
@@ -2041,10 +2041,10 @@ clicks: 1
 <div class="grid grid-cols-12 gap-6 items-center">
   <div class="col-span-6 flex justify-center">
     <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/40 p-2 shadow-2xl">
-      <img src="/chatgpt-work-inside-architecture.jpg" alt="Inside ChatGPT Work" class="rounded-xl w-full max-h-76 object-contain" />
+      <img src="/chatgpt-work-inside-architecture.jpg" alt="Inside ChatGPT Work" class="rounded-xl w-full max-h-[19rem] object-contain" />
     </div>
   </div>
-  <div class="col-span-6 flex flex-col justify-between h-80 space-y-2.5">
+  <div class="col-span-6 flex flex-col justify-between min-h-[20rem] space-y-2.5">
     <div class="p-3.5 rounded-xl bg-black/30 border border-white/10">
       <div class="text-xs font-mono font-bold text-emerald-400 mb-0.5">>_ Code Execution</div>
       <div class="text-xs text-white/80">파이썬 코드를 직접 실행하여 데이터 계산 및 차트 렌더링</div>
@@ -2073,7 +2073,7 @@ clicks: 1
 ---
 title: 에이전트 6단계 작업 실행 루프
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 903
 clicks: 1
 ---
@@ -2093,7 +2093,7 @@ clicks: 1
 ---
 title: Work의 핵심: 파일과 결과물을 만든다
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 904
 clicks: 2
 ---
@@ -2125,20 +2125,20 @@ clicks: 2
 </h2>
 
 <div class="grid grid-cols-12 gap-5 items-center">
-  <div class="col-span-5 flex flex-col justify-between h-84">
+  <div class="col-span-5 flex flex-col justify-between min-h-[21rem]">
     <div class="rounded-xl overflow-hidden border border-white/20 bg-white p-1.5 shadow-xl">
       <img src="/chatgpt-connectors-image5.webp" alt="ChatGPT Sidebar Plugins" class="rounded-lg w-full max-h-36 object-contain" />
     </div>
     <div class="p-3 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md">
       <div class="text-xs font-mono font-bold text-white/90 mb-1">자연어 도구 호출 (@Mentions)</div>
-      <div class="space-y-1 text-[11px] text-white/70">
+      <div class="space-y-1 text-xs text-white/70">
         <div><strong class="text-blue-300">@document:</strong> 보고서 작성 및 서식 편집</div>
         <div><strong class="text-emerald-300">@spreadsheet:</strong> 엑셀 수식 및 데이터 분석</div>
         <div><strong class="text-amber-300">@visualize:</strong> 인터랙티브 차트 시각화</div>
       </div>
     </div>
   </div>
-  <div class="col-span-7 flex flex-col justify-between h-84">
+  <div class="col-span-7 flex flex-col justify-between min-h-[21rem]">
     <div class="rounded-xl overflow-hidden border border-white/20 bg-white p-1.5 shadow-xl">
       <img src="/chatgpt-connectors-image7.webp" alt="OpenAI Plugins & Skills Hub" class="rounded-lg w-full max-h-36 object-contain" />
     </div>
@@ -2146,18 +2146,18 @@ clicks: 2
       <div v-click="1" class="p-2.5 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md">
         <div class="flex items-center justify-between mb-0.5">
           <span class="text-xs font-mono font-bold text-white/90">1. Plugins (플러그인)</span>
-          <span class="text-[10px] font-mono text-white/40">Workflow 단위 패키지</span>
+          <span class="text-xs font-mono text-white/40">Workflow 단위 패키지</span>
         </div>
-        <p class="text-[11px] text-white/70 m-0 leading-tight">
+        <p class="text-xs text-white/70 m-0 leading-tight">
           특정 업무 흐름을 처리하기 위해 여러 Skills와 Apps를 묶은 상위 실행 패키지입니다.
         </p>
       </div>
       <div v-click="2" class="p-2.5 rounded-xl border border-blue-500/20 bg-blue-950/20 backdrop-blur-md">
         <div class="flex items-center justify-between mb-0.5">
           <span class="text-xs font-mono font-bold text-blue-300">2. Skills & Apps (스킬과 앱)</span>
-          <span class="text-[10px] font-mono text-blue-400">재사용 지침 & 외부 연동</span>
+          <span class="text-xs font-mono text-blue-400">재사용 지침 & 외부 연동</span>
         </div>
-        <p class="text-[11px] text-white/80 m-0 leading-tight">
+        <p class="text-xs text-white/80 m-0 leading-tight">
           <strong>Skills</strong>는 표준 업무 지침을 제공하고, <strong>Apps</strong>는 외부 서비스와 실시간 연동됩니다.
         </p>
       </div>
@@ -2174,7 +2174,7 @@ clicks: 2
 ---
 title: “도구를 어떻게 고르는가?”: 업무 중심 도구 매칭
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 906
 clicks: 2
 ---
@@ -2234,7 +2234,7 @@ clicks: 2
 ---
 title: Excel을 AI에게 맡겨보자: 데이터 분석 실무
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 907
 clicks: 1
 ---
@@ -2245,16 +2245,16 @@ clicks: 1
 </h2>
 
 <div class="grid grid-cols-12 gap-6 items-center">
-  <div class="col-span-7 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-xl flex flex-col justify-between h-80">
+  <div class="col-span-7 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-xl flex flex-col justify-between min-h-[20rem]">
     <div>
       <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
         <div class="flex items-center gap-2">
           <span class="i-carbon:document-view text-emerald-400"></span>
           <span class="text-xs font-mono font-bold text-white">2026_월별_사업실적_데이터.xlsx</span>
         </div>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">1,250 행 데이터</span>
+        <span class="text-xs font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">1,250 행 데이터</span>
       </div>
-      <div class="space-y-1.5 font-mono text-[11px] text-white/80">
+      <div class="space-y-1.5 font-mono text-xs text-white/80">
         <div class="grid grid-cols-5 gap-2 p-1.5 rounded bg-black/40 font-bold text-white/80 border-b border-white/10">
           <span>월 (Month)</span>
           <span>사업부</span>
@@ -2273,11 +2273,11 @@ clicks: 1
         </div>
       </div>
     </div>
-    <div class="text-[11px] text-white/40 pt-2 border-t border-white/10">
+    <div class="text-xs text-white/40 pt-2 border-t border-white/10">
       ※ 실제 기업 현장의 다중 컬럼 실적 스프레드시트 원본
     </div>
   </div>
-  <div class="col-span-5 flex flex-col justify-between h-80">
+  <div class="col-span-5 flex flex-col justify-between min-h-[20rem]">
     <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-xl">
       <div class="text-xs font-mono text-white/40 font-bold uppercase mb-2">실무자의 핵심 질문</div>
       <div class="text-lg font-bold text-white mb-3 leading-snug">
@@ -2303,7 +2303,7 @@ AI에게 무작정 '분석해줘'라고 던지는 것이 아니라, 데이터 �
 ---
 title: 엑셀 분석의 기본 사고방식 4단계
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 908
 clicks: 3
 ---
@@ -2314,7 +2314,7 @@ clicks: 3
 </h2>
 
 <div class="grid grid-cols-4 gap-4 mt-4">
-  <div class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-72">
+  <div class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[18rem]">
     <div>
       <span class="text-xs font-mono text-white/40 font-bold uppercase">Step 01</span>
       <div class="text-sm font-bold text-white mt-1 mb-2">무엇을 알고 싶은가?</div>
@@ -2324,7 +2324,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-white/40">목적 정의</div>
   </div>
-  <div v-click="1" class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-72">
+  <div v-click="1" class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[18rem]">
     <div>
       <span class="text-xs font-mono text-white/40 font-bold uppercase">Step 02</span>
       <div class="text-sm font-bold text-white mt-1 mb-2">어떤 데이터를 볼 것인가?</div>
@@ -2334,7 +2334,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-white/40">대상 범위 확정</div>
   </div>
-  <div v-click="2" class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-72">
+  <div v-click="2" class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[18rem]">
     <div>
       <span class="text-xs font-mono text-white/40 font-bold uppercase">Step 03</span>
       <div class="text-sm font-bold text-white mt-1 mb-2">어떤 기준으로 비교할 것인가?</div>
@@ -2344,7 +2344,7 @@ clicks: 3
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-white/40">비교 기준 수립</div>
   </div>
-  <div v-click="3" class="p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md flex flex-col justify-between h-72 shadow-lg">
+  <div v-click="3" class="p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md flex flex-col justify-between min-h-[18rem] shadow-lg">
     <div>
       <span class="text-xs font-mono text-blue-400 font-bold uppercase">Step 04</span>
       <div class="text-sm font-bold text-white mt-1 mb-2">어떤 결과물로 만들 것인가?</div>
@@ -2368,7 +2368,7 @@ AI에게 무작정 분석을 시키지 말고, 목적, 대상 데이터, 비교 
 ---
 title: 실습 ① 엑셀 기본 프롬프트: 데이터 상태 파악
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 909
 clicks: 1
 ---
@@ -2379,7 +2379,7 @@ clicks: 1
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-3">
-  <div class="col-span-7 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-xl flex flex-col justify-between h-76">
+  <div class="col-span-7 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-xl flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-white/50 uppercase font-bold mb-2">1단계 실습 프롬프트 (데이터 점검)</div>
       <div class="p-4 rounded-xl bg-black/40 font-mono text-xs text-white/90 leading-relaxed border border-white/10 mb-2">
@@ -2394,7 +2394,7 @@ clicks: 1
     </div>
   </div>
 
-  <div class="col-span-5 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-76">
+  <div class="col-span-5 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-white/50 uppercase font-bold mb-2">핵심 교육 포인트</div>
       <div class="space-y-2.5 text-xs text-white/80 leading-relaxed">
@@ -2422,7 +2422,7 @@ clicks: 1
 ---
 title: 실습 ② 엑셀 기본 프롬프트: 데이터 분석 및 원인 도출
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 910
 clicks: 1
 ---
@@ -2433,7 +2433,7 @@ clicks: 1
 </h2>
 
 <div class="grid grid-cols-12 gap-6 mt-3">
-  <div class="col-span-7 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-xl flex flex-col justify-between h-76">
+  <div class="col-span-7 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-xl flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-white/50 uppercase font-bold mb-2">2단계 실습 프롬프트 (추이 & 원인)</div>
       <div class="p-4 rounded-xl bg-black/40 font-mono text-xs text-white/90 leading-relaxed border border-white/10 mb-2">
@@ -2448,7 +2448,7 @@ clicks: 1
     </div>
   </div>
 
-  <div class="col-span-5 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-76">
+  <div class="col-span-5 p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="text-xs font-mono text-white/50 uppercase font-bold mb-2">화면 비교 (Before ➔ After)</div>
       <div class="space-y-2 text-xs text-white/80 leading-relaxed">
@@ -2460,7 +2460,7 @@ clicks: 1
         </div>
       </div>
     </div>
-    <div class="p-2.5 rounded-lg bg-black/40 border border-white/10 text-[11px] text-white/70">
+    <div class="p-2.5 rounded-lg bg-black/40 border border-white/10 text-xs text-white/70">
       💡 "없는 사실 추측 금지" 제약으로 할루시네이션 완벽 방지
     </div>
   </div>
@@ -2513,7 +2513,7 @@ glowSeed: 911
 ---
 title: 실습 ④ 엑셀 기본 프롬프트: 점진적 수정 (Iterative Loop)
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 912
 clicks: 2
 ---
@@ -2524,7 +2524,7 @@ clicks: 2
 </h2>
 
 <div class="grid grid-cols-3 gap-5 mt-4">
-  <div class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-76">
+  <div class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <span class="text-xs font-mono text-white/40 font-bold uppercase">1차 요청</span>
       <div class="p-3 rounded-xl bg-black/40 text-xs font-mono text-white/80 mt-2 mb-3 border border-white/5">
@@ -2536,7 +2536,7 @@ clicks: 2
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-white/40">초안 생성</div>
   </div>
-  <div v-click="1" class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-76">
+  <div v-click="1" class="p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between min-h-[19rem]">
     <div>
       <span class="text-xs font-mono text-blue-400 font-bold uppercase">2차 수정</span>
       <div class="p-3 rounded-xl bg-black/40 text-xs font-mono text-blue-200 mt-2 mb-3 border border-blue-500/20">
@@ -2548,10 +2548,10 @@ clicks: 2
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-blue-300">비교 기준 보강</div>
   </div>
-  <div v-click="2" class="p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md flex flex-col justify-between h-76 shadow-lg">
+  <div v-click="2" class="p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md flex flex-col justify-between min-h-[19rem] shadow-lg">
     <div>
       <span class="text-xs font-mono text-blue-300 font-bold uppercase">3차 수정 (임원 보고용)</span>
-      <div class="p-3 rounded-xl bg-black/40 text-[11px] font-mono text-blue-200 mt-2 mb-3 border border-blue-500/30 leading-relaxed">
+      <div class="p-3 rounded-xl bg-black/40 text-xs font-mono text-blue-200 mt-2 mb-3 border border-blue-500/30 leading-relaxed">
         "증감이 가장 큰 3월을 빨간색으로 강조하고, 임원 보고용 3줄 인사이트를 하단에 추가해줘."
       </div>
       <p class="text-xs text-white/90 leading-relaxed m-0">
@@ -2585,7 +2585,7 @@ clicks: 2
   <div class="col-span-7">
     <WorkToolsHub :stage="$clicks" />
   </div>
-  <div class="col-span-5 flex flex-col justify-between h-84">
+  <div class="col-span-5 flex flex-col justify-between min-h-[21rem]">
     <div class="rounded-xl overflow-hidden border border-white/20 bg-white p-2 shadow-2xl">
       <img src="/chatgpt-app-execution.jpg" alt="Real App Execution" class="rounded-lg w-full max-h-52 object-contain" />
     </div>
@@ -2644,7 +2644,7 @@ glowSeed: 914
 ---
 title: Skill과 Prompt의 차이
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 915
 clicks: 2
 ---
@@ -2665,7 +2665,7 @@ clicks: 2
 ---
 title: 나만의 Skill 만들기 실습: 4대 구성요소
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 916
 clicks: 1
 ---
@@ -2676,7 +2676,7 @@ clicks: 1
 </h2>
 
 <div class="grid grid-cols-12 gap-5 mt-2">
-  <div class="col-span-5 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-80">
+  <div class="col-span-5 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[20rem]">
     <div>
       <div class="text-xs font-mono text-white/50 uppercase font-bold mb-2">반복 업무 주제 선택 (택 1)</div>
       <div class="grid grid-cols-2 gap-1.5 text-xs text-white/80">
@@ -2690,11 +2690,11 @@ clicks: 1
         <div class="p-1.5 rounded bg-black/40 border border-white/5">8. 정책자료 요약</div>
       </div>
     </div>
-    <div class="text-[11px] text-white/40 font-mono pt-2 border-t border-white/10">
+    <div class="text-xs text-white/40 font-mono pt-2 border-t border-white/10">
       ※ 본인의 실제 반복 업무를 선정하세요.
     </div>
   </div>
-  <div class="col-span-7 p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-80">
+  <div class="col-span-7 p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[20rem]">
     <div>
       <div class="text-xs font-mono text-blue-400 uppercase font-bold mb-2">Skill 필수 4대 구성요소</div>
       <div class="space-y-1.5 text-xs text-white/90">
@@ -2726,7 +2726,7 @@ clicks: 1
 ---
 title: Skill 테스트와 개선 루프 (Refinement Loop)
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 917
 clicks: 1
 ---
@@ -2747,7 +2747,7 @@ clicks: 1
 ---
 title: Skill 개선 실습 사례: 주간 업무보고서 고도화
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 918
 clicks: 1
 ---
@@ -2758,11 +2758,11 @@ clicks: 1
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-3">
-  <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center justify-between mb-2">
         <span class="text-xs font-mono font-bold text-white/60">초기 스킬 지침 (막연한 지시)</span>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-white/10 text-white/50">1차 실행</span>
+        <span class="text-xs font-mono px-2 py-0.5 rounded bg-white/10 text-white/50">1차 실행</span>
       </div>
       <div class="p-3 rounded-xl bg-black/40 font-mono text-xs text-white/80 border border-white/5 mb-2">
         "매주 팀 업무보고서를 작성해줘."
@@ -2773,13 +2773,13 @@ clicks: 1
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-white/40">개선 필요</div>
   </div>
-  <div v-click="1" class="p-6 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="1" class="p-6 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center justify-between mb-2">
         <span class="text-xs font-mono font-bold text-blue-300">개선된 스킬 지침 (4단 고정 규격)</span>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">표준화 완료</span>
+        <span class="text-xs font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">표준화 완료</span>
       </div>
-      <div class="p-3 rounded-xl bg-black/40 font-mono text-[11px] text-blue-200 border border-blue-500/20 leading-relaxed mb-2">
+      <div class="p-3 rounded-xl bg-black/40 font-mono text-xs text-blue-200 border border-blue-500/20 leading-relaxed mb-2">
         "반드시 다음 4단 구조로 작성하라.<br/>
         ① 이번 주 핵심 성과 (수치 기반)<br/>
         ② 주요 완료 업무 (상세 내용)<br/>
@@ -2801,7 +2801,7 @@ clicks: 1
 ---
 title: 이미지 생성도 “업무”로 접근: 타깃과 목적 중심 제작
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 919
 clicks: 1
 ---
@@ -2812,11 +2812,11 @@ clicks: 1
 </h2>
 
 <div class="grid grid-cols-2 gap-8 mt-3">
-  <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center justify-between mb-2">
         <span class="text-xs font-mono font-bold text-white/60">단순 이미지 생성 요청</span>
-        <span class="text-[10px] font-mono text-white/40">나쁜 예</span>
+        <span class="text-xs font-mono text-white/40">나쁜 예</span>
       </div>
       <div class="p-3 rounded-xl bg-black/40 font-mono text-xs text-white/80 border border-white/5 mb-3">
         "사내 행사 홍보 포스터 하나 만들어줘."
@@ -2827,13 +2827,13 @@ clicks: 1
     </div>
     <div class="pt-2 border-t border-white/10 text-xs font-mono text-white/40">실무 사용 불가</div>
   </div>
-  <div v-click="1" class="p-6 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-76">
+  <div v-click="1" class="p-6 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[19rem]">
     <div>
       <div class="flex items-center justify-between mb-2">
         <span class="text-xs font-mono font-bold text-blue-300">업무용 구조화 지시문</span>
-        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">좋은 예</span>
+        <span class="text-xs font-mono px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 font-bold">좋은 예</span>
       </div>
-      <div class="p-3 rounded-xl bg-black/40 font-mono text-[11px] text-blue-200 border border-blue-500/20 leading-relaxed mb-2">
+      <div class="p-3 rounded-xl bg-black/40 font-mono text-xs text-blue-200 border border-blue-500/20 leading-relaxed mb-2">
         "다음 행사 정보를 바탕으로 30~40대 직장인을 위한 사내 AI 세미나 홍보 카드뉴스를 제작하라.<br/>
         1. 메인 카피: 'AI로 끝내는 칼퇴의 기술'<br/>
         2. 일시: 2026년 9월 8일(화) 14:00<br/>
@@ -2853,7 +2853,7 @@ clicks: 1
 ---
 title: 이미지 생성의 핵심: 생성 ➔ 평가 ➔ 수정
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 920
 clicks: 2
 ---
@@ -2874,7 +2874,7 @@ clicks: 2
 ---
 title: ★ Final Mission: 3~4차시 통합 실습 과제
 layout: default
-class: px-14 py-7
+class: px-14 py-6
 glowSeed: 921
 ---
 <!-- slide:61-Final-Mission -->
@@ -2884,14 +2884,14 @@ glowSeed: 921
 </h2>
 
 <div class="grid grid-cols-12 gap-5 mt-2">
-  <div class="col-span-5 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between h-84">
+  <div class="col-span-5 p-5 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[21rem]">
     <div>
       <div class="text-xs font-mono text-white/50 uppercase font-bold mb-1.5">종합 업무 시나리오</div>
       <div class="p-3.5 rounded-xl bg-black/40 text-xs font-mono text-white/90 border border-white/10 leading-relaxed mb-2">
         "이번 달 우리 팀의 실적을 분석하여 임원에게 보고하고,<br/>
         이를 기반으로 사내 홍보/안내용 결과물까지 완성하라."
       </div>
-      <p class="text-[11px] text-white/60 m-0 leading-relaxed">
+      <p class="text-xs text-white/60 m-0 leading-relaxed">
         본인의 실제 실무 엑셀 데이터 또는 제공된 실습 샘플을 기반으로 자유롭게 진행합니다.
       </p>
     </div>
@@ -2900,30 +2900,30 @@ glowSeed: 921
     </div>
   </div>
 
-  <div class="col-span-7 p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-84">
+  <div class="col-span-7 p-5 rounded-2xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between min-h-[21rem]">
     <div>
       <div class="text-xs font-mono text-blue-400 uppercase font-bold mb-1.5">7단계 연속 실행 파이프라인</div>
       <div class="space-y-1 text-xs text-white/90">
         <div class="p-1.5 rounded bg-black/30 border border-white/5 flex items-center justify-between">
-          <span>Step 1: Excel 데이터 업로드</span><span class="text-[10px] font-mono text-white/40">자료 주입</span>
+          <span>Step 1: Excel 데이터 업로드</span><span class="text-xs font-mono text-white/40">자료 주입</span>
         </div>
         <div class="p-1.5 rounded bg-black/30 border border-white/5 flex items-center justify-between">
-          <span>Step 2: Work에게 데이터 구조 파악 & 결측치 점검 지시</span><span class="text-[10px] font-mono text-white/60">점검</span>
+          <span>Step 2: Work에게 데이터 구조 파악 & 결측치 점검 지시</span><span class="text-xs font-mono text-white/60">점검</span>
         </div>
         <div class="p-1.5 rounded bg-black/30 border border-white/5 flex items-center justify-between">
-          <span>Step 3: 증감률 계산 & 상위 5대 이상치 원인 분석</span><span class="text-[10px] font-mono text-white/60">분석</span>
+          <span>Step 3: 증감률 계산 & 상위 5대 이상치 원인 분석</span><span class="text-xs font-mono text-white/60">분석</span>
         </div>
         <div class="p-1.5 rounded bg-black/30 border border-white/5 flex items-center justify-between">
-          <span>Step 4: @visualize 차트 시각화 생성</span><span class="text-[10px] font-mono text-amber-300">시각화</span>
+          <span>Step 4: @visualize 차트 시각화 생성</span><span class="text-xs font-mono text-amber-300">시각화</span>
         </div>
         <div class="p-1.5 rounded bg-black/30 border border-white/5 flex items-center justify-between">
-          <span>Step 5: @document 임원 보고용 1페이지 보고서 완성</span><span class="text-[10px] font-mono text-blue-300">문서화</span>
+          <span>Step 5: @document 임원 보고용 1페이지 보고서 완성</span><span class="text-xs font-mono text-blue-300">문서화</span>
         </div>
         <div class="p-1.5 rounded bg-black/30 border border-white/5 flex items-center justify-between">
-          <span>Step 6: 사내 공유용 홍보/안내 이미지 생성</span><span class="text-[10px] font-mono text-purple-300">비주얼</span>
+          <span>Step 6: 사내 공유용 홍보/안내 이미지 생성</span><span class="text-xs font-mono text-purple-300">비주얼</span>
         </div>
         <div class="p-1.5 rounded bg-black/30 border border-blue-500/20 flex items-center justify-between text-blue-200 font-bold">
-          <span>Step 7: 다음 달에도 쓸 수 있도록 Skill로 저장</span><span class="text-[10px] font-mono">자산화</span>
+          <span>Step 7: 다음 달에도 쓸 수 있도록 Skill로 저장</span><span class="text-xs font-mono">자산화</span>
         </div>
       </div>
     </div>
@@ -2938,7 +2938,7 @@ glowSeed: 921
 ---
 title: 최종 결과물 제출 6대 산출물
 layout: default
-class: px-16 py-9
+class: px-16 py-6
 glowSeed: 922
 ---
 <!-- slide:62-Submission-Rubric -->
@@ -2950,33 +2950,33 @@ glowSeed: 922
 <div class="grid grid-cols-3 gap-4 mt-3">
   <div class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-40">
     <div class="text-xs font-bold text-white mb-1">① 원본 자료</div>
-    <p class="text-[11px] text-white/60 m-0 leading-relaxed">분석에 사용한 엑셀 파일 또는 원천 문서</p>
-    <div class="text-[10px] font-mono text-white/40 pt-1 border-t border-white/10">Input Data</div>
+    <p class="text-xs text-white/60 m-0 leading-relaxed">분석에 사용한 엑셀 파일 또는 원천 문서</p>
+    <div class="text-xs font-mono text-white/40 pt-1 border-t border-white/10">Input Data</div>
   </div>
   <div class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-40">
     <div class="text-xs font-bold text-white mb-1">② AI 업무 지시문</div>
-    <p class="text-[11px] text-white/60 m-0 leading-relaxed">RCTF 구조로 작성된 단계별 프롬프트</p>
-    <div class="text-[10px] font-mono text-white/40 pt-1 border-t border-white/10">Prompts</div>
+    <p class="text-xs text-white/60 m-0 leading-relaxed">RCTF 구조로 작성된 단계별 프롬프트</p>
+    <div class="text-xs font-mono text-white/40 pt-1 border-t border-white/10">Prompts</div>
   </div>
   <div class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-40">
     <div class="text-xs font-bold text-white mb-1">③ 분석 결과 표</div>
-    <p class="text-[11px] text-white/60 m-0 leading-relaxed">증감률 및 핵심 인사이트 정리 표</p>
-    <div class="text-[10px] font-mono text-white/40 pt-1 border-t border-white/10">Spreadsheet</div>
+    <p class="text-xs text-white/60 m-0 leading-relaxed">증감률 및 핵심 인사이트 정리 표</p>
+    <div class="text-xs font-mono text-white/40 pt-1 border-t border-white/10">Spreadsheet</div>
   </div>
   <div class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-40">
     <div class="text-xs font-bold text-white mb-1">④ 시각화 차트</div>
-    <p class="text-[11px] text-white/60 m-0 leading-relaxed">목적이 명확한 꺾은선/막대 그래프</p>
-    <div class="text-[10px] font-mono text-white/40 pt-1 border-t border-white/10">Visualize</div>
+    <p class="text-xs text-white/60 m-0 leading-relaxed">목적이 명확한 꺾은선/막대 그래프</p>
+    <div class="text-xs font-mono text-white/40 pt-1 border-t border-white/10">Visualize</div>
   </div>
   <div class="p-4 rounded-xl border border-white/10 bg-white/5 backdrop-blur-md flex flex-col justify-between h-40">
     <div class="text-xs font-bold text-white mb-1">⑤ 최종 실무 보고서</div>
-    <p class="text-[11px] text-white/60 m-0 leading-relaxed">상사 보고용 1페이지 완성본 (DOCX)</p>
-    <div class="text-[10px] font-mono text-white/40 pt-1 border-t border-white/10">Document</div>
+    <p class="text-xs text-white/60 m-0 leading-relaxed">상사 보고용 1페이지 완성본 (DOCX)</p>
+    <div class="text-xs font-mono text-white/40 pt-1 border-t border-white/10">Document</div>
   </div>
   <div class="p-4 rounded-xl border border-blue-500/30 bg-blue-950/20 backdrop-blur-md shadow-lg flex flex-col justify-between h-40">
     <div class="text-xs font-bold text-blue-300 mb-1">⑥ 나만의 Skill 매뉴얼</div>
-    <p class="text-[11px] text-white/80 m-0 leading-relaxed">다음 달에도 반복 실행할 스킬 지침</p>
-    <div class="text-[10px] font-mono font-bold text-blue-300 pt-1 border-t border-blue-500/20">Skill Asset</div>
+    <p class="text-xs text-white/80 m-0 leading-relaxed">다음 달에도 반복 실행할 스킬 지침</p>
+    <div class="text-xs font-mono font-bold text-blue-300 pt-1 border-t border-blue-500/20">Skill Asset</div>
   </div>
 </div>
 
@@ -3012,15 +3012,15 @@ glowSeed: 999
   <div class="grid grid-cols-3 gap-4 max-w-3xl text-left text-xs mb-5">
     <div class="p-4 rounded-xl bg-black/40 border border-white/10">
       <strong class="text-white">1·2차시 기초</strong>
-      <p class="text-[11px] text-white/60 m-0 mt-1">지시 체계(RCTF) + 근거 자료(S-A-F)로 정확한 답변을 얻는 법</p>
+      <p class="text-xs text-white/60 m-0 mt-1">지시 체계(RCTF) + 근거 자료(S-A-F)로 정확한 답변을 얻는 법</p>
     </div>
     <div class="p-4 rounded-xl bg-black/40 border border-white/10">
       <strong class="text-white">3·4차시 심화</strong>
-      <p class="text-[11px] text-white/60 m-0 mt-1">파일 연동 + 도구 실행으로 실제 결과물과 파일을 완성하는 법</p>
+      <p class="text-xs text-white/60 m-0 mt-1">파일 연동 + 도구 실행으로 실제 결과물과 파일을 완성하는 법</p>
     </div>
     <div class="p-4 rounded-xl bg-black/40 border border-blue-500/30">
       <strong class="text-blue-300">실무 지속 자산화</strong>
-      <p class="text-[11px] text-white/70 m-0 mt-1">반복 업무를 Skill로 만들어 팀과 조직의 영구 표준으로 정착</p>
+      <p class="text-xs text-white/70 m-0 mt-1">반복 업무를 Skill로 만들어 팀과 조직의 영구 표준으로 정착</p>
     </div>
   </div>
   <div class="text-xs text-white/40 font-mono">

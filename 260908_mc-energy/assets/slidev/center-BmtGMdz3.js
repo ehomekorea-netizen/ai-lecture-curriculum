@@ -1,1 +1,0 @@
-import{R as e,V as t,g as n,y as r}from"../modules/shiki-DSMc7FDf.js";import{gt as i}from"../index-DTRx2rdP.js";var a={},o={class:`slidev-layout center h-full grid place-content-center`},s={class:`my-auto`};function c(i,a){return e(),r(`div`,o,[n(`div`,s,[t(i.$slots,`default`)])])}var l=i(a,[[`render`,c]]);export{l as t};

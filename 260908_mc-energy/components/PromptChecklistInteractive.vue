@@ -93,7 +93,7 @@ const selectAll = () => {
   <div class="flex flex-col gap-4 w-full select-none">
     <!-- Top Minimal Control Bar -->
     <div class="flex items-center justify-between px-1">
-      <div class="flex items-center gap-2 text-xs font-mono text-white/60">
+      <div class="flex items-center gap-2 text-sm font-mono text-white/70">
         <span>점검 진행률:</span>
         <span class="font-bold" :class="allChecked ? 'text-emerald-400' : 'text-cyan-300'">
           {{ checkedCount }} / 5
@@ -102,13 +102,13 @@ const selectAll = () => {
       <div class="flex items-center gap-2">
         <button
           @click="resetAll"
-          class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/5 border border-white/10 text-white/50 hover:text-white transition-colors"
+          class="text-xs font-mono px-2.5 py-1 rounded bg-white/5 border border-white/10 text-white/60 hover:text-white transition-colors"
         >
           초기화
         </button>
         <button
           @click="selectAll"
-          class="text-[11px] font-mono px-2 py-0.5 rounded bg-white/10 border border-white/15 text-white/80 hover:text-white transition-colors"
+          class="text-xs font-mono px-2.5 py-1 rounded bg-white/10 border border-white/15 text-white/85 hover:text-white transition-colors"
         >
           전체 선택
         </button>
@@ -121,7 +121,7 @@ const selectAll = () => {
         v-for="(item, index) in items"
         :key="item.id"
         @click="toggleItem(index)"
-        class="rounded-xl p-4 flex flex-col justify-between h-48 cursor-pointer transition-all duration-200"
+        class="rounded-xl p-4 flex flex-col justify-between min-h-[13.5rem] cursor-pointer transition-all duration-200"
         :class="[
           checkedList[index]
             ? [item.activeBg, item.activeBorder, 'border opacity-100 shadow-md']
@@ -132,13 +132,13 @@ const selectAll = () => {
           <!-- Header (Key + Checkbox) -->
           <div class="flex items-center justify-between mb-2">
             <span
-              class="text-xs font-mono font-bold"
+              class="text-sm font-mono font-bold"
               :class="checkedList[index] ? item.activeText : 'text-white/40'"
             >
               {{ item.key }}
             </span>
             <span
-              class="text-base"
+              class="text-lg"
               :class="[
                 checkedList[index]
                   ? ['i-carbon:checkbox-checked', item.activeText]
@@ -149,7 +149,7 @@ const selectAll = () => {
 
           <!-- Title -->
           <div
-            class="text-xs font-bold mb-1.5"
+            class="text-sm font-bold mb-1.5"
             :class="checkedList[index] ? 'text-white/95' : 'text-white/60'"
           >
             {{ item.title }}
@@ -157,8 +157,8 @@ const selectAll = () => {
 
           <!-- Subtext -->
           <p
-            class="text-[11px] m-0 leading-relaxed"
-            :class="checkedList[index] ? 'text-white/80' : 'text-white/40'"
+            class="text-xs m-0 leading-relaxed"
+            :class="checkedList[index] ? 'text-white/85' : 'text-white/45'"
           >
             {{ item.sub }}
           </p>
@@ -167,7 +167,7 @@ const selectAll = () => {
         <!-- Bottom Tag -->
         <div class="pt-2.5 border-t" :class="checkedList[index] ? 'border-white/10' : 'border-white/5'">
           <span
-            class="text-[10px] font-mono px-2 py-0.5 rounded border inline-block"
+            class="text-xs font-mono px-2 py-0.5 rounded border inline-block"
             :class="[
               checkedList[index]
                 ? item.activeTag
@@ -184,24 +184,24 @@ const selectAll = () => {
     <div class="mt-1">
       <div
         v-if="allChecked"
-        class="p-3.5 rounded-xl border border-emerald-500/40 bg-emerald-950/25 flex items-center justify-between text-xs text-white/90 transition-all duration-300"
+        class="p-3.5 rounded-xl border border-emerald-500/40 bg-emerald-950/25 flex items-center justify-between text-sm text-white/90 transition-all duration-300"
       >
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
           <span><strong>5개 점검 완료:</strong> 역할(R) · 맥락(C) · 작업(T) · 형식(F) · 제약조건이 충족되었습니다. 실습을 시작합니다.</span>
         </div>
-        <span class="font-mono text-[11px] font-bold text-emerald-300">19번 실습으로 진행</span>
+        <span class="font-mono text-xs font-bold text-emerald-300">19번 실습으로 진행</span>
       </div>
 
       <div
         v-else
-        class="p-3.5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between text-xs text-white/60"
+        class="p-3.5 rounded-xl border border-white/10 bg-white/5 flex items-center justify-between text-sm text-white/70"
       >
         <div class="flex items-center gap-2">
           <span class="w-2 h-2 rounded-full bg-white/30"></span>
           <span>카드를 클릭하여 5가지 실무 점검 항목을 확인하세요.</span>
         </div>
-        <span class="font-mono text-[11px] text-white/40">{{ checkedCount }} / 5 항목 확인</span>
+        <span class="font-mono text-xs text-white/50">{{ checkedCount }} / 5 항목 확인</span>
       </div>
     </div>
   </div>
