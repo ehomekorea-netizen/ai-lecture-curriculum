@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  (function() {
+    var KEY = 'mc_energy_auth_pass';
+    var PASS = '8130';
+    if (sessionStorage.getItem(KEY) !== 'true') {
+      document.documentElement.style.display = 'none';
+      var entered = prompt('🔒 비공개 강의 교안입니다.\n접근 비밀번호 4자리를 입력하세요:');
+      if (entered === PASS) {
+        sessionStorage.setItem(KEY, 'true');
+        document.documentElement.style.display = '';
+      } else {
+        alert('접근 권한이 없습니다. 메인 페이지로 이동합니다.');
+        window.location.replace('/');
+        throw new Error('Access denied');
+      }
+    }
+  })();
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>생성형 AI를 통한 실무능력 향상 - Slidev</title>
