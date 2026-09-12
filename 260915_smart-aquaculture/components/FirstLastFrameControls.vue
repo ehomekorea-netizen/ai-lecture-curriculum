@@ -1,17 +1,60 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const activeStep = ref<'all' | 'first' | 'video' | 'last'>('all')
 const videoRef = ref<HTMLVideoElement | null>(null)
 const isMuted = ref(true)
+const isPlaying = ref(true)
+
+const resolvedVideoSrc = computed(() => {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+  return base ? `${base}/veo3/first-last-output.mp4` : '/veo3/first-last-output.mp4'
+})
+const resolvedFirstImg = computed(() => {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+  return base ? `${base}/veo3/first.webp` : '/veo3/first.webp'
+})
+const resolvedLastImg = computed(() => {
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+  return base ? `${base}/veo3/last.webp` : '/veo3/last.webp'
+})
 
 onMounted(() => {
   if (videoRef.value) {
     videoRef.value.muted = true
     isMuted.value = true
-    videoRef.value.play().catch(() => {})
+    videoRef.value.play().then(() => {
+      isPlaying.value = true
+    }).catch(() => {
+      isPlaying.value = false
+    })
+
+    if (typeof IntersectionObserver !== 'undefined') {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.value && videoRef.value.paused) {
+            videoRef.value.play().then(() => {
+              isPlaying.value = true
+            }).catch(() => {})
+          }
+        })
+      }, { threshold: 0.2 })
+      observer.observe(videoRef.value)
+    }
   }
 })
+
+const togglePlay = () => {
+  if (!videoRef.value) return
+  if (videoRef.value.paused) {
+    videoRef.value.play().then(() => {
+      isPlaying.value = true
+    }).catch(() => {})
+  } else {
+    videoRef.value.pause()
+    isPlaying.value = false
+  }
+}
 
 const toggleMute = () => {
   if (!videoRef.value) return
@@ -74,7 +117,7 @@ const toggleMute = () => {
           <span class="font-mono text-white/50 text-[10px]">0.0s</span>
         </div>
         <div class="relative rounded-xl overflow-hidden border border-white/15 aspect-video bg-black/60 shadow-lg">
-          <img src="/veo3/first.webp" alt="First Frame" class="w-full h-full object-cover select-none" />
+          <img :src="resolvedFirstImg" alt="First Frame" class="w-full h-full object-cover select-none" />
         </div>
         <p class="text-[10px] text-white/80 m-0 leading-tight">
           인물 위치, 카메라 초기 화각, 조명 앵커 설정
@@ -101,12 +144,15 @@ const toggleMute = () => {
         <div class="relative rounded-xl overflow-hidden border border-white/20 aspect-video bg-black/80 shadow-2xl">
           <video
             ref="videoRef"
-            src="/veo3/first-last-output.mp4"
+            :src="resolvedVideoSrc"
             autoplay
             loop
+            :muted="isMuted"
             muted
             playsinline
-            class="w-full h-full object-contain select-none"
+            preload="auto"
+            class="w-full h-full object-contain select-none cursor-pointer"
+            @click="togglePlay"
           ></video>
         </div>
         <!-- Outside Controls -->
@@ -114,14 +160,24 @@ const toggleMute = () => {
           <p class="text-[10.5px] text-emerald-200 m-0 leading-tight">
             시작과 끝을 묶어 중간 움직임의 왜곡 방지
           </p>
-          <button
-            @click.stop="toggleMute"
-            class="px-1.5 py-0.5 rounded text-[9.5px] font-mono transition-all cursor-pointer border flex items-center gap-1"
-            :class="isMuted ? 'bg-white/5 text-white/60 hover:text-white border-white/15' : 'bg-emerald-500/20 text-emerald-300 border-emerald-400'"
-          >
-            <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'"></span>
-            <span>{{ isMuted ? '음소거 중' : '소리 켜짐' }}</span>
-          </button>
+          <div class="flex items-center gap-1.5">
+            <button
+              @click.stop="togglePlay"
+              class="px-1.5 py-0.5 rounded text-[9.5px] font-mono transition-all cursor-pointer border flex items-center gap-1"
+              :class="isPlaying ? 'bg-white/5 text-white/70 hover:text-white border-white/15' : 'bg-amber-500/20 text-amber-300 border-amber-400 font-bold'"
+            >
+              <span :class="isPlaying ? 'i-carbon-pause text-white/60' : 'i-carbon-play-filled-alt text-amber-400'"></span>
+              <span>{{ isPlaying ? '일시정지' : '재생하기' }}</span>
+            </button>
+            <button
+              @click.stop="toggleMute"
+              class="px-1.5 py-0.5 rounded text-[9.5px] font-mono transition-all cursor-pointer border flex items-center gap-1"
+              :class="isMuted ? 'bg-white/5 text-white/60 hover:text-white border-white/15' : 'bg-emerald-500/20 text-emerald-300 border-emerald-400'"
+            >
+              <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'"></span>
+              <span>{{ isMuted ? '음소거 중' : '소리 켜짐' }}</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -140,7 +196,7 @@ const toggleMute = () => {
           <span class="font-mono text-white/50 text-[10px]">5.0s</span>
         </div>
         <div class="relative rounded-xl overflow-hidden border border-white/15 aspect-video bg-black/60 shadow-lg">
-          <img src="/veo3/last.webp" alt="Last Frame" class="w-full h-full object-cover select-none" />
+          <img :src="resolvedLastImg" alt="Last Frame" class="w-full h-full object-cover select-none" />
         </div>
         <p class="text-[10px] text-white/80 m-0 leading-tight">
           최종 구도 및 다음 쇼트(S02) 연결용 착지점 확정

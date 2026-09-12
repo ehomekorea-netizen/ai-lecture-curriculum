@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -23,15 +23,56 @@ const props = withDefaults(
 
 const videoRef = ref<HTMLVideoElement | null>(null)
 const isMuted = ref(true)
+const isPlaying = ref(true)
 const copied = ref(false)
+
+const resolvedVideoSrc = computed(() => {
+  if (!props.videoSrc) return ''
+  if (props.videoSrc.startsWith('http://') || props.videoSrc.startsWith('https://')) return props.videoSrc
+  const base = (import.meta.env.BASE_URL || '/').replace(/\/$/, '')
+  const cleanPath = props.videoSrc.startsWith('/') ? props.videoSrc : `/${props.videoSrc}`
+  if (base && !cleanPath.startsWith(base + '/')) {
+    return `${base}${cleanPath}`
+  }
+  return cleanPath
+})
 
 onMounted(() => {
   if (videoRef.value) {
     videoRef.value.muted = true
     isMuted.value = true
-    videoRef.value.play().catch(() => {})
+    videoRef.value.play().then(() => {
+      isPlaying.value = true
+    }).catch(() => {
+      isPlaying.value = false
+    })
+
+    if (typeof IntersectionObserver !== 'undefined') {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.value && videoRef.value.paused) {
+            videoRef.value.play().then(() => {
+              isPlaying.value = true
+            }).catch(() => {})
+          }
+        })
+      }, { threshold: 0.2 })
+      observer.observe(videoRef.value)
+    }
   }
 })
+
+const togglePlay = () => {
+  if (!videoRef.value) return
+  if (videoRef.value.paused) {
+    videoRef.value.play().then(() => {
+      isPlaying.value = true
+    }).catch(() => {})
+  } else {
+    videoRef.value.pause()
+    isPlaying.value = false
+  }
+}
 
 const toggleMute = () => {
   if (!videoRef.value) return
@@ -60,26 +101,39 @@ const copyPrompt = () => {
         <div class="h-[310px] w-full flex items-center justify-center bg-black/60 rounded-2xl border border-white/20 overflow-hidden shadow-xl">
           <video
             ref="videoRef"
-            :src="videoSrc"
+            :src="resolvedVideoSrc"
             :poster="poster"
             autoplay
             loop
+            :muted="isMuted"
             muted
             playsinline
-            class="w-full h-full object-contain select-none"
+            preload="auto"
+            class="w-full h-full object-contain select-none cursor-pointer"
+            @click="togglePlay"
           ></video>
         </div>
         <!-- Controls outside video frame -->
         <div class="flex items-center justify-between mt-1.5 px-1">
           <span class="text-[10px] font-mono text-sky-400 font-medium">9:16 Shorts 포맷</span>
-          <button
-            @click.stop="toggleMute"
-            class="px-2 py-0.5 rounded text-[10px] font-mono transition-all cursor-pointer border flex items-center gap-1"
-            :class="isMuted ? 'bg-white/5 text-white/60 hover:text-white border-white/15' : 'bg-emerald-500/20 text-emerald-300 border-emerald-400'"
-          >
-            <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'"></span>
-            <span>{{ isMuted ? '음소거 중' : '소리 켜짐' }}</span>
-          </button>
+          <div class="flex items-center gap-1.5">
+            <button
+              @click.stop="togglePlay"
+              class="px-2 py-0.5 rounded text-[10px] font-mono transition-all cursor-pointer border flex items-center gap-1"
+              :class="isPlaying ? 'bg-white/5 text-white/70 hover:text-white border-white/15' : 'bg-amber-500/20 text-amber-300 border-amber-400 font-bold'"
+            >
+              <span :class="isPlaying ? 'i-carbon-pause text-white/60' : 'i-carbon-play-filled-alt text-amber-400'"></span>
+              <span>{{ isPlaying ? '일시정지' : '재생하기' }}</span>
+            </button>
+            <button
+              @click.stop="toggleMute"
+              class="px-2 py-0.5 rounded text-[10px] font-mono transition-all cursor-pointer border flex items-center gap-1"
+              :class="isMuted ? 'bg-white/5 text-white/60 hover:text-white border-white/15' : 'bg-emerald-500/20 text-emerald-300 border-emerald-400'"
+            >
+              <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'"></span>
+              <span>{{ isMuted ? '음소거 중' : '소리 켜짐' }}</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -159,26 +213,39 @@ const copyPrompt = () => {
         <div class="h-[245px] w-full rounded-2xl overflow-hidden shadow-xl border border-white/20 bg-black/80 flex items-center justify-center">
           <video
             ref="videoRef"
-            :src="videoSrc"
+            :src="resolvedVideoSrc"
             :poster="poster"
             autoplay
             loop
+            :muted="isMuted"
             muted
             playsinline
-            class="w-full h-full object-cover select-none"
+            preload="auto"
+            class="w-full h-full object-cover select-none cursor-pointer"
+            @click="togglePlay"
           ></video>
         </div>
         <!-- Controls outside video frame -->
         <div class="flex items-center justify-between mt-1.5 px-1">
           <span class="text-[10px] font-mono text-teal-400 font-medium">16:9 와이드 영상</span>
-          <button
-            @click.stop="toggleMute"
-            class="px-2 py-0.5 rounded text-[10px] font-mono transition-all cursor-pointer border flex items-center gap-1"
-            :class="isMuted ? 'bg-white/5 text-white/60 hover:text-white border-white/15' : 'bg-emerald-500/20 text-emerald-300 border-emerald-400'"
-          >
-            <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'"></span>
-            <span>{{ isMuted ? '음소거 중' : '소리 켜짐' }}</span>
-          </button>
+          <div class="flex items-center gap-1.5">
+            <button
+              @click.stop="togglePlay"
+              class="px-2 py-0.5 rounded text-[10px] font-mono transition-all cursor-pointer border flex items-center gap-1"
+              :class="isPlaying ? 'bg-white/5 text-white/70 hover:text-white border-white/15' : 'bg-amber-500/20 text-amber-300 border-amber-400 font-bold'"
+            >
+              <span :class="isPlaying ? 'i-carbon-pause text-white/60' : 'i-carbon-play-filled-alt text-amber-400'"></span>
+              <span>{{ isPlaying ? '일시정지' : '재생하기' }}</span>
+            </button>
+            <button
+              @click.stop="toggleMute"
+              class="px-2 py-0.5 rounded text-[10px] font-mono transition-all cursor-pointer border flex items-center gap-1"
+              :class="isMuted ? 'bg-white/5 text-white/60 hover:text-white border-white/15' : 'bg-emerald-500/20 text-emerald-300 border-emerald-400'"
+            >
+              <span :class="isMuted ? 'i-carbon-volume-mute text-rose-400' : 'i-carbon-volume-up text-emerald-400'"></span>
+              <span>{{ isMuted ? '음소거 중' : '소리 켜짐' }}</span>
+            </button>
+          </div>
         </div>
       </div>
 

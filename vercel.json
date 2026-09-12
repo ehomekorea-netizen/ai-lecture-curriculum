@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/veo3/:path*",
+      "destination": "/260915_smart-aquaculture/veo3/:path*"
+    },
+    {
       "source": "/260915_smart-aquaculture",
       "destination": "/260915_smart-aquaculture/index.html"
     },
