@@ -145,7 +145,7 @@ layout: default
 
 <div class="mb-4">
   <h2 class="stage-title">스마트수산업 전문가의 3대 역할 정의</h2>
-  <p class="stage-subtitle">“우리는 AI 개발자가 아니라, AI를 부리는 현장 최고 책임자입니다.”</p>
+  <p class="stage-subtitle">“가두리 현장은 내 손으로 지키고, AI는 계산과 서류 정리를 도맡는 일꾼으로 부립니다.”</p>
 </div>
 
 <div class="grid grid-cols-3 gap-5 my-4">
@@ -156,13 +156,13 @@ layout: default
         <div class="w-9 h-9 rounded-xl bg-sky-500/20 text-sky-300 flex items-center justify-center font-bold text-sm">1</div>
         <span class="i-carbon-decision-tree text-sky-400 text-xl"></span>
       </div>
-      <h3 class="text-base font-bold text-white mb-2">필요 기능의 판별</h3>
+      <h3 class="text-base font-bold text-white mb-2">필요한 기능 골라내기</h3>
       <p class="text-xs text-white/75 leading-relaxed m-0">
-        비싼 솔루션을 무작정 사는 것이 아니라, 우리 어장에 지금 필요한 것이 센서 예측인지, 영상 인식인지, 단순 일지 자동화인지 정확히 결정합니다.
+        비싼 솔루션을 무작정 사기보다, 우리 어장에 지금 필요한 것이 센서 예측인지, 영상 인식인지, 단순 일지 정리인지 명확히 가려냅니다.
       </p>
     </div>
     <div class="text-xs text-sky-300 border-t border-white/10 pt-2.5 mt-3 font-medium whitespace-nowrap">
-      도입 타당성 평가 역량
+      도입 타당성 판별 역량
     </div>
   </div>
 
@@ -172,13 +172,13 @@ layout: default
         <div class="w-9 h-9 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold text-sm">2</div>
         <span class="i-carbon-certificate-check text-emerald-400 text-xl"></span>
       </div>
-      <h3 class="text-base font-bold text-white mb-2">결과의 올바른 해석</h3>
+      <h3 class="text-base font-bold text-white mb-2">경보 결과 직접 검증하기</h3>
       <p class="text-xs text-white/75 leading-relaxed m-0">
-        AI 경보와 예측 수치를 맹신하지 않고, 확률 신호의 의미를 파악하여 현장 육안 점검 및 실측값과 대조하여 최종 사육 조치를 내립니다.
+        AI 경보 수치를 맹신하지 않고, 휴대용 측정기와 육안 점검으로 현장 수치를 대조한 뒤 최종 사육 조치를 내립니다.
       </p>
     </div>
     <div class="text-xs text-emerald-300 border-t border-white/10 pt-2.5 mt-3 font-medium whitespace-nowrap">
-      경보 해석 및 현장 검증 역량
+      현장 실측 검증 역량
     </div>
   </div>
 
@@ -188,9 +188,9 @@ layout: default
         <div class="w-9 h-9 rounded-xl bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-sm">3</div>
         <span class="i-carbon-data-structured text-purple-400 text-xl"></span>
       </div>
-      <h3 class="text-base font-bold text-white mb-2">학습 재료의 기록 관리</h3>
+      <h3 class="text-base font-bold text-white mb-2">깨끗한 현장 장부 유지하기</h3>
       <p class="text-xs text-white/75 leading-relaxed m-0">
-        AI가 똑똑해지는 유일한 밑천은 현장의 정제된 데이터입니다. 동별 분리, 숫자 표기, 결측치 구분을 통해 고품질 사육 기록을 유지합니다.
+        AI가 제대로 일하게 만드는 밑천은 현장의 기록입니다. 동별 분리, 숫자 표기, 결측치 구분을 지켜 쓸모 있는 장부를 남깁니다.
       </p>
     </div>
     <div class="text-xs text-purple-300 border-t border-white/10 pt-2.5 mt-3 font-medium whitespace-nowrap">
@@ -218,7 +218,7 @@ class: text-center
     스마트양식 데이터와<br />머신러닝·딥러닝의 원리
   </h2>
   <p class="text-white/75 text-lg font-light max-w-xl leading-relaxed">
-    “양식장은 상시적인 빅데이터 생산자 : 규칙을 짜는 방식에서 데이터를 배우는 방식으로”
+    “가두리 8개 동 40만 행 데이터 : 사람이 일일이 규칙을 짜던 방식에서 데이터가 스스로 학습하는 방식으로”
   </p>
 </div>
 
@@ -235,8 +235,8 @@ layout: default
 <!-- slide:05-S01-02-Aquaculture3V -->
 
 <div class="mb-3">
-  <h2 class="stage-title">해상가두리 양식장 데이터의 규모 (빅데이터 3V)</h2>
-  <p class="stage-subtitle">수질센서가 10분 간격으로 기록할 때 발생하는 데이터의 실체</p>
+  <h2 class="stage-title">가두리 양식장 데이터의 실제 규모 (연간 42만 행)</h2>
+  <p class="stage-subtitle">10분 간격 센서 1개가 1년에 5만 행, 8개 동이면 42만 행이 쌓입니다</p>
 </div>
 
 <div class="grid grid-cols-2 gap-5 my-4">
@@ -256,7 +256,7 @@ layout: default
       </p>
     </div>
     <div class="p-2.5 bg-white/5 rounded-lg text-xs text-white/85 border border-white/10 mt-3">
-      👉 <strong>현장 분업의 원칙:</strong> 대량 데이터 판독은 <strong>AI</strong>가 수행하고, 사람은 사육 조치와 경영 판단을 내린다.
+      👉 <strong>현장 분업:</strong> 방대한 숫자 판독은 <strong>컴퓨터</strong>에 맡기고, 사람은 현장 점검과 사육 조치에 집중합니다.
     </div>
   </div>
 
@@ -264,34 +264,34 @@ layout: default
     <div>
       <div class="flex items-center gap-2 text-sm text-indigo-300 font-bold mb-3">
         <span class="i-carbon-layers text-lg"></span>
-        <span>양식장 빅데이터의 3V 특성</span>
+        <span>양식장 빅데이터의 3대 현실 특성</span>
       </div>
       <ul class="space-y-2.5 text-xs text-white/90 p-0 m-0 list-none">
         <li class="p-2.5 bg-black/40 rounded-lg flex items-start gap-2.5">
           <span class="i-carbon-data-volume text-sky-400 text-xl flex-shrink-0 mt-0.5"></span>
           <div>
-            <strong class="text-sky-300 text-sm">1. 규모 (Volume):</strong><br>
-            <span class="text-white/75 text-xs">8개 동 연간 40만 행, 수중영상 수만 프레임의 대용량</span>
+            <strong class="text-sky-300 text-sm">1. 방대한 규모 (Volume):</strong><br>
+            <span class="text-white/75 text-xs">8개 동 연간 42만 행, 수중영상 수만 프레임의 대용량</span>
           </div>
         </li>
         <li class="p-2.5 bg-black/40 rounded-lg flex items-start gap-2.5">
           <span class="i-carbon-meter-alt text-emerald-400 text-xl flex-shrink-0 mt-0.5"></span>
           <div>
-            <strong class="text-emerald-300 text-sm">2. 속도 (Velocity):</strong><br>
-            <span class="text-white/75 text-xs">10분 단위 실시간 연속 스트리밍 수집</span>
+            <strong class="text-emerald-300 text-sm">2. 쉼 없는 속도 (Velocity):</strong><br>
+            <span class="text-white/75 text-xs">10분마다 24시간 실시간 연속으로 찍히는 센서값</span>
           </div>
         </li>
         <li class="p-2.5 bg-black/40 rounded-lg flex items-start gap-2.5">
           <span class="i-carbon-category text-purple-400 text-xl flex-shrink-0 mt-0.5"></span>
           <div>
-            <strong class="text-purple-300 text-sm">3. 다양성 (Variety):</strong><br>
-            <span class="text-white/75 text-xs">수온/DO 수치 + 수중영상 + 구어체 일지 텍스트 결합</span>
+            <strong class="text-purple-300 text-sm">3. 다양한 형태 (Variety):</strong><br>
+            <span class="text-white/75 text-xs">수온/DO 센서 수치 + 수중영상 + 구어체 일지 텍스트 결합</span>
           </div>
         </li>
       </ul>
     </div>
     <div class="text-xs text-indigo-300 font-mono text-center mt-2.5 font-bold whitespace-nowrap">
-      해상가두리는 이미 거대한 빅데이터 생산 공장입니다.
+      해상가두리는 이미 거대한 데이터 생산 현장입니다.
     </div>
   </div>
 </v-clicks>
@@ -309,8 +309,8 @@ layout: default
 <!-- slide:06-S01-03-RecordRule -->
 
 <div class="mb-3">
-  <h2 class="stage-title">AI 도입의 성패를 가르는 기록의 4대 원칙</h2>
-  <p class="stage-subtitle">“기록 방식이 AI 도입 가능 여부를 100% 결정합니다.”</p>
+  <h2 class="stage-title">AI 도입의 성패를 가르는 현장 장부 4대 원칙</h2>
+  <p class="stage-subtitle">“기록 방식이 엉망이면 어떤 비싼 AI를 사 와도 100% 무용지물이 됩니다”</p>
 </div>
 
 <div class="grid grid-cols-2 gap-5 my-3">
@@ -323,15 +323,15 @@ layout: default
       <ul class="space-y-2.5 text-xs text-white/80 p-0 m-0 list-none">
         <li class="p-2.5 bg-black/40 rounded-lg">
           <strong class="text-rose-300 text-[13px]">"오늘 A동 폐사 좀 많았음"</strong><br>
-          <span class="text-white/60 text-xs">→ 주관적 서술형 표현은 머신러닝 학습 불가</span>
+          <span class="text-white/60 text-xs">→ 주관적인 말글은 컴퓨터가 계산할 수 없음</span>
         </li>
         <li class="p-2.5 bg-black/40 rounded-lg">
           <strong class="text-rose-300 text-[13px]">"전체 가두리 합산 폐사 150마리"</strong><br>
-          <span class="text-white/60 text-xs">→ 어느 동에서 터졌는지 위치 식별 불가</span>
+          <span class="text-white/60 text-xs">→ 몇 번 가두리에서 터졌는지 위치 파악 불가</span>
         </li>
         <li class="p-2.5 bg-black/40 rounded-lg">
           <strong class="text-rose-300 text-[13px]">"측정 안 한 날은 그냥 0으로 적음"</strong><br>
-          <span class="text-white/60 text-xs">→ 수온 0℃로 오인식하여 모델 왜곡 유발</span>
+          <span class="text-white/60 text-xs">→ 수온 0℃로 오인식하여 모델 전체 왜곡</span>
         </li>
       </ul>
     </div>
@@ -495,8 +495,8 @@ layout: default
 <!-- slide:10-S01-07-HierarchyDesc -->
 
 <div class="mb-3">
-  <h2 class="stage-title">AI · ML · DL 3대 개념의 현장 의미</h2>
-  <p class="stage-subtitle">인공지능의 큰 틀에서 머신러닝과 딥러닝이 맡는 역할의 명확한 구분</p>
+  <h2 class="stage-title">AI · 머신러닝 · 딥러닝 현장 구분법</h2>
+  <p class="stage-subtitle">센서 수치 예측에는 머신러닝, 카메라 영상 인식에는 딥러닝을 씁니다</p>
 </div>
 
 <div class="grid grid-cols-3 gap-4 my-4">
@@ -585,8 +585,8 @@ layout: default
 <!-- slide:12-S01-09-RuleBasedLimit -->
 
 <div class="mb-3">
-  <h2 class="stage-title">기존 규칙 기반(Rule-based) 경보의 한계</h2>
-  <p class="stage-subtitle">단일 조건문 방식의 경보가 실제 현장의 복합 재난을 막지 못하는 이유</p>
+  <h2 class="stage-title">'수온 28도 이상 알람'만으로 폐사를 못 막는 이유</h2>
+  <p class="stage-subtitle">실제 대량 폐사는 수온 하나가 아니라 조류 정체, 야간 저산소, 사료 찌꺼기가 겹칠 때 터집니다</p>
 </div>
 
 <div class="grid grid-cols-2 gap-5 my-4">
@@ -642,8 +642,8 @@ layout: default
 <!-- slide:13-S01-10-MachineLearning -->
 
 <div class="mb-3">
-  <h2 class="stage-title">학습(Learning)의 실체 : "오차의 최소화"</h2>
-  <p class="stage-subtitle">모델은 정답을 ‘아는’ 것이 아니라, 오차가 가장 작은 답을 ‘선택’하는 것입니다.</p>
+  <h2 class="stage-title">학습(Learning)의 실체 : "오차 줄이기"</h2>
+  <p class="stage-subtitle">실제 결과와 예측값의 차이(오차)를 계속 좁혀가며 최적의 가중치를 맞춥니다</p>
 </div>
 
 <div class="grid grid-cols-4 gap-3.5 my-4">
@@ -905,8 +905,8 @@ layout: default
 <!-- slide:21-S02-04-PredictiveValue -->
 
 <div class="mb-3">
-  <h2 class="stage-title">예측형 AI의 본질: "대응 골든타임 확보"</h2>
-  <p class="stage-subtitle">수온 상승과 실제 대량 폐사 폭발 사이의 시차(Time-lag)를 활용한 선제 방어</p>
+  <h2 class="stage-title">예측형 AI의 가치: "대응 골든타임 48시간"</h2>
+  <p class="stage-subtitle">수온이 오른 당일 바로 죽지 않고 이틀 뒤 터집니다. 48시간 전에 알아야 사료를 끊고 산소를 비축합니다</p>
 </div>
 
 <div class="grid grid-cols-2 gap-5 my-4">
@@ -1037,8 +1037,8 @@ layout: default
 <!-- slide:24-S02-07-AccuracyTrap -->
 
 <div class="mb-3">
-  <h2 class="stage-title">공급업체 "정확도 97%"의 치명적인 함정</h2>
-  <p class="stage-subtitle">“100일 중 위험일이 3일뿐이면, 365일 안전하다고만 답해도 정확도는 97%입니다!”</p>
+  <h2 class="stage-title">AI 공급업체 "정확도 97%"의 거짓말</h2>
+  <p class="stage-subtitle">“100일 중 폐사 나는 날이 3일뿐이면, 매일 '정상'이라고만 찍어도 정확도는 97%가 나옵니다”</p>
 </div>
 
 <AccuracyTrapCalc />
@@ -1055,8 +1055,8 @@ layout: default
 <!-- slide:25-S02-08-RecallVsPrecision -->
 
 <div class="mb-3">
-  <h2 class="stage-title">수산양식 최우선 지표: 재현율 vs 정밀도</h2>
-  <p class="stage-subtitle">대량 폐사 방지를 위해 수산 분야에서 재현율(Recall)을 최우선으로 검증해야 하는 이유</p>
+  <h2 class="stage-title">어장을 살리는 핵심 지표: 재현율 (Recall)</h2>
+  <p class="stage-subtitle">위험한 날을 단 한 번도 놓치지 않아야 합니다. 폐사를 놓치는 순간 한 해 농사가 끝납니다</p>
 </div>
 
 <div class="grid grid-cols-2 gap-5 my-4 text-xs">
@@ -1279,7 +1279,7 @@ layout: default
 
 <div class="mb-3">
   <h2 class="stage-title">생성형 AI의 작동 원리 : "확률적 문장 생성"</h2>
-  <p class="stage-subtitle">“지금까지 나온 단어 다음에 올 확률이 가장 높은 말을 이어 붙인다”</p>
+  <p class="stage-subtitle">“앞에 나온 단어 뒤에 올 법한 그럴듯한 말을 이어 붙이는 원리로 문장을 만듭니다”</p>
 </div>
 
 <LLMTokenizer />
@@ -1319,8 +1319,8 @@ layout: default
 <!-- slide:35-S03-04-AquaHallucination -->
 
 <div class="mb-3">
-  <h2 class="stage-title">수산양식 현장에서의 환각 위험 사례</h2>
-  <p class="stage-subtitle">양식장 실무에서 생성형 AI 답변을 무비판 수용할 때 발생하는 4대 위험</p>
+  <h2 class="stage-title">수산 현장에서 챗GPT 답변을 그대로 믿으면 생기는 일</h2>
+  <p class="stage-subtitle">약품 희석 배율이나 법적 규정을 AI에게 물어보고 바로 쓰면 치명적인 사고가 납니다</p>
 </div>
 
 <div class="grid grid-cols-2 gap-4 my-4 text-xs">
@@ -1366,8 +1366,8 @@ layout: default
 <!-- slide:36-S03-05-StrengthWeakness -->
 
 <div class="mb-3">
-  <h2 class="stage-title">생성형 AI의 강점(쓰는 일) vs 취약점(아는 일)</h2>
-  <p class="stage-subtitle">AI가 잘하는 '작성 업무'와 사람이 검증해야 하는 '사실 확인'의 엄격한 분업</p>
+  <h2 class="stage-title">AI에게 맡길 일(쓰는 일) vs 사람이 챙길 일(아는 일)</h2>
+  <p class="stage-subtitle">문장 초안과 서식 정리는 AI에게 시키고, 약품 용량과 수치 검증은 사람이 직접 확인합니다</p>
 </div>
 
 <div class="grid grid-cols-2 gap-5 my-4 text-xs">
@@ -1462,8 +1462,8 @@ layout: default
 <!-- slide:39-S03-08-FewShotPrinciple -->
 
 <div class="mb-3">
-  <h2 class="stage-title">예시 2~3개로 끝내는 Few-Shot 기법</h2>
-  <p class="stage-subtitle">“말투나 서식을 길게 설명하지 말고, 입력과 출력 예시 2개를 먼저 보여준다”</p>
+  <h2 class="stage-title">예시 2개로 완벽한 일지 표 만들기 (Few-Shot)</h2>
+  <p class="stage-subtitle">“서식을 구구절절 설명하지 않고, 입력과 출력 예시 2개만 보여주면 끝납니다”</p>
 </div>
 
 <div class="grid grid-cols-2 gap-5 my-4 text-xs">
@@ -1531,7 +1531,7 @@ layout: default
 
 <div class="mb-3">
   <h2 class="stage-title">엑셀/CSV 데이터 파일 기반 AI 분석</h2>
-  <p class="stage-subtitle">별도의 코딩이나 프로그램 없이, 엑셀 파일을 업로드하고 질문하는 것만으로 분석 가능</p>
+  <p class="stage-subtitle">코딩 없이 엑셀 파일을 챗봇에 올리고 질문하면 이상치와 통계를 즉시 정리합니다</p>
 </div>
 
 <CsvPlayground />
@@ -1549,6 +1549,7 @@ layout: default
 
 <div class="mb-3">
   <h2 class="stage-title">RAG (검색증강생성) 시스템 작동 원리</h2>
+  <p class="stage-subtitle">내부 지침서와 일지 PDF를 검색해 정확한 근거 페이지만 AI에게 건네주는 오픈북 시험 방식</p>
 </div>
 
 <div class="flex items-center justify-center my-3">
@@ -1657,7 +1658,8 @@ layout: default
 <!-- slide:45-S04-02-AgentArchitectureImage -->
 
 <div class="mb-3">
-  <h2 class="stage-title">AI 에이전트의 3대 구성요소와 사고 루프</h2>
+  <h2 class="stage-title">AI 에이전트 3요소: 생각하고 도구를 쓰는 구조</h2>
+  <p class="stage-subtitle">두뇌(LLM)가 목표를 쪼개고, 손발(도구)로 센서와 DB를 조회해 결과를 확인합니다</p>
 </div>
 
 <div class="flex items-center justify-center my-3">
@@ -1680,8 +1682,8 @@ layout: default
 <!-- slide:46-S04-03-AgentScenario -->
 
 <div class="mb-3">
-  <h2 class="stage-title">매일 06:00 가두리 일일 브리핑 에이전트</h2>
-  <p class="stage-subtitle">관리자가 출근하기 전, 에이전트가 6개 단계를 자동으로 마쳐둡니다.</p>
+  <h2 class="stage-title">새벽 06:00 가두리 일일 브리핑 에이전트</h2>
+  <p class="stage-subtitle">출근 전, 센서 로그와 어제 일지, 기상청 예보를 대조해 주의 가두리를 스마트폰으로 보고합니다</p>
 </div>
 
 <div class="grid grid-cols-3 gap-3.5 my-4 text-xs">
@@ -1743,6 +1745,7 @@ layout: default
 
 <div class="mb-3">
   <h2 class="stage-title">06:00 브리핑 에이전트 실행 시뮬레이터</h2>
+  <p class="stage-subtitle">센서 조회 → 급변 식별 → 일지 대조 → 기상청 확인 → 스마트폰 보고 전 과정 체험</p>
 </div>
 
 <AgentBriefingSim />
@@ -1759,7 +1762,8 @@ layout: default
 <!-- slide:48-S04-05-AutomationLevelsImage -->
 
 <div class="mb-3">
-  <h2 class="stage-title">에이전트에게 어디까지 맡길 것인가 : 4단계 수준</h2>
+  <h2 class="stage-title">AI 자동화 4단계: 알림부터 완전 자동까지</h2>
+  <p class="stage-subtitle">초기에는 알림과 권고까지만 맡기고, 사람이 승인하며 신뢰를 쌓은 뒤 올립니다</p>
 </div>
 
 <div class="flex items-center justify-center my-3">
@@ -1767,7 +1771,7 @@ layout: default
 </div>
 
 <p class="text-white/70 text-xs text-center mt-2">
-  L1 알림 → L2 권고 → L3 조건부 실행 → L4 완전 자동 (신뢰가 확인될 때마다 한 단계씩 상향)
+  L1 알림 → L2 권고 → L3 조건부 실행 → L4 완전 자동 (현장 검증 없이 한 번에 상향 금지)
 </p>
 
 <!--
@@ -1783,6 +1787,7 @@ layout: default
 
 <div class="mb-3">
   <h2 class="stage-title">되돌릴 수 없는 행위의 자동화 금지 원칙</h2>
+  <p class="stage-subtitle">생물 폐사나 설비 손상으로 이어지는 작업은 에이전트 단독 실행을 금지하고 관리자 승인을 거칩니다</p>
 </div>
 
 <AbsoluteRule />
@@ -1798,8 +1803,8 @@ layout: default
 <!-- slide:50-S04-08-Roadmap4Steps -->
 
 <div class="mb-3">
-  <h2 class="stage-title">현실적인 스마트양식 AI 4단계 도입 로드맵</h2>
-  <p class="stage-subtitle">가장 흔한 실패는 1·2단계를 건너뛰고 4단계 카메라부터 설치하는 것입니다.</p>
+  <h2 class="stage-title">스마트양식 AI 4단계 도입 순서</h2>
+  <p class="stage-subtitle">스마트폰 무료 일지 정리부터 시작해 동별 기록을 1년 쌓은 뒤 예측 솔루션으로 갑니다</p>
 </div>
 
 <div class="grid grid-cols-4 gap-3.5 my-4">
@@ -1863,8 +1868,8 @@ layout: default
 <!-- slide:51-S04-09-Quizzes -->
 
 <div class="mb-3">
-  <h2 class="stage-title">스마트수산업 전문가 3대 실무 학습확인</h2>
-  <p class="stage-subtitle">현장 관리자가 반드시 체득해야 할 핵심 판단 원칙 점검</p>
+  <h2 class="stage-title">현장 실무 핵심 퀴즈 3문항</h2>
+  <p class="stage-subtitle">경보 대처, 정확도 검증, 에이전트 도입 핵심 판단 점검</p>
 </div>
 
 <div class="grid grid-cols-3 gap-4 my-4 text-xs">
