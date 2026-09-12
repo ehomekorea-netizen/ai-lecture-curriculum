@@ -1,0 +1,100 @@
+<script setup lang="ts">
+// EdgeAIFeatures.vue - 엣지 AI 4대 핵심 이점 및 수산업 현장 도입 전략
+</script>
+
+<template>
+  <div class="flex flex-col gap-3.5 my-2">
+    <!-- 4 Core Feature Cards (2x2 Grid) -->
+    <div class="grid grid-cols-2 gap-3.5">
+      <!-- 1. 초저지연 실시간 연산 -->
+      <div class="p-4 rounded-xl border border-sky-500/30 bg-sky-950/20 backdrop-blur-sm flex flex-col justify-between hover:border-sky-400/50 transition-colors">
+        <div>
+          <div class="text-sky-300 font-bold text-sm mb-1.5 flex items-center gap-2">
+            <span class="i-carbon-flash text-sky-400 text-base"></span>
+            <span>1. 초저지연 실시간 연산</span>
+          </div>
+          <p class="text-white/80 text-xs leading-relaxed m-0">
+            데이터를 원격 클라우드로 전송하지 않고, 현장 기기에서 <strong>0.01초 만에 이상 징후를 즉각 판독하고 제어</strong>합니다.
+          </p>
+        </div>
+        <div class="text-[11px] text-sky-400/90 font-mono mt-3 pt-2 border-t border-white/10 flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+            네트워크 지연 Zero
+          </span>
+          <span class="text-white/50">즉각 제어 보장</span>
+        </div>
+      </div>
+
+      <!-- 2. 망 단절 독립 구동 -->
+      <div class="p-4 rounded-xl border border-emerald-500/30 bg-emerald-950/20 backdrop-blur-sm flex flex-col justify-between hover:border-emerald-400/50 transition-colors">
+        <div>
+          <div class="text-emerald-300 font-bold text-sm mb-1.5 flex items-center gap-2">
+            <span class="i-carbon-wifi-off text-emerald-400 text-base"></span>
+            <span>2. 해상 망 단절 독립 구동</span>
+          </div>
+          <p class="text-white/80 text-xs leading-relaxed m-0">
+            태풍·돌풍으로 해상 통신망(LTE/5G)이 끊겨도, <strong>로컬 AI 모델이 24시간 중단 없이 독립 작동</strong>하여 산소 공급 밸브를 제어합니다.
+          </p>
+        </div>
+        <div class="text-[11px] text-emerald-400/90 font-mono mt-3 pt-2 border-t border-white/10 flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            오프라인 자율 방어
+          </span>
+          <span class="text-white/50">통신 마비 대비</span>
+        </div>
+      </div>
+
+      <!-- 3. 통신 비용 & 대역폭 절감 -->
+      <div class="p-4 rounded-xl border border-purple-500/30 bg-purple-950/20 backdrop-blur-sm flex flex-col justify-between hover:border-purple-400/50 transition-colors">
+        <div>
+          <div class="text-purple-300 font-bold text-sm mb-1.5 flex items-center gap-2">
+            <span class="i-carbon-data-volume text-purple-400 text-base"></span>
+            <span>3. 통신 비용 & 대역폭 대폭 절감</span>
+          </div>
+          <p class="text-white/80 text-xs leading-relaxed m-0">
+            무거운 수중 고화질 영상 전체를 클라우드로 올리지 않고, 현장에서 판단한 <strong>이상 감지 결과값(메타데이터)만 전송</strong>합니다.
+          </p>
+        </div>
+        <div class="text-[11px] text-purple-400/90 font-mono mt-3 pt-2 border-t border-white/10 flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>
+            LTE/위성 통신비 90%↓
+          </span>
+          <span class="text-white/50">트래픽 과부하 방지</span>
+        </div>
+      </div>
+
+      <!-- 4. 현장 데이터 보안 유지 -->
+      <div class="p-4 rounded-xl border border-amber-500/30 bg-amber-950/20 backdrop-blur-sm flex flex-col justify-between hover:border-amber-400/50 transition-colors">
+        <div>
+          <div class="text-amber-300 font-bold text-sm mb-1.5 flex items-center gap-2">
+            <span class="i-carbon-security text-amber-400 text-base"></span>
+            <span>4. 현장 데이터 보안 및 자산 보호</span>
+          </div>
+          <p class="text-white/80 text-xs leading-relaxed m-0">
+            양식장의 고유 사육 노하우, 수온 반응 곡선, 생육 영상 데이터가 외부 서버로 무단 반출되지 않고 <strong>현장 기기에 안전 격리</strong>됩니다.
+          </p>
+        </div>
+        <div class="text-[11px] text-amber-400/90 font-mono mt-3 pt-2 border-t border-white/10 flex items-center justify-between">
+          <span class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            어장 고유 노하우 보호
+          </span>
+          <span class="text-white/50">데이터 주권 확보</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Marine Insight Box -->
+    <div class="p-3 bg-white/5 rounded-xl text-xs text-white/90 border border-white/10 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <span class="i-carbon-idea text-amber-300 text-lg flex-shrink-0"></span>
+        <span class="text-xs leading-snug">
+          <strong>수산업 현장 핵심 시사점:</strong> "바다 위에서는 통신이 끊겨도 비상 산소 공급기와 사이렌은 스스로 돌아가야 한다" — 통신 단절에도 가두리를 지켜내는 현장 자율 방어의 핵심 두뇌가 바로 엣지 AI입니다.
+        </span>
+      </div>
+    </div>
+  </div>
+</template>

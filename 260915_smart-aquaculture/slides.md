@@ -1150,74 +1150,38 @@ layout: default
 ---
 layout: default
 ---
-<!-- slide:28-S02-11-EdgeAIIntro -->
+<!-- slide:28-S02-11-EdgeAIShorts -->
 
 <div class="mb-3">
-  <h2 class="stage-title">엣지 AI(Edge AI)란? 개념과 수산업 현장 도입의 이점</h2>
-  <p class="stage-subtitle">클라우드로 보내지 않고 데이터가 발생하는 현장 단말기에서 실시간으로 직접 연산하는 기술</p>
+  <h2 class="stage-title">엣지 AI(Edge AI)란? 영상으로 이해하기</h2>
+  <p class="stage-subtitle">어드밴텍 웨비나: 현장 단말에서 직접 연산하는 산업용 엣지 AI의 특징과 이점</p>
 </div>
 
-<EdgeAIIntro />
+<EdgeAIShorts />
 
 <!--
 [강사]
-다음 슬라이드에서 해상 통신 두절 대책을 배우기 전에, 최근 스마트 산업 현장에서 가장 주목받는 '엣지 AI(Edge AI)'의 개념을 영상으로 먼저 확인하겠습니다.
-엣지 AI는 모든 데이터를 육상의 거대한 클라우드 서버로 보내서 처리하는 것이 아니라, 가두리 현장의 작은 PC나 센서 박스 자체에 경량화된 AI를 탑재해 현장에서 즉시 판단하고 제어하는 기술입니다.
-바다 위에서는 돌풍이나 태풍으로 통신망이 자주 끊어집니다. 통신이 죽었다고 산소 공급이 멈추면 물고기는 몰살당합니다. 통신이 끊겨도 현장에서 즉시 이상을 감지하고 밸브를 열어주는 자율 제어, 이것이 바로 우리가 엣지 AI를 도입해야 하는 결정적 이유입니다.
+최근 스마트 산업 및 스마트 수산 현장에서 가장 주목받는 '엣지 AI(Edge AI)'의 개념을 1분 쇼츠 영상으로 먼저 확인하겠습니다.
+엣지 AI가 왜 기존의 중앙 클라우드 AI 방식과 다른지, 어떤 상황에서 필수적인지 집중해서 시청해 주시기 바랍니다.
 -->
 
 ---
 layout: default
 ---
-<!-- slide:29-S02-12-MarineNetwork -->
+<!-- slide:29-S02-12-EdgeAIFeatures -->
 
 <div class="mb-3">
-  <h2 class="stage-title">해상 통신 두절(망 단절) 대비 엣지 AI 전략</h2>
-  <p class="stage-subtitle">돌풍이나 태풍으로 통신이 끊겨도 현장 자율 방어가 가능해야 합니다.</p>
+  <h2 class="stage-title">엣지 AI(Edge AI)의 핵심 4대 이점과 수산 현장 도입 전략</h2>
+  <p class="stage-subtitle">클라우드로 보내지 않고 데이터가 발생하는 현장 단말기에서 실시간으로 직접 연산하는 기술</p>
 </div>
 
-<div class="grid grid-cols-2 gap-5 my-4 items-center">
-<v-clicks>
-  <div class="glass-card border-rose-500/20 p-5 text-xs flex flex-col justify-between">
-    <div>
-      <div class="text-rose-300 font-bold text-sm mb-2 flex items-center gap-2">
-        <span class="i-carbon-cloud-offline text-rose-400 text-lg"></span>
-        <span class="whitespace-nowrap">클라우드 의존형의 위험</span>
-      </div>
-      <p class="text-white/75 text-xs leading-relaxed m-0">
-        태풍이나 돌풍으로 해상 통신망(LTE/5G)이 끊기면, 클라우드 AI 서버와 연결이 두절되어 <strong>가두리 현장에서 경보가 멈추는 치명적 사고</strong>가 발생합니다.
-      </p>
-    </div>
-    <div class="mt-3 pt-2 border-t border-rose-500/20 text-rose-400 font-bold whitespace-nowrap">
-      위험: 통신 장애 시 산소 공급 제어 중단
-    </div>
-  </div>
-
-  <div class="glass-card border-emerald-500/20 bg-emerald-950/15 p-5 text-xs flex flex-col justify-between">
-    <div>
-      <div class="text-emerald-300 font-bold text-sm mb-2 flex items-center gap-2">
-        <span class="i-carbon-devices text-emerald-400 text-lg"></span>
-        <span class="whitespace-nowrap">현장 엣지(Edge) AI 백업 체계</span>
-      </div>
-      <p class="text-white/85 text-xs leading-relaxed m-0">
-        가두리 관리사 현장 PC/단말기에 <strong>경량 AI 모델을 탑재하여 인터넷이 끊겨도 로컬 센서 기반 긴급 경보와 산소 밸브 제어가 독립 작동</strong>하도록 설계해야 합니다.
-      </p>
-    </div>
-    <div class="mt-3 pt-2 border-t border-emerald-500/20 text-emerald-300 font-bold whitespace-nowrap">
-      보장: 망 단절 시에도 현장 긴급 경보 100% 작동
-    </div>
-  </div>
-</v-clicks>
-</div>
-
-<div class="p-2.5 bg-white/5 rounded-xl text-xs text-white/85 border border-white/10 text-center mt-3">
-  💡 <strong>필수 점검:</strong> 인터넷이 끊겨도 현장 가두리에서 소리 경보와 산소 공급기 제어가 독립 구동되는가?
-</div>
+<EdgeAIFeatures />
 
 <!--
 [강사]
-바다 위에서는 인터넷이 끊길 때가 많습니다.
-통신이 죽어도 현장에서 경보가 울리는 엣지 시스템이어야 합니다.
+영상에서 보신 것처럼 엣지 AI는 가두리 현장의 작은 PC나 센서 박스 자체에 경량화된 AI를 탑재해 현장에서 직접 연산하는 기술입니다.
+수산업 현장에서 엣지 AI가 필수적인 4가지 이유는 초저지연, 통신 두절 시 독립 구동, 통신비 절감, 어장 보안입니다.
+특히 바다 위에서는 돌풍이나 태풍으로 통신망이 자주 끊어집니다. 통신이 끊겨도 현장에서 즉시 이상을 감지하고 산소 밸브를 열어주는 자율 방어의 핵심이 바로 엣지 AI입니다.
 -->
 
 ---
